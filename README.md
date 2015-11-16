@@ -32,7 +32,7 @@ Une fois ce temps expiré:
 
 
 ## Sommaire
-   **Tactics Arena**
+
    1. **[Tactics Arena](#tactics-arena)**
     - **[Règles](#règles)**
    2. **[Changelog](#changelog)**
@@ -58,8 +58,8 @@ Une fois ce temps expiré:
  - [ ] Test unitaires
  - [ ] Test d'intégration
  - [ ] Ajout de fonctionnalités
-  - [ ] Intégration IA
   - [ ] Menu
+  - [ ] Intégration IA
   - [ ] GUI
 
 ## Changelog
