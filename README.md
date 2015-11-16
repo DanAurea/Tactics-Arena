@@ -5,6 +5,7 @@ Chaque joueur déplace ses unités respectant des règles de déplacement propre
 
 ## Règles
 
+Le joueur qui commence est défini aléatoirement par l'ordinateur au début de chaque partie.
 
 Les conditions d'égalité sont:
 
@@ -12,8 +13,6 @@ Les conditions d'égalité sont:
   - **Les joueurs passent leurs tours 3 fois d’affilé**
   - **Il n’y a eu aucune rencontre entre les deux unités ennemies depuis les 30 derniers tours.**
   
-
-Le joueur qui commence est défini aléatoirement par l'ordinateur au début de chaque partie.
 
  Il n'est possible de déplacer qu'une seule unité par tour soit pour:
   
