@@ -32,8 +32,9 @@ Une fois ce temps expiré:
 
 
 ## Sommaire
-   **Ruzzle**
-   1. **[Règles](#règles)**
+   **Tactics Arena**
+   1. **[Tactics Arena](#tactics-arena)**
+    - **[Règles](#règles)**
    2. **[Changelog](#changelog)**
      - **[Version 0.1](#version-01)**
    3. **[A faire](#a-faire)**
