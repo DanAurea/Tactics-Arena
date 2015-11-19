@@ -8,7 +8,7 @@ Chaque joueur déplace ses unités respectant des règles de déplacement propre
 
 Les conditions d'égalité sont:
 
-  - **Toutes les unités actives adverses sont détruites ou immobilisée**
+  - **Toutes les unités actives sont détruites ou immobilisée**
   - **Les joueurs passent leurs tours 3 fois d’affilé**
   - **Il n’y a eu aucune rencontre entre les deux unités ennemies depuis les 30 derniers tours.**
   
@@ -74,6 +74,3 @@ Une fois ce temps expiré:
 
 
 ## Documentation
-
-
-
