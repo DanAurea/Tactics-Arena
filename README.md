@@ -51,9 +51,10 @@ Une fois ce temps expiré:
   - [ ] Unités
   - [ ] Statistiques
   - [ ] Mouvements
+  - [ ] Gestion des tours
+  - [ ] Gestion du temps
   - [ ] Capacités spéciales
   - [ ] Etat unités
-  - [ ] Gestion des tours et du temps 
  - [ ] Test unitaires
  - [ ] Test d'intégration
  - [ ] Ajout de fonctionnalités
