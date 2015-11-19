@@ -9,7 +9,7 @@ Le joueur qui commence est défini aléatoirement par l'ordinateur au début de 
 
 Les conditions d'égalité sont:
 
-  - **Toutes les unités actives adverses sont détruites ou immobilisée**
+  - **Toutes les unités actives sont détruites ou immobilisée**
   - **Les joueurs passent leurs tours 3 fois d’affilé**
   - **Il n’y a eu aucune rencontre entre les deux unités ennemies depuis les 30 derniers tours.**
   
