@@ -34,13 +34,13 @@ Une fois ce temps expiré:
 ## Sommaire
    **Tactics Arena**
 
-   1. **[Règles](#règles)**
-   2. **[Changelog](#changelog)**
-     - **[Version 0.1](#version-01)**
-   3. **[A faire](#a-faire)**
-   4. **[Instructions de compilation](#instructions-de-compilation)**
-   5. **[Utilisation](#utilisation)**
-   6. **[Documentation](#documentation)**
+   1. **[Règles](#markdown-header-regles)**
+   2. **[Changelog](#markdown-header-changelog)**
+     - **[Version 0.1](#markdown-header-version-01)**
+   3. **[A faire](#markdown-header-a-faire)**
+   4. **[Instructions de compilation](#markdown-header-instructions-de-compilation)**
+   5. **[Utilisation](#markdown-header-utilisation)**
+   6. **[Documentation](#markdown-header-documentation)**
 
 ## A faire
  
