@@ -25,6 +25,7 @@ Le changement de direction impose d'être fait en dernier.
 
 Chaque tour dure 1 à 2 minutes, dépendant du nombre d'unité restante.
 Une fois ce temps expiré:
+
   - **Le tour se termine automatiquement si au moins une commande a été effectué**
   - **Si aucune commande n'a été effectuée alors abandon automatique**
 
