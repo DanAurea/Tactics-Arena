@@ -45,24 +45,24 @@ Une fois ce temps expiré:
 
 ## A faire
  
- - [x] Analyse préliminaire
- - [ ] Compte rendu mécaniques du jeu
- - [x] Analyse conceptuelle
- - [ ] Implémentation
-  - [x] Grille
-  - [ ] Menu
-  - [ ] Unités
-  - [ ] Statistiques
-  - [ ] Mouvements
-  - [ ] Gestion des tours
-  - [ ] Gestion du temps
-  - [ ] Capacités spéciales
-  - [ ] Etat unités
- - [ ] Test unitaires
- - [ ] Test d'intégration
- - [ ] Ajout de fonctionnalités
-  - [ ] Intégration IA
-  - [ ] GUI
+ - **[x] Analyse préliminaire**
+ - **[ ] Compte rendu mécaniques du jeu**
+ - **[x] Analyse conceptuelle**
+ - **[ ] Implémentation**
+    - **[x] Grille**
+    - **[ ] Menu**
+    - **[ ] Unités**
+    - **[ ] Statistiques**
+    - **[ ] Mouvements**
+    - **[ ] Gestion des tours**
+    - **[ ] Gestion du temps**
+    - **[ ] Capacités spéciales**
+    - **[ ] Etat unités**
+ - **[ ] Test unitaires**
+ - **[ ] Test d'intégration**
+ - **[ ] Ajout de fonctionnalités**
+    - **[ ] Intégration IA**
+    - **[ ] GUI**
 
 ## Changelog
 
