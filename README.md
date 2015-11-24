@@ -32,7 +32,8 @@ Une fois ce temps expiré:
 
 
 ## Sommaire
-   **Ruzzle**
+   **Tactics Arena**
+
    1. **[Règles](#règles)**
    2. **[Changelog](#changelog)**
      - **[Version 0.1](#version-01)**
@@ -45,9 +46,10 @@ Une fois ce temps expiré:
  
  - [x] Analyse préliminaire
  - [ ] Compte rendu mécaniques du jeu
- - [ ] Analyse conceptuelle
+ - [x] Analyse conceptuelle
  - [ ] Implémentation
-  - [ ] Grille
+  - [x] Grille
+  - [ ] Menu
   - [ ] Unités
   - [ ] Statistiques
   - [ ] Mouvements
@@ -59,7 +61,6 @@ Une fois ce temps expiré:
  - [ ] Test d'intégration
  - [ ] Ajout de fonctionnalités
   - [ ] Intégration IA
-  - [ ] Menu
   - [ ] GUI
 
 ## Changelog
