@@ -1,8 +1,5 @@
 #include "Outil.h"
 
-#define N 11
-#define NB_MAX_EFFECT
-
 bool canGetPassed(unit * target)
 {
     bool out=true;
@@ -54,14 +51,16 @@ bool canMove(unit * target)
     return out;
 }
 
-int getSideAttacked()
+void heal(unit* source, unit* target)
 {
-
+    target->stat.HP += source->stat.POWER;
 }
 
-void heal(unit* source, unit* target)
-{//soigne
-    target->stat->HP += source->stat->POWER;
+int getSideAttacked(unit * source, unit * target )
+{
+	int sens = abs ( source->stat.direct - target->stat.direct);
+	Assert1("getSideAttacked",bCroit(0,sens,2));
+	return sens;
 }
 
 bool attack(unit* source, unit* target)
@@ -70,25 +69,37 @@ bool attack(unit* source, unit* target)
     {
         if(canBlock(target))
         {
-            target->stat->HP-=(source->stat->POWER*target->stat->BLOCK[getSideAttacked(source,target)]);
+            target->stat.HP-=(source->stat.POWER*target->stat.BLOCK[getSideAttacked(source,target)]);
         }
         else
         {
-            target->stat->HP-=source->stat->POWER;
+            target->stat.HP-=source->stat.POWER;
         }
 
     }
 }
 
-void move(unit grille[N][N],unit * source)
-
-void moduleAmorcer()
+void copy(unit * destination, unit * source)
 {
-
+	destination->name=source->name;
+	destination->stat.HP=source->stat.HP;
+	destination->stat.POWER=source->stat.POWER;
+	destination->stat.ARMOR=source->stat.ARMOR;
+	destination->stat.RECOVERY=source->stat.RECOVERY;
+	for(int i=0;i<3;i++)                          
+	{                                     
+		destination->stat.BLOCK[i]=source->stat.BLOCK[i];
+	}
+	destination->stat.MOV_RANGE=source->stat.MOV_RANGE;
+	for(int i=0;i<NB_MAX_EFFECT;i++)
+	{
+		destination->effect[i]=source->effect[i];
+	}
 }
 
-int main()
+void move(unit grille[N][N],vector pos[])
 {
-    moduleAmorcer();
-    return 0;
+	copy(grille[pos[1].x][pos[1].y],grille[pos[0].x][pos[0].y]);
+	grille[pos[0].x][pos[0].y]->name=empty;
 }
+
