@@ -1,3 +1,4 @@
+#include "../include/gameEngine.h"
 #include "../include/Outil.h"
 #include <stdbool.h>
 
@@ -17,7 +18,7 @@ bool canGetPassed(unit * target)
 bool canBlock(unit * target)
 {
     bool out=true;
-        for(int i=0;i<NB_MAX_EFFECT;i++)
+    for(int i=0;i<NB_MAX_EFFECT;i++)
     {
         if(target-> effect[i]>4)
         {
@@ -30,7 +31,7 @@ bool canBlock(unit * target)
 bool canAttack(unit * target)
 {
     bool out=true;
-        for(int i=0;i<NB_MAX_EFFECT;i++)
+    for(int i=0;i<NB_MAX_EFFECT;i++)
     {
         if(target-> effect[i]>3 && target-> effect[i]<6)
         {
@@ -43,7 +44,7 @@ bool canAttack(unit * target)
 bool canMove(unit * target)
 {
     bool out=true;
-        for(int i=0;i<NB_MAX_EFFECT;i++)
+    for(int i=0;i<NB_MAX_EFFECT;i++)
     {
         if(target-> effect[i]==5)
         {
@@ -60,12 +61,12 @@ void heal(unit* source, unit* target)
 
 int getSideAttacked(unit * source, unit * target )
 {
-	int sens = abs ( source->stat.direct - target->stat.direct);
+	int sens = abs ( source->direct - target->direct);
 	Assert1("getSideAttacked",bCroit(0,sens,2));
 	return sens;
 }
 
-void attack(unit* source, unit* target)
+void attack(unit* source, vector pos)
 {
     if(canAttack(source))
     {
@@ -100,7 +101,33 @@ void copy(unit * destination, unit * source)
 
 void move(unit grille[N][N],vector pos[])
 {
-	copy(grille[pos[1].x][pos[1].y],grille[pos[0].x][pos[0].y]);
-	grille[pos[0].x][pos[0].y]->name=empty;
+	copy(&grille[pos[1].x][pos[1].y],&grille[pos[0].x][pos[0].y]);
+	grille[pos[0].x][pos[0].y].name=empty;
 }
 
+void addEffect(unit * target, unitEffect effet)
+{
+	int i=0;
+	while(target->effect[i]!=none || target->effect[i]==effet)
+	{
+		i++;
+	}
+	if(i<NB_MAX_EFFECT)
+	{
+		if(target->effect[i]!=effet)
+		{
+			target->effect[i]=effet;
+		}
+	}
+}
+
+void AoE(vector pos, int size, int dmg)
+{
+	for(int i = -size;i<=size;i++)
+	{
+		for(int j=-size;j<=size;j++
+		{
+			grille[pos+i][pos+j]->stat.HP-=dmg;
+		}
+	}
+}
