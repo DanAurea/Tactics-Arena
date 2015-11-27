@@ -1,6 +1,3 @@
-#include <stdbool.h>
-
-
 bool canGetPassed(unit * target);
 bool canBlock(unit * target);
 bool canAttack(unit * target);
@@ -10,3 +7,5 @@ void heal(unit* source, unit* target);
 void attack(unit* source, unit* target);
 void copy(unit * destination, unit * source);
 void move(unit grille[N][N],vector pos[]);
+void addEffect(unit * target, unitEffect effet);
+void AoE(vector pos, int size, int dmg);
