@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 11 /**< Taille du plateau de jeu */
+#define N 20 /**< Taille du plateau de jeu */
 
 /**
  * Convertis un entier en chaîne de caractère (maximum 2 chiffres)
@@ -39,7 +39,7 @@ void borderRight(int row){
 		if(j < N )
 			printf("%4c", ' ');
 		else if (row != N-1) // Affichage sur les lignes utiles
-			printf("|",' ');
+			printf("|");
 	}
 }
 
@@ -134,7 +134,3 @@ void gridInitTest(){
 	gridDisp(grid);
 }
 
-int main(){
-	gridInitTest();
-	return 0;
-}
