@@ -9,7 +9,7 @@ $(EXEC): $(OBJ)
 	$(CC) -o $@ $^
 	@echo "\nOn reconstruit $@ a cause de $?"
 
-%.o: %.c 
+src/%.o: %.c 
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
