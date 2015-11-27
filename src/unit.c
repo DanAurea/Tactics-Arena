@@ -1,3 +1,4 @@
+#include "../include/gameEngine.h"
 #include "../include/Outil.h"
 #include <stdbool.h>
 
@@ -60,7 +61,7 @@ void heal(unit* source, unit* target)
 
 int getSideAttacked(unit * source, unit * target )
 {
-	int sens = abs ( source->stat.direct - target->stat.direct);
+	int sens = abs ( source->direct - target->direct);
 	Assert1("getSideAttacked",bCroit(0,sens,2));
 	return sens;
 }
@@ -100,7 +101,7 @@ void copy(unit * destination, unit * source)
 
 void move(unit grille[N][N],vector pos[])
 {
-	copy(grille[pos[1].x][pos[1].y],grille[pos[0].x][pos[0].y]);
-	grille[pos[0].x][pos[0].y]->name=empty;
+	copy(&grille[pos[1].x][pos[1].y],&grille[pos[0].x][pos[0].y]);
+	grille[pos[0].x][pos[0].y].name=empty;
 }
 

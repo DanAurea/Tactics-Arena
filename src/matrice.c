@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "../include/gameEngine.h"
 
-#define N 20 /**< Taille du plateau de jeu */
 
 /**
  * Convertis un entier en chaîne de caractère (maximum 2 chiffres)
@@ -122,15 +122,15 @@ void gridDisp(char grid[N][N]){
 	printf("\n");
 }
 
-void gridInitTest(){
-	int row, col;
-	char grid[N][N];
+void gridInitTest(unit grid[N][N]){
+	int row, col, i=0;
 	
 	for(row = 0; row < N; row++){
+        
 		for(col = 0; col <= N; col++){
-			grid[row][col] = 'K';			
+			grid[row][col].name = i;
+            i++;
 		}
-	}	
-	gridDisp(grid);
+	}
 }
 

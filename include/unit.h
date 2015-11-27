@@ -1,3 +1,6 @@
+#include <stdbool.h>
+
+
 bool canGetPassed(unit * target);
 bool canBlock(unit * target);
 bool canAttack(unit * target);
