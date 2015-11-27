@@ -1,4 +1,5 @@
-#include "Outil.h"
+#include "../include/Outil.h"
+#include <stdbool.h>
 
 bool canGetPassed(unit * target)
 {
@@ -25,6 +26,7 @@ bool canBlock(unit * target)
     }
     return out;
 }
+
 bool canAttack(unit * target)
 {
     bool out=true;
@@ -63,7 +65,7 @@ int getSideAttacked(unit * source, unit * target )
 	return sens;
 }
 
-bool attack(unit* source, unit* target)
+void attack(unit* source, unit* target)
 {
     if(canAttack(source))
     {
@@ -75,7 +77,6 @@ bool attack(unit* source, unit* target)
         {
             target->stat.HP-=source->stat.POWER;
         }
-
     }
 }
 
