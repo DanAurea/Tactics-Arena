@@ -32,21 +32,24 @@ void mainMenu(unit grid[N][N]){
 // Affiche le nom de l'unité
 void printNameUnit(unitName unit){
     switch(unit){
-        case 2: printf("Knight \n"); break;
-        case 3: printf("Scout \n"); break;
-        case 4: printf("Assassin \n"); break;
-        case 8: printf("Dragonborn \n"); break;
+        case 2: printf("Knight "); break;
+        case 3: printf("Scout "); break;
+        case 4: printf("Assassin "); break;
+        case 8: printf("Dragonborn "); break;
         default: break;
     }
 }
 
 
 void gameMenu(unit grid[N][N]) {
-    int row, col;
+    int row, col, i = 1;
     printf("1) Unités pouvant se déplacer : \n");
     for(row=0; row < N; row++){
         for(col=0; col < N; col++){
+            printf("%i. ", i);
             printNameUnit(grid[row][col].name);
+            printf("\n");
+            i++;
         }
     }
     printf("\n");
