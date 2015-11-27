@@ -122,15 +122,18 @@ void gridDisp(char grid[N][N]){
 	printf("\n");
 }
 
+int rand_a_b(int min,int max){
+    return rand()%(max-min)+min;
+}
+
 void gridInitTest(unit grid[N][N]){
 	int row, col, i=0;
-	
+    srand(time(NULL));
 	for(row = 0; row < N; row++){
-        
 		for(col = 0; col <= N; col++){
-			grid[row][col].name = i;
-            i++;
-		}
+            grid[row][col].name = rand_a_b(2,9);
+        }
+        i++;
 	}
 }
 

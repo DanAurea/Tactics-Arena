@@ -1,1 +1,1 @@
-void gridInitTest();
+void gridInitTest(unit grid[N][N]);

@@ -5,7 +5,7 @@
 
 int main(){
     unit grid[N][N];
-	gridInitTest();
-    gameMenu(grid);
+	gridInitTest(grid);
+    mainMenu(grid);
 	return 0;
 }
