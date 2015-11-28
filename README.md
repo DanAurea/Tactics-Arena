@@ -50,7 +50,7 @@ Une fois ce temps expiré:
  - **[x] Analyse conceptuelle**
  - **[ ] Implémentation**
     - **[x] Grille**
-    - **[ ] Menu**
+    - **[x] Menu**
     - **[ ] Unités**
     - **[ ] Statistiques**
     - **[ ] Mouvements**
