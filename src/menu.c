@@ -22,10 +22,12 @@ void mainMenu(unit grid[N][N]){
             case 2: //loadGame();
             break;
             case 3: gameMenu(grid); break;
+            case 4: break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 3\n");
         }
-    }while(choix!=3);
+    }while(choix != 4);
 	printf("A bientôt !");
+    exit(1);
 }
 
 

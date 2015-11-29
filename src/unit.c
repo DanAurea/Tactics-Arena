@@ -110,7 +110,7 @@ void attack(unit * grid[N][N], vector source, vector target)
 }
 
 /*
-	copie la structure unité source vert la structure unité destination
+	copie la structure unité source vers la structure unité destination
 */
 void copy(unit * destination, unit * source)
 {
