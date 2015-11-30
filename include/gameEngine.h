@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <string.h>
 
 #define N 11
 #define NB_MAX_EFFECT 6
