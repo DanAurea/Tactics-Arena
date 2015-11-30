@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include "../include/gameEngine.h"
+#include "../include/menu.h"
 
 
 /**
@@ -80,25 +82,54 @@ void dispX(int * x, int row){
 	}
 }
 
+char* get2Char(char name[]){
+    char* string = NULL;
+    
+    string = malloc(3 * sizeof(char));
+    
+    if(strcmp(name, "Dragonborn")){
+        strcpy(string, "Db");
+    }
+    else if(strcmp(name, "Dragon Tyrant")){
+        strcpy(string, "Dt");
+    }
+    else if(strcmp(name, "Beast Rider")){
+        strcpy(string, "Br");
+    }
+    else if(strcmp(name, "Berserker")){
+        strcpy(string, "Bk");
+    }
+    else{
+        string[0] = name[0];
+        string[1] = name[1];
+        string[2] = '\0';
+    }
+    
+    return string;
+}
+
+
 /**
  * Affiche la grille avec les coordonnées
  * @param grid Grille à afficher
  */
-void gridDisp(char grid[N][N]){
+void gridDisp(char unitName){
 	int row, col, x = 1;
 	char lettre = 'A';
-
+    char uName[3];
+    
 	printf("\n ");
 
 	for(row = 0; row < N; row++){
 		for(col = 0; col < N; col++){
 			
 			dispX(&x, row); // Affiche les coordonnées horizontales
-			
+            strcpy(uName, get2Char(getNameUnit(grid[row][col].name)));
+            
 			if(col == 0)
-				printf("%2c|%2c",' ', grid[row][col]);
+				printf("%2c|%2s",' ', uName);
 			else
-				printf("%4c", grid[row][col]); // Affiche le contenu de la grille
+				printf("%4s", uName); // Affiche le contenu de la grille
 			
 			// Affiche les coordonnées verticales
 			if(col == N-1){
@@ -121,19 +152,3 @@ void gridDisp(char grid[N][N]){
 	}
 	printf("\n");
 }
-
-int rand_a_b(int min,int max){
-    return rand()%(max-min)+min;
-}
-
-void gridInitTest(unit grid[N][N]){
-	int row, col, i=0;
-    srand(time(NULL));
-	for(row = 0; row < N; row++){
-		for(col = 0; col <= N; col++){
-            grid[row][col].name = rand_a_b(2,9);
-        }
-        i++;
-	}
-}
-

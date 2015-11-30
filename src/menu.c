@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "../include/gameEngine.h"
 #include "../include/unit.h"
 #include "../include/menu.h"
@@ -31,32 +32,42 @@ void mainMenu(){
     exit(1);
 }
 
+char* getNameUnit(unitName unit){
+    char* uName = NULL;
+    
+    uName = malloc(20 * sizeof(char));
+    
+    switch(unit){
+        case 2: strcpy(uName,"Knight"); break;
+        case 3: strcpy(uName,"Scout"); break;
+        case 4: strcpy(uName,"Assassin"); break;
+        case 5: strcpy(uName,"Cleric"); break;
+        case 6: strcpy(uName,"Pyromancer"); break;
+        case 7: strcpy(uName,"Enchantress"); break;
+        case 8: strcpy(uName,"Dragonborn"); break;
+        case 9: strcpy(uName,"Dark Witch"); break;
+        case 10: strcpy(uName,"Lightning Totem"); break;
+        case 11: strcpy(uName,"Barrier Totem"); break;
+        case 12: strcpy(uName,"Mud Golem"); break;
+        case 13: strcpy(uName,"Golem Ambusher"); break;
+        case 14: strcpy(uName,"Frost Golem"); break;
+        case 15: strcpy(uName,"Stun Golem"); break;
+        case 16: strcpy(uName,"Dragon Tyrant"); break;
+        case 17: strcpy(uName,"Berserker"); break;
+        case 18: strcpy(uName,"Beast Rider"); break;
+        case 19: strcpy(uName,"Poison Wisp"); break;
+        case 20: strcpy(uName,"Furgon"); break;
+            
+        default: break;
+    }
+    
+    return uName;
+}
+
 
 // Affiche le nom de l'unité
 void printNameUnit(unitName unit){
-    switch(unit){
-        case 2: printf("Knight "); break;
-        case 3: printf("Scout "); break;
-        case 4: printf("Assassin "); break;
-        case 5: printf("Cleric "); break;
-        case 6: printf("Pyromancer "); break;
-        case 7: printf("Enchantress "); break;
-        case 8: printf("Dragonborn "); break;
-        case 9: printf("darkWitch "); break;
-        case 10: printf("lightningTotem "); break;
-        case 11: printf("barrierTotem "); break;
-        case 12: printf("mudGolem "); break;
-        case 13: printf("golemAmbusher "); break;
-        case 14: printf("frostGolem "); break;
-        case 15: printf("stunGolem "); break;
-        case 16: printf("dragonTyrant "); break;
-        case 17: printf("Berserker "); break;
-        case 18: printf("beastRider "); break;
-        case 19: printf("poisonWisp "); break;
-        case 20: printf("Furgon "); break;
-
-        default: break;
-    }
+    printf("%s", getNameUnit(unit));
 }
 
 
