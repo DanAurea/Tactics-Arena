@@ -8,4 +8,5 @@ void attack(vector source, vector target);
 void copy(unit * destination, unit * source);
 void move(vector destination, vector source);
 void addEffect(vector target, unitEffect effect);
-void AoE(vector pos, int size, int dmg);
+void AoE(vector pos, int size, int dmg, bool own);
+void line(vector pos, int size, int dmg, int dir);

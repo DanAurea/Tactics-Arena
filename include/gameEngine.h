@@ -17,3 +17,5 @@ typedef struct{unitName name; unitStat stat; vector unitTarget[10]; unitEffect e
 typedef struct{vector coordUnit; vector fieldAction[36];}unitAction;
 
 unit grid[N][N];
+
+bool lookAround(vector currentUnit);
