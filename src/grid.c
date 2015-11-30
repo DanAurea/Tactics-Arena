@@ -104,6 +104,27 @@ char* get2Char(char name[]){
     else if(strcmp(name, "Berserker") == 0){
         strcpy(partName, "Bk");
     }
+    else if(strcmp(name, "Lightning Totem") == 0){
+        strcpy(partName, "Lt");
+    }
+    else if(strcmp(name, "Barrier Totem") == 0){
+        strcpy(partName, "Bt");
+    }
+    else if(strcmp(name, "Mud Golem") == 0){
+        strcpy(partName, "Mg");
+    }
+    else if(strcmp(name, "Golem Ambusher") == 0){
+        strcpy(partName, "Ag");
+    }
+    else if(strcmp(name, "Frost Golem") == 0){
+        strcpy(partName, "Fg");
+    }
+    else if(strcmp(name, "Stun Golem") == 0){
+        strcpy(partName, "Sg");
+    }
+    else if(strcmp(name, "Poison Wisp") == 0){
+        strcpy(partName, "Pw");
+    }
     else{
         partName[0] = name[0];
         partName[1] = name[1];
