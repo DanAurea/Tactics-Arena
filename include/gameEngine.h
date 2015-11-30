@@ -8,7 +8,7 @@ typedef enum{empty, decors, knight, scout, assassin, cleric, pyromancer, enchant
 
 typedef enum{none, POWER_BONUS, ARMOR_BONUS, BARRIER, POISON, PARALYSE, FOCUS}unitEffect;
 
-typedef struct{int HP; int POWER; float ARMOR; int RECOVERY; float BLOCK[3]; int MOV_RANGE;}unitStat;
+typedef struct{int HP; int POWER; float ARMOR; int RECOVERY; float BLOCK[3]; int MOV_RANGE; int Area;}unitStat;
 
 typedef struct{int x; int y;}vector;
 

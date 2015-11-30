@@ -1,5 +1,6 @@
 CC=gcc
 CFLAGS=-g -Wall -std=c99
+LDFLAGS=-lm
 EXEC=bin/tacticsArena
 SRC= $(wildcard src/*.c)
 OBJ= $(SRC:.c=.o)
@@ -10,7 +11,7 @@ $(EXEC): $(OBJ)
 	@echo "\nOn reconstruit $@ a cause de $?"
 
 src/%.o: %.c 
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
 
 clean:
 	@rm -rf ./$(OBJ)
