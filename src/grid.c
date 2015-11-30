@@ -82,30 +82,35 @@ void dispX(int * x, int row){
 	}
 }
 
+/**
+ *  Récupère 2 caractères du nom de l'unité
+ *  @param name Nom de l'unité
+ *  @return Retourne 2 caractères liés au nom de l'unité
+ */
 char* get2Char(char name[]){
-    char* string = NULL;
+    char* partName = NULL;
     
-    string = malloc(3 * sizeof(char));
+    partName = malloc(3 * sizeof(char));
     
     if(strcmp(name, "Dragonborn") == 0){
-        strcpy(string, "Db");
+        strcpy(partName, "Db");
     }
     else if(strcmp(name, "Dragon Tyrant") == 0){
-        strcpy(string, "Dt");
+        strcpy(partName, "Dt");
     }
     else if(strcmp(name, "Beast Rider") == 0){
-        strcpy(string, "Br");
+        strcpy(partName, "Br");
     }
     else if(strcmp(name, "Berserker") == 0){
-        strcpy(string, "Bk");
+        strcpy(partName, "Bk");
     }
     else{
-        string[0] = name[0];
-        string[1] = name[1];
-        string[2] = '\0';
+        partName[0] = name[0];
+        partName[1] = name[1];
+        partName[2] = '\0';
     }
     
-    return string;
+    return partName;
 }
 
 
@@ -113,7 +118,7 @@ char* get2Char(char name[]){
  * Affiche la grille avec les coordonnées
  * @param grid Grille à afficher
  */
-void gridDisp(char unitName){
+void gridDisp(){
 	int row, col, x = 1;
 	char lettre = 'A';
     char uName[3];
@@ -123,8 +128,13 @@ void gridDisp(char unitName){
 	for(row = 0; row < N; row++){
 		for(col = 0; col < N; col++){
 			
+            
 			dispX(&x, row); // Affiche les coordonnées horizontales
-            strcpy(uName, get2Char(getNameUnit(grid[row][col].name)));
+            if(grid[row][col].name == empty){
+                strcpy(uName, "  ");
+            }else{
+                strcpy(uName, get2Char(getNameUnit(grid[row][col].name))); // Copie une portion du nom de l'unité dans uName
+            }
             
 			if(col == 0)
 				printf("%2c|%2s",' ', uName);

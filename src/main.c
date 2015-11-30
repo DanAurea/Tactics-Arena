@@ -3,9 +3,8 @@
 #include "../include/grid.h"
 #include "../include/menu.h"
 
-
 int main(){
-    printf("\n%s\n",get2Char("Knight"));
+    gridDisp();
     mainMenu(grid);
 	return 0;
 }
