@@ -44,7 +44,7 @@ void mainMenu(){
 	 */
 }
 
-void gameMenu(listUnitP, movable, attackable){
+void gameMenu(int listUnitP, movable, attackable){
 	/*
 		Afficher le menu de jeu
 		1 - Unite pouvant se deplacer -> unitMenu();
@@ -55,7 +55,7 @@ void gameMenu(listUnitP, movable, attackable){
 	 */
 }
 
-void unitMenu(int choice, listUnitP, movable, attackable){
+void unitMenu(int choice, int listUnitP, movable, attackable){
 	/*
 		Afficher la liste des unites pouvant faire quelque chose
 		Si choice-> 1 alors liste des unites pouvant se deplacer
@@ -84,32 +84,32 @@ void gridDisp(){
 
 \begin{lstlisting}[language=c]
 
-int gameInit(listUnitP, int * noPlayer){
+int gameInit(int listUnitP, int * noPlayer){
 	gridInit(); // Retourne un code d'erreur
 	playerInit(listUnitP); // Retourne un code d'erreur
 	* noPlayer = rand(1,2);
 	return true; // Si les fonctions ne retournent rien
 }
 
-vector selectUnit(int unitSelected, listUnitP){
+vector selectUnit(int unitSelected, int listUnitP){
 	// Selectionne l'unite -> coordonnees dans la matrice sous forme de vecteur
 }
 
-void playTurn(int unitSelected, listUnitP, movable){
+void playTurn(int unitSelected, int listUnitP, movable){
 	selectUnit(int unitSelected, listUnitP); // Renvoie les coordonnees de l'unite selectionnee
 	playMove(unitSelected);
 	playAttack(unitSelected, listUnitP);
 	playDirection(unitSelected, listUnitP);
 }
 
-bool endGame(listUnitP){
+bool endGame(int listUnitP){
 	/* 	
 		Test les conditions de victoire ou de match nul
 	 	Affiche le vainqueur le cas echeant
 	*/
 }
 
-int movable(movable[]){
+int movable(unitAction movable[]){
 	/* 	
 		Retourne nombre d'unites deplacable + liste maj des unites pouvant se deplacer
 	*/
@@ -119,7 +119,7 @@ void timeTurn(){
 	// Gestion du temps
 }
 
-int lookAround(unit currentUnit){
+int lookAround(vector currentUnit){
 	/*
 		Regarde autour de l'unite selectionnee si elle peut se deplacer sur une case si TP pas permise alors deplacement impossible
 	 */
@@ -131,7 +131,7 @@ void playMove(vector unitSelected, path[]){
 	 */
 }
 
-void playAttack(vector unitSelected, listUnitP){
+void playAttack(vector unitSelected, int listUnitP){
 	/*
 		Attaque avec l'aide de l'unite selectionnee une unite contenu dans la liste listUnitP
 	 */
