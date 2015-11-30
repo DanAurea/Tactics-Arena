@@ -100,17 +100,19 @@ int getSideAttacked(vector source, vector target )
 void attack(vector source, vector target)
 {
 	float block=1;
+	float armor;
 	unit * uTarget = &grid[target.x][target.y];
 	unit * uSource = &grid[source.x][source.y];
     if(canAttack(uSource))
     {
+    	armor=1-uTarget->stat.ARMOR;
     	if(canBlock(uTarget))
     	{
     		block=1-uTarget->stat.BLOCK[getSideAttacked(source,target)];
     	}
         if(uSource->stat.Area==1)
         {
-            uTarget->stat.HP-=(uSource->stat.POWER*block);
+            uTarget->stat.HP-=(uSource->stat.POWER*(block+armor));
         }
         else
         {
@@ -174,7 +176,6 @@ void addEffect(vector target, unitEffect effect)
 	}
 }
 
-
 /*
 	Area of Effect : attaque de zone centrée sur pos, de taille size et d'intensité dmg.
 */
@@ -186,7 +187,7 @@ void AoE(vector pos, int size, int dmg)
 		{
 			if(abs(i)+abs(j)<=size)
 			{
-				grid[pos.x+i][pos.y+j].stat.HP-=dmg;
+				grid[pos.x+i][pos.y+j].stat.HP-=dmg*(1-grid[pos.x+i][pos.y+j].stat.ARMOR);
 			}
 		}
 	}
