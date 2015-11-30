@@ -1,19 +1,23 @@
+#include <math.h>
 #include "../include/gameEngine.h"
+#include "../include/unit.h"
 #include "../include/Outil.h"
+
 
 /*
 	renvoie faux si l'unité est soumis à un effet negatif, vrai sinon.
 */
 bool canGetPassed(unit * target)
 {
-    bool out=true;
-    for(int i=0;i<NB_MAX_EFFECT;i++)
+    bool out = true;
+    for(int i = 0;i<NB_MAX_EFFECT;i++)
     {
-        if(target-> effect[i]>2)
-        {
-            out=false;
-        }
+    	if(target-> effect[i]>2)
+    	{
+    		out = false;
+    	}
     }
+
     return out;
 }
 
@@ -23,14 +27,15 @@ bool canGetPassed(unit * target)
 */
 bool canBlock(unit * target)
 {
-    bool out=true;
-    for(int i=0;i<NB_MAX_EFFECT;i++)
+    bool out = true;
+    for(int i = 0;i<NB_MAX_EFFECT;i++)
     {
-        if(target-> effect[i]>4)
+    	if(target-> effect[i]>4)
         {
-            out=false;
+        	out = false;
         }
     }
+
     return out;
 }
 
@@ -40,14 +45,15 @@ bool canBlock(unit * target)
 */
 bool canAttack(unit * target)
 {
-    bool out=true;
-    for(int i=0;i<NB_MAX_EFFECT;i++)
+    bool out = true;
+    for(int i = 0;i<NB_MAX_EFFECT;i++)
     {
-        if(target-> effect[i]>3 && target-> effect[i]<6)
+    	if(target-> effect[i]>3 && target-> effect[i]<6)
         {
-            out=false;
+        	out = false;
         }
     }
+
     return out;
 }
 
@@ -57,76 +63,89 @@ bool canAttack(unit * target)
 */
 bool canMove(unit * target)
 {
-    bool out=true;
-    for(int i=0;i<NB_MAX_EFFECT;i++)
+    bool out = true;
+    for(int i = 0;i<NB_MAX_EFFECT;i++)
     {
-        if(target-> effect[i]==5)
+    	if(target-> effect[i]<5)
         {
-            out=false;
+        	out = false;
         }
     }
+
     return out;
 }
+
 
 /*
 	soigne l'unité target du montant du soin de l'unité cible
 */
-void heal(unit* source, unit* target)
+void heal(vector source, vector target)
 {
-    target->stat.HP += source->stat.POWER;
+	unit * uTarget = &grid[target.x][target.y];
+	unit * uSource = &grid[source.x][source.y];
+    uTarget->stat.HP +=  uSource->stat.POWER;
 }
 
 
 /*
 	Renvoie le coté de l'unité attaqué
 */
-int getSideAttacked(unit * source, unit * target )
+int getSideAttacked(vector source, vector target )
 {
-	int sens = abs ( source->direct - target->direct);
+	unit * uTarget = &grid[target.x][target.y];
+	unit * uSource = &grid[source.x][source.y];
+	int sens = abs ( uSource->direct - uTarget->direct);
 	Assert1("getSideAttacked",bCroit(0,sens,2));
 	return sens;
 }
 
 
 /*
-	DEPRECATED
 	attaque depuis l'unité source vers les coordonées pos en prenant en compte le BLOCKAGE de l'unité ennemie
 */
-void attack(unit * grid[N][N], vector source, vector target)
+void attack(vector source, vector target)
 {
-	unit * uTarget = grid[target.x][target.y];
-	unit * uSource = grid[source.x][source.y];
+	float block = 1;
+	float armor;
+	unit * uTarget = &grid[target.x][target.y];
+	unit * uSource = &grid[source.x][source.y];
     if(canAttack(uSource))
     {
-        if(canBlock(uTarget))
+    	armor = 1-uTarget->stat.ARMOR;
+    	if(canBlock(uTarget))
+    	{
+    		block = 1-uTarget->stat.BLOCK[getSideAttacked(source,target)];
+    	}
+        if(uSource->stat.Area == 1)
         {
-            uTarget->stat.HP-=(uSource->stat.POWER*uTarget->stat.BLOCK[getSideAttacked(uSource,uTarget)]);
+        	uTarget->stat.HP -= (uSource->stat.POWER*(block+armor));
         }
         else
         {
-            uTarget->stat.HP-=uSource->stat.POWER;
+        	AoE(target,uSource->stat.Area,uSource->stat.POWER,false);
         }
     }
 }
+
 
 /*
 	copie la structure unité source vers la structure unité destination
 */
 void copy(unit * destination, unit * source)
 {
-	destination->name=source->name;
-	destination->stat.HP=source->stat.HP;
-	destination->stat.POWER=source->stat.POWER;
-	destination->stat.ARMOR=source->stat.ARMOR;
-	destination->stat.RECOVERY=source->stat.RECOVERY;
-	for(int i=0;i<3;i++)                          
-	{                                     
-		destination->stat.BLOCK[i]=source->stat.BLOCK[i];
-	}
-	destination->stat.MOV_RANGE=source->stat.MOV_RANGE;
-	for(int i=0;i<NB_MAX_EFFECT;i++)
+	destination->name		 = 	source->name;
+	destination->stat.HP	 = 	source->stat.HP;
+	destination->stat.POWER	 = 	source->stat.POWER;
+	destination->stat.ARMOR	 = 	source->stat.ARMOR;
+	destination->stat.RECOVERY = 	source->stat.RECOVERY;
+	for(int i = 0;i<3;i++)
 	{
-		destination->effect[i]=source->effect[i];
+		destination->stat.BLOCK[i] = source->stat.BLOCK[i];
+	}
+	destination->stat.MOV_RANGE = source->stat.MOV_RANGE;
+	for(int i = 0;i<NB_MAX_EFFECT;i++)
+	{
+		destination->effect[i] = source->effect[i];
 	}
 }
 
@@ -134,42 +153,95 @@ void copy(unit * destination, unit * source)
 /*
 	déplace l'unité se trouvant en pos[0] en pos[1].
 */
-void move(unit * grille[N][N],vector pos[])
+void move(vector destination, vector source)
 {
-	copy(grille[pos[1].x][pos[1].y],grille[pos[0].x][pos[0].y]);
-	grille[pos[0].x][pos[0].y]->name=empty;
+	unit * uSource = &grid[source.x][source.y];
+	if(canMove(uSource))
+	{
+		copy(&grid[destination.x][destination.y],&grid[source.x][source.y]);
+		grid[source.x][source.y].name = empty;
+	}
+}
+
+void setDirection(vector source, int dir)
+{
+	unit * uSource = &grid[source.x][source.y];
+	uSource->direct = dir;
 }
 
 /*
 	Ajoute sur l'unité target l'effet effect.
 */
-void addEffect(unit * target, unitEffect effect)
+void addEffect(vector target, unitEffect effect)
 {
-	int i=0;
-	while(target->effect[i]!=none || target->effect[i]==effect)
+	unit * uTarget = &grid[target.x][target.y];
+	int i = 0;
+	While(5);
+	while(bWhile(uTarget->effect[i] != none || uTarget->effect[i] != effect))
 	{
 		i++;
 	}
 	if(i<NB_MAX_EFFECT)
 	{
-		if(target->effect[i]!=effect)
+		if(uTarget->effect[i] != effect)
 		{
-			target->effect[i]=effect;
+			uTarget->effect[i] = effect;
 		}
 	}
 }
 
 
 /*
-	Area of Effect : attaque de zone centrée sur pos, de taille size et d'intensité dmg.
+	Area of Effect : attaque de zone centrée sur pos, de taille size et d'intensité dmg. Si own est vrai, ne touche pas l'unité au centre.
 */
-void AoE(unit * grid[N][N], vector pos, int size, int dmg)
+void AoE(vector pos, int size, int dmg, bool own)
 {
-	for(int i = -size;i<=size;i++)
+	for(int i = -size; i <= size; i++)
 	{
-		for(int j=-size;j<=size;j++)
+		for(int j = -size; j <= size; j++)
 		{
-			grid[pos.x+i][pos.y+j]->stat.HP-=dmg;
+			if(abs(i)+abs(j) <= size)
+			{
+				if(!own)
+				{
+					grid[pos.x+i][pos.y+j].stat.HP -= dmg*(1-grid[pos.x+i][pos.y+j].stat.ARMOR);
+				}
+				else
+				{
+					if(i != 0 || j != 0)
+					{
+						grid[pos.x+i][pos.y+j].stat.HP -= dmg*(1-grid[pos.x+i][pos.y+j].stat.ARMOR);
+					}
+				}
+			}
 		}
 	}
 }
+
+
+/*
+	attaque en ligne de taille size, de sens dir et commancant à pos.
+*/
+void line(vector pos, int size, int dmg, int dir)
+{
+	int sens = 1;
+	if(dir >= 2)
+	{
+		sens = -1;
+	}
+	if(dir%2)
+	{
+		for(int i = 0;i<size;i++)
+		{
+			grid[pos.x+(i*sens)][pos.y].stat.HP -= dmg*(1-grid[pos.x+(i*sens)][pos.y].stat.ARMOR);
+		}
+	}
+	else
+	{
+		for(int j = 0;j<size;j++)
+		{
+			grid[pos.x][pos.y+(j*sens)].stat.HP -= dmg*(1-grid[pos.x][pos.y+(j*sens)].stat.ARMOR);
+		}
+	}
+}
+

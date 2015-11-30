@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include "../include/gameEngine.h"
+#include "../include/menu.h"
 
 
 /**
@@ -81,24 +83,84 @@ void dispX(int * x, int row){
 }
 
 /**
+ *  Récupère 2 caractères du nom de l'unité
+ *  @param name Nom de l'unité
+ *  @return Retourne 2 caractères liés au nom de l'unité
+ */
+char* get2Char(char name[]){
+    char* partName = NULL;
+    
+    partName = malloc(3 * sizeof(char));
+    
+    if(strcmp(name, "Dragonborn") == 0){
+        strcpy(partName, "Db");
+    }
+    else if(strcmp(name, "Dragon Tyrant") == 0){
+        strcpy(partName, "Dt");
+    }
+    else if(strcmp(name, "Beast Rider") == 0){
+        strcpy(partName, "Br");
+    }
+    else if(strcmp(name, "Berserker") == 0){
+        strcpy(partName, "Bk");
+    }
+    else if(strcmp(name, "Lightning Totem") == 0){
+        strcpy(partName, "Lt");
+    }
+    else if(strcmp(name, "Barrier Totem") == 0){
+        strcpy(partName, "Bt");
+    }
+    else if(strcmp(name, "Mud Golem") == 0){
+        strcpy(partName, "Mg");
+    }
+    else if(strcmp(name, "Golem Ambusher") == 0){
+        strcpy(partName, "Ag");
+    }
+    else if(strcmp(name, "Frost Golem") == 0){
+        strcpy(partName, "Fg");
+    }
+    else if(strcmp(name, "Stun Golem") == 0){
+        strcpy(partName, "Sg");
+    }
+    else if(strcmp(name, "Poison Wisp") == 0){
+        strcpy(partName, "Pw");
+    }
+    else{
+        partName[0] = name[0];
+        partName[1] = name[1];
+        partName[2] = '\0';
+    }
+    
+    return partName;
+}
+
+
+/**
  * Affiche la grille avec les coordonnées
  * @param grid Grille à afficher
  */
-void gridDisp(char grid[N][N]){
+void gridDisp(){
 	int row, col, x = 1;
 	char lettre = 'A';
-
+    char uName[3];
+    
 	printf("\n ");
 
 	for(row = 0; row < N; row++){
 		for(col = 0; col < N; col++){
 			
+            
 			dispX(&x, row); // Affiche les coordonnées horizontales
-			
+            if(grid[row][col].name == empty){
+                strcpy(uName, "  ");
+            }else{
+                strcpy(uName, get2Char(getNameUnit(grid[row][col].name))); // Copie une portion du nom de l'unité dans uName
+            }
+            
 			if(col == 0)
-				printf("%2c|%2c",' ', grid[row][col]);
+				printf("%2c|%2s",' ', uName);
 			else
-				printf("%4c", grid[row][col]); // Affiche le contenu de la grille
+				printf("%4s", uName); // Affiche le contenu de la grille
 			
 			// Affiche les coordonnées verticales
 			if(col == N-1){
@@ -121,19 +183,3 @@ void gridDisp(char grid[N][N]){
 	}
 	printf("\n");
 }
-
-int rand_a_b(int min,int max){
-    return rand()%(max-min)+min;
-}
-
-void gridInitTest(unit grid[N][N]){
-	int row, col, i=0;
-    srand(time(NULL));
-	for(row = 0; row < N; row++){
-		for(col = 0; col <= N; col++){
-            grid[row][col].name = rand_a_b(2,9);
-        }
-        i++;
-	}
-}
-
