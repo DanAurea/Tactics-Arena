@@ -1,4 +1,7 @@
+#include <stdlib.h>
 #include "../include/gameEngine.h"
+
+unit grid[N][N] = {{{scout}},{{dragonTyrant}},{{knight}},{{knight}},{{knight}},{{assassin}}};
 
 bool lookAround(vector currentUnit)
 {
@@ -7,7 +10,7 @@ bool lookAround(vector currentUnit)
 	{
 		for(int j=-1;j<2 && surrounded;j++)
 		{
-			if(abs(i)+abs(j)==1)
+			if(abs(i) + abs(j) == 1)
 			{
 				if(grid[currentUnit.x+i][currentUnit.y].name ==0)
 				{

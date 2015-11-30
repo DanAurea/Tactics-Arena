@@ -145,7 +145,7 @@ void gridDisp(){
     char uName[3];
     
 	printf("\n ");
-
+	grid[0][1].name = poisonWisp;
 	for(row = 0; row < N; row++){
 		for(col = 0; col < N; col++){
 			
@@ -158,13 +158,13 @@ void gridDisp(){
             }
             
 			if(col == 0)
-				printf("%2c|%2s",' ', uName);
+				printf("%2c| %2s",' ', uName); // Affiche à la fois la bordure gauche et le nom de l'unité
 			else
-				printf("%4s", uName); // Affiche le contenu de la grille
+				printf("%4s", uName); // Affiche le nom de l'unité
 			
 			// Affiche les coordonnées verticales
 			if(col == N-1){
-				printf("  |%4c", lettre);
+				printf(" |%4c", lettre);
 				lettre++;
 			}
 

@@ -13,7 +13,7 @@ void mainMenu(){
         printf("\nMenu principal :\n");
 		printf(" 1 - Nouvelle partie\n");
 		printf(" 2 - Charger partie\n");
-		printf(" 3 - test\n");
+		printf(" 3 - Test de gameMenu \n");
         printf(" 4 - Quitter\n");
 		printf("Votre choix : ");
 		scanf("%i",&choix);
