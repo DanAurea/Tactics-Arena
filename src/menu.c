@@ -17,11 +17,12 @@ void mainMenu(){
 		printf("Votre choix : ");
 		scanf("%i",&choix);
         switch(choix){
-            case 1: //gameUnit();
+            case 1: //gameInit();
                 break;
             case 2: //loadGame();
                 break;
-            case 3: gameMenu(); break;
+            case 3: //gameMenu();
+                break;
             case 4: break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
         }
@@ -60,6 +61,7 @@ void printNameUnit(unitName unit){
 
 
 void gameMenu(unitAction movable, unitAction attackable) {
+    int choix;
     do{
         printf("\nMenu :\n");
         printf(" 1 - Unités pouvant se déplacer\n");
