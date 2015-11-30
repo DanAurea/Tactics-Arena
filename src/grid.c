@@ -87,16 +87,16 @@ char* get2Char(char name[]){
     
     string = malloc(3 * sizeof(char));
     
-    if(strcmp(name, "Dragonborn")){
+    if(strcmp(name, "Dragonborn") == 0){
         strcpy(string, "Db");
     }
-    else if(strcmp(name, "Dragon Tyrant")){
+    else if(strcmp(name, "Dragon Tyrant") == 0){
         strcpy(string, "Dt");
     }
-    else if(strcmp(name, "Beast Rider")){
+    else if(strcmp(name, "Beast Rider") == 0){
         strcpy(string, "Br");
     }
-    else if(strcmp(name, "Berserker")){
+    else if(strcmp(name, "Berserker") == 0){
         strcpy(string, "Bk");
     }
     else{
