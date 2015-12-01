@@ -10,7 +10,15 @@ $(EXEC): $(OBJ)
 	$(CC) -o $@ $^
 	@echo "\nOn reconstruit $@ a cause de $?"
 
-src/%.o: %.c 
+src/gameEngine.o: $(INC)gameEngine.h
+
+src/unit.o: $(INC)unit.h
+
+src/grid.o: $(INC)gameEngine.h $(INC)menu.h
+
+src/menu.o: $(INC)gameEngine.h $(INC)menu.h
+
+src/%.o: %.c $(INC)gameEngine.h
 	$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
 
 clean:

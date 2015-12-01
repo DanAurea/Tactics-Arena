@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../include/gameEngine.h"
-#include "../include/unit.h"
 #include "../include/menu.h"
 
 
@@ -60,7 +59,6 @@ char* getNameUnit(unitName unit){
             
         default: break;
     }
-    
     return uName;
 }
 

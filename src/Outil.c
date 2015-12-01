@@ -44,7 +44,7 @@ void AsserT0(char *sContexte,int bAssertion,int nParametre){
 	if (!bAssertion){
 		printf("    *** Assertion fausse (paramètre n°%d)",nParametre);
 		if (strlen(sContexte)>0)
-			printf(" dans \"%s\"",sContexte,nParametre);
+			printf("\"%s\" dans \"%i\"",sContexte,nParametre);
 		printf(".\n");
 	}
 }//AsserT0
@@ -102,7 +102,7 @@ void e(int iInteger){
 }//e
 
 void ee(int iInteger1,int iInteger2){
-	printf("%%4d%4d\n",iInteger1,iInteger2);
+	printf("%4d%4d\n",iInteger1,iInteger2);
 }//ee
 
 void eee(int iInteger1,int iInteger2,int iInteger3){
