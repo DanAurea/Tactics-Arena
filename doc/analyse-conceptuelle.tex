@@ -44,7 +44,7 @@ void mainMenu(){
 	 */
 }
 
-void gameMenu(int listUnitP, movable, attackable){
+void gameMenu(int noPlayer, movable, attackable){
 	/*
 		Afficher le menu de jeu
 		1 - Unite pouvant se deplacer -> unitMenu();
@@ -55,7 +55,7 @@ void gameMenu(int listUnitP, movable, attackable){
 	 */
 }
 
-void unitMenu(int choice, int listUnitP, movable, attackable){
+void unitMenu(int choice, int noPlayer, movable, attackable){
 	/*
 		Afficher la liste des unites pouvant faire quelque chose
 		Si choice-> 1 alors liste des unites pouvant se deplacer
@@ -84,25 +84,25 @@ void gridDisp(){
 
 \begin{lstlisting}[language=c]
 
-int gameInit(int listUnitP, int * noPlayer){
+int gameInit(int * noPlayer){
 	gridInit(); // Retourne un code d'erreur
-	playerInit(listUnitP); // Retourne un code d'erreur
-	* noPlayer = rand(1,2);
+	playerInit(); // Retourne un code d'erreur
+	* noPlayer = rand(1,2); // Choisis le joueur qui commence en premier
 	return true; // Si les fonctions ne retournent rien
 }
 
-vector selectUnit(int unitSelected, int listUnitP){
+vector selectUnit(int unitSelected, int noPlayer){
 	// Selectionne l'unite -> coordonnees dans la matrice sous forme de vecteur
 }
 
-void playTurn(int unitSelected, int listUnitP, movable){
+void playTurn(int unitSelected, int noPlayer, movable){
 	selectUnit(int unitSelected, listUnitP); // Renvoie les coordonnees de l'unite selectionnee
 	playMove(unitSelected);
 	playAttack(unitSelected, listUnitP);
 	playDirection(unitSelected, listUnitP);
 }
 
-bool endGame(int listUnitP){
+bool endGame(int noPlayer){
 	/* 	
 		Test les conditions de victoire ou de match nul
 	 	Affiche le vainqueur le cas echeant
@@ -131,7 +131,7 @@ void playMove(vector unitSelected, path[]){
 	 */
 }
 
-void playAttack(vector unitSelected, int listUnitP){
+void playAttack(vector unitSelected, int noPlayer){
 	/*
 		Attaque avec l'aide de l'unite selectionnee une unite contenu dans la liste listUnitP
 	 */

@@ -1,4 +1,6 @@
-#include "gameEngine.h"
+#define MAX_TAB 10 
+#define MAX_LISTE 3 /**< Nombre max de listes */
+
 void init_liste(int);
 int liste_vide(int);
 int hors_liste(int);

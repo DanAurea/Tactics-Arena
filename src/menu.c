@@ -3,10 +3,15 @@
 #include <string.h>
 #include "../include/gameEngine.h"
 #include "../include/menu.h"
+#include "../include/terminal.h"
 
-
+/**
+ * Menu principal du jeu
+ */
 void mainMenu(){
 	int choix;
+
+    color(fred); // Change la couleur des caractères suivant en rouge
 	printf("Bienvenue sur le jeu Tactics arena SPI deluxe edition \n");
     do{
         printf("\nMenu principal :\n");
@@ -15,9 +20,11 @@ void mainMenu(){
 		printf(" 3 - Test de gameMenu \n");
         printf(" 4 - Quitter\n");
 		printf("Votre choix : ");
-		scanf("%i",&choix);
+        color(fwhite);
+		
+        scanf("%i",&choix);
         switch(choix){
-            case 1: //gameInit();
+            case 1: gameInit();
                 break;
             case 2: //loadGame();
                 break;
@@ -31,6 +38,11 @@ void mainMenu(){
     exit(1);
 }
 
+/**
+ * Récupère le nom de l'unité à partir de la liste énumérée
+ * @param  unit Nom de l'unité provenant de la liste énumérée
+ * @return      Nom de l'unité sous forme de chaîne    
+ */
 char* getNameUnit(unitName unit){
     char* uName = NULL;
     
@@ -63,12 +75,19 @@ char* getNameUnit(unitName unit){
 }
 
 
-// Affiche le nom de l'unité
+/**
+ * Affiche le nom de l'unité
+ * @param unit Nom de l'unité provenant de la liste énumérée
+ */
 void printNameUnit(unitName unit){
     printf("%s", getNameUnit(unit));
 }
 
-
+/**
+ * Menu du joueur lors de la partie
+ * @param movable    Tableau des déplacements possibles
+ * @param attackable Tableau des attaques possibles
+ */
 void gameMenu(unitAction movable, unitAction attackable) {
     int choix;
     do{
@@ -96,6 +115,12 @@ void gameMenu(unitAction movable, unitAction attackable) {
     
 }
 
+/**
+ * Menu de sélection de l'unité
+ * @param choice     Choix de l'action pour l'unité
+ * @param movable    Tableau des déplacements possibles
+ * @param attackable Tableau des attaques possibles
+ */
 void unitMenu(int choice, unitAction movable, unitAction attackable){
     switch(choice){
         case 1:

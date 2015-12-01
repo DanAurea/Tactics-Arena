@@ -1,9 +1,8 @@
-/* Mise en oeuvre contigue d'un tableau de listes d'entiers */
-#define MAX_TAB 100
-#define MAX_LISTE 11
-#include<stdio.h>
-#include<stdlib.h>
+/* Mise en oeuvre contigue d'un tableau de listes de vecteurs */
+#include <stdio.h>
+#include <stdlib.h>
 #include "../include/gameEngine.h"
+#include "../include/listes.h"
 
 /* Definition du type d'un element de liste */
 typedef struct element {vector coordUnit; struct element* pred; struct element* succ;} t_element;
