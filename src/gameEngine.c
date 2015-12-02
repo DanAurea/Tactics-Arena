@@ -49,7 +49,7 @@ void gridInit(){
  */
 void playerAddUnit(int noPlayer, int nbUnit){
 	int unitSelected;
-	char * coordString;
+	char * coordString = NULL;
 	vector coordUnit;
 
 	unitList(); // Affiche la liste des unités du jeu
@@ -64,16 +64,16 @@ void playerAddUnit(int noPlayer, int nbUnit){
 
 	}while(unitSelected < knight -1 || unitSelected > furgon -1);
 
-	coordString = (char *) malloc(3 * sizeof(char));
+	coordString = (char *) malloc(4 * sizeof(char));
 	
-	do{
+	/*do{
 		printf("Quelles sont les coordonnées de l'unité à placer ?");
 		scanf("%s", coordString);
 
-		if(strlen(coordString) > 2 && !isalnum(coordString))
+		if(strlen(coordString) > 3 && !isalnum(coordString))
 			printf("Coordonnées incorrecte !\n");
 
-	}while(strlen(coordString) > 2 && !isalnum(coordString)); // Faire une fonction correctCoord(coordString);
+	}while(strlen(coordString) > 3 && !isalnum(coordString)); // Faire une fonction correctCoord(coordString);*/
 
 	//getCoordS( coordString, &coordUnit); // A faire !
 	free(coordString);

@@ -1,6 +1,7 @@
 #include <math.h>
 #include "../include/gameEngine.h"
 #include "../include/unit.h"
+#include "../include/unitType.h"
 #include "../include/Outil.h"
 
 

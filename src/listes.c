@@ -8,14 +8,14 @@
 typedef struct element {vector coordUnit; struct element* pred; struct element* succ;} t_element;
 
 /* Declaration des listes (drapeau et element courant) */
-t_element* drapeau[MAX_LISTE];
-t_element* ec[MAX_LISTE];
+t_element* drapeau[MAX_JOUEUR];
+t_element* ec[MAX_JOUEUR];
 
 
 /* Primitives de manipulation des listes */
 
 void init_liste(int n)
-{	if(n>0&&n<MAX_LISTE)
+{	if(n>0&&n<MAX_JOUEUR)
 	{		
 		drapeau[n] = malloc(sizeof(t_element));
 		drapeau[n]->pred = drapeau[n];
@@ -25,50 +25,50 @@ void init_liste(int n)
 }
 
 int liste_vide(int n)
-{	if(n>0&&n<MAX_LISTE)
+{	if(n>0&&n<MAX_JOUEUR)
 		return drapeau[n]->pred==drapeau[n];
     return -1;
 }
 
 int hors_liste(int n)
-{	if(n>0&&n<MAX_LISTE)
+{	if(n>0&&n<MAX_JOUEUR)
 		return ec[n]==drapeau[n];
     return -1;
 }
 
 void en_tete(int n)
-{	if(n>0&&n<MAX_LISTE)
+{	if(n>0&&n<MAX_JOUEUR)
 		if (!liste_vide(n))
 			ec[n] = drapeau[n]->succ;
 }
 
 void en_queue(int n)
-{	if(n>0&&n<MAX_LISTE)
+{	if(n>0&&n<MAX_JOUEUR)
 		if (!liste_vide(n))
 			ec[n] = drapeau[n]->pred;
 }
 
 void precedent(int n)
-{	if(n>0&&n<MAX_LISTE)
+{	if(n>0&&n<MAX_JOUEUR)
 		if (!hors_liste(n))
 			ec[n] = ec[n]->pred;
 }
 
 void suivant(int n)
-{	if(n>0&&n<MAX_LISTE)
+{	if(n>0&&n<MAX_JOUEUR)
 		if (!hors_liste(n))
 			ec[n] = ec[n]->succ;
 }
 
 void valeur_elt(int n, vector * v)
-{	if(n>0&&n<MAX_LISTE)
+{	if(n>0&&n<MAX_JOUEUR)
 		if (!hors_liste(n))
 			v->x = ec[n]->coordUnit.x;
             v->y = ec[n]->coordUnit.y;
 }
 
 void modif_elt(int n, vector v)
-{	if(n>0&&n<MAX_LISTE)
+{	if(n>0&&n<MAX_JOUEUR)
 		if (!hors_liste(n))
 			ec[n]->coordUnit.x = v.x;
             ec[n]->coordUnit.y = v.y;
@@ -78,7 +78,7 @@ void oter_elt(int n)
 {	
 	t_element * temp;
 
-    	if(n>0&&n<MAX_LISTE)
+    	if(n>0&&n<MAX_JOUEUR)
 		if (!hors_liste(n))
 		{	
 			(ec[n]->succ)->pred = ec[n]->pred;
@@ -93,7 +93,7 @@ void ajout_droit(int n, vector v)
 {	
 	t_element* nouv;
 	
-	if(n>0&&n<MAX_LISTE)
+	if(n>0&&n<MAX_JOUEUR)
 		if (liste_vide(n) || !hors_liste(n))
 		{	
 			nouv = malloc(sizeof(t_element));
@@ -111,7 +111,7 @@ void ajout_gauche(int n, vector v)
 {	
 	t_element* nouv;
 	
-	if(n>0&&n<MAX_LISTE)
+	if(n>0&&n<MAX_JOUEUR)
 		if (liste_vide(n) || !hors_liste(n))
 		{	
 			nouv = malloc(sizeof(t_element));

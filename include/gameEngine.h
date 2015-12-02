@@ -8,7 +8,7 @@
 #define NB_MAX_UNIT 10 /**< Nombre max d'unité par joueur */
 
 
-
+typedef enum{north, east, south, west}cardinal;
 typedef enum{empty, decors, knight, scout, assassin, cleric, pyromancer, enchantress, 
 			dragonborn, darkWitch, lightningTotem, barrierTotem, mudGolem, golemAmbusher,
 			frostGolem, stunGolem, dragonTyrant, berserker, beastRider, poisonWisp, furgon}unitName; /**< Liste énumérée des noms d'unité */
