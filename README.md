@@ -5,7 +5,6 @@ Chaque joueur déplace ses unités respectant des règles de déplacement propre
 
 ## Règles
 
-Le joueur qui commence est défini aléatoirement par l'ordinateur au début de chaque partie.
 
 Les conditions d'égalité sont:
 
@@ -13,6 +12,8 @@ Les conditions d'égalité sont:
   - **Les joueurs passent leurs tours 3 fois d’affilé**
   - **Il n’y a eu aucune rencontre entre les deux unités ennemies depuis les 30 derniers tours.**
   
+
+Le joueur qui commence est défini aléatoirement par l'ordinateur au début de chaque partie.
 
  Il n'est possible de déplacer qu'une seule unité par tour soit pour:
   
@@ -24,6 +25,7 @@ Le changement de direction impose d'être fait en dernier.
 
 Chaque tour dure 1 à 2 minutes, dépendant du nombre d'unité restante.
 Une fois ce temps expiré:
+
   - **Le tour se termine automatiquement si au moins une commande a été effectué**
   - **Si aucune commande n'a été effectuée alors abandon automatique**
 
@@ -31,36 +33,36 @@ Une fois ce temps expiré:
 
 
 ## Sommaire
+   **Tactics Arena**
 
-   1. **[Tactics Arena](#tactics-arena)**
-    - **[Règles](#règles)**
-   2. **[Changelog](#changelog)**
-     - **[Version 0.1](#version-01)**
-   3. **[A faire](#a-faire)**
-   4. **[Instructions de compilation](#instructions-de-compilation)**
-   5. **[Utilisation](#utilisation)**
-   6. **[Documentation](#documentation)**
+   1. **[Règles](#markdown-header-regles)**
+   2. **[Changelog](#markdown-header-changelog)**
+     - **[Version 0.1](#markdown-header-version-01)**
+   3. **[A faire](#markdown-header-a-faire)**
+   4. **[Instructions de compilation](#markdown-header-instructions-de-compilation)**
+   5. **[Utilisation](#markdown-header-utilisation)**
+   6. **[Documentation](#markdown-header-documentation)**
 
 ## A faire
  
- - [x] Analyse préliminaire
- - [ ] Compte rendu mécaniques du jeu
- - [ ] Analyse conceptuelle
- - [ ] Implémentation
-  - [ ] Grille
-  - [ ] Unités
-  - [ ] Statistiques
-  - [ ] Mouvements
-  - [ ] Gestion des tours
-  - [ ] Gestion du temps
-  - [ ] Capacités spéciales
-  - [ ] Etat unités
- - [ ] Test unitaires
- - [ ] Test d'intégration
- - [ ] Ajout de fonctionnalités
-  - [ ] Menu
-  - [ ] Intégration IA
-  - [ ] GUI
+ - **[x] Analyse préliminaire**
+ - **[ ] Compte rendu mécaniques du jeu**
+ - **[x] Analyse conceptuelle**
+ - **[ ] Implémentation**
+    - **[x] Grille**
+    - **[x] Menu**
+    - **[ ] Unités**
+    - **[ ] Statistiques**
+    - **[ ] Mouvements**
+    - **[ ] Gestion des tours**
+    - **[ ] Gestion du temps**
+    - **[ ] Capacités spéciales**
+    - **[ ] Etat unités**
+ - **[ ] Test unitaires**
+ - **[ ] Test d'intégration**
+ - **[ ] Ajout de fonctionnalités**
+    - **[ ] Intégration IA**
+    - **[ ] GUI**
 
 ## Changelog
 
@@ -75,6 +77,3 @@ Une fois ce temps expiré:
 
 
 ## Documentation
-
-
-

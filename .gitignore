@@ -1,0 +1,11 @@
+bin/
+*~
+._*
+*.cbp
+*.layout
+*.o
+*.out
+*#
+.DS_Store
+*.log
+*.aux

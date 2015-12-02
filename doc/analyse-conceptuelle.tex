@@ -1,0 +1,146 @@
+\documentclass[a4paper,10pt]{extreport}
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+
+
+
+\setlength{\headheight}{14.998pt}
+\pagestyle{fancy}
+\fancyhead[L]{Brandon Cousin, Tristan Biardeau, Ewen Chaudemanche}
+\fancyhead[R]{	Université du maine}
+
+\lstset{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  tabsize=4,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange}
+}
+
+\begin{document}
+
+\part{Affichage}
+
+\chapter{Menu.c}
+\vspace{-1cm}
+
+\begin{lstlisting}[language=c]
+
+void mainMenu(){
+	/*
+		Afficher menu principal
+		1 - Nouvelle Partie
+		2 - Charger une Partie
+		3 - Quitter
+	 */
+}
+
+void gameMenu(int noPlayer, movable, attackable){
+	/*
+		Afficher le menu de jeu
+		1 - Unite pouvant se deplacer -> unitMenu();
+		2 - Unite pouvant attaquer -> unitMenu();
+		3 - Changer de direction -> unitMenu();
+		4 - Passer tour
+		5 - Abandonner la partie
+	 */
+}
+
+void unitMenu(int choice, int noPlayer, movable, attackable){
+	/*
+		Afficher la liste des unites pouvant faire quelque chose
+		Si choice-> 1 alors liste des unites pouvant se deplacer
+		Si choice -> 2 alors liste des unites pouvant attaquer
+		Si choice -> 3 alors liste de toutes les unites du joueur
+		Appui sur une touche fait appel a playTurn();
+	 */
+}
+\end{lstlisting}
+
+\chapter{Grid.c}
+\vspace{-1cm}
+
+\begin{lstlisting}[language=c]
+
+void gridDisp(){
+	// Affiche la grille
+}
+
+\end{lstlisting}
+
+\part{Moteur de jeu}
+
+\chapter{gameEngine.c}
+\vspace{-1cm}
+
+\begin{lstlisting}[language=c]
+
+int gameInit(int * noPlayer){
+	gridInit(); // Retourne un code d'erreur
+	playerInit(); // Retourne un code d'erreur
+	* noPlayer = rand(1,2); // Choisis le joueur qui commence en premier
+	return true; // Si les fonctions ne retournent rien
+}
+
+vector selectUnit(int unitSelected, int noPlayer){
+	// Selectionne l'unite -> coordonnees dans la matrice sous forme de vecteur
+}
+
+void playTurn(int unitSelected, int noPlayer, movable){
+	selectUnit(int unitSelected, listUnitP); // Renvoie les coordonnees de l'unite selectionnee
+	playMove(unitSelected);
+	playAttack(unitSelected, listUnitP);
+	playDirection(unitSelected, listUnitP);
+}
+
+bool endGame(int noPlayer){
+	/* 	
+		Test les conditions de victoire ou de match nul
+	 	Affiche le vainqueur le cas echeant
+	*/
+}
+
+int movable(unitAction movable[]){
+	/* 	
+		Retourne nombre d'unites deplacable + liste maj des unites pouvant se deplacer
+	*/
+}
+
+void timeTurn(){
+	// Gestion du temps
+}
+
+int lookAround(vector currentUnit){
+	/*
+		Regarde autour de l'unite selectionnee si elle peut se deplacer sur une case si TP pas permise alors deplacement impossible
+	 */
+}
+
+void playMove(vector unitSelected, path[]){
+	/*
+		Deplace l'unite selectionnee a l'endroit desire en prenant en compte les chemins possibles
+	 */
+}
+
+void playAttack(vector unitSelected, int noPlayer){
+	/*
+		Attaque avec l'aide de l'unite selectionnee une unite contenu dans la liste listUnitP
+	 */
+}
+
+void playDirection(vector unitSelected){
+	//Change la direction de l'unite selectionnee
+}
+
+\end{lstlisting}
+
+\end{document}
