@@ -5,6 +5,73 @@
 #include "../include/Outil.h"
 
 
+void unitInit(vector coordUnit, int noPlayer)
+{
+	int nomUnit = grid[coordUnit.x][coordUnit.y].name;
+	switch(nom)
+	{
+		case knight :
+			knightInit(coordUnit, noPlayer);
+		break;
+		case scout :
+			scoutInit(coordUnit, noPlayer);
+		break;
+		case assassin :
+			assassinInit(coordUnit, noPlayer);
+		break;
+		case cleric :
+			clericInit(coordUnit, noPlayer);
+		break;
+		case pyromancer :
+			pyromancerInit(coordUnit, noPlayer);
+		break;
+		case enchantress :
+			enchantressInit(coordUnit, noPlayer);
+		break;
+		case dragonborn :
+			dragonbornInit(coordUnit, noPlayer);
+		break;
+		case darkWitch :
+			darkWitchInit(coordUnit, noPlayer);
+		break;
+		case lightningTotem :
+			lightningTotemInit(coordUnit, noPlayer);
+		break;
+		case barrierTotem :
+			barrierTotemInit(coordUnit, noPlayer);
+		break;
+		case mudGolem :
+			mudGolemInit(coordUnit, noPlayer);
+		break;
+		case golemAmbusher :
+			golemAmbusherInit(coordUnit, noPlayer);
+		break;
+		case frostGolem :
+			frostGolemInit(coordUnit, noPlayer);
+		break;
+		case stunGolem :
+			stunGolemInit(coordUnit, noPlayer);
+		break;
+		case dragonTyrant :
+			dragonTyrantInit(coordUnit, noPlayer);
+		break;
+		case berserker :
+			berserkerInit(coordUnit, noPlayer);
+		break;
+		case beastRider :
+			beastRiderInit(coordUnit, noPlayer);
+		break;
+		case poisonWisp :
+			poisonWispInit(coordUnit, noPlayer);
+		break;
+		case furgon :
+			furgonInit(coordUnit, noPlayer);
+		break;
+	}
+}
+
+
+
 /*
 	renvoie faux si l'unité est soumis à un effet negatif, vrai sinon.
 */

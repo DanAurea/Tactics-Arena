@@ -3,17 +3,17 @@
 /**
 * Initialise l'unité
 */
-void furgonInit(vector coordUnit, int noPlayer){
-	grid[coordUnit.x][coordUnit.y].stat.HP = 48;
+void stoneGolemInit(vector coordUnit, int noPlayer){
+	grid[coordUnit.x][coordUnit.y].stat.HP = 60;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 0;
-	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.30;
 	
-	grid[coordUnit.x][coordUnit.y].stat.BLOCK[0] = 0.5;
-	grid[coordUnit.x][coordUnit.y].stat.BLOCK[1] = 0.25;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[0] = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[1] = 0.0;
 	grid[coordUnit.x][coordUnit.y].stat.BLOCK[2] = 0.0;
 	
-	grid[coordUnit.x][coordUnit.y].stat.RECOVERY = 1;
-	grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE = 3;
+	grid[coordUnit.x][coordUnit.y].stat.RECOVERY = 4;
+	grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE = 2;
 	
 	for(int i = 0; i < NB_MAX_EFFECT; i++){
 		grid[coordUnit.x][coordUnit.y].effect[i] = none;
@@ -29,9 +29,9 @@ void furgonInit(vector coordUnit, int noPlayer){
 /**
 *	Initialise les cibles de l'unité	
 */
-void furgonTotem(vector coordUnit){
+void stoneGolemTotem(vector coordUnit){
 	int k = 0;
-	int allonge_max = 2;
+	int allonge_max = 1;
 	for(int i=-allonge_max;i<allonge_max;i++)
 	{
 		for(int j=-allonge_max;j<allonge_max;j++)
