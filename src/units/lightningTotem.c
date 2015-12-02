@@ -39,9 +39,12 @@ void lightningTotemTarget(vector coordUnit){
 		{
 			if(abs(i)+abs(j) <= allonge_max)
 			{
-				grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
-				grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
-				k++;
+				if(coordUnit.x+i >= 0 && coordUnit.x+i >= N && coordUnit.y+j >= 0 && coordUnit.y+j >= N)
+				{
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
+					k++;
+				}
 			}
 		}
 	}
