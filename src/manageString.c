@@ -37,16 +37,16 @@ void getCoordS(char coordString[], vector * coordUnit){
 	
 	for(int i = 0; i < sizeS; i++){
 		if(coordString[i] >= 'a' && coordString[i] <= 'z' ){
-			coordUnit->y = coordString[i] - 'a';
+			coordUnit->x = coordString[i] - 'a';
 		}else if(coordString[i] >= 'A' && coordString[i] <= 'Z' ){
-			coordUnit->y = coordString[i] - 'A';	
+			coordUnit->x = coordString[i] - 'A';	
 		}else{
 				if(isdigit(coordString[i])){
 					iString[iCount] = coordString[i]; // Récupère l'entier sous forme de chaîne de caractère
 					iCount++;
 					iString[iCount] = '\0';
 				}
-				coordUnit->x = atoi(iString);
+				coordUnit->y = atoi(iString);
 		}
 	}
 }

@@ -4,25 +4,25 @@
 * Initialise l'unité
 */
 void enchantressInit(vector coordUnit, int noPlayer){
-	grid[coordUnit.x]grid[coordUnit.y].stat.HP = 35;
-	grid[coordUnit.x]grid[coordUnit.y].stat.POWER = 0;
-	grid[coordUnit.x]grid[coordUnit.y].stat.ARMOR = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.HP = 35;
+	grid[coordUnit.x][coordUnit.y].stat.POWER = 0;
+	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;
 	
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[0] = 0.0;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[1] = 0.0;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[2] = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[0] = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[1] = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[2] = 0.0;
 	
-	grid[coordUnit.x]grid[coordUnit.y].stat.RECOVERY = 3;
-	grid[coordUnit.x]grid[coordUnit.y].stat.MOVE_RANGE = 3;
+	grid[coordUnit.x][coordUnit.y].stat.RECOVERY = 3;
+	grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE = 3;
 	
 	for(int i = 0; i < NB_MAX_EFFECT; i++){
-		grid[coordUnit.x]grid[coordUnit.y].effect[i] = none;
+		grid[coordUnit.x][coordUnit.y].effect[i] = none;
 	}
 	
 	if(noPlayer == 1){
-		grid[coordUnit.x]grid[coordUnit.y].direct = north;
+		grid[coordUnit.x][coordUnit.y].direct = north;
 	}else{
-		grid[coordUnit.x]grid[coordUnit.y].direct = south;
+		grid[coordUnit.x][coordUnit.y].direct = south;
 	}
 }
 

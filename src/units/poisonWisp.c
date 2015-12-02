@@ -32,7 +32,7 @@ void poisonWispInit(vector coordUnit, int noPlayer){
 void poisonWispTarget(vector coordUnit){
 	int k = 0;
 	int allonge_max = 2;
-	for(int i=-allonge_max;i<allonge_max;i++)
+	for(int i =-allonge_max;i<allonge_max;i++)
 	{
 		if(i!=0)
 		{
@@ -41,9 +41,9 @@ void poisonWispTarget(vector coordUnit){
 			k++;
 		}
 	}
-	for(int j=-allonge_max;j<allonge_max;j++)
+	for(int j =-allonge_max;j<allonge_max;j++)
 	{
-		if(i!=0)
+		if(j!=0)
 		{
 			grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x ;
 				grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j;

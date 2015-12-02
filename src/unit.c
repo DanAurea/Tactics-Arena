@@ -8,7 +8,7 @@
 void unitInit(vector coordUnit, int noPlayer)
 {
 	int nomUnit = grid[coordUnit.x][coordUnit.y].name;
-	switch(nom)
+	switch(nomUnit)
 	{
 		case knight :
 			knightInit(coordUnit, noPlayer);
@@ -44,13 +44,13 @@ void unitInit(vector coordUnit, int noPlayer)
 			mudGolemInit(coordUnit, noPlayer);
 		break;
 		case golemAmbusher :
-			golemAmbusherInit(coordUnit, noPlayer);
+			ambusherGolemInit(coordUnit, noPlayer);
 		break;
 		case frostGolem :
 			frostGolemInit(coordUnit, noPlayer);
 		break;
 		case stunGolem :
-			stunGolemInit(coordUnit, noPlayer);
+			stoneGolemInit(coordUnit, noPlayer);
 		break;
 		case dragonTyrant :
 			dragonTyrantInit(coordUnit, noPlayer);
@@ -210,7 +210,7 @@ void copy(unit * destination, unit * source)
 	{
 		destination->stat.BLOCK[i] = source->stat.BLOCK[i];
 	}
-	destination->stat.MOV_RANGE = source->stat.MOV_RANGE;
+	destination->stat.MOVE_RANGE = source->stat.MOVE_RANGE;
 	for(int i = 0;i<NB_MAX_EFFECT;i++)
 	{
 		destination->effect[i] = source->effect[i];

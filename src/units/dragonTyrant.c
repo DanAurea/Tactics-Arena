@@ -43,7 +43,7 @@ void dragonTyrantTarget(vector coordUnit){
 	}
 	for(int j=-allonge_max;j<allonge_max;j++)
 	{
-		if(i!=0)
+		if(j!=0)
 		{
 			grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x ;
 				grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j;

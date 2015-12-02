@@ -3,6 +3,7 @@
 #include <time.h>
 #include <ctype.h>
 #include "../include/gameEngine.h"
+#include "../include/grid.h"
 #include "../include/terminal.h"
 #include "../include/menu.h"
 #include "../include/listes.h"
@@ -76,7 +77,7 @@ void playerAddUnit(int noPlayer, int nbUnit){
 	free(coordString);
 
 	grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
-	
+	gridDisp();
 	//unitInit(coordUnit); // A faire !
 
 	en_tete(noPlayer);

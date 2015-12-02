@@ -29,7 +29,7 @@ void beastRiderInit(vector coordUnit, int noPlayer){
 /**
 *	Initialise les cibles de l'unité	
 */
-void beastRiderTotem(vector coordUnit){
+void beastRiderTarget(vector coordUnit){
 	int k = 0;
 	int allonge_max = 3;
 	for(int i=-allonge_max;i<allonge_max;i++)
@@ -43,7 +43,7 @@ void beastRiderTotem(vector coordUnit){
 	}
 	for(int j=-allonge_max;j<allonge_max;j++)
 	{
-		if(i!=0)
+		if(j!=0)
 		{
 			grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x ;
 				grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j;

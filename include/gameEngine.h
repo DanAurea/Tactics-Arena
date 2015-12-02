@@ -13,7 +13,7 @@ typedef enum{empty, decors, knight, scout, assassin, cleric, pyromancer, enchant
 			dragonborn, darkWitch, lightningTotem, barrierTotem, mudGolem, golemAmbusher,
 			frostGolem, stunGolem, dragonTyrant, berserker, beastRider, poisonWisp, furgon}unitName; /**< Liste énumérée des noms d'unité */
 typedef enum{none, POWER_BONUS, ARMOR_BONUS, BARRIER, POISON, PARALYSE, FOCUS}unitEffect; /**< Représentation des différents status */
-typedef struct{int HP; int POWER; float ARMOR; int RECOVERY; float BLOCK[3]; int MOV_RANGE; int Area;}unitStat; /**< Représentation des statistiques d'une unité*/
+typedef struct{int HP; int POWER; float ARMOR; int RECOVERY; float BLOCK[3]; int MOVE_RANGE; int Area;}unitStat; /**< Représentation des statistiques d'une unité*/
 typedef struct{int x; int y;}vector; /**< Représentation d'un vecteur */
 typedef struct{unitName name; unitStat stat; vector unitTarget[MAX_RANGE]; unitEffect effect[NB_MAX_EFFECT];int direct;}unit; /**< */
 typedef struct{vector coordUnit; vector fieldAction[MAX_RANGE];}unitAction; /**< Actions possibles par une unité */

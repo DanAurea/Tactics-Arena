@@ -4,25 +4,25 @@
 * Initialise l'unité
 */
 void darkWitchInit(vector coordUnit, int noPlayer){
-	grid[coordUnit.x]grid[coordUnit.y].stat.HP = 28;
-	grid[coordUnit.x]grid[coordUnit.y].stat.POWER = 24;
-	grid[coordUnit.x]grid[coordUnit.y].stat.ARMOR = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.HP = 28;
+	grid[coordUnit.x][coordUnit.y].stat.POWER = 24;
+	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;
 	
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[0] = 0.2;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[1] = 0.1;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[2] = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[0] = 0.2;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[1] = 0.1;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[2] = 0.0;
 	
-	grid[coordUnit.x]grid[coordUnit.y].stat.RECOVERY = 3;
-	grid[coordUnit.x]grid[coordUnit.y].stat.MOVE_RANGE = 3;
+	grid[coordUnit.x][coordUnit.y].stat.RECOVERY = 3;
+	grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE = 3;
 	
 	for(int i = 0; i < NB_MAX_EFFECT; i++){
-		grid[coordUnit.x]grid[coordUnit.y].effect[i] = none;
+		grid[coordUnit.x][coordUnit.y].effect[i] = none;
 	}
 	
 	if(noPlayer == 1){
-		grid[coordUnit.x]grid[coordUnit.y].direct = north;
+		grid[coordUnit.x][coordUnit.y].direct = north;
 	}else{
-		grid[coordUnit.x]grid[coordUnit.y].direct = south;
+		grid[coordUnit.x][coordUnit.y].direct = south;
 	}
 }
 
@@ -46,13 +46,13 @@ void darkWitchTarget(vector coordUnit){
 	}
 	for(int j=-allonge_max;j<allonge_max;j++)
 	{
-		if(i!=0)
+		if(j!=0)
 		{
 			if(coordUnit.y+j >= 0 && coordUnit.y+j >= N)
 			{
-				if(coordUnit.x+i >= 0 && coordUnit.x+i >= N && coordUnit.y+j >= 0 && coordUnit.y+j >= N)
+				if(coordUnit.y+j >= 0 && coordUnit.y+j >= N)
 				{
-					grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x;
 					grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
 					k++;
 				}

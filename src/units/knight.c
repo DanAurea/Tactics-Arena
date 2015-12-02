@@ -5,29 +5,29 @@
 */
 void knightInit(vector coordUnit, int noPlayer)
 {
-	grid[coordUnit.x]grid[coordUnit.y].stat.HP = 50;
-	grid[coordUnit.x]grid[coordUnit.y].stat.POWER = 22;
-	grid[coordUnit.x]grid[coordUnit.y].stat.ARMOR = 0.25;
+	grid[coordUnit.x][coordUnit.y].stat.HP = 50;
+	grid[coordUnit.x][coordUnit.y].stat.POWER = 22;
+	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.25;
 	
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[0] = 0.8;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[1] = 0.4;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[2] = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[0] = 0.8;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[1] = 0.4;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[2] = 0.0;
 	
-	grid[coordUnit.x]grid[coordUnit.y].stat.RECOVERY = 1;
-	grid[coordUnit.x]grid[coordUnit.y].stat.MOVE_RANGE = 3;
+	grid[coordUnit.x][coordUnit.y].stat.RECOVERY = 1;
+	grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE = 3;
 	
 	for(int i = 0; i < NB_MAX_EFFECT; i++)
 	{
-		grid[coordUnit.x]grid[coordUnit.y].effect[i] = none;
+		grid[coordUnit.x][coordUnit.y].effect[i] = none;
 	}
 	
 	if(noPlayer == 1)
 	{
-		grid[coordUnit.x]grid[coordUnit.y].direct = north;
+		grid[coordUnit.x][coordUnit.y].direct = north;
 	}
 	else
 	{
-		grid[coordUnit.x]grid[coordUnit.y].direct = south;
+		grid[coordUnit.x][coordUnit.y].direct = south;
 	}
 }
 
@@ -55,24 +55,3 @@ void knightTarget(vector coordUnit)
 	}
 }
 
-/*
-*	Attaque les coordonées désignés
-*/
-bool knightAttack(vector coordUnit, vector coordTarget)
-{
-	bool retour = true;
-	unit source = grid[coordUnit.x][coordUnit.y];
-	unit target = grid[coordTarget.x][coordTarget.y];
-	
-	if(canAttack(&source))
-	{
-		if(canBlock(&target))
-		{
-			
-		}
-	}
-	else
-	{
-		retour = false;
-	}
-}

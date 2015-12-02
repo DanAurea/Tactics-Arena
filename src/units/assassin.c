@@ -4,25 +4,25 @@
 * Initialise l'unité
 */
 void assassinInit(vector coordUnit, int noPlayer){
-	grid[coordUnit.x]grid[coordUnit.y].stat.HP = 35;
-	grid[coordUnit.x]grid[coordUnit.y].stat.POWER = 18;
-	grid[coordUnit.x]grid[coordUnit.y].stat.ARMOR = 0.12;
+	grid[coordUnit.x][coordUnit.y].stat.HP = 35;
+	grid[coordUnit.x][coordUnit.y].stat.POWER = 18;
+	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.12;
 	
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[0] = 0.7;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[1] = 0.35;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[2] = 0.0;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[0] = 0.7;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[1] = 0.35;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[2] = 0.0;
 	
-	grid[coordUnit.x]grid[coordUnit.y].stat.RECOVERY = 1;
-	grid[coordUnit.x]grid[coordUnit.y].stat.MOVE_RANGE = 4;
+	grid[coordUnit.x][coordUnit.y].stat.RECOVERY = 1;
+	grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE = 4;
 	
 	for(int i = 0; i < NB_MAX_EFFECT; i++){
-		grid[coordUnit.x]grid[coordUnit.y].effect[i] = none;
+		grid[coordUnit.x][coordUnit.y].effect[i] = none;
 	}
 	
 	if(noPlayer == 1){
-		grid[coordUnit.x]grid[coordUnit.y].direct = north;
+		grid[coordUnit.x][coordUnit.y].direct = north;
 	}else{
-		grid[coordUnit.x]grid[coordUnit.y].direct = south;
+		grid[coordUnit.x][coordUnit.y].direct = south;
 	}
 }
 
