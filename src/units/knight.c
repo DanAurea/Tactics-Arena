@@ -36,17 +36,16 @@ void knightInit(vector coordUnit, int noPlayer)
 */
 void knightTarget(vector coordUnit)
 {
-	for(int k=0;k<4;k++)
+	int k = 0;
+	for(int i=-1;i<1;i++)
 	{
-		for(int i=-1;i<1;i++)
+		for(int j=-1;j<1;j++)
 		{
-			for(int j=-1;j<1;j++)
+			if(	abs(i)+abs(j)== 1)
 			{
-				if(	abs(i)+abs(j)== 1)
-				{
-					grid[coordUnit.x]grid[coordUnit.y].unitTarget[0].x = coordUnit.x + i ;
-					grid[coordUnit.x]grid[coordUnit.y].unitTarget[0].y = coordUnit.y + j ;
-				}
+				grid[coordUnit.x]grid[coordUnit.y].unitTarget[0].x = coordUnit.x + i ;
+				grid[coordUnit.x]grid[coordUnit.y].unitTarget[0].y = coordUnit.y + j ;
+				k++;
 			}
 		}
 	}
