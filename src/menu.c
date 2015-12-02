@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "../include/gameEngine.h"
 #include "../include/menu.h"
 #include "../include/terminal.h"
+#include "../include/manageString.h"
 
 /**
  * Menu principal du jeu
@@ -36,51 +36,6 @@ void mainMenu(){
     }while(choix != 4);
 	printf("A bientôt !");
     exit(1);
-}
-
-/**
- * Récupère le nom de l'unité à partir de la liste énumérée
- * @param  unit Nom de l'unité provenant de la liste énumérée
- * @return      Nom de l'unité sous forme de chaîne    
- */
-char* getNameUnit(unitName unit){
-    char* uName = NULL;
-    
-    uName = malloc(20 * sizeof(char));
-    
-    switch(unit){
-        case 2: strcpy(uName,"Knight"); break;
-        case 3: strcpy(uName,"Scout"); break;
-        case 4: strcpy(uName,"Assassin"); break;
-        case 5: strcpy(uName,"Cleric"); break;
-        case 6: strcpy(uName,"Pyromancer"); break;
-        case 7: strcpy(uName,"Enchantress"); break;
-        case 8: strcpy(uName,"Dragonborn"); break;
-        case 9: strcpy(uName,"Dark Witch"); break;
-        case 10: strcpy(uName,"Lightning Totem"); break;
-        case 11: strcpy(uName,"Barrier Totem"); break;
-        case 12: strcpy(uName,"Mud Golem"); break;
-        case 13: strcpy(uName,"Golem Ambusher"); break;
-        case 14: strcpy(uName,"Frost Golem"); break;
-        case 15: strcpy(uName,"Stun Golem"); break;
-        case 16: strcpy(uName,"Dragon Tyrant"); break;
-        case 17: strcpy(uName,"Berserker"); break;
-        case 18: strcpy(uName,"Beast Rider"); break;
-        case 19: strcpy(uName,"Poison Wisp"); break;
-        case 20: strcpy(uName,"Furgon"); break;
-            
-        default: break;
-    }
-    return uName;
-}
-
-
-/**
- * Affiche le nom de l'unité
- * @param unit Nom de l'unité provenant de la liste énumérée
- */
-void printNameUnit(unitName unit){
-    printf("%s", getNameUnit(unit));
 }
 
 /**

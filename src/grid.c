@@ -1,32 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <time.h>
 #include "../include/gameEngine.h"
-#include "../include/menu.h"
-
-
-/**
- * Convertis un entier en chaîne de caractère (maximum 2 chiffres)
- * @param  n Entier à convertir
- * @return   Retourne la chaîne de caractère contenant l'entier convertis
- */
-char* nToS(int n) {
-    char* nString = NULL;
-    
-    nString = malloc(3 * sizeof(char)); // Crée une zone mémoire contenant le nombre sous forme de chaîne
-    
-    if(n < 10){
-    	nString[0] = n + 48; // Conversion sur entier d'un chiffre
-    	nString[1] = '\0';
-    }else{
-    	nString[0] = (n / 10) + 48; // Conversion sur entier de deux chiffres
-    	nString[1] = (n % 10) + 48;
-    	nString[2] = '\0';
-    }
-    
-    return nString;
-}
+#include "../include/manageString.h"
 
 /**
  * Affiche une bordure sur le côté droit sur les lignes vides et utiles
@@ -81,59 +56,6 @@ void dispX(int * x, int row){
 		* x = * x +1;
 	}
 }
-
-/**
- *  Récupère 2 caractères du nom de l'unité
- *  @param name Nom de l'unité
- *  @return Retourne 2 caractères liés au nom de l'unité
- */
-char* get2Char(char name[]){
-    char* partName = NULL;
-    
-    partName = malloc(3 * sizeof(char));
-    
-    if(strcmp(name, "Dragonborn") == 0){
-        strcpy(partName, "Db");
-    }
-    else if(strcmp(name, "Dragon Tyrant") == 0){
-        strcpy(partName, "Dt");
-    }
-    else if(strcmp(name, "Beast Rider") == 0){
-        strcpy(partName, "Br");
-    }
-    else if(strcmp(name, "Berserker") == 0){
-        strcpy(partName, "Bk");
-    }
-    else if(strcmp(name, "Lightning Totem") == 0){
-        strcpy(partName, "Lt");
-    }
-    else if(strcmp(name, "Barrier Totem") == 0){
-        strcpy(partName, "Bt");
-    }
-    else if(strcmp(name, "Mud Golem") == 0){
-        strcpy(partName, "Mg");
-    }
-    else if(strcmp(name, "Golem Ambusher") == 0){
-        strcpy(partName, "Ag");
-    }
-    else if(strcmp(name, "Frost Golem") == 0){
-        strcpy(partName, "Fg");
-    }
-    else if(strcmp(name, "Stun Golem") == 0){
-        strcpy(partName, "Sg");
-    }
-    else if(strcmp(name, "Poison Wisp") == 0){
-        strcpy(partName, "Pw");
-    }
-    else{
-        partName[0] = name[0];
-        partName[1] = name[1];
-        partName[2] = '\0';
-    }
-    
-    return partName;
-}
-
 
 /**
  * Affiche la grille avec les coordonnées

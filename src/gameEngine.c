@@ -6,6 +6,7 @@
 #include "../include/terminal.h"
 #include "../include/menu.h"
 #include "../include/listes.h"
+#include "../include/manageString.h"
 
 unit grid[N][N];
 
@@ -53,10 +54,9 @@ void playerAddUnit(int noPlayer, int nbUnit){
 	vector coordUnit;
 
 	unitList(); // Affiche la liste des unités du jeu
-	printf("Choisissez le type d'unité: ");
 	
 	do{
-		
+		printf("Choisissez le type d'unité: ");
 		scanf("%i", &unitSelected);
 
 		if(unitSelected < knight -1 || unitSelected > furgon -1)
@@ -66,20 +66,17 @@ void playerAddUnit(int noPlayer, int nbUnit){
 
 	coordString = (char *) malloc(4 * sizeof(char));
 	
-	/*do{
+	do{
 		printf("Quelles sont les coordonnées de l'unité à placer ?");
 		scanf("%s", coordString);
+		
+	}while(strlen(coordString) > 3); // Faire une fonction correctCoord(coordString);
 
-		if(strlen(coordString) > 3 && !isalnum(coordString))
-			printf("Coordonnées incorrecte !\n");
-
-	}while(strlen(coordString) > 3 && !isalnum(coordString)); // Faire une fonction correctCoord(coordString);*/
-
-	//getCoordS( coordString, &coordUnit); // A faire !
+	getCoordS( coordString, &coordUnit); 
 	free(coordString);
 
 	grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
-
+	
 	//unitInit(coordUnit); // A faire !
 
 	en_tete(noPlayer);
