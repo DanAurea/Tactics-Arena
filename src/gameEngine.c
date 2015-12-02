@@ -1,7 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <ctype.h>
 #include "../include/gameEngine.h"
+#include "../include/terminal.h"
+#include "../include/menu.h"
 #include "../include/listes.h"
 
 unit grid[N][N];
@@ -45,10 +48,42 @@ void gridInit(){
  * Placement des unités par le joueur
  */
 void playerAddUnit(int noPlayer, int nbUnit){
-	printf("Coordonnées unité %i: ", nbUnit + 1);
+	int unitSelected;
+	char * coordString;
+	vector coordUnit;
+
+	unitList(); // Affiche la liste des unités du jeu
+	printf("Choisissez le type d'unité: ");
 	
+	do{
+		
+		scanf("%i", &unitSelected);
+
+		if(unitSelected < knight -1 || unitSelected > furgon -1)
+			printf("Aucune unité de ce type ! \n");
+
+	}while(unitSelected < knight -1 || unitSelected > furgon -1);
+
+	coordString = (char *) malloc(3 * sizeof(char));
+	
+	do{
+		printf("Quelles sont les coordonnées de l'unité à placer ?");
+		scanf("%s", coordString);
+
+		if(strlen(coordString) > 2 && !isalnum(coordString))
+			printf("Coordonnées incorrecte !\n");
+
+	}while(strlen(coordString) > 2 && !isalnum(coordString)); // Faire une fonction correctCoord(coordString);
+
+	//getCoordS( coordString, &coordUnit); // A faire !
+	free(coordString);
+
+	grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
+
+	//unitInit(coordUnit); // A faire !
+
 	en_tete(noPlayer);
-	//ajout_droit(noPlayer, test);
+	//addUnit(noPlayer, coordUnit); // A faire !
 }
 
 /**
@@ -56,13 +91,13 @@ void playerAddUnit(int noPlayer, int nbUnit){
  */
 void playersInit(){
 
-	printf("Joueur 1: \n");
-	for(int i = 0; i < 10; i++){
+	printf("Joueur 1: \n\n");
+	for(int i = 0; i < NB_MAX_UNIT; i++){
 		playerAddUnit(1, i); // Ajout unité joueur 1
 	}
 
-	printf("\nJoueur 2: \n");
-	for(int i = 0; i < 10; i++){
+	printf("\nJoueur 2: \n\n");
+	for(int i = 0; i < NB_MAX_UNIT; i++){
 		playerAddUnit(2, i); // Ajout unité joueur 2
 	}
 }
@@ -74,7 +109,7 @@ void playersInit(){
 void gameInit(int * noPlayer){
 	srand(time(NULL));
 	
-	for(int i = 1; i < MAX_LISTE; i++)
+	for(int i = 1; i < MAX_JOUEUR; i++)
 		init_liste(i);
 
 	playersInit();

@@ -11,7 +11,7 @@
 void mainMenu(){
 	int choix;
 
-    color(fred); // Change la couleur des caractères suivant en rouge
+    color(fred); // Change la couleur des caractères suivants en rouge
 	printf("Bienvenue sur le jeu Tactics arena SPI deluxe edition \n");
     do{
         printf("\nMenu principal :\n");
@@ -136,6 +136,15 @@ void unitMenu(int choice, unitAction movable, unitAction attackable){
             
     }
     
+}
+
+/**
+ * Affiche la liste des unités inclus dans le jeu
+ */
+void unitList(){
+    for(int i = knight; i <= furgon; i++){
+        printf("%i - %s\n", i - 1, getNameUnit(i));
+    }
 }
 
 

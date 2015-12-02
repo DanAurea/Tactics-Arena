@@ -5,6 +5,7 @@
 #define NB_MAX_EFFECT 6 /** Nombre total de status différent */
 #define MAX_RANGE 36 /**< Portée max des actions */
 #define NB_MAX_KNIGHT 3 /**< Nombre max de guerrier par joueur */
+#define NB_MAX_UNIT 10 /**< Nombre max d'unité par joueur */
 
 
 

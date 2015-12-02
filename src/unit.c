@@ -244,4 +244,3 @@ void line(vector pos, int size, int dmg, int dir)
 		}
 	}
 }
-
