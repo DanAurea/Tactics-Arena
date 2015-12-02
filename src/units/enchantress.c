@@ -1,7 +1,7 @@
 #include "../../include/gameEngine.h"
 
 /**
-* Initialise les cibles de l'unité
+* Initialise l'unité
 */
 void enchantressInit(vector coordUnit, int noPlayer){
 	grid[coordUnit.x]grid[coordUnit.y].stat.HP = 35;
@@ -39,9 +39,12 @@ void enchantressTarget(vector coordUnit)
 		{
 			if(	abs(i)+abs(j) <= allonge_max && abs(i)+abs(j) > 0)
 			{
-				grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
-				grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
-				k++;
+				if(coordUnit.x+i >= 0 && coordUnit.x+i >= N && coordUnit.y+j >= 0 && coordUnit.y+j >= N)
+				{
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
+					k++;
+				}
 			}
 		}
 	}

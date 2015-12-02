@@ -1,7 +1,7 @@
 #include "../../include/gameEngine.h"
 
 /**
-* Initialise les cibles de l'unité
+* Initialise l'unité
 */
 void darkWitchInit(vector coordUnit, int noPlayer){
 	grid[coordUnit.x]grid[coordUnit.y].stat.HP = 28;
@@ -36,18 +36,27 @@ void darkWitchTarget(vector coordUnit){
 	{
 		if(i!=0)
 		{
-			grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
+			if(coordUnit.x+i >= 0 && coordUnit.x+i >= N)
+			{
+				grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
 				grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y ;
-			k++;
+				k++;
+			}
 		}
 	}
 	for(int j=-allonge_max;j<allonge_max;j++)
 	{
 		if(i!=0)
 		{
-			grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x ;
-				grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j;
-			k++;
+			if(coordUnit.y+j >= 0 && coordUnit.y+j >= N)
+			{
+				if(coordUnit.x+i >= 0 && coordUnit.x+i >= N && coordUnit.y+j >= 0 && coordUnit.y+j >= N)
+				{
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
+					k++;
+				}
+			}
 		}
 	}
 	

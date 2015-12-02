@@ -1,7 +1,7 @@
 #include "../../include/gameEngine.h"
 
 /**
-* Initialise les cibles de l'unité
+* Initialise l'unité
 */
 void knightInit(vector coordUnit, int noPlayer)
 {
@@ -11,7 +11,7 @@ void knightInit(vector coordUnit, int noPlayer)
 	
 	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[0] = 0.8;
 	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[1] = 0.4;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[2] = 0;
+	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[2] = 0.0;
 	
 	grid[coordUnit.x]grid[coordUnit.y].stat.RECOVERY = 1;
 	grid[coordUnit.x]grid[coordUnit.y].stat.MOVE_RANGE = 3;
@@ -31,22 +31,48 @@ void knightInit(vector coordUnit, int noPlayer)
 	}
 }
 
-/**
+/*
 *	Initialise les cibles de l'unité	
 */
 void knightTarget(vector coordUnit)
 {
 	int k = 0;
-	for(int i=-1;i<1;i++)
+	int allonge_max = 1;
+	for(int i=-allonge_max;i<allonge_max;i++)
 	{
-		for(int j=-1;j<1;j++)
+		for(int j=-allonge_max;j<allonge_max;j++)
 		{
 			if(	abs(i)+abs(j)== 1)
 			{
-				grid[coordUnit.x]grid[coordUnit.y].unitTarget[0].x = coordUnit.x + i ;
-				grid[coordUnit.x]grid[coordUnit.y].unitTarget[0].y = coordUnit.y + j ;
-				k++;
+				if(coordUnit.x+i >= 0 && coordUnit.x+i >= N && coordUnit.y+j >= 0 && coordUnit.y+j >= N)
+				{
+					grid[coordUnit.x][coordUnit.y].unitTarget[0].x = coordUnit.x + i ;
+					grid[coordUnit.x][coordUnit.y].unitTarget[0].y = coordUnit.y + j ;
+					k++;
+				}
 			}
 		}
+	}
+}
+
+/*
+*	Attaque les coordonées désignés
+*/
+bool knightAttack(vector coordUnit, vector coordTarget)
+{
+	bool retour = true;
+	unit source = grid[coordUnit.x][coordUnit.y];
+	unit target = grid[coordTarget.x][coordTarget.y];
+	
+	if(canAttack(&source))
+	{
+		if(canBlock(&target))
+		{
+			
+		}
+	}
+	else
+	{
+		retour = false;
 	}
 }

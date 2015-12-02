@@ -1,7 +1,7 @@
 #include "../../include/gameEngine.h"
 
 /**
-* Initialise les cibles de l'unité
+* Initialise l'unité
 */
 void clericInit(vector coordUnit, int noPlayer){
 	grid[coordUnit.x]grid[coordUnit.y].stat.HP = 24;

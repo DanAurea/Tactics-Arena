@@ -1,7 +1,7 @@
 #include "../../include/gameEngine.h"
 
 /**
-* Initialise les cibles de l'unité
+* Initialise l'unité
 */
 void scoutInit(vector coordUnit, int noPlayer){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 40;
@@ -10,7 +10,7 @@ void scoutInit(vector coordUnit, int noPlayer){
 	
 	grid[coordUnit.x][coordUnit.y].stat.BLOCK[0] = 0.6;
 	grid[coordUnit.x][coordUnit.y].stat.BLOCK[1] = 0.3;
-	grid[coordUnit.x][coordUnit.y].stat.BLOCK[2] = 0;
+	grid[coordUnit.x][coordUnit.y].stat.BLOCK[2] = 0.0;
 	
 	grid[coordUnit.x][coordUnit.y].stat.RECOVERY = 2;
 	grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE = 4;
@@ -39,9 +39,12 @@ void scoutTarget(vector coordUnit)
 		{
 			if(	abs(i)+abs(j) <= allonge_max && abs(i)+abs(j) > 0)
 			{
-				grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
-				grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
-				k++;
+				if(coordUnit.x+i >= 0 && coordUnit.x+i >= N && coordUnit.y+j >= 0 && coordUnit.y+j >= N)
+				{
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
+					k++;
+				}
 			}
 		}
 	}

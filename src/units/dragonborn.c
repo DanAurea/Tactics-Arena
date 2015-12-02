@@ -1,7 +1,7 @@
 #include "../../include/gameEngine.h"
 
 /**
-* Initialise les cibles de l'unité
+* Initialise l'unité
 */
 void dragonbornInit(vector coordUnit, int noPlayer){
 	grid[coordUnit.x]grid[coordUnit.y].stat.HP = 30;
@@ -10,7 +10,7 @@ void dragonbornInit(vector coordUnit, int noPlayer){
 	
 	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[0] = 0.33;
 	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[1] = 0.16;
-	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[2] = 0;
+	grid[coordUnit.x]grid[coordUnit.y].stat.BLOCK[2] = 0.0;
 	
 	grid[coordUnit.x]grid[coordUnit.y].stat.RECOVERY = 3;
 	grid[coordUnit.x]grid[coordUnit.y].stat.MOVE_RANGE = 3;
@@ -39,9 +39,12 @@ void dragonbornTarget(vector coordUnit)
 		{
 			if(	abs(i)+abs(j) <= allonge_max)
 			{
-				grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
-				grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
-				k++;
+				if(coordUnit.x+i >= 0 && coordUnit.x+i >= N && coordUnit.y+j >= 0 && coordUnit.y+j >= N)
+				{
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].x = coordUnit.x + i ;
+					grid[coordUnit.x][coordUnit.y].unitTarget[k].y = coordUnit.y + j ;
+					k++;
+				}
 			}
 		}
 	}
