@@ -35,34 +35,34 @@ Une fois ce temps expiré:
 ## Sommaire
    **Tactics Arena**
 
-   1. **[Règles](#markdown-header-regles)**
-   2. **[Changelog](#markdown-header-changelog)**
-     - **[Version 0.1](#markdown-header-version-01)**
-   3. **[A faire](#markdown-header-a-faire)**
-   4. **[Instructions de compilation](#markdown-header-instructions-de-compilation)**
-   5. **[Utilisation](#markdown-header-utilisation)**
-   6. **[Documentation](#markdown-header-documentation)**
+   1. **[Règles](#règles)**
+   2. **[Changelog](#changelog)**
+     - **[Version 0.1](#version-01)**
+   3. **[A faire](#a-faire)**
+   4. **[Instructions de compilation](#instructions-de-compilation)**
+   5. **[Utilisation](#utilisation)**
+   6. **[Documentation](#documentation)**
 
 ## A faire
  
- - **[x] Analyse préliminaire**
- - **[ ] Compte rendu mécaniques du jeu**
- - **[x] Analyse conceptuelle**
- - **[ ] Implémentation**
-    - **[x] Grille**
-    - **[x] Menu**
-    - **[ ] Unités**
-    - **[ ] Statistiques**
-    - **[ ] Mouvements**
-    - **[ ] Gestion des tours**
-    - **[ ] Gestion du temps**
-    - **[ ] Capacités spéciales**
-    - **[ ] Etat unités**
- - **[ ] Test unitaires**
- - **[ ] Test d'intégration**
- - **[ ] Ajout de fonctionnalités**
-    - **[ ] Intégration IA**
-    - **[ ] GUI**
+ - [x] **Analyse préliminaire**
+ - [ ] **Compte rendu mécaniques du jeu**
+ - [x] **Analyse conceptuelle**
+ - [ ] **Implémentation**
+  - [x] **Grille**
+  - [x] **Menu**
+  - [ ] **Unités**
+  - [ ] **Statistiques**
+  - [ ] **Mouvements**
+  - [ ] **Gestion des tours**
+  - [ ] **Gestion du temps**
+  - [ ] **Capacités spéciales**
+  - [ ] **Etat unités**
+ - [ ] **Test unitaires**
+ - [ ] **Test d'intégration**
+ - [ ] **Ajout de fonctionnalités**
+  - [ ] **Intégration IA**
+  - [ ] **GUI**
 
 ## Changelog
 
