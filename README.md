@@ -51,8 +51,8 @@ Une fois ce temps expiré:
  - **[ ] Implémentation**
     - **[x] Grille**
     - **[x] Menu**
-    - **[ ] Unités**
-    - **[ ] Statistiques**
+    - **[x] Unités**
+    - **[x] Statistiques**
     - **[ ] Mouvements**
     - **[ ] Gestion des tours**
     - **[ ] Gestion du temps**
