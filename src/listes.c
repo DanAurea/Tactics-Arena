@@ -1,6 +1,7 @@
 /* Mise en oeuvre contigue d'un tableau de listes de vecteurs */
 #include <stdio.h>
 #include "../include/gameEngine.h"
+#include "../include/manageString.h"
 #include "../include/listes.h"
 
 /* Definition du type d'un element de liste */
@@ -133,38 +134,62 @@ void addUnit(int noPlayer, vector coordUnit){
 	vector tmp;
 	int nameUnit = grid[coordUnit.x][coordUnit.y].name;
 
-
 	en_tete(noPlayer);
 
 	if(liste_vide(noPlayer)) ajout_droit(noPlayer, coordUnit);
 	else{
 		valeur_elt(noPlayer,&tmp);
 
-		while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < nameUnit){
+		while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < nameUnit){ // Tri de la liste à la volée
 			suivant(noPlayer);
 			valeur_elt(noPlayer,&tmp);
 		}
-		
-		if(hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < nameUnit){
+
+		if(hors_liste(noPlayer)){ // Sortie de liste
 			en_queue(noPlayer);
 			ajout_droit(noPlayer, coordUnit);
 		}else{
-			if(hors_liste(noPlayer)) en_queue(noPlayer);	
-
 			ajout_gauche(noPlayer, coordUnit);
 		}
 	}
 
 }
 
+/**
+ * Affiche la liste des unités
+ * @param noPlayer [description]
+ */
 void printList(int noPlayer){
+	int i = 1;
 	vector tmp;
 	en_tete(noPlayer);
 
 	while(!hors_liste(noPlayer) && !liste_vide(noPlayer)){
 		valeur_elt(noPlayer, &tmp);
-		printf("Val:%i x -> %i y -> %i\n",grid[tmp.x][tmp.y].name ,tmp.x, tmp.y);
+		printf("%i - %s - %c - %i\n", i,getNameUnit(grid[tmp.x][tmp.y].name), 'A' + tmp.x, tmp.y + 1); // Affiche le nom de l'unité
 		suivant(noPlayer);
+		i++;
 	}
 }
 
+/**
+ * Détruit une unité dans la liste
+ * @param noPlayer  Joueur en cours
+ * @param coordUnit Coordonnées de l'unité à détruire
+ */
+void destroyUnit(int noPlayer, vector coordUnit){
+	vector tmp;
+
+	en_queue(noPlayer);
+	valeur_elt(noPlayer, &tmp);
+
+	while(!hors_liste(noPlayer) && tmp.x != coordUnit.x && tmp.y != coordUnit.y){ // Cherche l'unité dans la liste
+		valeur_elt(noPlayer, &tmp);
+		precedent(noPlayer);
+	}
+
+	if(tmp.x == coordUnit.x && tmp.y == coordUnit.y){ // Unité trouvée
+		if(hors_liste(noPlayer)) en_tete(noPlayer);
+		oter_elt(noPlayer);
+	}
+}

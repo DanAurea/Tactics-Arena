@@ -7,23 +7,26 @@ OBJ= $(SRC:.c=.o)
 INC= include/
 
 $(EXEC): $(OBJ)
-	$(CC) -o $@ $^
-	@echo "\nOn reconstruit $@ a cause de $?"
+	@$(CC) -o $@ $^
 
-src/gameEngine.o: $(INC)gameEngine.h
+src/gameEngine.o: $(INC)gameEngine.h $(INC)listes.h $(INC)grid.h $(INC)menu.h $(INC)terminal.h $(INC)manageString.h $(INC)unit.h
 
-src/unit.o: $(INC)unit.h
+src/manageString.o: $(INC)gameEngine.h
 
-src/grid.o: $(INC)gameEngine.h $(INC)menu.h
+src/unit.o: $(INC)gameEngine.h $(INC)unit.h $(INC)unitType.h
 
-src/menu.o: $(INC)gameEngine.h $(INC)menu.h
+src/grid.o: $(INC)gameEngine.h $(INC)gameEngine.h
+
+src/menu.o: $(INC)gameEngine.h $(INC)menu.h $(INC)terminal.h $(INC)manageString.h
 
 src/listes.o: $(INC)gameEngine.h $(INC)menu.h
 
-src/%.o: %.c $(INC)gameEngine.h
+src/terminal.o: $(INC)terminal.h
+
+src/%.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
 
-src/units/%.o: %.c $(INC)gameEngine.h
+src/units/%.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
 
 clean:

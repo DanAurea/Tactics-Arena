@@ -166,7 +166,7 @@ bool correctCoord(char coordString[], int noPlayer){
     for(int i = 0; i < sizeS; i++){
         
         if(i > 0 && isdigit(coordString[i]) && 
-            isalpha(coordString[i-1]) && countNumbers == 1) return false; // Lettre / chiffre entremêlés
+            isalpha(coordString[i-1]) && countNumbers == 1) return false; // Lettre / chiffre entremÃªlÃ©s
         
         if(isdigit(coordString[i])){
             iString[countNumbers] = coordString[i]; // Forme l'entier
@@ -176,18 +176,15 @@ bool correctCoord(char coordString[], int noPlayer){
         if(isalpha(coordString[i])) countAlphas++;
         if(!isalnum(coordString[i])) return false;
         
-        if((coordString[i] > 'A' + N -1 && coordString[i] < 'a') || coordString[i] > 'a' + N -1) return false; // Débordements lignes
+        if((coordString[i] > 'A' + N -1 && coordString[i] < 'a') || coordString[i] > 'a' + N -1) return false; // DÃ©bordements lignes
 
-        if(isalpha(coordString[i])){ // Test sur la ligne de l'unité
+        if(isalpha(coordString[i])){ // Test sur la ligne de l'unitÃ©
             
-            if(noPlayer == 1){ // Délimite le camp du joueur 1
-                if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < 'A' + N - NB_LINES){
-                    
-                    return false;
-                } 
+            if(noPlayer == 1){ // DÃ©limite le camp du joueur 1
+                if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < 'A' + N - NB_LINES) return false;
             }
             
-            if(noPlayer == 2){ // Délimite le camp du joueur 2
+            if(noPlayer == 2){ // DÃ©limite le camp du joueur 2
                 if((coordString[i] < 'a' && coordString[i] >= 'A' + NB_LINES) || coordString[i] >= 'a' + NB_LINES) return false;
             }
         }
@@ -195,7 +192,7 @@ bool correctCoord(char coordString[], int noPlayer){
 
     // Trop de lettres / chiffres ou pas de lettres / chiffres
     if(countNumbers == 0 || countNumbers == 3 || countAlphas == 0 || countAlphas == 3) return false;
-    if(atoi(iString) < 1 || atoi(iString) > 11) return false; // Débordements colonnes
+    if(atoi(iString) < 1 || atoi(iString) > 11) return false; // DÃ©bordements colonnes
 
     return true;
 }

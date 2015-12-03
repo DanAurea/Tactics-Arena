@@ -42,7 +42,13 @@ bool lookAround(vector currentUnit)
  * Initialise la grille
  */
 void gridInit(){
+	int x,y;
 
+	for(x = 0; x < N; x++){
+		for(y = 0; y < N; y++){
+			grid[x][y].name = empty;
+		}
+	}
 }
 
 /**
@@ -50,7 +56,7 @@ void gridInit(){
  * @param noPlayer Joueur en cours 
  * @param nbUnit   
  */
-void playerAddUnit(int noPlayer, int nbUnit){
+void playerAddUnit(int noPlayer, int * nbUnit){
 	int unitSelected;
 	char * coordString = NULL;
 	vector coordUnit;
@@ -89,8 +95,13 @@ void playerAddUnit(int noPlayer, int nbUnit){
 	getCoordS(coordString, &coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
 	free(coordString);
 	
+	if(grid[coordUnit.x][coordUnit.y].name != empty){ 
+		destroyUnit(noPlayer, coordUnit); // Détruit l'unité en place
+		* nbUnit = * nbUnit - 1; // Remet à jour le nombre d'unités
+	}
+
 	grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
-	
+
 	clearScreen();
 	gridDisp(); // Affiche la grille actualisée
 	
@@ -110,7 +121,7 @@ void playersInit(){
 		printf("Il reste %i unités.\n", NB_MAX_UNIT - i);
 		fontColor(white);
 
-		playerAddUnit(1, i); // Ajout unité joueur 1
+		playerAddUnit(1, &i); // Ajout unité joueur 1
 	}
 
 	printf("\nJoueur 2: \n\n"); // Initialisation du joueur 2
@@ -119,7 +130,7 @@ void playersInit(){
 		printf("Il reste %i unités.\n", NB_MAX_UNIT - i);
 		fontColor(white);
 
-		playerAddUnit(2, i); // Ajout unité joueur 2
+		playerAddUnit(2, &i); // Ajout unité joueur 2
 	}
 }
 
@@ -133,7 +144,8 @@ void gameInit(int * noPlayer){
 	for(int i = 1; i < MAX_JOUEUR; i++)
 		init_liste(i);
 
-	playersInit();
 	gridInit();
-	//* noPlayer = (rand() % 2) + 1; // Tire le joueur débutant la partie aléatoirement -> Segmentation fault pour le moment
+	playersInit();
+	* noPlayer = (rand() % 2) + 1; // Tire le joueur débutant la partie aléatoirement -> Segmentation fault pour le moment
+	printf("%i lol", *noPlayer);
 }

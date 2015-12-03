@@ -25,4 +25,3 @@ extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
 
 bool lookAround(vector currentUnit);
 void gameInit();
-void addUnit(int noPlayer, vector coordUnit);
