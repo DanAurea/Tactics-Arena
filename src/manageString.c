@@ -176,23 +176,26 @@ bool correctCoord(char coordString[], int noPlayer){
         if(isalpha(coordString[i])) countAlphas++;
         if(!isalnum(coordString[i])) return false;
         
-        if((coordString[i] > 'A' + N -1 && coordString[i] < 'a') || coordString[i] > 'a' + N -1) return false; // Débordement lignes
+        if((coordString[i] > 'A' + N -1 && coordString[i] < 'a') || coordString[i] > 'a' + N -1) return false; // Débordements lignes
 
         if(isalpha(coordString[i])){ // Test sur la ligne de l'unité
             
             if(noPlayer == 1){ // Délimite le camp du joueur 1
-                if((coordString[i] < 'a' + N - NB_LINES && coordString[i] > 'a') || coordString[i] < 'A' + N - NB_LINES) return false;
+                if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < 'A' + N - NB_LINES){
+                    
+                    return false;
+                } 
             }
             
             if(noPlayer == 2){ // Délimite le camp du joueur 2
-                if((coordString[i] >= 'A' + NB_LINES && coordString[i] < 'a') || coordString[i] >= 'a' + NB_LINES) return false;
+                if((coordString[i] < 'a' && coordString[i] >= 'A' + NB_LINES) || coordString[i] >= 'a' + NB_LINES) return false;
             }
         }
     }
 
     // Trop de lettres / chiffres ou pas de lettres / chiffres
     if(countNumbers == 0 || countNumbers == 3 || countAlphas == 0 || countAlphas == 3) return false;
-    if(atoi(iString) < 1 || atoi(iString) > 11) return false; // Débordement colonnes
+    if(atoi(iString) < 1 || atoi(iString) > 11) return false; // Débordements colonnes
 
     return true;
 }
