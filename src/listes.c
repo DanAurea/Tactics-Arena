@@ -131,45 +131,40 @@ void ajout_gauche(int n, vector v)
  */
 void addUnit(int noPlayer, vector coordUnit){
 	vector tmp;
-	int name = grid[coordUnit.x][coordUnit.y].name;
+	int nameUnit = grid[coordUnit.x][coordUnit.y].name;
 
-	if(!liste_vide(noPlayer)){ // Vérifie que des unités sont dans la liste
-		en_queue(noPlayer);
-		valeur_elt(noPlayer, &tmp);
 
-		if(grid[tmp.x][tmp.y].name / 2 > name ){ // Optimisation sur le traitement
-			en_tete(noPlayer);
-			valeur_elt(noPlayer, &tmp);
-			while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < name){
-				valeur_elt(noPlayer, &tmp);
-				suivant(noPlayer);
-			}
-			ajout_droit(noPlayer, coordUnit);
+	en_tete(noPlayer);
 
-		}else{
+	if(liste_vide(noPlayer)) ajout_droit(noPlayer, coordUnit);
+	else{
+		valeur_elt(noPlayer,&tmp);
+
+		while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < nameUnit){
+			suivant(noPlayer);
+			valeur_elt(noPlayer,&tmp);
+		}
+		
+		if(hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < nameUnit){
 			en_queue(noPlayer);
-			valeur_elt(noPlayer, &tmp);
-			while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name > name){
-				valeur_elt(noPlayer, &tmp);
-				precedent(noPlayer);
-			}
+			ajout_droit(noPlayer, coordUnit);
+		}else{
+			if(hors_liste(noPlayer)) en_queue(noPlayer);	
+
 			ajout_gauche(noPlayer, coordUnit);
 		}
-
-	}else{
-		en_tete(noPlayer);
-		ajout_droit(noPlayer, coordUnit);
 	}
+
 }
 
 void printList(int noPlayer){
 	vector tmp;
 	en_tete(noPlayer);
 
-	while(!hors_liste(noPlayer)){
+	while(!hors_liste(noPlayer) && !liste_vide(noPlayer)){
 		valeur_elt(noPlayer, &tmp);
-		suivant(noPlayer);
 		printf("Val:%i x -> %i y -> %i\n",grid[tmp.x][tmp.y].name ,tmp.x, tmp.y);
+		suivant(noPlayer);
 	}
 }
 

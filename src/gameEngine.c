@@ -88,7 +88,7 @@ void playerAddUnit(int noPlayer, int nbUnit){
 
 	getCoordS(coordString, &coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
 	free(coordString);
-
+	
 	grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
 	
 	clearScreen();

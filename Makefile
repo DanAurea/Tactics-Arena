@@ -18,12 +18,13 @@ src/grid.o: $(INC)gameEngine.h $(INC)menu.h
 
 src/menu.o: $(INC)gameEngine.h $(INC)menu.h
 
+src/listes.o: $(INC)gameEngine.h $(INC)menu.h
+
 src/%.o: %.c $(INC)gameEngine.h
 	$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
 
 src/units/%.o: %.c $(INC)gameEngine.h
 	$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
-
 
 clean:
 	@rm -rf ./$(OBJ)
