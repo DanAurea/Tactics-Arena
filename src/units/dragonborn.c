@@ -3,7 +3,7 @@
 /**
 * Initialise l'unité
 */
-void dragonbornInit(vector coordUnit, int noPlayer){
+void dragonbornInit(int noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 30;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 22;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

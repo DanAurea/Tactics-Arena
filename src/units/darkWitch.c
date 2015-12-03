@@ -3,7 +3,7 @@
 /**
 * Initialise l'unité
 */
-void darkWitchInit(vector coordUnit, int noPlayer){
+void darkWitchInit(int noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 28;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 24;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

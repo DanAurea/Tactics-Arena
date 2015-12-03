@@ -124,3 +124,52 @@ void ajout_gauche(int n, vector v)
 		}
 }
 
+/**
+ * Ajoute une unité dans la liste des unités du joueur
+ * @param noPlayer  Joueur en cours       
+ * @param coordUnit Coordonnées de l'unité
+ */
+void addUnit(int noPlayer, vector coordUnit){
+	vector tmp;
+	int name = grid[coordUnit.x][coordUnit.y].name;
+
+	if(!liste_vide(noPlayer)){ // Vérifie que des unités sont dans la liste
+		en_queue(noPlayer);
+		valeur_elt(noPlayer, &tmp);
+
+		if(grid[tmp.x][tmp.y].name / 2 > name ){ // Optimisation sur le traitement
+			en_tete(noPlayer);
+			valeur_elt(noPlayer, &tmp);
+			while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < name){
+				valeur_elt(noPlayer, &tmp);
+				suivant(noPlayer);
+			}
+			ajout_droit(noPlayer, coordUnit);
+
+		}else{
+			en_queue(noPlayer);
+			valeur_elt(noPlayer, &tmp);
+			while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name > name){
+				valeur_elt(noPlayer, &tmp);
+				precedent(noPlayer);
+			}
+			ajout_gauche(noPlayer, coordUnit);
+		}
+
+	}else{
+		en_tete(noPlayer);
+		ajout_droit(noPlayer, coordUnit);
+	}
+}
+
+void printList(int noPlayer){
+	vector tmp;
+	en_tete(noPlayer);
+
+	while(!hors_liste(noPlayer)){
+		valeur_elt(noPlayer, &tmp);
+		suivant(noPlayer);
+		printf("Val:%i x -> %i y -> %i\n",grid[tmp.x][tmp.y].name ,tmp.x, tmp.y);
+	}
+}
+

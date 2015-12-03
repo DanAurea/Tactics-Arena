@@ -3,7 +3,7 @@
 /**
 * Initialise l'unité
 */
-void lightningTotemInit(vector coordUnit, int noPlayer){
+void lightningTotemInit(int noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 56;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 30;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.18;

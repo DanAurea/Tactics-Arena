@@ -3,7 +3,7 @@
 /**
 * Initialise l'unité
 */
-void furgonInit(vector coordUnit, int noPlayer){
+void furgonInit(int noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 48;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 0;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

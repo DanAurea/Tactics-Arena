@@ -5,67 +5,67 @@
 #include "../include/Outil.h"
 
 
-void unitInit(vector coordUnit, int noPlayer)
+void unitInit(int noPlayer, vector coordUnit)
 {
 	int nomUnit = grid[coordUnit.x][coordUnit.y].name;
 	switch(nomUnit)
 	{
 		case knight :
-			knightInit(coordUnit, noPlayer);
+			knightInit(noPlayer, coordUnit);
 		break;
 		case scout :
-			scoutInit(coordUnit, noPlayer);
+			scoutInit(noPlayer, coordUnit);
 		break;
 		case assassin :
-			assassinInit(coordUnit, noPlayer);
+			assassinInit(noPlayer, coordUnit);
 		break;
 		case cleric :
-			clericInit(coordUnit, noPlayer);
+			clericInit(noPlayer, coordUnit);
 		break;
 		case pyromancer :
-			pyromancerInit(coordUnit, noPlayer);
+			pyromancerInit(noPlayer, coordUnit);
 		break;
 		case enchantress :
-			enchantressInit(coordUnit, noPlayer);
+			enchantressInit(noPlayer, coordUnit);
 		break;
 		case dragonborn :
-			dragonbornInit(coordUnit, noPlayer);
+			dragonbornInit(noPlayer, coordUnit);
 		break;
 		case darkWitch :
-			darkWitchInit(coordUnit, noPlayer);
+			darkWitchInit(noPlayer, coordUnit);
 		break;
 		case lightningTotem :
-			lightningTotemInit(coordUnit, noPlayer);
+			lightningTotemInit(noPlayer, coordUnit);
 		break;
 		case barrierTotem :
-			barrierTotemInit(coordUnit, noPlayer);
+			barrierTotemInit(noPlayer, coordUnit);
 		break;
 		case mudGolem :
-			mudGolemInit(coordUnit, noPlayer);
+			mudGolemInit(noPlayer, coordUnit);
 		break;
 		case golemAmbusher :
-			ambusherGolemInit(coordUnit, noPlayer);
+			ambusherGolemInit(noPlayer, coordUnit);
 		break;
 		case frostGolem :
-			frostGolemInit(coordUnit, noPlayer);
+			frostGolemInit(noPlayer, coordUnit);
 		break;
 		case stoneGolem :
-			stoneGolemInit(coordUnit, noPlayer);
+			stoneGolemInit(noPlayer, coordUnit);
 		break;
 		case dragonTyrant :
-			dragonTyrantInit(coordUnit, noPlayer);
+			dragonTyrantInit(noPlayer, coordUnit);
 		break;
 		case berserker :
-			berserkerInit(coordUnit, noPlayer);
+			berserkerInit(noPlayer, coordUnit);
 		break;
 		case beastRider :
-			beastRiderInit(coordUnit, noPlayer);
+			beastRiderInit(noPlayer, coordUnit);
 		break;
 		case poisonWisp :
-			poisonWispInit(coordUnit, noPlayer);
+			poisonWispInit(noPlayer, coordUnit);
 		break;
 		case furgon :
-			furgonInit(coordUnit, noPlayer);
+			furgonInit(noPlayer, coordUnit);
 		break;
 	}
 }

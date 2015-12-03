@@ -3,7 +3,7 @@
 /**
 * Initialise l'unité
 */
-void berserkerInit(vector coordUnit, int noPlayer){
+void berserkerInit(int noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 42;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 22;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

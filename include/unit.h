@@ -10,4 +10,4 @@ void move(vector destination, vector source);
 void addEffect(vector target, unitEffect effect);
 void AoE(vector pos, int size, int dmg, bool own);
 void line(vector pos, int size, int dmg, int dir);
-void unitInit(vector coordUnit, int noPlayer);
+void unitInit(int noPlayer, vector coordUnit);

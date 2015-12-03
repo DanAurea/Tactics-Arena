@@ -3,7 +3,7 @@
 /**
 * Initialise l'unité
 */
-void barrierTotemInit(vector coordUnit, int noPlayer){
+void barrierTotemInit(int noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 32;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 0;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

@@ -94,10 +94,9 @@ void playerAddUnit(int noPlayer, int nbUnit){
 	clearScreen();
 	gridDisp(); // Affiche la grille actualisée
 	
-	unitInit(coordUnit, noPlayer);
-
-	en_tete(noPlayer);
-	//addUnit(noPlayer, coordUnit); // A faire !
+	unitInit(noPlayer, coordUnit);
+	addUnit(noPlayer, coordUnit);
+	printList(noPlayer);
 }
 
 /**

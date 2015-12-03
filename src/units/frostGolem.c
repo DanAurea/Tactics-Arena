@@ -3,7 +3,7 @@
 /**
 * Initialise l'unité
 */
-void frostGolemInit(vector coordUnit, int noPlayer){
+void frostGolemInit(int noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 60;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 0;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

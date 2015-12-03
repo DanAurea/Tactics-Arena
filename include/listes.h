@@ -13,3 +13,4 @@ void modif_elt(int,vector v);
 void oter_elt(int);
 void ajout_droit(int,vector v);
 void ajout_gauche(int,vector v);
+void printList(int noPlayer);

@@ -3,7 +3,7 @@
 /**
 * Initialise l'unité
 */
-void poisonWispInit(vector coordUnit, int noPlayer){
+void poisonWispInit(int noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 34;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 0;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;
