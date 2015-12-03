@@ -2,13 +2,11 @@ CC=gcc
 CFLAGS=-g -Wall -std=c99
 LDFLAGS=-lm
 EXEC=bin/tacticsArena
-SRC= $(wildcard src/*.c)
-UNITS= $(wildcard src/units/*.c)
-OBJUNITS= $(UNITS:.c=.o)
+SRC= $(wildcard src/*.c) $(wildcard src/units/*.c)
 OBJ= $(SRC:.c=.o)
 INC= include/
 
-$(EXEC): $(OBJ) $(OBJUNITS)
+$(EXEC): $(OBJ)
 	$(CC) -o $@ $^
 	@echo "\nOn reconstruit $@ a cause de $?"
 

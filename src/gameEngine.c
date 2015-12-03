@@ -1,10 +1,9 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include <ctype.h>
 #include "../include/gameEngine.h"
 #include "../include/grid.h"
 #include "../include/terminal.h"
+#include "../include/unit.h"
 #include "../include/menu.h"
 #include "../include/listes.h"
 #include "../include/manageString.h"
@@ -48,6 +47,8 @@ void gridInit(){
 
 /**
  * Placement des unités par le joueur
+ * @param noPlayer Joueur en cours 
+ * @param nbUnit   
  */
 void playerAddUnit(int noPlayer, int nbUnit){
 	int unitSelected;
@@ -68,17 +69,32 @@ void playerAddUnit(int noPlayer, int nbUnit){
 	coordString = (char *) malloc(4 * sizeof(char));
 	
 	do{
-		printf("Quelles sont les coordonnées de l'unité à placer ?");
-		scanf("%s", coordString);
+		fontColor(red);
+		if(noPlayer == 1){
+			printf("\nVous pouvez placer vos unités de %c à %c\n",'A' + N - 1, 'A' + N - NB_LINES);
+		}else{
+			printf("\nVous pouvez placer vos unités de %c à %c\n",'A', 'A' + NB_LINES - 1);
+		}
+		fontColor(white);
 		
-	}while(strlen(coordString) > 3); // Faire une fonction correctCoord(coordString);
+		printf("Quelles sont les coordonnées de l'unité à placer ?");
+		scanf("%s", coordString); // Saisie des coordonnées de l'unité
 
-	getCoordS( coordString, &coordUnit); 
+		if(!correctCoord(coordString, noPlayer)){
+			printf("Coordonnées incorrectes !\n");
+		}
+		
+	}while(!correctCoord(coordString, noPlayer)); // Faire une fonction correctCoord(coordString);
+
+	getCoordS(coordString, &coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
 	free(coordString);
 
 	grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
-	gridDisp();
-	//unitInit(coordUnit); // A faire !
+	
+	clearScreen();
+	gridDisp(); // Affiche la grille actualisée
+	
+	unitInit(coordUnit, noPlayer);
 
 	en_tete(noPlayer);
 	//addUnit(noPlayer, coordUnit); // A faire !
@@ -89,13 +105,21 @@ void playerAddUnit(int noPlayer, int nbUnit){
  */
 void playersInit(){
 
-	printf("Joueur 1: \n\n");
+	printf("Joueur 1: \n\n"); // Initialisation du joueur 1
 	for(int i = 0; i < NB_MAX_UNIT; i++){
+		fontColor(red);
+		printf("Il reste %i unités.\n", NB_MAX_UNIT - i);
+		fontColor(white);
+
 		playerAddUnit(1, i); // Ajout unité joueur 1
 	}
 
-	printf("\nJoueur 2: \n\n");
+	printf("\nJoueur 2: \n\n"); // Initialisation du joueur 2
 	for(int i = 0; i < NB_MAX_UNIT; i++){
+		fontColor(red);
+		printf("Il reste %i unités.\n", NB_MAX_UNIT - i);
+		fontColor(white);
+
 		playerAddUnit(2, i); // Ajout unité joueur 2
 	}
 }

@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <time.h>
 #include "../include/gameEngine.h"
 #include "../include/manageString.h"
 
@@ -59,7 +58,6 @@ void dispX(int * x, int row){
 
 /**
  * Affiche la grille avec les coordonnées
- * @param grid Grille à afficher
  */
 void gridDisp(){
 	int row, col, x = 1;
@@ -67,7 +65,7 @@ void gridDisp(){
     char uName[3];
     
 	printf("\n ");
-	grid[0][1].name = poisonWisp;
+
 	for(row = 0; row < N; row++){
 		for(col = 0; col < N; col++){
 			

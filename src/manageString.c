@@ -1,6 +1,4 @@
 #include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
 #include "../include/gameEngine.h"
 
@@ -27,8 +25,10 @@ char* nToS(int n) {
 }
 
 /**
-*	Récupère les coordonnées d'une chaîne de caractère sous
+*   Récupère les coordonnées d'une chaîne de caractère sous
 *	forme de vecteur x et y
+*   @param coordString Coordonnées saisie par l'utilisateur
+*   @param coordUnit Coordonnées de l'unité récupérées de la saisie utilisateur
 */
 void getCoordS(char coordString[], vector * coordUnit){
 	int sizeS = strlen(coordString);
@@ -46,7 +46,7 @@ void getCoordS(char coordString[], vector * coordUnit){
 					iCount++;
 					iString[iCount] = '\0';
 				}
-				coordUnit->y = atoi(iString);
+				coordUnit->y = atoi(iString)-1;
 		}
 	}
 }
@@ -63,6 +63,9 @@ char* get2Char(char name[]){
     
     if(strcmp(name, "Dragonborn") == 0){
         strcpy(partName, "Db");
+    }
+     if(strcmp(name, "Dark Witch") == 0){
+        strcpy(partName, "Dw");
     }
     else if(strcmp(name, "Dragon Tyrant") == 0){
         strcpy(partName, "Dt");
@@ -88,7 +91,7 @@ char* get2Char(char name[]){
     else if(strcmp(name, "Frost Golem") == 0){
         strcpy(partName, "Fg");
     }
-    else if(strcmp(name, "Stun Golem") == 0){
+    else if(strcmp(name, "Stone Golem") == 0){
         strcpy(partName, "Sg");
     }
     else if(strcmp(name, "Poison Wisp") == 0){
@@ -127,7 +130,7 @@ char* getNameUnit(unitName unit){
         case 12: strcpy(uName,"Mud Golem"); break;
         case 13: strcpy(uName,"Golem Ambusher"); break;
         case 14: strcpy(uName,"Frost Golem"); break;
-        case 15: strcpy(uName,"Stun Golem"); break;
+        case 15: strcpy(uName,"Stone Golem"); break;
         case 16: strcpy(uName,"Dragon Tyrant"); break;
         case 17: strcpy(uName,"Berserker"); break;
         case 18: strcpy(uName,"Beast Rider"); break;
@@ -145,4 +148,51 @@ char* getNameUnit(unitName unit){
  */
 void printNameUnit(unitName unit){
     printf("%s", getNameUnit(unit));
+}
+
+/**
+ * Vérifie que les coordonnées saisie par l'utilisateur sont correctes
+ * @param coordString Coordonnées de l'unité sous forme de chaîne saisie par l'utilisateur
+ * @param noPlayer Numéro du joueur
+ */
+bool correctCoord(char coordString[], int noPlayer){
+    int sizeS = strlen(coordString);
+    char iString[3];
+    int countNumbers = 0;
+    int countAlphas = 0;
+
+    if(sizeS > 3) return false;
+   
+    for(int i = 0; i < sizeS; i++){
+        
+        if(i > 0 && isdigit(coordString[i]) && 
+            isalpha(coordString[i-1]) && countNumbers == 1) return false; // Lettre / chiffre entremêlés
+        
+        if(isdigit(coordString[i])){
+            iString[countNumbers] = coordString[i]; // Forme l'entier
+            countNumbers++;
+        }
+
+        if(isalpha(coordString[i])) countAlphas++;
+        if(!isalnum(coordString[i])) return false;
+        
+        if((coordString[i] > 'A' + N -1 && coordString[i] < 'a') || coordString[i] > 'a' + N -1) return false; // Débordement lignes
+
+        if(isalpha(coordString[i])){ // Test sur la ligne de l'unité
+            
+            if(noPlayer == 1){ // Délimite le camp du joueur 1
+                if((coordString[i] < 'a' + N - NB_LINES && coordString[i] > 'a') || coordString[i] < 'A' + N - NB_LINES) return false;
+            }
+            
+            if(noPlayer == 2){ // Délimite le camp du joueur 2
+                if((coordString[i] >= 'A' + NB_LINES && coordString[i] < 'a') || coordString[i] >= 'a' + NB_LINES) return false;
+            }
+        }
+    }
+
+    // Trop de lettres / chiffres ou pas de lettres / chiffres
+    if(countNumbers == 0 || countNumbers == 3 || countAlphas == 0 || countAlphas == 3) return false;
+    if(atoi(iString) < 1 || atoi(iString) > 11) return false; // Débordement colonnes
+
+    return true;
 }

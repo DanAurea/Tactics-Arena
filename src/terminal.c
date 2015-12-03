@@ -8,46 +8,60 @@
  * @param  color Couleur demandée
  * @return       Code correspondant, écran blanc si code incorrect
  */
-char * getColor(int color){
-	char * colorToUse = NULL;
+char * getColor(int color, char type[]){
 
-	colorToUse = malloc(2 * sizeof(char));
+	if(strcmp(type, "Screen") == 0){
+		if(color == black) return "40"; // Screen color
+		if(color == red) return "41";
+		if(color == green) return "42";
+		if(color == yellow) return "43";
+		if(color == blue) return "44";
+		if(color == magenta) return "45";
+		if(color == cyan) return "46";
+		if(color == white) return "47";
+	}
 
-	if(color == fblack) return strcpy(colorToUse, "30"); // Font color
-	if(color == fred) return strcpy(colorToUse, "31");
-	if(color == fgreen) return strcpy(colorToUse, "32");
-	if(color == fyellow) return strcpy(colorToUse, "33");
-	if(color == fblue) return strcpy(colorToUse, "34");
-	if(color == fmagenta) return strcpy(colorToUse, "35");
-	if(color == fcyan) return strcpy(colorToUse, "36");
-	if(color == fwhite) return strcpy(colorToUse, "37");
-
-	if(color == sblack) return strcpy(colorToUse, "40"); // Screen color
-	if(color == sred) return strcpy(colorToUse, "41");
-	if(color == sgreen) return strcpy(colorToUse, "42");
-	if(color == syellow) return strcpy(colorToUse, "43");
-	if(color == sblue) return strcpy(colorToUse, "44");
-	if(color == smagenta) return strcpy(colorToUse, "45");
-	if(color == scyan) return strcpy(colorToUse, "46");
-	return strcpy(colorToUse, "47");
+	if(color == black) return "30"; // Font color
+	if(color == red) return "31";
+	if(color == green) return "32";
+	if(color == yellow) return "33";
+	if(color == blue) return "34";
+	if(color == magenta) return "35";
+	if(color == cyan) return "36";
+	return "37";
 }
 
 
 /**
  * Change la couleur de l'écran ou de la police
  * @param color Couleur à utiliser
+ * @param type Texte à changer de couleur ou arrière plan
  */
-void color(int color){
+void color(int color, char type[]){
 	char colorToUse[3];
 
-	strcpy(colorToUse, getColor(color));
+	strcpy(colorToUse, getColor(color, type));
 	
-	printf("\033[%sm",colorToUse);
+	printf("\033[%sm",colorToUse); // Change le texte / l'écran avec la couleur désirée
+	if(strcmp(type, "Screen") != 0){
+		printf("%s", type);
+		printf("\033[%sm", getColor(white, " ")); // Réinitialise le texte suivant en blanc
+	}
+}
+
+/**
+ * Change la couleur de la police
+ * @param color Couleur à utiliser
+ */
+void fontColor(int color){
+	printf("\033[%sm",getColor(color, " ")); // Change le texte avec la couleur désirée
 }
 
 /**
  * Efface l'écran
  */
 void clearScreen(){
+	printf("\033[H\033[2J");
+	printf("\033[H\033[2J");
 	printf("\033[H\033[2J");
 }

@@ -1,6 +1,5 @@
 /* Mise en oeuvre contigue d'un tableau de listes de vecteurs */
 #include <stdio.h>
-#include <stdlib.h>
 #include "../include/gameEngine.h"
 #include "../include/listes.h"
 

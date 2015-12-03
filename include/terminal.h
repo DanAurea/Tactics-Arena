@@ -1,6 +1,6 @@
-typedef enum{fblack = 30, fred, fgreen, fyellow, fblue, fmagenta, fcyan, fwhite}fterminal; /**< Font color */
-typedef enum{sblack = 40, sred, syellow, sgreen, sblue, smagenta, scyan, swhite}sterminal; /**< Screen color */
+typedef enum{black, red, green, yellow, blue, magenta, cyan, white}terminal; /**< Colors */
 typedef enum{blink = 5, invertColor= 7}screen; /**< Set screen action */
 
-void color(int color);
+void color(int color, char type[]);
+void fontColor(int color);
 void clearScreen();

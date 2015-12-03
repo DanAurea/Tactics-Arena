@@ -49,7 +49,7 @@ void unitInit(vector coordUnit, int noPlayer)
 		case frostGolem :
 			frostGolemInit(coordUnit, noPlayer);
 		break;
-		case stunGolem :
+		case stoneGolem :
 			stoneGolemInit(coordUnit, noPlayer);
 		break;
 		case dragonTyrant :

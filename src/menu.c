@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "../include/gameEngine.h"
 #include "../include/menu.h"
 #include "../include/terminal.h"
@@ -11,8 +10,8 @@
 void mainMenu(){
 	int choix;
 
-    color(fred); // Change la couleur des caractères suivants en rouge
-	printf("Bienvenue sur le jeu Tactics arena SPI deluxe edition \n");
+    color(red, "Bienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
+    
     do{
         printf("\nMenu principal :\n");
 		printf(" 1 - Nouvelle partie\n");
@@ -20,7 +19,6 @@ void mainMenu(){
 		printf(" 3 - Test de gameMenu \n");
         printf(" 4 - Quitter\n");
 		printf("Votre choix : ");
-        color(fwhite);
 		
         scanf("%i",&choix);
         switch(choix){

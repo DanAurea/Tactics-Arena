@@ -1,8 +1,10 @@
 #include "../../include/gameEngine.h"
 
 /**
-* Initialise l'unité
-*/
+ * Initialise un Scout
+ * @param coordUnit Coordonnées de l'unité
+ * @param noPlayer  Propriétaire de l'unité
+ */
 void scoutInit(vector coordUnit, int noPlayer){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 40;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 18;
@@ -27,8 +29,9 @@ void scoutInit(vector coordUnit, int noPlayer){
 }
 
 /**
-*	Initialise les cibles de l'unité	
-*/
+ * Initialise le champ de visée d'un Scout
+ * @param coordUnit Coordonnées de l'unité
+ */
 void scoutTarget(vector coordUnit)
 {
 	int k = 0;
@@ -37,7 +40,7 @@ void scoutTarget(vector coordUnit)
 	{
 		for(int j=-allonge_max;j<allonge_max;j++)
 		{
-			if(	abs(i)+abs(j) <= allonge_max && abs(i)+abs(j) > 0)
+			if(	abs(i) + abs(j) <= allonge_max && abs(i) + abs(j) > 0)
 			{
 				if(coordUnit.x+i >= 0 && coordUnit.x+i >= N && coordUnit.y+j >= 0 && coordUnit.y+j >= N)
 				{
