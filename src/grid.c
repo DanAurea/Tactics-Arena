@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../include/gameEngine.h"
+#include "../include/terminal.h"
 #include "../include/manageString.h"
 
 /**
@@ -71,16 +72,24 @@ void gridDisp(){
 			
             
 			dispX(&number, x); // Affiche les coordonnées horizontales
+            
             if(grid[x][y].name == empty){
                 strcpy(uName, "  ");
+            }else if(grid[x][y].name == decors){
+            	strcpy(uName, "xx");
             }else{
                 strcpy(uName, get2Char(getNameUnit(grid[x][y].name))); // Copie une portion du nom de l'unité dans uName
             }
             
+            if(grid[x][y].noPlayer == 1) fontColor(red);
+            if(grid[x][y].noPlayer == 2) fontColor(blue);
+
 			if(y == 0)
 				printf("%2c| %2s",' ', uName); // Affiche à la fois la bordure gauche et le nom de l'unité
 			else
 				printf("%4s", uName); // Affiche le nom de l'unité
+
+			fontColor(white);
 			
 			// Affiche les coordonnées verticales
 			if(y == N-1){

@@ -42,11 +42,20 @@ bool lookAround(vector currentUnit)
  * Initialise la grille
  */
 void gridInit(){
-	int x,y;
+	int x, y, nbDecors = 0;
 
 	for(x = 0; x < N; x++){
 		for(y = 0; y < N; y++){
-			grid[x][y].name = empty;
+			grid[x][y].name = empty; // Initialise à vide
+			grid[x][y].noPlayer = -1;
+			
+			if(x >= 0 + NB_LINES && x < N - NB_LINES && nbDecors < 7){
+				if(rand() % 100 > 92){ // Ajoute un décor aléatoirement
+					grid[x][y].name = decors;
+					nbDecors++;
+				}
+			}
+
 		}
 	}
 }
@@ -101,13 +110,12 @@ void playerAddUnit(int noPlayer, int * nbUnit){
 	}
 
 	grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
+	
+	unitInit(noPlayer, coordUnit); // Initialise l'unité ajoutée
+	addUnit(noPlayer, coordUnit);
 
 	clearScreen();
 	gridDisp(); // Affiche la grille actualisée
-	
-	unitInit(noPlayer, coordUnit);
-	addUnit(noPlayer, coordUnit);
-	printList(noPlayer);
 }
 
 /**

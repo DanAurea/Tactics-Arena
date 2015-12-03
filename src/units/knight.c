@@ -16,6 +16,8 @@ void knightInit(int noPlayer, vector coordUnit)
 	grid[coordUnit.x][coordUnit.y].stat.RECOVERY = 1;
 	grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE = 3;
 	
+	grid[coordUnit.x][coordUnit.y].noPlayer = noPlayer;
+	
 	for(int i = 0; i < NB_MAX_EFFECT; i++)
 	{
 		grid[coordUnit.x][coordUnit.y].effect[i] = none;

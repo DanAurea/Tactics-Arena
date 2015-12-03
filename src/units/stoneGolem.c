@@ -14,6 +14,8 @@ void stoneGolemInit(int noPlayer, vector coordUnit){
 	
 	grid[coordUnit.x][coordUnit.y].stat.RECOVERY = 4;
 	grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE = 2;
+
+	grid[coordUnit.x][coordUnit.y].noPlayer = noPlayer;
 	
 	for(int i = 0; i < NB_MAX_EFFECT; i++){
 		grid[coordUnit.x][coordUnit.y].effect[i] = none;

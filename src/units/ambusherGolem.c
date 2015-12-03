@@ -19,6 +19,8 @@ void ambusherGolemInit(int noPlayer, vector coordUnit){
 		grid[coordUnit.x][coordUnit.y].effect[i] = none;
 	}
 	
+	grid[coordUnit.x][coordUnit.y].noPlayer = noPlayer;
+
 	if(noPlayer == 1){
 		grid[coordUnit.x][coordUnit.y].direct = north;
 	}else{
