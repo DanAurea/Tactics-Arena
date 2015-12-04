@@ -81,11 +81,13 @@ void gridDisp(){
                 strcpy(uName, get2Char(getNameUnit(grid[x][y].name))); // Copie une portion du nom de l'unité dans uName
             }
             
+            if(y == 0) printf("  | "); // Affiche une bordure gauche
+
             if(grid[x][y].noPlayer == 1) fontColor(red);
             if(grid[x][y].noPlayer == 2) fontColor(blue);
 
 			if(y == 0)
-				printf("%2c| %2s",' ', uName); // Affiche à la fois la bordure gauche et le nom de l'unité
+				printf("%2s", uName); // Affiche le nom de l'unité lorsque près d'une bordure gauche
 			else
 				printf("%4s", uName); // Affiche le nom de l'unité
 

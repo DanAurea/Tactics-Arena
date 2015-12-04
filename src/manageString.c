@@ -165,12 +165,13 @@ bool correctCoord(char coordString[], int noPlayer){
    
     for(int i = 0; i < sizeS; i++){
         
-        if(i > 0 && isdigit(coordString[i]) && 
-            isalpha(coordString[i-1]) && countNumbers == 1) return false; // Lettre / chiffre entremÃªlÃ©s
+        if(isdigit(coordString[i]) && 
+            isalpha(coordString[i-1]) && countNumbers == 1) return false; // Lettre / chiffre entremêlés
         
         if(isdigit(coordString[i])){
             iString[countNumbers] = coordString[i]; // Forme l'entier
             countNumbers++;
+            iString[countNumbers] = '\0';
         }
 
         if(isalpha(coordString[i])) countAlphas++;
@@ -192,6 +193,7 @@ bool correctCoord(char coordString[], int noPlayer){
 
     // Trop de lettres / chiffres ou pas de lettres / chiffres
     if(countNumbers == 0 || countNumbers == 3 || countAlphas == 0 || countAlphas == 3) return false;
+
     if(atoi(iString) < 1 || atoi(iString) > 11) return false; // DÃ©bordements colonnes
 
     return true;
