@@ -180,16 +180,15 @@ void printList(int noPlayer){
 void destroyUnit(int noPlayer, vector coordUnit){
 	vector tmp;
 
-	en_queue(noPlayer);
+	en_tete(noPlayer);
 	valeur_elt(noPlayer, &tmp);
 
-	while(!hors_liste(noPlayer) && tmp.x != coordUnit.x && tmp.y != coordUnit.y){ // Cherche l'unité dans la liste
+	while(!hors_liste(noPlayer) && (tmp.x != coordUnit.x || tmp.y != coordUnit.y) ){ // Cherche l'unité dans la liste
+		suivant(noPlayer);
 		valeur_elt(noPlayer, &tmp);
-		precedent(noPlayer);
 	}
-
+	
 	if(tmp.x == coordUnit.x && tmp.y == coordUnit.y){ // Unité trouvée
-		if(hors_liste(noPlayer)) en_tete(noPlayer);
 		oter_elt(noPlayer);
 	}
 }
