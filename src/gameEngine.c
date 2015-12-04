@@ -82,7 +82,9 @@ void playerAddUnit(int noPlayer, int * nbUnit){
 	}while(unitSelected < knight -1 || unitSelected > furgon -1);
 
 	coordString = (char *) calloc(5, sizeof(char));
-
+	
+	clearBuffer(); // Vide stdin
+	
 	while(!correctCoord(coordString, noPlayer)){
 		fontColor(red);
 		if(noPlayer == 1){
@@ -93,10 +95,8 @@ void playerAddUnit(int noPlayer, int * nbUnit){
 		fontColor(white);
 		
 		printf("Quelles sont les coordonnées de l'unité à placer ?\n");
-		
-		clearBuffer(); // Vide stdin pour éviter d'avoir des caractères non désirables
 
-		read(coordString, 5);
+		read(coordString, 4); // Saisie sécurisée
 
 		if(!correctCoord(coordString, noPlayer)){
 			printf("Coordonnées incorrectes !\n");

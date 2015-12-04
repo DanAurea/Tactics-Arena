@@ -198,7 +198,7 @@ void clearBuffer()
 int read(char * string, short length)
 {
     char *enter = NULL;
- 
+
     if (fgets(string, length, stdin) != NULL){
         enter = strchr(string, '\n');
         
@@ -212,7 +212,6 @@ int read(char * string, short length)
         return 1;
     }
     else{
-        printf("test");
         clearBuffer();
         return 0;
     }

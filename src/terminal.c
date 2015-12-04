@@ -11,6 +11,7 @@
 char * getColor(int color, char type[]){
 
 	if(strcmp(type, "Screen") == 0){
+		if(color == reinit) return "0"; // Reinit default colors
 		if(color == black) return "40"; // Screen color
 		if(color == red) return "41";
 		if(color == green) return "42";
@@ -45,8 +46,8 @@ void color(int color, char type[]){
 	printf("\033[%sm",colorToUse); // Change le texte / l'écran avec la couleur désirée
 	if(strcmp(type, "Screen") != 0){
 		printf("%s", type);
-		printf("\033[%sm", getColor(white, " ")); // Réinitialise le texte suivant en blanc
 	}
+	printf("\033[%sm", getColor(reinit, "Screen")); // Réinitialise le texte suivant en blanc
 }
 
 /**

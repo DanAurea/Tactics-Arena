@@ -85,8 +85,7 @@ void gridDisp(){
             
             if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
 
-            if(grid[x][y].noPlayer == 1) fontColor(red);
-            if(grid[x][y].noPlayer == 2) fontColor(blue);
+           	fontColor(grid[x][y].unitColor);
 
 			if(y == 0)
 				printf(" %s", uName); // Affiche le nom de l'unitÃ© lorsque prÃ¨s d'une bordure gauche

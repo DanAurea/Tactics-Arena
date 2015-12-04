@@ -1,4 +1,5 @@
 #include "../../include/gameEngine.h"
+#include "../../include/terminal.h"
 
 /**
 * Initialise l'unité
@@ -26,10 +27,12 @@ void knightInit(int noPlayer, vector coordUnit)
 	if(noPlayer == 1)
 	{
 		grid[coordUnit.x][coordUnit.y].direct = north;
+		grid[coordUnit.x][coordUnit.y].unitColor = red;
 	}
 	else
 	{
 		grid[coordUnit.x][coordUnit.y].direct = south;
+		grid[coordUnit.x][coordUnit.y].unitColor = blue;
 	}
 }
 
