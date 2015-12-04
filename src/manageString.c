@@ -3,28 +3,6 @@
 #include "../include/gameEngine.h"
 
 /**
- * Convertis un entier en chaîne de caractère (maximum 2 chiffres)
- * @param  n Entier à convertir
- * @return   Retourne la chaîne de caractère contenant l'entier convertis
- */
-char* nToS(int n) {
-    char* nString = NULL;
-    
-    nString = malloc(3 * sizeof(char)); // Crée une zone mémoire contenant le nombre sous forme de chaîne
-    
-    if(n < 10){
-    	nString[0] = n + 48; // Conversion sur entier d'un chiffre
-    	nString[1] = '\0';
-    }else{
-    	nString[0] = (n / 10) + 48; // Conversion sur entier de deux chiffres
-    	nString[1] = (n % 10) + 48;
-    	nString[2] = '\0';
-    }
-    
-    return nString;
-}
-
-/**
 *   Récupère les coordonnées d'une chaîne de caractère sous
 *	forme de vecteur x et y
 *   @param coordString Coordonnées saisie par l'utilisateur
@@ -197,4 +175,45 @@ bool correctCoord(char coordString[], int noPlayer){
     if(atoi(iString) < 1 || atoi(iString) > 11) return false; // DÃ©bordements colonnes
 
     return true;
+}
+
+/**
+ * Vide le tampon mémoire
+ */
+void clearBuffer()
+{
+    short c = 0;
+    while (c != '\n' && c != EOF){
+        c = getchar();
+    }
+}
+
+/**
+ * Lit la chaîne de caractère passée en paramètre et vérifie
+ * qu'elle ne soit pas trop longue
+ * @param  string Chaîne de caractère à vérifier
+ * @param  length Taille désirée
+ * @return        Retourne 1 si chaîne correcte
+ */
+int read(char * string, short length)
+{
+    char *enter = NULL;
+ 
+    if (fgets(string, length, stdin) != NULL){
+        enter = strchr(string, '\n');
+        
+        if (enter != NULL){
+            *enter = '\0';
+        }
+        else{
+            clearBuffer();
+        }
+
+        return 1;
+    }
+    else{
+        printf("test");
+        clearBuffer();
+        return 0;
+    }
 }
