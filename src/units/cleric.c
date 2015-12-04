@@ -4,7 +4,7 @@
 /**
 * Initialise l'unité
 */
-void clericInit(int noPlayer, vector coordUnit){
+void clericInit(short noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 24;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 12;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

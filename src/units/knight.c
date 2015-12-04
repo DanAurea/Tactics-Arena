@@ -4,7 +4,7 @@
 /**
 * Initialise l'unité
 */
-void knightInit(int noPlayer, vector coordUnit)
+void knightInit(short noPlayer, vector coordUnit)
 {
 	grid[coordUnit.x][coordUnit.y].stat.HP = 50;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 22;

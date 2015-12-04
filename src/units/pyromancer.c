@@ -4,7 +4,7 @@
 /**
 * Initialise l'unité
 */
-void pyromancerInit(int noPlayer, vector coordUnit){
+void pyromancerInit(short noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 30;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 15;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

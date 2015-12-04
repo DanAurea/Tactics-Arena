@@ -4,7 +4,7 @@
 /**
 * Initialise l'unité
 */
-void dragonTyrantInit(int noPlayer, vector coordUnit){
+void dragonTyrantInit(short noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 28;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 24;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

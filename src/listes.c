@@ -130,7 +130,7 @@ void ajout_gauche(int n, vector v)
  * @param noPlayer  Joueur en cours       
  * @param coordUnit Coordonnées de l'unité
  */
-void addUnit(int noPlayer, vector coordUnit){
+void addUnit(short noPlayer, vector coordUnit){
 	vector tmp;
 	int nameUnit = grid[coordUnit.x][coordUnit.y].name;
 
@@ -159,7 +159,7 @@ void addUnit(int noPlayer, vector coordUnit){
  * Affiche la liste des unités
  * @param noPlayer [description]
  */
-void printList(int noPlayer){
+void printList(short noPlayer){
 	int i = 1;
 	vector tmp;
 	en_tete(noPlayer);
@@ -177,7 +177,7 @@ void printList(int noPlayer){
  * @param noPlayer  Joueur en cours
  * @param coordUnit Coordonnées de l'unité à détruire
  */
-void destroyUnit(int noPlayer, vector coordUnit){
+void destroyUnit(short noPlayer, vector coordUnit){
 	vector tmp;
 
 	en_tete(noPlayer);

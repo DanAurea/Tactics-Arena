@@ -133,7 +133,7 @@ void printNameUnit(unitName unit){
  * @param coordString Coordonnées de l'unité sous forme de chaîne saisie par l'utilisateur
  * @param noPlayer Numéro du joueur
  */
-bool correctCoord(char coordString[], int noPlayer){
+bool correctCoord(char coordString[], short noPlayer){
     int sizeS = strlen(coordString);
     char iString[3];
     int countNumbers = 0;

@@ -4,7 +4,7 @@
 /**
 * Initialise l'unité
 */
-void assassinInit(int noPlayer, vector coordUnit){
+void assassinInit(short noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 35;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 18;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.12;

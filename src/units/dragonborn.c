@@ -4,7 +4,7 @@
 /**
 * Initialise l'unité
 */
-void dragonbornInit(int noPlayer, vector coordUnit){
+void dragonbornInit(short noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 30;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 22;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

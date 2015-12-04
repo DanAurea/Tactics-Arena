@@ -4,7 +4,7 @@
 /**
 * Initialise l'unité
 */
-void ambusherGolemInit(int noPlayer, vector coordUnit){
+void ambusherGolemInit(short noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 60;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 20;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.0;

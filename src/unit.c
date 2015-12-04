@@ -5,7 +5,7 @@
 #include "../include/Outil.h"
 
 
-void unitInit(int noPlayer, vector coordUnit)
+void unitInit(short noPlayer, vector coordUnit)
 {
 	int nomUnit = grid[coordUnit.x][coordUnit.y].name;
 	switch(nomUnit)

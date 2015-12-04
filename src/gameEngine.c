@@ -39,6 +39,25 @@ bool lookAround(vector currentUnit)
 }
 
 /**
+ * Sélectionne une unité
+ * @param  coordUnit [description]
+ * @return           [description]
+ */
+bool selectUnit(vector * coordUnit, short noPlayer){
+	char * coordString;
+
+	coordString = (char *) calloc(5, sizeof(char));
+	read(coordString, 5);
+
+	getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
+
+	if(coordUnit->x < 0 || coordUnit->x > N || coordUnit->y < 0 || coordUnit->y > N) return false;
+	else if(grid[coordUnit->x][coordUnit->y].noPlayer != noPlayer) return false;
+	
+	return true;
+}
+
+/**
  * Initialise la grille
  */
 void gridInit(){
@@ -65,7 +84,7 @@ void gridInit(){
  * @param noPlayer Joueur en cours 
  * @param nbUnit   
  */
-void playerAddUnit(int noPlayer, int * nbUnit){
+void playerAddUnit(short noPlayer, int * nbUnit){
 	int unitSelected;
 	char * coordString;
 	vector coordUnit;
@@ -96,7 +115,7 @@ void playerAddUnit(int noPlayer, int * nbUnit){
 		
 		printf("Quelles sont les coordonnées de l'unité à placer ?\n");
 
-		read(coordString, 4); // Saisie sécurisée
+		read(coordString, 5); // Saisie sécurisée
 
 		if(!correctCoord(coordString, noPlayer)){
 			printf("Coordonnées incorrectes !\n");
@@ -133,7 +152,7 @@ void playersInit(){
 
 		playerAddUnit(1, &i); // Ajout unité joueur 1
 	}
-
+	
 	printf("\nJoueur 2: \n\n"); // Initialisation du joueur 2
 	for(int i = 0; i < NB_MAX_UNIT; i++){
 		fontColor(red);

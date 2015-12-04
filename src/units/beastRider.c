@@ -4,7 +4,7 @@
 /**
 * Initialise l'unité
 */
-void beastRiderInit(int noPlayer, vector coordUnit){
+void beastRiderInit(short noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 38;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 19;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.15;

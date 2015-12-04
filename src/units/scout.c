@@ -6,7 +6,7 @@
  * @param coordUnit Coordonnées de l'unité
  * @param noPlayer  Propriétaire de l'unité
  */
-void scoutInit(int noPlayer, vector coordUnit){
+void scoutInit(short noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 40;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 18;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.08;

@@ -4,7 +4,7 @@
 /**
 * Initialise l'unité
 */
-void stoneGolemInit(int noPlayer, vector coordUnit){
+void stoneGolemInit(short noPlayer, vector coordUnit){
 	grid[coordUnit.x][coordUnit.y].stat.HP = 60;
 	grid[coordUnit.x][coordUnit.y].stat.POWER = 0;
 	grid[coordUnit.x][coordUnit.y].stat.ARMOR = 0.30;
