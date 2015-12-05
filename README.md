@@ -47,7 +47,6 @@ Une fois ce temps expiré:
 ## A faire
  
  - **[x] Analyse préliminaire**
- - **[ ] Compte rendu mécaniques du jeu**
  - **[x] Analyse conceptuelle**
  - **[ ] Implémentation**
     - **[x] Grille**
