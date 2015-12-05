@@ -5,7 +5,7 @@
 #include "../include/manageString.h"
 
 /**
- * Affiche une bordure sur le cÃ´tÃ© droit sur les lignes vides et utiles
+ * Affiche une bordure sur le côté droit sur les lignes vides et utiles
  * @param row Ligne actuelle 
  */
 void borderRight(short row){
@@ -25,22 +25,22 @@ void borderRight(short row){
  * Affiche une bordure horizontale
  */
 void borderHoriz(){
-	int x = 0; // Initialisation pour barre de sÃ©paration
-	while( x < N){ // Affiche une barre de sÃ©paration
+	int x = 0; // Initialisation pour barre de séparation
+	while( x < N){ // Affiche une barre de séparation
 		printf("%s%s%s%s", HL, HL, HL, HL);
 		x = x +1;
 	}
 }
 
 /**
- * Affiche les coordonnÃ©es verticales
- * @param x Point de dÃ©part coordonnÃ©e X
+ * Affiche les coordonnées verticales
+ * @param x Point de départ coordonnÃ©e X
  * @param row Ligne de la grille actuellement en cours d'affichage
  */
 void dispX(){
 	for(short x = 1; x <= N; x++){
 		
-		// Affiche les coordonnÃ©es horizontales chiffrées
+		// Affiche les coordonnées horizontales chiffrées
 		if(x < 10)	printf("   %i", x);
 		else		printf("  %i", x);
 
@@ -48,12 +48,12 @@ void dispX(){
 			printf("\n  ");
 			
 			printf("%s", LT);
-			borderHoriz(); // Affiche une bordure horizontale dÃ©limitant le plateau
+			borderHoriz(); // Affiche une bordure horizontale délimitant le plateau
 			printf("%s", RT);
 
 			printf("\n");
 
-			borderRight(1); // ComplÃ¨te les bordures manquantes dÃ» au saut de ligne
+			borderRight(1); // Complète les bordures manquantes dû au saut de ligne
 
 			printf("\n");
 		}
@@ -61,7 +61,7 @@ void dispX(){
 }
 
 /**
- * Affiche la grille avec les coordonnÃ©es
+ * Affiche la grille avec les coordonnées
  */
 void gridDisp(){
 	int x, y;
@@ -70,7 +70,7 @@ void gridDisp(){
     
 	printf("\n ");
 
-	dispX(1); // Affiche les coordonnÃ©es horizontales
+	dispX(1); // Affiche les coordonnées horizontales
 
 	for(x = 0; x < N; x++){
 		for(y = 0; y < N; y++){
@@ -80,7 +80,7 @@ void gridDisp(){
             }else if(grid[x][y].name == decors){
             	strcpy(uName, "xx");
             }else{
-                strcpy(uName, get2Char(getNameUnit(grid[x][y].name))); // Copie une portion du nom de l'unitÃ© dans uName
+                strcpy(uName, get2Char(getNameUnit(grid[x][y].name))); // Copie une portion du nom de l'unité dans uName
             }
             
             if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
@@ -88,13 +88,13 @@ void gridDisp(){
            	fontColor(grid[x][y].unitColor);
 
 			if(y == 0)
-				printf(" %s", uName); // Affiche le nom de l'unitÃ© lorsque prÃ¨s d'une bordure gauche
+				printf(" %s", uName); // Affiche le nom de l'unité lorsque prés d'une bordure gauche
 			else
-				printf(" %s ", uName); // Affiche le nom de l'unitÃ©
+				printf(" %s ", uName); // Affiche le nom de l'unité
 
 			fontColor(white);
 			
-			// Affiche les coordonnÃ©es verticales
+			// Affiche les coordonnées verticales
 			if(y == N-1){
 				printf("%s   %c", VL, lettre);
 				lettre++;

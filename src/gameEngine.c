@@ -10,6 +10,7 @@
 
 unit grid[N][N];
 
+
 /**
  * Permet de savoir si l'unité courante est entourée
  * @param  currentUnit Unité courante
@@ -45,13 +46,17 @@ bool lookAround(vector currentUnit)
  */
 bool selectUnit(vector * coordUnit, short noPlayer){
 	char * coordString;
+	unitName name;
 
 	coordString = (char *) calloc(5, sizeof(char));
 	read(coordString, 5);
 
 	getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
 
-	if(coordUnit->x < 0 || coordUnit->x > N || coordUnit->y < 0 || coordUnit->y > N) return false;
+	name = grid[coordUnit->x][coordUnit->y].name;
+
+	if( name == empty || name == decors) return false;
+	else if(coordUnit->x < 0 || coordUnit->x > N || coordUnit->y < 0 || coordUnit->y > N) return false;
 	else if(grid[coordUnit->x][coordUnit->y].noPlayer != noPlayer) return false;
 	
 	return true;
@@ -144,7 +149,7 @@ void playerAddUnit(short noPlayer, int * nbUnit){
  */
 void playersInit(){
 
-	printf("Joueur 1: \n\n"); // Initialisation du joueur 1
+	printf("\nJoueur 1: \n\n"); // Initialisation du joueur 1
 	for(int i = 0; i < NB_MAX_UNIT; i++){
 		fontColor(red);
 		printf("Il reste %i unités.\n", NB_MAX_UNIT - i);
@@ -169,12 +174,11 @@ void playersInit(){
  */
 void gameInit(int * noPlayer){
 	srand(time(NULL));
-	
+
 	for(int i = 1; i < MAX_JOUEUR; i++)
 		init_liste(i);
 
 	gridInit();
 	playersInit();
 	* noPlayer = (rand() % 2) + 1; // Tire le joueur débutant la partie aléatoirement -> Segmentation fault pour le moment
-	printf("%i lol", *noPlayer);
 }
