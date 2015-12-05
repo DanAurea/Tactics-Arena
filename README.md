@@ -38,6 +38,7 @@ Une fois ce temps expiré:
    1. **[Règles](#markdown-header-regles)**
    2. **[Changelog](#markdown-header-changelog)**
      - **[Version 0.1](#markdown-header-version-01)**
+     - **[Version 0.53](#markdown-header-version-053)**
    3. **[A faire](#markdown-header-a-faire)**
    4. **[Instructions de compilation](#markdown-header-instructions-de-compilation)**
    5. **[Utilisation](#markdown-header-utilisation)**
@@ -69,6 +70,15 @@ Une fois ce temps expiré:
 ### Version 0.1
 
  - Mise en place sommaire des TAD
+
+### Version 0.53
+
+ - Initialisation du jeu
+ - Ajout des unités par le joueur
+ - Manipulation du terminal
+ - Grille flexible
+ - Mise en place de modules pour chaque unité
+ - Gestion des unités
 
 ## Instructions de compilation
 
