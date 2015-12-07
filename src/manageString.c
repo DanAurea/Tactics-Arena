@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
+#include <regex.h>
 #include "../include/gameEngine.h"
 
 /**
@@ -85,6 +86,81 @@ char* get2Char(char name[]){
 }
 
 /**
+ * Vérifie que les coordonnées sont dans la grille
+ * @param  coordString Coordonnées sous forme de chaîne
+ * @return             Retourne false si pas en dehors
+ */
+bool isOutGrid(char * coordString){
+    int sizeS = strlen(coordString);
+    char iString[3];
+    int countNumbers = 0;
+
+    for(int i = 0; i < sizeS; i++){
+        if((coordString[i] > 'A' + N -1 && coordString[i] < 'a') || coordString[i] > 'a' + N -1) return true; // Débordement lignes
+
+        if(isdigit(coordString[i])){
+            iString[countNumbers] = coordString[i]; // Forme l'entier
+            countNumbers++;
+            iString[countNumbers] = '\0';
+        }
+    }
+    if(atoi(iString) < 1 || atoi(iString) > N) return true; // Débordements colonnes
+
+    return false;
+}
+
+/**
+ * Sélectionne une coordonnée et vérifie son format
+ * @param coordString Chaîne de caractère à vérifier
+ * @return Vraie si les coordonnées saisies sont correctes
+ */
+bool correctCoord(char * coordString){
+    int err;
+    regex_t preg;
+    char * str_regex = "^[a-zA-Z]{1}[ ]?[0-9]{1,2}$"; // Regex à utiliser
+
+    err = regcomp(&preg, str_regex, REG_NOSUB | REG_EXTENDED); // Compile la regex
+    if(err == 0){
+        int match;
+
+        match = regexec(&preg, coordString, 0, NULL, 0); // Vérifie la concordance avec la regex
+
+        regfree(&preg); // Libère l'expression compilée
+
+        if( match == REG_NOMATCH){
+            return false; // Chaîne invalide
+        }
+    }
+
+    return !isOutGrid(coordString); // Retourne vrai si pas en dehors de la grille
+}
+
+/**
+ * Vérifie que l'unité est du bon côté
+ * @param  coordString Coordonnées sous forme de chaîne
+ * @param  noPlayer    Joueur en cours
+ * @return             Retourne vrai si du bon côté 
+ */
+bool rightSide(char * coordString, short noPlayer){
+    int sizeS = strlen(coordString);
+
+    for(int i = 0; i < sizeS; i++){
+        if(isalpha(coordString[i])){ // Test sur la ligne de l'unité
+            
+            if(noPlayer == 1){ // Délimite le camp du joueur 1
+                if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < 'A' + N - NB_LINES) return false;
+            }
+            
+            if(noPlayer == 2){ // Délimite le camp du joueur 2
+                if((coordString[i] < 'a' && coordString[i] >= 'A' + NB_LINES) || coordString[i] >= 'a' + NB_LINES) return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+/**
  * Récupère le nom de l'unité à partir de la liste énumérée
  * @param  unit Nom de l'unité provenant de la liste énumérée
  * @return      Nom de l'unité sous forme de chaîne    
@@ -126,55 +202,6 @@ char* getNameUnit(unitName unit){
  */
 void printNameUnit(unitName unit){
     printf("%s", getNameUnit(unit));
-}
-
-/**
- * Vérifie que les coordonnées saisie par l'utilisateur sont correctes
- * @param coordString Coordonnées de l'unité sous forme de chaîne saisie par l'utilisateur
- * @param noPlayer Numéro du joueur
- */
-bool correctCoord(char coordString[], short noPlayer){
-    int sizeS = strlen(coordString);
-    char iString[3];
-    int countNumbers = 0;
-    int countAlphas = 0;
-
-    if(sizeS > 3) return false;
-   
-    for(int i = 0; i < sizeS; i++){
-        
-        if(isdigit(coordString[i]) && 
-            isalpha(coordString[i-1]) && countNumbers == 1) return false; // Lettre / chiffre entremêlés
-        
-        if(isdigit(coordString[i])){
-            iString[countNumbers] = coordString[i]; // Forme l'entier
-            countNumbers++;
-            iString[countNumbers] = '\0';
-        }
-
-        if(isalpha(coordString[i])) countAlphas++;
-        if(!isalnum(coordString[i])) return false;
-        
-        if((coordString[i] > 'A' + N -1 && coordString[i] < 'a') || coordString[i] > 'a' + N -1) return false; // DÃ©bordements lignes
-
-        if(isalpha(coordString[i])){ // Test sur la ligne de l'unitÃ©
-            
-            if(noPlayer == 1){ // DÃ©limite le camp du joueur 1
-                if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < 'A' + N - NB_LINES) return false;
-            }
-            
-            if(noPlayer == 2){ // DÃ©limite le camp du joueur 2
-                if((coordString[i] < 'a' && coordString[i] >= 'A' + NB_LINES) || coordString[i] >= 'a' + NB_LINES) return false;
-            }
-        }
-    }
-
-    // Trop de lettres / chiffres ou pas de lettres / chiffres
-    if(countNumbers == 0 || countNumbers == 3 || countAlphas == 0 || countAlphas == 3) return false;
-
-    if(atoi(iString) < 1 || atoi(iString) > 11) return false; // DÃ©bordements colonnes
-
-    return true;
 }
 
 /**

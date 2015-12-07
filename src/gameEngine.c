@@ -48,8 +48,10 @@ bool selectUnit(vector * coordUnit, short noPlayer){
 	char * coordString;
 	unitName name;
 
-	coordString = (char *) calloc(5, sizeof(char));
-	read(coordString, 5);
+	do{
+		coordString = (char *) calloc(5, sizeof(char));
+		read(coordString, 5);
+	}while(!correctCoord(coordString));
 
 	getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
 
@@ -109,7 +111,7 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 	
 	clearBuffer(); // Vide stdin
 	
-	while(!correctCoord(coordString, noPlayer)){
+	do{
 		fontColor(red);
 		if(noPlayer == 1){
 			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i\n",'A' + N - 1, 'A' + N - NB_LINES, N);
@@ -122,10 +124,14 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 
 		read(coordString, 5); // Saisie sécurisée
 
-		if(!correctCoord(coordString, noPlayer)){
+		if(!correctCoord(coordString)){
 			printf("Coordonnées incorrectes !\n");
 		}
+		if(!rightSide(coordString, noPlayer)){
+			printf("Unité non placée dans le bon camp !");
+		}
 	}
+	while(!correctCoord(coordString) || !rightSide(coordString, noPlayer));
 
 	getCoordS(coordString, &coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
 	free(coordString);
@@ -172,7 +178,7 @@ void playersInit(){
  * Initialise la partie
  * @param noPlayer Entier réprésentant le joueur
  */
-void gameInit(int * noPlayer){
+void gameInit(short * noPlayer){
 	srand(time(NULL));
 
 	for(int i = 1; i < MAX_JOUEUR; i++)

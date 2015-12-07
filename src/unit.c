@@ -215,6 +215,8 @@ void copy(unit * destination, unit * source)
 	{
 		destination->effect[i] = source->effect[i];
 	}
+	// TODO
+	// Copier couleur unité + no Joueur
 }
 
 
@@ -228,6 +230,8 @@ void move(vector destination, vector source)
 	{
 		copy(&grid[destination.x][destination.y],&grid[source.x][source.y]);
 		grid[source.x][source.y].name = empty;
+		// TODO
+		// Remettre à zéro l'unite source -> Sinon c'est pas bien !!!
 	}
 }
 
