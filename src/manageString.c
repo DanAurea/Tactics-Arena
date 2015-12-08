@@ -1,6 +1,5 @@
 #include <ctype.h>
 #include <stdio.h>
-#include <regex.h>
 #include "../include/gameEngine.h"
 
 /**
@@ -115,20 +114,19 @@ bool isOutGrid(char * coordString){
  * @return Vraie si les coordonnées saisies sont correctes
  */
 bool correctCoord(char * coordString){
-    int err;
-    regex_t preg;
-    char * str_regex = "^[a-zA-Z]{1}[ ]?[0-9]{1,2}$"; // Regex à utiliser
 
-    err = regcomp(&preg, str_regex, REG_NOSUB | REG_EXTENDED); // Compile la regex
-    if(err == 0){
-        int match;
+    if( (coordString[0] >= 'a' && coordString[0] <= 'z') || (coordString[0] >= 'A' && coordString[0] <= 'Z')){
+        
+        if(coordString[1] != ' '){
+            return false;
+        }
 
-        match = regexec(&preg, coordString, 0, NULL, 0); // Vérifie la concordance avec la regex
+        if( ((coordString[2] >= '9' && coordString[2] <= '0') || (coordString[3] >= '9' && coordString[3] <= '0')) && coordString[4] != '\n'){
+            return false;    
+        }
 
-        regfree(&preg); // Libère l'expression compilée
-
-        if( match == REG_NOMATCH){
-            return false; // Chaîne invalide
+        if( ((coordString[1] >= '9' && coordString[1] <= '0') || (coordString[2] >= '9' && coordString[2] <= '0')) && coordString[3] != '\n'){
+            return false;
         }
     }
 

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdarg.h>
 #include <time.h>
 #include "../include/gameEngine.h"
 #include "../include/grid.h"
@@ -8,8 +9,106 @@
 #include "../include/listes.h"
 #include "../include/manageString.h"
 
-unit grid[N][N];
+unit grid[N][N]; /**< Grille d'unités */
+unit * pawns = NULL; /**< Pions initialisés avec leur valeurs */
 
+/**
+ * Initialise un pion
+ * @param pawn Pion à initialiser
+ */
+void initPawn(unit * pawn){
+	pawn->stat.HP = -1;
+	pawn->stat.POWER = -1;
+	pawn->stat.ARMOR = -1;
+	
+	pawn->stat.BLOCK[0] = -1;
+	pawn->stat.BLOCK[1] = -1;
+	pawn->stat.BLOCK[2] = -1;
+	
+	pawn->stat.RECOVERY = -1;
+	pawn->stat.MOVE_RANGE = -1;
+	
+	for(int i = 0; i < NB_MAX_EFFECT; i++){
+		pawn->effect[i] = none;
+	}
+}
+
+/**
+ * Vérifie que le pion est correct
+ * @param  pawn Pion à vérifier
+ * @return      Retourne vrai si le pion est correct
+ */
+bool checkPawn(unit pawn){
+	if(pawn.stat.HP == -1 || pawn.stat.POWER == -1 
+		|| pawn.stat.ARMOR == -1) return false;
+	
+	if(pawn.stat.BLOCK[0] == -1 || pawn.stat.BLOCK[1] == -1 
+		|| pawn.stat.BLOCK[2] == -1) return false;
+	if(pawn.stat.RECOVERY == -1 || pawn.stat.MOVE_RANGE == -1) return false;
+	
+	return true;
+}
+
+/**
+ * Crée un pion pour le jeu
+ * @param n Nombre de pions actuel
+ * @param nbParams Nombre de stats pour le pion
+ * @param name Nom du pion
+ */
+void createPawn(int * nbPawns, int nbParams, unitName name, ...){
+	unit  pawn;
+	va_list stats;
+
+	if(* nbPawns == 0){ // Alloue de la mémoire pour les pions
+		pawns = malloc( *nbPawns + 1 * sizeof(unit));
+		if(pawns == NULL){
+			puts("\nError allocating memory !\n");
+		}
+	}else{
+		pawns = realloc(pawns, *nbPawns + 1 * sizeof(unit));
+		if(pawns == NULL){
+			puts("\nError reallocating memory !\n");
+		}
+	}
+
+	if(pawns == NULL){ // Libère la mémoire en cas d'erreur
+		free(pawns);
+		exit(1);
+	}
+
+	initPawn(&pawn); // Initialise le pion
+
+	pawn.name = name;
+
+	va_start(stats, name);
+	
+	if(nbParams >= MANDATORY_STATS){
+		for(int i = 0; i < MANDATORY_STATS; i++){ // Initialise le pion avec les paramètres désirés
+			if(i == 0) pawn.stat.HP = va_arg(stats, int);
+			if(i == 1) pawn.stat.POWER = va_arg(stats, int);
+			if(i == 2) pawn.stat.ARMOR = va_arg(stats, double);
+			if(i == 3) pawn.stat.BLOCK[0] = va_arg(stats, double);
+			if(i == 4) pawn.stat.BLOCK[1] = va_arg(stats, double);
+			if(i == 5) pawn.stat.BLOCK[2] = va_arg(stats, double);
+			if(i == 6) pawn.stat.RECOVERY = va_arg(stats, int);
+			if(i == 7) pawn.stat.MOVE_RANGE = va_arg(stats, int);
+		}
+	}else{
+		printf("\nError not enough parameters for pawn creation !\n");
+	}
+
+	va_end(stats);
+
+
+	if(!checkPawn(pawn)){ // Vérifie les valeurs passées en paramètres
+		printf("\n Error during pawn creation, %s couldn't be initialized correctly !\n",
+				getNameUnit(pawn.name));
+		exit(1);
+	}else{
+		pawns[* nbPawns] = pawn;
+		* nbPawns = * nbPawns + 1; // Agrandis le tableau pour le prochain ajout
+	}
+}
 
 /**
  * Permet de savoir si l'unité courante est entourée
@@ -114,9 +213,9 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 	do{
 		fontColor(red);
 		if(noPlayer == 1){
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i\n",'A' + N - 1, 'A' + N - NB_LINES, N);
+			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format A 01 \n",'A' + N - 1, 'A' + N - NB_LINES, N);
 		}else{
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i\n",'A', 'A' + NB_LINES - 1, N);
+			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format A 01 \n",'A', 'A' + NB_LINES - 1, N);
 		}
 		fontColor(white);
 		

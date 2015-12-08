@@ -88,7 +88,7 @@ void gridDisp(){
            	fontColor(grid[x][y].unitColor);
 
 			if(y == 0)
-				printf(" %s", uName); // Affiche le nom de l'unité lorsque prés d'une bordure gauche
+				printf("%s ", uName); // Affiche le nom de l'unité lorsque prés d'une bordure gauche
 			else
 				printf(" %s ", uName); // Affiche le nom de l'unité
 
@@ -104,7 +104,7 @@ void gridDisp(){
 		
 		printf("\n");
 		
-		if(x == N-1){ // Affiche la bordure base de la grille
+		if(x == N-1){ // Affiche la bordure basse de la grille
 			printf("  %s", LB);
 			borderHoriz();
 			printf("%s", RB);

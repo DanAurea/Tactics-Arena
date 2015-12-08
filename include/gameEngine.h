@@ -7,7 +7,14 @@
 #define NB_LINES 2 /**< Limite du camp du joueur */
 #define NB_MAX_EFFECT 6 /**< Nombre total de status différent */
 #define MAX_RANGE 36 /**< Portée max des actions */
-#define NB_MAX_KNIGHT 3 /**< Nombre max de guerrier par joueur */
+#define MANDATORY_STATS 8 /**< Nombre de stats obligatoire */
+
+#define NB_MAX_KN 3 /**< Nombre max de Guerrier par joueur */
+#define NB_MAX_SC 2 /**< Nombre max de Recrue par joueur */
+#define NB_MAX_SG 2 /**< Nombre max de Golem de pierre par joueur */
+#define NB_MAX_LT 1 /**< Nombre max de Lightning totem par joueur */
+#define NB_MAX_DR 2 /**< Nombre max de Dragon par joueur */
+#define NB_MAX_FU 2 /**< Nombre max de Furgon par joueur */
 #define NB_MAX_UNIT 10 /**< Nombre max d'unité par joueur */
 #define NB_MAX_DECOR 7 /**< Nombre max de décor */
 
