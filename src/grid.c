@@ -41,8 +41,7 @@ void dispX(){
 	for(short x = 1; x <= N; x++){
 		
 		// Affiche les coordonnées horizontales chiffrées
-		if(x < 10)	printf("   %i", x);
-		else		printf("  %i", x);
+		printf("   %i", x);
 
 		if(x == N){
 			printf("\n  ");

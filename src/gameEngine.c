@@ -173,7 +173,8 @@ void gridInit(){
 		for(y = 0; y < N; y++){
 			grid[x][y].name = empty; // Initialise à vide
 			grid[x][y].noPlayer = -1;
-			
+			grid[x][y].unitColor = white;
+
 			if(x >= 0 + NB_LINES && x < N - NB_LINES && nbDecors < 7){
 				if(rand() % 100 > 92){ // Ajoute un décor aléatoirement
 					grid[x][y].name = decors;
@@ -285,5 +286,5 @@ void gameInit(short * noPlayer){
 
 	gridInit();
 	playersInit();
-	* noPlayer = (rand() % 2) + 1; // Tire le joueur débutant la partie aléatoirement -> Segmentation fault pour le moment
+	* noPlayer = (rand() % 2) + 1; // Tire le joueur débutant la partie aléatoirement
 }
