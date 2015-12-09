@@ -9,7 +9,7 @@
  */
 void mainMenu(){
 	int choix;
-
+	
     color(red, "Bienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
     
     do{

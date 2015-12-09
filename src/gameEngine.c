@@ -285,6 +285,6 @@ void gameInit(short * noPlayer){
 		init_liste(i);
 
 	gridInit();
-	playersInit();
+	//playersInit();
 	* noPlayer = (rand() % 2) + 1; // Tire le joueur débutant la partie aléatoirement
 }

@@ -29,7 +29,8 @@ typedef struct{int x; int y;}vector; /**< Représentation d'un vecteur */
 typedef struct{unitName name; unitStat stat; vector unitTarget[MAX_RANGE]; unitEffect effect[NB_MAX_EFFECT];short direct; short noPlayer; short unitColor;}unit; /**< */
 typedef struct{vector coordUnit; vector fieldAction[MAX_RANGE];}unitAction; /**< Actions possibles par une unité */
 extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
-
+extern unit * pawns;
 
 bool lookAround(vector currentUnit);
 void gameInit();
+void createPawn(int * nbPawns, int nbParams, unitName name, ...);
