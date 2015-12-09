@@ -14,6 +14,7 @@ void getCoordS(char coordString[], vector * coordUnit){
 	char iString[3];
 	
 	for(int i = 0; i < sizeS; i++){
+
 		if(coordString[i] >= 'a' && coordString[i] <= 'z' ){
 			coordUnit->x = coordString[i] - 'a';
 		}else if(coordString[i] >= 'A' && coordString[i] <= 'Z' ){
@@ -27,6 +28,7 @@ void getCoordS(char coordString[], vector * coordUnit){
 				coordUnit->y = atoi(iString)-1;
 		}
 	}
+
 }
 
 /**
@@ -145,11 +147,11 @@ bool rightSide(char * coordString, short noPlayer){
     for(int i = 0; i < sizeS; i++){
         if(isalpha(coordString[i])){ // Test sur la ligne de l'unité
             
-            if(noPlayer == 1){ // Délimite le camp du joueur 1
+            if(noPlayer == FIRST_PLAYER){ // Délimite le camp du joueur 1
                 if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < 'A' + N - NB_LINES) return false;
             }
             
-            if(noPlayer == 2){ // Délimite le camp du joueur 2
+            if(noPlayer == FIRST_PLAYER + 1){ // Délimite le camp du joueur 2
                 if((coordString[i] < 'a' && coordString[i] >= 'A' + NB_LINES) || coordString[i] >= 'a' + NB_LINES) return false;
             }
         }

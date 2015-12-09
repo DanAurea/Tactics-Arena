@@ -10,11 +10,11 @@
  * @param coordUnit Coordonnées de l'unité
  */
 void unitInit(short noPlayer, vector coordUnit)
-{
+{	
 	int unitName = grid[coordUnit.x][coordUnit.y].name;
     copy (&grid[coordUnit.x][coordUnit.y],&pawns[unitName]); //unitName à la place de 0
     grid[coordUnit.x][coordUnit.y].noPlayer=noPlayer;
-    if(noPlayer == 0)
+    if(noPlayer == FIRST_PLAYER)
     {
         grid[coordUnit.x][coordUnit.y].unitColor=red;
         setDirection(coordUnit,north);
@@ -90,7 +90,7 @@ bool canMove(unit * target)
     bool out = true;
     for(int i = 0;i<NB_MAX_EFFECT;i++)
     {
-    	if(target-> effect[i]<5)
+    	if(target-> effect[i] == 5)
         {
         	out = false;
         }
@@ -149,7 +149,8 @@ void attack(vector source, vector target)
 	copie la structure unité source vers la structure unité destination
 */
 void copy(unit * destination, unit * source)
-{
+{	
+	
 	destination->name		 = 	source->name;
 	destination->stat.HP	 = 	source->stat.HP;
 	destination->stat.POWER	 = 	source->stat.POWER;

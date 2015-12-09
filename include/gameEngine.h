@@ -10,6 +10,7 @@
 #define MAX_RANGE 36 /**< Portée max des actions */
 #define MANDATORY_STATS 8 /**< Nombre de stats obligatoire */
 
+#define FIRST_PLAYER 0 /**< Définis la valeur du premier joueur */
 #define NB_MAX_KN 3 /**< Nombre max de Guerrier par joueur */
 #define NB_MAX_SC 2 /**< Nombre max de Recrue par joueur */
 #define NB_MAX_SG 2 /**< Nombre max de Golem de pierre par joueur */

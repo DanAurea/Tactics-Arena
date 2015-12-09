@@ -92,6 +92,28 @@ void setTarget(unitName name, char * type, short horizRange, short vertRange, sh
 }
 
 /**
+ * Fait la liste des unités déplaçables
+ * @param movableUnit Tableau des unités déplaçables
+ * @param noPlayer    Joueur en cours
+ */
+void movable(vector movableUnit[], short noPlayer){
+	vector coordUnit;
+	en_tete(noPlayer);
+	short currentUnit = 0;
+
+	while(!hors_liste(noPlayer)){
+		valeur_elt(noPlayer, &coordUnit);
+		suivant(noPlayer);
+
+		if(!lookAround(coordUnit) && canMove(&grid[coordUnit.x][coordUnit.y])){ // Unité non entourée par ennemi + non paralysée
+			movableUnit[currentUnit] = coordUnit;
+			//printf("%i - %i\n", coordUnit.x, coordUnit.y);
+			currentUnit++;
+		}
+	}
+}
+
+/**
  * Vérifie que le pion est correct
  * @param  pawn Pion à vérifier
  * @return      Retourne vrai si le pion est correct
@@ -184,9 +206,8 @@ void createPawn(int * nbPawns, int nbParams, unitName name, ...){
 }
 
 void makePawns(){
-	
-	
-	
+	createPawn(&sizePawns, 8, empty, 0, 0, 0, 0, 0, 0, 0, 0);
+	createPawn(&sizePawns, 8, decors, 0, 0, 0, 0, 0, 0, 0, 0);
 	/* 
 		Ordre params: Nombre de pions, nombre paramètres, nom unité,
 					HP, Power, Armor, Block[0], Block[1], Block[2],
@@ -217,7 +238,7 @@ void makePawns(){
 /**
  * Permet de savoir si l'unité courante est entourée
  * @param  currentUnit Unité courante
- * @return             True si unité entourée
+ * @return             Retourne vrai si unité entourée
  */
 bool lookAround(vector currentUnit)
 {
@@ -225,19 +246,22 @@ bool lookAround(vector currentUnit)
 	unit source = grid[currentUnit.x][currentUnit.y];
 	unit target;
 
-	for(int i = currentUnit.x - 1; i < currentUnit.x + 1 && surrounded; i++)
+	for(int x = currentUnit.x - 1; x < currentUnit.x + 1 && surrounded; x++)
 	{
-		for(int j = currentUnit.y - 1; j < currentUnit.y + 1 && surrounded; j++)
-		{
-			if(abs(i) + abs(j) == 1 && i >= 0 && i < N && j >= 0 && j < N){ // Croix centrée sur l'unité courante
+		for(int y = currentUnit.y - 1; y < currentUnit.y + 1 && surrounded; y++)
+		{	
 
-				if(grid[currentUnit.x+i][currentUnit.y+j].name == empty)
-				{
-					target = grid[currentUnit.x + i][currentUnit.y + j];
+			if(abs(currentUnit.x - x) + abs(currentUnit.y - y) == 1 && x >= 0 && x < N && y >= 0 && y < N){ // Croix centrée sur l'unité courante
+				target = grid[currentUnit.x + x][currentUnit.y + y];
+				
+				if(target.name == empty){
+					surrounded=false;
+				}else if(target.name != decors){
 					if(source.noPlayer == target.noPlayer && canGetPassed(&target)){ // Unité allié pouvant être traversée
 						surrounded=false;
 					}
 				}
+
 			}
 		}
 	}
@@ -274,12 +298,14 @@ bool selectUnit(vector * coordUnit, short noPlayer){
  */
 void gridInit(){
 	int x, y, nbDecors = 0;
+	vector coordUnit;
 
 	for(x = 0; x < N; x++){
 		for(y = 0; y < N; y++){
+			coordUnit.x = x;
+			coordUnit.y = y;
+
 			grid[x][y].name = empty; // Initialise à vide
-			grid[x][y].noPlayer = -1;
-			grid[x][y].unitColor = white;
 
 			if(x >= 0 + NB_LINES && x < N - NB_LINES && nbDecors < 7){
 				if(rand() % 100 > 92){ // Ajoute un décor aléatoirement
@@ -287,6 +313,9 @@ void gridInit(){
 					nbDecors++;
 				}
 			}
+
+			unitInit(-1, coordUnit); // Initialise avec les données par défaut
+			grid[x][y].unitColor = white;
 
 		}
 	}
@@ -301,6 +330,7 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 	int unitSelected;
 	char * coordString;
 	vector coordUnit;
+	vector movableUnit[NB_MAX_UNIT];
 
 	unitList(); // Affiche la liste des unités du jeu
 	
@@ -319,7 +349,7 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 	
 	do{
 		fontColor(red);
-		if(noPlayer == 1){
+		if(noPlayer == FIRST_PLAYER){
 			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format A 01 \n",'A' + N - 1, 'A' + N - NB_LINES, N);
 		}else{
 			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format A 01 \n",'A', 'A' + NB_LINES - 1, N);
@@ -352,6 +382,7 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 	unitInit(noPlayer, coordUnit); // Initialise l'unité ajoutée
 	addUnit(noPlayer, coordUnit);
 
+	movable(movableUnit, noPlayer);
 	clearScreen();
 	gridDisp(); // Affiche la grille actualisée
 }
@@ -381,10 +412,10 @@ void gameInit(short * noPlayer){
 	for(int i = 0; i < NB_UNITS; i++)
 		init_liste(i);
 
-	gridInit();
 	makePawns();
+	gridInit();
 
-	playerInit(0); // Initialisation du joueur 1
-	playerInit(1);
-	* noPlayer = (rand() % 1) + 1; // Tire le joueur débutant la partie aléatoirement
+	playerInit(FIRST_PLAYER); // Initialisation du joueur 1
+	playerInit(FIRST_PLAYER + 1);
+	* noPlayer = (rand() % (FIRST_PLAYER + 1)) + 1; // Tire le joueur débutant la partie aléatoirement
 }
