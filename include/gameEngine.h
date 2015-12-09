@@ -5,6 +5,7 @@
 
 #define N 11 /**< Taille de la grille */
 #define NB_LINES 2 /**< Limite du camp du joueur */
+#define NB_UNITS 20 /**< Nombre d'unités dans le jeu */
 #define NB_MAX_EFFECT 6 /**< Nombre total de status différent */
 #define MAX_RANGE 36 /**< Portée max des actions */
 #define MANDATORY_STATS 8 /**< Nombre de stats obligatoire */

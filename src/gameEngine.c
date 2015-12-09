@@ -65,7 +65,7 @@ void createPawn(int * nbPawns, int nbParams, unitName name, ...){
 			puts("\nError allocating memory !\n");
 		}
 	}else{
-		pawns = realloc(pawns, *nbPawns + 1 * sizeof(unit));
+		pawns = realloc(pawns, (*nbPawns + 1) * sizeof(unit));
 		if(pawns == NULL){
 			puts("\nError reallocating memory !\n");
 		}
@@ -108,6 +108,33 @@ void createPawn(int * nbPawns, int nbParams, unitName name, ...){
 		pawns[* nbPawns] = pawn;
 		* nbPawns = * nbPawns + 1; // Agrandis le tableau pour le prochain ajout
 	}
+}
+
+void makePawns(){
+	int n = 0;
+	
+	createPawn(&n, 8, empty, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0);
+	setTarget(knight,"square",1,1);
+	createPawn(&n, 8, decors, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0);
+	createPawn(&n, 8, knight, 50, 22, 0.25, 0.8, 0.4, 0.0, 1, 3);
+	createPawn(&n, 8, scout, 40, 18, 0.08, 0.6, 0.3, 0.0, 2, 4);
+	createPawn(&n, 8, assassin, 35, 18, 0.12, 0.7, 0.35, 0.0, 1, 4);
+	createPawn(&n, 8, cleric, 24, 12, 0.0, 0.0, 0.0, 0.0, 5, 3);
+	createPawn(&n, 8, pyromancer, 30, 15, 0.0, 0.33, 0.16, 0.0, 3, 3);
+	createPawn(&n, 8, enchantress, 35, 0, 0.0, 0.0, 0.0, 0.0, 3, 3);
+	createPawn(&n, 8, dragonborn, 30, 22, 0.0, 0.33, 0.16, 0.0, 3, 3);
+	createPawn(&n, 8, darkWitch, 28, 24, 0.0, 0.2, 0.1, 0.0, 3, 3);
+	createPawn(&n, 8, lightningTotem, 56, 30, 0.18, 1.0, 1.0, 1.0, 4, 0);
+	createPawn(&n, 8, barrierTotem, 32, 0, 0.0, 1.0, 1.0, 1.0, 2, 0);
+	createPawn(&n, 8, mudGolem, 60, 20, 0.0, 0.0, 0.0, 0.0, 2, 5);
+	createPawn(&n, 8, golemAmbusher, 60, 20, 0.0, 0.0, 0.0, 0.0, 3, 2);
+	createPawn(&n, 8, frostGolem, 60, 0, 0.0, 0.0, 0.0, 0.0, 2, 2);
+	createPawn(&n, 8, stoneGolem, 60, 0, 0.3, 0.0, 0.0, 0.0, 4, 2);
+	createPawn(&n, 8, dragonTyrant, 28, 24, 0.0, 0.2, 0.1, 0.0, 3, 3);
+	createPawn(&n, 8, berserker, 42, 22, 0.0, 0.25, 0.12, 0.0, 1, 3);
+	createPawn(&n, 8, beastRider, 38, 19, 0.15, 0.45, 0.22, 0.0, 1, 4);
+	createPawn(&n, 8, poisonWisp, 34, 0, 0.0, 0.0, 0.0, 0.0, 2, 6);
+	createPawn(&n, 8, furgon, 48, 0, 0.0, 0.5, 0.25, 0.0, 1, 3);
 }
 
 /**
@@ -280,7 +307,9 @@ void playersInit(){
  */
 void gameInit(short * noPlayer){
 	srand(time(NULL));
-
+	
+	makePawns();
+	
 	for(int i = 1; i < MAX_JOUEUR; i++)
 		init_liste(i);
 
