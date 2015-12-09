@@ -1,84 +1,40 @@
+#include <stdio.h>
 #include <math.h>
 #include "../include/gameEngine.h"
+#include "../include/terminal.h"
 #include "../include/unit.h"
-#include "../include/unitType.h"
-#include "../include/Outil.h"
 
+void tempUnit()
+{
+    int n=0;
+    createPawn(&n,8,knight,50,20,0.15,0.5,0.2,0.0,1,3);
+}
 
 void unitInit(short noPlayer, vector coordUnit)
 {
-	int nomUnit = grid[coordUnit.x][coordUnit.y].name;
-	switch(nomUnit)
-	{
-		case knight :
-			knightInit(noPlayer, coordUnit);
-		break;
-		case scout :
-			scoutInit(noPlayer, coordUnit);
-		break;
-		case assassin :
-			assassinInit(noPlayer, coordUnit);
-		break;
-		case cleric :
-			clericInit(noPlayer, coordUnit);
-		break;
-		case pyromancer :
-			pyromancerInit(noPlayer, coordUnit);
-		break;
-		case enchantress :
-			enchantressInit(noPlayer, coordUnit);
-		break;
-		case dragonborn :
-			dragonbornInit(noPlayer, coordUnit);
-		break;
-		case darkWitch :
-			darkWitchInit(noPlayer, coordUnit);
-		break;
-		case lightningTotem :
-			lightningTotemInit(noPlayer, coordUnit);
-		break;
-		case barrierTotem :
-			barrierTotemInit(noPlayer, coordUnit);
-		break;
-		case mudGolem :
-			mudGolemInit(noPlayer, coordUnit);
-		break;
-		case golemAmbusher :
-			ambusherGolemInit(noPlayer, coordUnit);
-		break;
-		case frostGolem :
-			frostGolemInit(noPlayer, coordUnit);
-		break;
-		case stoneGolem :
-			stoneGolemInit(noPlayer, coordUnit);
-		break;
-		case dragonTyrant :
-			dragonTyrantInit(noPlayer, coordUnit);
-		break;
-		case berserker :
-			berserkerInit(noPlayer, coordUnit);
-		break;
-		case beastRider :
-			beastRiderInit(noPlayer, coordUnit);
-		break;
-		case poisonWisp :
-			poisonWispInit(noPlayer, coordUnit);
-		break;
-		case furgon :
-			furgonInit(noPlayer, coordUnit);
-		break;
-	}
+	int unitName = grid[coordUnit.x][coordUnit.y].name;
+    copy (&grid[coordUnit.x][coordUnit.y],&pawns[unitName-2]); //unitName à la place de 0
+    grid[coordUnit.x][coordUnit.y].noPlayer=noPlayer;
+    if(noPlayer==1)
+    {
+        grid[coordUnit.x][coordUnit.y].unitColor=red;
+        setDirection(coordUnit,north);
+    }
+    else
+    {
+        grid[coordUnit.x][coordUnit.y].unitColor=blue;
+        setDirection(coordUnit,south);
+    }
 }
-
-
 
 /*
 	renvoie faux si l'unité est soumis à un effet negatif, vrai sinon.
 */
 bool canGetPassed(unit * target)
+//tester
 {
     bool out = true;
-    for(int i = 0;i<NB_MAX_EFFECT;i++)
+    for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
     	if(target-> effect[i]>2)
     	{
@@ -94,9 +50,10 @@ bool canGetPassed(unit * target)
 	renvoie faux si l'unité est soumis au effet PARALIZE ou FOCUS, vrai sinon.
 */
 bool canBlock(unit * target)
+//tester
 {
     bool out = true;
-    for(int i = 0;i<NB_MAX_EFFECT;i++)
+    for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
     	if(target-> effect[i]>4)
         {
@@ -112,9 +69,10 @@ bool canBlock(unit * target)
 	renvoie faux si l'unité est soumis au effet BARRIER, POISON ou PARALYSE, vrai sinon
 */
 bool canAttack(unit * target)
+//tester
 {
     bool out = true;
-    for(int i = 0;i<NB_MAX_EFFECT;i++)
+    for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
     	if(target-> effect[i]>3 && target-> effect[i]<6)
         {
@@ -130,11 +88,12 @@ bool canAttack(unit * target)
 	renvoie faux si l'unité est paralisée, vrai sinon
 */
 bool canMove(unit * target)
+//tester
 {
     bool out = true;
-    for(int i = 0;i<NB_MAX_EFFECT;i++)
+    for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[i]<5)
+    	if(target-> effect[i]==5)
         {
         	out = false;
         }
@@ -147,11 +106,11 @@ bool canMove(unit * target)
 /*
 	soigne l'unité target du montant du soin de l'unité cible
 */
-void heal(vector source, vector target)
+void heal(short noPlayer)
 {
-	unit * uTarget = &grid[target.x][target.y];
-	unit * uSource = &grid[source.x][source.y];
-    uTarget->stat.HP +=  uSource->stat.POWER;
+	//unit * uTarget = &grid[target.x][target.y];
+	//unit * uSource = &grid[source.x][source.y];
+    //uTarget->stat.HP +=  uSource->stat.POWER;
 }
 
 
@@ -163,7 +122,6 @@ int getSideAttacked(vector source, vector target )
 	unit * uTarget = &grid[target.x][target.y];
 	unit * uSource = &grid[source.x][source.y];
 	int sens = abs ( uSource->direct - uTarget->direct);
-	Assert1("getSideAttacked",bCroit(0,sens,2));
 	return sens;
 }
 
@@ -200,6 +158,7 @@ void attack(vector source, vector target)
 	copie la structure unité source vers la structure unité destination
 */
 void copy(unit * destination, unit * source)
+//tester
 {
 	destination->name		 = 	source->name;
 	destination->stat.HP	 = 	source->stat.HP;
@@ -215,27 +174,46 @@ void copy(unit * destination, unit * source)
 	{
 		destination->effect[i] = source->effect[i];
 	}
-	// TODO
-	// Copier couleur unité + no Joueur
+	destination->noPlayer=source->noPlayer;
+	destination->unitColor=source->unitColor;
 }
 
+void erase(unit * source)
+//tester
+{
+    source->stat.HP	 = 	-1;
+	source->stat.POWER	 = 	-1;
+	source->stat.ARMOR	 = 	-1;
+	source->stat.RECOVERY = 	-1;
+	for(int i = 0;i<3;i++)
+	{
+		source->stat.BLOCK[i] = -1;
+	}
+	source->stat.MOVE_RANGE = -1;
+	for(int i = 0;i<NB_MAX_EFFECT;i++)
+	{
+		source->effect[i] = -1;
+	}
+	source->noPlayer=-1;
+	source->unitColor=white;
+}
 
 /*
 	déplace l'unité se trouvant en pos[0] en pos[1].
 */
 void move(vector destination, vector source)
+//tester
 {
 	unit * uSource = &grid[source.x][source.y];
 	if(canMove(uSource))
 	{
 		copy(&grid[destination.x][destination.y],&grid[source.x][source.y]);
-		grid[source.x][source.y].name = empty;
-		// TODO
-		// Remettre à zéro l'unite source -> Sinon c'est pas bien !!!
+		erase(&grid[source.x][source.y]);
 	}
 }
 
 void setDirection(vector source, int dir)
+//tester
 {
 	unit * uSource = &grid[source.x][source.y];
 	uSource->direct = dir;
@@ -245,11 +223,11 @@ void setDirection(vector source, int dir)
 	Ajoute sur l'unité target l'effet effect.
 */
 void addEffect(vector target, unitEffect effect)
+//tester
 {
 	unit * uTarget = &grid[target.x][target.y];
 	int i = 0;
-	While(5);
-	while(bWhile(uTarget->effect[i] != none || uTarget->effect[i] != effect))
+	while(i<NB_MAX_EFFECT && (uTarget->effect[i] != none && uTarget->effect[i] != effect ))
 	{
 		i++;
 	}

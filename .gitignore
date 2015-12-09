@@ -3,6 +3,7 @@ bin/
 ._*
 *.cbp
 *.layout
+*.depend
 *.o
 *.out
 *#
