@@ -65,7 +65,7 @@ void dispX(){
 void gridDisp(){
 	int x, y;
 	char lettre = 'A';
-    char uName[3];
+    	char uName[3];
     
 	printf("\n ");
 
@@ -114,4 +114,43 @@ void gridDisp(){
 		printf("\n");
 	}
 	printf("\n");
+}
+
+
+// Découpage de l'affichage des cellules
+void top(){
+	printf("%s", LT);
+	printf("%s%s%s%s", HL, HL, HL, HL);
+	printf("%s", RT);
+}
+
+void center(unitName name){
+	char uName[3];
+	strcpy(uName, get2Char(name));
+	printf("%s", VL);
+	printf(" %s ", uName);
+	printf("%s", VL);
+}
+
+void bottom(){
+	printf("%s", LB);
+	printf("%s%s%s%s", HL, HL, HL, HL);
+	printf("%s", RB);
+}
+
+//Utilise les fonctions précédentes pour créer des cases individuelles
+void dispTile (int row) {
+	
+	int i, col;
+	for(i=0; i<N; i++) {
+		top();
+	}
+	printf("\n");
+	for(col=0; col < N; col++){
+		center(grid[row][col].name);	
+	}
+	printf("\n");
+	for( i = 0; i < N; i++){
+		bottom();
+	}
 }

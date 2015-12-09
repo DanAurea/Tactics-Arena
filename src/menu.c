@@ -75,21 +75,36 @@ void gameMenu(unitAction movable, unitAction attackable) {
  * @param attackable Tableau des attaques possibles
  */
 void unitMenu(int choice, unitAction movable, unitAction attackable){
-    switch(choice){
-        case 1:
-            //Unités pouvant se déplacer
-            break;
-        case 2:
-            //Unités pouvant attaquer
-            break;
-        case 3:
-            //Unités du joueur
-            break;
-        default: printf("Erreur fonction unitMenu");
-            
-    }
-    
+	char yn;
+	switch(choice){
+        	case 1:
+		    	//Unités pouvant se déplacer
+			printf("Se déplacer ? y/n");
+			read(&yn, 1);
+			if(yn == 'y' || yn == 'Y') {
+				//Déplace
+			}else{
+				printf("Saisie invalide");
+			}
+		    	break;
+        	case 2:
+			//Unités pouvant attaquer
+			printf("Attaquer ? y/n");
+			read(&yn, 1);
+			if(yn == 'y' || yn == 'Y') {
+				//Attaque
+			}else{
+				printf("Saisie invalide");
+			}
+			break;
+        	case 3:
+			//Change de direction
+			break;
+		default: printf("Erreur fonction unitMenu");      
+    	}
+	gameMenu(unitAction movable, unitAction attackable);
 }
+
 
 /**
  * Affiche la liste des unités inclus dans le jeu
