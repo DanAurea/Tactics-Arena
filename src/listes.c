@@ -156,8 +156,22 @@ void addUnit(short noPlayer, vector coordUnit){
 }
 
 /**
+ * Ajoute une cible pour une unité
+ * @param name      Nom de l'unité
+ * @param coordUnit Coordonnées de l'unité
+ */
+void addTarget(unitName name, vector coordUnit){
+	if(liste_vide(name)){
+		en_tete(name);
+	}else{
+		en_queue(name);
+	}
+	ajout_droit(name, coordUnit);
+}
+
+/**
  * Affiche la liste des unités
- * @param noPlayer [description]
+ * @param noPlayer Joueur propriétaire des unités
  */
 void printList(short noPlayer){
 	int i = 1;
@@ -168,6 +182,23 @@ void printList(short noPlayer){
 		valeur_elt(noPlayer, &tmp);
 		printf("%i - %s - %c - %i\n", i,getNameUnit(grid[tmp.x][tmp.y].name), 'A' + tmp.x, tmp.y + 1); // Affiche le nom de l'unité
 		suivant(noPlayer);
+		i++;
+	}
+}
+
+/**
+ * Affiche la liste des cibles de l'unité sélectionnée
+ * @param name Nom de l'unité sélectionnée
+ */
+void printTarget(unitName name){
+	int i = 1;
+	vector tmp;
+	en_tete(name);
+
+	while(!hors_liste(name) && !liste_vide(name)){
+		valeur_elt(name, &tmp);
+		printf("%i - %s - %i - %i\n", i,getNameUnit(name), tmp.x, tmp.y); // Affiche le nom de l'unité
+		suivant(name);
 		i++;
 	}
 }

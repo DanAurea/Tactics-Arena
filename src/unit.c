@@ -1,73 +1,29 @@
 #include <math.h>
 #include "../include/gameEngine.h"
+#include "../include/terminal.h"
 #include "../include/unit.h"
-#include "../include/unitType.h"
 #include "../include/Outil.h"
 
-
+/**
+ * Initialise l'unité courante
+ * @param noPlayer  Joueur propriétaire
+ * @param coordUnit Coordonnées de l'unité
+ */
 void unitInit(short noPlayer, vector coordUnit)
 {
-	int nomUnit = grid[coordUnit.x][coordUnit.y].name;
-	switch(nomUnit)
-	{
-		case knight :
-			knightInit(noPlayer, coordUnit);
-		break;
-		case scout :
-			scoutInit(noPlayer, coordUnit);
-		break;
-		case assassin :
-			assassinInit(noPlayer, coordUnit);
-		break;
-		case cleric :
-			clericInit(noPlayer, coordUnit);
-		break;
-		case pyromancer :
-			pyromancerInit(noPlayer, coordUnit);
-		break;
-		case enchantress :
-			enchantressInit(noPlayer, coordUnit);
-		break;
-		case dragonborn :
-			dragonbornInit(noPlayer, coordUnit);
-		break;
-		case darkWitch :
-			darkWitchInit(noPlayer, coordUnit);
-		break;
-		case lightningTotem :
-			lightningTotemInit(noPlayer, coordUnit);
-		break;
-		case barrierTotem :
-			barrierTotemInit(noPlayer, coordUnit);
-		break;
-		case mudGolem :
-			mudGolemInit(noPlayer, coordUnit);
-		break;
-		case golemAmbusher :
-			ambusherGolemInit(noPlayer, coordUnit);
-		break;
-		case frostGolem :
-			frostGolemInit(noPlayer, coordUnit);
-		break;
-		case stoneGolem :
-			stoneGolemInit(noPlayer, coordUnit);
-		break;
-		case dragonTyrant :
-			dragonTyrantInit(noPlayer, coordUnit);
-		break;
-		case berserker :
-			berserkerInit(noPlayer, coordUnit);
-		break;
-		case beastRider :
-			beastRiderInit(noPlayer, coordUnit);
-		break;
-		case poisonWisp :
-			poisonWispInit(noPlayer, coordUnit);
-		break;
-		case furgon :
-			furgonInit(noPlayer, coordUnit);
-		break;
-	}
+	int unitName = grid[coordUnit.x][coordUnit.y].name;
+    copy (&grid[coordUnit.x][coordUnit.y],&pawns[unitName]); //unitName à la place de 0
+    grid[coordUnit.x][coordUnit.y].noPlayer=noPlayer;
+    if(noPlayer == 0)
+    {
+        grid[coordUnit.x][coordUnit.y].unitColor=red;
+        setDirection(coordUnit,north);
+    }
+    else
+    {
+        grid[coordUnit.x][coordUnit.y].unitColor=blue;
+        setDirection(coordUnit,south);
+    }
 }
 
 
@@ -184,14 +140,7 @@ void attack(vector source, vector target)
     	{
     		block = 1-uTarget->stat.BLOCK[getSideAttacked(source,target)];
     	}
-        if(uSource->stat.Area == 1)
-        {
-        	uTarget->stat.HP -= (uSource->stat.POWER*(block+armor));
-        }
-        else
-        {
-        	AoE(target,uSource->stat.Area,uSource->stat.POWER,false);
-        }
+        uTarget->stat.HP -= (uSource->stat.POWER*(block+armor));
     }
 }
 
@@ -261,35 +210,6 @@ void addEffect(vector target, unitEffect effect)
 		}
 	}
 }
-
-
-/*
-	Area of Effect : attaque de zone centrée sur pos, de taille size et d'intensité dmg. Si own est vrai, ne touche pas l'unité au centre.
-*/
-void AoE(vector pos, int size, int dmg, bool own)
-{
-	for(int i = -size; i <= size; i++)
-	{
-		for(int j = -size; j <= size; j++)
-		{
-			if(abs(i)+abs(j) <= size)
-			{
-				if(!own)
-				{
-					grid[pos.x+i][pos.y+j].stat.HP -= dmg*(1-grid[pos.x+i][pos.y+j].stat.ARMOR);
-				}
-				else
-				{
-					if(i != 0 || j != 0)
-					{
-						grid[pos.x+i][pos.y+j].stat.HP -= dmg*(1-grid[pos.x+i][pos.y+j].stat.ARMOR);
-					}
-				}
-			}
-		}
-	}
-}
-
 
 /*
 	attaque en ligne de taille size, de sens dir et commancant à pos.

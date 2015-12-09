@@ -95,8 +95,8 @@ void unitMenu(int choice, unitAction movable, unitAction attackable){
  * Affiche la liste des unités inclus dans le jeu
  */
 void unitList(){
-    for(int i = knight; i <= furgon; i++){
-        printf("%i - %s\n", i - 1, getNameUnit(i));
+    for(int i = knight; i < sizePawns; i++){
+        printf("%i - %s\n", i - 1, getNameUnit(pawns[i].name));
     }
 }
 

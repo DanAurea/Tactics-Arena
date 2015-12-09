@@ -169,6 +169,8 @@ char* getNameUnit(unitName unit){
     uName = malloc(20 * sizeof(char));
     
     switch(unit){
+        case 0: strcpy(uName,"Em"); break;
+        case 1: strcpy(uName,"Dc"); break;
         case 2: strcpy(uName,"Knight"); break;
         case 3: strcpy(uName,"Scout"); break;
         case 4: strcpy(uName,"Assassin"); break;
