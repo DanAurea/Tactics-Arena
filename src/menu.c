@@ -17,16 +17,15 @@ void mainMenu(){
 		printf(" 1 - Nouvelle partie\n");
 		printf(" 2 - Charger partie\n");
 		printf(" 3 - Test de gameMenu \n");
-        printf(" 4 - Quitter\n");
-		printf("Votre choix : ");
-		
+        	printf(" 4 - Quitter\n");
+		printf("Votre choix : ");	
         scanf("%i",&choix);
         switch(choix){
             case 1: gameInit();
                 break;
             case 2: //loadGame();
                 break;
-            case 3: //gameMenu();
+            case 3: //gameMenu(movable, attackable);
                 break;
             case 4: break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
@@ -54,9 +53,12 @@ void gameMenu(unitAction movable, unitAction attackable) {
         printf("Votre choix : ");
         scanf("%i",&choix);
         switch(choix){
-            case 1: unitMenu(1, movable, attackable); break;
-            case 2: unitMenu(2, movable, attackable); break;
-            case 3: unitMenu(3, movable, attackable); break;
+            case 1: //unitMenu(1, movable, attackable); 
+break;
+            case 2: //unitMenu(2, movable, attackable); 
+break;
+            case 3: //unitMenu(3, movable, attackable);
+break;
             case 4: // Passer tour
                 break;
             case 5: //Abandonner partie
@@ -102,7 +104,7 @@ void unitMenu(int choice, unitAction movable, unitAction attackable){
 			break;
 		default: printf("Erreur fonction unitMenu");      
     	}
-	gameMenu(unitAction movable, unitAction attackable);
+	gameMenu(movable, attackable);
 }
 
 

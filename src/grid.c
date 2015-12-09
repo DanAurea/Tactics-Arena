@@ -59,63 +59,6 @@ void dispX(){
 	}
 }
 
-/**
- * Affiche la grille avec les coordonnées
- */
-void gridDisp(){
-	int x, y;
-	char lettre = 'A';
-    	char uName[3];
-    
-	printf("\n ");
-
-	dispX(1); // Affiche les coordonnées horizontales
-
-	for(x = 0; x < N; x++){
-		for(y = 0; y < N; y++){
-            
-            if(grid[x][y].name == empty){
-                strcpy(uName, "  ");
-            }else if(grid[x][y].name == decors){
-            	strcpy(uName, "xx");
-            }else{
-                strcpy(uName, get2Char(getNameUnit(grid[x][y].name))); // Copie une portion du nom de l'unité dans uName
-            }
-            
-            if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
-
-           	fontColor(grid[x][y].unitColor);
-
-			if(y == 0)
-				printf("%s ", uName); // Affiche le nom de l'unité lorsque prés d'une bordure gauche
-			else
-				printf(" %s ", uName); // Affiche le nom de l'unité
-
-			fontColor(white);
-			
-			// Affiche les coordonnées verticales
-			if(y == N-1){
-				printf("%s   %c", VL, lettre);
-				lettre++;
-			}
-
-		}
-		
-		printf("\n");
-		
-		if(x == N-1){ // Affiche la bordure basse de la grille
-			printf("  %s", LB);
-			borderHoriz();
-			printf("%s", RB);
-		}
-
-		borderRight(x); // Complète le creux sur la bordure droite
-		
-		printf("\n");
-	}
-	printf("\n");
-}
-
 
 // Découpage de l'affichage des cellules
 void top(){
@@ -125,10 +68,8 @@ void top(){
 }
 
 void center(unitName name){
-	char uName[3];
-	strcpy(uName, get2Char(name));
 	printf("%s", VL);
-	printf(" %s ", uName);
+	printf(" %s ", getNameUnit(name));
 	printf("%s", VL);
 }
 
@@ -154,3 +95,23 @@ void dispTile (int row) {
 		bottom();
 	}
 }
+
+/**
+ * Affiche la grille avec les coordonnées
+ */
+void gridDisp(){
+	int x, y;
+	char lettre = 'A';
+    	char uName[3];
+    
+	printf("\n ");
+
+	dispX(1); // Affiche les coordonnées horizontales
+
+	for(x = 0; x < N; x++){
+		dispTile(x);
+	}
+	printf("\n");
+}
+
+
