@@ -25,9 +25,9 @@ void getCoordS(char coordString[], vector * coordUnit){
 					iCount++;
 					iString[iCount] = '\0';
 				}
-				coordUnit->y = atoi(iString)-1;
 		}
 	}
+    coordUnit->y = atoi(iString)-1;
 
 }
 
@@ -39,48 +39,51 @@ void getCoordS(char coordString[], vector * coordUnit){
 char* get2Char(char name[]){
     char* partName = NULL;
     
-    partName = malloc(3 * sizeof(char));
     
     if(strcmp(name, "Dragonborn") == 0){
-        strcpy(partName, "Db");
+        return "Db";
     }
      if(strcmp(name, "Dark Witch") == 0){
-        strcpy(partName, "Dw");
+        return "Dw";
     }
     else if(strcmp(name, "Dragon Tyrant") == 0){
-        strcpy(partName, "Dt");
+        return "Dt";
     }
     else if(strcmp(name, "Beast Rider") == 0){
-        strcpy(partName, "Br");
+        return "Br";
     }
     else if(strcmp(name, "Berserker") == 0){
-        strcpy(partName, "Bk");
+        return "Bk";
     }
     else if(strcmp(name, "Lightning Totem") == 0){
-        strcpy(partName, "Lt");
+        return "Lt";
     }
     else if(strcmp(name, "Barrier Totem") == 0){
-        strcpy(partName, "Bt");
+        return "Bt";
     }
     else if(strcmp(name, "Mud Golem") == 0){
-        strcpy(partName, "Mg");
+        return "Mg";
     }
     else if(strcmp(name, "Golem Ambusher") == 0){
-        strcpy(partName, "Ag");
+        return "Ag";
     }
     else if(strcmp(name, "Frost Golem") == 0){
-        strcpy(partName, "Fg");
+        return "Fg";
     }
     else if(strcmp(name, "Stone Golem") == 0){
-        strcpy(partName, "Sg");
+        return "Sg";
     }
     else if(strcmp(name, "Poison Wisp") == 0){
-        strcpy(partName, "Pw");
+        return "Pw";
     }
     else{
-        partName[0] = name[0];
-        partName[1] = name[1];
-        partName[2] = '\0';
+        if(strlen(name) >= 2){
+            partName[0] = name[0];
+            partName[1] = name[1];
+            partName[2] = '\0';
+        }else{
+            strcpy(partName, "  ");
+        }
     }
     
     return partName;
@@ -148,7 +151,8 @@ bool rightSide(char * coordString, short noPlayer){
         if(isalpha(coordString[i])){ // Test sur la ligne de l'unité
             
             if(noPlayer == FIRST_PLAYER){ // Délimite le camp du joueur 1
-                if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < 'A' + N - NB_LINES) return false;
+                printf("%i", N - NB_LINES);
+                //if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < ('A' + N - NB_LINES)) return false;
             }
             
             if(noPlayer == FIRST_PLAYER + 1){ // Délimite le camp du joueur 2
@@ -165,37 +169,31 @@ bool rightSide(char * coordString, short noPlayer){
  * @param  unit Nom de l'unité provenant de la liste énumérée
  * @return      Nom de l'unité sous forme de chaîne    
  */
-char* getNameUnit(unitName unit){
-    char* uName = NULL;
-    
-    uName = malloc(20 * sizeof(char));
-    
+char* getNameUnit(unitName unit){    
     switch(unit){
-        case 0: strcpy(uName,"Em"); break;
-        case 1: strcpy(uName,"Dc"); break;
-        case 2: strcpy(uName,"Knight"); break;
-        case 3: strcpy(uName,"Scout"); break;
-        case 4: strcpy(uName,"Assassin"); break;
-        case 5: strcpy(uName,"Cleric"); break;
-        case 6: strcpy(uName,"Pyromancer"); break;
-        case 7: strcpy(uName,"Enchantress"); break;
-        case 8: strcpy(uName,"Dragonborn"); break;
-        case 9: strcpy(uName,"Dark Witch"); break;
-        case 10: strcpy(uName,"Lightning Totem"); break;
-        case 11: strcpy(uName,"Barrier Totem"); break;
-        case 12: strcpy(uName,"Mud Golem"); break;
-        case 13: strcpy(uName,"Golem Ambusher"); break;
-        case 14: strcpy(uName,"Frost Golem"); break;
-        case 15: strcpy(uName,"Stone Golem"); break;
-        case 16: strcpy(uName,"Dragon Tyrant"); break;
-        case 17: strcpy(uName,"Berserker"); break;
-        case 18: strcpy(uName,"Beast Rider"); break;
-        case 19: strcpy(uName,"Poison Wisp"); break;
-        case 20: strcpy(uName,"Furgon"); break;
-            
-        default: break;
+        case 0: return "Em"; break;
+        case 1: return "Dc"; break;
+        case 2: return "Knight"; break;
+        case 3: return "Scout"; break;
+        case 4: return "Assassin"; break;
+        case 5: return "Cleric"; break;
+        case 6: return "Pyromancer"; break;
+        case 7: return "Enchantress"; break;
+        case 8: return "Dragonborn"; break;
+        case 9: return "Dark Witch"; break;
+        case 10: return "Lightning Totem"; break;
+        case 11: return "Barrier Totem"; break;
+        case 12: return "Mud Golem"; break;
+        case 13: return "Golem Ambusher"; break;
+        case 14: return "Frost Golem"; break;
+        case 15: return "Stone Golem"; break;
+        case 16: return "Dragon Tyrant"; break;
+        case 17: return "Berserker"; break;
+        case 18: return "Beast Rider"; break;
+        case 19: return "Poison Wisp"; break;
+        case 20: return "Furgon"; break;
     }
-    return uName;
+    return "";
 }
 
 /**

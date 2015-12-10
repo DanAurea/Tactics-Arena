@@ -107,7 +107,7 @@ void movable(vector movableUnit[], short noPlayer){
 
 		if(!lookAround(coordUnit) && canMove(&grid[coordUnit.x][coordUnit.y])){ // Unité non entourée par ennemi + non paralysée
 			movableUnit[currentUnit] = coordUnit;
-			//printf("%i - %i\n", coordUnit.x, coordUnit.y);
+			printf("%i - %i\n", coordUnit.x, coordUnit.y);
 			currentUnit++;
 		}
 	}
@@ -145,7 +145,7 @@ void createPawn(int * nbPawns, int nbParams, unitName name, ...){
 	va_list stats;
 
 	if(* nbPawns == 0){ // Alloue de la mémoire pour les pions
-		pawns = malloc( *nbPawns + 1 * sizeof(unit));
+		pawns = malloc( (*nbPawns + 1) * sizeof(unit));
 		if(pawns == NULL){
 			puts("\nError allocating memory !\n");
 		}
