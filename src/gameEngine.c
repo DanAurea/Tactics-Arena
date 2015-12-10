@@ -264,19 +264,26 @@ bool selectUnit(vector * coordUnit, short noPlayer){
 
 	coordString = (char *) calloc(5, sizeof(char));
 
-	do{
-		read(coordString, 5);
-	}while(!correctCoord(coordString));
+	if(coordString == NULL){
+		free(coordString);
+		return false;
+	}else{
+		
+		do{
+			read(coordString, 5);
+		}while(!correctCoord(coordString));
 
-	getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
+		getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
+		free(coordString);
 
-	name = grid[coordUnit->x][coordUnit->y].name;
+		name = grid[coordUnit->x][coordUnit->y].name;
 
-	if( name == empty || name == decors) return false;
-	else if(coordUnit->x < 0 || coordUnit->x > N || coordUnit->y < 0 || coordUnit->y > N) return false;
-	else if(grid[coordUnit->x][coordUnit->y].noPlayer != noPlayer) return false;
-	
-	return true;
+		if( name == empty || name == decors) return false;
+		else if(coordUnit->x < 0 || coordUnit->x > N || coordUnit->y < 0 || coordUnit->y > N) return false;
+		else if(grid[coordUnit->x][coordUnit->y].noPlayer != noPlayer) return false;
+
+		return true;
+	}
 }
 
 /**
