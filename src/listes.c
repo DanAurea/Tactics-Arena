@@ -134,22 +134,24 @@ void addUnit(short noPlayer, vector coordUnit){
 	vector tmp;
 	int nameUnit = grid[coordUnit.x][coordUnit.y].name;
 
-	en_tete(noPlayer);
-
 	if(liste_vide(noPlayer)) ajout_droit(noPlayer, coordUnit);
 	else{
+		en_queue(noPlayer);
 		valeur_elt(noPlayer,&tmp);
 
-		while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < nameUnit){ // Tri de la liste à la volée
-			suivant(noPlayer);
-			valeur_elt(noPlayer,&tmp);
-		}
-
-		if(hors_liste(noPlayer)){ // Sortie de liste
-			en_queue(noPlayer);
+		if(grid[tmp.x][tmp.y].name <= nameUnit){ // Optimise le traitement
 			ajout_droit(noPlayer, coordUnit);
 		}else{
+	
+			en_tete(noPlayer); // On se replace en tête si l'unité n'a pas été placée
+			valeur_elt(noPlayer,&tmp);
+			
+			while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < nameUnit){ // Tri de la liste à la volée
+				suivant(noPlayer);
+				valeur_elt(noPlayer,&tmp);
+			}
 			ajout_gauche(noPlayer, coordUnit);
+
 		}
 	}
 
@@ -161,44 +163,30 @@ void addUnit(short noPlayer, vector coordUnit){
  * @param coordUnit Coordonnées de l'unité
  */
 void addTarget(unitName name, vector coordUnit){
-	if(liste_vide(name)){
-		en_tete(name);
-	}else{
+	if(!liste_vide(name)){
 		en_queue(name);
 	}
 	ajout_droit(name, coordUnit);
 }
 
 /**
- * Affiche la liste des unités
- * @param noPlayer Joueur propriétaire des unités
+ * Affiche la liste désirée
+ * @param numList Numéro de liste
  */
-void printList(short noPlayer){
+void printList(short numList){
 	int i = 1;
 	vector tmp;
-	en_tete(noPlayer);
+	en_tete(numList);
 
-	while(!hors_liste(noPlayer) && !liste_vide(noPlayer)){
-		valeur_elt(noPlayer, &tmp);
-		printf("%i - %s - %c - %i\n", i,getNameUnit(grid[tmp.x][tmp.y].name), 'A' + tmp.x, tmp.y + 1); // Affiche le nom de l'unité
-		suivant(noPlayer);
-		i++;
-	}
-}
+	while(!hors_liste(numList) && !liste_vide(numList)){
+		valeur_elt(numList, &tmp);
 
-/**
- * Affiche la liste des cibles de l'unité sélectionnée
- * @param name Nom de l'unité sélectionnée
- */
-void printTarget(unitName name){
-	int i = 1;
-	vector tmp;
-	en_tete(name);
-
-	while(!hors_liste(name) && !liste_vide(name)){
-		valeur_elt(name, &tmp);
-		printf("%i - %s - %i - %i\n", i,getNameUnit(name), tmp.x, tmp.y); // Affiche le nom de l'unité
-		suivant(name);
+		if(numList <= FIRST_PLAYER + 1){
+			printf("%i - %s - %c - %i\n", i,getNameUnit(grid[tmp.x][tmp.y].name), 'A' + tmp.x, tmp.y + 1); // Affiche le nom de l'unité
+		}else{
+			printf("%i - %s - %i - %i\n", i, getNameUnit(numList), tmp.x, tmp.y); // Affiche le nom de l'unité et ses cibles
+		}
+		suivant(numList);
 		i++;
 	}
 }

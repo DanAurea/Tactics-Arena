@@ -34,6 +34,6 @@ extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
 extern unit * pawns;
 extern int sizePawns;
 
-bool lookAround(vector currentUnit);
+bool isSurrounded(vector currentUnit);
 void gameInit();
 void createPawn(int * nbPawns, int nbParams, unitName name, ...);

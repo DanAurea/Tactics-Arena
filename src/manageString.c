@@ -76,7 +76,7 @@ char* get2Char(char name[]){
             strcpy(partName, "Mg");
         }
         else if(strcmp(name, "Golem Ambusher") == 0){
-            strcpy(partName, "Ag");
+            strcpy(partName, "Ga");
         }
         else if(strcmp(name, "Frost Golem") == 0){
             strcpy(partName, "Fg");
@@ -105,7 +105,7 @@ char* get2Char(char name[]){
  */
 bool isOutGrid(char * coordString){
     int sizeS = strlen(coordString);
-    char iString[3];
+    char iString[3] = "\0";
     int countNumbers = 0;
 
     for(int i = 0; i < sizeS; i++){
@@ -160,7 +160,7 @@ bool rightSide(char * coordString, short noPlayer){
         if(isalpha(coordString[i])){ // Test sur la ligne de l'unité
             
             if(noPlayer == FIRST_PLAYER){ // Délimite le camp du joueur 1
-                //if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < ('A' + N - NB_LINES)) return false;
+                if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < ('A' + N - NB_LINES)) return false;
             }
             
             if(noPlayer == FIRST_PLAYER + 1){ // Délimite le camp du joueur 2

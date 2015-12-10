@@ -18,20 +18,12 @@ int sizePawns = 0;
  * @param pawn Pion à initialiser
  */
 void initPawn(unit * pawn){
-	pawn->stat.HP = -1;
-	pawn->stat.POWER = -1;
-	pawn->stat.ARMOR = -1;
-	
-	pawn->stat.BLOCK[0] = -1;
-	pawn->stat.BLOCK[1] = -1;
-	pawn->stat.BLOCK[2] = -1;
-	
-	pawn->stat.RECOVERY = -1;
-	pawn->stat.MOVE_RANGE = -1;
+	memset(pawn, -1, sizeof(unit));
 	
 	for(int i = 0; i < NB_MAX_EFFECT; i++){
 		pawn->effect[i] = none;
 	}
+	pawn->unitColor = white;
 }
 
 /**
@@ -105,9 +97,8 @@ void movable(vector movableUnit[], short noPlayer){
 		valeur_elt(noPlayer, &coordUnit);
 		suivant(noPlayer);
 
-		if(!lookAround(coordUnit) && canMove(&grid[coordUnit.x][coordUnit.y])){ // Unité non entourée par ennemi + non paralysée
+		if(!isSurrounded(coordUnit) && canMove(&grid[coordUnit.x][coordUnit.y])){ // Unité non entourée par ennemi + non paralysée
 			movableUnit[currentUnit] = coordUnit;
-			printf("%i - %i\n", coordUnit.x, coordUnit.y);
 			currentUnit++;
 		}
 	}
@@ -118,13 +109,11 @@ void movable(vector movableUnit[], short noPlayer){
  * @param  pawn Pion à vérifier
  * @return      Retourne vrai si le pion est correct
  */
-bool checkPawn(unit pawn){
-	if(pawn.stat.HP == -1 || pawn.stat.POWER == -1 
-		|| pawn.stat.ARMOR == -1) return false;
-	
-	if(pawn.stat.BLOCK[0] == -1 || pawn.stat.BLOCK[1] == -1 
-		|| pawn.stat.BLOCK[2] == -1) return false;
-	if(pawn.stat.RECOVERY == -1 || pawn.stat.MOVE_RANGE == -1) return false;
+bool checkPawn(unit * pawn){
+
+	if(pawn->stat.HP == -1 || pawn->stat.POWER == -1 || pawn->stat.ARMOR == -1) return false;
+	if(pawn->stat.BLOCK[0] == -1 || pawn->stat.BLOCK[1] == -1 || pawn->stat.BLOCK[2] == -1) return false;
+	if(pawn->stat.RECOVERY == -1 || pawn->stat.MOVE_RANGE == -1) return false;
 	
 	return true;
 }
@@ -136,7 +125,7 @@ bool checkPawn(unit pawn){
  * @param name Nom du pion
  */
 void createPawn(int * nbPawns, int nbParams, unitName name, ...){
-	unit  pawn;
+	unit pawn;
 	char * type;
 	short horizRange;
 	short vertRange;
@@ -146,23 +135,18 @@ void createPawn(int * nbPawns, int nbParams, unitName name, ...){
 
 	if(* nbPawns == 0){ // Alloue de la mémoire pour les pions
 		pawns = malloc( (*nbPawns + 1) * sizeof(unit));
-		if(pawns == NULL){
-			puts("\nError allocating memory !\n");
-		}
 	}else{
 		pawns = realloc(pawns, (*nbPawns + 1) * sizeof(unit));
-		if(pawns == NULL){
-			puts("\nError reallocating memory !\n");
-		}
 	}
 
 	if(pawns == NULL){ // Libère la mémoire en cas d'erreur
+		if(*nbPawns > 0) puts("\nError reallocating memory !\n");
+		else puts("\nError allocating memory !\n");
 		free(pawns);
 		exit(1);
 	}
 
 	initPawn(&pawn); // Initialise le pion
-
 	pawn.name = name;
 
 	va_start(stats, name);
@@ -193,7 +177,7 @@ void createPawn(int * nbPawns, int nbParams, unitName name, ...){
 	va_end(stats);
 
 
-	if(!checkPawn(pawn)){ // Vérifie les valeurs passées en paramètres
+	if(!checkPawn(&pawn)){ // Vérifie les valeurs passées en paramètres
 		printf("\n Error during pawn creation, %s couldn't be initialized correctly !\n",
 				getNameUnit(pawn.name));
 		exit(1);
@@ -211,7 +195,7 @@ void makePawns(){
 	/* 
 		Ordre params: Nombre de pions, nombre paramètres, nom unité,
 					HP, Power, Armor, Block[0], Block[1], Block[2],
-					Recovery, Move_range, type atq, horizRange,
+					Recovery, Move_range, type targetZone, horizRange,
 					vertRange, sizeRing
 	*/
 	createPawn(&sizePawns, 8, knight, 50, 22, 0.25, 0.8, 0.4, 0.0, 1, 3, "line", 1, 1, 0);
@@ -233,6 +217,7 @@ void makePawns(){
 	createPawn(&sizePawns, 8, beastRider, 38, 19, 0.15, 0.45, 0.22, 0.0, 1, 4, "line", 2, 2, 0);
 	createPawn(&sizePawns, 8, poisonWisp, 34, 0, 0.0, 0.0, 0.0, 0.0, 2, 6, "line", 2, 2, 0);
 	createPawn(&sizePawns, 8, furgon, 48, 0, 0.0, 0.5, 0.25, 0.0, 1, 3, "square", 2, 2, 0);
+
 }
 
 /**
@@ -240,24 +225,23 @@ void makePawns(){
  * @param  currentUnit Unité courante
  * @return             Retourne vrai si unité entourée
  */
-bool lookAround(vector currentUnit)
-{
+bool isSurrounded(vector currentUnit){
 	bool surrounded = true;
-	unit source = grid[currentUnit.x][currentUnit.y];
-	unit target;
+	unit * source = &grid[currentUnit.x][currentUnit.y];
+	unit * target = NULL;
 
-	for(int x = currentUnit.x - 1; x < currentUnit.x + 1 && surrounded; x++)
+	for(int x = currentUnit.x - 1; x <= currentUnit.x + 1 && surrounded; x++)
 	{
-		for(int y = currentUnit.y - 1; y < currentUnit.y + 1 && surrounded; y++)
+		for(int y = currentUnit.y - 1; y <= currentUnit.y + 1 && surrounded; y++)
 		{	
 
 			if(abs(currentUnit.x - x) + abs(currentUnit.y - y) == 1 && x >= 0 && x < N && y >= 0 && y < N){ // Croix centrée sur l'unité courante
-				target = grid[currentUnit.x + x][currentUnit.y + y];
-				
-				if(target.name == empty){
+				target = &grid[x][y];
+
+				if(target->name == empty){
 					surrounded=false;
-				}else if(target.name != decors){
-					if(source.noPlayer == target.noPlayer && canGetPassed(&target)){ // Unité allié pouvant être traversée
+				}else if(target->name != decors){
+					if(source->noPlayer == target->noPlayer && canGetPassed(target)){ // Unité allié pouvant être traversée
 						surrounded=false;
 					}
 				}
@@ -265,6 +249,7 @@ bool lookAround(vector currentUnit)
 			}
 		}
 	}
+
 	return surrounded;
 }
 
@@ -277,8 +262,9 @@ bool selectUnit(vector * coordUnit, short noPlayer){
 	char * coordString;
 	unitName name;
 
+	coordString = (char *) calloc(5, sizeof(char));
+
 	do{
-		coordString = (char *) calloc(5, sizeof(char));
 		read(coordString, 5);
 	}while(!correctCoord(coordString));
 
@@ -308,7 +294,7 @@ void gridInit(){
 			grid[x][y].name = empty; // Initialise à vide
 
 			if(x >= 0 + NB_LINES && x < N - NB_LINES && nbDecors < 7){
-				if(rand() % 100 > 92){ // Ajoute un décor aléatoirement
+				if(rand() % 100 > 94){ // Ajoute un décor aléatoirement
 					grid[x][y].name = decors;
 					nbDecors++;
 				}
@@ -328,7 +314,7 @@ void gridInit(){
  */
 void playerAddUnit(short noPlayer, int * nbUnit){
 	int unitSelected;
-	char * coordString;
+	char * coordString = NULL;
 	vector coordUnit;
 	vector movableUnit[NB_MAX_UNIT];
 
@@ -343,16 +329,16 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 
 	}while(unitSelected < knight -1 || unitSelected > furgon -1);
 
-	coordString = (char *) calloc(5, sizeof(char));
+	coordString = calloc(5, sizeof(char));
 	
 	clearBuffer(); // Vide stdin
 	
 	do{
 		fontColor(red);
 		if(noPlayer == FIRST_PLAYER){
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format A 01 \n",'A' + N - 1, 'A' + N - NB_LINES, N);
+			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format a/A 01 \n",'A' + N - 1, 'A' + N - NB_LINES, N);
 		}else{
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format A 01 \n",'A', 'A' + NB_LINES - 1, N);
+			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format a/A 01 \n",'A', 'A' + NB_LINES - 1, N);
 		}
 		fontColor(white);
 		
@@ -372,7 +358,7 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 	getCoordS(coordString, &coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
 	free(coordString);
 	
-	if(grid[coordUnit.x][coordUnit.y].name != empty){ 
+	if(grid[coordUnit.x][coordUnit.y].name != 0){ 
 		destroyUnit(noPlayer, coordUnit); // Détruit l'unité en place
 		* nbUnit = * nbUnit - 1; // Remet à jour le nombre d'unités
 	}
@@ -412,8 +398,10 @@ void gameInit(short * noPlayer){
 	for(int i = 0; i < NB_UNITS; i++)
 		init_liste(i);
 
-	makePawns();
-	gridInit();
+	makePawns(); // Crée les pions
+	
+	gridInit(); // Crée la grille
+    gridDisp(); // Affiche la grille
 
 	playerInit(FIRST_PLAYER); // Initialisation du joueur 1
 	playerInit(FIRST_PLAYER + 1);

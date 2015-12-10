@@ -41,7 +41,10 @@ void dispX(){
 	for(short x = 1; x <= N; x++){
 		
 		// Affiche les coordonnées horizontales chiffrées
-		printf("   %i", x);
+		if(x < 10)
+			printf("   %i", x);
+		else
+			printf("  %i", x);
 
 		if(x == N){
 			printf("\n  ");
@@ -67,7 +70,7 @@ void gridDisp(){
 	char lettre = 'A';
     char * uName; // Nom unité
 
-	printf("\n ");
+	printf("\n  ");
 
 	dispX(1); // Affiche les coordonnées horizontales
 
