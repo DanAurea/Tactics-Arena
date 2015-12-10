@@ -65,8 +65,8 @@ void dispX(){
 void gridDisp(){
 	int x, y;
 	char lettre = 'A';
-    char uName[3];
-    
+    char * uName; // Nom unité
+
 	printf("\n ");
 
 	dispX(1); // Affiche les coordonnées horizontales
@@ -74,14 +74,8 @@ void gridDisp(){
 	for(x = 0; x < N; x++){
 		for(y = 0; y < N; y++){
             
-            if(grid[x][y].name == empty){
-                strcpy(uName, "  ");
-            }else if(grid[x][y].name == decors){
-            	strcpy(uName, "xx");
-            }else{
-                strcpy(uName, get2Char(getNameUnit(grid[x][y].name))); // Copie une portion du nom de l'unité dans uName
-            }
-            
+            uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
+
             if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
 
            	fontColor(grid[x][y].unitColor);
@@ -92,13 +86,15 @@ void gridDisp(){
 				printf(" %s ", uName); // Affiche le nom de l'unité
 
 			fontColor(white);
-			
+
+			free(uName); // Libère la mémoire allouée
+
 			// Affiche les coordonnées verticales
 			if(y == N-1){
 				printf("%s   %c", VL, lettre);
 				lettre++;
 			}
-
+			
 		}
 		
 		printf("\n");

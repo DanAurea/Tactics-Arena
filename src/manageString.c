@@ -39,55 +39,64 @@ void getCoordS(char coordString[], vector * coordUnit){
 char* get2Char(char name[]){
     char* partName = NULL;
     
+    partName = malloc(3 * sizeof(char));
     
-    if(strcmp(name, "Dragonborn") == 0){
-        return "Db";
-    }
-     if(strcmp(name, "Dark Witch") == 0){
-        return "Dw";
-    }
-    else if(strcmp(name, "Dragon Tyrant") == 0){
-        return "Dt";
-    }
-    else if(strcmp(name, "Beast Rider") == 0){
-        return "Br";
-    }
-    else if(strcmp(name, "Berserker") == 0){
-        return "Bk";
-    }
-    else if(strcmp(name, "Lightning Totem") == 0){
-        return "Lt";
-    }
-    else if(strcmp(name, "Barrier Totem") == 0){
-        return "Bt";
-    }
-    else if(strcmp(name, "Mud Golem") == 0){
-        return "Mg";
-    }
-    else if(strcmp(name, "Golem Ambusher") == 0){
-        return "Ag";
-    }
-    else if(strcmp(name, "Frost Golem") == 0){
-        return "Fg";
-    }
-    else if(strcmp(name, "Stone Golem") == 0){
-        return "Sg";
-    }
-    else if(strcmp(name, "Poison Wisp") == 0){
-        return "Pw";
-    }
-    else{
-        if(strlen(name) >= 2){
+    if(partName == NULL){
+        free(partName);
+        return "Error when allocating memory !";
+    }else{
+        if(strcmp(name, "Dragonborn") == 0){
+            strcpy(partName, "Db");
+        }
+        else if(strcmp(name, "Empty") == 0){
+            strcpy(partName, "  ");
+        }
+        else if(strcmp(name, "Decors") == 0){
+            strcpy(partName, "xx");
+        }
+        else if(strcmp(name, "Dark Witch") == 0){
+            strcpy(partName, "Dw");
+        }
+        else if(strcmp(name, "Dragon Tyrant") == 0){
+            strcpy(partName, "Dt");
+        }
+        else if(strcmp(name, "Beast Rider") == 0){
+            strcpy(partName, "Br");
+        }
+        else if(strcmp(name, "Berserker") == 0){
+            strcpy(partName, "Bk");
+        }
+        else if(strcmp(name, "Lightning Totem") == 0){
+            strcpy(partName, "Lt");
+        }
+        else if(strcmp(name, "Barrier Totem") == 0){
+            strcpy(partName, "Bt");
+        }
+        else if(strcmp(name, "Mud Golem") == 0){
+            strcpy(partName, "Mg");
+        }
+        else if(strcmp(name, "Golem Ambusher") == 0){
+            strcpy(partName, "Ag");
+        }
+        else if(strcmp(name, "Frost Golem") == 0){
+            strcpy(partName, "Fg");
+        }
+        else if(strcmp(name, "Stone Golem") == 0){
+            strcpy(partName, "Sg");
+        }
+        else if(strcmp(name, "Poison Wisp") == 0){
+            strcpy(partName, "Pw");
+        }
+        else{
             partName[0] = name[0];
             partName[1] = name[1];
             partName[2] = '\0';
-        }else{
-            strcpy(partName, "  ");
         }
+        
+        return partName;
     }
-    
-    return partName;
 }
+
 
 /**
  * Vérifie que les coordonnées sont dans la grille
@@ -151,7 +160,6 @@ bool rightSide(char * coordString, short noPlayer){
         if(isalpha(coordString[i])){ // Test sur la ligne de l'unité
             
             if(noPlayer == FIRST_PLAYER){ // Délimite le camp du joueur 1
-                printf("%i", N - NB_LINES);
                 //if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < ('A' + N - NB_LINES)) return false;
             }
             
@@ -169,31 +177,29 @@ bool rightSide(char * coordString, short noPlayer){
  * @param  unit Nom de l'unité provenant de la liste énumérée
  * @return      Nom de l'unité sous forme de chaîne    
  */
-char* getNameUnit(unitName unit){    
-    switch(unit){
-        case 0: return "Em"; break;
-        case 1: return "Dc"; break;
-        case 2: return "Knight"; break;
-        case 3: return "Scout"; break;
-        case 4: return "Assassin"; break;
-        case 5: return "Cleric"; break;
-        case 6: return "Pyromancer"; break;
-        case 7: return "Enchantress"; break;
-        case 8: return "Dragonborn"; break;
-        case 9: return "Dark Witch"; break;
-        case 10: return "Lightning Totem"; break;
-        case 11: return "Barrier Totem"; break;
-        case 12: return "Mud Golem"; break;
-        case 13: return "Golem Ambusher"; break;
-        case 14: return "Frost Golem"; break;
-        case 15: return "Stone Golem"; break;
-        case 16: return "Dragon Tyrant"; break;
-        case 17: return "Berserker"; break;
-        case 18: return "Beast Rider"; break;
-        case 19: return "Poison Wisp"; break;
-        case 20: return "Furgon"; break;
-    }
-    return "";
+char* getNameUnit(unitName name){    
+  
+    if(name == empty) return "Empty";
+    if(name == decors) return "Decors"; 
+    if(name == knight) return "Knight";
+    if(name == scout) return "Scout";
+    if(name == assassin) return "Assassin";
+    if(name == cleric) return "Cleric";
+    if(name == pyromancer) return "Pyromancer";
+    if(name == enchantress) return "Enchantress";
+    if(name == dragonborn) return "Dragonborn";
+    if(name == darkWitch) return "Dark Witch";
+    if(name == lightningTotem) return "Lightning Totem";
+    if(name == barrierTotem) return "Barrier Totem";
+    if(name == mudGolem) return "Mud Golem";
+    if(name == golemAmbusher) return "Golem Ambusher";
+    if(name == frostGolem) return "Frost Golem";
+    if(name == stoneGolem) return "Stone Golem";
+    if(name == dragonTyrant) return "Dragon Tyrant";
+    if(name == berserker) return "Berserker";
+    if(name == beastRider) return "Beast Rider";
+    if(name == poisonWisp) return "Poison Wisp";
+    return "Furgon";
 }
 
 /**
