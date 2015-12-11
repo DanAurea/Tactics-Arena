@@ -3,6 +3,7 @@
 #include "../include/gameEngine.h"
 #include "../include/terminal.h"
 #include "../include/unit.h"
+#include "../include/listes.h"
 
 /**
  * Initialise l'unité courante
@@ -10,7 +11,7 @@
  * @param coordUnit Coordonnées de l'unité
  */
 void unitInit(short noPlayer, vector coordUnit)
-{	
+{
 	int unitName = grid[coordUnit.x][coordUnit.y].name;
     copy (&grid[coordUnit.x][coordUnit.y],&pawns[unitName]); //unitName à la place de 0
     grid[coordUnit.x][coordUnit.y].noPlayer=noPlayer;
@@ -105,11 +106,26 @@ bool canMove(unit * target)
 /*
 	soigne l'unité target du montant du soin de l'unité cible
 */
-void heal(short noPlayer)
+void heal(unitName name, short noPlayer)
+//tester
 {
-	//unit * uTarget = &grid[target.x][target.y];
-	//unit * uSource = &grid[source.x][source.y];
-    //uTarget->stat.HP +=  uSource->stat.POWER;
+    vector pos;
+    unitName target;
+    if(!liste_vide(noPlayer))
+    {
+        en_tete(noPlayer);
+        while(!hors_liste(noPlayer))
+        {
+            valeur_elt(noPlayer,&pos);
+            target=grid[pos.x][pos.y].name;
+            grid[pos.x][pos.y].stat.HP+=pawns[name].stat.POWER;
+            if(grid[pos.x][pos.y].stat.HP > pawns[target].stat.HP)
+            {
+                grid[pos.x][pos.y].stat.HP=pawns[target].stat.HP;
+            }
+            suivant(noPlayer);
+        }
+    }
 }
 
 
@@ -149,24 +165,32 @@ void attack(vector source, vector target)
 /*
 	copie la structure unité source vers la structure unité destination
 */
-void copy(unit * destination, unit * source)
-{	
-	destination->name		 = 	source->name;
-	destination->stat.HP	 = 	source->stat.HP;
-	destination->stat.POWER	 = 	source->stat.POWER;
-	destination->stat.ARMOR	 = 	source->stat.ARMOR;
-	destination->stat.RECOVERY = 	source->stat.RECOVERY;
-	for(int i = 0;i<3;i++)
-	{
-		destination->stat.BLOCK[i] = source->stat.BLOCK[i];
-	}
-	destination->stat.MOVE_RANGE = source->stat.MOVE_RANGE;
-	for(int i = 0;i<NB_MAX_EFFECT;i++)
-	{
-		destination->effect[i] = source->effect[i];
-	}
-	destination->noPlayer=source->noPlayer;
-	destination->unitColor=source->unitColor;
+bool copy(unit * destination, unit * source)
+{
+    if(destination != NULL && source != NULL)
+    {
+        destination->name		 = 	source->name;
+        destination->stat.HP	 = 	source->stat.HP;
+        destination->stat.POWER	 = 	source->stat.POWER;
+        destination->stat.ARMOR	 = 	source->stat.ARMOR;
+        destination->stat.RECOVERY = 	source->stat.RECOVERY;
+        for(int i = 0;i<3;i++)
+        {
+            destination->stat.BLOCK[i] = source->stat.BLOCK[i];
+        }
+        destination->stat.MOVE_RANGE = source->stat.MOVE_RANGE;
+        for(int i = 0;i<NB_MAX_EFFECT;i++)
+        {
+            destination->effect[i] = source->effect[i];
+        }
+        destination->noPlayer=source->noPlayer;
+        destination->unitColor=source->unitColor;
+    }
+    else
+    {
+        return true;
+    }
+    return false;
 }
 
 void erase(unit * source)
@@ -227,32 +251,6 @@ void addEffect(vector target, unitEffect effect)
 		if(uTarget->effect[i] != effect)
 		{
 			uTarget->effect[i] = effect;
-		}
-	}
-}
-
-/*
-	attaque en ligne de taille size, de sens dir et commancant à pos.
-*/
-void line(vector pos, int size, int dmg, int dir)
-{
-	int sens = 1;
-	if(dir >= 2)
-	{
-		sens = -1;
-	}
-	if(dir%2)
-	{
-		for(int i = 0;i<size;i++)
-		{
-			grid[pos.x+(i*sens)][pos.y].stat.HP -= dmg*(1-grid[pos.x+(i*sens)][pos.y].stat.ARMOR);
-		}
-	}
-	else
-	{
-		for(int j = 0;j<size;j++)
-		{
-			grid[pos.x][pos.y+(j*sens)].stat.HP -= dmg*(1-grid[pos.x][pos.y+(j*sens)].stat.ARMOR);
 		}
 	}
 }

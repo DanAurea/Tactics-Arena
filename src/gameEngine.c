@@ -304,6 +304,7 @@ void gridInit(){
 	}
 }
 
+
 /**
  * Placement des unités par le joueur
  * @param noPlayer Joueur en cours
@@ -366,7 +367,6 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 
 	addUnit(noPlayer, coordUnit);
 
-    printList(grid[coordUnit.x][coordUnit.y].name);
 	movable(movableUnit, noPlayer);
 	clearScreen();
 	gridDisp(); // Affiche la grille actualisée

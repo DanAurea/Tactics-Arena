@@ -16,7 +16,7 @@ t_element* ec[NB_UNITS];
 
 void init_liste(int n)
 {	if(n>=0&&n<NB_UNITS)
-	{		
+	{
 		drapeau[n] = malloc(sizeof(t_element));
 		drapeau[n]->pred = drapeau[n];
 		drapeau[n]->succ = drapeau[n];
@@ -62,25 +62,27 @@ void suivant(int n)
 
 void valeur_elt(int n, vector * v)
 {	if(n>=0&&n<NB_UNITS)
-		if (!hors_liste(n))
+		if (!hors_liste(n)){
 			v->x = ec[n]->coordUnit.x;
             v->y = ec[n]->coordUnit.y;
+		}
 }
 
 void modif_elt(int n, vector v)
 {	if(n>=0&&n<NB_UNITS)
-		if (!hors_liste(n))
+		if (!hors_liste(n)){
 			ec[n]->coordUnit.x = v.x;
             ec[n]->coordUnit.y = v.y;
+		}
 }
 
 void oter_elt(int n)
-{	
+{
 	t_element * temp;
 
     	if(n>=0&&n<NB_UNITS)
 		if (!hors_liste(n))
-		{	
+		{
 			(ec[n]->succ)->pred = ec[n]->pred;
 			(ec[n]->pred)->succ = ec[n]->succ;
 			temp = ec[n];
@@ -90,12 +92,12 @@ void oter_elt(int n)
 }
 
 void ajout_droit(int n, vector v)
-{	
+{
 	t_element* nouv;
-	
+
 	if(n>=0&&n<NB_UNITS)
 		if (liste_vide(n) || !hors_liste(n))
-		{	
+		{
 			nouv = malloc(sizeof(t_element));
 			nouv->coordUnit.x = v.x;
             nouv->coordUnit.y = v.y;
@@ -108,12 +110,12 @@ void ajout_droit(int n, vector v)
 }
 
 void ajout_gauche(int n, vector v)
-{	
+{
 	t_element* nouv;
-	
+
 	if(n>=0&&n<NB_UNITS)
 		if (liste_vide(n) || !hors_liste(n))
-		{	
+		{
 			nouv = malloc(sizeof(t_element));
             nouv->coordUnit.x = v.x;
             nouv->coordUnit.y = v.y;
@@ -127,7 +129,7 @@ void ajout_gauche(int n, vector v)
 
 /**
  * Ajoute une unité dans la liste des unités du joueur
- * @param noPlayer  Joueur en cours       
+ * @param noPlayer  Joueur en cours
  * @param coordUnit Coordonnées de l'unité
  */
 void addUnit(short noPlayer, vector coordUnit){
@@ -142,10 +144,10 @@ void addUnit(short noPlayer, vector coordUnit){
 		if(grid[tmp.x][tmp.y].name <= nameUnit){ // Optimise le traitement
 			ajout_droit(noPlayer, coordUnit);
 		}else{
-	
+
 			en_tete(noPlayer); // On se replace en tête si l'unité n'a pas été placée
 			valeur_elt(noPlayer,&tmp);
-			
+
 			while(!hors_liste(noPlayer) && grid[tmp.x][tmp.y].name < nameUnit){ // Tri de la liste à la volée
 				suivant(noPlayer);
 				valeur_elt(noPlayer,&tmp);
@@ -206,7 +208,7 @@ void destroyUnit(short noPlayer, vector coordUnit){
 		suivant(noPlayer);
 		valeur_elt(noPlayer, &tmp);
 	}
-	
+
 	if(tmp.x == coordUnit.x && tmp.y == coordUnit.y){ // Unité trouvée
 		oter_elt(noPlayer);
 	}
