@@ -53,7 +53,6 @@ void color(int color, char type[]){
 
 /**
  * Réinitialise la couleur de l'écran
- *
  */
 void reinitColor() {
 	printf("\033[%sm", getColor(reinit, "Screen")); // Réinitialise le texte suivant en blanc

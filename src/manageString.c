@@ -103,7 +103,7 @@ char* get2Char(char name[]){
  * @param  coordString Coordonnées sous forme de chaîne
  * @return             Retourne false si pas en dehors
  */
-bool isOutGrid(char * coordString){
+bool isOutGrid(char coordString[]){
     int sizeS = strlen(coordString);
     char iString[3] = "\0";
     int countNumbers = 0;
@@ -127,8 +127,8 @@ bool isOutGrid(char * coordString){
  * @param coordString Chaîne de caractère à vérifier
  * @return Vraie si les coordonnées saisies sont correctes
  */
-bool correctCoord(char * coordString){
-
+bool correctCoord(char coordString[]){
+    printf("%s", coordString);
     if( (coordString[0] >= 'a' && coordString[0] <= 'z') || (coordString[0] >= 'A' && coordString[0] <= 'Z')){
         
         if(coordString[1] != ' '){
@@ -215,10 +215,8 @@ void printNameUnit(unitName unit){
  */
 void clearBuffer()
 {
-    short c = 0;
-    while (c != '\n' && c != EOF){
-        c = getchar();
-    }
+    int c = 0;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 /**
@@ -228,11 +226,11 @@ void clearBuffer()
  * @param  length Taille désirée
  * @return        Retourne 1 si chaîne correcte
  */
-int read(char * string, short length)
+int read(char * string)
 {
     char *enter = NULL;
 
-    if (fgets(string, length, stdin) != NULL){
+    if (fgets(string, sizeof(string), stdin) != NULL){
         enter = strchr(string, '\n');
         
         if (enter != NULL){
@@ -247,5 +245,33 @@ int read(char * string, short length)
     else{
         clearBuffer();
         return 0;
+    }
+}
+
+/**
+ * Lit un long de manière sécurisée
+ * @return Retourne le long saisie ou 0 en cas d'erreur
+ */
+long readLong(){
+    char nbString[100] = {0};
+
+    if(read(nbString)){
+        return strtol(nbString, NULL, 10);
+    }else{
+        return 0;
+    }
+}
+
+/**
+ * Lit un double de manière sécurisée
+ * @return Retourne le double saisie ou 0.0 en cas d'erreur
+ */
+double readDouble(){
+    char nbString[100] = {0};
+
+    if(read(nbString)){
+        return strtod(nbString, NULL);
+    }else{
+        return 0.0;
     }
 }

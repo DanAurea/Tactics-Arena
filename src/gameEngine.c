@@ -260,7 +260,7 @@ bool selectUnit(vector * coordUnit, short noPlayer){
 	}else{
 
 		do{
-			read(coordString, 5);
+			read(coordString);
 		}while(!correctCoord(coordString));
 
 		getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
@@ -312,7 +312,7 @@ void gridInit(){
  */
 void playerAddUnit(short noPlayer, int * nbUnit){
 	int unitSelected;
-	char * coordString = NULL;
+	char coordString[5];
 	vector coordUnit;
 	vector movableUnit[NB_MAX_UNIT];
 
@@ -320,16 +320,15 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 
 	do{
 		printf("Choisissez le type d'unité: ");
-		scanf("%i", &unitSelected);
+		unitSelected = readLong();
 
 		if(unitSelected < knight -1 || unitSelected > furgon -1)
 			printf("Aucune unité de ce type ! \n");
 
 	}while(unitSelected < knight -1 || unitSelected > furgon -1);
 
-	coordString = calloc(5, sizeof(char));
 
-	clearBuffer(); // Vide stdin
+	//clearBuffer(); // Vide stdin
 
 	do{
 		fontColor(red);
@@ -342,7 +341,7 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 
 		printf("Quelles sont les coordonnées de l'unité à placer ?\n");
 
-		read(coordString, 5); // Saisie sécurisée
+		read(coordString); // Saisie sécurisée
 
 		if(!correctCoord(coordString)){
 			printf("Coordonnées incorrectes !\n");
@@ -354,7 +353,6 @@ void playerAddUnit(short noPlayer, int * nbUnit){
 	while(!correctCoord(coordString) || !rightSide(coordString, noPlayer));
 
 	getCoordS(coordString, &coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
-	free(coordString);
 
 	if(grid[coordUnit.x][coordUnit.y].name != 0){
 		destroyUnit(noPlayer, coordUnit); // Détruit l'unité en place
