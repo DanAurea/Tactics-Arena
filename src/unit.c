@@ -4,18 +4,17 @@
 #include "../include/terminal.h"
 #include "../include/unit.h"
 
-void tempUnit()
-{
-    int n=0;
-    createPawn(&n,8,knight,50,20,0.15,0.5,0.2,0.0,1,3);
-}
-
+/**
+ * Initialise l'unité courante
+ * @param noPlayer  Joueur propriétaire
+ * @param coordUnit Coordonnées de l'unité
+ */
 void unitInit(short noPlayer, vector coordUnit)
-{
+{	
 	int unitName = grid[coordUnit.x][coordUnit.y].name;
-    copy (&grid[coordUnit.x][coordUnit.y],&pawns[unitName-2]); //unitName à la place de 0
+    copy (&grid[coordUnit.x][coordUnit.y],&pawns[unitName]); //unitName à la place de 0
     grid[coordUnit.x][coordUnit.y].noPlayer=noPlayer;
-    if(noPlayer==1)
+    if(noPlayer == FIRST_PLAYER)
     {
         grid[coordUnit.x][coordUnit.y].unitColor=red;
         setDirection(coordUnit,north);
@@ -93,7 +92,7 @@ bool canMove(unit * target)
     bool out = true;
     for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[i]==5)
+    	if(target-> effect[i] == 5)
         {
         	out = false;
         }
@@ -142,14 +141,7 @@ void attack(vector source, vector target)
     	{
     		block = 1-uTarget->stat.BLOCK[getSideAttacked(source,target)];
     	}
-        if(uSource->stat.Area == 1)
-        {
-        	uTarget->stat.HP -= (uSource->stat.POWER*(block+armor));
-        }
-        else
-        {
-        	AoE(target,uSource->stat.Area,uSource->stat.POWER,false);
-        }
+        uTarget->stat.HP -= (uSource->stat.POWER*(block+armor));
     }
 }
 
@@ -158,8 +150,7 @@ void attack(vector source, vector target)
 	copie la structure unité source vers la structure unité destination
 */
 void copy(unit * destination, unit * source)
-//tester
-{
+{	
 	destination->name		 = 	source->name;
 	destination->stat.HP	 = 	source->stat.HP;
 	destination->stat.POWER	 = 	source->stat.POWER;
@@ -239,35 +230,6 @@ void addEffect(vector target, unitEffect effect)
 		}
 	}
 }
-
-
-/*
-	Area of Effect : attaque de zone centrée sur pos, de taille size et d'intensité dmg. Si own est vrai, ne touche pas l'unité au centre.
-*/
-void AoE(vector pos, int size, int dmg, bool own)
-{
-	for(int i = -size; i <= size; i++)
-	{
-		for(int j = -size; j <= size; j++)
-		{
-			if(abs(i)+abs(j) <= size)
-			{
-				if(!own)
-				{
-					grid[pos.x+i][pos.y+j].stat.HP -= dmg*(1-grid[pos.x+i][pos.y+j].stat.ARMOR);
-				}
-				else
-				{
-					if(i != 0 || j != 0)
-					{
-						grid[pos.x+i][pos.y+j].stat.HP -= dmg*(1-grid[pos.x+i][pos.y+j].stat.ARMOR);
-					}
-				}
-			}
-		}
-	}
-}
-
 
 /*
 	attaque en ligne de taille size, de sens dir et commancant à pos.
