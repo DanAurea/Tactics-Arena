@@ -5,8 +5,8 @@
 #include "../include/manageString.h"
 
 int main(){
-    gridDisp();
     mainMenu(grid);
 	
+	free(pawns);
 	return 0;
 }

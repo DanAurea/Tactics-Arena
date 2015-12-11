@@ -41,7 +41,10 @@ void dispX(){
 	for(short x = 1; x <= N; x++){
 		
 		// Affiche les coordonnées horizontales chiffrées
-		printf("   %i", x);
+		if(x < 10)
+			printf("   %i", x);
+		else
+			printf("  %i", x);
 
 		if(x == N){
 			printf("\n  ");
@@ -102,14 +105,53 @@ void dispTile (int row) {
 void gridDisp(){
 	int x, y;
 	char lettre = 'A';
-    	char uName[3];
-    
-	printf("\n ");
+    	char * uName; // Nom unité
 
-	dispX(1); // Affiche les coordonnées horizontales
+
+	printf("\n  ");
+
+	dispX(); // Affiche les coordonnées horizontales
 
 	for(x = 0; x < N; x++){
-		dispTile(x);
+
+
+		for(y = 0; y < N; y++){
+            
+            uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
+
+            if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
+
+           	fontColor(grid[x][y].unitColor);
+
+			if(y == 0)
+				printf("%s ", uName); // Affiche le nom de l'unité lorsque prés d'une bordure gauche
+			else
+				printf(" %s ", uName); // Affiche le nom de l'unité
+
+			fontColor(white);
+
+			free(uName); // Libère la mémoire allouée
+
+			// Affiche les coordonnées verticales
+			if(y == N-1){
+				printf("%s   %c", VL, lettre);
+				lettre++;
+			}
+			
+		}
+		
+		printf("\n");
+		
+		if(x == N-1){ // Affiche la bordure basse de la grille
+			printf("  %s", LB);
+			borderHoriz();
+			printf("%s", RB);
+		}
+
+		borderRight(x); // Complète le creux sur la bordure droite
+		
+		printf("\n");
+
 	}
 	printf("\n");
 }

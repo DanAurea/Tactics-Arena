@@ -1,4 +1,4 @@
 void mainMenu();
-void gameMenu(unitAction movable, unitAction attackable);
-void unitMenu(int choice, unitAction movable, unitAction attackable);
+void gameMenu(short noPlayer);
+void unitMenu(int choice, short noPlayer);
 void unitList();

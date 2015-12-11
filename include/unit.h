@@ -11,3 +11,4 @@ void addEffect(vector target, unitEffect effect);
 void AoE(vector pos, int size, int dmg, bool own);
 void line(vector pos, int size, int dmg, int dir);
 void unitInit(short noPlayer, vector coordUnit);
+void setDirection(vector coordUnit, int dir);

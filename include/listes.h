@@ -1,4 +1,3 @@
-#define MAX_TAB 100 
 #define MAX_JOUEUR 3 /**< Nombre max de listes */
 
 void init_liste(int);
@@ -15,5 +14,7 @@ void ajout_droit(int,vector v);
 void ajout_gauche(int,vector v);
 
 void addUnit(short noPlayer, vector coordUnit);
+void addTarget(unitName name, vector coordUnit);
 void destroyUnit(short noPlayer, vector coordUnit);
 void printList(short noPlayer);
+void printTarget(unitName);
