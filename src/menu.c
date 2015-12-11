@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 #include "../include/gameEngine.h"
 #include "../include/menu.h"
 #include "../include/grid.h"
@@ -9,28 +10,74 @@
  * Menu principal du jeu
  */
 void mainMenu(){
-    int choix;
+puts(
+"                           ====" "\n"
+"                           !!!!" "\n"
+"      ==========================" "\n"
+"    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" "\n"
+"  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" "\n"
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" "\n"
+"  ||      _____          _____    ||" "\n"
+"  ||      | | |  Cheft   | | |    ||" "\n"
+"  ||      |-|-|  Home    |-|-|    ||" "\n"
+"  ||      #####          #####    ||" "\n"
+"  ||                              ||" "\n"
+"  ||      _____   ____   _____    ||" "\n"
+"  ||      | | |   @@@@   | | |    ||" "\n"
+"  ||      |-|-|   @@@@   |-|-|    ||" "\n"
+"  ||      #####   @@*@   #####    ||" "\n"
+"  ||              @@@@            ||" "\n"
+"******************____****************");
 
+puts(
+"_________ _______  _______ __________________ _______  _______ " "\n"
+"\\__   __/(  ___  )(  ____ \\__   __/ \\__   __/(  ____ \\(  ____ \\ " "\n"
+"   ) (   | (   ) || (    \\/   ) (      ) (   | (    \\/| (    \\/" "\n"
+"   | |   | (___) || |         | |      | |   | |      | (_____ " "\n"
+"   | |   |  ___  || |         | |      | |   | |      (_____  )" "\n"
+"   | |   | (   ) || |         | |      | |   | |            ) |" "\n"
+"   | |   | )   ( || (____/\\   | |   ___) (___| (____/\\/\\____) |" "\n"
+"   )_(   |/     \\|(_______/   )_(   \\_______/(_______/\\_______)" "\n"
+"                                                               " "\n"
+" _______  _______  _______  _        _______ " "\n"
+"(  ___  )(  ____ )(  ____ \\( (    /|(  ___  )" "\n"
+"| (   ) || (    )|| (    \\/|  \\  ( || (   ) |" "\n"
+"| (___) || (____)|| (__    |   \\ | || (___) |" "\n"
+"|  ___  ||     __)|  __)   | (\\ \\) ||  ___  |" "\n"
+"| (   ) || (\\ (   | (      | | \\   || (   ) |" "\n"
+"| )   ( || ) \\ \\__| (____/\\| )  \\  || )   ( |" "\n"
+"|/     \\||/   \\__/(_______/|/    )_)|/     \\|" "\n"
+);
+
+
+
+    int choix, check;
     color(red, "Bienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
-    
     do{
         printf("\nMenu principal :\n");
+
         printf(" 1 - Nouvelle partie\n");
         printf(" 2 - Charger partie\n");
         printf(" 3 - Test de gameMenu \n");
         printf(" 4 - Quitter\n");
         printf("Votre choix : ");   
-        scanf("%i",&choix);
+        check = scanf("%i",&choix);	// Check = 1 si chiffre est rentré, 0 sinon
+	if(check == 0) {
+		choix = 0;
+		printf("Erreur : Veuillez rentrer un chiffre et non un caractère \n");
+		clearBuffer();	//Nettoie le tampon
+	}
         switch(choix){
             case 1: gameInit();
                 break;
             case 2: //loadGame();
                 break;
-            case 3: //gameMenu(movable, attackable);
+            case 3: //gameMenu(noPlayer);
                 break;
             case 4: break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
         }
+	
     }while(choix != 4);
     printf("A bientôt !");
     exit(1);
@@ -41,7 +88,7 @@ void mainMenu(){
  * @param shortPlayer    Joueur en cours
  */
 void gameMenu(short noPlayer){
-    int choix;
+    int choix, check;
      
     do{
         printf("\nMenu :\n");
@@ -52,8 +99,14 @@ void gameMenu(short noPlayer){
         printf(" 5 - Abandonner la partie\n");
 
         printf("Votre choix : ");
-        scanf("%i",&choix);
+        check = scanf("%i",&choix);	
+	if(check == 0) {
+		choix = 0;
+		printf("Erreur : Veuillez rentrer un chiffre et non un caractère \n");
+		clearBuffer();	
+	}
         switch(choix){
+
             case 1: //unitMenu(1, noPlayer); 
 break;
             case 2: //unitMenu(2, noPlayer); 
@@ -84,20 +137,20 @@ void unitMenu(int choice, short noPlayer){
     switch(choice){
             case 1:
                 //Unités pouvant se déplacer
-            printf("Se déplacer ? y/n");
-            read(&yn, 1);
-            if(yn == 'y' || yn == 'Y') {
-                //Déplace
+		    printf("Se déplacer ? y/n");
+		    read(&yn, 1);
+          	  if(yn == 'y' || yn == 'Y') {
+               		 //Déplace
             }else{
                 printf("Saisie invalide");
             }
                 break;
             case 2:
-            //Unités pouvant attaquer
-            printf("Attaquer ? y/n");
-            read(&yn, 1);
-            if(yn == 'y' || yn == 'Y') {
-                //Attaque
+		    //Unités pouvant attaquer
+		    printf("Attaquer ? y/n");
+		    read(&yn, 1);
+		    if(yn == 'y' || yn == 'Y') {
+		        //Attaque
             }else{
                 printf("Saisie invalide");
             }
@@ -120,3 +173,15 @@ void unitList(){
         printf("%i - %s\n", i - 1, getNameUnit(pawns[i].name));
     }
 }
+
+/*
+	gameEngine.c 
+		do{
+			printf("Choisissez le type d'unité: ");
+			check = scanf("%i",&unitSelected);	// Check = 1 si chiffre est rentré, 0 sinon
+			if(check == 0) {
+				printf("Erreur : Veuillez rentrer un chiffre et non un caractère \n");
+				clearBuffer();	//Nettoie le tampon
+			}
+		}while(check == 0);
+*/

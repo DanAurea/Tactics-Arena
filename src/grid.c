@@ -62,34 +62,74 @@ void dispX(){
 	}
 }
 
+
+// Découpage de l'affichage des cellules
+void top(){
+	printf("%s", LT);
+	printf("%s%s%s%s", HL, HL, HL, HL);
+	printf("%s", RT);
+}
+
+void center(unitName name){
+	printf("%s", VL);
+	printf(" %s ", getNameUnit(name));
+	printf("%s", VL);
+}
+
+void bottom(){
+	printf("%s", LB);
+	printf("%s%s%s%s", HL, HL, HL, HL);
+	printf("%s", RB);
+}
+
+//Utilise les fonctions précédentes pour créer des cases individuelles
+void dispTile (int row) {
+	
+	int i, col;
+	for(i=0; i<N; i++) {
+		top();
+	}
+	printf("\n");
+	for(col=0; col < N; col++){
+		center(grid[row][col].name);	
+	}
+	printf("\n");
+	for( i = 0; i < N; i++){
+		bottom();
+	}
+}
+
 /**
  * Affiche la grille avec les coordonnées
  */
 void gridDisp(){
 	int x, y;
 	char lettre = 'A';
-    char * uName; // Nom unité
+    	char * uName; // Nom unité
+
 
 	printf("\n  ");
 
-	dispX(1); // Affiche les coordonnées horizontales
+	dispX(); // Affiche les coordonnées horizontales
 
 	for(x = 0; x < N; x++){
+
 		for(y = 0; y < N; y++){
             
-            uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
+            		uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
 
             if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
-
-           	fontColor(grid[x][y].unitColor);
-
+		if(grid[x][y].name != decors && grid[x][y].name != empty) {
+			color(green, "Screen");
+		}
+		   	fontColor(grid[x][y].unitColor);
+		
 			if(y == 0)
 				printf("%s ", uName); // Affiche le nom de l'unité lorsque prés d'une bordure gauche
 			else
 				printf(" %s ", uName); // Affiche le nom de l'unité
 
-			fontColor(white);
-
+			reinitColor();
 			free(uName); // Libère la mémoire allouée
 
 			// Affiche les coordonnées verticales
@@ -111,6 +151,9 @@ void gridDisp(){
 		borderRight(x); // Complète le creux sur la bordure droite
 		
 		printf("\n");
+
 	}
 	printf("\n");
 }
+
+
