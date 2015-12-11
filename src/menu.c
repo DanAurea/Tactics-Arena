@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 #include "../include/gameEngine.h"
 #include "../include/menu.h"
 #include "../include/grid.h"
@@ -9,10 +10,8 @@
  * Menu principal du jeu
  */
 void mainMenu(){
-    int choix;
-
+    char choix;
     color(red, "Bienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
-    
     do{
         printf("\nMenu principal :\n");
 
@@ -21,19 +20,23 @@ void mainMenu(){
         printf(" 3 - Test de gameMenu \n");
         printf(" 4 - Quitter\n");
         printf("Votre choix : ");   
-
-        scanf("%i",&choix);
+        scanf("%c",&choix);
+	if(!isdigit(choix)) {
+		choix = '0';
+		clearBuffer();	//Nettoie le tampon
+	}
         switch(choix){
-            case 1: gameInit();
+            case '1': gameInit();
                 break;
-            case 2: //loadGame();
+            case '2': //loadGame();
                 break;
-            case 3: //gameMenu(movable, attackable);
+            case '3': //gameMenu(movable, attackable);
                 break;
-            case 4: break;
+            case '4': break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
         }
-    }while(choix != 4);
+	
+    }while(choix != '4');
     printf("A bientôt !");
     exit(1);
 }
@@ -43,7 +46,7 @@ void mainMenu(){
  * @param shortPlayer    Joueur en cours
  */
 void gameMenu(short noPlayer){
-    int choix;
+    char choix;
      
     do{
         printf("\nMenu :\n");
@@ -54,22 +57,26 @@ void gameMenu(short noPlayer){
         printf(" 5 - Abandonner la partie\n");
 
         printf("Votre choix : ");
-        scanf("%i",&choix);
+        scanf("%c",&choix);
+	if(!isdigit(choix)) {
+		choix = '0';
+		clearBuffer();	//Nettoie le tampon
+	}
         switch(choix){
 
-            case 1: //unitMenu(1, noPlayer); 
+            case '1': //unitMenu(1, noPlayer); 
 break;
-            case 2: //unitMenu(2, noPlayer); 
+            case '2': //unitMenu(2, noPlayer); 
 break;
-            case 3: //unitMenu(3, noPlayer);
+            case '3': //unitMenu(3, noPlayer);
 break;
-            case 4: // Passer tour
+            case '4': // Passer tour
                 break;
-            case 5: //Abandonner partie
+            case '5': //Abandonner partie
                 break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 5\n");
         }
-    }while(choix != 5);
+    }while(choix != '5');
 
     
 }
@@ -79,13 +86,13 @@ break;
  * @param choice    Choix de l'action pour l'unité
  * @param noPlayer  Joueur en cours
  */
-void unitMenu(int choice, short noPlayer){
+void unitMenu(char choice, short noPlayer){
     char yn;
     //vector movableUnits[]; 
     //vector attackableUnits[];
 
     switch(choice){
-            case 1:
+            case '1':
                 //Unités pouvant se déplacer
             printf("Se déplacer ? y/n");
             read(&yn, 1);
@@ -95,7 +102,7 @@ void unitMenu(int choice, short noPlayer){
                 printf("Saisie invalide");
             }
                 break;
-            case 2:
+            case '2':
             //Unités pouvant attaquer
             printf("Attaquer ? y/n");
             read(&yn, 1);
@@ -105,7 +112,7 @@ void unitMenu(int choice, short noPlayer){
                 printf("Saisie invalide");
             }
             break;
-            case 3:
+            case '3':
             //Change de direction
             break;  
         }

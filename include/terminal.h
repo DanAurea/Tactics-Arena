@@ -4,3 +4,4 @@ typedef enum{reinit = 0, blink = 5, invertColor= 7}screen; /**< Set screen actio
 void color(int color, char type[]);
 void fontColor(int color);
 void clearScreen();
+void reinitColor();

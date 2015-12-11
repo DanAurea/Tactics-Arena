@@ -46,9 +46,19 @@ void color(int color, char type[]){
 	printf("\033[%sm",colorToUse); // Change le texte / l'écran avec la couleur désirée
 	if(strcmp(type, "Screen") != 0){
 		printf("%s", type);
+		printf("\033[%sm", getColor(reinit, "Screen")); // Réinitialise le texte suivant en blanc
 	}
+
+}
+
+/**
+ * Réinitialise la couleur de l'écran
+ *
+ */
+void reinitColor() {
 	printf("\033[%sm", getColor(reinit, "Screen")); // Réinitialise le texte suivant en blanc
 }
+
 
 /**
  * Change la couleur de la police

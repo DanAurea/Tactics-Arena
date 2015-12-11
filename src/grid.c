@@ -114,22 +114,22 @@ void gridDisp(){
 
 	for(x = 0; x < N; x++){
 
-
 		for(y = 0; y < N; y++){
             
-            uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
+            		uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
 
             if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
-
-           	fontColor(grid[x][y].unitColor);
-
+		if(grid[x][y].name != decors && grid[x][y].name != empty) {
+			color(green, "Screen");
+		}
+		   	fontColor(grid[x][y].unitColor);
+		
 			if(y == 0)
 				printf("%s ", uName); // Affiche le nom de l'unité lorsque prés d'une bordure gauche
 			else
 				printf(" %s ", uName); // Affiche le nom de l'unité
 
-			fontColor(white);
-
+			reinitColor();
 			free(uName); // Libère la mémoire allouée
 
 			// Affiche les coordonnées verticales
