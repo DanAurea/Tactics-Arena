@@ -9,7 +9,7 @@ bool correctCoord(char * coordString);
 bool rightSide(char * coordString, short noPlayer);
 
 // Saisie sécurisée
-int read(char * string);
+int readS(char * string);
 long readLong();
 double readDouble();
 void clearBuffer();

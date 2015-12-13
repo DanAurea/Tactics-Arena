@@ -2,14 +2,15 @@
 #include <string.h>
 #include <stdlib.h>
 
-
+// Constantes jeu
 #define N 11 /**< Taille de la grille */
 #define NB_LINES 2 /**< Limite du camp du joueur */
-#define NB_UNITS 21 /**< Nombre d'unités dans le jeu */
+#define NB_UNITS 21	 /**< Nombre d'unités dans le jeu */
 #define NB_MAX_EFFECT 6 /**< Nombre total de status différent */
 #define MAX_RANGE 36 /**< Portée max des actions */
 #define MANDATORY_STATS 8 /**< Nombre de stats obligatoire */
 
+// Constantes joueurs
 #define FIRST_PLAYER 0 /**< Définis la valeur du premier joueur */
 #define NB_MAX_KN 3 /**< Nombre max de Guerrier par joueur */
 #define NB_MAX_SC 2 /**< Nombre max de Recrue par joueur */
@@ -35,5 +36,5 @@ extern unit * pawns;
 extern int sizePawns;
 
 bool isSurrounded(vector currentUnit);
-void gameInit();
+void gameInit(short * noPlayer);
 void createPawn(int * nbPawns, int nbParams, unitName name, ...);

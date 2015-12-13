@@ -33,6 +33,7 @@ puts(
 
 
     int choix;
+    short noPlayer = 0;
     color(red, "Bienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
     do{
         printf("\nMenu principal :\n");
@@ -50,7 +51,7 @@ puts(
     	}
 
         switch(choix){
-            case 1: gameInit();
+            case 1: gameInit(&noPlayer);
                 break;
             case 2: //loadGame();
                 break;
@@ -120,7 +121,7 @@ void unitMenu(int choice, short noPlayer){
             case 1:
                     //Unités pouvant se déplacer
         		    printf("Se déplacer ? y/n");
-        		    read(&yn);
+        		    readS(&yn);
                   	
                     if(yn == 'y' || yn == 'Y') {
                        		 //Déplace
@@ -131,7 +132,7 @@ void unitMenu(int choice, short noPlayer){
             case 2:
         		    //Unités pouvant attaquer
         		    printf("Attaquer ? y/n");
-        		    read(&yn);
+        		    readS(&yn);
         		    
                     if(yn == 'y' || yn == 'Y') {
         		        //Attaque

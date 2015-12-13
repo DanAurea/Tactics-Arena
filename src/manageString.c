@@ -128,7 +128,7 @@ bool isOutGrid(char coordString[]){
  * @return Vraie si les coordonnées saisies sont correctes
  */
 bool correctCoord(char coordString[]){
-    printf("%s", coordString);
+
     if( (coordString[0] >= 'a' && coordString[0] <= 'z') || (coordString[0] >= 'A' && coordString[0] <= 'Z')){
         
         if(coordString[1] != ' '){
@@ -226,7 +226,7 @@ void clearBuffer()
  * @param  length Taille désirée
  * @return        Retourne 1 si chaîne correcte
  */
-int read(char * string)
+int readS(char * string)
 {
     char *enter = NULL;
 
@@ -255,7 +255,7 @@ int read(char * string)
 long readLong(){
     char nbString[100] = {0};
 
-    if(read(nbString)){
+    if(readS(nbString)){
         return strtol(nbString, NULL, 10);
     }else{
         return 0;
@@ -269,7 +269,7 @@ long readLong(){
 double readDouble(){
     char nbString[100] = {0};
 
-    if(read(nbString)){
+    if(readS(nbString)){
         return strtod(nbString, NULL);
     }else{
         return 0.0;

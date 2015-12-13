@@ -119,9 +119,7 @@ void gridDisp(){
             		uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
 
             if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
-		if(grid[x][y].name != decors && grid[x][y].name != empty) {
-			color(green, "Screen");
-		}
+		
 		   	fontColor(grid[x][y].unitColor);
 		
 			if(y == 0)
