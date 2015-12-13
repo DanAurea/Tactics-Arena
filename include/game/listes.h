@@ -17,8 +17,9 @@ void ajout_gauche(int,vector v);
 void dumpList(short nbList);
 void dumpAllLists();
 
-void addUnit(short noPlayer, vector coordUnit);
+// Manipulation des listes d'unités
+void addUnit(vector coordUnit);
 void addTarget(unitName name, vector coordUnit);
-void destroyUnit(short noPlayer, vector coordUnit);
-void printList(short noPlayer);
-void printTarget(unitName);
+void destroyUnit(vector coordUnit);
+void printList(short numList);
+int countUnits();

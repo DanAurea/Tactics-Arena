@@ -1,6 +1,7 @@
-#include "../include/gameEngine.h"
-#include "../include/terminal.h"
-#include "../include/listes.h"
+#include "../../include/game/engine.h"
+#include "../../include/game/pawns.h"
+#include "../../include/controller/terminal.h"
+#include "../../include/game/listes.h"
 #include <signal.h>
 #include <stdio.h>
 
@@ -8,7 +9,7 @@
  * Libère tout ce qui reste encore en mémoire
  */
 void freeAll(){
-	free(pawns); // Libère les pions
+	if(sizePawns > 0) free(pawns); // Libère les pions
 	dumpAllLists(); // Libère les listes de la mémoire
 }
 

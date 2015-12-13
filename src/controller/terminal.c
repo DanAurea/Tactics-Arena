@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../include/terminal.h"
+#include "../../include/controller/terminal.h"
 
 /**
  * Récupère le code correspondant à la couleur

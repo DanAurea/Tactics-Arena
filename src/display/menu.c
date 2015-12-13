@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <ctype.h>
-#include "../include/gameEngine.h"
-#include "../include/menu.h"
-#include "../include/grid.h"
-#include "../include/terminal.h"
-#include "../include/manageString.h"
+#include "../../include/game/engine.h"
+#include "../../include/game/pawns.h"
+#include "../../include/display/menu.h"
+#include "../../include/display/grid.h"
+#include "../../include/controller/terminal.h"
+#include "../../include/controller/manageString.h"
 
 /**
  * Menu principal du jeu
@@ -33,7 +34,6 @@ puts(
 
 
     int choix;
-    short noPlayer = 0;
     color(red, "Bienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
     do{
         printf("\nMenu principal :\n");
@@ -51,26 +51,25 @@ puts(
     	}
 
         switch(choix){
-            case 1: gameInit(&noPlayer);
+            case 1: gameInit();
                 break;
             case 2: //loadGame();
                 break;
-            case 3: //gameMenu(noPlayer);
+            case 3: //gameMenu();
                 break;
             case 4: break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
         }
 	
-    }while(choix != 4);
+    }while(choix != 4 || choix != 1);
     printf("A bientôt !");
     exit(1);
 }
 
 /**
  * Menu du joueur lors de la partie
- * @param shortPlayer    Joueur en cours
  */
-void gameMenu(short noPlayer){
+void gameMenu(){
     int choix;
      
     do{
@@ -90,11 +89,11 @@ void gameMenu(short noPlayer){
 
         switch(choix){
 
-            case 1: //unitMenu(1, noPlayer); 
+            case 1: //unitMenu(1); 
 break;
-            case 2: //unitMenu(2, noPlayer); 
+            case 2: //unitMenu(2); 
 break;
-            case 3: //unitMenu(3, noPlayer);
+            case 3: //unitMenu(3);
 break;
             case 4: // Passer tour
                 break;
@@ -110,9 +109,8 @@ break;
 /**
  * Menu de sélection de l'unité
  * @param choice    Choix de l'action pour l'unité
- * @param noPlayer  Joueur en cours
  */
-void unitMenu(int choice, short noPlayer){
+void unitMenu(int choice){
     char yn;
     //vector movableUnits[]; 
     //vector attackableUnits[];
@@ -146,7 +144,7 @@ void unitMenu(int choice, short noPlayer){
         }
     clearScreen();
     gridDisp();
-    gameMenu(noPlayer);
+    gameMenu();
 }
 
 

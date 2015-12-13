@@ -1,0 +1,2 @@
+void checkSignal();
+void timeDown();

@@ -6,7 +6,7 @@ void printNameUnit(unitName unit);
 // Vérification coordonnées
 void getCoordS(char coordString[], vector * coordUnit);
 bool correctCoord(char * coordString);
-bool rightSide(char * coordString, short noPlayer);
+bool rightSide(char * coordString);
 
 // Saisie sécurisée
 int readS(char * string);

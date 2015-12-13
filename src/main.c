@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <signal.h>
-#include "../include/gameEngine.h"
-#include "../include/grid.h"
-#include "../include/menu.h"
-#include "../include/manageString.h"
-#include "../include/manageSignal.h"
-#include "../include/listes.h"
+#include "../include/game/engine.h"
+#include "../include/game/pawns.h"
+#include "../include/display/grid.h"
+#include "../include/display/menu.h"
+#include "../include/controller/manageString.h"
+#include "../include/controller/manageSignal.h"
+#include "../include/game/listes.h"
 
 int main(){
 	initLists();

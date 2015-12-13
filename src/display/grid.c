@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include "../include/gameEngine.h"
-#include "../include/grid.h"
-#include "../include/terminal.h"
-#include "../include/manageString.h"
+#include "../../include/game/engine.h"
+#include "../../include/display/grid.h"
+#include "../../include/controller/terminal.h"
+#include "../../include/controller/manageString.h"
 
 /**
  * Affiche une bordure sur le côté droit sur les lignes vides et utiles

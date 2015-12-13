@@ -32,9 +32,7 @@ typedef struct{int x; int y;}vector; /**< Représentation d'un vecteur */
 typedef struct{unitName name; unitStat stat; unitEffect effect[NB_MAX_EFFECT];short direct; short noPlayer; short unitColor;}unit; /**< */
 typedef struct{vector coordUnit; vector fieldAction[MAX_RANGE];}unitAction; /**< Actions possibles par une unité */
 extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
-extern unit * pawns;
-extern int sizePawns;
+extern int noPlayer; /**< Représentation du joueur */
 
 bool isSurrounded(vector currentUnit);
-void gameInit(short * noPlayer);
-void createPawn(int * nbPawns, int nbParams, unitName name, ...);
+void gameInit();

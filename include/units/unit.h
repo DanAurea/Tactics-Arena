@@ -1,10 +1,9 @@
-void unitInit(short noPlayer, vector coordUnit);
 bool canGetPassed(unit * target);
 bool canBlock(unit * target);
 bool canAttack(unit * target);
 bool canMove(unit * target);
 int getSideAttacked(vector source, vector target );
-void heal(unitName name, short noPlayer);
+void heal(unitName name);
 void attack(vector source, vector target);
 bool copy(unit * destination, unit * source);
 void move(vector destination, vector source);

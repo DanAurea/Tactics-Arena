@@ -1,6 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
-#include "../include/gameEngine.h"
+#include "../../include/game/engine.h"
 
 /**
 *   Récupère les coordonnées d'une chaîne de caractère sous
@@ -142,6 +142,8 @@ bool correctCoord(char coordString[]){
         if( ((coordString[1] >= '9' && coordString[1] <= '0') || (coordString[2] >= '9' && coordString[2] <= '0')) && coordString[3] != '\n'){
             return false;
         }
+    }else{
+        return false;
     }
 
     return !isOutGrid(coordString); // Retourne vrai si pas en dehors de la grille
@@ -150,10 +152,9 @@ bool correctCoord(char coordString[]){
 /**
  * Vérifie que l'unité est du bon côté
  * @param  coordString Coordonnées sous forme de chaîne
- * @param  noPlayer    Joueur en cours
  * @return             Retourne vrai si du bon côté 
  */
-bool rightSide(char * coordString, short noPlayer){
+bool rightSide(char * coordString){
     int sizeS = strlen(coordString);
 
     for(int i = 0; i < sizeS; i++){

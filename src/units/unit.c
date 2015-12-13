@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <math.h>
-#include "../include/gameEngine.h"
-#include "../include/terminal.h"
-#include "../include/unit.h"
-#include "../include/listes.h"
+#include "../../include/game/engine.h"
+#include "../../include/game/pawns.h"
+#include "../../include/game/listes.h"
+#include "../../include/controller/terminal.h"
+#include "../../include/units/unit.h"
 
 /**
  * Initialise l'unité courante
@@ -106,7 +107,7 @@ bool canMove(unit * target)
 /*
 	soigne l'unité target du montant du soin de l'unité cible
 */
-void heal(unitName name, short noPlayer)
+void heal(unitName name)
 //tester
 {
     vector pos;

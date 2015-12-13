@@ -1,8 +1,9 @@
 /* Mise en oeuvre contigue d'un tableau de listes de vecteurs */
 #include <stdio.h>
-#include "../include/gameEngine.h"
-#include "../include/manageString.h"
-#include "../include/listes.h"
+#include "../../include/game/engine.h"
+#include "../../include/game/pawns.h"
+#include "../../include/controller/manageString.h"
+#include "../../include/game/listes.h"
 
 /* Definition du type d'un element de liste */
 typedef struct element {vector coordUnit; struct element* pred; struct element* succ;} t_element;
@@ -158,10 +159,9 @@ void dumpAllLists(){
 
 /**
  * Ajoute une unité dans la liste des unités du joueur
- * @param noPlayer  Joueur en cours
  * @param coordUnit Coordonnées de l'unité
  */
-void addUnit(short noPlayer, vector coordUnit){
+void addUnit(vector coordUnit){
 	vector tmp;
 	int nameUnit = grid[coordUnit.x][coordUnit.y].name;
 
@@ -224,10 +224,9 @@ void printList(short numList){
 
 /**
  * Détruit une unité dans la liste
- * @param noPlayer  Joueur en cours
  * @param coordUnit Coordonnées de l'unité à détruire
  */
-void destroyUnit(short noPlayer, vector coordUnit){
+void destroyUnit(vector coordUnit){
 	vector tmp;
 
 	en_tete(noPlayer);
@@ -241,4 +240,23 @@ void destroyUnit(short noPlayer, vector coordUnit){
 	if(tmp.x == coordUnit.x && tmp.y == coordUnit.y){ // Unité trouvée
 		oter_elt(noPlayer);
 	}
+}
+
+/**
+ * Compte le nombre d'unité
+ * @return          Retourne le nombre d'unité
+ */
+int countUnits(){
+	int nbUnits = 0; 
+
+	if(!liste_vide(noPlayer)){
+		en_tete(noPlayer);
+
+		while(!hors_liste(noPlayer)){
+			nbUnits++;
+			suivant(noPlayer);
+		}
+	}
+
+	return nbUnits;
 }
