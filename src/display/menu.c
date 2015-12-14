@@ -192,7 +192,9 @@ void mainHelp() {
 					     "    -ET pert 4 HP à char TOURS\n");
 
 					color(red, "Tout les Effets de Statuts peuvent se cumuler !\n\n");
+					break;
 
+				case 6 : mainMenu(); break;
 
 		
 		}
@@ -223,62 +225,215 @@ void helpUnit() {
 		"17 - Beast Rider\n"
 		"18 - Poison Wisp\n"
 		"19 - Furgon\n"
-		"20 - Retour menu principal\n\n");
-	color(green, "Quel est votre choix ? : ");
-	choix = readLong();
-    	
-        if(choix == 0) {
-    		printf("Erreur : Veuillez rentrer un chiffre et non un caractère \n");
-    	}
-	switch(choix){
+		"20 - Afficher de nouveau la liste des unités\n"
+		"21 - Retour menu principal\n");
+	do{
+		
+		color(green, "\nQuel est votre choix ? (20 pour afficher de nouveau le menu unité et 21 pour menu principal) : ");
+		choix = readLong();
+	    	
+		if(choix == 0) {
+	    		printf("Erreur : Veuillez rentrer un chiffre et non un caractère \n");
+	    	}
+		clearScreen();
+		switch(choix){
 
-		case 1 : puts("\nCaractéristiques du Knight : \n"
-			 	"HP : 50\n"
-				"Power : 22\n" 
-				"Armor : 25%\n"
-				"Blocking : 80% Devant 40% Côté\n"
-				"Recovery : 1\n"
-				"Movement : 3\n"
-				"Information(s) supplémentaire(s) : Pas plus de 3 Knight sur le champ de bataille.");
-		break;
+			case 1 : color(cyan,"\n Caractéristiques du Knight : \n");
+				 puts(  "  -HP : 50\n"
+					"  -Power : 22\n" 
+					"  -Armor : 25%\n"
+					"  -Blocking : 80% Devant 40% Côté\n"
+					"  -Recovery : 1\n"
+					"  -Movement : 3\n"
+					"  -Information(s) supplémentaire(s) : Pas plus de 3 Knight sur le champ de bataille");
+			break;
 
-		case 2 : puts("\nCaractéristiques du Scout : \n"
-			 	"HP : 40\n"
-				"Power : 18\n" 
-				"Armor : 8%\n"
-				"Blocking : 60% Devant 30% Côté\n"
-				"Recovery : 2\n"
-				"Movement : 4\n"
-				"Information(s) supplémentaire(s) : Pas plus de 2 Scout sur le champ de bataille.");
-		break;
+			case 2 : color(cyan,"\n Caractéristiques du Scout : \n");
+				 puts(	"  -HP : 40\n"
+					"  -Power : 18\n" 
+					"  -Armor : 8%\n"
+					"  -Blocking : 60% Devant 30% Côté\n"
+					"  -Recovery : 2\n"
+					"  -Movement : 4\n"
+					"  -Information(s) supplémentaire(s) : Pas plus de 2 Scout sur le champ de bataille");
+			break;
 
-		case 3 : puts("\nCaractéristiques de l'Assassin : \n"
-			 	"HP : 35\n"
-				"Power : 18\n" 
-				"Armor : 12%\n"
-				"Blocking : 70% Devant 35% Côté\n"
-				"Recovery : 1\n"
-				"Movement : 4\n"
-				"Information(s) supplémentaire(s) : Quand l'assassin possède moins de 5 HP, il peut faire le kamikaze");
-		break;
+			case 3 : color(cyan,"\n Caractéristiques de l'Assassin : \n");
+				 puts(	"  -HP : 35\n"
+					"  -Power : 18\n" 
+					"  -Armor : 12%\n"
+					"  -Blocking : 70% Devant 35% Côté\n"
+					"  -Recovery : 1\n"
+					"  -Movement : 4\n"
+					"  -Information(s) supplémentaire(s) : Quand l'assassin possède moins de 5 HP, il peut faire le kamikaze");
+			break;
 
-		case 3 : puts("\nCaractéristiques du Cleric : \n"
-			 	"HP : 24\n"
-				"Power : 12 de soin\n" 
-				"Armor : Aucune\n"
-				"Blocking : Aucun\n"
-				"Recovery : 5\n"
-				"Movement : 3\n"
-				"Information(s) supplémentaire(s) : Soigne tout les alliés. Le sort de soin ne peut être bloqué sauf par les barrières.");
-		break;
+			case 4 : color(cyan,"\n Caractéristiques du Cleric : \n");
+				 puts(	"  -HP : 24\n"
+					"  -Power : 12 de soin\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : Aucun\n"
+					"  -Recovery : 5\n"
+					"  -Movement : 3\n"
+					"  -Information(s) supplémentaire(s) : Soigne tout les alliés. Le sort de soin ne peut être bloqué sauf par les barrières");
+			break;
+
+			case 5 : color(cyan,"\n Caractéristiques du Pyromancer : \n");
+				 puts(	"  -HP : 30\n"
+					"  -Power : 15 Imblocable\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : 33% Devant 16% Côté\n"
+					"  -Recovery : 3\n"
+					"  -Movement : 3\n"
+					"  -Information(s) supplémentaire(s) : Son sort ne peut être bloqué, excepté pas les barrières");
+			break;
+
+			case 6 : color(cyan,"\n Caractéristiques de l'Enchantress : \n");
+				 puts(	"  -HP : 35\n"
+					"  -Power : Sort de paralysie\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : Aucun\n"
+					"  -Recovery : 3\n"
+					"  -Movement : 3\n"
+					"  -Information(s) supplémentaire(s) : Sort de paralysie maintenu tant que le Focus est maintenu");
+			break;
+
+			case 7 : color(cyan,"\n Caractéristiques du Dragonborn : \n");
+				 puts(	"  -HP : 30\n"
+					"  -Power : 15 Imblocable\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : 33% Devant 16% Côté\n"
+					"  -Recovery : 3\n"
+					"  -Movement : 3 TP\n"
+					"  -Information(s) supplémentaire(s) : Draîne 12 Power d'un dragon vers chaque Pyromancer ou mage sous votre contrôle");
+			break;
+
+			case 8 : color(cyan,"\n Caractéristiques de la Dark Witch : \n");
+				 puts(	"  -HP : 28\n"
+					"  -Power : 24 Imblocable\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : 20% Devant 10% Côté\n"
+					"  -Recovery : 3\n"
+					"  -Movement : 3\n"
+					"  -Information(s) supplémentaire(s) : Son sort ne peut être bloqué, excepté pas les barrières");
+			break;
+
+			case 9 : color(cyan,"\n Caractéristiques du Lightning Totem : \n");
+				 puts(	"  -HP : 56\n"
+					"  -Power : 30 Imblocable\n" 
+					"  -Armor : 18%\n"
+					"  -Blocking : 100% Partout\n"
+					"  -Recovery : 4\n"
+					"  -Movement : Immobile\n"
+					"  -Information(s) supplémentaire(s) : Pas plus de 1 Lightning Totem sur le champ de bataille. Il n'est pas nécessaire de détruire cette unité pour gagner");
+			break;
+
+			case 10 : color(cyan,"\n Caractéristiques du Barrier Totem : \n");
+				  puts(	"  -HP : 32\n"
+					"  -Power : Barrière\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : 100% Partout\n"
+					"  -Recovery : 2\n"
+					"  -Movement : Immobile\n"
+					"  -Information(s) supplémentaire(s) : Il n'est pas nécessaire de détruire cette unité pour gagner");
+			break;
+
+			case 11 : color(cyan,"\n Caractéristiques du Mud Golem : \n");
+				  puts(	"  -HP : 60\n"
+					"  -Power : 20\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : Aucun\n"
+					"  -Recovery : 2\n"
+					"  -Movement : 5 TP\n");
+			break;
+
+			case 12 : color(cyan,"\n Caractéristiques du Golem Ambusher : \n");
+				  puts(	"  -HP : 60\n"
+					"  -Power : 20\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : Aucun\n"
+					"  -Recovery : 3\n"
+					"  -Movement : 2\n"
+					"  -Information(s) supplémentaire(s) : Pas plus de 1 Golem Ambusher sur le champ de bataille");
+			break;
+
+			case 13 : color(cyan,"\n Caractéristiques du Frost Golem : \n");
+				  puts(	"  -HP : 60\n"
+					"  -Power : Paralyse\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : Aucun\n"
+					"  -Recovery : 2\n"
+					"  -Movement : 2\n"
+					"  -Information(s) supplémentaire(s) : Paralysie maintenu tant que le Focus est maintenu");
+			break;
+
+			case 14 : color(cyan,"\n Caractéristiques du Stone Golem : \n");
+				  puts(	"  -HP : 60\n"
+					"  -Power : +30% Armor\n" 
+					"  -Armor : 30%\n"
+					"  -Blocking : Aucun\n"
+					"  -Recovery : 4\n"
+					"  -Movement : 2\n"
+					"  -Information(s) supplémentaire(s) : Buff d'armure maintenu tant que le Focus est maintenu. Pas plus de 2 Stone Golem sur le champ de bataille");
+			break;
+
+			case 15 : color(cyan,"\n Caractéristiques du Dragon Tyrant : \n");
+				  puts(	"  -HP : 68\n"
+					"  -Power : 28\n" 
+					"  -Armor : 16%\n"
+					"  -Blocking : 40% Devant 20% Côtés\n"
+					"  -Recovery : 3\n"
+					"  -Movement : 4 TP\n"
+					"  -Information(s) supplémentaire(s) : Ne laisse pas ses alliés passer à travers lui. Compte comme 2 unités sur le champ de bataille. Pas plus de 1 Dragon Tyrant sur le champ de bataille ");
+			break;
+
+			case 16 : color(cyan,"\n Caractéristiques du Berserker : \n");
+				  puts(	"  -HP : 42\n"
+					"  -Power : 22 + Etourdissement\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : 25% Devant 12% Côtés\n"
+					"  -Recovery : 1\n"
+					"  -Movement : 3\n"
+					"  -Information(s) supplémentaire(s) : Ne laisse pas ses alliés passer à travers lui");
+			break;
+
+			case 17 : color(cyan,"\n Caractéristiques du Beast Rider : \n");
+				  puts(	"  -HP : 38\n"
+					"  -Power : 19\n" 
+					"  -Armor : 15%\n"
+					"  -Blocking : 45% Devant 22% Côtés\n"
+					"  -Recovery : 1\n"
+					"  -Movement : 4\n"
+					"  -Information(s) supplémentaire(s) : Ne laisse pas ses alliés passer à travers lui");
+			break;
+
+			case 18 : color(cyan,"\n Caractéristiques du Beast Rider : \n");
+				  puts(	"  -HP : 34\n"
+					"  -Power : Poison\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : Aucun\n"
+					"  -Recovery : 2\n"
+					"  -Movement : 6 TP\n");
+			break;
+
+			case 19 : color(cyan,"\n Caractéristiques du Furgon : \n");
+				  puts(	"  -HP : 48\n"
+					"  -Power : Invocation\n" 
+					"  -Armor : Aucune\n"
+					"  -Blocking : 50% Devant 25% Côtés\n"
+					"  -Recovery : 1\n"
+					"  -Movement : 3\n"
+					"  -Information(s) supplémentaire(s) : Les unités invoqués ne peuvent être placé que sur des cases vides, sont détruites dès qu'elles sont attaqués, ne peuvent être la cible d'un sort de soin ou de focus. Pas plus de 1 Dragon Tyrant sur le champ de bataille");
+			break;
+
+			case 20 : helpUnit(); break;
+			case 21 : mainHelp(); break;
+		}
+	}while(choix != 20 || choix != 21);
 
 
-
-	}
 
 }
-
-
 
 /**
  * Menu du joueur lors de la partie
