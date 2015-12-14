@@ -33,6 +33,12 @@ typedef struct{unitName name; unitStat stat; unitEffect effect[NB_MAX_EFFECT];sh
 typedef struct{vector coordUnit; vector fieldAction[MAX_RANGE];}unitAction; /**< Actions possibles par une unité */
 extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
 extern int noPlayer; /**< Représentation du joueur */
+extern int targets[N][N]; /**< Cibles potentielles */
 
 bool isSurrounded(vector currentUnit);
 void gameInit();
+bool selectUnit(vector * coordUnit);
+void getTargets(vector coordUnit);
+void printTargets();
+void launchAttack(unitName name, vector coordTarget);
+void movable(vector movaleUnits[]);

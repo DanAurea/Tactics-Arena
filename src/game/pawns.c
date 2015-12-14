@@ -125,7 +125,7 @@ void createPawn(int nbParams, unitName name, ...){
 			horizRange = va_arg(stats, int);
 			vertRange  = va_arg(stats, int);
 			sizeRing   = va_arg(stats, int);
-			line   = va_arg(stats, int);
+			line       = va_arg(stats, int);
 		}
 
 	}else{
@@ -159,28 +159,28 @@ void makePawns(){
 			Ordre params: Nombre paramètres obligatoires, nom unité,
 						HP, Power, Armor, 
 						Block[0], Block[1], Block[2],
-						Recovery, Move_range, 
+						Recovery, Move_range, TP,
 						horizRange, vertRange, sizeRing, line
 		*/
-		createPawn(8, knight, 50, 22, 0.25,           0.8, 0.4, 0.0,       1, 3,         1, 1, 1, 1);
-		createPawn(8, scout, 40, 18, 0.08,            0.6, 0.3, 0.0,       2, 4,         6, 6, 1, 0);
-		createPawn(8, assassin, 35, 18, 0.12,         0.7, 0.35, 0.0,      1, 4,         1, 1, 1, 1);
+		createPawn(8, knight, 50, 22, 0.25,           0.8, 0.4, 0.0,       1, 3,          1, 1, 1, 1);
+		createPawn(8, scout, 40, 18, 0.08,            0.6, 0.3, 0.0,       2, 4,          6, 6, 1, 0);
+		createPawn(8, assassin, 35, 18, 0.12,         0.7, 0.35, 0.0,      1, 4,          1, 1, 1, 1);
 		createPawn(8, cleric, 24, 12, 0.0,            0.0, 0.0, 0.0,       5, 3); // Unité n'ayant pas besoin de cible
-		createPawn(8, pyromancer, 30, 15, 0.0,        0.33, 0.16, 0.0,     3, 3,         3, 3, 0, 0);
-		createPawn(8, enchantress, 35, 0, 0.0,        0.0, 0.0, 0.0,       3, 3,         2, 2, 1, 0);
-		createPawn(8, dragonborn, 30, 22, 0.0,        0.33, 0.16, 0.0,     3, 3,         3, 3, 0, 0);
-		createPawn(8, darkWitch, 28, 24, 0.0,         0.2, 0.1, 0.0,       3, 3,         4, 4, 1, 1);
-		createPawn(8, lightningTotem, 56, 30, 0.18,   1.0, 1.0, 1.0,       4, 0,         3, 3, 0, 0);
-		createPawn(8, barrierTotem, 32, 0, 0.0,       1.0, 1.0, 1.0,       2, 0,         6, 6, 0, 0);
-		createPawn(8, mudGolem, 60, 20, 0.0,          0.0, 0.0, 0.0,       2, 5,         1, 1, 1, 1);
-		createPawn(8, golemAmbusher, 60, 20, 0.0,     0.0, 0.0, 0.0,       3, 2,         6, 6, 5, 0);
-		createPawn(8, frostGolem, 60, 0, 0.0,         0.0, 0.0, 0.0,       2, 2,         4, 4, 1, 0);
-		createPawn(8, stoneGolem, 60, 0, 0.3,         0.0, 0.0, 0.0,       4, 2,         1, 1, 0, 1);
-		createPawn(8, dragonTyrant, 28, 24, 0.0,      0.2, 0.1, 0.0,       3, 3,         3, 3, 1, 1);
-		createPawn(8, berserker, 42, 22, 0.0,         0.25, 0.12, 0.0,     1, 3,         1, 1, 1, 1);
-		createPawn(8, beastRider, 38, 19, 0.15,       0.45, 0.22, 0.0,     1, 4,         2, 2, 1, 1);
-		createPawn(8, poisonWisp, 34, 0, 0.0,         0.0, 0.0, 0.0,       2, 6,         2, 2, 1, 1);
-		createPawn(8, furgon, 48, 0, 0.0,             0.5, 0.25, 0.0,      1, 3,         2, 2, 0, 0);
+		createPawn(8, pyromancer, 30, 15, 0.0,        0.33, 0.16, 0.0,     3, 3,          3, 3, 0, 0);
+		createPawn(8, enchantress, 35, 0, 0.0,        0.0, 0.0, 0.0,       3, 3,          2, 2, 1, 0);
+		createPawn(8, dragonborn, 30, 22, 0.0,        0.33, 0.16, 0.0,     3, 3,          3, 3, 0, 0);
+		createPawn(8, darkWitch, 28, 24, 0.0,         0.2, 0.1, 0.0,       3, 3,          4, 4, 1, 1);
+		createPawn(8, lightningTotem, 56, 30, 0.18,   1.0, 1.0, 1.0,       4, 0,          3, 3, 0, 0);
+		createPawn(8, barrierTotem, 32, 0, 0.0,       1.0, 1.0, 1.0,       2, 0,          6, 6, 0, 0);
+		createPawn(8, mudGolem, 60, 20, 0.0,          0.0, 0.0, 0.0,       2, 5,          1, 1, 1, 1);
+		createPawn(8, golemAmbusher, 60, 20, 0.0,     0.0, 0.0, 0.0,       3, 2,          6, 6, 5, 0);
+		createPawn(8, frostGolem, 60, 0, 0.0,         0.0, 0.0, 0.0,       2, 2,          4, 4, 1, 0);
+		createPawn(8, stoneGolem, 60, 0, 0.3,         0.0, 0.0, 0.0,       4, 2,          1, 1, 0, 1);
+		createPawn(8, dragonTyrant, 28, 24, 0.0,      0.2, 0.1, 0.0,       3, 3,          3, 3, 1, 1);
+		createPawn(8, berserker, 42, 22, 0.0,         0.25, 0.12, 0.0,     1, 3,          1, 1, 1, 1);
+		createPawn(8, beastRider, 38, 19, 0.15,       0.45, 0.22, 0.0,     1, 4,          2, 2, 1, 1);
+		createPawn(8, poisonWisp, 34, 0, 0.0,         0.0, 0.0, 0.0,       2, 6,          2, 2, 1, 1);
+		createPawn(8, furgon, 48, 0, 0.0,             0.5, 0.25, 0.0,      1, 3,          2, 2, 0, 0);
 	}
 
 }

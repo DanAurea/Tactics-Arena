@@ -103,6 +103,18 @@ bool canMove(unit * target)
     return out;
 }
 
+/**
+ * Déterminé si une unité peut se téléporter
+ * @param  name Nom de l'unité
+ * @return      Retourne vraie si l'unité peut se déplacer
+ */
+bool canTeleport(unitName name){
+    if(name == poisonWisp || name == dragonTyrant || name == mudGolem){
+        return true;
+    }
+    return false;
+}
+
 
 /*
 	soigne l'unité target du montant du soin de l'unité cible

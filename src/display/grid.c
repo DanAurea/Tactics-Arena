@@ -153,5 +153,3 @@ void gridDisp(){
 	}
 	printf("\n");
 }
-
-

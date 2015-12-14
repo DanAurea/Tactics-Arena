@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
+#include "../../include/game/turn.h"
 #include "../../include/display/menu.h"
 #include "../../include/display/grid.h"
 #include "../../include/controller/terminal.h"
@@ -55,7 +56,7 @@ puts(
                 break;
             case 2: //loadGame();
                 break;
-            case 3: //gameMenu();
+            case 3: gameMenu();
                 break;
             case 4: break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
@@ -89,21 +90,16 @@ void gameMenu(){
 
         switch(choix){
 
-            case 1: //unitMenu(1); 
-break;
-            case 2: //unitMenu(2); 
-break;
-            case 3: //unitMenu(3);
-break;
-            case 4: // Passer tour
-                break;
+            case 1: unitMenu(1); break;
+            case 2: unitMenu(2); break;
+            case 3: unitMenu(3); break;
+            case 4: passTurn(); break;
             case 5: //Abandonner partie
                 break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 5\n");
         }
-    }while(choix != 5);
-
-    
+    }while(choix < 0 && choix > 5);
+   
 }
 
 /**
@@ -112,39 +108,36 @@ break;
  */
 void unitMenu(int choice){
     char yn;
-    //vector movableUnits[]; 
-    //vector attackableUnits[];
+    vector movableUnits[NB_MAX_UNIT]; 
 
     switch(choice){
             case 1:
-                    //Unités pouvant se déplacer
-        		    printf("Se déplacer ? y/n");
+                    movable(movableUnits); // Fait la liste des unités pouvant se déplacer
+        		    
+                    printf("Se déplacer ? y/n\n");
         		    readS(&yn);
                   	
                     if(yn == 'y' || yn == 'Y') {
-                       		 //Déplace
+                       		 playMove(movableUnits);
                     }else{
-                        printf("Saisie invalide");
+                        printf("Saisie invalide\n");
                     }
                 break;
             case 2:
         		    //Unités pouvant attaquer
-        		    printf("Attaquer ? y/n");
+        		    printf("Attaquer ? y/n\n");
         		    readS(&yn);
         		    
                     if(yn == 'y' || yn == 'Y') {
-        		        //Attaque
+                        playAttack();
                     }else{
-                        printf("Saisie invalide");
+                        printf("Saisie invalide\n");
                     }
                 break;
             case 3:
             //Change de direction
             break;  
         }
-    clearScreen();
-    gridDisp();
-    gameMenu();
 }
 
 

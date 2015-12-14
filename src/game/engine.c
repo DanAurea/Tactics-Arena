@@ -10,8 +10,34 @@
 #include "../../include/units/unit.h"
 
 unit grid[N][N]; /**< Grille d'unités */
+int targets[N][N]; /**< Matrice de cible potentielles voir pour une liste unique (moins de mémoire et traitement) */
 int noPlayer = FIRST_PLAYER; /**< Joueur en cours */
 
+/**
+ * Trouve un chemin vers une quelconque position pour l'unité
+ * @param coordUnit Coordonnées de l'unité
+ * @return Retourne vrai si chemin possible vers une quelconque position
+ */
+bool possiblePath(vector coordUnit){
+	int range = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
+
+	if(!isSurrounded(coordUnit)){
+
+		return true;
+
+	}else if(canTeleport(grid[coordUnit.x][coordUnit.y].name)){
+		
+		for(int x = -range; x <= range; x++){
+			for(int y = -range; y <= range; y++){
+				if(grid[x][y].name == empty && abs(x) + abs(y) <= 0 && x > 0 && x < N && y > 0 && y < N){
+					return true;
+				}
+			}
+		}
+	}
+	
+	return false;
+}
 
 /**
  * Fait la liste des unités déplaçables
@@ -26,7 +52,7 @@ void movable(vector movableUnit[]){
 		valeur_elt(noPlayer, &coordUnit);
 		suivant(noPlayer);
 
-		if(!isSurrounded(coordUnit) && canMove(&grid[coordUnit.x][coordUnit.y])){ // Unité non entourée par ennemi + non paralysée
+		if(canMove(&grid[coordUnit.x][coordUnit.y]) && possiblePath(coordUnit)){ // Unité non entourée par ennemi + non paralysée
 			movableUnit[currentUnit] = coordUnit;
 			currentUnit++;
 		}
@@ -70,6 +96,79 @@ bool isSurrounded(vector currentUnit){
 }
 
 /**
+ * Initialise les cibles potentielles
+ */
+void initTargets(){
+
+	for(int x = 0; x < N; x++){
+		for(int y = 0; y < N; y++){
+			targets[x][y] = 0;
+		}
+	}
+
+}
+
+/**
+ * Récupère les cibles possible de l'unité 
+ * aux coordonnées du vecteur passé en 
+ * paramètre. 
+ * @param coordUnit Coordonnées de l'unité
+ */
+void getTargets(vector coordUnit){
+	unitName name = grid[coordUnit.x][coordUnit.y].name;
+	vector target;
+	int x, y;
+
+	if(!liste_vide(name)){
+		initTargets();
+		en_tete(name);
+
+		while(!hors_liste(name)){
+			valeur_elt(name, &target);
+			x = coordUnit.x + target.x;
+			y = coordUnit.y + target.y;
+
+			if(x > 0 && x < N && y > 0 && y < N){
+				targets[x][y] = 1; // Marque la case comme cible potentielle
+			}
+			suivant(name);
+		}
+	}
+}
+
+/**
+ * Affiche la liste des cibles potentielles
+ */
+void printTargets(){
+    for(int x = 0; x < N; x++){
+        for(int y = 0; y < N; y++){
+            if(targets[N][N] == 1){
+                printf("%s - %c - %i\n", getNameUnit(grid[x][y].name), x + 'A', y + 1);
+            }
+        }
+    }
+}
+
+/**
+ * Lance une attaque selon l'unité
+ * @param name        Nom de l'unité
+ * @param coordTarget Coordonnées de la cible
+ */
+void launchAttack(unitName name, vector coordTarget){
+	if(name == assassin || name == enchantress || name == poisonWisp){
+		// Attaque toutes les cibles
+	}else if(name == furgon || name == stoneGolem || name == dragonborn || name == pyromancer){
+		// Attaque en croix
+	}else if(name == beastRider || name == darkWitch){
+		// Attaque en ligne
+	}else if(name == cleric){
+		// Heal
+	}else{
+		// Attaque sur une seule case
+	}
+}
+
+/**
  * Sélectionne une unité
  * @param  coordUnit Coordoonnées de l'unité
  * @return           Retourne vrai si unité bien sélectionnée
@@ -89,7 +188,7 @@ bool selectUnit(vector * coordUnit){
 	}else{
 
 		do{
-			printf("Sélectionnez une unité: ");
+			printf("Sélectionnez une unité par ses coordonnées: ");
 			readS(coordString);
 		}while(!correctCoord(coordString));
 
@@ -98,9 +197,7 @@ bool selectUnit(vector * coordUnit){
 
 		name = grid[coordUnit->x][coordUnit->y].name;
 
-		if( name == empty || name == decors) return false;
-		else if(coordUnit->x < 0 || coordUnit->x > N || coordUnit->y < 0 || coordUnit->y > N) return false;
-		else if(grid[coordUnit->x][coordUnit->y].noPlayer != noPlayer) return false;
+		if(name == decors) return false;
 
 		return true;
 	}

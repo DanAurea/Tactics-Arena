@@ -2,6 +2,7 @@ bool canGetPassed(unit * target);
 bool canBlock(unit * target);
 bool canAttack(unit * target);
 bool canMove(unit * target);
+bool canTeleport(unitName name);
 int getSideAttacked(vector source, vector target );
 void heal(unitName name);
 void attack(vector source, vector target);

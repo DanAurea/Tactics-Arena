@@ -3,8 +3,14 @@
 #include "../../include/game/engine.h"
 #include "../../include/game/turn.h"
 #include "../../include/game/listes.h"
+#include "../../include/display/grid.h"
 #include "../../include/display/menu.h"
+#include "../../include/controller/terminal.h"
 #include "../../include/controller/manageSignal.h"
+int hasMoved    = 0;
+int hasAttacked = 0;
+int hasDirected = 0;
+int hasPassed   = 0;
 
 /**
  * Débute le tour du joueur
@@ -34,6 +40,45 @@ int endTurn(time_t start, int totalTime){
 }
 
 /**
+ * Attaquer
+ */
+void playAttack(){
+	bool selected = false;
+	vector coordUnit, coordTarget;
+
+	do{
+		selected = selectUnit(&coordUnit); // Sélection de l'unité attaquante
+	}while(grid[coordUnit.x][coordUnit.y].noPlayer != noPlayer || selected == false);
+
+	getTargets(coordUnit); // Récupère les cibles potentielles
+	printTargets(); // Affiche les cibles potentielles
+
+	do{
+		selected = selectUnit(&coordTarget); // Sélectionne une cible à attaquer
+	}while(targets[coordTarget.x][coordTarget.y] == 0 || selected == false);
+
+	launchAttack(grid[coordUnit.x][coordUnit.y].name, coordTarget); // Lance une attaque
+	// Déclencher capacité spéciale
+
+	clearScreen();
+	gridDisp();
+}
+
+/**
+ * Déplacer une unité
+ */
+void playMove(vector movableUnits[]){
+
+}
+
+/**
+ * Passer tour
+ */
+void passTurn(){
+	hasPassed = 1;
+}
+
+/**
  * Jouer un tour
  */
 void playTurn(){
@@ -45,7 +90,7 @@ void playTurn(){
 
 	signal(SIGTERM, timeDown); // En fin de tour renvoie vers timeDown
 
-	while(timeLeft > 0){
+	while(timeLeft > 0 && hasPassed == 0){
 
 		gameMenu(); // Menu du joueur
 		// Vérif si temps écoulé si oui fin du tour action non prise en compte
