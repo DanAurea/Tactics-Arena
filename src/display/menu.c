@@ -7,6 +7,7 @@
 #include "../../include/display/grid.h"
 #include "../../include/controller/terminal.h"
 #include "../../include/controller/manageString.h"
+#include "../../include/controller/saveNLoad.h"
 
 /**
  * Menu principal du jeu
@@ -54,7 +55,7 @@ printf(
         switch(choix){
             case 1: gameInit();
                 break;
-            case 2: //loadGame();
+            case 2: load();
                 break;
             case 3: mainHelp();
                 break;
@@ -67,6 +68,10 @@ printf(
     exit(1);
 }
 
+
+/**
+* Menu d'aide principal
+*/
 void mainHelp() {
 	int choix;
 	clearScreen();
@@ -201,7 +206,9 @@ void mainHelp() {
 	}while(choix != 6);
 }
 
-
+/**
+* Menu d'aide spéifique aux unités
+*/
 
 void helpUnit() {
 	int choix;
@@ -447,7 +454,8 @@ void gameMenu(){
         printf(" 2 - Unités pouvant attaquer\n");
         printf(" 3 - Changer de direction\n");
         printf(" 4 - Passer tour\n");
-        printf(" 5 - Abandonner la partie\n");
+	printf(" 5 - Passer tour\n");
+        printf(" 6 - Abandonner la partie\n");
 
         printf("Votre choix : ");
         choix = readLong();	
@@ -462,11 +470,12 @@ void gameMenu(){
             case 2: unitMenu(2); break;
             case 3: unitMenu(3); break;
             case 4: passTurn(); break;
-            case 5: //Abandonner partie
+            case 5: save(); break;
+            case 6: //Abandonner partie
                 break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 5\n");
         }
-    }while(choix < 0 && choix > 5);
+    }while(choix < 0 && choix > 6);
    
 }
 
