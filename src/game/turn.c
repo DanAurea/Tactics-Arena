@@ -50,14 +50,18 @@ void playAttack(){
 		selected = selectUnit(&coordUnit); // Sélection de l'unité attaquante
 	}while(grid[coordUnit.x][coordUnit.y].noPlayer != noPlayer || selected == false);
 
-	getTargets(coordUnit); // Récupère les cibles potentielles
+	if(liste_vide(targetList)){
+		getTargets(coordUnit); // Récupère les cibles potentielles
+	}
+
 	printTargets(); // Affiche les cibles potentielles
 
 	do{
 		selected = selectUnit(&coordTarget); // Sélectionne une cible à attaquer
-	}while(targets[coordTarget.x][coordTarget.y] == 0 || selected == false);
+		searchTarget(targetList, coordTarget);
+	}while(!searchTarget(targetList, coordTarget) || !selected);
 
-	launchAttack(grid[coordUnit.x][coordUnit.y].name, coordTarget); // Lance une attaque
+	launchAttack(coordUnit, coordTarget); // Lance une attaque
 	// Déclencher capacité spéciale
 
 	clearScreen();
@@ -67,7 +71,13 @@ void playAttack(){
 /**
  * Déplacer une unité
  */
-void playMove(vector movableUnits[]){
+void playMove(){
+	bool selected = false;
+	vector coordUnit, coordTarget;
+	
+	do{
+		selected = selectUnit(&coordUnit); // Sélection de l'unité à déplacer
+	}while(grid[coordUnit.x][coordUnit.y].noPlayer != noPlayer || !selected);
 
 }
 
@@ -89,6 +99,11 @@ void playTurn(){
 	int timeLeft   = totalTime; // Temps restant
 
 	signal(SIGTERM, timeDown); // En fin de tour renvoie vers timeDown
+
+	hasMoved    = 0; // Actions utilisateur lors du tour
+	hasAttacked = 0;
+	hasDirected = 0;
+	hasPassed   = 0;
 
 	while(timeLeft > 0 && hasPassed == 0){
 

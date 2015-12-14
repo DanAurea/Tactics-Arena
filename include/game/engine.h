@@ -4,6 +4,8 @@
 
 // Constantes jeu
 #define N 11 /**< Taille de la grille */
+#define NB_LISTS_ENGINE 2 /**< Nombre de liste additionnelles nécessaires pour le jeu */
+#define NB_PLAYERS 2 /**< Nombre de joueurs */
 #define NB_LINES 2 /**< Limite du camp du joueur */
 #define NB_UNITS 21	 /**< Nombre d'unités dans le jeu */
 #define NB_MAX_EFFECT 6 /**< Nombre total de status différent */
@@ -33,12 +35,13 @@ typedef struct{unitName name; unitStat stat; unitEffect effect[NB_MAX_EFFECT];sh
 typedef struct{vector coordUnit; vector fieldAction[MAX_RANGE];}unitAction; /**< Actions possibles par une unité */
 extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
 extern int noPlayer; /**< Représentation du joueur */
-extern int targets[N][N]; /**< Cibles potentielles */
+extern int targetList; /**< Cibles potentielles */
+extern int movableList;
 
 bool isSurrounded(vector currentUnit);
 void gameInit();
 bool selectUnit(vector * coordUnit);
 void getTargets(vector coordUnit);
 void printTargets();
-void launchAttack(unitName name, vector coordTarget);
-void movable(vector movaleUnits[]);
+void launchAttack(vector coordSource, vector coordTarget);
+void movable();

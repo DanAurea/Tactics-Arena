@@ -19,7 +19,15 @@ void dumpAllLists();
 
 // Manipulation des listes d'unités
 void addUnit(vector coordUnit);
-void addTarget(unitName name, vector coordUnit);
 void destroyUnit(vector coordUnit);
 void printList(short numList);
 int countUnits();
+
+// Manipulation des listes de cible
+void addTarget(unitName name, vector coordUnit);
+bool searchTarget(int numList, vector coordTarget);
+void printTargets();
+
+// Manipulation des listes d'unités déplaçable
+void addMovable(vector coordUnit);
+void printMovable();

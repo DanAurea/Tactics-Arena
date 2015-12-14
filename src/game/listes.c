@@ -16,7 +16,7 @@ t_element* ec[NB_UNITS];
 /* Primitives de manipulation des listes */
 
 void init_liste(int n)
-{	if(n>=0&&n<=NB_UNITS)
+{	if(n>=0&&n<= (NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 	{
 		drapeau[n] = malloc(sizeof(t_element));
 		drapeau[n]->pred = drapeau[n];
@@ -26,48 +26,48 @@ void init_liste(int n)
 }
 
 void initLists(){
-	for(int i = 0; i <= NB_UNITS; i++)
+	for(int i = 0; i <= (NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE; i++)
 		init_liste(i);
 }
 
 int liste_vide(int n)
-{	if(n>=0&&n<=NB_UNITS)
+{	if(n>=0&&n<= (NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		return drapeau[n]->pred==drapeau[n];
     return -1;
 }
 
 int hors_liste(int n)
-{	if(n>=0&&n<=NB_UNITS)
+{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		return ec[n]==drapeau[n];
     return -1;
 }
 
 void en_tete(int n)
-{	if(n>=0&&n<=NB_UNITS)
+{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!liste_vide(n))
 			ec[n] = drapeau[n]->succ;
 }
 
 void en_queue(int n)
-{	if(n>=0&&n<=NB_UNITS)
+{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!liste_vide(n))
 			ec[n] = drapeau[n]->pred;
 }
 
 void precedent(int n)
-{	if(n>=0&&n<=NB_UNITS)
+{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n))
 			ec[n] = ec[n]->pred;
 }
 
 void suivant(int n)
-{	if(n>=0&&n<=NB_UNITS)
+{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n))
 			ec[n] = ec[n]->succ;
 }
 
 void valeur_elt(int n, vector * v)
-{	if(n>=0&&n<=NB_UNITS)
+{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n)){
 			v->x = ec[n]->coordUnit.x;
             v->y = ec[n]->coordUnit.y;
@@ -75,7 +75,7 @@ void valeur_elt(int n, vector * v)
 }
 
 void modif_elt(int n, vector v)
-{	if(n>=0&&n<=NB_UNITS)
+{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n)){
 			ec[n]->coordUnit.x = v.x;
             ec[n]->coordUnit.y = v.y;
@@ -86,7 +86,7 @@ void oter_elt(int n)
 {
 	t_element * temp;
 
-    	if(n>=0&&n<=NB_UNITS)
+    	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n))
 		{
 			(ec[n]->succ)->pred = ec[n]->pred;
@@ -101,7 +101,7 @@ void ajout_droit(int n, vector v)
 {
 	t_element* nouv;
 
-	if(n>=0&&n<=NB_UNITS)
+	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		if (liste_vide(n) || !hors_liste(n))
 		{
 			nouv = malloc(sizeof(t_element));
@@ -119,7 +119,7 @@ void ajout_gauche(int n, vector v)
 {
 	t_element* nouv;
 
-	if(n>=0&&n<=NB_UNITS)
+	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
 		if (liste_vide(n) || !hors_liste(n))
 		{
 			nouv = malloc(sizeof(t_element));
@@ -151,7 +151,7 @@ void dumpList(short nbList){
  */
 void dumpAllLists(){
 	
-	for(int list = 0; list <= NB_UNITS; list++){
+	for(int list = 0; list <= (NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE; list++){
 		dumpList(list); // Libère la liste
 		free(drapeau[list]); // Libère le drapeau
 	}
@@ -201,6 +201,17 @@ void addTarget(unitName name, vector coordUnit){
 }
 
 /**
+ * Ajoute une unité pouvant se déplacer
+ * @param coordUnit Coordonnées de l'unité
+ */
+void addMovable(vector coordUnit){
+	if(!liste_vide(movableList)){
+		en_queue(movableList);
+	}
+	ajout_droit(movableList, coordUnit);
+}
+
+/**
  * Affiche la liste désirée
  * @param numList Numéro de liste
  */
@@ -220,6 +231,40 @@ void printList(short numList){
 		suivant(numList);
 		i++;
 	}
+}
+
+/**
+ * Affiche la liste des cibles potentielles
+ */
+void printTargets(){
+	vector target;
+
+    if(!liste_vide(targetList)){
+    	en_tete(targetList);
+
+    	while(!hors_liste(targetList)){
+    		valeur_elt(targetList, &target);
+    		printf("%s - %c - %i\n", getNameUnit(grid[target.x][target.y].name), target.x + 'A', target.y + 1);    		
+    		suivant(targetList);
+    	}
+    }
+}
+
+/**
+ * Affiche la liste des cibles potentielles
+ */
+void printMovable(){
+	vector target;
+
+    if(!liste_vide(movableList)){
+    	en_tete(movableList);
+
+    	while(!hors_liste(movableList)){
+    		valeur_elt(movableList, &target);
+    		printf("%s - %c - %i\n", getNameUnit(grid[target.x][target.y].name), target.x + 'A', target.y + 1);    		
+    		suivant(targetList);
+    	}
+    }
 }
 
 /**
@@ -259,4 +304,57 @@ int countUnits(){
 	}
 
 	return nbUnits;
+}
+
+/**
+ * Cherche une cible dans la liste
+ * @param numList Numéro de la liste
+ * @param coordTarget Coordonnées de la cible
+ * @return Retourne vrai si cible trouvée
+ */
+bool searchTarget(int numList, vector coordTarget){
+	vector tmp = {-1, -1};
+
+	if(!liste_vide(numList)){
+		en_tete(numList);
+
+		while(!hors_liste(numList) && (tmp.x != coordTarget.x || tmp.y != coordTarget.y)){ // Cherche la cible
+			valeur_elt(numList, &tmp);
+			
+			if(tmp.x == coordTarget.x && tmp.y == coordTarget.y){ // Unité trouvée
+				return true;
+			}
+			suivant(numList);
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Cherche une unité dans la liste
+ * @return Retourne 1 si coordonnées trouvée, 2 si nom trouvée sinon 0
+ */ 
+int searchUnit(int numList, unitName name, vector coordUnit){
+	vector unit;
+	unitName tmpName;
+
+	if(!liste_vide(numList) && numList >= FIRST_PLAYER && numList <= FIRST_PLAYER + 1){ // Liste des joueurs
+		en_tete(numList);
+
+		while(!hors_liste(numList)){ // Cherche dans la liste
+			valeur_elt(numList, &unit);
+			tmpName = grid[unit.x][unit.y].name;
+
+			if(coordUnit.x == unit.x && coordUnit.y == unit.y){ // Coordonnées de l'unité
+				return 1;
+			}else if(name == tmpName){ // Nom de l'unité trouvée 
+				return 2;
+			}
+
+			suivant(numList);
+		}
+	}
+
+	return 0;
 }

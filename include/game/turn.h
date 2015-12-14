@@ -4,7 +4,7 @@
 
 void playTurn();
 void playAttack();
-void playMove(vector movableUnits[]);
+void playMove();
 void passTurn();
 
 extern int hasMoved;

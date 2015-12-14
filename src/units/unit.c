@@ -109,7 +109,7 @@ bool canMove(unit * target)
  * @return      Retourne vraie si l'unité peut se déplacer
  */
 bool canTeleport(unitName name){
-    if(name == poisonWisp || name == dragonTyrant || name == mudGolem){
+    if(name == poisonWisp || name == dragonTyrant || name == mudGolem || name == dragonborn){
         return true;
     }
     return false;

@@ -10,7 +10,8 @@
 #include "../../include/units/unit.h"
 
 unit grid[N][N]; /**< Grille d'unités */
-int targets[N][N]; /**< Matrice de cible potentielles voir pour une liste unique (moins de mémoire et traitement) */
+int targetList = (NB_UNITS - 2) + NB_PLAYERS + 1;
+int movableList = (NB_UNITS - 2) + NB_PLAYERS + 2;
 int noPlayer = FIRST_PLAYER; /**< Joueur en cours */
 
 /**
@@ -43,20 +44,31 @@ bool possiblePath(vector coordUnit){
  * Fait la liste des unités déplaçables
  * @param movableUnit Tableau des unités déplaçables
  */
-void movable(vector movableUnit[]){
+void movable(){
 	vector coordUnit;
-	en_tete(noPlayer);
-	short currentUnit = 0;
+	
+	en_tete(movableList);
+	if(!liste_vide(movableList)){
+		dumpList(movableList); // Vide la liste pour la mise à jour
+	}
 
-	while(!hors_liste(noPlayer)){
-		valeur_elt(noPlayer, &coordUnit);
-		suivant(noPlayer);
+	while(!hors_liste(movableList)){
+		valeur_elt(movableList, &coordUnit);
+		suivant(movableList);
 
 		if(canMove(&grid[coordUnit.x][coordUnit.y]) && possiblePath(coordUnit)){ // Unité non entourée par ennemi + non paralysée
-			movableUnit[currentUnit] = coordUnit;
-			currentUnit++;
+			addMovable(coordUnit);
 		}
 	}
+}
+
+/**
+ * Trouve un chemin vers la position désirée
+ * @param coordUnit Coordonnées de l'unité
+ * @param coordTarget Coordonnées de la cible
+ */
+void findPath(vector coordUnit, vector coordTarget){
+	
 }
 
 /**
@@ -96,19 +108,6 @@ bool isSurrounded(vector currentUnit){
 }
 
 /**
- * Initialise les cibles potentielles
- */
-void initTargets(){
-
-	for(int x = 0; x < N; x++){
-		for(int y = 0; y < N; y++){
-			targets[x][y] = 0;
-		}
-	}
-
-}
-
-/**
  * Récupère les cibles possible de l'unité 
  * aux coordonnées du vecteur passé en 
  * paramètre. 
@@ -117,19 +116,23 @@ void initTargets(){
 void getTargets(vector coordUnit){
 	unitName name = grid[coordUnit.x][coordUnit.y].name;
 	vector target;
-	int x, y;
+	vector newTarget;
+
+	en_tete(targetList);
+	if(!liste_vide(targetList)){ 
+		dumpList(targetList); // Vide la liste
+	}
 
 	if(!liste_vide(name)){
-		initTargets();
 		en_tete(name);
 
 		while(!hors_liste(name)){
 			valeur_elt(name, &target);
-			x = coordUnit.x + target.x;
-			y = coordUnit.y + target.y;
+			newTarget.x = coordUnit.x + target.x;
+			newTarget.y = coordUnit.y + target.y;
 
-			if(x > 0 && x < N && y > 0 && y < N){
-				targets[x][y] = 1; // Marque la case comme cible potentielle
+			if(newTarget.x >= 0 && newTarget.x < N && newTarget.y >= 0 && newTarget.y < N){
+				addTarget(targetList, newTarget); // Marque les coordonnées comme cible potentielle
 			}
 			suivant(name);
 		}
@@ -137,34 +140,58 @@ void getTargets(vector coordUnit){
 }
 
 /**
- * Affiche la liste des cibles potentielles
- */
-void printTargets(){
-    for(int x = 0; x < N; x++){
-        for(int y = 0; y < N; y++){
-            if(targets[N][N] == 1){
-                printf("%s - %c - %i\n", getNameUnit(grid[x][y].name), x + 'A', y + 1);
-            }
-        }
-    }
-}
-
-/**
  * Lance une attaque selon l'unité
- * @param name        Nom de l'unité
+ * @param coordSource        Nom de l'unité source
  * @param coordTarget Coordonnées de la cible
  */
-void launchAttack(unitName name, vector coordTarget){
+void launchAttack(vector coordSource, vector coordTarget){
+	unitName name = grid[coordSource.x][coordSource.y].name;
+	vector targetAttack;
+
 	if(name == assassin || name == enchantress || name == poisonWisp){
-		// Attaque toutes les cibles
+		
+		if(!liste_vide(targetList)){
+			en_tete(targetList);
+
+			while(!hors_liste(targetList)){ // Attaque toutes les cibles
+				valeur_elt(targetList, &targetAttack);
+	
+				attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
+
+				suivant(targetList);
+			}
+		}
+
 	}else if(name == furgon || name == stoneGolem || name == dragonborn || name == pyromancer){
-		// Attaque en croix
+		
+		for(int x = coordTarget.x - 1; x <= coordTarget.x + 1; x++){
+			for(int y = coordTarget.y - 1; y <= coordTarget.y + 1; y++){
+				if(abs(x) + abs(y) <= 1 && x >=0 && x < N && y >= 0 && y < N){ // Croix centrée sur la cible désirée
+					targetAttack.x = coordTarget.x + x;
+					targetAttack.y = coordTarget.y + y;
+					attack(coordSource, targetAttack);
+				}
+			}
+		}
+
 	}else if(name == beastRider || name == darkWitch){
-		// Attaque en ligne
+		if(!liste_vide(targetList)){
+			en_tete(targetList);
+
+			while(!hors_liste(targetList)){
+				valeur_elt(targetList, &targetAttack);
+				
+				if(targetAttack.x == coordTarget.x || coordTarget.y == coordTarget.y){ // Même ligne / colonne
+					attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
+				}
+
+				suivant(targetList);
+			}
+		}
 	}else if(name == cleric){
-		// Heal
+		heal(name);
 	}else{
-		// Attaque sur une seule case
+		attack(coordSource, coordTarget);
 	}
 }
 
@@ -317,8 +344,8 @@ void updateLimits(int unitSelected, int limitUnits[], vector coordUnit){
 
 /**
  * Demande de choisir une unité
- * @param unitSelected
- * @param Nombre limite pour chaque unité
+ * @param unitSelected Unité sélectionnée
+ * @param limitUnits Nombre limite pour chaque unité
  */
 void askUnit(int * unitSelected, int limitUnits[]){
 	do{
@@ -372,7 +399,6 @@ void askCoord(char coordString[]){
 	while(!correctCoord(coordString) || !rightSide(coordString));
 }
 
-
 /**
  * Placement des unités par le joueur
  * @param limitUnits Limites d'unités
@@ -401,6 +427,7 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
 	unitInit(noPlayer, coordUnit); // Initialise l'unité ajoutée
 	addUnit(coordUnit);
 
+	printList(grid[coordUnit.x][coordUnit.y].name);
 	clearScreen();
 	gridDisp(); // Affiche la grille actualisée
 }
@@ -417,7 +444,7 @@ void playerInit(){
 	for(int i = 0; i < NB_MAX_UNIT; i++){
 		fontColor(red);
 
-		if(i < NB_MAX_UNIT - 1)
+		if(i < NB_MAX_UNIT -1)
 			printf("Il reste %i unités à placer.\n", NB_MAX_UNIT - i);
 		else
 			printf("Il reste 1 unité à placer.\n");
