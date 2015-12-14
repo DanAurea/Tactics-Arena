@@ -53,11 +53,11 @@ Une fois ce temps expiré:
     - **[x] Menu**
     - **[x] Unités**
     - **[x] Statistiques**
-    - **[ ] Mouvements**
-    - **[ ] Gestion des tours**
-    - **[ ] Gestion du temps**
+    - **[-] Mouvements**
+    - **[-] Gestion des tours**
+    - **[x] Gestion du temps**
     - **[ ] Capacités spéciales**
-    - **[ ] Etat unités**
+    - **[x] Etat unités**
  - **[ ] Test unitaires**
  - **[ ] Test d'intégration**
  - **[ ] Ajout de fonctionnalités**
