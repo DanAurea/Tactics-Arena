@@ -39,6 +39,7 @@ Une fois ce temps expiré:
    2. **[Changelog](#markdown-header-changelog)**
      - **[Version 0.1](#markdown-header-version-01)**
      - **[Version 0.53](#markdown-header-version-053)**
+     - **[Version 0.85](#markdown-header-version-085)**
    3. **[A faire](#markdown-header-a-faire)**
    4. **[Instructions de compilation](#markdown-header-instructions-de-compilation)**
    5. **[Utilisation](#markdown-header-utilisation)**
@@ -79,7 +80,7 @@ Une fois ce temps expiré:
  - Mise en place de modules pour chaque unité
  - Gestion des unités
 
-## Version 0.85
+### Version 0.85
 
 - Gestion du temps
 - Début gestion des tours
