@@ -79,6 +79,16 @@ Une fois ce temps expiré:
  - Mise en place de modules pour chaque unité
  - Gestion des unités
 
+## Version 0.85
+
+- Gestion du temps
+- Début gestion des tours
+- Début mouvement des unités
+- Début attaque des unités
+- Etats unités
+- Restructuration
+- Correctifs divers
+
 ## Instructions de compilation
 
 
