@@ -300,3 +300,26 @@ void recover(vector pos)
     }
 }
 
+//true > toutes unité du joueur imobile sinon false
+bool allStatic(int numPlayer)
+{
+    int uMovable=0;
+    vector pos;
+    if(!liste_vide(numPlayer))
+    {
+        en_tete(numPlayer);
+        while(!hors_liste(numPlayer) && uMovable==0)
+        {
+            valeur_elt(numPlayer,&pos);
+            if(canMove(&grid[pos.x][pos.y]) || !isSurrounded(pos))
+            {
+                uMovable++;
+            }
+        }
+    }
+    if(uMovable>0)
+    {
+        return false;
+    }
+    return true;
+}
