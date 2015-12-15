@@ -16,14 +16,13 @@ void unitInit(short noPlayer, vector coordUnit)
 	int unitName = grid[coordUnit.x][coordUnit.y].name;
     copy (&grid[coordUnit.x][coordUnit.y],&pawns[unitName]); //unitName à la place de 0
     grid[coordUnit.x][coordUnit.y].noPlayer=noPlayer;
+    grid[coordUnit.x][coordUnit.y].unitColor=reinit;
     if(noPlayer == FIRST_PLAYER)
     {
-        grid[coordUnit.x][coordUnit.y].unitColor=red;
         setDirection(coordUnit,north);
     }
     else
     {
-        grid[coordUnit.x][coordUnit.y].unitColor=blue;
         setDirection(coordUnit,south);
     }
 }
@@ -37,7 +36,7 @@ bool canGetPassed(unit * target)
     bool out = true;
     for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[i]>2)
+    	if(target-> effect[0][i]>2)
     	{
     		out = false;
     	}
@@ -56,7 +55,7 @@ bool canBlock(unit * target)
     bool out = true;
     for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[i]>4)
+    	if(target-> effect[0][i]>4)
         {
         	out = false;
         }
@@ -75,7 +74,7 @@ bool canAttack(unit * target)
     bool out = true;
     for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[i]>3 && target-> effect[i]<6)
+    	if(target-> effect[0][i]>3 && target-> effect[0][i]<6)
         {
         	out = false;
         }
@@ -94,7 +93,7 @@ bool canMove(unit * target)
     bool out = true;
     for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[i] == 5)
+    	if(target-> effect[0][i] == 5)
         {
         	out = false;
         }
@@ -181,6 +180,7 @@ void attack(vector source, vector target)
             noPlayer = tmp;
         }
     }
+
 }
 
 
@@ -202,7 +202,8 @@ bool copy(unit * destination, unit * source)
         }
         destination->stat.MOVE_RANGE = source->stat.MOVE_RANGE;
         for(int i = 0;i<NB_MAX_EFFECT;i++){
-            destination->effect[i] = source->effect[i];
+            destination->effect[0][i] = source->effect[0][i];
+            destination->effect[1][i] = source->effect[1][i];
         }
 
         destination->direct    = source->direct;
@@ -224,7 +225,8 @@ void erase(unit * source)
 
 	for(int i = 0;i<NB_MAX_EFFECT;i++)
 	{
-		source->effect[i] = none;
+		source->effect[0][i] = none;
+		source->effect[1][i] = 0;
 	}
 	source->unitColor=white;
 }
@@ -256,21 +258,41 @@ void setDirection(vector source, int dir)
 	Ajoute sur l'unité target l'effet effect.
 */
 void addEffect(vector target, unitEffect effect)
-//tester
 {
 	unit * uTarget = &grid[target.x][target.y];
-	int i = 0;
-	while(i<NB_MAX_EFFECT && (uTarget->effect[i] != none && uTarget->effect[i] != effect ))
+	uTarget->effect[0][effect-1]=effect;
+	if(effect==FOCUS)
 	{
-		i++;
+	    uTarget->effect[0][effect-1]=1;
 	}
-	if(i<NB_MAX_EFFECT)
+	else
 	{
-		if(uTarget->effect[i] != effect)
-		{
-			uTarget->effect[i] = effect;
-		}
+	    uTarget->effect[0][effect-1]=3;
 	}
+}
+
+void minusEffect()
+{
+    vector pos;
+    if(!liste_vide(noPlayer))
+    {
+        en_tete(noPlayer);
+        while(!hors_liste(noPlayer))
+        {
+            valeur_elt(noPlayer,&pos);
+            for(int i=0;i<NB_MAX_EFFECT;i++)
+            {
+                if(grid[pos.x][pos.y].effect[0][i]!=none)
+                {
+                    grid[pos.x][pos.y].effect[1][i]--;
+                    if(grid[pos.x][pos.y].effect[1][i]==0)
+                    {
+                        grid[pos.x][pos.y].effect[0][i]=none;
+                    }
+                }
+            }
+        }
+    }
 }
 
 /*
@@ -323,3 +345,5 @@ bool allStatic(int numPlayer)
     }
     return true;
 }
+
+

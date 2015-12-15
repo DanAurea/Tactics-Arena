@@ -6,16 +6,20 @@
 
 /**
  * Affiche une bordure sur le côté droit sur les lignes vides et utiles
- * @param row Ligne actuelle 
+ * @param row Ligne actuelle
  */
 void borderRight(short row){
 	int j;
 
-	for(j = 0; j <= N; j++){
+	for(j = 0; j <= N; j++)
+	{
 		if(j == 0 && row != N-1) // Affichage que les lignes utiles
 			printf("  %s", VL);
-		if(j < N )
+		if(j < N ){
+		    color(grid[row][j].unitColor,"Screen");
 			printf("    ");
+			reinitColor();
+		}
 		else if (row != N-1) // Affichage sur les lignes utiles
 			printf("%s", VL);
 	}
@@ -28,7 +32,7 @@ void borderHoriz(){
 	int x = 0; // Initialisation pour barre de séparation
 	while( x < N){ // Affiche une barre de séparation
 		printf("%s%s%s%s", HL, HL, HL, HL);
-		x = x +1;
+		x +=1;
 	}
 }
 
@@ -39,7 +43,7 @@ void borderHoriz(){
  */
 void dispX(){
 	for(short x = 1; x <= N; x++){
-		
+
 		// Affiche les coordonnées horizontales chiffrées
 		if(x < 10)
 			printf("   %i", x);
@@ -48,7 +52,7 @@ void dispX(){
 
 		if(x == N){
 			printf("\n  ");
-			
+
 			printf("%s", LT);
 			borderHoriz(); // Affiche une bordure horizontale délimitant le plateau
 			printf("%s", RT);
@@ -83,20 +87,47 @@ void bottom(){
 }
 
 //Utilise les fonctions précédentes pour créer des cases individuelles
-void dispTile (int row) {
-	
-	int i, col;
-	for(i=0; i<N; i++) {
-		top();
-	}
-	printf("\n");
-	for(col=0; col < N; col++){
-		center(grid[row][col].name);	
-	}
-	printf("\n");
-	for( i = 0; i < N; i++){
-		bottom();
-	}
+void dispTile (int x, int y)
+{
+    //int tileColor = grid[x][y].unitColor;
+    char * uName; // Nom unité
+
+    uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
+
+    if(grid[x][y].noPlayer == FIRST_PLAYER){
+        fontColor(red);
+    }else if(grid[x][y].noPlayer == FIRST_PLAYER+1){
+        fontColor(blue);
+    }else
+    fontColor(white);
+
+
+    if((x == 0||x == N-1) && y != 0)
+    {
+        printf("%s",HL);
+    }
+        if((y == 0||y == N-1) && x != 0)
+    {
+        printf("%s",VL);
+    }
+    if(x+y == 0)
+    {
+        printf("%s",LT);
+    }
+    if(x == 0 && y == N-1)
+    {
+        printf("%s",RT);
+    }
+    if(x == N-1 && y == 0)
+    {
+        printf("%s",LB);
+    }
+    if(x == N-1 && y == N-1)
+    {
+        printf("%s",RB);
+    }
+    reinitColor();
+    free(uName);
 }
 
 /**
@@ -105,23 +136,36 @@ void dispTile (int row) {
 void gridDisp(){
 	int x, y;
 	char lettre = 'A';
-    	char * uName; // Nom unité
+    char * uName; // Nom unité
 
 
 	printf("\n  ");
 
 	dispX(); // Affiche les coordonnées horizontales
 
-	for(x = 0; x < N; x++){
+	for(x = 0; x < N; x++)
+	{
 
-		for(y = 0; y < N; y++){
-            
-            		uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
+		for(y = 0; y < N; y++)
+		{
+
+            uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
 
             if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
-		
-		   	fontColor(grid[x][y].unitColor);
-		
+
+
+            color(grid[x][y].unitColor,"Screen");
+            if(grid[x][y].noPlayer == FIRST_PLAYER)
+            {
+                fontColor(red);
+            }
+            else if(grid[x][y].noPlayer == FIRST_PLAYER+1)
+            {
+                fontColor(blue);
+            }
+            else
+                fontColor(white);
+
 			if(y == 0)
 				printf("%s ", uName); // Affiche le nom de l'unité lorsque prés d'une bordure gauche
 			else
@@ -135,23 +179,21 @@ void gridDisp(){
 				printf("%s   %c", VL, lettre);
 				lettre++;
 			}
-			
+
 		}
-		
+
 		printf("\n");
-		
+
 		if(x == N-1){ // Affiche la bordure basse de la grille
 			printf("  %s", LB);
 			borderHoriz();
 			printf("%s", RB);
 		}
+		else
+            borderRight(x); // Complète le creux sur la bordure droite
 
-		borderRight(x); // Complète le creux sur la bordure droite
-		
 		printf("\n");
-
 	}
     printf("		   xx : décors\n");
 	printf("\n");
-
 }
