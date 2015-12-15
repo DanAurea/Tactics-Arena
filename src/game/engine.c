@@ -121,8 +121,15 @@ void tileWalkable(vector coordUnit){
  * @param coordUnit Coordonnées de l'unité
  * @param coordTarget Coordonnées de la cible
  */
-void findPath(vector coordUnit, vector coordTarget){
-
+bool findPath(vector coordUnit, vector coordTarget){
+	int moveRange = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
+	int nbMovement  = 0;
+	
+	/*for(int x = coordUnit.x - 1; x <= coordUnit.x + 1; x++){
+		for(int y = coordUnit.y; y <= coordUnit.y + 1; y++){
+				
+		}
+	}*/
 }
 
 /**
@@ -396,7 +403,7 @@ void askUnit(int * unitSelected, int limitUnits[]){
 		printf("Choisissez le type d'unité: ");
 		* unitSelected = readLong();
 
-		if(* unitSelected < knight -1 || * unitSelected > furgon -1)
+		if(* unitSelected < knight -1 || * unitSelected > NB_UNITS - 1)
 			color(red, "Aucune unité de ce type !\n\n");
 
 		if(tooMuchUnit(* unitSelected + 1, limitUnits)){ // En cas de surnombre pour l'unité choisie
@@ -411,7 +418,7 @@ void askUnit(int * unitSelected, int limitUnits[]){
 			reinitColor();
 		}
 
-	}while(* unitSelected < knight -1 ||  * unitSelected > furgon -1 || tooMuchUnit(* unitSelected + 1, limitUnits));
+	}while(* unitSelected < knight -1 ||  * unitSelected > NB_UNITS - 1 || tooMuchUnit(* unitSelected + 1, limitUnits));
 
 }
 
