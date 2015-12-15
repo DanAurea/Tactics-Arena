@@ -466,17 +466,27 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
 		* nbUnit = * nbUnit - 1; // Remet à jour le nombre d'unités
 	}
 
-	if(strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant") ){ // Dragon Tyrant compte comme 2 unités
-		* nbUnit = * nbUnit + 1;
+	if((strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant") && * nbUnit <= NB_MAX_UNIT - 2)
+		|| !strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant") 
+		){ // Dragon Tyrant compte comme 2 unités
+		grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
+
+		unitInit(noPlayer, coordUnit); // Initialise l'unité ajoutée
+		addUnit(coordUnit);
+
+		clearScreen();
+		gridDisp(); // Affiche la grille actualisée
+
+		if(strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant")){ // Dragon Tyrant compte comme 2 unités
+			* nbUnit = * nbUnit + 1;
+		}
+	}else{
+		gridDisp(); // Affiche la grille actualisée
+
+		color(red, "Pas assez d'unités disponible pour placer le Dragon tyrant !\n");
+		* nbUnit = * nbUnit - 1;
 	}
 
-	grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
-
-	unitInit(noPlayer, coordUnit); // Initialise l'unité ajoutée
-	addUnit(coordUnit);
-
-	clearScreen();
-	gridDisp(); // Affiche la grille actualisée
 }
 
 /**
@@ -505,16 +515,19 @@ void playerInit(){
  * Fin de la partie
  */
 bool endGame(){
-	if(liste_vide(noPlayer) || !hasPlay()){
+	if(liste_vide(noPlayer) || !hasPlay() || hasSurrender){
 		fontColor(red);
 
 		if(!hasPlay()){
 			printf("Le joueur %i a perdu car aucune action n'a été faites dans le temps impartis !", noPlayer + 1);
+		}else if(hasSurrender){
+			printf("\nLe joueur %i a perdu par abandon (bouuuhhh) !\n", noPlayer + 1);
 		}else{
 			printf("Le joueur %i a perdu car toutes les unités ont été détruites !", noPlayer + 1);
 		}
 		
 		reinitColor();
+
 		return true;
 	}else{
 		return false;
@@ -529,6 +542,7 @@ void startGame(){
 		playTurn();
 	}
 	while(!endGame());
+	mainMenu();
 }
 
 /**
@@ -537,6 +551,7 @@ void startGame(){
 void gameInit(){
 	srand(time(NULL));
 
+	noPlayer = FIRST_PLAYER; // Réinitialise pour nouvelle partie
 	makePawns(); // Crée les pions
 
 	gridInit(); // Crée la grille

@@ -8,7 +8,9 @@ void playMove();
 void passTurn();
 void changeDirection();
 bool hasPlay();
+void surrender();
 
 extern int hasMoved;
 extern int hasAttacked;
 extern int hasPassed;
+extern int hasSurrender;

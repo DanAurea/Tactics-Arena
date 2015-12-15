@@ -490,8 +490,7 @@ void gameMenu(){
             case 3: unitMenu(3); break;
             case 4: passTurn(); break;
             case 5: save(); break;
-            case 6: //Abandonner partie
-                break;
+            case 6: surrender(); break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 5\n");
         }
     }while(choix < 0 || choix > 6);

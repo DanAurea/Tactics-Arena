@@ -10,9 +10,10 @@
 #include "../../include/controller/manageSignal.h"
 #include "../../include/controller/manageString.h"
 #include "../../include/units/unit.h"
-int hasMoved    = 0;
-int hasAttacked = 0;
-int hasPassed   = 0;
+int hasMoved     = 0;
+int hasAttacked  = 0;
+int hasPassed    = 0;
+int hasSurrender = 0;
 
 /**
  * Débute le tour du joueur
@@ -157,8 +158,15 @@ void passTurn(){
  * @return Retourne vrai si le joueur a joué sinon faux
  */
 bool hasPlay(){
-	if(hasPassed == 0 && hasAttacked == 0 && hasMoved == 0) return false;
+	if(hasPassed == 0 && hasAttacked == 0 && hasMoved == 0 && hasSurrender == 0) return false;
 	return true;
+}
+
+/**
+ * Abandonne la partie
+ */
+void surrender(){
+	hasSurrender = 1;
 }
 
 /**
@@ -189,7 +197,7 @@ void playTurn(){
 	hasAttacked = 0;
 	hasPassed   = 0;
 
-	while(timeLeft > 0 && hasPassed == 0){
+	while(timeLeft > 0 && hasPassed == 0 && hasSurrender == 0){
 
 		clearScreen();
 		gridDisp();
