@@ -16,7 +16,7 @@ void borderRight(short row){
 		if(j == 0 && row != N-1) // Affichage que les lignes utiles
 			printf("  %s", VL);
 		if(j < N ){
-		    color(grid[row][j].unitColor,"Screen");
+		    color(grid[row+1][j].unitColor,"Screen");
 			printf("    ");
 			reinitColor();
 		}
