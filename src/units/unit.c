@@ -158,7 +158,7 @@ int getSideAttacked(vector source, vector target )
 	attaque depuis l'unité source vers les coordonées pos en prenant en compte le BLOCKAGE de l'unité ennemie
 */
 void attack(vector source, vector target)
-{   
+{
     int tmp = 0;
 	float block = 1;
 	float armor;
@@ -177,7 +177,7 @@ void attack(vector source, vector target)
             tmp = noPlayer;
             noPlayer = uTarget->noPlayer; //Détruit l'unité dans la liste du joueur correspondant
             destroyUnit(target);
-
+            erase(uTarget);
             noPlayer = tmp;
         }
     }
@@ -218,7 +218,7 @@ bool copy(unit * destination, unit * source)
 
 void erase(unit * source)
 //tester
-{   
+{
     memset(source, -1, sizeof(unit));
     source->name          = empty;
 
@@ -240,6 +240,8 @@ void move(vector destination, vector source)
 	{
 		copy(&grid[destination.x][destination.y],uSource);
 		erase(uSource);
+		destroyUnit(source);
+		addUnit(destination);
 	}
 }
 
@@ -270,3 +272,31 @@ void addEffect(vector target, unitEffect effect)
 		}
 	}
 }
+
+/*
+    Met à 0 le recovery de l'unité passée en paramètre
+*/
+void sleep(vector pos)
+{
+    grid[pos.x][pos.y].stat.RECOVERY=0;
+}
+
+bool isSleeping(vector pos)
+{
+    unit uTarget = grid[pos.x][pos.y];
+    if(uTarget.stat.RECOVERY<pawns[uTarget.name].stat.RECOVERY)
+    {
+        return true;
+    }
+    return false;
+}
+
+void recover(vector pos)
+{
+    unit uTarget = grid[pos.x][pos.y];
+    if(uTarget.stat.RECOVERY<pawns[uTarget.name].stat.RECOVERY)
+    {
+        uTarget.stat.RECOVERY++;
+    }
+}
+
