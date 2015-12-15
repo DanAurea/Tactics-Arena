@@ -38,7 +38,7 @@ printf(
 
     int choix;
     color(red, "\nBienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
-    color(cyan, "Pour une meilleur immersion, veuillez mettre la console en fullscreen, svp\n");
+    color(cyan, "Pour une meilleure immersion, veuillez mettre la console en fullscreen, svp\n");
     do{
         printf("\nMenu principal :\n");
 
@@ -105,7 +105,7 @@ void mainHelp() {
 						"    -Et / ou attaquer\n"
 						"    -Et / ou changer de direction\n"
 						"    -Changer de direction doit être la dernière commande, si utilisée\n");
-					color(red,"    Le temps limite par tour est compris entre 1 et 2 minutes, qui dépend du nombre d’unité restantes\n\n");
+					color(red,"  Le temps limite par tour est compris entre 1 et 2 minutes, qui dépend du nombre d’unité restantes\n\n");
 					color(cyan,"\n  Quand ce temps est dépassé:\n");
 					
 					puts(   "    -Finis le tour automatiquement si au moins une commande a été effectuée\n"

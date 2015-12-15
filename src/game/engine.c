@@ -209,6 +209,36 @@ void getTargets(vector coordUnit){
 	}
 }
 
+
+void specialBoons(vector coordSource, vector coordTarget){
+	unitName name = grid[coordSource.x][coordSource.y].name;
+	int HPTarget = grid[coordTarget.x][coordTarget.y].stat.HP;
+	int tmp;
+
+	if(name == assassin && grid[coordSource.x][coordSource.y].stat.HP <= 5) {
+		if(name != barrierTotem){
+			HPTarget = -99;
+			if(HPTarget <= 0) {
+				tmp = noPlayer;
+				noPlayer = grid[coordTarget.x][coordTarget.y].noPlayer; //Détruit l'unité dans la liste du joueur 					correspondant
+				destroyUnit(coordTarget); // noPlayer en variable globale donc il faut changer noPlayer avant
+				erase(&grid[coordTarget.x][coordTarget.y]); //Efface de la grille
+				noPlayer = tmp; // Remet noPlayer au joueur qui était en train de jouer
+			}else{
+				grid[coordTarget.x][coordTarget.y].stat.HP -= 99;
+			}
+		}		
+	}else if(name == enchantress) {
+		addEffect(coordTarget, PARALYSE);
+
+	}else if(name == poisonWisp) {
+		addEffect(coordTarget, POISON);
+	}
+
+
+	
+}
+
 /**
  * Lance une attaque selon l'unité
  * @param coordSource	Nom de l'unité source
@@ -216,6 +246,7 @@ void getTargets(vector coordUnit){
  */
 void launchAttack(vector coordSource, vector coordTarget){
 	unitName name = grid[coordSource.x][coordSource.y].name;
+	int HP 	      = grid[coordSource.x][coordSource.y].stat.HP;
 	vector targetAttack;
 
 	if(name == assassin || name == enchantress || name == poisonWisp){
@@ -227,8 +258,13 @@ void launchAttack(vector coordSource, vector coordTarget){
 				valeur_elt(targetList, &targetAttack);
 
 				attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
+				specialBoons(coordSource, targetAttack); // Effet de statut - Capacité spécial
 
 				suivant(targetList);
+			}
+			if(name == assassin && HP <= 5){
+				destroyUnit(coordSource); // Détruit l'assassin de la liste du joueur en cours
+				erase(&grid[coordSource.x][coordSource.y]); // Efface l'assassin de la grille
 			}
 		}
 
