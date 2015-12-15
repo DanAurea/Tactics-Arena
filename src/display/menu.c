@@ -38,6 +38,7 @@ printf(
 
     int choix;
     color(red, "\nBienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
+    color(cyan, "Pour une meilleur immersion, veuillez mettre la console en fullscreen, svp\n");
     do{
         printf("\nMenu principal :\n");
 
@@ -54,18 +55,15 @@ printf(
     	}
 
         switch(choix){
-            case 1: gameInit();
-                break;
-            case 2: load();
-                break;
-            case 3: mainHelp();
-                break;
-            case 4: break;
+            case 1: gameInit(); break;
+            case 2: load(); break;
+            case 3: mainHelp(); break;
+            case 4: clearScreen(); break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
         }
 	
     }while(choix != 4);
-    printf("A bientôt !");
+    printf("A bientôt ! Hope you enjoy this game ! \n");
     exit(1);
 }
 
@@ -95,10 +93,10 @@ void mainHelp() {
 		switch(choix){
 
 				case 1 : color(cyan,"  Les conditions de victoire sont : \n");
-					puts(   "    -Toutes les unités adverses sont détruites ou immobilisé\n"
+					puts(   "    -Toutes les unités adverses sont détruites ou immobilisées\n"
 						"    -L'opposant abandonne\n\n");
 					color(cyan,"  Les conditions de jeu nul sont : \n");
-					puts(	"    -Toutes les unités actives sont détruites ou immobilisé\n"
+					puts(	"    -Toutes les unités actives sont détruites ou immobilisées\n"
 						"    -OU les joueurs passent leurs tours 3 fois d’affilé\n"
 						"    -OU il n’y a eu aucun fight depuis les 30 derniers tours\n");
 					color(yellow,"  Info : Le joueur qui commence est défini aléatoirement par le serveur au début de chaque partie\n\n");
@@ -106,12 +104,12 @@ void mainHelp() {
 					puts(	"    -Se déplacer\n"
 						"    -Et / ou attaquer\n"
 						"    -Et / ou changer de direction\n"
-						"    -Changer de direction doit être la dernière commande, si utilisé\n");
+						"    -Changer de direction doit être la dernière commande, si utilisée\n");
 					color(red,"    Le temps limite par tour est compris entre 1 et 2 minutes, qui dépend du nombre d’unité restantes\n\n");
 					color(cyan,"\n  Quand ce temps est dépassé:\n");
-					puts(   "    -Finis le tour automatiquement si au moins une commande a été effectué\n"
-						"    -Si aucune commande effectué, abandon automatique");
-					color(red, "    -Important : on ne peut pas revenir en arrière sur une action déjà effectué\n\n"); 
+					puts(   "    -Finis le tour automatiquement si au moins une commande a été effectuée\n"
+						"    -Si aucune commande effectuée, abandon automatique");
+					color(red, "    -Important : on ne peut pas revenir en arrière sur une action déjà effectuée\n\n"); 
 
 				break;
 
@@ -127,7 +125,7 @@ void mainHelp() {
 						"    -Certaines unités alliées peuvent s’écarter pour laisser passer une autre unité \n\n");
 
 					color(cyan, "  RECOVERY TIME :\n");
-					puts(   "    -Détermine le nombre de tours qu’une unité doit attendre avant d’être réutiliser\n"
+					puts(   "    -Détermine le nombre de tours qu’une unité doit attendre avant d’être réutilisée\n"
 						"    -Est divisé par 2 et est sous-arrondis si une unité se déplace mais n’attaque pas\n"
 						"    -OU est divisé par 2 et sur-arrondis si une unité attaque mais ne se déplace pas\n"
 						"    -OU est annulé si une unité change uniquement de direction\n\n");
@@ -138,7 +136,7 @@ void mainHelp() {
 				break;
 				
 				case 4 : color(cyan, "  TELEPORTATION \n"); 
-					 puts("    -Permet de ce déplacer vers une case libre sans être déranger par les obstacles ou les autres unités \n\n");
+					 puts("    -Permet de se déplacer vers une case libre sans être dérangé par les obstacles ou les autres unités \n\n");
 
 					 color(cyan, "  ATTAQUES FURTIVES\n");
 					 puts("    -Ne peuvent êtres bloqués sauf par les BARRIERES \n\n");
@@ -147,7 +145,7 @@ void mainHelp() {
 					 puts("    -Restore les HP des unités\n\n");
 
 					 color(cyan, "  FOCUS\n");
-					 puts("    -Cause un effet continue tant que lanceur maintiens son sort \n"
+					 puts("    -Cause un effet continue tant que lanceur maintient son sort \n"
 					      "    -Est supprimé si le lanceur est attaqué ou paralisé \n"
 					      "    -OU si la cible est détruite \n"
 					      "    -OU si le lanceur reçoit une nouvelle instruction\n\n");
@@ -193,9 +191,9 @@ void mainHelp() {
 					     "    -Ne peut augmenté l’ARMURE au dessus de 100\n\n");
 
 					color(cyan, "  POISON\n");
-					puts("    -Ne peut ATTAQUER\n"
-					     "    -ET ne peut s’écarter pour laisser le passage au unités allier\n"
-					     "    -ET pert 4 HP à char TOURS\n");
+					puts("    -Ne peut attaquer\n"
+					     "    -ET ne peut s’écarter pour laisser le passage aux unités alliées\n"
+					     "    -ET perd 4 HP à chaque tours\n");
 
 					color(red, "Tout les Effets de Statuts peuvent se cumuler !\n\n");
 					break;
@@ -233,11 +231,11 @@ void helpUnit() {
 		"17 - Beast Rider\n"
 		"18 - Poison Wisp\n"
 		"19 - Furgon\n"
-		"20 - Afficher de nouveau la liste des unités\n"
-		"21 - Retour menu principal\n");
+		"20 - Retour menu principal\n");
+
 	do{
 		
-		color(green, "\nQuel est votre choix ? (20 pour afficher de nouveau le menu unité et 21 pour menu principal) : ");
+		color(green, "\nQuel est votre choix ? (20 pour menu principal, 21 pour afficher de nouveau le menu unité) : ");
 		choix = readLong();
 	    	
 		if(choix == 0) {
@@ -434,8 +432,8 @@ void helpUnit() {
 					"  -Information(s) supplémentaire(s) : Les unités invoqués ne peuvent être placé que sur des cases vides, sont détruites dès qu'elles sont attaqués, ne peuvent être la cible d'un sort de soin ou de focus. Pas plus de 1 Dragon Tyrant sur le champ de bataille");
 			break;
 
-			case 20 : helpUnit(); break;
-			case 21 : mainHelp(); break;
+			case 20 : mainHelp(); break;
+			case 21 : helpUnit(); break;
 		}
 	}while(choix != 20 || choix != 21);
 
