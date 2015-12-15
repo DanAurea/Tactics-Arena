@@ -13,3 +13,6 @@ int readS(char * string);
 long readLong();
 double readDouble();
 void clearBuffer();
+
+// Direction
+char* getDirectionUnit(cardinal direct);

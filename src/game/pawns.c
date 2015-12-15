@@ -32,7 +32,7 @@ void initPawn(unit * pawn){
 void setTarget(unitName name, short vertRange, short horizRange, short ringSize, short line)
 {	short min, max;
 	vector target;
-	
+
 	if(vertRange > horizRange){ // Détermine quelle est la portée min et max
 		max = abs(vertRange);
 		min = abs(horizRange);
@@ -78,7 +78,6 @@ bool checkPawn(unit * pawn){
 
 /**
  * Crée un pion pour le jeu
- * @param n Nombre de pions actuel
  * @param nbParams Nombre de stats pour le pion
  * @param name Nom du pion
  */
@@ -90,7 +89,6 @@ void createPawn(int nbParams, unitName name, ...){
 	short sizeRing;
 
 	va_list stats;
-
 	if(sizePawns == 0){ // Alloue de la mémoire pour les pions
 		pawns = malloc( (sizePawns + 1) * sizeof(unit));
 	}else{
@@ -134,7 +132,6 @@ void createPawn(int nbParams, unitName name, ...){
 
 	va_end(stats);
 
-
 	if(!checkPawn(&pawn)){ // Vérifie les valeurs passées en paramètres
 		printf("\n Error during pawn creation, %s couldn't be initialized correctly !\n",
 				getNameUnit(pawn.name));
@@ -153,13 +150,13 @@ void createPawn(int nbParams, unitName name, ...){
 void makePawns(){
 
 	if(sizePawns == 0){ // On ne crée les pions qu'en cas de nécessité -> 1 er lancement du jeu
-		createPawn(8, empty, 0, 0, 0, 0, 0, 0, 0, 0);
-		createPawn(8, decors, 0, 0, 0, 0, 0, 0, 0, 0);
+		createPawn(8, empty, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0);
+		createPawn(8, decors, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0);
 		/*
 			Ordre params: Nombre paramètres obligatoires, nom unité,
 						HP, Power, Armor, 
 						Block[0], Block[1], Block[2],
-						Recovery, Move_range, TP,
+						Recovery, Move_range,
 						horizRange, vertRange, sizeRing, line
 		*/
 		createPawn(8, knight, 50, 22, 0.25,           0.8, 0.4, 0.0,       1, 3,          1, 1, 1, 1);
@@ -171,7 +168,7 @@ void makePawns(){
 		createPawn(8, dragonborn, 30, 22, 0.0,        0.33, 0.16, 0.0,     3, 3,          3, 3, 0, 0);
 		createPawn(8, darkWitch, 28, 24, 0.0,         0.2, 0.1, 0.0,       3, 3,          4, 4, 1, 1);
 		createPawn(8, lightningTotem, 56, 30, 0.18,   1.0, 1.0, 1.0,       4, 0,          3, 3, 0, 0);
-		createPawn(8, barrierTotem, 32, 0, 0.0,       1.0, 1.0, 1.0,       2, 0,          6, 6, 0, 0);
+		createPawn(8, barrierTotem, 32, 0, 0.0,       1.0, 1.0, 1.0,       2, 0,          6, 3, 0, 0);
 		createPawn(8, mudGolem, 60, 20, 0.0,          0.0, 0.0, 0.0,       2, 5,          1, 1, 1, 1);
 		createPawn(8, golemAmbusher, 60, 20, 0.0,     0.0, 0.0, 0.0,       3, 2,          6, 6, 5, 0);
 		createPawn(8, frostGolem, 60, 0, 0.0,         0.0, 0.0, 0.0,       2, 2,          4, 4, 1, 0);

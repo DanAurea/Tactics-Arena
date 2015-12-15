@@ -181,26 +181,38 @@ bool rightSide(char * coordString){
 char* getNameUnit(unitName name){    
   
     if(name == empty) return "Empty";
-    if(name == decors) return "Decors"; 
-    if(name == knight) return "Knight";
-    if(name == scout) return "Scout";
-    if(name == assassin) return "Assassin";
-    if(name == cleric) return "Cleric";
-    if(name == pyromancer) return "Pyromancer";
-    if(name == enchantress) return "Enchantress";
-    if(name == dragonborn) return "Dragonborn";
-    if(name == darkWitch) return "Dark Witch";
-    if(name == lightningTotem) return "Lightning Totem";
-    if(name == barrierTotem) return "Barrier Totem";
-    if(name == mudGolem) return "Mud Golem";
-    if(name == golemAmbusher) return "Golem Ambusher";
-    if(name == frostGolem) return "Frost Golem";
-    if(name == stoneGolem) return "Stone Golem";
-    if(name == dragonTyrant) return "Dragon Tyrant";
-    if(name == berserker) return "Berserker";
-    if(name == beastRider) return "Beast Rider";
-    if(name == poisonWisp) return "Poison Wisp";
+    else if(name == decors) return "Decors"; 
+    else if(name == knight) return "Knight";
+    else if(name == scout) return "Scout";
+    else if(name == assassin) return "Assassin";
+    else if(name == cleric) return "Cleric";
+    else if(name == pyromancer) return "Pyromancer";
+    else if(name == enchantress) return "Enchantress";
+    else if(name == dragonborn) return "Dragonborn";
+    else if(name == darkWitch) return "Dark Witch";
+    else if(name == lightningTotem) return "Lightning Totem";
+    else if(name == barrierTotem) return "Barrier Totem";
+    else if(name == mudGolem) return "Mud Golem";
+    else if(name == golemAmbusher) return "Golem Ambusher";
+    else if(name == frostGolem) return "Frost Golem";
+    else if(name == stoneGolem) return "Stone Golem";
+    else if(name == dragonTyrant) return "Dragon Tyrant";
+    else if(name == berserker) return "Berserker";
+    else if(name == beastRider) return "Beast Rider";
+    else if(name == poisonWisp) return "Poison Wisp";
     return "Furgon";
+}
+
+/**
+ * Retourne la direction 
+ * @param  direct Direction de l'unité
+ * @return        Retourne La direction sous forme de chaîne
+ */
+char* getDirectionUnit(cardinal direct){
+    if(direct == north) return "Nord";
+    else if(direct == east) return "Est";
+    else if(direct == south) return "Sud";
+    return "Ouest";
 }
 
 /**

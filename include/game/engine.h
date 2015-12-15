@@ -4,12 +4,11 @@
 
 // Constantes jeu
 #define N 11 /**< Taille de la grille */
-#define NB_LISTS_ENGINE 2 /**< Nombre de liste additionnelles nécessaires pour le jeu */
+#define NB_LISTS_ENGINE 1 /**< Nombre de liste additionnelles nécessaires pour le jeu */
 #define NB_PLAYERS 2 /**< Nombre de joueurs */
 #define NB_LINES 2 /**< Limite du camp du joueur */
 #define NB_UNITS 21	 /**< Nombre d'unités dans le jeu */
 #define NB_MAX_EFFECT 6 /**< Nombre total de status différent */
-#define MAX_RANGE 36 /**< Portée max des actions */
 #define MANDATORY_STATS 8 /**< Nombre de stats obligatoire */
 
 // Constantes joueurs
@@ -20,7 +19,7 @@
 #define NB_MAX_LT 1 /**< Nombre max de Lightning totem par joueur */
 #define NB_MAX_DR 2 /**< Nombre max de Dragon par joueur */
 #define NB_MAX_FU 2 /**< Nombre max de Furgon par joueur */
-#define NB_MAX_UNIT 10 /**< Nombre max d'unité par joueur */
+#define NB_MAX_UNIT 2 /**< Nombre max d'unité par joueur */
 #define NB_MAX_DECOR 7 /**< Nombre max de décor */
 
 
@@ -31,17 +30,16 @@ typedef enum{empty, decors, knight, scout, assassin, cleric, pyromancer, enchant
 typedef enum{none, POWER_BONUS, ARMOR_BONUS, BARRIER, POISON, PARALYSE, FOCUS}unitEffect; /**< Représentation des différents status */
 typedef struct{int HP; int POWER; float ARMOR; int RECOVERY; float BLOCK[3]; int MOVE_RANGE;}unitStat; /**< Représentation des statistiques d'une unité*/
 typedef struct{int x; int y;}vector; /**< Représentation d'un vecteur */
-typedef struct{unitName name; unitStat stat; unitEffect effect[NB_MAX_EFFECT];short direct; short noPlayer; short unitColor;}unit; /**< */
-typedef struct{vector coordUnit; vector fieldAction[MAX_RANGE];}unitAction; /**< Actions possibles par une unité */
+typedef struct{unitName name; unitStat stat; unitEffect effect[NB_MAX_EFFECT];cardinal direct; int noPlayer; int unitColor;}unit; /**< */
 extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
 extern int noPlayer; /**< Représentation du joueur */
-extern int targetList; /**< Cibles potentielles */
-extern int movableList;
 
 bool isSurrounded(vector currentUnit);
 void gameInit();
 bool selectUnit(vector * coordUnit);
 void getTargets(vector coordUnit);
-void printTargets();
 void launchAttack(vector coordSource, vector coordTarget);
 void movable();
+void attackable();
+void tileWalkable(vector coordUnit);
+bool possiblePath(vector coordUnit);

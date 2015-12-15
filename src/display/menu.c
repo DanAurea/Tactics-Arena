@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
+#include "../../include/game/listes.h"
 #include "../../include/game/turn.h"
 #include "../../include/display/menu.h"
 #include "../../include/display/grid.h"
@@ -36,7 +37,7 @@ printf(
 
 
     int choix;
-    color(red, "Bienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
+    color(red, "\nBienvenue sur le jeu Tactics arena SPI deluxe edition \n"); // Change la couleur des caractères suivants en rouge
     do{
         printf("\nMenu principal :\n");
 
@@ -443,18 +444,36 @@ void helpUnit() {
 }
 
 /**
+ * Afficher les directions
+ */
+void dispDirection(){
+    printf("\nDirection :\n");
+
+	printf(" 1 - Nord\n");
+    printf(" 2 - Est\n");
+    printf(" 3 - Sud\n");
+    printf(" 4 - Ouest\n");
+}
+
+/**
  * Menu du joueur lors de la partie
  */
 void gameMenu(){
     int choix;
-     
+    
+    if(noPlayer == FIRST_PLAYER) fontColor(red);
+    else fontColor(blue);
+    
+    printf("Joueur no %i à vous de jouer !\n", noPlayer + 1);
+    reinitColor();
+
     do{
         printf("\nMenu :\n");
         printf(" 1 - Unités pouvant se déplacer\n");
         printf(" 2 - Unités pouvant attaquer\n");
         printf(" 3 - Changer de direction\n");
         printf(" 4 - Passer tour\n");
-	printf(" 5 - Passer tour\n");
+		printf(" 5 - Sauvegarder\n");
         printf(" 6 - Abandonner la partie\n");
 
         printf("Votre choix : ");
@@ -475,8 +494,7 @@ void gameMenu(){
                 break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 5\n");
         }
-    }while(choix < 0 && choix > 6);
-   
+    }while(choix < 0 || choix > 6);
 }
 
 /**
@@ -484,36 +502,58 @@ void gameMenu(){
  * @param choice    Choix de l'action pour l'unité
  */
 void unitMenu(int choice){
-    char yn;
-    vector movableUnits[NB_MAX_UNIT]; 
+    char yn[2];
 
+    printf("\n");
     switch(choice){
             case 1:
-                    movable(movableUnits); // Fait la liste des unités pouvant se déplacer
-        		    
-                    printf("Se déplacer ? y/n\n");
-        		    readS(&yn);
-                  	
-                    if(yn == 'y' || yn == 'Y') {
-                       		 playMove(movableUnits);
-                    }else{
-                        printf("Saisie invalide\n");
-                    }
+
+            		if(!hasAttacked && !hasMoved){
+            			color(red,"Unités pouvant se déplacer : \n");
+						printf("No -  Nom -  X-Y -  HP -  Direction\n\n");
+            			
+            			movable(); // Fait la liste des unités pouvant se déplacer
+
+	                    printf("\nSe déplacer ? y/n\n");
+	        		    readS(yn);
+	                  	printf("\n");
+
+	                    if(strcmp(yn,"y") == 0 || strcmp(yn,"Y") == 0) {
+	                    	playMove();
+	                    }else if(strcmp(yn,"n") != 0 || strcmp(yn,"N") != 0){
+                        	printf("Saisie invalide\n");
+                    	}
+            		}else if(hasAttacked){
+            			printf("Vous ne pouvez pas déplacer votre unité après avoir attaqué !\n");
+            		}else{
+            			printf("Vous ne pouvez pas déplacer une unité à nouveau !\n");
+            		}
+                   
                 break;
             case 2:
-        		    //Unités pouvant attaquer
-        		    printf("Attaquer ? y/n\n");
-        		    readS(&yn);
-        		    
-                    if(yn == 'y' || yn == 'Y') {
-                        playAttack();
-                    }else{
-                        printf("Saisie invalide\n");
-                    }
+        		    if(!hasAttacked){
+        		    	color(red,"Unités pouvant attaquer : \n");
+						printf("No -  Nom -  X-Y -  HP -  Direction\n\n");
+
+        		    	attackable();
+
+	        		    printf("\nAttaquer ? y/n\n");
+	        		    readS(yn);
+	        		    printf("\n");
+	        		    
+	                    if(strcmp(yn,"y") == 0 || strcmp(yn,"Y") == 0) {
+	                        playAttack();
+	                    }else if(strcmp(yn,"n") != 0 || strcmp(yn,"N") != 0){
+	                        printf("Saisie invalide\n");
+	                    }
+                	}else{
+                		printf("Vous ne pouvez pas réattaquer !");
+                	}
                 break;
             case 3:
-            //Change de direction
-            break;  
+            	color(red,"Liste de vos unités : \n");
+            	changeDirection();
+        		break;
         }
 }
 

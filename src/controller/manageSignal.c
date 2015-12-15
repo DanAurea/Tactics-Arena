@@ -9,7 +9,10 @@
  * Libère tout ce qui reste encore en mémoire
  */
 void freeAll(){
-	if(sizePawns > 0) free(pawns); // Libère les pions
+	if(sizePawns > 0){
+		free(pawns); // Libère les pions
+		sizePawns = 0;
+	}
 	dumpAllLists(); // Libère les listes de la mémoire
 }
 
@@ -27,7 +30,7 @@ void interrupt(int signal){
 		color(red, "\n\nC'est bête le jeu a cessé de fonctionner !");
 	}
 	fflush(stdout);
-	
+
 	// Ajouter fonction de sauvegarde
 	
 	reinitColor(); // Réinitialise les couleurs du terminal
@@ -36,19 +39,18 @@ void interrupt(int signal){
 }
 
 /**
- * Action lors du décompte terminé
+ * Petit message sympa lors du temps écoulé
  */
 void timeDown(int signal){
-	/* 
-	*	Vérif action -> Pas d'action -> Jeu fini joueur perdant
-	*	Sinon Joueur suivant -> menu
-	*/
+	fontColor(red);
+	printf("\nTemps écoulé, même Jabba le Hutt fait mieux !\n");
+	reinitColor();
 }
 
 /**
  * Libération de la mémoire lors de la fin du programme
  */
-void terminator(){
+void terminator(int signal){
 	freeAll();
 	reinitColor();
 }

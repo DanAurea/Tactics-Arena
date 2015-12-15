@@ -158,12 +158,13 @@ int getSideAttacked(vector source, vector target )
 	attaque depuis l'unité source vers les coordonées pos en prenant en compte le BLOCKAGE de l'unité ennemie
 */
 void attack(vector source, vector target)
-{
+{   
+    int tmp = 0;
 	float block = 1;
 	float armor;
 	unit * uTarget = &grid[target.x][target.y];
 	unit * uSource = &grid[source.x][source.y];
-    if(canAttack(uSource))
+    if(canAttack(uSource) && uTarget->name != empty && uTarget->name != decors)
     {
     	armor = 1-uTarget->stat.ARMOR;
     	if(canBlock(uTarget))
@@ -171,6 +172,14 @@ void attack(vector source, vector target)
     		block = 1-uTarget->stat.BLOCK[getSideAttacked(source,target)];
     	}
         uTarget->stat.HP -= (uSource->stat.POWER*(block+armor));
+
+        if(uTarget->stat.HP <= 0){
+            tmp = noPlayer;
+            noPlayer = uTarget->noPlayer; //Détruit l'unité dans la liste du joueur correspondant
+            destroyUnit(target);
+
+            noPlayer = tmp;
+        }
     }
 }
 
@@ -192,37 +201,31 @@ bool copy(unit * destination, unit * source)
             destination->stat.BLOCK[i] = source->stat.BLOCK[i];
         }
         destination->stat.MOVE_RANGE = source->stat.MOVE_RANGE;
-        for(int i = 0;i<NB_MAX_EFFECT;i++)
-        {
+        for(int i = 0;i<NB_MAX_EFFECT;i++){
             destination->effect[i] = source->effect[i];
         }
-        destination->noPlayer=source->noPlayer;
-        destination->unitColor=source->unitColor;
+
+        destination->direct    = source->direct;
+        destination->noPlayer  = source->noPlayer;
+        destination->unitColor = source->unitColor;
     }
     else
     {
-        return true;
+        return false;
     }
-    return false;
+    return true;
 }
 
 void erase(unit * source)
 //tester
-{
-    source->stat.HP	 = 	-1;
-	source->stat.POWER	 = 	-1;
-	source->stat.ARMOR	 = 	-1;
-	source->stat.RECOVERY = 	-1;
-	for(int i = 0;i<3;i++)
-	{
-		source->stat.BLOCK[i] = -1;
-	}
-	source->stat.MOVE_RANGE = -1;
+{   
+    memset(source, -1, sizeof(unit));
+    source->name          = empty;
+
 	for(int i = 0;i<NB_MAX_EFFECT;i++)
 	{
-		source->effect[i] = -1;
+		source->effect[i] = none;
 	}
-	source->noPlayer=-1;
 	source->unitColor=white;
 }
 
@@ -235,8 +238,8 @@ void move(vector destination, vector source)
 	unit * uSource = &grid[source.x][source.y];
 	if(canMove(uSource))
 	{
-		copy(&grid[destination.x][destination.y],&grid[source.x][source.y]);
-		erase(&grid[source.x][source.y]);
+		copy(&grid[destination.x][destination.y],uSource);
+		erase(uSource);
 	}
 }
 

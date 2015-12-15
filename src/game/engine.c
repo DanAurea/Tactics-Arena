@@ -3,6 +3,7 @@
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
 #include "../../include/game/listes.h"
+#include "../../include/game/turn.h"
 #include "../../include/display/grid.h"
 #include "../../include/display/menu.h"
 #include "../../include/controller/terminal.h"
@@ -10,14 +11,12 @@
 #include "../../include/units/unit.h"
 
 unit grid[N][N]; /**< Grille d'unités */
-int targetList = (NB_UNITS - 2) + NB_PLAYERS + 1;
-int movableList = (NB_UNITS - 2) + NB_PLAYERS + 2;
 int noPlayer = FIRST_PLAYER; /**< Joueur en cours */
 
 /**
  * Trouve un chemin vers une quelconque position pour l'unité
  * @param coordUnit Coordonnées de l'unité
- * @return Retourne vrai si chemin possible vers une quelconque position
+ * @return Retourne Vrai si chemin possible vers une quelconque position
  */
 bool possiblePath(vector coordUnit){
 	int range = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
@@ -30,7 +29,7 @@ bool possiblePath(vector coordUnit){
 		
 		for(int x = -range; x <= range; x++){
 			for(int y = -range; y <= range; y++){
-				if(grid[x][y].name == empty && abs(x) + abs(y) <= 0 && x > 0 && x < N && y > 0 && y < N){
+				if(grid[x][y].name == empty && x >= 0 && x < N && y >= 0 && y < N){
 					return true;
 				}
 			}
@@ -42,22 +41,77 @@ bool possiblePath(vector coordUnit){
 
 /**
  * Fait la liste des unités déplaçables
- * @param movableUnit Tableau des unités déplaçables
  */
 void movable(){
 	vector coordUnit;
-	
-	en_tete(movableList);
-	if(!liste_vide(movableList)){
-		dumpList(movableList); // Vide la liste pour la mise à jour
+	unit * source;
+	int i = 1;
+
+	if(!liste_vide(noPlayer)){
+		en_tete(noPlayer);
+
+		while(!hors_liste(noPlayer)){
+			valeur_elt(noPlayer, &coordUnit);
+			suivant(noPlayer);
+
+			source = &grid[coordUnit.x][coordUnit.y];
+			if(canMove(source) && possiblePath(coordUnit)){ // Unité non entourée par ennemi + non paralysée et ayant un chemin possible
+				printf("%i - %s - %c-%i - %i HP - %s\n", i,getNameUnit(source->name), 
+						'A' + coordUnit.x, coordUnit.y + 1, source->stat.HP, 
+						getDirectionUnit(source->direct)); // Affiche le nom de l'unité
+				i++;
+			}
+		}
 	}
+}
 
-	while(!hors_liste(movableList)){
-		valeur_elt(movableList, &coordUnit);
-		suivant(movableList);
+/**
+ * Fait la liste des unités pouvant attaquer
+ */
+void attackable(){
+	vector coordUnit;
+	unit * source;
+	int i = 1;
 
-		if(canMove(&grid[coordUnit.x][coordUnit.y]) && possiblePath(coordUnit)){ // Unité non entourée par ennemi + non paralysée
-			addMovable(coordUnit);
+	if(!liste_vide(noPlayer)){
+		en_tete(noPlayer);
+
+		while(!hors_liste(noPlayer)){
+			valeur_elt(noPlayer, &coordUnit);
+			suivant(noPlayer);
+
+			source = &grid[coordUnit.x][coordUnit.y];
+			if(canAttack(source)){
+				printf("%i - %s - %c-%i - %i HP - %s\n", i,getNameUnit(source->name), 
+						'A' + coordUnit.x, coordUnit.y + 1, source->stat.HP, 
+						getDirectionUnit(source->direct)); // Affiche le nom de l'unité
+				i++;
+			}
+		}
+	}
+}
+
+/**
+ * Fait la liste des cases pouvant être atteintes par l'unité
+ * @param coordUnit Coordonnées de l'unité
+ */
+void tileWalkable(vector coordUnit){
+	unit * source;
+	int moveRange = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
+	int i = 1;
+
+	for(int x = -moveRange + coordUnit.x; x <= moveRange + coordUnit.x; x++){
+		for(int y = -moveRange + coordUnit.y; y <= moveRange + coordUnit.y; y++){
+
+			if(x >= 0 && x < N && y >= 0 && y < N){
+				source = &grid[x][y];
+				
+				if(source->name == empty){ // Case vide
+					printf("%i - %s - %c-%i\n", i,getNameUnit(source->name), 
+							'A' + x, y + 1); // Affiche le nom de l'unité
+					i++;
+				}
+			}
 		}
 	}
 }
@@ -68,7 +122,7 @@ void movable(){
  * @param coordTarget Coordonnées de la cible
  */
 void findPath(vector coordUnit, vector coordTarget){
-	
+
 }
 
 /**
@@ -141,8 +195,8 @@ void getTargets(vector coordUnit){
 
 /**
  * Lance une attaque selon l'unité
- * @param coordSource        Nom de l'unité source
- * @param coordTarget Coordonnées de la cible
+ * @param coordSource	Nom de l'unité source
+ * @param coordTarget	Coordonnées de la cible
  */
 void launchAttack(vector coordSource, vector coordTarget){
 	unitName name = grid[coordSource.x][coordSource.y].name;
@@ -166,11 +220,13 @@ void launchAttack(vector coordSource, vector coordTarget){
 		
 		for(int x = coordTarget.x - 1; x <= coordTarget.x + 1; x++){
 			for(int y = coordTarget.y - 1; y <= coordTarget.y + 1; y++){
+				
 				if(abs(x) + abs(y) <= 1 && x >=0 && x < N && y >= 0 && y < N){ // Croix centrée sur la cible désirée
 					targetAttack.x = coordTarget.x + x;
 					targetAttack.y = coordTarget.y + y;
 					attack(coordSource, targetAttack);
 				}
+
 			}
 		}
 
@@ -181,7 +237,7 @@ void launchAttack(vector coordSource, vector coordTarget){
 			while(!hors_liste(targetList)){
 				valeur_elt(targetList, &targetAttack);
 				
-				if(targetAttack.x == coordTarget.x || coordTarget.y == coordTarget.y){ // Même ligne / colonne
+				if(targetAttack.x == coordTarget.x || targetAttack.y == coordTarget.y){ // Même ligne / colonne
 					attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
 				}
 
@@ -201,33 +257,21 @@ void launchAttack(vector coordSource, vector coordTarget){
  * @return           Retourne vrai si unité bien sélectionnée
  */
 bool selectUnit(vector * coordUnit){
-	char * coordString;
+	char coordString[5];
 	unitName name;
 
-	coordString = (char *) calloc(5, sizeof(char));
+	do{
+		printf("Sélectionnez une unité ou une case par ses coordonnées au format a/A 01/11: ");
+		readS(coordString);
+	}while(!correctCoord(coordString));
 
-	if(coordString == NULL){
+	getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
 
-		color(red, "Error allocating memory for selection !\n");
-		free(coordString);
-		return false;
+	name = grid[coordUnit->x][coordUnit->y].name;
 
-	}else{
+	if(name == decors) return false;
 
-		do{
-			printf("Sélectionnez une unité par ses coordonnées: ");
-			readS(coordString);
-		}while(!correctCoord(coordString));
-
-		getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
-		free(coordString);
-
-		name = grid[coordUnit->x][coordUnit->y].name;
-
-		if(name == decors) return false;
-
-		return true;
-	}
+	return true;
 }
 
 /**
@@ -422,12 +466,15 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
 		* nbUnit = * nbUnit - 1; // Remet à jour le nombre d'unités
 	}
 
+	if(strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant") ){ // Dragon Tyrant compte comme 2 unités
+		* nbUnit = * nbUnit + 1;
+	}
+
 	grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
 
 	unitInit(noPlayer, coordUnit); // Initialise l'unité ajoutée
 	addUnit(coordUnit);
 
-	printList(grid[coordUnit.x][coordUnit.y].name);
 	clearScreen();
 	gridDisp(); // Affiche la grille actualisée
 }
@@ -455,6 +502,36 @@ void playerInit(){
 }
 
 /**
+ * Fin de la partie
+ */
+bool endGame(){
+	if(liste_vide(noPlayer) || !hasPlay()){
+		fontColor(red);
+
+		if(!hasPlay()){
+			printf("Le joueur %i a perdu car aucune action n'a été faites dans le temps impartis !", noPlayer + 1);
+		}else{
+			printf("Le joueur %i a perdu car toutes les unités ont été détruites !", noPlayer + 1);
+		}
+		
+		reinitColor();
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**
+ * Débute la partie
+ */
+void startGame(){
+	do{
+		playTurn();
+	}
+	while(!endGame());
+}
+
+/**
  * Initialise la partie
  */
 void gameInit(){
@@ -469,4 +546,6 @@ void gameInit(){
 	noPlayer++;
 	playerInit();// Initialisation du joueur 2
 	noPlayer = (rand() % (FIRST_PLAYER + 1)) + 1; // Tire le joueur débutant la partie aléatoirement
+
+	startGame();
 }

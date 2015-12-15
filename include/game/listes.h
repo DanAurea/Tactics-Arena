@@ -1,5 +1,7 @@
 #define MAX_JOUEUR 3 /**< Nombre max de listes */
 
+extern int targetList; /**< Cibles potentielles */
+
 // Primitives listes
 void init_liste(int);
 void initLists();

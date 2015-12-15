@@ -11,6 +11,7 @@ typedef struct element {vector coordUnit; struct element* pred; struct element* 
 /* Declaration des listes (drapeau et element courant) */
 t_element* drapeau[NB_UNITS];
 t_element* ec[NB_UNITS];
+int targetList = (NB_UNITS - 2) + NB_PLAYERS + 1;
 
 
 /* Primitives de manipulation des listes */
@@ -201,70 +202,38 @@ void addTarget(unitName name, vector coordUnit){
 }
 
 /**
- * Ajoute une unité pouvant se déplacer
- * @param coordUnit Coordonnées de l'unité
- */
-void addMovable(vector coordUnit){
-	if(!liste_vide(movableList)){
-		en_queue(movableList);
-	}
-	ajout_droit(movableList, coordUnit);
-}
-
-/**
  * Affiche la liste désirée
  * @param numList Numéro de liste
  */
 void printList(short numList){
 	int i = 1;
 	vector tmp;
-	en_tete(numList);
+	unit source;
 
-	while(!hors_liste(numList) && !liste_vide(numList)){
-		valeur_elt(numList, &tmp);
+	if(!liste_vide(numList)){
+		en_tete(numList);
+		while(!hors_liste(numList)){
+			valeur_elt(numList, &tmp);
+			source = grid[tmp.x][tmp.y];
 
-		if(numList <= FIRST_PLAYER + 1){
-			printf("%i - %s - %c - %i\n", i,getNameUnit(grid[tmp.x][tmp.y].name), 'A' + tmp.x, tmp.y + 1); // Affiche le nom de l'unité
-		}else{
-			printf("%i - %s - %i - %i\n", i, getNameUnit(numList), tmp.x, tmp.y); // Affiche le nom de l'unité et ses cibles
+			if(source.name != empty && source.name != decors){
+				printf("%i - %s - %c%i - %i HP - %s", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1, source.stat.HP, getDirectionUnit(source.direct)); // Affiche le nom de l'unité
+			}else{
+				printf("%i - %s - %c%i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1); // Affiche case vide ou décor
+			}
+			
+
+			for(int j = 0; j < NB_MAX_EFFECT; j++){
+				if(source.effect[j] != none){
+					printf(" - %i", source.effect[j]);
+				}
+			}
+			printf("\n");
+
+			suivant(numList);
+			i++;
 		}
-		suivant(numList);
-		i++;
 	}
-}
-
-/**
- * Affiche la liste des cibles potentielles
- */
-void printTargets(){
-	vector target;
-
-    if(!liste_vide(targetList)){
-    	en_tete(targetList);
-
-    	while(!hors_liste(targetList)){
-    		valeur_elt(targetList, &target);
-    		printf("%s - %c - %i\n", getNameUnit(grid[target.x][target.y].name), target.x + 'A', target.y + 1);    		
-    		suivant(targetList);
-    	}
-    }
-}
-
-/**
- * Affiche la liste des cibles potentielles
- */
-void printMovable(){
-	vector target;
-
-    if(!liste_vide(movableList)){
-    	en_tete(movableList);
-
-    	while(!hors_liste(movableList)){
-    		valeur_elt(movableList, &target);
-    		printf("%s - %c - %i\n", getNameUnit(grid[target.x][target.y].name), target.x + 'A', target.y + 1);    		
-    		suivant(targetList);
-    	}
-    }
 }
 
 /**
@@ -321,7 +290,7 @@ bool searchTarget(int numList, vector coordTarget){
 		while(!hors_liste(numList) && (tmp.x != coordTarget.x || tmp.y != coordTarget.y)){ // Cherche la cible
 			valeur_elt(numList, &tmp);
 			
-			if(tmp.x == coordTarget.x && tmp.y == coordTarget.y){ // Unité trouvée
+			if(tmp.x == coordTarget.x && tmp.y == coordTarget.y){ // Cible trouvée
 				return true;
 			}
 			suivant(numList);
@@ -329,32 +298,4 @@ bool searchTarget(int numList, vector coordTarget){
 	}
 
 	return false;
-}
-
-/**
- * Cherche une unité dans la liste
- * @return Retourne 1 si coordonnées trouvée, 2 si nom trouvée sinon 0
- */ 
-int searchUnit(int numList, unitName name, vector coordUnit){
-	vector unit;
-	unitName tmpName;
-
-	if(!liste_vide(numList) && numList >= FIRST_PLAYER && numList <= FIRST_PLAYER + 1){ // Liste des joueurs
-		en_tete(numList);
-
-		while(!hors_liste(numList)){ // Cherche dans la liste
-			valeur_elt(numList, &unit);
-			tmpName = grid[unit.x][unit.y].name;
-
-			if(coordUnit.x == unit.x && coordUnit.y == unit.y){ // Coordonnées de l'unité
-				return 1;
-			}else if(name == tmpName){ // Nom de l'unité trouvée 
-				return 2;
-			}
-
-			suivant(numList);
-		}
-	}
-
-	return 0;
 }

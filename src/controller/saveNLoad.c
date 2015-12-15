@@ -36,7 +36,7 @@ void save(){
 void load() {
 	FILE * fic1;
 	int x = -1, y = -1;
-	int name, success;
+	int name, success, cardinal;
 	int effectLoad[NB_MAX_EFFECT] = {0};
 	unit uLoad;
 
@@ -45,9 +45,10 @@ void load() {
 		while(!feof(fic1)) {
 			success = fscanf(fic1, "(%i - %i){%i, %i, %i, %f, %i, %f, %f, %f, %i, %i, %i, %i, ", &x, &y, &name, &uLoad.stat.HP, 					        &uLoad.stat.POWER, &uLoad.stat.ARMOR, &uLoad.stat.RECOVERY, &uLoad.stat.BLOCK[0],
 					&uLoad.stat.BLOCK[1], &uLoad.stat.BLOCK[2], &uLoad.stat.MOVE_RANGE, &uLoad.noPlayer,
-					&uLoad.unitColor, &uLoad.direct);
+					&uLoad.unitColor, &cardinal);
 			
 			uLoad.name = name;
+			uLoad.direct = cardinal;
 			for(int k = 0; k <NB_MAX_EFFECT; k++) {
 				if(k == NB_MAX_EFFECT - 1){
 					success = fscanf(fic1, " %i }\n", &effectLoad[k]);
@@ -98,7 +99,7 @@ void save2() {
 
 // Go faire cette fonction je comprend rien au binaire stp :(
 
-void load2() {
+/*void load2() {
 	FILE * fic1;
 	int x = -1, y = -1;
 	int name, success;
@@ -134,12 +135,4 @@ void load2() {
 		printf("Fichier introuvable, la sauvegarde n'a pas pu être chargée");
 
 	}
-}
-
-
-
-
-
-
-
-
+}*/
