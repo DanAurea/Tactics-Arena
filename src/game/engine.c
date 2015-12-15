@@ -421,11 +421,11 @@ void askUnit(int * unitSelected, int limitUnits[]){
  */
 void askCoord(char coordString[]){
 	do{
-		fontColor(red);
+		fontColor(cyan);
 		if(noPlayer == FIRST_PLAYER){
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format a/A 01 \n", 'A' + N - NB_LINES, 'A' + N - 1, N);
+			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i (Exemple : K 2 ) \n", 'A' + N - NB_LINES, 'A' + N - 1, N);
 		}else{
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i au format a/A 01 \n", 'A', 'A' + NB_LINES - 1, N);
+			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i (Exemple : B 5 ) \n", 'A', 'A' + NB_LINES - 1, N);
 		}
 		reinitColor();
 

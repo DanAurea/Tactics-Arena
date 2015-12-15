@@ -151,5 +151,7 @@ void gridDisp(){
 		printf("\n");
 
 	}
+    printf("		   xx : décors\n");
 	printf("\n");
+
 }
