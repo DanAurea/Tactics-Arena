@@ -16,14 +16,14 @@ void initPawn(unit * pawn){
 	memset(pawn, -1, sizeof(unit));
 
 	for(int i = 0; i < NB_MAX_EFFECT; i++){
-		pawn->effect[i] = none;
+		pawn->effect[0][i] = none;
 	}
 	pawn->unitColor = white;
 }
 
 /**
  * Initialise les cibles du pion
- * @param name     Nom du pion 
+ * @param name     Nom du pion
  * @param horizRange Portée horizontale
  * @param vertRange Portée verticale
  * @param minRange Portée minimale
@@ -47,11 +47,11 @@ void setTarget(unitName name, short vertRange, short horizRange, short ringSize,
 	for(int i = -vertRange; i <= vertRange; i++){
 		for(int j = -horizRange; j <= horizRange; j++){
 
-			if( ((abs(i) + abs(j) <= min && line == 0) 
-				|| (i == 0 && j <= max) 
-				|| ( j == 0 && i <= max)) 
+			if( ((abs(i) + abs(j) <= min && line == 0)
+				|| (i == 0 && j <= max)
+				|| ( j == 0 && i <= max))
 				&& abs(i) + abs(j) >= ringSize){ // Sélection des cibles de manière flexible et personnalisée
-					
+
 					target.x = i;
 					target.y = j;
 					addTarget(name,target); // Ajoute une cible pour le pion
@@ -59,7 +59,7 @@ void setTarget(unitName name, short vertRange, short horizRange, short ringSize,
 
 		}
 	}
-	
+
 }
 
 /**
@@ -154,7 +154,7 @@ void makePawns(){
 		createPawn(8, decors, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0);
 		/*
 			Ordre params: Nombre paramètres obligatoires, nom unité,
-						HP, Power, Armor, 
+						HP, Power, Armor,
 						Block[0], Block[1], Block[2],
 						Recovery, Move_range,
 						horizRange, vertRange, sizeRing, line

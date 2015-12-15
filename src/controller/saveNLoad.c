@@ -17,13 +17,13 @@ void save(){
 					fprintf(fic1, "(%i - %i){%i, %i, %i, %f, %i, %f, %f, %f, %i, %i, %i, %i, ", x, y, uSave.name, uSave.stat.HP, 								uSave.stat.POWER, uSave.stat.ARMOR, uSave.stat.RECOVERY, uSave.stat.BLOCK[0], 									uSave.stat.BLOCK[1], uSave.stat.BLOCK[2],uSave.stat.MOVE_RANGE, uSave.noPlayer, 								uSave.unitColor, uSave.direct);
 					for(int k = 0; k <NB_MAX_EFFECT; k++) {
 						if(k == NB_MAX_EFFECT - 1){
-							fprintf(fic1, " %i ", uSave.effect[k]);
+							fprintf(fic1, " %i - %i", uSave.effect[0][k],uSave.effect[1][k]);
 						}else{
-							fprintf(fic1, " %i, ", uSave.effect[k]);
+							fprintf(fic1, " %i - %i, ", uSave.effect[0][k],uSave.effect[1][k]);
 						}
 					}
 				fprintf(fic1, "}\n");
-				} 
+				}
 			}
 		}
 	fclose(fic1);
@@ -37,7 +37,7 @@ void load() {
 	FILE * fic1;
 	int x = -1, y = -1;
 	int name, success, cardinal;
-	int effectLoad[NB_MAX_EFFECT] = {0};
+	int effectLoad[2][NB_MAX_EFFECT];
 	unit uLoad;
 
 	fic1 = fopen("assets/save/fileSave", "r");
@@ -46,16 +46,17 @@ void load() {
 			success = fscanf(fic1, "(%i - %i){%i, %i, %i, %f, %i, %f, %f, %f, %i, %i, %i, %i, ", &x, &y, &name, &uLoad.stat.HP, 					        &uLoad.stat.POWER, &uLoad.stat.ARMOR, &uLoad.stat.RECOVERY, &uLoad.stat.BLOCK[0],
 					&uLoad.stat.BLOCK[1], &uLoad.stat.BLOCK[2], &uLoad.stat.MOVE_RANGE, &uLoad.noPlayer,
 					&uLoad.unitColor, &cardinal);
-			
+
 			uLoad.name = name;
 			uLoad.direct = cardinal;
 			for(int k = 0; k <NB_MAX_EFFECT; k++) {
 				if(k == NB_MAX_EFFECT - 1){
-					success = fscanf(fic1, " %i }\n", &effectLoad[k]);
+					success = fscanf(fic1, " %i - %i}\n", &effectLoad[0][k],&effectLoad[1][k]);
 				}else{
-					success = fscanf(fic1, " %i, ", &effectLoad[k]);
+					success = fscanf(fic1, " %i - %i, ", &effectLoad[0][k],&effectLoad[1][k]);
 				}
-				uLoad.effect[k] = effectLoad[k];
+				uLoad.effect[0][k] = effectLoad[0][k];
+				uLoad.effect[1][k] = effectLoad[1][k];
 			}
 
 			if(success == 1){
@@ -86,7 +87,7 @@ void save2() {
 				if(grid[x][y].name != empty){
 					uSave[k] = grid[x][y];
 					k++;
-				} 
+				}
 			}
 		}
 		fwrite(&uSave, sizeof(unit), k, fic1);
@@ -109,8 +110,8 @@ void save2() {
 	fic1 = fopen("assets/save/fileSave", "rb");
 	if(fic1 != NULL){
 		while(!feof(fic1)) {
-			fread(&uLoad, sizeof(uLoad), 
-			
+			fread(&uLoad, sizeof(uLoad),
+
 			uLoad.name = name;
 			for(int k = 0; k <NB_MAX_EFFECT; k++) {
 				if(k == NB_MAX_EFFECT - 1){

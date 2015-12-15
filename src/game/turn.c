@@ -56,7 +56,7 @@ void changeDirection(){
 	dispDirection();
 
 	do{
-		
+
 		printf("Choisissez une direction: ");
 		direct = readLong();
 
@@ -80,7 +80,7 @@ void playAttack(){
 	do{
 		selected = selectUnit(&coordUnit); // Sélection de l'unité attaquante
 		target   = &grid[coordUnit.x][coordUnit.y];
-		
+
 		if(!canAttack(target)){
 			color(red, "Cette unité ne peut pas attaquer, elle est soumise à l'effet: \n");
 		}else if(target->noPlayer != noPlayer){
@@ -94,6 +94,10 @@ void playAttack(){
 	}
 
 	printList(targetList); // Affiche les cibles potentielles
+
+    clearScreen();
+    gridDisp();
+    reinitUnitColor();
 
 	do{
 		selected = selectUnit(&coordTarget); // Sélectionne une cible à attaquer
@@ -116,7 +120,7 @@ void playMove(){
 	bool selected = false;
 	vector coordUnit, coordTarget;
 	unit source;
-	
+
 	do{
 		selected = selectUnit(&coordUnit); // Sélection de l'unité à déplacer
 		source   = grid[coordUnit.x][coordUnit.y];
@@ -131,15 +135,21 @@ void playMove(){
 
 	}while((source.noPlayer != noPlayer || !selected) && (!canMove(&source) || !possiblePath(coordUnit)));
 
+    grid[coordUnit.x][coordUnit.y].unitColor=white;
+
 	color(red, "\nCases atteignables par votre unité: \n\n");
 	tileWalkable(coordUnit); // Affiche la liste des cases atteignables -> Prendre en compte les obstacles
-	
+
+    clearScreen();
+    gridDisp();
+    reinitUnitColor();
+
 	color(red, "\nVous pouvez maintenant déplacer votre unité :\n\n");
 	do{
 		selected = selectUnit(&coordTarget); // Sélection de l'endroit où déplacer l'unité
 		// findPath(coordUnit, coordTarget); -> Cherche un chemin vers la cible
 	}while(!selected);
-
+    grid[coordUnit.x][coordUnit.y].unitColor=black;
 	move(coordTarget, coordUnit);
 
 	hasMoved = 1;
@@ -193,6 +203,8 @@ void playTurn(){
 
 		clearScreen();
 		gridDisp();
+		reinitUnitColor();
+
 		gameMenu(); // Menu du joueur
 
 		timeLeft = endTurn(start, totalTime);

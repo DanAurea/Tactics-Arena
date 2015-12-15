@@ -45,10 +45,10 @@ printf(
         printf(" 2 - Charger partie\n");
         printf(" 3 - Aide jeu \n");
         printf(" 4 - Quitter\n");
-        printf("Votre choix : ");   
-        
+        printf("Votre choix : ");
+
         choix = readLong();	// Choix = 1 si chiffre est rentré, 0 sinon
-    	
+
         if(choix == 0) {
     		printf("Erreur : Veuillez rentrer un chiffre et non un caractère \n");
     	}
@@ -63,7 +63,7 @@ printf(
             case 4: break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 4\n");
         }
-	
+
     }while(choix != 4);
     printf("A bientôt !");
     exit(1);
@@ -87,7 +87,7 @@ void mainHelp() {
 			"  6 - Revenir au menu principal \n\n");
 		color(green, "Quel est votre choix ? : ");
 		choix = readLong();
-	    	
+
 		if(choix == 0) {
 	    		printf("Erreur : Veuillez rentrer un chiffre et non un caractère \n");
 	    	}
@@ -111,7 +111,7 @@ void mainHelp() {
 					color(cyan,"\n  Quand ce temps est dépassé:\n");
 					puts(   "    -Finis le tour automatiquement si au moins une commande a été effectué\n"
 						"    -Si aucune commande effectué, abandon automatique");
-					color(red, "    -Important : on ne peut pas revenir en arrière sur une action déjà effectué\n\n"); 
+					color(red, "    -Important : on ne peut pas revenir en arrière sur une action déjà effectué\n\n");
 
 				break;
 
@@ -136,8 +136,8 @@ void mainHelp() {
 
 				case 3 : helpUnit();
 				break;
-				
-				case 4 : color(cyan, "  TELEPORTATION \n"); 
+
+				case 4 : color(cyan, "  TELEPORTATION \n");
 					 puts("    -Permet de ce déplacer vers une case libre sans être déranger par les obstacles ou les autres unités \n\n");
 
 					 color(cyan, "  ATTAQUES FURTIVES\n");
@@ -152,7 +152,7 @@ void mainHelp() {
 					      "    -OU si la cible est détruite \n"
 					      "    -OU si le lanceur reçoit une nouvelle instruction\n\n");
 
-					color(cyan, "  BLOCK\n"); 
+					color(cyan, "  BLOCK\n");
 					puts("    -Rend une attaque inefficace \n"
 					     "    -fixe 50% de bloquage sur les cotés \n"
 					     "    -Ne peut bloquer derrière \n\n");
@@ -202,7 +202,7 @@ void mainHelp() {
 
 				case 6 : mainMenu(); break;
 
-		
+
 		}
 	}while(choix != 6);
 }
@@ -236,10 +236,10 @@ void helpUnit() {
 		"20 - Afficher de nouveau la liste des unités\n"
 		"21 - Retour menu principal\n");
 	do{
-		
+
 		color(green, "\nQuel est votre choix ? (20 pour afficher de nouveau le menu unité et 21 pour menu principal) : ");
 		choix = readLong();
-	    	
+
 		if(choix == 0) {
 	    		printf("Erreur : Veuillez rentrer un chiffre et non un caractère \n");
 	    	}
@@ -248,7 +248,7 @@ void helpUnit() {
 
 			case 1 : color(cyan,"\n Caractéristiques du Knight : \n");
 				 puts(  "  -HP : 50\n"
-					"  -Power : 22\n" 
+					"  -Power : 22\n"
 					"  -Armor : 25%\n"
 					"  -Blocking : 80% Devant 40% Côté\n"
 					"  -Recovery : 1\n"
@@ -258,7 +258,7 @@ void helpUnit() {
 
 			case 2 : color(cyan,"\n Caractéristiques du Scout : \n");
 				 puts(	"  -HP : 40\n"
-					"  -Power : 18\n" 
+					"  -Power : 18\n"
 					"  -Armor : 8%\n"
 					"  -Blocking : 60% Devant 30% Côté\n"
 					"  -Recovery : 2\n"
@@ -268,7 +268,7 @@ void helpUnit() {
 
 			case 3 : color(cyan,"\n Caractéristiques de l'Assassin : \n");
 				 puts(	"  -HP : 35\n"
-					"  -Power : 18\n" 
+					"  -Power : 18\n"
 					"  -Armor : 12%\n"
 					"  -Blocking : 70% Devant 35% Côté\n"
 					"  -Recovery : 1\n"
@@ -278,7 +278,7 @@ void helpUnit() {
 
 			case 4 : color(cyan,"\n Caractéristiques du Cleric : \n");
 				 puts(	"  -HP : 24\n"
-					"  -Power : 12 de soin\n" 
+					"  -Power : 12 de soin\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : Aucun\n"
 					"  -Recovery : 5\n"
@@ -288,7 +288,7 @@ void helpUnit() {
 
 			case 5 : color(cyan,"\n Caractéristiques du Pyromancer : \n");
 				 puts(	"  -HP : 30\n"
-					"  -Power : 15 Imblocable\n" 
+					"  -Power : 15 Imblocable\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : 33% Devant 16% Côté\n"
 					"  -Recovery : 3\n"
@@ -298,7 +298,7 @@ void helpUnit() {
 
 			case 6 : color(cyan,"\n Caractéristiques de l'Enchantress : \n");
 				 puts(	"  -HP : 35\n"
-					"  -Power : Sort de paralysie\n" 
+					"  -Power : Sort de paralysie\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : Aucun\n"
 					"  -Recovery : 3\n"
@@ -308,7 +308,7 @@ void helpUnit() {
 
 			case 7 : color(cyan,"\n Caractéristiques du Dragonborn : \n");
 				 puts(	"  -HP : 30\n"
-					"  -Power : 15 Imblocable\n" 
+					"  -Power : 15 Imblocable\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : 33% Devant 16% Côté\n"
 					"  -Recovery : 3\n"
@@ -318,7 +318,7 @@ void helpUnit() {
 
 			case 8 : color(cyan,"\n Caractéristiques de la Dark Witch : \n");
 				 puts(	"  -HP : 28\n"
-					"  -Power : 24 Imblocable\n" 
+					"  -Power : 24 Imblocable\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : 20% Devant 10% Côté\n"
 					"  -Recovery : 3\n"
@@ -328,7 +328,7 @@ void helpUnit() {
 
 			case 9 : color(cyan,"\n Caractéristiques du Lightning Totem : \n");
 				 puts(	"  -HP : 56\n"
-					"  -Power : 30 Imblocable\n" 
+					"  -Power : 30 Imblocable\n"
 					"  -Armor : 18%\n"
 					"  -Blocking : 100% Partout\n"
 					"  -Recovery : 4\n"
@@ -338,7 +338,7 @@ void helpUnit() {
 
 			case 10 : color(cyan,"\n Caractéristiques du Barrier Totem : \n");
 				  puts(	"  -HP : 32\n"
-					"  -Power : Barrière\n" 
+					"  -Power : Barrière\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : 100% Partout\n"
 					"  -Recovery : 2\n"
@@ -348,7 +348,7 @@ void helpUnit() {
 
 			case 11 : color(cyan,"\n Caractéristiques du Mud Golem : \n");
 				  puts(	"  -HP : 60\n"
-					"  -Power : 20\n" 
+					"  -Power : 20\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : Aucun\n"
 					"  -Recovery : 2\n"
@@ -357,7 +357,7 @@ void helpUnit() {
 
 			case 12 : color(cyan,"\n Caractéristiques du Golem Ambusher : \n");
 				  puts(	"  -HP : 60\n"
-					"  -Power : 20\n" 
+					"  -Power : 20\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : Aucun\n"
 					"  -Recovery : 3\n"
@@ -367,7 +367,7 @@ void helpUnit() {
 
 			case 13 : color(cyan,"\n Caractéristiques du Frost Golem : \n");
 				  puts(	"  -HP : 60\n"
-					"  -Power : Paralyse\n" 
+					"  -Power : Paralyse\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : Aucun\n"
 					"  -Recovery : 2\n"
@@ -377,7 +377,7 @@ void helpUnit() {
 
 			case 14 : color(cyan,"\n Caractéristiques du Stone Golem : \n");
 				  puts(	"  -HP : 60\n"
-					"  -Power : +30% Armor\n" 
+					"  -Power : +30% Armor\n"
 					"  -Armor : 30%\n"
 					"  -Blocking : Aucun\n"
 					"  -Recovery : 4\n"
@@ -387,7 +387,7 @@ void helpUnit() {
 
 			case 15 : color(cyan,"\n Caractéristiques du Dragon Tyrant : \n");
 				  puts(	"  -HP : 68\n"
-					"  -Power : 28\n" 
+					"  -Power : 28\n"
 					"  -Armor : 16%\n"
 					"  -Blocking : 40% Devant 20% Côtés\n"
 					"  -Recovery : 3\n"
@@ -397,7 +397,7 @@ void helpUnit() {
 
 			case 16 : color(cyan,"\n Caractéristiques du Berserker : \n");
 				  puts(	"  -HP : 42\n"
-					"  -Power : 22 + Etourdissement\n" 
+					"  -Power : 22 + Etourdissement\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : 25% Devant 12% Côtés\n"
 					"  -Recovery : 1\n"
@@ -407,7 +407,7 @@ void helpUnit() {
 
 			case 17 : color(cyan,"\n Caractéristiques du Beast Rider : \n");
 				  puts(	"  -HP : 38\n"
-					"  -Power : 19\n" 
+					"  -Power : 19\n"
 					"  -Armor : 15%\n"
 					"  -Blocking : 45% Devant 22% Côtés\n"
 					"  -Recovery : 1\n"
@@ -417,7 +417,7 @@ void helpUnit() {
 
 			case 18 : color(cyan,"\n Caractéristiques du Beast Rider : \n");
 				  puts(	"  -HP : 34\n"
-					"  -Power : Poison\n" 
+					"  -Power : Poison\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : Aucun\n"
 					"  -Recovery : 2\n"
@@ -426,7 +426,7 @@ void helpUnit() {
 
 			case 19 : color(cyan,"\n Caractéristiques du Furgon : \n");
 				  puts(	"  -HP : 48\n"
-					"  -Power : Invocation\n" 
+					"  -Power : Invocation\n"
 					"  -Armor : Aucune\n"
 					"  -Blocking : 50% Devant 25% Côtés\n"
 					"  -Recovery : 1\n"
@@ -460,10 +460,10 @@ void dispDirection(){
  */
 void gameMenu(){
     int choix;
-    
+
     if(noPlayer == FIRST_PLAYER) fontColor(red);
     else fontColor(blue);
-    
+
     printf("Joueur no %i à vous de jouer !\n", noPlayer + 1);
     reinitColor();
 
@@ -477,8 +477,8 @@ void gameMenu(){
         printf(" 6 - Abandonner la partie\n");
 
         printf("Votre choix : ");
-        choix = readLong();	
-    	
+        choix = readLong();
+
         if(choix == 0) {
     		printf("Erreur : Veuillez rentrer un chiffre et non un caractère \n");
     	}
@@ -511,8 +511,12 @@ void unitMenu(int choice){
             		if(!hasAttacked && !hasMoved){
             			color(red,"Unités pouvant se déplacer : \n");
 						printf("No -  Nom -  X-Y -  HP -  Direction\n\n");
-            			
+
             			movable(); // Fait la liste des unités pouvant se déplacer
+
+                        clearScreen();
+                        gridDisp();
+                        reinitUnitColor();
 
 	                    printf("\nSe déplacer ? y/n\n");
 	        		    readS(yn);
@@ -528,7 +532,7 @@ void unitMenu(int choice){
             		}else{
             			printf("Vous ne pouvez pas déplacer une unité à nouveau !\n");
             		}
-                   
+
                 break;
             case 2:
         		    if(!hasAttacked){
@@ -540,7 +544,7 @@ void unitMenu(int choice){
 	        		    printf("\nAttaquer ? y/n\n");
 	        		    readS(yn);
 	        		    printf("\n");
-	        		    
+
 	                    if(strcmp(yn,"y") == 0 || strcmp(yn,"Y") == 0) {
 	                        playAttack();
 	                    }else if(strcmp(yn,"n") != 0 || strcmp(yn,"N") != 0){

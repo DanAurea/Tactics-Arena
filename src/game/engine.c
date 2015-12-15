@@ -26,7 +26,7 @@ bool possiblePath(vector coordUnit){
 		return true;
 
 	}else if(canTeleport(grid[coordUnit.x][coordUnit.y].name)){
-		
+
 		for(int x = -range; x <= range; x++){
 			for(int y = -range; y <= range; y++){
 				if(grid[x][y].name == empty && x >= 0 && x < N && y >= 0 && y < N){
@@ -35,7 +35,7 @@ bool possiblePath(vector coordUnit){
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -56,10 +56,11 @@ void movable(){
 
 			source = &grid[coordUnit.x][coordUnit.y];
 			if(canMove(source) && possiblePath(coordUnit)){ // Unité non entourée par ennemi + non paralysée et ayant un chemin possible
-				printf("%i - %s - %c-%i - %i HP - %s\n", i,getNameUnit(source->name), 
-						'A' + coordUnit.x, coordUnit.y + 1, source->stat.HP, 
+				printf("%i - %s - %c-%i - %i HP - %s\n", i,getNameUnit(source->name),
+						'A' + coordUnit.x, coordUnit.y + 1, source->stat.HP,
 						getDirectionUnit(source->direct)); // Affiche le nom de l'unité
 				i++;
+				source->unitColor=white;
 			}
 		}
 	}
@@ -82,10 +83,11 @@ void attackable(){
 
 			source = &grid[coordUnit.x][coordUnit.y];
 			if(canAttack(source)){
-				printf("%i - %s - %c-%i - %i HP - %s\n", i,getNameUnit(source->name), 
-						'A' + coordUnit.x, coordUnit.y + 1, source->stat.HP, 
+				printf("%i - %s - %c-%i - %i HP - %s\n", i,getNameUnit(source->name),
+						'A' + coordUnit.x, coordUnit.y + 1, source->stat.HP,
 						getDirectionUnit(source->direct)); // Affiche le nom de l'unité
 				i++;
+				source->unitColor=white;
 			}
 		}
 	}
@@ -105,11 +107,12 @@ void tileWalkable(vector coordUnit){
 
 			if(x >= 0 && x < N && y >= 0 && y < N){
 				source = &grid[x][y];
-				
+
 				if(source->name == empty){ // Case vide
-					printf("%i - %s - %c-%i\n", i,getNameUnit(source->name), 
+					printf("%i - %s - %c-%i\n", i,getNameUnit(source->name),
 							'A' + x, y + 1); // Affiche le nom de l'unité
 					i++;
+					source->unitColor=green;
 				}
 			}
 		}
@@ -140,7 +143,7 @@ bool isSurrounded(vector currentUnit){
 		for(int y =  -1; y <= 1 && surrounded; y++)
 		{
 			if(abs(x) + abs(y) == 1 && currentUnit.x+x >= 0 && currentUnit.x+x < N && currentUnit.y+y >= 0 && currentUnit.y+y < N){ // Croix centrée sur l'unité courante
-				
+
 				target = &grid[currentUnit.x+x][currentUnit.y+y]; // Case ciblée
 
 				if(target->name == empty){
@@ -148,7 +151,7 @@ bool isSurrounded(vector currentUnit){
 					surrounded=false; // Case libre donc non entourée
 
 				}else if(target->name != decors){
-					
+
 					if(source->noPlayer == target->noPlayer && canGetPassed(target)){ // Unité allié pouvant être traversée
 						surrounded=false;
 					}
@@ -162,9 +165,9 @@ bool isSurrounded(vector currentUnit){
 }
 
 /**
- * Récupère les cibles possible de l'unité 
- * aux coordonnées du vecteur passé en 
- * paramètre. 
+ * Récupère les cibles possible de l'unité
+ * aux coordonnées du vecteur passé en
+ * paramètre.
  * @param coordUnit Coordonnées de l'unité
  */
 void getTargets(vector coordUnit){
@@ -173,7 +176,7 @@ void getTargets(vector coordUnit){
 	vector newTarget;
 
 	en_tete(targetList);
-	if(!liste_vide(targetList)){ 
+	if(!liste_vide(targetList)){
 		dumpList(targetList); // Vide la liste
 	}
 
@@ -185,8 +188,14 @@ void getTargets(vector coordUnit){
 			newTarget.x = coordUnit.x + target.x;
 			newTarget.y = coordUnit.y + target.y;
 
-			if(newTarget.x >= 0 && newTarget.x < N && newTarget.y >= 0 && newTarget.y < N){
-				addTarget(targetList, newTarget); // Marque les coordonnées comme cible potentielle
+			if(newTarget.x >= 0 && newTarget.x < N && newTarget.y >= 0 && newTarget.y < N)
+			{
+				if(grid[newTarget.x][newTarget.y].name != decors)
+				{
+				    addTarget(targetList, newTarget); // Marque les coordonnées comme cible potentielle
+				    grid[newTarget.x][newTarget.y].unitColor=yellow;
+				}
+
 			}
 			suivant(name);
 		}
@@ -203,13 +212,13 @@ void launchAttack(vector coordSource, vector coordTarget){
 	vector targetAttack;
 
 	if(name == assassin || name == enchantress || name == poisonWisp){
-		
+
 		if(!liste_vide(targetList)){
 			en_tete(targetList);
 
 			while(!hors_liste(targetList)){ // Attaque toutes les cibles
 				valeur_elt(targetList, &targetAttack);
-	
+
 				attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
 
 				suivant(targetList);
@@ -217,10 +226,10 @@ void launchAttack(vector coordSource, vector coordTarget){
 		}
 
 	}else if(name == furgon || name == stoneGolem || name == dragonborn || name == pyromancer){
-		
+
 		for(int x = coordTarget.x - 1; x <= coordTarget.x + 1; x++){
 			for(int y = coordTarget.y - 1; y <= coordTarget.y + 1; y++){
-				
+
 				if(abs(x) + abs(y) <= 1 && x >=0 && x < N && y >= 0 && y < N){ // Croix centrée sur la cible désirée
 					targetAttack.x = coordTarget.x + x;
 					targetAttack.y = coordTarget.y + y;
@@ -236,7 +245,7 @@ void launchAttack(vector coordSource, vector coordTarget){
 
 			while(!hors_liste(targetList)){
 				valeur_elt(targetList, &targetAttack);
-				
+
 				if(targetAttack.x == coordTarget.x || targetAttack.y == coordTarget.y){ // Même ligne / colonne
 					attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
 				}
@@ -290,45 +299,44 @@ void gridInit(){
 
 			if(x >= 0 + NB_LINES && x < N - NB_LINES && nbDecors < 7){
 				if(rand() % 100 > 93){ // Ajoute un décor aléatoirement
-					grid[x][y].name = decors;
+					grid[x][y] = pawns[decors];
 					nbDecors++;
 				}
 			}
 
 			unitInit(-1, coordUnit); // Initialise avec les données par défaut
-			grid[x][y].unitColor = white;
 
 		}
 	}
 }
 
 /**
- * Vérifie que l'unité sélectionnée n'est pas en trop 
+ * Vérifie que l'unité sélectionnée n'est pas en trop
  * grand nombre sur le plateau
  * @param unitSelected 	Unité sélectionnée
  * @return          	Retourne vrai si unité en surnombre
  */
 bool tooMuchUnit(int unitSelected, int limitUnits[]){
-	
+
 	if(strstr(getNameUnit(unitSelected), "Dragon")){
-		
+
 		if(limitUnits[4] == 0) return true; // Limite de dragon
 		return false;
 
 	}else{
-		
+
 		if(unitSelected == knight){ // Limite de knight
 
 			if(limitUnits[0] == 0) return true;
 			return false;
 
 		}else if(unitSelected == scout){ // Limite de scout
-			
+
 			if(limitUnits[1] == 0) return true;
 			return false;
 
 		}else if(unitSelected == stoneGolem){ // Limite de stone Golem
-			
+
 			if(limitUnits[2] == 0) return true;
 			return false;
 
@@ -373,15 +381,15 @@ void updateLimits(int unitSelected, int limitUnits[], vector coordUnit){
 		if(unitSelected == furgon) limitUnits[5]--;
 
 	}
-		
+
 	if(name == knight && unitSelected != knight) limitUnits[0]++; // Met à jours les unités lors d'un remplacement
-	
+
 	else if(name == scout && unitSelected != scout) limitUnits[1]++;
-	
+
 	else if(name == stoneGolem && unitSelected != stoneGolem) limitUnits[2]++;
-	
+
 	else if(name == lightningTotem && unitSelected != lightningTotem) limitUnits[3]++;
-	
+
 	else if(name == furgon && unitSelected != furgon) limitUnits[5]++;
 
 }
@@ -483,7 +491,7 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
  * Initiliase la liste des unités du joueur
  */
 void playerInit(){
-	int limitUnits[6] = {NB_MAX_KN, NB_MAX_SC, 
+	int limitUnits[6] = {NB_MAX_KN, NB_MAX_SC,
 					 	NB_MAX_SG, NB_MAX_LT,
 					 	NB_MAX_DR, NB_MAX_FU}; // Limite en nombre pour certaines unités
 
@@ -495,7 +503,7 @@ void playerInit(){
 			printf("Il reste %i unités à placer.\n", NB_MAX_UNIT - i);
 		else
 			printf("Il reste 1 unité à placer.\n");
-		
+
 		reinitColor();
 		playerAddUnit(limitUnits, &i); // Ajout unité joueur 1
 	}
@@ -513,7 +521,7 @@ bool endGame(){
 		}else{
 			printf("Le joueur %i a perdu car toutes les unités ont été détruites !", noPlayer + 1);
 		}
-		
+
 		reinitColor();
 		return true;
 	}else{

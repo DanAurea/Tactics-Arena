@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../../include/controller/terminal.h"
+#include "../../include/game/engine.h"
 
 /**
  * Récupère le code correspondant à la couleur
@@ -42,13 +43,13 @@ void color(int color, char type[]){
 	char colorToUse[3];
 
 	strcpy(colorToUse, getColor(color, type));
-	
+
 	printf("\033[%sm",colorToUse); // Change le texte / l'écran avec la couleur désirée
-	if(strcmp(type, "Screen") != 0){
+	if(strcmp(type, "Screen") != 0)
+	{
 		printf("%s", type);
 		printf("\033[%sm", getColor(reinit, "Screen")); // Réinitialise le texte suivant en blanc
 	}
-
 }
 
 /**
@@ -74,4 +75,11 @@ void clearScreen(){
 	printf("\033[H\033[2J");
 	printf("\033[H\033[2J");
 	printf("\033[H\033[2J");
+}
+
+void reinitUnitColor()
+{
+    for(int i=0;i<N;i++)
+        for(int j=0;j<N;j++)
+            grid[i][j].unitColor=black;
 }

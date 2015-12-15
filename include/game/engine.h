@@ -24,13 +24,13 @@
 
 
 typedef enum{north, east, south, west}cardinal;
-typedef enum{empty, decors, knight, scout, assassin, cleric, pyromancer, enchantress, 
+typedef enum{empty, decors, knight, scout, assassin, cleric, pyromancer, enchantress,
 			dragonborn, darkWitch, lightningTotem, barrierTotem, mudGolem, golemAmbusher,
 			frostGolem, stoneGolem, dragonTyrant, berserker, beastRider, poisonWisp, furgon}unitName; /**< Liste énumérée des noms d'unité */
 typedef enum{none, POWER_BONUS, ARMOR_BONUS, BARRIER, POISON, PARALYSE, FOCUS}unitEffect; /**< Représentation des différents status */
 typedef struct{int HP; int POWER; float ARMOR; int RECOVERY; float BLOCK[3]; int MOVE_RANGE;}unitStat; /**< Représentation des statistiques d'une unité*/
 typedef struct{int x; int y;}vector; /**< Représentation d'un vecteur */
-typedef struct{unitName name; unitStat stat; unitEffect effect[NB_MAX_EFFECT];cardinal direct; int noPlayer; int unitColor;}unit; /**< */
+typedef struct{unitName name; unitStat stat; unitEffect effect[2][NB_MAX_EFFECT];cardinal direct; int noPlayer; int unitColor;}unit; /**< */
 extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
 extern int noPlayer; /**< Représentation du joueur */
 

@@ -151,7 +151,7 @@ void dumpList(short nbList){
  * Vide toutes les listes
  */
 void dumpAllLists(){
-	
+
 	for(int list = 0; list <= (NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE; list++){
 		dumpList(list); // Libère la liste
 		free(drapeau[list]); // Libère le drapeau
@@ -221,11 +221,11 @@ void printList(short numList){
 			}else{
 				printf("%i - %s - %c%i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1); // Affiche case vide ou décor
 			}
-			
+
 
 			for(int j = 0; j < NB_MAX_EFFECT; j++){
-				if(source.effect[j] != none){
-					printf(" - %i", source.effect[j]);
+				if(source.effect[0][j] != none){
+					printf(" - %i", source.effect[0][j]);
 				}
 			}
 			printf("\n");
@@ -261,7 +261,7 @@ void destroyUnit(vector coordUnit){
  * @return          Retourne le nombre d'unité
  */
 int countUnits(){
-	int nbUnits = 0; 
+	int nbUnits = 0;
 
 	if(!liste_vide(noPlayer)){
 		en_tete(noPlayer);
@@ -289,7 +289,7 @@ bool searchTarget(int numList, vector coordTarget){
 
 		while(!hors_liste(numList) && (tmp.x != coordTarget.x || tmp.y != coordTarget.y)){ // Cherche la cible
 			valeur_elt(numList, &tmp);
-			
+
 			if(tmp.x == coordTarget.x && tmp.y == coordTarget.y){ // Cible trouvée
 				return true;
 			}
