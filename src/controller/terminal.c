@@ -76,10 +76,3 @@ void clearScreen(){
 	printf("\033[H\033[2J");
 	printf("\033[H\033[2J");
 }
-
-void reinitUnitColor()
-{
-    for(int i=0;i<N;i++)
-        for(int j=0;j<N;j++)
-            grid[i][j].unitColor=black;
-}

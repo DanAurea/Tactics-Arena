@@ -88,17 +88,15 @@ void playAttack(){
 			color(red, "Cette unité ne vous appartient pas !");
 		}
 
-	}while((target->noPlayer != noPlayer || !selected) && !canAttack(target));
+	}while(target->noPlayer != noPlayer || !selected || !canAttack(target));
 
-	if(liste_vide(targetList)){
-		getTargets(coordUnit); // Récupère les cibles potentielles
-	}
-
-	printList(targetList); // Affiche les cibles potentielles
+	getTargets(coordUnit, yellow); // Récupère les cibles potentielles -> Jaune
+	
 
     clearScreen();
     gridDisp();
-    reinitUnitColor();
+
+    getTargets(coordUnit, black); // Récupère les cibles potentielles -> Noir
 
 	do{
 		selected = selectUnit(&coordTarget); // Sélectionne une cible à attaquer
@@ -109,7 +107,7 @@ void playAttack(){
 	}while(!searchTarget(targetList, coordTarget) || !selected);
 
 	launchAttack(coordUnit, coordTarget); // Lance une attaque
-	// Déclencher capacité spéciale
+
 
 	hasAttacked = 1;
 }
@@ -134,24 +132,29 @@ void playMove(){
 			color(red, "Cette unité ne vous appartient pas !\n");
 		}
 
-	}while((source.noPlayer != noPlayer || !selected) && (!canMove(&source) || !possiblePath(coordUnit)));
+	}while(source.noPlayer != noPlayer || !selected || !canMove(&source));
 
-    grid[coordUnit.x][coordUnit.y].unitColor=white;
+	movable(black); // Réinitialise en noir les unités déplaçables
 
-	color(red, "\nCases atteignables par votre unité: \n\n");
-	tileWalkable(coordUnit); // Affiche la liste des cases atteignables -> Prendre en compte les obstacles
+    grid[coordUnit.x][coordUnit.y].unitColor = white; // Couleur unité sélectionnée
+
+	tileWalkable(coordUnit, green); // Affiche la liste des cases atteignables en vert
 
     clearScreen();
     gridDisp();
-    reinitUnitColor();
+
+    tileWalkable(coordUnit, black); // Réinitialise la couleur en noir
 
 	color(red, "\nVous pouvez maintenant déplacer votre unité :\n\n");
 	do{
 		selected = selectUnit(&coordTarget); // Sélection de l'endroit où déplacer l'unité
-		// findPath(coordUnit, coordTarget); -> Cherche un chemin vers la cible
+		
+		findPath(coordUnit,coordUnit.x, coordUnit.y, source.stat.MOVE_RANGE, coordTarget);
 	}while(!selected);
-    grid[coordUnit.x][coordUnit.y].unitColor=black;
+    
+    grid[coordUnit.x][coordUnit.y].unitColor = black; // Réinitialise la couleur de l'unité sélectionnée
 	move(coordTarget, coordUnit);
+
 
 	hasMoved = 1;
 }
@@ -168,7 +171,7 @@ void passTurn(){
  * @return Retourne vrai si le joueur a joué sinon faux
  */
 bool hasPlay(){
-	if(hasPassed == 0 && hasAttacked == 0 && hasMoved == 0 && hasSurrender == 0) return false;
+	if(hasPassed == 0 && hasAttacked == 0 && hasMoved == 0) return false;
 	return true;
 }
 
@@ -203,17 +206,17 @@ void playTurn(){
 
 	signal(SIGUSR1, timeDown); // En fin de tour renvoie vers timeDown
 
-	hasMoved    = 0; // Actions utilisateur lors du tour
-	hasAttacked = 0;
-	hasPassed   = 0;
+	hasMoved     = 0; // Actions utilisateur lors du tour
+	hasAttacked  = 0;
+	hasPassed    = 0;
+	hasSurrender = 0;
 
 	while(timeLeft > 0 && hasPassed == 0 && hasSurrender == 0){
 
+		gameMenu(); // Menu du joueur
+
 		clearScreen();
 		gridDisp();
-		reinitUnitColor();
-
-		gameMenu(); // Menu du joueur
 
 		timeLeft = endTurn(start, totalTime);
 
@@ -224,10 +227,10 @@ void playTurn(){
 		loop++;
 	}
 
-	if(noPlayer == FIRST_PLAYER && hasPlay()) noPlayer++;
-	else if(noPlayer == FIRST_PLAYER +1 && hasPlay()) noPlayer--;
-
-	if(!hasPlay()){ // Pas d'action donc temps écoulé
+	if(!hasPlay() && !hasSurrender){ // Pas d'action donc temps écoulé
 		raise(SIGUSR1); // Finis le tour et la partie car aucune action par un signal
 	}
+
+	if(noPlayer == FIRST_PLAYER && hasPlay()) noPlayer++;
+	else if(noPlayer == FIRST_PLAYER +1 && hasPlay()) noPlayer--;
 }

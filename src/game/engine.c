@@ -27,10 +27,12 @@ bool possiblePath(vector coordUnit){
 
 	}else if(canTeleport(grid[coordUnit.x][coordUnit.y].name)){
 
-		for(int x = -range; x <= range; x++){
-			for(int y = -range; y <= range; y++){
-				if(grid[x][y].name == empty && x >= 0 && x < N && y >= 0 && y < N){
-					return true;
+		for(int x = coordUnit.x-range; x <= coordUnit.x + range; x++){
+			for(int y = coordUnit.x - range; y <= coordUnit.x + range; y++){
+				if(x >= 0 && x < N && y >= 0 && y < N){
+					if(abs(coordUnit.x - x) + abs(coordUnit.y - y) <= range && grid[x][y].name == empty){
+						return true;
+					}
 				}
 			}
 		}
@@ -40,12 +42,51 @@ bool possiblePath(vector coordUnit){
 }
 
 /**
+ * Trouve un chemin vers la position désirée
+ * @param coordUnit Coordonnées de l'unité
+ * @param coordTarget Coordonnées de la cible
+ */
+bool findPath(vector coordUnit, int x, int y, int MOVE_RANGE, vector coordTarget){
+	vector check = {x, y};
+	unit * target;
+
+	//getDirection(x, y, coordTarget);
+	grid[x][y].visited = 1;
+
+	if(check.x == coordTarget.x && check.y == coordTarget.y){
+		printf("réussi");
+		return true;
+	}
+	
+	for(int i = x - 1; i <= x + 1; i++){
+		for(int j = y - 1; j <= y + 1; j++){
+			
+			if(abs(x-i) + abs(y-j) <= MOVE_RANGE && MOVE_RANGE > 0 && !grid[i][j].visited){ // Déplacement en croix
+				if(i >= 0 && i < N && j >= 0 && j < N){
+					
+					target = &grid[i][j];
+					if((grid[i][j].name != decors && grid[i][j].noPlayer == noPlayer && canGetPassed(target)) || canTeleport(grid[coordUnit.x][coordUnit.y].name)){
+						printf("%s - %c-%i - %i HP - %s\n",getNameUnit(target->name),
+						'A' + i, j + 1, target->stat.HP,
+						getDirectionUnit(target->direct)); // Affiche le nom de l'unité
+						findPath(coordUnit, i, j, MOVE_RANGE - 1, coordTarget);
+					}
+				}
+			}
+
+		}
+	}
+
+	grid[x][y].visited = 0;
+	MOVE_RANGE++;
+}
+
+/**
  * Fait la liste des unités déplaçables
  */
-void movable(){
+void movable(int colorDisp){
 	vector coordUnit;
 	unit * source;
-	int i = 1;
 
 	if(!liste_vide(noPlayer)){
 		en_tete(noPlayer);
@@ -56,11 +97,7 @@ void movable(){
 
 			source = &grid[coordUnit.x][coordUnit.y];
 			if(canMove(source) && possiblePath(coordUnit)){ // Unité non entourée par ennemi + non paralysée et ayant un chemin possible
-				printf("%i - %s - %c-%i - %i HP - %s\n", i,getNameUnit(source->name),
-						'A' + coordUnit.x, coordUnit.y + 1, source->stat.HP,
-						getDirectionUnit(source->direct)); // Affiche le nom de l'unité
-				i++;
-				source->unitColor=white;
+				source->unitColor= colorDisp;
 			}
 		}
 	}
@@ -69,10 +106,9 @@ void movable(){
 /**
  * Fait la liste des unités pouvant attaquer
  */
-void attackable(){
+void attackable(int colorDisp){
 	vector coordUnit;
 	unit * source;
-	int i = 1;
 
 	if(!liste_vide(noPlayer)){
 		en_tete(noPlayer);
@@ -83,11 +119,7 @@ void attackable(){
 
 			source = &grid[coordUnit.x][coordUnit.y];
 			if(canAttack(source)){
-				printf("%i - %s - %c-%i - %i HP - %s\n", i,getNameUnit(source->name),
-						'A' + coordUnit.x, coordUnit.y + 1, source->stat.HP,
-						getDirectionUnit(source->direct)); // Affiche le nom de l'unité
-				i++;
-				source->unitColor=white;
+				source->unitColor = colorDisp;
 			}
 		}
 	}
@@ -97,42 +129,23 @@ void attackable(){
  * Fait la liste des cases pouvant être atteintes par l'unité
  * @param coordUnit Coordonnées de l'unité
  */
-void tileWalkable(vector coordUnit){
+void tileWalkable(vector coordUnit, int colorDisp){
 	unit * source;
 	int moveRange = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
-	int i = 1;
 
-	for(int x = -moveRange + coordUnit.x; x <= moveRange + coordUnit.x; x++){
-		for(int y = -moveRange + coordUnit.y; y <= moveRange + coordUnit.y; y++){
+	for(int x = coordUnit.x - moveRange; x <= moveRange + coordUnit.x; x++){
+		for(int y = coordUnit.y -moveRange; y <= moveRange + coordUnit.y; y++){
 
-			if(x >= 0 && x < N && y >= 0 && y < N){
+			if(abs(coordUnit.x - x) + abs(coordUnit.y - y) <= moveRange && x >= 0 && x < N && y >= 0 && y < N){
+
 				source = &grid[x][y];
 
 				if(source->name == empty){ // Case vide
-					printf("%i - %s - %c-%i\n", i,getNameUnit(source->name),
-							'A' + x, y + 1); // Affiche le nom de l'unité
-					i++;
-					source->unitColor=green;
+					source->unitColor = colorDisp;
 				}
 			}
 		}
 	}
-}
-
-/**
- * Trouve un chemin vers la position désirée
- * @param coordUnit Coordonnées de l'unité
- * @param coordTarget Coordonnées de la cible
- */
-bool findPath(vector coordUnit, vector coordTarget){
-	int moveRange = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
-	int nbMovement  = 0;
-	
-	/*for(int x = coordUnit.x - 1; x <= coordUnit.x + 1; x++){
-		for(int y = coordUnit.y; y <= coordUnit.y + 1; y++){
-				
-		}
-	}*/
 }
 
 /**
@@ -177,7 +190,7 @@ bool isSurrounded(vector currentUnit){
  * paramètre.
  * @param coordUnit Coordonnées de l'unité
  */
-void getTargets(vector coordUnit){
+void getTargets(vector coordUnit, int colorDisp){
 	unitName name = grid[coordUnit.x][coordUnit.y].name;
 	vector target;
 	vector newTarget;
@@ -200,7 +213,7 @@ void getTargets(vector coordUnit){
 				if(grid[newTarget.x][newTarget.y].name != decors)
 				{
 				    addTarget(targetList, newTarget); // Marque les coordonnées comme cible potentielle
-				    grid[newTarget.x][newTarget.y].unitColor=yellow;
+				    grid[newTarget.x][newTarget.y].unitColor = colorDisp;
 				}
 
 			}
@@ -569,12 +582,12 @@ bool endGame(){
 	if(liste_vide(noPlayer) || !hasPlay() || hasSurrender){
 		fontColor(red);
 
-		if(!hasPlay()){
-			printf("Le joueur %i a perdu car aucune action n'a été faites dans le temps impartis !", noPlayer + 1);
+		if(!hasPlay() && !hasSurrender){
+			printf("Le joueur %i a perdu car aucune action n'a été faites dans le temps impartis !\n", noPlayer + 1);
 		}else if(hasSurrender){
 			printf("\nLe joueur %i a perdu par abandon (bouuuhhh) !\n", noPlayer + 1);
 		}else{
-			printf("Le joueur %i a perdu car toutes les unités ont été détruites !", noPlayer + 1);
+			printf("Le joueur %i a perdu car toutes les unités ont été détruites !\n", noPlayer + 1);
 		}
 
 		reinitColor();
@@ -589,10 +602,37 @@ bool endGame(){
  * Débute la partie
  */
 void startGame(){
+	time_t start, countDown;
+
+	int totalTime = 11; // Temps total du tour
+	int tLeft   = totalTime; // Temps restant
+	int tmp 	   = -1;
+
 	do{
 		playTurn();
 	}
 	while(!endGame());
+
+	time(&start);
+	while(tLeft > 0){ // Décompte avant de réafficher le menu principal si partie finie
+		time(&countDown);
+		tLeft = start + totalTime - countDown;
+
+		if(tmp != tLeft){ // N'affiche le message qu'une fois toutes les secondes
+			tmp = tLeft;
+			printf("\033[A\033[K"); // 
+
+			printf("Vous allez être redirigé vers le menu principal dans %i ", tLeft);
+			if(tLeft > 1){
+				printf("secondes\n");
+			}else{
+				printf("seconde\n");
+			}
+			printf("\x0d"); // Replace début ligne
+		}
+	}
+
+	clearScreen();
 	mainMenu();
 }
 
@@ -611,7 +651,8 @@ void gameInit(){
 	playerInit(); // Initialisation du joueur 1
 	noPlayer++;
 	playerInit();// Initialisation du joueur 2
-	noPlayer = (rand() % (FIRST_PLAYER + 1)) + 1; // Tire le joueur débutant la partie aléatoirement
+
+	noPlayer = (rand() % (FIRST_PLAYER + 2)); // Tire le joueur débutant la partie aléatoirement
 
 	startGame();
 }

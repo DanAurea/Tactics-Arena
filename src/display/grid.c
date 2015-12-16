@@ -16,10 +16,10 @@ void borderRight(short row){
 		if(j == 0 && row != N-1) // Affichage que les lignes utiles
 			printf("  %s", VL);
 		if(j < N ){
-		    color(grid[row+1][j].unitColor,"Screen");
+			color(grid[row + 1][j].unitColor,"Screen"); // Prend la couleur du pion en dessous pour toute une case
 			printf("    ");
-			reinitColor();
 		}
+
 		else if (row != N-1) // Affichage sur les lignes utiles
 			printf("%s", VL);
 	}
@@ -59,75 +59,11 @@ void dispX(){
 
 			printf("\n");
 
-			borderRight(1); // Complète les bordures manquantes dû au saut de ligne
+			borderRight(-1); // Complète les bordures manquantes dû au saut de ligne + prend la couleur des pions en dessous (donc -1)
 
 			printf("\n");
 		}
 	}
-}
-
-
-// Découpage de l'affichage des cellules
-void top(){
-	printf("%s", LT);
-	printf("%s%s%s%s", HL, HL, HL, HL);
-	printf("%s", RT);
-}
-
-void center(unitName name){
-	printf("%s", VL);
-	printf(" %s ", getNameUnit(name));
-	printf("%s", VL);
-}
-
-void bottom(){
-	printf("%s", LB);
-	printf("%s%s%s%s", HL, HL, HL, HL);
-	printf("%s", RB);
-}
-
-//Utilise les fonctions précédentes pour créer des cases individuelles
-void dispTile (int x, int y)
-{
-    //int tileColor = grid[x][y].unitColor;
-    char * uName; // Nom unité
-
-    uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
-
-    if(grid[x][y].noPlayer == FIRST_PLAYER){
-        fontColor(red);
-    }else if(grid[x][y].noPlayer == FIRST_PLAYER+1){
-        fontColor(blue);
-    }else
-    fontColor(white);
-
-
-    if((x == 0||x == N-1) && y != 0)
-    {
-        printf("%s",HL);
-    }
-        if((y == 0||y == N-1) && x != 0)
-    {
-        printf("%s",VL);
-    }
-    if(x+y == 0)
-    {
-        printf("%s",LT);
-    }
-    if(x == 0 && y == N-1)
-    {
-        printf("%s",RT);
-    }
-    if(x == N-1 && y == 0)
-    {
-        printf("%s",LB);
-    }
-    if(x == N-1 && y == N-1)
-    {
-        printf("%s",RB);
-    }
-    reinitColor();
-    free(uName);
 }
 
 /**
@@ -142,7 +78,6 @@ void gridDisp(){
 	printf("\n  ");
 
 	dispX(); // Affiche les coordonnées horizontales
-
 	for(x = 0; x < N; x++)
 	{
 
@@ -151,7 +86,7 @@ void gridDisp(){
 
             uName = get2Char(getNameUnit(grid[x][y].name)); // Copie une portion du nom de l'unité dans uName (mémoire dynamique)
 
-            if(y == 0) printf("  %s ", VL); // Affiche une bordure gauche
+            if(y == 0) printf("  %s", VL); // Affiche une bordure gauche
 
 
             color(grid[x][y].unitColor,"Screen");
@@ -159,20 +94,15 @@ void gridDisp(){
             {
                 fontColor(red);
             }
-            else if(grid[x][y].noPlayer == FIRST_PLAYER+1)
+            else if(grid[x][y].noPlayer == FIRST_PLAYER + 1)
             {
                 fontColor(blue);
             }
-            else
-                fontColor(white);
 
-			if(y == 0)
-				printf("%s ", uName); // Affiche le nom de l'unité lorsque prés d'une bordure gauche
-			else
-				printf(" %s ", uName); // Affiche le nom de l'unité
+			printf(" %s ", uName);
 
-			reinitColor();
 			free(uName); // Libère la mémoire allouée
+			reinitColor();
 
 			// Affiche les coordonnées verticales
 			if(y == N-1){
@@ -194,6 +124,8 @@ void gridDisp(){
 
 		printf("\n");
 	}
+
     printf("		   xx : décors\n");
 	printf("\n");
+	reinitColor();
 }

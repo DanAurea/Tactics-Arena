@@ -30,16 +30,17 @@ typedef enum{empty, decors, knight, scout, assassin, cleric, pyromancer, enchant
 typedef enum{none, POWER_BONUS, ARMOR_BONUS, BARRIER, POISON, PARALYSE, FOCUS}unitEffect; /**< Représentation des différents status */
 typedef struct{int HP; int POWER; float ARMOR; int RECOVERY; float BLOCK[3]; int MOVE_RANGE;}unitStat; /**< Représentation des statistiques d'une unité*/
 typedef struct{int x; int y;}vector; /**< Représentation d'un vecteur */
-typedef struct{unitName name; unitStat stat; unitEffect effect[2][NB_MAX_EFFECT];cardinal direct; int noPlayer; int unitColor;}unit; /**< */
+typedef struct{unitName name; unitStat stat; unitEffect effect[2][NB_MAX_EFFECT]; int visited; cardinal direct; int noPlayer; int unitColor;}unit; /**< */
 extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
 extern int noPlayer; /**< Représentation du joueur */
 
 bool isSurrounded(vector currentUnit);
 void gameInit();
 bool selectUnit(vector * coordUnit);
-void getTargets(vector coordUnit);
+void getTargets(vector coordUnit, int colorDisp);
 void launchAttack(vector coordSource, vector coordTarget);
-void movable();
-void attackable();
-void tileWalkable(vector coordUnit);
+void movable(int colorDisp);
+void attackable(int colorDisp);
+void tileWalkable(vector coordUnit, int colorDisp);
 bool possiblePath(vector coordUnit);
+bool findPath(vector, int, int, int, vector);

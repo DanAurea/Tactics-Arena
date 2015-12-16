@@ -508,14 +508,10 @@ void unitMenu(int choice){
             case 1:
 
             		if(!hasAttacked && !hasMoved){
-            			color(red,"Unités pouvant se déplacer : \n");
-						printf("No -  Nom -  X-Y -  HP -  Direction\n\n");
-
-            			movable(); // Fait la liste des unités pouvant se déplacer
+            			movable(white); // Fait la liste des unités pouvant se déplacer
 
                         clearScreen();
                         gridDisp();
-                        reinitUnitColor();
 
 	                    printf("\nSe déplacer ? y/n\n");
 	        		    readS(yn);
@@ -526,6 +522,8 @@ void unitMenu(int choice){
 	                    }else if(strcmp(yn,"n") != 0 || strcmp(yn,"N") != 0){
                         	printf("Saisie invalide\n");
                     	}
+
+                    	movable(black);
             		}else if(hasAttacked){
             			printf("Vous ne pouvez pas déplacer votre unité après avoir attaqué !\n");
             		}else{
@@ -535,10 +533,7 @@ void unitMenu(int choice){
                 break;
             case 2:
         		    if(!hasAttacked){
-        		    	color(red,"Unités pouvant attaquer : \n");
-						printf("No -  Nom -  X-Y -  HP -  Direction\n\n");
-
-        		    	attackable();
+        		    	attackable(white); // Attaquants en blanc
 
 	        		    printf("\nAttaquer ? y/n\n");
 	        		    readS(yn);
@@ -549,13 +544,16 @@ void unitMenu(int choice){
 	                    }else if(strcmp(yn,"n") != 0 || strcmp(yn,"N") != 0){
 	                        printf("Saisie invalide\n");
 	                    }
+
+	                    attackable(black); // Attaquants en noir
                 	}else{
                 		printf("Vous ne pouvez pas réattaquer !");
                 	}
                 break;
             case 3:
-            	color(red,"Liste de vos unités : \n");
+            	movable(white);
             	changeDirection();
+            	movable(black);
         		break;
         }
 }

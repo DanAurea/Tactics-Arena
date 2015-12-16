@@ -11,12 +11,13 @@
  * @param noPlayer  Joueur propriétaire
  * @param coordUnit Coordonnées de l'unité
  */
-void unitInit(short noPlayer, vector coordUnit)
+void unitInit(short noP, vector coordUnit)
 {
 	int unitName = grid[coordUnit.x][coordUnit.y].name;
     copy (&grid[coordUnit.x][coordUnit.y],&pawns[unitName]); //unitName à la place de 0
-    grid[coordUnit.x][coordUnit.y].noPlayer=noPlayer;
-    grid[coordUnit.x][coordUnit.y].unitColor=reinit;
+    grid[coordUnit.x][coordUnit.y].noPlayer = noP;
+
+    grid[coordUnit.x][coordUnit.y].unitColor = black;
     if(noPlayer == FIRST_PLAYER)
     {
         setDirection(coordUnit,north);
@@ -36,7 +37,7 @@ bool canGetPassed(unit * target)
     bool out = true;
     for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[0][i]>2)
+    	if(target-> effect[0][i] > 2)
     	{
     		out = false;
     	}
@@ -196,6 +197,7 @@ bool copy(unit * destination, unit * source)
         destination->stat.POWER	 = 	source->stat.POWER;
         destination->stat.ARMOR	 = 	source->stat.ARMOR;
         destination->stat.RECOVERY = 	source->stat.RECOVERY;
+
         for(int i = 0;i<3;i++)
         {
             destination->stat.BLOCK[i] = source->stat.BLOCK[i];
@@ -206,6 +208,7 @@ bool copy(unit * destination, unit * source)
             destination->effect[1][i] = source->effect[1][i];
         }
 
+        destination->visited   = source->visited;
         destination->direct    = source->direct;
         destination->noPlayer  = source->noPlayer;
         destination->unitColor = source->unitColor;
@@ -228,7 +231,7 @@ void erase(unit * source)
 		source->effect[0][i] = none;
 		source->effect[1][i] = 0;
 	}
-	source->unitColor=white;
+	source->unitColor= black;
 }
 
 /*
@@ -244,6 +247,7 @@ void move(vector destination, vector source)
 		erase(uSource);
 		destroyUnit(source);
 		addUnit(destination);
+        grid[source.x][source.y].unitColor = black;
 	}
 }
 
