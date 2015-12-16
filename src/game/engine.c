@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "../../include/game/engine.h"
+#include "../../include/game/file_ptr.h"
 #include "../../include/game/pawns.h"
 #include "../../include/game/listes.h"
 #include "../../include/game/turn.h"
@@ -46,40 +47,46 @@ bool possiblePath(vector coordUnit){
  * @param coordUnit Coordonnées de l'unité
  * @param coordTarget Coordonnées de la cible
  */
-bool findPath(vector coordUnit, int x, int y, int MOVE_RANGE, vector coordTarget){
-	vector check = {x, y};
+/*bool pathFind(vector coordUnit, int x, int y, int moveRange, vector coordTarget){
 	unit * target;
 
 	//getDirection(x, y, coordTarget);
 	grid[x][y].visited = 1;
 
-	if(check.x == coordTarget.x && check.y == coordTarget.y){
-		printf("réussi");
+
+	if(moveRange == 0) return false;
+	if(x == coordTarget.x && y == coordTarget.y){
 		return true;
 	}
 	
-	for(int i = x - 1; i <= x + 1; i++){
-		for(int j = y - 1; j <= y + 1; j++){
+
+	for(int i = -1; i <=  1; i++){
+		for(int j = -1; j <= 1; j++){
+
 			
-			if(abs(x-i) + abs(y-j) <= MOVE_RANGE && MOVE_RANGE > 0 && !grid[i][j].visited){ // Déplacement en croix
-				if(i >= 0 && i < N && j >= 0 && j < N){
-					
-					target = &grid[i][j];
-					if((grid[i][j].name != decors && grid[i][j].noPlayer == noPlayer && canGetPassed(target)) || canTeleport(grid[coordUnit.x][coordUnit.y].name)){
-						printf("%s - %c-%i - %i HP - %s\n",getNameUnit(target->name),
-						'A' + i, j + 1, target->stat.HP,
-						getDirectionUnit(target->direct)); // Affiche le nom de l'unité
-						findPath(coordUnit, i, j, MOVE_RANGE - 1, coordTarget);
-					}
+
+			if(abs(x+ i) + abs(x + j) == 1 && x + i >= 0 &&  x + i < N && y + j >= 0 && y + j < N){
+				if(!grid[x + i][y + j].visited){
+					//if(!grid[i][j].visited && (grid[i][j].name != decors || (grid[i][j].noPlayer != noPlayer && canGetPassed(target)) ) ){
+					target = &grid[x+i][y+j];
+					printf("%s - %c-%i - %i HP - %s - %i\n",getNameUnit(target->name),
+					'A' + x + i, y + j + 1, target->stat.HP,
+					getDirectionUnit(target->direct), grid[x+i][y+j].visited); // Affiche le nom de l'unité
+
+					findPath(coordUnit, x + i, y + j, moveRange - 1, coordTarget);
+					//}else if(canTeleport(grid[coordUnit.x][coordUnit.y].name)){
+					//	findPath(coordUnit, i, j, moveRange - 1, coordTarget);
+					//}
 				}
 			}
-
 		}
 	}
 
 	grid[x][y].visited = 0;
-	MOVE_RANGE++;
-}
+	moveRange++;
+
+	//return false;
+}*/
 
 /**
  * Fait la liste des unités déplaçables
@@ -96,7 +103,8 @@ void movable(int colorDisp){
 			suivant(noPlayer);
 
 			source = &grid[coordUnit.x][coordUnit.y];
-			if(canMove(source) && possiblePath(coordUnit)){ // Unité non entourée par ennemi + non paralysée et ayant un chemin possible
+			if(canMove(source) && possiblePath(coordUnit) && !isSleeping(coordUnit)){ // Unité non entourée par ennemi + non paralysée et ayant un chemin possible
+				printf("test");
 				source->unitColor= colorDisp;
 			}
 		}
@@ -118,7 +126,7 @@ void attackable(int colorDisp){
 			suivant(noPlayer);
 
 			source = &grid[coordUnit.x][coordUnit.y];
-			if(canAttack(source)){
+			if(canAttack(source) && !isSleeping(coordUnit)){
 				source->unitColor = colorDisp;
 			}
 		}
@@ -231,15 +239,17 @@ void specialBoons(vector coordSource, vector coordTarget){
 	if(name == assassin && grid[coordSource.x][coordSource.y].stat.HP <= 5) {
 		if(name != barrierTotem){
 			HPTarget = -99;
+			
 			if(HPTarget <= 0) {
 				tmp = noPlayer;
-				noPlayer = grid[coordTarget.x][coordTarget.y].noPlayer; //Détruit l'unité dans la liste du joueur 					correspondant
+				noPlayer = grid[coordTarget.x][coordTarget.y].noPlayer; //Détruit l'unité dans la liste du joueur correspondant
 				destroyUnit(coordTarget); // noPlayer en variable globale donc il faut changer noPlayer avant
 				erase(&grid[coordTarget.x][coordTarget.y]); //Efface de la grille
 				noPlayer = tmp; // Remet noPlayer au joueur qui était en train de jouer
 			}else{
 				grid[coordTarget.x][coordTarget.y].stat.HP -= 99;
 			}
+
 		}		
 	}else if(name == enchantress) {
 		addEffect(coordTarget, PARALYSE);
@@ -267,11 +277,15 @@ void launchAttack(vector coordSource, vector coordTarget){
 		if(!liste_vide(targetList)){
 			en_tete(targetList);
 
+			if(name == assassin && HP <= 5){
+				color(red, "L'assassin déclenche sa capacité spéciale kamikaze !\n");
+			}
+
 			while(!hors_liste(targetList)){ // Attaque toutes les cibles
 				valeur_elt(targetList, &targetAttack);
 
 				attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
-				specialBoons(coordSource, targetAttack); // Effet de statut - Capacité spécial
+				//specialBoons(coordSource, targetAttack); // Effet de statut - Capacité spécial
 
 				suivant(targetList);
 			}
@@ -579,15 +593,24 @@ void playerInit(){
  * Fin de la partie
  */
 bool endGame(){
-	if(liste_vide(noPlayer) || !hasPlay() || hasSurrender){
+	bool static1 = allStatic(FIRST_PLAYER);
+	bool static2 = allStatic(FIRST_PLAYER + 1);
+	
+	if(liste_vide(noPlayer) || !hasPlay() || hasSurrender || static1 || static2){
 		fontColor(red);
 
-		if(!hasPlay() && !hasSurrender){
-			printf("Le joueur %i a perdu car aucune action n'a été faites dans le temps impartis !\n", noPlayer + 1);
-		}else if(hasSurrender){
+		if(hasSurrender){
 			printf("\nLe joueur %i a perdu par abandon (bouuuhhh) !\n", noPlayer + 1);
-		}else{
+		}else if(liste_vide(noPlayer)){
 			printf("Le joueur %i a perdu car toutes les unités ont été détruites !\n", noPlayer + 1);
+		}else if(!hasPlay() && !hasSurrender){
+			printf("Le joueur %i a perdu car aucune action n'a été faites dans le temps impartis !\n", noPlayer + 1);
+		}else if(static1 && static2){
+			printf("Match nul !\n");
+		}else if(static1 && !static2){
+			printf("Joueur 1 vous avez perdu, toutes vos unités sont paralysées !\n");
+		}else if(!static1 && static2){
+			printf("Joueur 2 vous avez perdu, toutes vos unités sont paralysées !\n");
 		}
 
 		reinitColor();
@@ -603,10 +626,12 @@ bool endGame(){
  */
 void startGame(){
 	time_t start, countDown;
-
 	int totalTime = 11; // Temps total du tour
 	int tLeft   = totalTime; // Temps restant
 	int tmp 	   = -1;
+
+	clearScreen();
+	gridDisp();
 
 	do{
 		playTurn();
@@ -620,7 +645,9 @@ void startGame(){
 
 		if(tmp != tLeft){ // N'affiche le message qu'une fois toutes les secondes
 			tmp = tLeft;
-			printf("\033[A\033[K"); // 
+			
+			if(tLeft < totalTime)
+				printf("\033[A\033[K"); // Efface la ligne
 
 			printf("Vous allez être redirigé vers le menu principal dans %i ", tLeft);
 			if(tLeft > 1){
@@ -628,10 +655,12 @@ void startGame(){
 			}else{
 				printf("seconde\n");
 			}
+			
 			printf("\x0d"); // Replace début ligne
 		}
 	}
 
+	dumpAllLists();
 	clearScreen();
 	mainMenu();
 }
@@ -640,7 +669,6 @@ void startGame(){
  * Initialise la partie
  */
 void gameInit(){
-	srand(time(NULL));
 
 	noPlayer = FIRST_PLAYER; // Réinitialise pour nouvelle partie
 	makePawns(); // Crée les pions

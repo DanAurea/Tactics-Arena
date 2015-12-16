@@ -19,7 +19,7 @@
 #define NB_MAX_LT 1 /**< Nombre max de Lightning totem par joueur */
 #define NB_MAX_DR 2 /**< Nombre max de Dragon par joueur */
 #define NB_MAX_FU 2 /**< Nombre max de Furgon par joueur */
-#define NB_MAX_UNIT 2 /**< Nombre max d'unité par joueur */
+#define NB_MAX_UNIT 5 /**< Nombre max d'unité par joueur */
 #define NB_MAX_DECOR 7 /**< Nombre max de décor */
 
 
@@ -30,7 +30,7 @@ typedef enum{empty, decors, knight, scout, assassin, cleric, pyromancer, enchant
 typedef enum{none, POWER_BONUS, ARMOR_BONUS, BARRIER, POISON, PARALYSE, FOCUS}unitEffect; /**< Représentation des différents status */
 typedef struct{int HP; int POWER; float ARMOR; int RECOVERY; float BLOCK[3]; int MOVE_RANGE;}unitStat; /**< Représentation des statistiques d'une unité*/
 typedef struct{int x; int y;}vector; /**< Représentation d'un vecteur */
-typedef struct{unitName name; unitStat stat; unitEffect effect[2][NB_MAX_EFFECT]; int visited; cardinal direct; int noPlayer; int unitColor;}unit; /**< */
+typedef struct{unitName name; unitStat stat; unitEffect effect[NB_MAX_EFFECT]; cardinal direct; int noPlayer; int unitColor;}unit; /**< */
 extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
 extern int noPlayer; /**< Représentation du joueur */
 
@@ -44,3 +44,4 @@ void attackable(int colorDisp);
 void tileWalkable(vector coordUnit, int colorDisp);
 bool possiblePath(vector coordUnit);
 bool findPath(vector, int, int, int, vector);
+void startGame();

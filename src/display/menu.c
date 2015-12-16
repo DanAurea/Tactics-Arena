@@ -489,7 +489,10 @@ void gameMenu(){
             case 2: unitMenu(2); break;
             case 3: unitMenu(3); break;
             case 4: passTurn(); break;
-            case 5: save(); break;
+            case 5: save(); 
+            		clearScreen();
+            		gridDisp();
+            		break;
             case 6: surrender(); break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 5\n");
         }
@@ -507,12 +510,14 @@ void unitMenu(int choice){
     switch(choice){
             case 1:
 
+            		clearScreen(); // Met à jour l'affichage pour le tour
+					gridDisp();
             		if(!hasAttacked && !hasMoved){
             			movable(white); // Fait la liste des unités pouvant se déplacer
 
-                        clearScreen();
-                        gridDisp();
-
+	                    clearScreen(); // Met à jours les couleurs des unités déplaçables
+						gridDisp();
+	                    
 	                    printf("\nSe déplacer ? y/n\n");
 	        		    readS(yn);
 	                  	printf("\n");
@@ -525,15 +530,21 @@ void unitMenu(int choice){
 
                     	movable(black);
             		}else if(hasAttacked){
-            			printf("Vous ne pouvez pas déplacer votre unité après avoir attaqué !\n");
+            			color(red, "Vous ne pouvez pas déplacer votre unité après avoir attaqué !\n");
             		}else{
-            			printf("Vous ne pouvez pas déplacer une unité à nouveau !\n");
+            			color(red, "Vous ne pouvez pas déplacer une unité à nouveau !\n");
             		}
 
                 break;
             case 2:
+
+            		clearScreen(); // Met à jour l'affichage pour le tour
+					gridDisp();
         		    if(!hasAttacked){
         		    	attackable(white); // Attaquants en blanc
+	        		    
+        		    	clearScreen(); // Met à jours les couleurs des unités pouvant attaquer
+						gridDisp();
 
 	        		    printf("\nAttaquer ? y/n\n");
 	        		    readS(yn);
@@ -547,11 +558,15 @@ void unitMenu(int choice){
 
 	                    attackable(black); // Attaquants en noir
                 	}else{
-                		printf("Vous ne pouvez pas réattaquer !");
+                		color(red, "Vous ne pouvez pas réattaquer !\n");
                 	}
                 break;
             case 3:
             	movable(white);
+
+            	clearScreen();
+				gridDisp();
+            	
             	changeDirection();
             	movable(black);
         		break;

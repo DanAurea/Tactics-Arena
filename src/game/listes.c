@@ -224,8 +224,8 @@ void printList(short numList){
 
 
 			for(int j = 0; j < NB_MAX_EFFECT; j++){
-				if(source.effect[0][j] != none){
-					printf(" - %i", source.effect[0][j]);
+				if(source.effect[j] > 0){
+					printf(" - %i", source.effect[j]);
 				}
 			}
 			printf("\n");

@@ -16,9 +16,8 @@ void initPawn(unit * pawn){
 	memset(pawn, -1, sizeof(unit));
 
 	for(int i = 0; i < NB_MAX_EFFECT; i++){
-		pawn->effect[0][i] = none;
+		pawn->effect[i] = 0;
 	}
-	pawn->visited 	= 0;
 	pawn->unitColor = white;
 }
 
@@ -174,7 +173,7 @@ void makePawns(){
 		createPawn(8, golemAmbusher, 60, 20, 0.0,     0.0, 0.0, 0.0,       3, 2,          6, 6, 5, 0);
 		createPawn(8, frostGolem, 60, 0, 0.0,         0.0, 0.0, 0.0,       2, 2,          4, 4, 1, 0);
 		createPawn(8, stoneGolem, 60, 0, 0.3,         0.0, 0.0, 0.0,       4, 2,          1, 1, 0, 1);
-		createPawn(8, dragonTyrant, 28, 24, 0.0,      0.2, 0.1, 0.0,       3, 4,          3, 3, 1, 1);
+		createPawn(8, dragonTyrant, 28, 24, 0.16,      0.2, 0.1, 0.0,       3, 4,          3, 3, 1, 1);
 		createPawn(8, berserker, 42, 22, 0.0,         0.25, 0.12, 0.0,     1, 3,          1, 1, 1, 1);
 		createPawn(8, beastRider, 38, 19, 0.15,       0.45, 0.22, 0.0,     1, 4,          2, 2, 1, 1);
 		createPawn(8, poisonWisp, 34, 0, 0.0,         0.0, 0.0, 0.0,       2, 6,          2, 2, 1, 1);

@@ -14,3 +14,8 @@ void line(vector pos, int size, int dmg, int dir);
 void unitInit(short noPlayer, vector coordUnit);
 void setDirection(vector coordUnit, int dir);
 void erase(unit * );
+bool isSleeping(vector);
+void recover();
+bool allStatic(int numPlayer);
+void minusEffect();
+void poison();

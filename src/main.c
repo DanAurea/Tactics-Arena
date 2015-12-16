@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <signal.h>
+#include <time.h>
 #include "../include/game/engine.h"
 #include "../include/game/pawns.h"
 #include "../include/display/grid.h"
@@ -9,6 +10,7 @@
 #include "../include/game/listes.h"
 
 int main(){
+	srand(time(NULL));
 	initLists();
 	checkSignal();
 

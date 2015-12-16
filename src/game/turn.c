@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include "../../include/game/engine.h"
+#include "../../include/game/pawns.h"
 #include "../../include/game/turn.h"
 #include "../../include/game/listes.h"
 #include "../../include/display/grid.h"
@@ -48,12 +49,30 @@ int endTurn(time_t start, int totalTime){
 void changeDirection(){
 	int direct;
 	bool selected = false;
+	bool sleeping = false;
 	vector coordUnit;
-
+	unit * target;
+	
 	do{
 		selected = selectUnit(&coordUnit); // Sélection de l'unité
-	}while(grid[coordUnit.x][coordUnit.y].noPlayer != noPlayer || !selected);
+		sleeping = isSleeping(coordUnit);
+		target   = &grid[coordUnit.x][coordUnit.y];
 
+		if(!selected)
+			color(red, "Vous ne pouvez sélectionner cette unité !\n");
+
+		else if(grid[coordUnit.x][coordUnit.y].noPlayer != noPlayer)
+			color(red, "L'unité ne vous appartient pas !\n");
+
+		else if(sleeping && grid[coordUnit.x][coordUnit.y].noPlayer == noPlayer){
+			fontColor(red);
+			printf("Votre unité est endormie attendez : %i tours\n", pawns[target->name].stat.RECOVERY - target->stat.RECOVERY);
+			reinitColor();
+		}
+
+	}while(grid[coordUnit.x][coordUnit.y].noPlayer != noPlayer || !selected || sleeping);
+
+	grid[coordUnit.x][coordUnit.y].unitColor = white; // Couleur unité sélectionnée
 	dispDirection();
 
 	do{
@@ -75,25 +94,37 @@ void changeDirection(){
  */
 void playAttack(){
 	bool selected = false;
+	bool found 	  = false;
+	bool sleeping = false;
 	vector coordUnit, coordTarget;
 	unit * target;
 
 	do{
 		selected = selectUnit(&coordUnit); // Sélection de l'unité attaquante
+		sleeping = isSleeping(coordUnit);
 		target   = &grid[coordUnit.x][coordUnit.y];
 
-		if(!canAttack(target)){
+		if(!selected){
+			color(red, "Vous ne pouvez sélectionner cette unité !\n");
+		}else if(!canAttack(target)){
 			color(red, "Cette unité ne peut pas attaquer, elle est soumise à l'effet: \n");
 		}else if(target->noPlayer != noPlayer){
-			color(red, "Cette unité ne vous appartient pas !");
+			color(red, "Cette unité ne vous appartient pas !\n");
+		}else if(sleeping && target->noPlayer == noPlayer){
+			fontColor(red);
+			printf("Votre unité est endormie attendez : %i tours\n", pawns[target->name].stat.RECOVERY - target->stat.RECOVERY);
+			reinitColor();
 		}
 
-	}while(target->noPlayer != noPlayer || !selected || !canAttack(target));
+	}while(target->noPlayer != noPlayer || !selected || !canAttack(target) || sleeping);
 
-	getTargets(coordUnit, yellow); // Récupère les cibles potentielles -> Jaune
+	attackable(black); // Attaquants en noir
 	
+	getTargets(coordUnit, yellow); // Récupère les cibles potentielles -> Jaune
 
-    clearScreen();
+	grid[coordUnit.x][coordUnit.y].unitColor = white; // Couleur unité sélectionnée
+
+    clearScreen(); // Met à jour une fois les cibles récupérées
     gridDisp();
 
     getTargets(coordUnit, black); // Récupère les cibles potentielles -> Noir
@@ -101,15 +132,22 @@ void playAttack(){
 	do{
 		selected = selectUnit(&coordTarget); // Sélectionne une cible à attaquer
 
-		if(!searchTarget(targetList, coordTarget)){ // Cible impossible
+		found = searchTarget(targetList, coordTarget);
+
+		if(!found){ // Cible impossible
 			printf("Attaque impossible ! Portée insuffisante ou coordonnées incorrecte.\n");
 		}
-	}while(!searchTarget(targetList, coordTarget) || !selected);
+	}while(!found || !selected);
+
+	grid[coordUnit.x][coordUnit.y].unitColor = black;
+	clearScreen(); // Met à jour une fois l'attaque vérifiée
+    gridDisp();
 
 	launchAttack(coordUnit, coordTarget); // Lance une attaque
 
 
 	hasAttacked = 1;
+
 }
 
 /**
@@ -117,22 +155,33 @@ void playAttack(){
  */
 void playMove(){
 	bool selected = false;
+	bool possible = false;
+	bool found    = false;
+	bool sleeping = false;
 	vector coordUnit, coordTarget;
-	unit source;
+	unit * target;
 
 	do{
 		selected = selectUnit(&coordUnit); // Sélection de l'unité à déplacer
-		source   = grid[coordUnit.x][coordUnit.y];
+		possible = possiblePath(coordUnit);
+		sleeping = isSleeping(coordUnit);
+		target   = &grid[coordUnit.x][coordUnit.y];
 
-		if(!canMove(&source) || !possiblePath(coordUnit)){
+		if(!selected)
+			color(red, "Vous ne pouvez sélectionner cette unité !\n");
+		else if(!canMove(target) || !possible){
 			color(red, "L'unité ne peut pas se déplacer !\n");
-		}else if(source.name == empty){
-			color(red, "Vous ne pouvez sélectionner une case vide");
-		}else if(source.noPlayer != noPlayer){
+		}else if(target->name == empty){
+			color(red, "Vous ne pouvez pas sélectionner une case vide\n");
+		}else if(target->noPlayer != noPlayer){
 			color(red, "Cette unité ne vous appartient pas !\n");
+		}else{
+			fontColor(red);
+			printf("Votre unité est endormie attendez : %i tours\n", pawns[target->name].stat.RECOVERY - target->stat.RECOVERY);
+			reinitColor();
 		}
 
-	}while(source.noPlayer != noPlayer || !selected || !canMove(&source));
+	}while(target->noPlayer != noPlayer || !selected || !possible || target->name == empty || sleeping);
 
 	movable(black); // Réinitialise en noir les unités déplaçables
 
@@ -149,8 +198,8 @@ void playMove(){
 	do{
 		selected = selectUnit(&coordTarget); // Sélection de l'endroit où déplacer l'unité
 		
-		findPath(coordUnit,coordUnit.x, coordUnit.y, source.stat.MOVE_RANGE, coordTarget);
-	}while(!selected);
+		//found = findPath(coordUnit,coordUnit.x, coordUnit.y, target->stat.MOVE_RANGE, coordTarget);
+	}while(!selected || !found);
     
     grid[coordUnit.x][coordUnit.y].unitColor = black; // Réinitialise la couleur de l'unité sélectionnée
 	move(coordTarget, coordUnit);
@@ -164,6 +213,8 @@ void playMove(){
  */
 void passTurn(){
 	hasPassed = 1;
+	clearScreen();
+	gridDisp();
 }
 
 /**
@@ -184,6 +235,7 @@ void surrender(){
 
 /**
  * Définis si l'action est à prendre en compte
+ * @param timeLeft Temps restant pour le tour
  */
 void setAction(int timeLeft){ // A revoir -> Problème de logique
 	if(timeLeft < 0){
@@ -203,24 +255,23 @@ void playTurn(){
 	int  totalTime = startTurn(noPlayer); // Temps total du tour
 	int timeLeft   = totalTime; // Temps restant
 	int loop	   = 0;
+	
+	hasSurrender = 0; // Au début pour afficher message d'erreur correct lors de l'abandon
+	hasPassed    = 0; 
+	
+	poison(); // Met à jours les unités empoisonnées
+	minusEffect(); // Met à jours le temps restant pour les effets
+	recover(); // Met à jours le temps restant pour réutiliser une unité 
 
 	signal(SIGUSR1, timeDown); // En fin de tour renvoie vers timeDown
 
-	hasMoved     = 0; // Actions utilisateur lors du tour
-	hasAttacked  = 0;
-	hasPassed    = 0;
-	hasSurrender = 0;
-
 	while(timeLeft > 0 && hasPassed == 0 && hasSurrender == 0){
-
+		
 		gameMenu(); // Menu du joueur
-
-		clearScreen();
-		gridDisp();
 
 		timeLeft = endTurn(start, totalTime);
 
-		if(loop == 0){ // Détermine si aucune action n'a été faites pendant le temps impartis
+		if(loop == 0 && timeLeft < 0){ // Détermine si aucune action n'a été faites pendant le temps impartis
 			setAction(timeLeft); // Remets à zéro les actions
 		}
 
@@ -233,4 +284,7 @@ void playTurn(){
 
 	if(noPlayer == FIRST_PLAYER && hasPlay()) noPlayer++;
 	else if(noPlayer == FIRST_PLAYER +1 && hasPlay()) noPlayer--;
+
+	hasMoved     = 0; // Actions utilisateur lors du tour
+	hasAttacked  = 0; // A faire à la fin pour éviter la triche lors du chargement
 }

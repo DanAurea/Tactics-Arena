@@ -125,7 +125,25 @@ void gridDisp(){
 		printf("\n");
 	}
 
-    printf("		   xx : décors\n");
+	for(int i = 0; i < N + N / 1.5; i++){
+		printf(" ");
+	}
+    printf("xx : décors\n\n  ");
+
+    color(yellow,"Screen");
+    printf("   ");
+    reinitColor();
+    printf(" Cibles  ");
+
+    color(green,"Screen");
+    printf("   ");
+    reinitColor();
+    printf(" Mouvements possibles  ");
+
+    color(white,"Screen");
+    printf("   ");
+    reinitColor();
+    printf(" Sélection / Unité pouvant agir\n");
+
 	printf("\n");
-	reinitColor();
 }

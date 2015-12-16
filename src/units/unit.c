@@ -3,7 +3,9 @@
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
 #include "../../include/game/listes.h"
+#include "../../include/display/grid.h"
 #include "../../include/controller/terminal.h"
+#include "../../include/controller/manageString.h"
 #include "../../include/units/unit.h"
 
 /**
@@ -35,9 +37,9 @@ bool canGetPassed(unit * target)
 //tester
 {
     bool out = true;
-    for(int i = 0;i<NB_MAX_EFFECT && out;i++)
+    for(int i = 1;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[0][i] > 2)
+    	if(i > ARMOR_BONUS - 1 && target-> effect[i-1] > 0)
     	{
     		out = false;
     	}
@@ -54,9 +56,9 @@ bool canBlock(unit * target)
 //tester
 {
     bool out = true;
-    for(int i = 0;i<NB_MAX_EFFECT && out;i++)
+    for(int i = 1;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[0][i]>4)
+    	if(i > POISON-1 && target->effect[i-1] > 0)
         {
         	out = false;
         }
@@ -73,9 +75,9 @@ bool canAttack(unit * target)
 //tester
 {
     bool out = true;
-    for(int i = 0;i<NB_MAX_EFFECT && out;i++)
+    for(int i = 1;i<=NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[0][i]>3 && target-> effect[0][i]<6)
+    	if(i > BARRIER - 1 && i < FOCUS - 1 && target->effect[i-1] > 0)
         {
         	out = false;
         }
@@ -94,7 +96,7 @@ bool canMove(unit * target)
     bool out = true;
     for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[0][i] == 5)
+    	if(target-> effect[PARALYSE-1] > 0)
         {
         	out = false;
         }
@@ -149,7 +151,7 @@ int getSideAttacked(vector source, vector target )
 {
 	unit * uTarget = &grid[target.x][target.y];
 	unit * uSource = &grid[source.x][source.y];
-	int sens = abs ( uSource->direct - uTarget->direct);
+	int sens = abs ( uTarget->direct - uSource->direct);
 	return sens;
 }
 
@@ -159,8 +161,9 @@ int getSideAttacked(vector source, vector target )
 */
 void attack(vector source, vector target)
 {
-    int tmp = 0;
-	float block = 1;
+    int tmp  = 0;
+    int miss = 0;
+	float block = 0;
 	float armor;
 	unit * uTarget = &grid[target.x][target.y];
 	unit * uSource = &grid[source.x][source.y];
@@ -169,16 +172,31 @@ void attack(vector source, vector target)
     	armor = 1-uTarget->stat.ARMOR;
     	if(canBlock(uTarget))
     	{
-    		block = 1-uTarget->stat.BLOCK[getSideAttacked(source,target)];
+    		block = uTarget->stat.BLOCK[getSideAttacked(source,target)];
+            miss  = (rand() % 101); // Raté -> Tire un chiffre entre 0 et 100
     	}
-        uTarget->stat.HP -= (uSource->stat.POWER*(block+armor));
 
-        if(uTarget->stat.HP <= 0){
-            tmp = noPlayer;
-            noPlayer = uTarget->noPlayer; //Détruit l'unité dans la liste du joueur correspondant
-            destroyUnit(target);
-            erase(uTarget);
-            noPlayer = tmp;
+        if(miss >= 100 - 10 * block){
+            printf("L'attaque sur %s en %c - %i a raté !\n", getNameUnit(uTarget->name),'A' + target.x, target.y +1);
+        }else{
+            uTarget->stat.HP -= (uSource->stat.POWER*(block+armor));
+
+            printf("\nL'unité %s en %c - %i a subi %i dégâts !\n",getNameUnit(uTarget->name), 'A' + target.x, target.y +1, (int)(uSource->stat.POWER*(block+armor)));
+
+            if(uTarget->stat.HP <= 0){
+                tmp = noPlayer;
+                noPlayer = uTarget->noPlayer; //Détruit l'unité dans la liste du joueur correspondant
+                destroyUnit(target);
+                erase(uTarget);
+                noPlayer = tmp;
+                
+                /*clearScreen();
+                gridDisp();*/
+
+                fontColor(red);
+                printf("L'unité est morte !\n");
+                reinitColor();
+            }
         }
     }
 
@@ -203,12 +221,11 @@ bool copy(unit * destination, unit * source)
             destination->stat.BLOCK[i] = source->stat.BLOCK[i];
         }
         destination->stat.MOVE_RANGE = source->stat.MOVE_RANGE;
+        
         for(int i = 0;i<NB_MAX_EFFECT;i++){
-            destination->effect[0][i] = source->effect[0][i];
-            destination->effect[1][i] = source->effect[1][i];
+            destination->effect[i] = source->effect[i];
         }
 
-        destination->visited   = source->visited;
         destination->direct    = source->direct;
         destination->noPlayer  = source->noPlayer;
         destination->unitColor = source->unitColor;
@@ -228,8 +245,7 @@ void erase(unit * source)
 
 	for(int i = 0;i<NB_MAX_EFFECT;i++)
 	{
-		source->effect[0][i] = none;
-		source->effect[1][i] = 0;
+		source->effect[i] = 0;
 	}
 	source->unitColor= black;
 }
@@ -248,6 +264,10 @@ void move(vector destination, vector source)
 		destroyUnit(source);
 		addUnit(destination);
         grid[source.x][source.y].unitColor = black;
+        
+        fontColor(red);
+        printf("L'unité %s a été déplacée en %c - %i\n", getNameUnit(uSource->name), 'A' + destination.x, destination.y + 1);
+        reinitColor();
 	}
 }
 
@@ -258,23 +278,74 @@ void setDirection(vector source, int dir)
 	uSource->direct = dir;
 }
 
+/**
+ * Gère le statut empoisonnement
+ */
+void poison(){
+    vector coordUnit;
+    int x = 0;
+    vector poisoned[NB_MAX_UNIT] = {{-1}};
+    vector dead[NB_MAX_UNIT] = {{-1}};
+
+    if(!liste_vide(noPlayer)){
+        en_tete(noPlayer);
+
+        while(!hors_liste(noPlayer)){
+            valeur_elt(noPlayer, &coordUnit);
+
+            if(grid[coordUnit.x][coordUnit.y].effect[POISON-1] > 0){
+                grid[coordUnit.x][coordUnit.y].stat.HP -= 4;
+
+                if(grid[coordUnit.x][coordUnit.y].stat.HP <= 0){
+                    erase(&grid[coordUnit.x][coordUnit.y]);
+                    destroyUnit(coordUnit);
+                    
+                    dead[x] = coordUnit;
+
+                    clearScreen(); // Met à jour la grille
+                    gridDisp();
+                }else{
+                    poisoned[x] = coordUnit;
+                }
+                x++;
+            }
+
+            suivant(noPlayer);
+        }
+
+        for(int i = 0; i < NB_MAX_UNIT; i++){
+            fontColor(red);
+            
+            if(dead[i].x > 0 || dead[i].y > 0){
+                printf("L'unité en %c - %i est morte d'empoisonnement !\n", 'A' + dead[i].x, dead[i].y + 1);
+            }else if(poisoned[i].x > 0 || poisoned[i].y > 0){
+                printf("L'unité en %c - %i a perdu 4 HP par empoisonnement !\n", 'A' + poisoned[i].x, poisoned[i].y + 1);
+            }
+
+            reinitColor();
+        }
+    }
+}
+
 /*
 	Ajoute sur l'unité target l'effet effect.
 */
 void addEffect(vector target, unitEffect effect)
 {
 	unit * uTarget = &grid[target.x][target.y];
-	uTarget->effect[0][effect-1]=effect;
 	if(effect==FOCUS)
 	{
-	    uTarget->effect[0][effect-1]=1;
+	    uTarget->effect[effect-1]=1;
 	}
 	else
 	{
-	    uTarget->effect[0][effect-1]=3;
+	    uTarget->effect[effect-1]=3;
 	}
 }
 
+/**
+ * Décrémente les effets
+ */
 void minusEffect()
 {
     vector pos;
@@ -284,17 +355,13 @@ void minusEffect()
         while(!hors_liste(noPlayer))
         {
             valeur_elt(noPlayer,&pos);
-            for(int i=0;i<NB_MAX_EFFECT;i++)
+            for(int i = 1; i <= NB_MAX_EFFECT;i++)
             {
-                if(grid[pos.x][pos.y].effect[0][i]!=none)
-                {
-                    grid[pos.x][pos.y].effect[1][i]--;
-                    if(grid[pos.x][pos.y].effect[1][i]==0)
-                    {
-                        grid[pos.x][pos.y].effect[0][i]=none;
-                    }
+                if(grid[pos.x][pos.y].effect[i-1] > 0){
+                    grid[pos.x][pos.y].effect[i-1]--;
                 }
             }
+            suivant(noPlayer);
         }
     }
 }
@@ -304,49 +371,59 @@ void minusEffect()
 */
 void sleep(vector pos)
 {
-    grid[pos.x][pos.y].stat.RECOVERY=0;
+    grid[pos.x][pos.y].stat.RECOVERY = 0;
 }
 
 bool isSleeping(vector pos)
 {
     unit uTarget = grid[pos.x][pos.y];
-    if(uTarget.stat.RECOVERY<pawns[uTarget.name].stat.RECOVERY)
+    if(uTarget.stat.RECOVERY < pawns[uTarget.name].stat.RECOVERY)
     {
         return true;
     }
     return false;
 }
 
-void recover(vector pos)
+/**
+ * Réveille l'unité tour par tour
+ */
+void recover()
 {
-    unit uTarget = grid[pos.x][pos.y];
-    if(uTarget.stat.RECOVERY<pawns[uTarget.name].stat.RECOVERY)
-    {
-        uTarget.stat.RECOVERY++;
+    vector pos;
+    if(!liste_vide(noPlayer))
+    {   
+        while(!hors_liste(noPlayer)){
+            valeur_elt(noPlayer, &pos);
+
+
+            if(isSleeping(pos))
+            {
+                grid[pos.x][pos.y].stat.RECOVERY++;
+            }
+
+            suivant(noPlayer);
+        }
     }
 }
 
-//true > toutes unité du joueur imobile sinon false
+//true > toutes unité du joueur immobile sinon false
 bool allStatic(int numPlayer)
 {
-    int uMovable=0;
     vector pos;
     if(!liste_vide(numPlayer))
     {
         en_tete(numPlayer);
-        while(!hors_liste(numPlayer) && uMovable==0)
+        while(!hors_liste(numPlayer))
         {
             valeur_elt(numPlayer,&pos);
             if(canMove(&grid[pos.x][pos.y]) || !isSurrounded(pos))
             {
-                uMovable++;
+                return false;
             }
+            suivant(numPlayer);
         }
     }
-    if(uMovable>0)
-    {
-        return false;
-    }
+    
     return true;
 }
 
