@@ -74,15 +74,15 @@ void load() {
 
 				for(int k = 0; k <NB_MAX_EFFECT; k++) { // Effets de status liés à l'unité actuelle
 					if(k == NB_MAX_EFFECT - 1){
-						success = fscanf(fic1, " %i}\n", &effectLoad[k]);
+						success += fscanf(fic1, " %i}\n", &effectLoad[k]);
 					}else{
-						success = fscanf(fic1, " %i, ", &effectLoad[k]);
+						success += fscanf(fic1, " %i, ", &effectLoad[k]);
 					}
 					uLoad.effect[k] = effectLoad[k];
 					uLoad.effect[k] = effectLoad[k];
 				}
 
-				if(success == 1 && x >= 0 && x < N && y >= 0 && y < N){ // Vérifie que les données sont valides
+				if(success == 20 && x >= 0 && x < N && y >= 0 && y < N){ // Vérifie que les données sont valides
 					coordUnit.x = x;
 					coordUnit.y = y;
 

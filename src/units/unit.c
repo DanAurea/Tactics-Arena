@@ -181,7 +181,9 @@ void attack(vector source, vector target)
         }else{
             uTarget->stat.HP -= uSource->stat.POWER * block * armor;
 
-            printf("\nL'unité %s en %c - %i a subi %i dégâts !\n",getNameUnit(uTarget->name), 'A' + target.x, target.y +1, (int)(uSource->stat.POWER*(block+armor)));
+            if(uSource->stat.POWER * block * armor > 0){
+                printf("\nL'unité %s en %c - %i a subi %i dégâts !\n",getNameUnit(uTarget->name), 'A' + target.x, target.y +1, (int)(uSource->stat.POWER*(block+armor)));
+            }
 
             if(uTarget->stat.HP <= 0){
                 tmp = noPlayer;
@@ -456,13 +458,13 @@ void recover()
     if(!liste_vide(noPlayer))
     {   
         en_tete(noPlayer);
-        
+
         while(!hors_liste(noPlayer)){
             valeur_elt(noPlayer, &pos);
 
             if(isSleeping(pos))
             {   
-                grid[pos.x][pos.y].stat.RECOVERY += 1;
+                grid[pos.x][pos.y].stat.RECOVERY++;
             }
 
             suivant(noPlayer);

@@ -1,5 +1,6 @@
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
+#include "../../include/controller/saveNLoad.h"
 #include "../../include/controller/terminal.h"
 #include "../../include/game/listes.h"
 #include <signal.h>
@@ -31,7 +32,7 @@ void interrupt(int signal){
 	}
 	fflush(stdout);
 
-	// Ajouter fonction de sauvegarde
+	save();
 	
 	reinitColor(); // Réinitialise les couleurs du terminal
 	
@@ -52,6 +53,7 @@ void timeDown(int signal){
  */
 void terminator(int signal){
 	freeAll();
+	save();
 	reinitColor();
 }
 
