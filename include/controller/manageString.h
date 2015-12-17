@@ -16,3 +16,6 @@ void clearBuffer();
 
 // Direction
 char* getDirectionUnit(cardinal direct);
+
+// Traitement nom effet
+char* getNameEffect(unitEffect effect);

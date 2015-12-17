@@ -34,12 +34,11 @@ void unitInit(short noP, vector coordUnit)
 	renvoie faux si l'unité est soumis à un effet negatif, vrai sinon.
 */
 bool canGetPassed(unit * target)
-//tester
 {
     bool out = true;
     for(int i = 1;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(i > ARMOR_BONUS - 1 && target-> effect[i-1] > 0)
+    	if(i > ARMOR_BONUS  && target-> effect[i-1] > 0)
     	{
     		out = false;
     	}
@@ -53,12 +52,11 @@ bool canGetPassed(unit * target)
 	renvoie faux si l'unité est soumis au effet PARALIZE ou FOCUS, vrai sinon.
 */
 bool canBlock(unit * target)
-//tester
 {
     bool out = true;
     for(int i = 1;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(i > POISON-1 && target->effect[i-1] > 0)
+    	if(i > POISON && target->effect[i-1] > 0)
         {
         	out = false;
         }
@@ -72,12 +70,11 @@ bool canBlock(unit * target)
 	renvoie faux si l'unité est soumis au effet BARRIER, POISON ou PARALYSE, vrai sinon
 */
 bool canAttack(unit * target)
-//tester
 {
     bool out = true;
     for(int i = 1;i<=NB_MAX_EFFECT && out;i++)
     {
-    	if(i > BARRIER - 1 && i < FOCUS - 1 && target->effect[i-1] > 0)
+    	if(i > BARRIER  && i < FOCUS && target->effect[i-1] > 0)
         {
         	out = false;
         }
@@ -91,12 +88,11 @@ bool canAttack(unit * target)
 	renvoie faux si l'unité est paralisée, vrai sinon
 */
 bool canMove(unit * target)
-//tester
 {
     bool out = true;
     for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
-    	if(target-> effect[PARALYSE-1] > 0)
+    	if(target->effect[PARALYSE-1] > 0)
         {
         	out = false;
         }
@@ -122,7 +118,6 @@ bool canTeleport(unitName name){
 	soigne l'unité target du montant du soin de l'unité cible
 */
 void heal(unitName name)
-//tester
 {
     vector pos;
     unitName target;
@@ -134,9 +129,12 @@ void heal(unitName name)
             valeur_elt(noPlayer,&pos);
             target=grid[pos.x][pos.y].name;
             grid[pos.x][pos.y].stat.HP+=pawns[name].stat.POWER;
+            
             if(grid[pos.x][pos.y].stat.HP > pawns[target].stat.HP)
             {
                 grid[pos.x][pos.y].stat.HP=pawns[target].stat.HP;
+            }else{
+                printf("L'unité %s en %c - %i a été soignée de %i HP !\n",getNameUnit(target), 'A' + pos.x, pos.y +1, pawns[name].stat.POWER);
             }
             suivant(noPlayer);
         }
@@ -151,8 +149,10 @@ int getSideAttacked(vector source, vector target )
 {
 	unit * uTarget = &grid[target.x][target.y];
 	unit * uSource = &grid[source.x][source.y];
-	int sens = abs ( uTarget->direct - uSource->direct);
-	return sens;
+
+    if(uSource->direct == uTarget->direct) return 2; // Par derrière
+    else if((uSource->direct == west || uSource->direct == east) && (uTarget->direct == west || uTarget->direct == east)) return 1; // Côté
+    else return 0; // Face à face
 }
 
 
@@ -172,14 +172,14 @@ void attack(vector source, vector target)
     	armor = 1-uTarget->stat.ARMOR;
     	if(canBlock(uTarget))
     	{
-    		block = uTarget->stat.BLOCK[getSideAttacked(source,target)];
+    		block = 1-uTarget->stat.BLOCK[getSideAttacked(source,target)];
             miss  = (rand() % 101); // Raté -> Tire un chiffre entre 0 et 100
     	}
 
         if(miss >= 100 - 10 * block){
             printf("L'attaque sur %s en %c - %i a raté !\n", getNameUnit(uTarget->name),'A' + target.x, target.y +1);
         }else{
-            uTarget->stat.HP -= (uSource->stat.POWER*(block+armor));
+            uTarget->stat.HP -= uSource->stat.POWER * block * armor;
 
             printf("\nL'unité %s en %c - %i a subi %i dégâts !\n",getNameUnit(uTarget->name), 'A' + target.x, target.y +1, (int)(uSource->stat.POWER*(block+armor)));
 
@@ -189,9 +189,6 @@ void attack(vector source, vector target)
                 destroyUnit(target);
                 erase(uTarget);
                 noPlayer = tmp;
-                
-                /*clearScreen();
-                gridDisp();*/
 
                 fontColor(red);
                 printf("L'unité est morte !\n");
@@ -238,7 +235,6 @@ bool copy(unit * destination, unit * source)
 }
 
 void erase(unit * source)
-//tester
 {
     memset(source, -1, sizeof(unit));
     source->name          = empty;
@@ -250,11 +246,72 @@ void erase(unit * source)
 	source->unitColor= black;
 }
 
+/**
+ * Octroie un bonus de puissance
+ */
+void powerBonus(){
+    vector source;
+    int d = 0, s = 0;
+    int totalBonus = 0;
+    unit * setBonus[NB_MAX_UNIT];
+    unit * drain[NB_MAX_UNIT];
+
+    if(!liste_vide(noPlayer)){
+        en_tete(noPlayer);
+
+        while(!hors_liste(noPlayer)){
+            valeur_elt(noPlayer, &source);
+
+            if(strstr(getNameUnit(grid[source.x][source.y].name), "Dragon")){
+                drain[d] = &grid[source.x][source.y];
+
+                d++; // Drain en plus
+            }
+
+            if(grid[source.x][source.y].name == pyromancer || grid[source.x][source.y].name == cleric){
+                setBonus[s] = &grid[source.x][source.y];
+
+                s++; // Définis un bonus en plus
+            }
+
+            suivant(noPlayer);
+        }
+    }
+
+    if(d > 0 && s > 0){ // Si drain + unité pouvant recevoir un bonus
+        for(int i = 0; i < d; i++){ // Draine les unités
+            
+            if(drain[i]->stat.POWER == pawns[drain[i]->name].stat.POWER){
+                drain[i]->stat.POWER -= 12;
+                totalBonus += 12;
+            }
+        }
+
+        for(int j = 0; j < s; j++){ // Amplifie la puissance des unités
+
+            if(setBonus[j]->stat.POWER == pawns[setBonus[j]->name].stat.POWER){
+                setBonus[j]->stat.POWER += totalBonus/s; // Répartis le bonus total sur les unités compatibles
+            }
+            
+            if(totalBonus/s > (setBonus[j]->stat.POWER - pawns[setBonus[j]->name].stat.POWER)){ // Si jamais le nombre de drain a changé
+                setBonus[j]->stat.POWER = pawns[setBonus[j]->name].stat.POWER + totalBonus/s; // Mise à jour de la puissance
+            }
+        }
+    }else if(s > 0 && d == 0){ // Plus de drain disponible
+        for(int j = 0; j < s; j++){ // Amplifie la puissance des unités
+            if(setBonus[j]->stat.POWER != pawns[setBonus[j]->name].stat.POWER){
+
+                setBonus[j]->stat.POWER = pawns[setBonus[j]->name].stat.POWER;
+            
+            }
+        }
+    }
+}
+
 /*
 	déplace l'unité se trouvant en pos[0] en pos[1].
 */
 void move(vector destination, vector source)
-//tester
 {
 	unit * uSource = &grid[source.x][source.y];
 	if(canMove(uSource))
@@ -265,6 +322,9 @@ void move(vector destination, vector source)
 		addUnit(destination);
         grid[source.x][source.y].unitColor = black;
         
+        clearScreen(); // Met à jour la grille actualisée
+        gridDisp();
+
         fontColor(red);
         printf("L'unité %s a été déplacée en %c - %i\n", getNameUnit(uSource->name), 'A' + destination.x, destination.y + 1);
         reinitColor();
@@ -272,7 +332,6 @@ void move(vector destination, vector source)
 }
 
 void setDirection(vector source, int dir)
-//tester
 {
 	unit * uSource = &grid[source.x][source.y];
 	uSource->direct = dir;
@@ -341,6 +400,8 @@ void addEffect(vector target, unitEffect effect)
 	{
 	    uTarget->effect[effect-1]=3;
 	}
+
+    printf("L'unité est sous l'effet de %s\n", getNameEffect(effect));
 }
 
 /**
@@ -359,6 +420,7 @@ void minusEffect()
             {
                 if(grid[pos.x][pos.y].effect[i-1] > 0){
                     grid[pos.x][pos.y].effect[i-1]--;
+                    printf("%s - %i", getNameEffect(i), grid[pos.x][pos.y].effect[i-1]);
                 }
             }
             suivant(noPlayer);
@@ -390,15 +452,17 @@ bool isSleeping(vector pos)
 void recover()
 {
     vector pos;
+    
     if(!liste_vide(noPlayer))
     {   
+        en_tete(noPlayer);
+        
         while(!hors_liste(noPlayer)){
             valeur_elt(noPlayer, &pos);
 
-
             if(isSleeping(pos))
-            {
-                grid[pos.x][pos.y].stat.RECOVERY++;
+            {   
+                grid[pos.x][pos.y].stat.RECOVERY += 1;
             }
 
             suivant(noPlayer);
@@ -426,5 +490,3 @@ bool allStatic(int numPlayer)
     
     return true;
 }
-
-

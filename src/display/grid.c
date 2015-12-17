@@ -128,7 +128,7 @@ void gridDisp(){
 	for(int i = 0; i < N + N / 1.5; i++){
 		printf(" ");
 	}
-    printf("xx : décors\n\n  ");
+    printf("xx : décors\n\n   ");
 
     color(yellow,"Screen");
     printf("   ");

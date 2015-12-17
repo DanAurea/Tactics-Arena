@@ -19,3 +19,5 @@ void recover();
 bool allStatic(int numPlayer);
 void minusEffect();
 void poison();
+void powerBonus();
+void sleep(vector);

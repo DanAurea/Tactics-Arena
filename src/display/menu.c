@@ -464,7 +464,7 @@ void gameMenu(){
     if(noPlayer == FIRST_PLAYER) fontColor(red);
     else fontColor(blue);
 
-    printf("Joueur no %i à vous de jouer !\n", noPlayer + 1);
+    printf("\nJoueur no %i à vous de jouer !\n", noPlayer + 1);
     reinitColor();
 
     do{

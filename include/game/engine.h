@@ -6,7 +6,7 @@
 #define N 11 /**< Taille de la grille */
 #define NB_LISTS_ENGINE 1 /**< Nombre de liste additionnelles nécessaires pour le jeu */
 #define NB_PLAYERS 2 /**< Nombre de joueurs */
-#define NB_LINES 2 /**< Limite du camp du joueur */
+#define NB_LINES 3 /**< Limite du camp du joueur */
 #define NB_UNITS 21	 /**< Nombre d'unités dans le jeu */
 #define NB_MAX_EFFECT 6 /**< Nombre total de status différent */
 #define MANDATORY_STATS 8 /**< Nombre de stats obligatoire */

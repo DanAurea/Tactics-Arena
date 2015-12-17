@@ -84,7 +84,8 @@ void changeDirection(){
 
 	}while(direct < 1 && direct > 4);
 
-	grid[coordUnit.x][coordUnit.y].direct = direct;
+	setDirection(coordUnit, direct) ;
+	sleep(coordUnit);
 
 	hasPassed = 1; // Passe le tour
 }
@@ -107,7 +108,18 @@ void playAttack(){
 		if(!selected){
 			color(red, "Vous ne pouvez sélectionner cette unité !\n");
 		}else if(!canAttack(target)){
-			color(red, "Cette unité ne peut pas attaquer, elle est soumise à l'effet: \n");
+			
+			fontColor(red);
+
+			for(int i = 1; i < NB_MAX_EFFECT; i++){ // Affiche les effets sous lesquels est soumis l'unité
+				
+				if(target->effect[i-1] > 0){
+					printf("Cette unité ne peut pas attaquer, elle est soumise à l'effet: %s\n", getNameEffect(i));
+				}
+
+			}
+			reinitColor();
+
 		}else if(target->noPlayer != noPlayer){
 			color(red, "Cette unité ne vous appartient pas !\n");
 		}else if(sleeping && target->noPlayer == noPlayer){
@@ -119,7 +131,7 @@ void playAttack(){
 	}while(target->noPlayer != noPlayer || !selected || !canAttack(target) || sleeping);
 
 	attackable(black); // Attaquants en noir
-	
+
 	getTargets(coordUnit, yellow); // Récupère les cibles potentielles -> Jaune
 
 	grid[coordUnit.x][coordUnit.y].unitColor = white; // Couleur unité sélectionnée
@@ -144,6 +156,7 @@ void playAttack(){
     gridDisp();
 
 	launchAttack(coordUnit, coordTarget); // Lance une attaque
+	sleep(coordUnit);
 
 
 	hasAttacked = 1;
@@ -203,7 +216,7 @@ void playMove(){
     
     grid[coordUnit.x][coordUnit.y].unitColor = black; // Réinitialise la couleur de l'unité sélectionnée
 	move(coordTarget, coordUnit);
-
+	sleep(coordUnit);
 
 	hasMoved = 1;
 }

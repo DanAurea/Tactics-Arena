@@ -104,7 +104,6 @@ void movable(int colorDisp){
 
 			source = &grid[coordUnit.x][coordUnit.y];
 			if(canMove(source) && possiblePath(coordUnit) && !isSleeping(coordUnit)){ // Unité non entourée par ennemi + non paralysée et ayant un chemin possible
-				printf("test");
 				source->unitColor= colorDisp;
 			}
 		}
@@ -205,10 +204,10 @@ void getTargets(vector coordUnit, int colorDisp){
 
 	en_tete(targetList);
 	if(!liste_vide(targetList)){
-		dumpList(targetList); // Vide la liste
+		dumpList(targetList); // Vide la liste des cibles
 	}
 
-	if(!liste_vide(name)){
+	if(!liste_vide(name) && name != cleric){
 		en_tete(name);
 
 		while(!hors_liste(name)){
@@ -216,8 +215,7 @@ void getTargets(vector coordUnit, int colorDisp){
 			newTarget.x = coordUnit.x + target.x;
 			newTarget.y = coordUnit.y + target.y;
 
-			if(newTarget.x >= 0 && newTarget.x < N && newTarget.y >= 0 && newTarget.y < N)
-			{
+			if(newTarget.x >= 0 && newTarget.x < N && newTarget.y >= 0 && newTarget.y < N){
 				if(grid[newTarget.x][newTarget.y].name != decors)
 				{
 				    addTarget(targetList, newTarget); // Marque les coordonnées comme cible potentielle
@@ -227,34 +225,53 @@ void getTargets(vector coordUnit, int colorDisp){
 			}
 			suivant(name);
 		}
+	}else if(name == cleric){
+		en_tete(noPlayer); // On cherche les unités du joueur pour les heal
+		
+		while(!hors_liste(noPlayer)){
+			valeur_elt(noPlayer, &newTarget);
+
+			addTarget(targetList, newTarget); // Marque les coordonnées comme cible potentielle
+			grid[newTarget.x][newTarget.y].unitColor = colorDisp;
+
+			suivant(noPlayer);
+		}
+
 	}
 }
 
-
+/**
+ * Déclenche une capacité spéciale selon l'unité
+ * @param coordSource Coordonnées de l'unité source (déclenchant une capacité)
+ * @param coordTarget Coordonnées de l'unité affectée par la capacité spéciale
+ */
 void specialBoons(vector coordSource, vector coordTarget){
-	unitName name = grid[coordSource.x][coordSource.y].name;
-	int HPTarget = grid[coordTarget.x][coordTarget.y].stat.HP;
+	unitName name  = grid[coordSource.x][coordSource.y].name;
+	unit * uTarget = &grid[coordTarget.x][coordTarget.y];
 	int tmp;
 
 	if(name == assassin && grid[coordSource.x][coordSource.y].stat.HP <= 5) {
 		if(name != barrierTotem){
-			HPTarget = -99;
+			uTarget->stat.HP = -99;
 			
-			if(HPTarget <= 0) {
+			printf("\nL'unité %s en %c - %i a subi 99 dégâts !\n",getNameUnit(uTarget->name), 'A' + coordTarget.x, coordTarget.y +1);
+
+			if(uTarget->stat.HP <= 0) {
 				tmp = noPlayer;
 				noPlayer = grid[coordTarget.x][coordTarget.y].noPlayer; //Détruit l'unité dans la liste du joueur correspondant
 				destroyUnit(coordTarget); // noPlayer en variable globale donc il faut changer noPlayer avant
 				erase(&grid[coordTarget.x][coordTarget.y]); //Efface de la grille
 				noPlayer = tmp; // Remet noPlayer au joueur qui était en train de jouer
+
+				color(red, "L'unité est morte !\n");
 			}else{
 				grid[coordTarget.x][coordTarget.y].stat.HP -= 99;
 			}
 
 		}		
-	}else if(name == enchantress) {
+	}else if(name == enchantress && uTarget->name != empty) {
 		addEffect(coordTarget, PARALYSE);
-
-	}else if(name == poisonWisp) {
+	}else if(name == poisonWisp && uTarget->name != empty) {
 		addEffect(coordTarget, POISON);
 	}
 
@@ -279,13 +296,15 @@ void launchAttack(vector coordSource, vector coordTarget){
 
 			if(name == assassin && HP <= 5){
 				color(red, "L'assassin déclenche sa capacité spéciale kamikaze !\n");
+			}else if(name == enchantress){
+				color(red, "L'enchantress déclenche sa capacité spéciale et paralyse tout le monde aux alentours !\n");
 			}
 
 			while(!hors_liste(targetList)){ // Attaque toutes les cibles
 				valeur_elt(targetList, &targetAttack);
 
 				attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
-				//specialBoons(coordSource, targetAttack); // Effet de statut - Capacité spécial
+				specialBoons(coordSource, targetAttack); // Effet de statut - Capacité spécial
 
 				suivant(targetList);
 			}
@@ -297,12 +316,14 @@ void launchAttack(vector coordSource, vector coordTarget){
 
 	}else if(name == furgon || name == stoneGolem || name == dragonborn || name == pyromancer){
 
+		powerBonus(); // Octroie un bonus de puissance sous certaines conditions
+		
 		for(int x = coordTarget.x - 1; x <= coordTarget.x + 1; x++){
 			for(int y = coordTarget.y - 1; y <= coordTarget.y + 1; y++){
 
-				if(abs(x) + abs(y) <= 1 && x >=0 && x < N && y >= 0 && y < N){ // Croix centrée sur la cible désirée
-					targetAttack.x = coordTarget.x + x;
-					targetAttack.y = coordTarget.y + y;
+				if(abs(coordTarget.x - x) + abs(coordTarget.y - y) <= 1 && x >=0 && x < N && y >= 0 && y < N){ // Croix centrée sur la cible désirée
+					targetAttack.x = x;
+					targetAttack.y = y;
 					attack(coordSource, targetAttack);
 				}
 
@@ -316,8 +337,14 @@ void launchAttack(vector coordSource, vector coordTarget){
 			while(!hors_liste(targetList)){
 				valeur_elt(targetList, &targetAttack);
 
-				if(targetAttack.x == coordTarget.x || targetAttack.y == coordTarget.y){ // Même ligne / colonne
-					attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
+				if((coordTarget.x > coordSource.x && targetAttack.x > coordSource.x) || (coordTarget.x < coordSource.x && targetAttack.x < coordSource.x)){ // N'attaque sur une moitié de ligne
+					if(targetAttack.x == coordTarget.x || targetAttack.y == coordTarget.y  ){ // Même ligne / colonne
+						attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
+					}
+				}else if((coordTarget.y > coordSource.y && targetAttack.y > coordSource.y) || (coordTarget.y < coordSource.y && targetAttack.y < coordSource.y)){
+					if(targetAttack.x == coordTarget.x || targetAttack.y == coordTarget.y  ){ // Même ligne / colonne
+						attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
+					}
 				}
 
 				suivant(targetList);

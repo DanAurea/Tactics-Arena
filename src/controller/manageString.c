@@ -200,7 +200,23 @@ char* getNameUnit(unitName name){
     else if(name == berserker) return "Berserker";
     else if(name == beastRider) return "Beast Rider";
     else if(name == poisonWisp) return "Poison Wisp";
-    return "Furgon";
+    else if(name == furgon) return "Furgon";
+    return "Blank";
+}
+
+/**
+ * Récupère le nom de l'effet à partir de la liste énumérée
+ * @param  effect Effet provenant de la liste énumérée
+ * @return        Nom de l'effet sous forme de chaîne de caractère
+ */
+char* getNameEffect(unitEffect effect){    
+    if(effect      == POWER_BONUS) return "Bonus de puissance";
+    else if(effect == ARMOR_BONUS) return "Bonus d'armure";
+    else if(effect == BARRIER) return "Barrière";
+    else if(effect == POISON) return "Poison";
+    else if(effect == PARALYSE) return "Paralysé";
+    else if(effect == FOCUS) return "Focus";
+    return "None";
 }
 
 /**
