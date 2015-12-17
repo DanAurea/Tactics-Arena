@@ -11,11 +11,9 @@
 
 int main(){
 	srand(time(NULL));
-	initLists();
 	checkSignal();
-
+	
 	mainMenu(grid);
 
-	free(pawns);
 	return 0;
 }

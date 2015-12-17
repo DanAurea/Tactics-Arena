@@ -139,7 +139,7 @@ void ajout_gauche(int n, vector v)
  * @param nbList Numéro de la liste à vider
  */
 void dumpList(short nbList){
-	if(!liste_vide(nbList)){
+	if(drapeau != NULL && !liste_vide(nbList)){
 		en_queue(nbList);
 		while(!liste_vide(nbList)){
 			oter_elt(nbList);

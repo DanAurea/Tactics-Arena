@@ -9,6 +9,7 @@
 #include "../../include/display/menu.h"
 #include "../../include/controller/terminal.h"
 #include "../../include/controller/manageString.h"
+#include "../../include/controller/manageSignal.h"
 #include "../../include/units/unit.h"
 
 unit grid[N][N]; /**< Grille d'unités */
@@ -687,7 +688,7 @@ void startGame(){
 		}
 	}
 
-	dumpAllLists();
+	freeAll();
 	clearScreen();
 	mainMenu();
 }
@@ -696,7 +697,7 @@ void startGame(){
  * Initialise la partie
  */
 void gameInit(){
-
+	initLists();
 	noPlayer = FIRST_PLAYER; // Réinitialise pour nouvelle partie
 	makePawns(); // Crée les pions
 

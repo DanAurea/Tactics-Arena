@@ -64,6 +64,7 @@ printf(
 
     }while(choix != 4);
     printf("A bientôt ! Hope you enjoy this game ! \n");
+
     exit(1);
 }
 

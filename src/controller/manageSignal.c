@@ -13,8 +13,8 @@ void freeAll(){
 	if(sizePawns > 0){
 		free(pawns); // Libère les pions
 		sizePawns = 0;
+		dumpAllLists(); // Libère les listes de la mémoire
 	}
-	dumpAllLists(); // Libère les listes de la mémoire
 }
 
 /**
@@ -32,7 +32,9 @@ void interrupt(int signal){
 	}
 	fflush(stdout);
 
-	save();
+	if(sizePawns > 0){
+		save();
+	}
 	
 	reinitColor(); // Réinitialise les couleurs du terminal
 	
