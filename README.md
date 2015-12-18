@@ -46,6 +46,7 @@ Une fois ce temps expiré:
    5. **[Utilisation](#utilisation)**
    6. **[Documentation](#documentation)**
 
+
 ## A faire
  
  - **[x] Analyse préliminaire**
@@ -93,6 +94,12 @@ Une fois ce temps expiré:
 - Correctifs divers
 
 ### Version 1.00
+
+- Jeu sur Terminal complet
+- Optimisation de l'architecture
+
+
+
 - Jeu sur Terminal complet
 - Optimisation de l'architecture
 
