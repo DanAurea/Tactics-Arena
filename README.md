@@ -98,12 +98,6 @@ Une fois ce temps expiré:
 - Jeu sur Terminal complet
 - Optimisation de l'architecture
 
-
-
-- Jeu sur Terminal complet
-- Optimisation de l'architecture
-
-
 ## Instructions de compilation
 
 Pour compiler:
