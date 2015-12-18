@@ -40,6 +40,7 @@ Une fois ce temps expiré:
      - **[Version 0.1](#markdown-header-version-01)**
      - **[Version 0.53](#markdown-header-version-053)**
      - **[Version 0.85](#markdown-header-version-085)**
+     - **[Version 1.00](#markdown-header-version-100)**
    3. **[A faire](#markdown-header-a-faire)**
    4. **[Instructions de compilation](#markdown-header-instructions-de-compilation)**
    5. **[Utilisation](#markdown-header-utilisation)**
@@ -89,6 +90,11 @@ Une fois ce temps expiré:
 - Etats unités
 - Restructuration
 - Correctifs divers
+
+### Version 1.00
+
+- Jeu sur Terminal complet
+- Optimisation de l'architecture
 
 ## Instructions de compilation
 
