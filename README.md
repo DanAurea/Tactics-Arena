@@ -38,6 +38,8 @@ Une fois ce temps expiré:
    1. **[Règles](#markdown-header-regles)**
    2. **[Changelog](#markdown-header-changelog)**
      - **[Version 0.1](#markdown-header-version-01)**
+     - **[Version 0.53](#markdown-header-version-053)**
+     - **[Version 0.85](#markdown-header-version-085)**
    3. **[A faire](#markdown-header-a-faire)**
    4. **[Instructions de compilation](#markdown-header-instructions-de-compilation)**
    5. **[Utilisation](#markdown-header-utilisation)**
@@ -46,18 +48,17 @@ Une fois ce temps expiré:
 ## A faire
  
  - **[x] Analyse préliminaire**
- - **[ ] Compte rendu mécaniques du jeu**
  - **[x] Analyse conceptuelle**
  - **[ ] Implémentation**
     - **[x] Grille**
     - **[x] Menu**
     - **[x] Unités**
     - **[x] Statistiques**
-    - **[ ] Mouvements**
-    - **[ ] Gestion des tours**
-    - **[ ] Gestion du temps**
+    - **[-] Mouvements**
+    - **[-] Gestion des tours**
+    - **[x] Gestion du temps**
     - **[ ] Capacités spéciales**
-    - **[ ] Etat unités**
+    - **[x] Etat unités**
  - **[ ] Test unitaires**
  - **[ ] Test d'intégration**
  - **[ ] Ajout de fonctionnalités**
@@ -69,6 +70,25 @@ Une fois ce temps expiré:
 ### Version 0.1
 
  - Mise en place sommaire des TAD
+
+### Version 0.53
+
+ - Initialisation du jeu
+ - Ajout des unités par le joueur
+ - Manipulation du terminal
+ - Grille flexible
+ - Mise en place de modules pour chaque unité
+ - Gestion des unités
+
+### Version 0.85
+
+- Gestion du temps
+- Début gestion des tours
+- Début mouvement des unités
+- Début attaque des unités
+- Etats unités
+- Restructuration
+- Correctifs divers
 
 ## Instructions de compilation
 
