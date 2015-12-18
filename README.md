@@ -49,18 +49,18 @@ Une fois ce temps expiré:
  
  - **[x] Analyse préliminaire**
  - **[x] Analyse conceptuelle**
- - **[ ] Implémentation**
+ - **[x] Implémentation**
     - **[x] Grille**
     - **[x] Menu**
     - **[x] Unités**
     - **[x] Statistiques**
-    - **[-] Mouvements**
-    - **[-] Gestion des tours**
+    - **[x] Mouvements**
+    - **[x] Gestion des tours**
     - **[x] Gestion du temps**
-    - **[ ] Capacités spéciales**
+    - **[x] Capacités spéciales**
     - **[x] Etat unités**
  - **[ ] Test unitaires**
- - **[ ] Test d'intégration**
+ - **[x] Test d'intégration**
  - **[ ] Ajout de fonctionnalités**
     - **[ ] Intégration IA**
     - **[ ] GUI**
