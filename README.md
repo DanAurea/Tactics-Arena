@@ -130,6 +130,7 @@ Les deux joueurs débutent la partie en ajoutant chacun leurs unités dans leur 
 Chaque joueur a 2 min de temps de jeu à chaque tour lorsque toutes les unités sont encore sur le terrain, chaque unité détruite réduira le temps de jeu cependant une limite minimum de 1 min est fixée.
 
 Chaque unité ne peut faire qu'une action par tour obligeant ainsi l'utilisateur à jouer de manière stratégique, toute attaque touchent les cibles de l'adversaire tout autant que celle du joueur alors soyez vigilant sur les attaques de zones.
+Chaque unité ayant agis doit se reposer pour pouvoir être utilisée à nouveau.
 
 Des zones de couleurs indiqueront au fur et à mesure les actions possibles par chaque unité. Toute action est irréversible soyez donc prudent.
 
