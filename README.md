@@ -3,6 +3,20 @@
 Tactics Arena est un jeu de stratégie au tour par tour se jouant sur un plateau.
 Chaque joueur déplace ses unités respectant des règles de déplacement propre à chaque unité, le but du jeu est d'éliminer ou paralyser toutes les unités ennemies.
 
+## Sommaire
+   **Tactics Arena**
+
+   1. **[Règles](#markdown-header-regles)**
+   2. **[Changelog](#markdown-header-changelog)**
+     - **[Version 0.1](#markdown-header-version-01)**
+     - **[Version 0.53](#markdown-header-version-053)**
+     - **[Version 0.85](#markdown-header-version-085)**
+     - **[Version 1.00](#markdown-header-version-100)**
+   3. **[A faire](#markdown-header-a-faire)**
+   4. **[Instructions de compilation](#markdown-header-instructions-de-compilation)**
+   5. **[Utilisation](#markdown-header-utilisation)**
+   6. **[Documentation](#markdown-header-documentation)**
+
 ## Règles
 
 
@@ -30,22 +44,6 @@ Une fois ce temps expiré:
   - **Si aucune commande n'a été effectuée alors abandon automatique**
 
 #### Important : toute action est irréversible.
-
-
-## Sommaire
-   **Tactics Arena**
-
-   1. **[Règles](#regles)**
-   2. **[Changelog](#changelog)**
-     - **[Version 0.1](#version-01)**
-     - **[Version 0.53](#version-053)**
-     - **[Version 0.85](#version-085)**
-     - **[Version 1.00](#version-100)**
-   3. **[A faire](#a-faire)**
-   4. **[Instructions de compilation](#instructions-de-compilation)**
-   5. **[Utilisation](#utilisation)**
-   6. **[Documentation](#documentation)**
-
 
 ## A faire
  
