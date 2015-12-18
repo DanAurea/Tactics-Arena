@@ -2,6 +2,7 @@
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
 #include "../../include/game/listes.h"
+#include "../../include/game/pathList.h"
 #include "../../include/game/turn.h"
 #include "../../include/display/grid.h"
 #include "../../include/controller/terminal.h"
@@ -15,7 +16,7 @@ char key[] = "SPIBCTBEC";
  * @return     Retourne un caractère de la clé
  */
 char getCharKey(char * dynamicKey, int * pos){
-	if(sizeof(dynamicKey) == *pos) * pos = 0;
+	if(sizeof(dynamicKey - 1) == * pos) * pos = 0;
 	else * pos = *pos +1;
 
 	return dynamicKey[* pos];
@@ -32,11 +33,16 @@ char * getKey(unitName name){
 	int lenName = strlen(getNameUnit(name));
 	int size = lenName + lenKey; // Taille de la clé dynamique
 
-	dynamicKey = malloc(size * sizeof(char));
+	dynamicKey = calloc(size, sizeof(char));
 
 	if(dynamicKey != NULL){
 		memcpy(dynamicKey, key, lenKey);
 		memcpy(dynamicKey, getNameUnit(name), lenName);
+		
+		dynamicKey[0] = '(';
+		dynamicKey[1] = key[2];
+		dynamicKey[5] = key[0];
+		dynamicKey[3] = key[1];
 
 		return dynamicKey; // Retourne la clé générée dynamiquement
 
@@ -53,7 +59,7 @@ char * getKey(unitName name){
  * @param unitSaved Unité sauvegardée
  */
 void crypt(unit * unitSaved){
-	int size = strlen(key) * 5; // Récupère la taille du nom de l'unité
+	long size = (strlen(key) * 15) + key[0] - key[1] / key[2]; // Récupère la taille du nom de l'unité
 	int pos = 0;
 	char * dynamicKey;
 
@@ -70,8 +76,7 @@ void crypt(unit * unitSaved){
 	unitSaved->stat.BLOCK[2] *= (float)(-size * getCharKey(dynamicKey, &pos));
 	unitSaved->unitColor *= -size * getCharKey(dynamicKey, &pos);
 	unitSaved->noPlayer *= -size * getCharKey(dynamicKey, &pos);
-	unitSaved->direct *= -size * getCharKey(dynamicKey, &pos);
-	
+
 	for(int k = 0; k <NB_MAX_EFFECT; k++) { // Effets de status liés à l'unité actuelle
 		unitSaved->effect[k] /= -size - getCharKey(dynamicKey, &pos);
 	}
@@ -85,11 +90,12 @@ void crypt(unit * unitSaved){
  * @param unitLoaded Unité chargée
  */
 void decrypt(unit * unitLoaded){
-	int size = strlen(key) * 5; // Récupère la taille du nom de l'unité
+	long size = (strlen(key) * 15) + key[0] - key[1] / key[2]; // Récupère la taille du nom de l'unité
 	int pos = 0;
 	char * dynamicKey;
 
 	unitLoaded->name /= size;
+
 	dynamicKey = getKey(unitLoaded->name);
 
 	unitLoaded->stat.ARMOR /= (float)(-size * getCharKey(dynamicKey, &pos));
@@ -102,8 +108,7 @@ void decrypt(unit * unitLoaded){
 	unitLoaded->stat.BLOCK[2] /= (float)(-size * getCharKey(dynamicKey, &pos));
 	unitLoaded->unitColor /= -size * getCharKey(dynamicKey, &pos);
 	unitLoaded->noPlayer /= -size * getCharKey(dynamicKey, &pos);
-	unitLoaded->direct /= -size * getCharKey(dynamicKey, &pos);
-	
+
 	for(int k = 0; k <NB_MAX_EFFECT; k++) { // Effets de status liés à l'unité actuelle
 		unitLoaded->effect[k] *= -size - getCharKey(dynamicKey, &pos);
 	}
@@ -118,7 +123,7 @@ void decrypt(unit * unitLoaded){
  */
 bool checkDecrypt(unit * unitLoaded){
 	
-	if(unitLoaded->name < empty || unitLoaded->name > NB_UNITS) return false;
+	if(unitLoaded->name <= empty || unitLoaded->name > NB_UNITS) return false;
 	else if(unitLoaded->stat.ARMOR < 0.0) return false;
 	else if(unitLoaded->stat.POWER < 0) return false;
 	else if(unitLoaded->stat.HP < 0 ) return false;
@@ -129,7 +134,6 @@ bool checkDecrypt(unit * unitLoaded){
 	else if(unitLoaded->stat.BLOCK[2] < 0.0 ) return false;
 	else if(unitLoaded->unitColor < 0 ) return false;
 	else if(unitLoaded->noPlayer < -1 ) return false;
-	else if(unitLoaded->direct < 0 ) return false;
 
 	for(int k = 0; k <NB_MAX_EFFECT; k++) { // Effets de status liés à l'unité actuelle
 		if(unitLoaded->effect[k] < 0) return false;
@@ -157,6 +161,7 @@ void save(){
 				if(grid[x][y].name != empty){
 					
 					uSave = grid[x][y];
+
 					crypt(&uSave); // Crypte les informations de l'unité
 
 					fprintf(fic1, "(%i - %i){%i, %i, %i, %f, %i, %f, %f, %f, %i, %i, %i, %i, ", x, y, uSave.name, uSave.stat.HP,
@@ -196,6 +201,7 @@ void load() {
 	fic1 = fopen("assets/save/fileSave", "r");
 	if(fic1 != NULL){
 		initLists();
+		initPaths();
 
 		success = fscanf(fic1, "%i - %i - %i\n", &noPlayer, &hasMoved, &hasAttacked); // Informations état joueur
 		if(success == 3){
@@ -235,6 +241,7 @@ void load() {
 				}else{
 					fclose(fic1);
 					dumpAllLists(); // Libère les listes de la mémoire
+					//dumpAllPaths();
 
 					color(red, "\nDonnées invalides, le chargement n'a pu être effectué\n");
 					exit(1);
@@ -243,6 +250,7 @@ void load() {
 		}else{
 			fclose(fic1);
 			dumpAllLists(); // Libère les listes de la mémoire
+			//dumpAllPaths();
 
 			color(red, "\nDonnées invalides, le chargement n'a pu être effectué\n");
 			exit(1);

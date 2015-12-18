@@ -211,7 +211,7 @@ void playMove(){
 	do{
 		selected = selectUnit(&coordTarget); // Sélection de l'endroit où déplacer l'unité
 		
-		//found = findPath(coordUnit,coordUnit.x, coordUnit.y, target->stat.MOVE_RANGE, coordTarget);
+		found = pathFind(coordUnit, coordTarget);
 	}while(!selected || !found);
     
     grid[coordUnit.x][coordUnit.y].unitColor = black; // Réinitialise la couleur de l'unité sélectionnée

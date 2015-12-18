@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <time.h>
 #include "../../include/game/engine.h"
-#include "../../include/game/file_ptr.h"
 #include "../../include/game/pawns.h"
+#include "../../include/game/pathList.h"
 #include "../../include/game/listes.h"
 #include "../../include/game/turn.h"
 #include "../../include/display/grid.h"
@@ -43,54 +43,77 @@ bool possiblePath(vector coordUnit){
 	return false;
 }
 
+
+
 /**
  * Trouve un chemin vers la position désirée
  * @param coordUnit Coordonnées de l'unité
  * @param coordTarget Coordonnées de la cible
  */
-/*bool pathFind(vector coordUnit, int x, int y, int moveRange, vector coordTarget){
-	unit * target;
+bool pathFind(vector coordUnit, vector coordTarget){
+	int range = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
+	vector current, neighbour, tmp; // Coordonnées de la case
+	int F = -1; // Poids de la case
 
-	//getDirection(x, y, coordTarget);
-	grid[x][y].visited = 1;
-
-
-	if(moveRange == 0) return false;
-	if(x == coordTarget.x && y == coordTarget.y){
-		return true;
+	if(!emptyPath(1)) dumpPath(1); // Vide liste fermée
+	if(!emptyPath(0)) dumpPath(0); // Vide liste ouverte
+	else{
+		pathHead(0); // En tête liste ouverte
+		toRightPath(0, coordUnit, F); // Ajoute le point de départ à la liste ouverte
 	}
-	
 
-	for(int i = -1; i <=  1; i++){
-		for(int j = -1; j <= 1; j++){
-
+	while(!emptyPath(0) && range > 0){ // Parcours de la zone dans la portée de l'unité
 			
+			current = getCurrentNode(0); // On récupère le noeud ayant le plus petit F dans la liste ouverte
+			range--;
 
-			if(abs(x+ i) + abs(x + j) == 1 && x + i >= 0 &&  x + i < N && y + j >= 0 && y + j < N){
-				if(!grid[x + i][y + j].visited){
-					//if(!grid[i][j].visited && (grid[i][j].name != decors || (grid[i][j].noPlayer != noPlayer && canGetPassed(target)) ) ){
-					target = &grid[x+i][y+j];
-					printf("%s - %c-%i - %i HP - %s - %i\n",getNameUnit(target->name),
-					'A' + x + i, y + j + 1, target->stat.HP,
-					getDirectionUnit(target->direct), grid[x+i][y+j].visited); // Affiche le nom de l'unité
+			if(current.x == coordTarget.x && current.y == coordTarget.y) return true; // Chemin trouvé
 
-					findPath(coordUnit, x + i, y + j, moveRange - 1, coordTarget);
-					//}else if(canTeleport(grid[coordUnit.x][coordUnit.y].name)){
-					//	findPath(coordUnit, i, j, moveRange - 1, coordTarget);
-					//}
+			addCloseList(current, F); // Ajoute le noeud courant à la liste fermée
+			for(int i = current.x -1; i <= current.x + 1; i++){ // Regarde les voisins sans prendre en compte la diagonale
+				for(int j = current.y -1; j <= current.y + 1; j++){
+
+					if(abs(current.x - i) + abs(current.y - j) == 1){ // 4 voisins
+
+						neighbour.x = i;
+						neighbour.y = j;
+						if (i >= 0 && i < N && j >= 0 && j < N){
+
+							if(!searchTile(1, neighbour) 
+								&& (grid[i][j].name != decors 
+									|| (grid[i][j].noPlayer == noPlayer && canGetPassed(&grid[i][j])) ) ){
+								
+								F = abs(coordTarget.x - i) + abs(coordTarget.y -j); // Distance jusqu'à la destination
+
+								if(!searchTile(0, neighbour)){ // Cherche dans la liste ouverte
+
+									addOpenList(neighbour, F);
+								}
+
+							}
+						}
+
+					}
 				}
 			}
-		}
+	}
+	/*pathHead(0);
+	while(!outPath(0)){
+		getTile(0, &tmp, &F);
+			printf("%c - %i - %i\n", tmp.x + 'A', tmp.y +1, F);
+
+		next(0);
 	}
 
-	grid[x][y].visited = 0;
-	moveRange++;
+	current = getCurrentNode(0);
+	printf("%c - %i", current.x + 'A', current.y +1);*/
 
-	//return false;
-}*/
+	return false;
+}
 
 /**
  * Fait la liste des unités déplaçables
+ * @param colorDisp Couleur d'affichage
  */
 void movable(int colorDisp){
 	vector coordUnit;
@@ -113,6 +136,7 @@ void movable(int colorDisp){
 
 /**
  * Fait la liste des unités pouvant attaquer
+ * @param colorDisp Couleur d'affichage
  */
 void attackable(int colorDisp){
 	vector coordUnit;
@@ -136,6 +160,7 @@ void attackable(int colorDisp){
 /**
  * Fait la liste des cases pouvant être atteintes par l'unité
  * @param coordUnit Coordonnées de l'unité
+ * @param colorDisp Couleur d'affichage
  */
 void tileWalkable(vector coordUnit, int colorDisp){
 	unit * source;
@@ -698,6 +723,8 @@ void startGame(){
  */
 void gameInit(){
 	initLists();
+	//initPaths();
+
 	noPlayer = FIRST_PLAYER; // Réinitialise pour nouvelle partie
 	makePawns(); // Crée les pions
 

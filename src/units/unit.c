@@ -173,16 +173,19 @@ void attack(vector source, vector target)
     	if(canBlock(uTarget))
     	{
     		block = 1-uTarget->stat.BLOCK[getSideAttacked(source,target)];
+            printf("%s\n",getDirectionUnit(getSideAttacked(source,target)));
+
             miss  = (rand() % 101); // Raté -> Tire un chiffre entre 0 et 100
     	}
 
-        if(miss >= 100 - 10 * block){
+        if(miss >= 100 - 100 * (1 - block)){
             printf("L'attaque sur %s en %c - %i a raté !\n", getNameUnit(uTarget->name),'A' + target.x, target.y +1);
         }else{
             uTarget->stat.HP -= uSource->stat.POWER * block * armor;
 
             if(uSource->stat.POWER * block * armor > 0){
-                printf("\nL'unité %s en %c - %i a subi %i dégâts !\n",getNameUnit(uTarget->name), 'A' + target.x, target.y +1, (int)(uSource->stat.POWER*(block+armor)));
+                printf("\nL'unité %s en %c - %i a subi %i dégâts !\n",getNameUnit(uTarget->name), 'A' + target.x, target.y +1,
+                    (int)(uSource->stat.POWER* block * armor));
             }
 
             if(uTarget->stat.HP <= 0){
@@ -281,6 +284,7 @@ void powerBonus(){
     }
 
     if(d > 0 && s > 0){ // Si drain + unité pouvant recevoir un bonus
+        color(red, "Vos mages drainent la puissance de vos dragons sur le terrain !\n");
         for(int i = 0; i < d; i++){ // Draine les unités
             
             if(drain[i]->stat.POWER == pawns[drain[i]->name].stat.POWER){
@@ -314,7 +318,8 @@ void powerBonus(){
 	déplace l'unité se trouvant en pos[0] en pos[1].
 */
 void move(vector destination, vector source)
-{
+{   
+    unitName name = grid[source.x][source.y].name;
 	unit * uSource = &grid[source.x][source.y];
 	if(canMove(uSource))
 	{
@@ -328,7 +333,7 @@ void move(vector destination, vector source)
         gridDisp();
 
         fontColor(red);
-        printf("L'unité %s a été déplacée en %c - %i\n", getNameUnit(uSource->name), 'A' + destination.x, destination.y + 1);
+        printf("L'unité %s a été déplacée en %c - %i\n", getNameUnit(name), 'A' + destination.x, destination.y + 1);
         reinitColor();
 	}
 }

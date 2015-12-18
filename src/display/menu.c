@@ -493,6 +493,8 @@ void gameMenu(){
             case 5: save(); 
             		clearScreen();
             		gridDisp();
+            		printf("La partie a été sauvegardée !\n");
+
             		break;
             case 6: surrender(); break;
             default: printf("Erreur: votre choix doit etre compris entre 1 et 5\n");
@@ -518,7 +520,7 @@ void unitMenu(int choice){
 
 	                    clearScreen(); // Met à jours les couleurs des unités déplaçables
 						gridDisp();
-	                    
+
 	                    printf("\nSe déplacer ? y/n\n");
 	        		    readS(yn);
 	                  	printf("\n");

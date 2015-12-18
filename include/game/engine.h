@@ -43,5 +43,5 @@ void movable(int colorDisp);
 void attackable(int colorDisp);
 void tileWalkable(vector coordUnit, int colorDisp);
 bool possiblePath(vector coordUnit);
-bool findPath(vector, int, int, int, vector);
+bool pathFind(vector, vector);
 void startGame();

@@ -1,0 +1,18 @@
+void initPath();
+void initPaths();
+int emptyPath(int n);
+int outPath(int n);
+void pathHead(int n);
+void pathTail(int n);
+void previous(int n);
+void next(int n);
+void getTile(int n, vector * v, int * F);
+void setTile(int n, vector v, int F);
+void eraseTile(int n);
+void toRightPath(int n, vector v, int F);
+void dumpPath(short nbList);
+void dumpAllPaths();
+bool searchTile(int n, vector);
+vector getCurrentNode(int n);
+void addCloseList(vector, int);
+void addOpenList(vector, int);
