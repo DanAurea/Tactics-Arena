@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Tactics-arena by DanAurea</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/DanAurea/Tactics-Arena">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/DanAurea/Tactics-Arena/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/DanAurea/Tactics-Arena/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Tactics-arena</h1>
+          <p>Projet L2 SPI Univ Maine</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/DanAurea">DanAurea</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="tactics-arena" class="anchor" href="#tactics-arena" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tactics Arena</h1>
+
+<p>Tactics Arena est un jeu de stratégie au tour par tour se jouant sur un plateau.
+Chaque joueur déplace ses unités respectant des règles de déplacement propre à chaque unité, le but du jeu est d'éliminer ou paralyser toutes les unités ennemies.</p>
+
+<h2>
+<a id="sommaire" class="anchor" href="#sommaire" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sommaire</h2>
+
+<p><strong>Tactics Arena</strong></p>
+
+<ol>
+<li><strong><a href="#markdown-header-regles">Règles</a></strong></li>
+<li>
+<strong><a href="#markdown-header-changelog">Changelog</a></strong>
+
+<ul>
+<li><strong><a href="#markdown-header-version-01">Version 0.1</a></strong></li>
+<li><strong><a href="#markdown-header-version-053">Version 0.53</a></strong></li>
+<li><strong><a href="#markdown-header-version-085">Version 0.85</a></strong></li>
+<li><strong><a href="#markdown-header-version-100">Version 1.00</a></strong></li>
+</ul>
+</li>
+<li><strong><a href="#markdown-header-a-faire">A faire</a></strong></li>
+<li><strong><a href="#markdown-header-instructions-de-compilation">Instructions de compilation</a></strong></li>
+<li><strong><a href="#markdown-header-utilisation">Utilisation</a></strong></li>
+<li><strong><a href="#markdown-header-documentation">Documentation</a></strong></li>
+</ol>
+
+<h2>
+<a id="règles" class="anchor" href="#r%C3%A8gles" aria-hidden="true"><span class="octicon octicon-link"></span></a>Règles</h2>
+
+<p>Les conditions d'égalité sont:</p>
+
+<ul>
+<li><strong>Toutes les unités actives sont détruites ou immobilisée</strong></li>
+<li><strong>Les joueurs passent leurs tours 3 fois d’affilé</strong></li>
+<li><strong>Il n’y a eu aucune rencontre entre les deux unités ennemies depuis les 30 derniers tours.</strong></li>
+</ul>
+
+<p>Le joueur qui commence est défini aléatoirement par l'ordinateur au début de chaque partie.</p>
+
+<p>Il n'est possible de déplacer qu'une seule unité par tour soit pour:</p>
+
+<ol>
+<li> <strong>Se déplacer</strong>
+</li>
+<li> <strong>Et / ou attaquer</strong>
+</li>
+<li> <strong>Et / ou changer de direction</strong>
+</li>
+</ol>
+
+<p>Le changement de direction impose d'être fait en dernier.</p>
+
+<p>Chaque tour dure 1 à 2 minutes, dépendant du nombre d'unité restante.
+Une fois ce temps expiré:</p>
+
+<ul>
+<li><strong>Le tour se termine automatiquement si au moins une commande a été effectué</strong></li>
+<li><strong>Si aucune commande n'a été effectuée alors abandon automatique</strong></li>
+</ul>
+
+<h4>
+<a id="important--toute-action-est-irréversible" class="anchor" href="#important--toute-action-est-irr%C3%A9versible" aria-hidden="true"><span class="octicon octicon-link"></span></a>Important : toute action est irréversible.</h4>
+
+<h2>
+<a id="a-faire" class="anchor" href="#a-faire" aria-hidden="true"><span class="octicon octicon-link"></span></a>A faire</h2>
+
+<ul>
+<li>[x] <strong>Analyse préliminaire</strong>
+</li>
+<li>[x] <strong>Analyse conceptuelle</strong>
+</li>
+<li>[x] <strong>Implémentation</strong>
+
+<ul>
+<li>[x] <strong>Grille</strong>
+</li>
+<li>[x] <strong>Menu</strong>
+</li>
+<li>[x] <strong>Unités</strong>
+</li>
+<li>[x] <strong>Statistiques</strong>
+</li>
+<li>[x] <strong>Mouvements</strong>
+</li>
+<li>[x] <strong>Gestion des tours</strong>
+</li>
+<li>[x] <strong>Gestion du temps</strong>
+</li>
+<li>[x] <strong>Capacités spéciales</strong>
+</li>
+<li>[x] <strong>Etat unités</strong>
+</li>
+</ul>
+</li>
+<li>[ ] <strong>Test unitaires</strong>
+</li>
+<li>[x] <strong>Test d'intégration</strong>
+</li>
+<li>[ ] <strong>Ajout de fonctionnalités</strong>
+
+<ul>
+<li>[ ] <strong>Intégration IA</strong>
+</li>
+<li>[ ] <strong>GUI</strong>
+</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<h3>
+<a id="version-01" class="anchor" href="#version-01" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version 0.1</h3>
+
+<ul>
+<li>Mise en place sommaire des TAD</li>
+</ul>
+
+<h3>
+<a id="version-053" class="anchor" href="#version-053" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version 0.53</h3>
+
+<ul>
+<li>Initialisation du jeu</li>
+<li>Ajout des unités par le joueur</li>
+<li>Manipulation du terminal</li>
+<li>Grille flexible</li>
+<li>Mise en place de modules pour chaque unité</li>
+<li>Gestion des unités</li>
+</ul>
+
+<h3>
+<a id="version-085" class="anchor" href="#version-085" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version 0.85</h3>
+
+<ul>
+<li>Gestion du temps</li>
+<li>Début gestion des tours</li>
+<li>Début mouvement des unités</li>
+<li>Début attaque des unités</li>
+<li>Etats unités</li>
+<li>Restructuration</li>
+<li>Correctifs divers</li>
+</ul>
+
+<h3>
+<a id="version-100" class="anchor" href="#version-100" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version 1.00</h3>
+
+<ul>
+<li>Jeu sur Terminal complet</li>
+<li>Optimisation de l'architecture</li>
+</ul>
+
+<h2>
+<a id="instructions-de-compilation" class="anchor" href="#instructions-de-compilation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instructions de compilation</h2>
+
+<p>Pour compiler:</p>
+
+<blockquote>
+<p>$ <strong>make</strong></p>
+</blockquote>
+
+<p>L'éxécutable se retrouve dans: bin/tacticsArena</p>
+
+<p>Afin de recompiler le programme ou de nettoyer le dossier:</p>
+
+<blockquote>
+<p>$ <strong>make clean</strong></p>
+</blockquote>
+
+<h2>
+<a id="utilisation" class="anchor" href="#utilisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilisation</h2>
+
+<p>Lancer le programme avec la commande:</p>
+
+<blockquote>
+<p>$ <strong>./bin/tacticsArena</strong></p>
+</blockquote>
+
+<p>Les deux joueurs débutent la partie en ajoutant chacun leurs unités dans leur camp respectifs, une fois les unités placées dans le camp. La partie débute, l'ordinateur tire un joueur aléatoirement pour commencer à jouer.</p>
+
+<p>Chaque joueur a 2 min de temps de jeu à chaque tour lorsque toutes les unités sont encore sur le terrain, chaque unité détruite réduira le temps de jeu cependant une limite minimum de 1 min est fixée.</p>
+
+<p>Chaque unité ne peut faire qu'une action par tour obligeant ainsi l'utilisateur à jouer de manière stratégique, toute attaque touchent les cibles de l'adversaire tout autant que celle du joueur alors soyez vigilant sur les attaques de zones.
+Chaque unité ayant agis doit se reposer pour pouvoir être utilisée à nouveau.</p>
+
+<p>Des zones de couleurs indiqueront au fur et à mesure les actions possibles par chaque unité. Toute action est irréversible soyez donc prudent.</p>
+
+<p>L'ordre des actions a une importance un déplacement n'est pas possible si une unité a attaqué, le changement de direction termine automatiquement le tour.</p>
+
+<p>A tout moment au cours de la partie les joueurs pourront sauvegarder la partie, le fichier de sauvegarde se trouve dans :</p>
+
+<blockquote>
+<p><strong>assets/save/fileSave</strong></p>
+</blockquote>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p>Une documentation peut être généré à l'aide de Doxygen pour recréer la documentation:</p>
+
+<blockquote>
+<p>$ make doc</p>
+</blockquote>
+
+<p>Au cours de cette opération un document PDF récapitulant toutes l'architecture du projet sera généré dans:</p>
+
+<blockquote>
+<p>doc/man.pdf</p>
+</blockquote>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
