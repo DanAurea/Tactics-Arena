@@ -2,6 +2,7 @@ CC=gcc
 CFLAGS=-g -Wall -std=c99
 LDFLAGS=-lm
 EXEC=bin/tacticsArena
+
 SRC= $(wildcard src/*/*.c && src/*.c)
 OBJ= $(SRC:.c=.o)
 
@@ -51,6 +52,7 @@ src/%.o: %.c
 
 doc: 
 	@doxygen configDoc && cd doc/latex && make && mv refman.pdf ../man.pdf
+
 
 clean:
 	@rm -rf ./$(OBJ)

@@ -5,6 +5,7 @@
 \usepackage[francais]{babel}
 \usepackage{fancyhdr}
 \usepackage{xcolor}
+
 \usepackage{pgfgantt}
 
 
@@ -62,6 +63,7 @@ void mainMenu(){
 }
 
 void gameMenu(short noPlayer, movable, attackable){
+
 	/*
 		Afficher le menu de jeu
 		1 - Unite pouvant se deplacer -> unitMenu();
@@ -73,6 +75,7 @@ void gameMenu(short noPlayer, movable, attackable){
 }
 
 void unitMenu(int choice, short noPlayer, movable, attackable){
+
 	/*
 		Afficher la liste des unites pouvant faire quelque chose
 		Si choice-> 1 alors liste des unites pouvant se deplacer
@@ -105,11 +108,14 @@ void dispTile(unitName name){
 \part{Moteur de jeu}
 
 \chapter{engine.c}
+
 \vspace{-1cm}
 
 \begin{lstlisting}[language=c]
 
+
 bool gameInit(short * noPlayer){
+
 	gridInit(); // Retourne un code d'erreur
 	playerInit(); // Retourne un code d'erreur
 	* noPlayer = rand(1,2); // Choisis le joueur qui commence en premier
@@ -144,17 +150,20 @@ void playTurn(short noPlayer){
 }
 
 bool endGame(short noPlayer){
+
 	/* 	
 		Test les conditions de victoire ou de match nul
 	 	Affiche le vainqueur le cas echeant
 	*/
 }
 
+
 void pathFind(vector unitSelected, vector fieldAction[]){
 	// Cherche les chemins possibles pour l'unite correspondante
 }
 
 int movable(unitAction movableUnits[], short noPlayer){
+
 	/* 	
 		Retourne nombre d'unites deplacable + liste maj des unites pouvant se deplacer
 	*/
@@ -164,21 +173,27 @@ void timeTurn(){
 	// Gestion du temps
 }
 
+
 bool lookAround(vector currentUnit){
+
 	/*
 		Regarde autour de l'unite selectionnee si elle peut se deplacer sur une case si TP pas permise alors deplacement impossible
 	 */
 }
 
+
 void playMove(vector unitSelected, unitAction path[]){
+
 	/*
 		Deplace l'unite selectionnee a l'endroit desire en prenant en compte les chemins possibles
 	 */
 }
 
+
 void playAttack(vector unitSelected){
 	/*
 		Attaque avec l'aide de l'unite selectionnee une unite contenu dans la liste du joueur correspondant
+
 	 */
 }
 
@@ -187,6 +202,7 @@ void playDirection(vector unitSelected){
 }
 
 \end{lstlisting}
+
 
 
 \part{Gestion des chaînes de caractères}

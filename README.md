@@ -35,35 +35,37 @@ Une fois ce temps expiré:
 ## Sommaire
    **Tactics Arena**
 
-   1. **[Règles](#markdown-header-regles)**
-   2. **[Changelog](#markdown-header-changelog)**
-     - **[Version 0.1](#markdown-header-version-01)**
-     - **[Version 0.53](#markdown-header-version-053)**
-     - **[Version 0.85](#markdown-header-version-085)**
-   3. **[A faire](#markdown-header-a-faire)**
-   4. **[Instructions de compilation](#markdown-header-instructions-de-compilation)**
-   5. **[Utilisation](#markdown-header-utilisation)**
-   6. **[Documentation](#markdown-header-documentation)**
+   1. **[Règles](#regles)**
+   2. **[Changelog](#changelog)**
+     - **[Version 0.1](#version-01)**
+     - **[Version 0.53](#version-053)**
+     - **[Version 0.85](#version-085)**
+     - **[Version 1.00](#version-100)**
+   3. **[A faire](#a-faire)**
+   4. **[Instructions de compilation](#instructions-de-compilation)**
+   5. **[Utilisation](#utilisation)**
+   6. **[Documentation](#documentation)**
 
 ## A faire
  
  - **[x] Analyse préliminaire**
  - **[x] Analyse conceptuelle**
- - **[ ] Implémentation**
+ - **[x] Implémentation**
     - **[x] Grille**
     - **[x] Menu**
     - **[x] Unités**
     - **[x] Statistiques**
-    - **[-] Mouvements**
-    - **[-] Gestion des tours**
+    - **[x] Mouvements**
+    - **[x] Gestion des tours**
     - **[x] Gestion du temps**
-    - **[ ] Capacités spéciales**
+    - **[x] Capacités spéciales**
     - **[x] Etat unités**
  - **[ ] Test unitaires**
- - **[ ] Test d'intégration**
+ - **[x] Test d'intégration**
  - **[ ] Ajout de fonctionnalités**
     - **[ ] Intégration IA**
     - **[ ] GUI**
+
 
 ## Changelog
 
@@ -90,10 +92,54 @@ Une fois ce temps expiré:
 - Restructuration
 - Correctifs divers
 
+### Version 1.00
+- Jeu sur Terminal complet
+- Optimisation de l'architecture
+
+
 ## Instructions de compilation
 
+Pour compiler:
+
+> $ **make**
+>
+
+L'éxécutable se retrouve dans: bin/tacticsArena
+
+Afin de recompiler le programme ou de nettoyer le dossier:
+
+> $ **make clean**
+>
 
 ## Utilisation
 
+Lancer le programme avec la commande:
+
+> $ **./bin/tacticsArena**
+>
+
+Les deux joueurs débutent la partie en ajoutant chacun leurs unités dans leur camp respectifs, une fois les unités placées dans le camp. La partie débute, l'ordinateur tire un joueur aléatoirement pour commencer à jouer.
+
+Chaque joueur a 2 min de temps de jeu à chaque tour lorsque toutes les unités sont encore sur le terrain, chaque unité détruite réduira le temps de jeu cependant une limite minimum de 1 min est fixée.
+
+Chaque unité ne peut faire qu'une action par tour obligeant ainsi l'utilisateur à jouer de manière stratégique, toute attaque touchent les cibles de l'adversaire tout autant que celle du joueur alors soyez vigilant sur les attaques de zones.
+
+Des zones de couleurs indiqueront au fur et à mesure les actions possibles par chaque unité. Toute action est irréversible soyez donc prudent.
+
+L'ordre des actions a une importance un déplacement n'est pas possible si une unité a attaqué, le changement de direction termine automatiquement le tour.
+
+A tout moment au cours de la partie les joueurs pourront sauvegarder la partie, le fichier de sauvegarde se trouve dans :
+
+> **assets/save/fileSave**
 
 ## Documentation
+
+Une documentation peut être généré à l'aide de Doxygen pour recréer la documentation:
+
+> $ make doc
+>
+
+Au cours de cette opération un document PDF récapitulant toutes l'architecture du projet sera généré dans:
+
+> doc/man.pdf
+>
