@@ -1,0 +1,152 @@
+\hypertarget{pawns_8c}{}\section{Référence du fichier src/game/pawns.c}
+\label{pawns_8c}\index{src/game/pawns.\+c@{src/game/pawns.\+c}}
+
+
+Gestion des pions.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdarg.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../../include/game/engine.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/listes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/terminal.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/manage\+String.\+h\char`\"{}}\\*
+Graphe des dépendances par inclusion de pawns.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pawns_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{pawns_8c_aeea3cc5ad26ccda694a140445ad067c4}{init\+Pawn} (\hyperlink{structunit}{unit} $\ast$pawn)
+\begin{DoxyCompactList}\small\item\em Initialise un pion. \end{DoxyCompactList}\item 
+bool \hyperlink{pawns_8c_ae83822f14210ca3bff153d900ea2dc58}{check\+Pawn} (\hyperlink{structunit}{unit} $\ast$pawn)
+\begin{DoxyCompactList}\small\item\em Vérifie que le pion est correct. \end{DoxyCompactList}\item 
+void \hyperlink{pawns_8c_ab64bdacff221584d1ffbae4dd7f19ce8}{create\+Pawn} (int nb\+Params, \hyperlink{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{unit\+Name} name,...)
+\begin{DoxyCompactList}\small\item\em Crée un pion pour le jeu. \end{DoxyCompactList}\item 
+void \hyperlink{pawns_8c_af3226144d32d485e7e1362861b69ca11}{make\+Pawns} ()
+\begin{DoxyCompactList}\small\item\em Crée tout les pions utiles au jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structunit}{unit} $\ast$ \hyperlink{pawns_8c_a0ec7c043ade24d330b48f393097f140f}{pawns} = N\+U\+L\+L
+\begin{DoxyCompactList}\small\item\em Pions initialisés avec leur valeurs. \end{DoxyCompactList}\item 
+\hypertarget{pawns_8c_a202e0786b273cb3b8e8cbe51ea8e3d1a}{}int \hyperlink{pawns_8c_a202e0786b273cb3b8e8cbe51ea8e3d1a}{size\+Pawns} = 0\label{pawns_8c_a202e0786b273cb3b8e8cbe51ea8e3d1a}
+
+\begin{DoxyCompactList}\small\item\em Nombre de pions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gestion des pions. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{pawns_8c_ae83822f14210ca3bff153d900ea2dc58}{}\index{pawns.\+c@{pawns.\+c}!check\+Pawn@{check\+Pawn}}
+\index{check\+Pawn@{check\+Pawn}!pawns.\+c@{pawns.\+c}}
+\subsubsection[{check\+Pawn}]{\setlength{\rightskip}{0pt plus 5cm}bool check\+Pawn (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{pawn}
+\end{DoxyParamCaption}
+)}\label{pawns_8c_ae83822f14210ca3bff153d900ea2dc58}
+
+
+Vérifie que le pion est correct. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pawn} & Pion à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si le pion est correct 
+\end{DoxyReturn}
+
+
+Définition à la ligne 37 du fichier pawns.\+c.
+
+\hypertarget{pawns_8c_ab64bdacff221584d1ffbae4dd7f19ce8}{}\index{pawns.\+c@{pawns.\+c}!create\+Pawn@{create\+Pawn}}
+\index{create\+Pawn@{create\+Pawn}!pawns.\+c@{pawns.\+c}}
+\subsubsection[{create\+Pawn}]{\setlength{\rightskip}{0pt plus 5cm}void create\+Pawn (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\+Params, }
+\item[{{\bf unit\+Name}}]{name, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}\label{pawns_8c_ab64bdacff221584d1ffbae4dd7f19ce8}
+
+
+Crée un pion pour le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nb\+Params} & Nombre de stats pour le pion \\
+\hline
+{\em name} & Nom du pion \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 51 du fichier pawns.\+c.
+
+\hypertarget{pawns_8c_aeea3cc5ad26ccda694a140445ad067c4}{}\index{pawns.\+c@{pawns.\+c}!init\+Pawn@{init\+Pawn}}
+\index{init\+Pawn@{init\+Pawn}!pawns.\+c@{pawns.\+c}}
+\subsubsection[{init\+Pawn}]{\setlength{\rightskip}{0pt plus 5cm}void init\+Pawn (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{pawn}
+\end{DoxyParamCaption}
+)}\label{pawns_8c_aeea3cc5ad26ccda694a140445ad067c4}
+
+
+Initialise un pion. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pawn} & Pion à initialiser \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 23 du fichier pawns.\+c.
+
+\hypertarget{pawns_8c_af3226144d32d485e7e1362861b69ca11}{}\index{pawns.\+c@{pawns.\+c}!make\+Pawns@{make\+Pawns}}
+\index{make\+Pawns@{make\+Pawns}!pawns.\+c@{pawns.\+c}}
+\subsubsection[{make\+Pawns}]{\setlength{\rightskip}{0pt plus 5cm}void make\+Pawns (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{pawns_8c_af3226144d32d485e7e1362861b69ca11}
+
+
+Crée tout les pions utiles au jeu. 
+
+Crée les pions. 
+
+Définition à la ligne 109 du fichier pawns.\+c.
+
+
+
+\subsection{Documentation des variables}
+\hypertarget{pawns_8c_a0ec7c043ade24d330b48f393097f140f}{}\index{pawns.\+c@{pawns.\+c}!pawns@{pawns}}
+\index{pawns@{pawns}!pawns.\+c@{pawns.\+c}}
+\subsubsection[{pawns}]{\setlength{\rightskip}{0pt plus 5cm}{\bf unit}$\ast$ pawns = N\+U\+L\+L}\label{pawns_8c_a0ec7c043ade24d330b48f393097f140f}
+
+
+Pions initialisés avec leur valeurs. 
+
+Tableaux des pions. 
+
+Définition à la ligne 16 du fichier pawns.\+c.
+

@@ -1,3 +1,11 @@
+/**
+ @file manageString.c
+ @brief Gestions des chaînes de caractères
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <ctype.h>
 #include <stdio.h>
 #include "../../include/game/engine.h"
@@ -175,7 +183,7 @@ bool rightSide(char * coordString){
 
 /**
  * Récupère le nom de l'unité à partir de la liste énumérée
- * @param  unit Nom de l'unité provenant de la liste énumérée
+ * @param  name Nom de l'unité provenant de la liste énumérée
  * @return      Nom de l'unité sous forme de chaîne    
  */
 char* getNameUnit(unitName name){    
@@ -252,7 +260,6 @@ void clearBuffer()
  * Lit la chaîne de caractère passée en paramètre et vérifie
  * qu'elle ne soit pas trop longue
  * @param  string Chaîne de caractère à vérifier
- * @param  length Taille désirée
  * @return        Retourne 1 si chaîne correcte
  */
 int readS(char * string)

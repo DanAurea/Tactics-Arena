@@ -1,0 +1,13 @@
+<map id="src/game/engine.c" name="src/game/engine.c">
+<area shape="rect" id="node4" href="$engine_8h.html" title="En&#45;tête moteur de jeu. " alt="" coords="173,80,296,121"/>
+<area shape="rect" id="node8" href="$pawns_8h.html" title="En&#45;tête gestions des pions. " alt="" coords="320,80,443,121"/>
+<area shape="rect" id="node9" href="$pathList_8h.html" title="En&#45;tête listes des chemins. " alt="" coords="467,80,589,121"/>
+<area shape="rect" id="node10" href="$listes_8h.html" title="En&#45;tête listes de vecteurs. " alt="" coords="613,80,736,121"/>
+<area shape="rect" id="node11" href="$turn_8h.html" title="En&#45;tête gestion des tours. " alt="" coords="760,80,883,121"/>
+<area shape="rect" id="node12" href="$grid_8h.html" title="En&#45;tête gestion de la grille. " alt="" coords="907,80,1039,121"/>
+<area shape="rect" id="node13" href="$menu_8h.html" title="En&#45;tête gestion des menus. " alt="" coords="1063,80,1195,121"/>
+<area shape="rect" id="node14" href="$terminal_8h.html" title="En&#45;tête gestion du terminal. " alt="" coords="1220,80,1364,121"/>
+<area shape="rect" id="node15" href="$manageString_8h.html" title="En&#45;tête gestion des chaînes de caractères. " alt="" coords="1388,80,1532,121"/>
+<area shape="rect" id="node16" href="$manageSignal_8h.html" title="En&#45;tête gestion des signaux. " alt="" coords="1556,80,1700,121"/>
+<area shape="rect" id="node17" href="$unit_8h.html" title="En&#45;tête gestion des unités. " alt="" coords="1725,80,1843,121"/>
+</map>

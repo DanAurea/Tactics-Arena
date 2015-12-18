@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena:  Fichier source de src/display/grid.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_25685f9c6d837c57f295dee081495707.html">display</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">grid.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="grid_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../include/game/engine.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../../include/display/grid.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../../include/controller/terminal.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;../../include/controller/manageString.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="grid_8c.html#a1095651c2e5f692fd90166792ad43e7c">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="grid_8c.html#a1095651c2e5f692fd90166792ad43e7c">borderRight</a>(<span class="keywordtype">short</span> row){</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span> j;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">for</span>(j = 0; j &lt;= <a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>; j++)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">if</span>(j == 0 &amp;&amp; row != <a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>-1) <span class="comment">// Affichage que les lignes utiles</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            printf(<span class="stringliteral">&quot;  %s&quot;</span>, <a class="code" href="grid_8h.html#af66e7c3d47aab0745e29e697ea13c6f6">VL</a>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">if</span>(j &lt; <a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a> ){</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[row + 1][j].unitColor,<span class="stringliteral">&quot;Screen&quot;</span>); <span class="comment">// Prend la couleur du pion en dessous pour toute une case</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            printf(<span class="stringliteral">&quot;    &quot;</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (row != <a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>-1) <span class="comment">// Affichage sur les lignes utiles</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code" href="grid_8h.html#af66e7c3d47aab0745e29e697ea13c6f6">VL</a>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="grid_8c.html#ace8aa29526b144ad331180783a7499cc">   39</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="grid_8c.html#ace8aa29526b144ad331180783a7499cc">borderHoriz</a>(){</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> x = 0; <span class="comment">// Initialisation pour barre de séparation</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">while</span>( x &lt; <a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>){ <span class="comment">// Affiche une barre de séparation</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        printf(<span class="stringliteral">&quot;%s%s%s%s&quot;</span>, <a class="code" href="grid_8h.html#a1592226003ffbf8fa1b036eae180b6f5">HL</a>, <a class="code" href="grid_8h.html#a1592226003ffbf8fa1b036eae180b6f5">HL</a>, <a class="code" href="grid_8h.html#a1592226003ffbf8fa1b036eae180b6f5">HL</a>, <a class="code" href="grid_8h.html#a1592226003ffbf8fa1b036eae180b6f5">HL</a>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        x +=1;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="grid_8c.html#a5885768a9129c1301da1a5691ec5a830">   50</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="grid_8c.html#a5885768a9129c1301da1a5691ec5a830">dispX</a>(){</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">short</span> x = 1; x &lt;= <a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>; x++){</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">// Affiche les coordonnées horizontales chiffrées</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span>(x &lt; 10)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            printf(<span class="stringliteral">&quot;   %i&quot;</span>, x);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            printf(<span class="stringliteral">&quot;  %i&quot;</span>, x);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span>(x == <a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>){</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            printf(<span class="stringliteral">&quot;\n  &quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code" href="grid_8h.html#aaf56b99cbe34023f42ce5b7878c827d8">LT</a>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="grid_8c.html#ace8aa29526b144ad331180783a7499cc">borderHoriz</a>(); <span class="comment">// Affiche une bordure horizontale délimitant le plateau</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code" href="grid_8h.html#ad05d2f1b67cda860903cecd9f21b6b9f">RT</a>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="grid_8c.html#a1095651c2e5f692fd90166792ad43e7c">borderRight</a>(-1); <span class="comment">// Complète les bordures manquantes dû au saut de ligne + prend la couleur des pions en dessous (donc -1)</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="grid_8h.html#aad3077ff809cfe68afdb06ef3aa5497f">   78</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="grid_8c.html#aad3077ff809cfe68afdb06ef3aa5497f">gridDisp</a>(){</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">int</span> x, y;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">char</span> lettre = <span class="charliteral">&#39;A&#39;</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">char</span> * uName; <span class="comment">// Nom unité</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    printf(<span class="stringliteral">&quot;\n  &quot;</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="grid_8c.html#a5885768a9129c1301da1a5691ec5a830">dispX</a>(); <span class="comment">// Affiche les coordonnées horizontales</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">for</span>(x = 0; x &lt; <a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>; x++)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">for</span>(y = 0; y &lt; <a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>; y++)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            uName = <a class="code" href="manageString_8c.html#aef4f9d954282d13b5ea3132465378b79">get2Char</a>(<a class="code" href="manageString_8c.html#a22a30b59c6429cb81fcd18b4db5a1b7f">getNameUnit</a>(<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[x][y].name)); <span class="comment">// Copie une portion du nom de l&#39;unité dans uName (mémoire dynamique)</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">if</span>(y == 0) printf(<span class="stringliteral">&quot;  %s&quot;</span>, <a class="code" href="grid_8h.html#af66e7c3d47aab0745e29e697ea13c6f6">VL</a>); <span class="comment">// Affiche une bordure gauche</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[x][y].unitColor,<span class="stringliteral">&quot;Screen&quot;</span>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">if</span>(<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[x][y].<a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a> == <a class="code" href="engine_8h.html#a89f0201fca94cbc3ca0f5fbce851e7c9">FIRST_PLAYER</a>)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <a class="code" href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a>(red);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[x][y].<a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a> == <a class="code" href="engine_8h.html#a89f0201fca94cbc3ca0f5fbce851e7c9">FIRST_PLAYER</a> + 1)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <a class="code" href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a>(blue);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            printf(<span class="stringliteral">&quot; %s &quot;</span>, uName);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            free(uName); <span class="comment">// Libère la mémoire allouée</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="comment">// Affiche les coordonnées verticales</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">if</span>(y == N-1){</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                printf(<span class="stringliteral">&quot;%s   %c&quot;</span>, <a class="code" href="grid_8h.html#af66e7c3d47aab0745e29e697ea13c6f6">VL</a>, lettre);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                lettre++;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">if</span>(x == N-1){ <span class="comment">// Affiche la bordure basse de la grille</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            printf(<span class="stringliteral">&quot;  %s&quot;</span>, <a class="code" href="grid_8h.html#acc55daa58d88a3612f2ef74a6abbe97f">LB</a>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <a class="code" href="grid_8c.html#ace8aa29526b144ad331180783a7499cc">borderHoriz</a>();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code" href="grid_8h.html#a171160a766f85c8816b898ed24d28408">RB</a>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <a class="code" href="grid_8c.html#a1095651c2e5f692fd90166792ad43e7c">borderRight</a>(x); <span class="comment">// Complète le creux sur la bordure droite</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; N + N / 1.5; i++){</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        printf(<span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    printf(<span class="stringliteral">&quot;xx : décors\n\n   &quot;</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(yellow,<span class="stringliteral">&quot;Screen&quot;</span>);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    printf(<span class="stringliteral">&quot;   &quot;</span>);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    printf(<span class="stringliteral">&quot; Cibles  &quot;</span>);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(green,<span class="stringliteral">&quot;Screen&quot;</span>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    printf(<span class="stringliteral">&quot;   &quot;</span>);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    printf(<span class="stringliteral">&quot; Mouvements possibles  &quot;</span>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(white,<span class="stringliteral">&quot;Screen&quot;</span>);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    printf(<span class="stringliteral">&quot;   &quot;</span>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    printf(<span class="stringliteral">&quot; Sélection / Unité pouvant agir\n&quot;</span>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="ttc" id="grid_8h_html_ad05d2f1b67cda860903cecd9f21b6b9f"><div class="ttname"><a href="grid_8h.html#ad05d2f1b67cda860903cecd9f21b6b9f">RT</a></div><div class="ttdeci">#define RT</div><div class="ttdoc">187 Right Top corner </div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00010">grid.h:10</a></div></div>
+<div class="ttc" id="grid_8c_html_a1095651c2e5f692fd90166792ad43e7c"><div class="ttname"><a href="grid_8c.html#a1095651c2e5f692fd90166792ad43e7c">borderRight</a></div><div class="ttdeci">void borderRight(short row)</div><div class="ttdoc">Affiche une bordure sur le côté droit sur les lignes vides et utiles. </div><div class="ttdef"><b>Definition:</b> <a href="grid_8c_source.html#l00019">grid.c:19</a></div></div>
+<div class="ttc" id="manageString_8c_html_a22a30b59c6429cb81fcd18b4db5a1b7f"><div class="ttname"><a href="manageString_8c.html#a22a30b59c6429cb81fcd18b4db5a1b7f">getNameUnit</a></div><div class="ttdeci">char * getNameUnit(unitName name)</div><div class="ttdoc">Récupère le nom de l&#39;unité à partir de la liste énumérée. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00189">manageString.c:189</a></div></div>
+<div class="ttc" id="grid_8h_html_af66e7c3d47aab0745e29e697ea13c6f6"><div class="ttname"><a href="grid_8h.html#af66e7c3d47aab0745e29e697ea13c6f6">VL</a></div><div class="ttdeci">#define VL</div><div class="ttdoc">186 Vertical Line </div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00013">grid.h:13</a></div></div>
+<div class="ttc" id="manageString_8c_html_aef4f9d954282d13b5ea3132465378b79"><div class="ttname"><a href="manageString_8c.html#aef4f9d954282d13b5ea3132465378b79">get2Char</a></div><div class="ttdeci">char * get2Char(char name[])</div><div class="ttdoc">Récupère 2 caractères du nom de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00047">manageString.c:47</a></div></div>
+<div class="ttc" id="grid_8h_html_aaf56b99cbe34023f42ce5b7878c827d8"><div class="ttname"><a href="grid_8h.html#aaf56b99cbe34023f42ce5b7878c827d8">LT</a></div><div class="ttdeci">#define LT</div><div class="ttdoc">201 Left Top cornet </div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00011">grid.h:11</a></div></div>
+<div class="ttc" id="grid_8c_html_a5885768a9129c1301da1a5691ec5a830"><div class="ttname"><a href="grid_8c.html#a5885768a9129c1301da1a5691ec5a830">dispX</a></div><div class="ttdeci">void dispX()</div><div class="ttdoc">Affiche les coordonnées verticales. </div><div class="ttdef"><b>Definition:</b> <a href="grid_8c_source.html#l00050">grid.c:50</a></div></div>
+<div class="ttc" id="grid_8h_html_acc55daa58d88a3612f2ef74a6abbe97f"><div class="ttname"><a href="grid_8h.html#acc55daa58d88a3612f2ef74a6abbe97f">LB</a></div><div class="ttdeci">#define LB</div><div class="ttdoc">200 Left Bottom corner </div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00012">grid.h:12</a></div></div>
+<div class="ttc" id="grid_8h_html_a1592226003ffbf8fa1b036eae180b6f5"><div class="ttname"><a href="grid_8h.html#a1592226003ffbf8fa1b036eae180b6f5">HL</a></div><div class="ttdeci">#define HL</div><div class="ttdoc">205 Horizontal Line </div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00014">grid.h:14</a></div></div>
+<div class="ttc" id="terminal_8c_html_aafe20dae78dfbeea7c9102fadcfba1e0"><div class="ttname"><a href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a></div><div class="ttdeci">void reinitColor()</div><div class="ttdoc">Réinitialise la couleur de l&#39;écran. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00067">terminal.c:67</a></div></div>
+<div class="ttc" id="grid_8c_html_ace8aa29526b144ad331180783a7499cc"><div class="ttname"><a href="grid_8c.html#ace8aa29526b144ad331180783a7499cc">borderHoriz</a></div><div class="ttdeci">void borderHoriz()</div><div class="ttdoc">Affiche une bordure horizontale. </div><div class="ttdef"><b>Definition:</b> <a href="grid_8c_source.html#l00039">grid.c:39</a></div></div>
+<div class="ttc" id="engine_8c_html_afaa2c64a9fd09c382394b57006c470ce"><div class="ttname"><a href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a></div><div class="ttdeci">int noPlayer</div><div class="ttdoc">Joueur en cours. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00024">engine.c:24</a></div></div>
+<div class="ttc" id="grid_8h_html_a171160a766f85c8816b898ed24d28408"><div class="ttname"><a href="grid_8h.html#a171160a766f85c8816b898ed24d28408">RB</a></div><div class="ttdeci">#define RB</div><div class="ttdoc">188 Right Bottom corner </div><div class="ttdef"><b>Definition:</b> <a href="grid_8h_source.html#l00009">grid.h:9</a></div></div>
+<div class="ttc" id="grid_8c_html_aad3077ff809cfe68afdb06ef3aa5497f"><div class="ttname"><a href="grid_8c.html#aad3077ff809cfe68afdb06ef3aa5497f">gridDisp</a></div><div class="ttdeci">void gridDisp()</div><div class="ttdoc">Affiche la grille avec les coordonnées. </div><div class="ttdef"><b>Definition:</b> <a href="grid_8c_source.html#l00078">grid.c:78</a></div></div>
+<div class="ttc" id="terminal_8c_html_aa1b198e2a86cf333bd2b8d74e21409f1"><div class="ttname"><a href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a></div><div class="ttdeci">void color(int color, char type[])</div><div class="ttdoc">Change la couleur de l&#39;écran ou de la police. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00051">terminal.c:51</a></div></div>
+<div class="ttc" id="engine_8c_html_a5987e3369c71f1edb157786e4c75875b"><div class="ttname"><a href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a></div><div class="ttdeci">unit grid[N][N]</div><div class="ttdoc">Grille d&#39;unités. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00023">engine.c:23</a></div></div>
+<div class="ttc" id="engine_8h_html_a89f0201fca94cbc3ca0f5fbce851e7c9"><div class="ttname"><a href="engine_8h.html#a89f0201fca94cbc3ca0f5fbce851e7c9">FIRST_PLAYER</a></div><div class="ttdeci">#define FIRST_PLAYER</div><div class="ttdoc">Définis la valeur du premier joueur. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00023">engine.h:23</a></div></div>
+<div class="ttc" id="engine_8h_html_a0240ac851181b84ac374872dc5434ee4"><div class="ttname"><a href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a></div><div class="ttdeci">#define N</div><div class="ttdoc">Taille de la grille. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00014">engine.h:14</a></div></div>
+<div class="ttc" id="terminal_8c_html_a728c5deabcb9e271c6962577c60ef566"><div class="ttname"><a href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a></div><div class="ttdeci">void fontColor(int color)</div><div class="ttdoc">Change la couleur de la police. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00076">terminal.c:76</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

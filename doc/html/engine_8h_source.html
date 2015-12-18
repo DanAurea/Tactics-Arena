@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena:  Fichier source de include/game/engine.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_f307a46daed1218fee22380d1eacedba.html">game</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">engine.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="engine_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// Constantes jeu</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">   14</a></span>&#160;<span class="preprocessor">#define N 11 </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="engine_8h.html#afb66c371fb21dd91933e5f45ff4ce817">   15</a></span>&#160;<span class="preprocessor">#define NB_LISTS_ENGINE 2 </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="engine_8h.html#a063165e36f1905a19e98c412ee181878">   16</a></span>&#160;<span class="preprocessor">#define NB_PLAYERS 2 </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="engine_8h.html#ac4bf44d5b138de69050557acc46b4700">   17</a></span>&#160;<span class="preprocessor">#define NB_LINES 3 </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="engine_8h.html#a5165d4965ab32e87f1dd3181a41f0a7a">   18</a></span>&#160;<span class="preprocessor">#define NB_UNITS 21  </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="engine_8h.html#a21db47461d910a7cad180b5532f1a7f8">   19</a></span>&#160;<span class="preprocessor">#define NB_MAX_EFFECT 6 </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="engine_8h.html#a26f6ab8604048e4b80c8bc535ff4bad9">   20</a></span>&#160;<span class="preprocessor">#define MANDATORY_STATS 12 </span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">// Constantes joueurs</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="engine_8h.html#a89f0201fca94cbc3ca0f5fbce851e7c9">   23</a></span>&#160;<span class="preprocessor">#define FIRST_PLAYER 0 </span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="engine_8h.html#a2aaa949daff5a729be2acff95b7d0fed">   24</a></span>&#160;<span class="preprocessor">#define NB_MAX_KN 3 </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="engine_8h.html#add7fd7b19c17c1ac0918a95089e2c7f9">   25</a></span>&#160;<span class="preprocessor">#define NB_MAX_SC 2 </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="engine_8h.html#a3e866793438e4da9a36962a808d664d7">   26</a></span>&#160;<span class="preprocessor">#define NB_MAX_SG 2 </span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="engine_8h.html#a0838a4817c4beea8be5cab65cad54122">   27</a></span>&#160;<span class="preprocessor">#define NB_MAX_LT 1 </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="engine_8h.html#aacfee0d79acf9b6378182a8aa2ee0226">   28</a></span>&#160;<span class="preprocessor">#define NB_MAX_DR 2 </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="engine_8h.html#a4d20c3d53297ab3184e441f7a85df250">   29</a></span>&#160;<span class="preprocessor">#define NB_MAX_FU 2 </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="engine_8h.html#aef5bbc6c16b0afbb41c6f723b099e599">   30</a></span>&#160;<span class="preprocessor">#define NB_MAX_UNIT 5 </span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="engine_8h.html#a207089a6eadde7204cda31d055e4d3a1">   31</a></span>&#160;<span class="preprocessor">#define NB_MAX_DECOR 7 </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="engine_8h.html#a468af3d7606639780e81c5e1e403b356">   36</a></span>&#160;<span class="preprocessor">typedef enum{north, east, south, west}cardinal; </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">   41</a></span>&#160;<span class="preprocessor">typedef enum{empty, decors, knight, scout, assassin, cleric, pyromancer, enchantress,</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            dragonborn, darkWitch, lightningTotem, barrierTotem, mudGolem, golemAmbusher,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            frostGolem, stoneGolem, dragonTyrant, berserker, beastRider, poisonWisp, furgon}<a class="code" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a>; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">   48</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span>{none, POWER_BONUS, ARMOR_BONUS, BARRIER, POISON, PARALYSE, FOCUS}<a class="code" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a>; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structtargetStat.html">   54</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structtargetStat.html#a70d37dfedfb05d72d8c8cfcd575f812c">   55</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structtargetStat.html#a70d37dfedfb05d72d8c8cfcd575f812c">vertRange</a>; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structtargetStat.html#a2a4322825a13f8815c889056b123c09b">   56</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structtargetStat.html#a2a4322825a13f8815c889056b123c09b">horizRange</a>;  </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structtargetStat.html#add6382059773722d55c40daff5b3efdc">   57</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structtargetStat.html#add6382059773722d55c40daff5b3efdc">ringSize</a>;  </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structtargetStat.html#a178aadea19548628774763db12cdeb24">   58</a></span>&#160;    <span class="keywordtype">short</span> <a class="code" href="structtargetStat.html#a178aadea19548628774763db12cdeb24">line</a>; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}<a class="code" href="structtargetStat.html">targetStat</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structunitStat.html">   65</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structunitStat.html#aa11e3fe576364497283adf1140411079">   66</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structunitStat.html#aa11e3fe576364497283adf1140411079">HP</a>; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structunitStat.html#a1e1bf1de283cf18aec14dd026ae9dc63">   67</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structunitStat.html#a1e1bf1de283cf18aec14dd026ae9dc63">POWER</a>; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="structunitStat.html#a9677dc9f6f59b4a873591a9e3d22125e">   68</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structunitStat.html#a9677dc9f6f59b4a873591a9e3d22125e">ARMOR</a>; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">   69</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">RECOVERY</a>; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structunitStat.html#a9626453a4b1afd79a37b7c493280cbbd">   70</a></span>&#160;    <span class="keywordtype">float</span> BLOCK[3]; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structunitStat.html#a344b6bf4fa47f6bd98073a0351dfb6bd">   71</a></span>&#160;    <a class="code" href="structtargetStat.html">targetStat</a> <a class="code" href="structunitStat.html#a344b6bf4fa47f6bd98073a0351dfb6bd">target</a>; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structunitStat.html#a4fb8a90b096d073d947c861a5536c2b9">   72</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structunitStat.html#a4fb8a90b096d073d947c861a5536c2b9">MOVE_RANGE</a>; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}<a class="code" href="structunitStat.html">unitStat</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="structvector.html">   79</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">   80</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structvector.html#aad6de640298eae97ca0a094db5aff477">   81</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}<a class="code" href="structvector.html">vector</a>; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structunit.html">   88</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span>{</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="structunit.html#aad8b083b6438d26e8aade384522e867c">   89</a></span>&#160;    <a class="code" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> <a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a>; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structunit.html#a88d6da278053824260f4f4987773b34f">   90</a></span>&#160;    <a class="code" href="structunitStat.html">unitStat</a> <a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structunit.html#ab65f3e50337d201c634aa46587ea32ff">   91</a></span>&#160;    <a class="code" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a> effect[<a class="code" href="engine_8h.html#a21db47461d910a7cad180b5532f1a7f8">NB_MAX_EFFECT</a>]; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structunit.html#a249f61ef45de3f8ca00b181374f2f051">   92</a></span>&#160;    <a class="code" href="engine_8h.html#a468af3d7606639780e81c5e1e403b356">cardinal</a> <a class="code" href="structunit.html#a249f61ef45de3f8ca00b181374f2f051">direct</a>; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">   93</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">noPlayer</a>; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">   94</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unitColor</a>; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}<a class="code" href="structunit.html">unit</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">extern</span> <a class="code" href="structunit.html">unit</a> <a class="code" href="engine_8h.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[<a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="code" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>]; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="engine_8h.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="engine_8h.html#a3ee2a4066924757ade5530e7041a2ad1">isSurrounded</a>(<a class="code" href="structvector.html">vector</a> currentUnit); </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#a43ae9a7f0ac55585ed6375c580abcaf0">gameInit</a>(); </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="engine_8h.html#acd459b9ed1aaf8c05cdd3887e86b8668">selectUnit</a>(<a class="code" href="structvector.html">vector</a> * coordUnit); </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#a7de2811c781a1136844609cc95e26464">setTarget</a>(<a class="code" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name,<a class="code" href="structvector.html">vector</a> coordUnit, <span class="keywordtype">int</span> colorDisp); </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#a42359e6294ac21935ecc2d77140da492">launchAttack</a>(<a class="code" href="structvector.html">vector</a> coordSource, <a class="code" href="structvector.html">vector</a> coordTarget); </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#a8aca0579aac39cc7e3c41342d89fe1b7">movable</a>(<span class="keywordtype">int</span> colorDisp); </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#ae40e16d551936cea056a982196273bde">attackable</a>(<span class="keywordtype">int</span> colorDisp); </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#a309311c2d6a59c5998007d0e5f215d4d">tileWalkable</a>(<a class="code" href="structvector.html">vector</a> coordUnit, <span class="keywordtype">int</span> colorDisp); </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="engine_8h.html#a548c013433afab60c17fd9950fb7248f">possiblePath</a>(<a class="code" href="structvector.html">vector</a> coordUnit); </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="engine_8h.html#ad0311428b7054a1ab271d3a433316704">pathFind</a>(<a class="code" href="structvector.html">vector</a>, <a class="code" href="structvector.html">vector</a>); </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#ab1f321a2f17fa8ba0f5ab4e2621fd6d6">startGame</a>(); </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span> <a class="code" href="engine_8h.html#ac98554d7cf4b7b0000029fac97218be4">lineOfSight</a>(<a class="code" href="structvector.html">vector</a>, <a class="code" href="structvector.html">vector</a>);</div>
+<div class="ttc" id="engine_8h_html_ab1f321a2f17fa8ba0f5ab4e2621fd6d6"><div class="ttname"><a href="engine_8h.html#ab1f321a2f17fa8ba0f5ab4e2621fd6d6">startGame</a></div><div class="ttdeci">void startGame()</div><div class="ttdoc">Débute la partie. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00706">engine.c:706</a></div></div>
+<div class="ttc" id="structunit_html"><div class="ttname"><a href="structunit.html">unit</a></div><div class="ttdoc">Représente une unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00088">engine.h:88</a></div></div>
+<div class="ttc" id="structvector_html"><div class="ttname"><a href="structvector.html">vector</a></div><div class="ttdoc">Représente les coordonnées d&#39;un vecteur. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00079">engine.h:79</a></div></div>
+<div class="ttc" id="structunitStat_html"><div class="ttname"><a href="structunitStat.html">unitStat</a></div><div class="ttdoc">Représente les statistiques d&#39;une unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00065">engine.h:65</a></div></div>
+<div class="ttc" id="engine_8h_html_a7de2811c781a1136844609cc95e26464"><div class="ttname"><a href="engine_8h.html#a7de2811c781a1136844609cc95e26464">setTarget</a></div><div class="ttdeci">void setTarget(unitName name, vector coordUnit, int colorDisp)</div><div class="ttdoc">Définis les cibles. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00252">engine.c:252</a></div></div>
+<div class="ttc" id="structunitStat_html_a9677dc9f6f59b4a873591a9e3d22125e"><div class="ttname"><a href="structunitStat.html#a9677dc9f6f59b4a873591a9e3d22125e">unitStat::ARMOR</a></div><div class="ttdeci">float ARMOR</div><div class="ttdoc">Armure. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00068">engine.h:68</a></div></div>
+<div class="ttc" id="engine_8h_html_a548c013433afab60c17fd9950fb7248f"><div class="ttname"><a href="engine_8h.html#a548c013433afab60c17fd9950fb7248f">possiblePath</a></div><div class="ttdeci">bool possiblePath(vector coordUnit)</div><div class="ttdoc">Vérifie qu&#39;un chemin est possible. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00031">engine.c:31</a></div></div>
+<div class="ttc" id="engine_8h_html_a43ae9a7f0ac55585ed6375c580abcaf0"><div class="ttname"><a href="engine_8h.html#a43ae9a7f0ac55585ed6375c580abcaf0">gameInit</a></div><div class="ttdeci">void gameInit()</div><div class="ttdoc">Initialise le jeu. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00750">engine.c:750</a></div></div>
+<div class="ttc" id="structunitStat_html_a344b6bf4fa47f6bd98073a0351dfb6bd"><div class="ttname"><a href="structunitStat.html#a344b6bf4fa47f6bd98073a0351dfb6bd">unitStat::target</a></div><div class="ttdeci">targetStat target</div><div class="ttdoc">Ciblage. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00071">engine.h:71</a></div></div>
+<div class="ttc" id="structtargetStat_html"><div class="ttname"><a href="structtargetStat.html">targetStat</a></div><div class="ttdoc">Représente les informations liées aux cibles. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00054">engine.h:54</a></div></div>
+<div class="ttc" id="structunitStat_html_aa11e3fe576364497283adf1140411079"><div class="ttname"><a href="structunitStat.html#aa11e3fe576364497283adf1140411079">unitStat::HP</a></div><div class="ttdeci">int HP</div><div class="ttdoc">Points de vie. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00066">engine.h:66</a></div></div>
+<div class="ttc" id="structtargetStat_html_add6382059773722d55c40daff5b3efdc"><div class="ttname"><a href="structtargetStat.html#add6382059773722d55c40daff5b3efdc">targetStat::ringSize</a></div><div class="ttdeci">short ringSize</div><div class="ttdoc">Taille de l&#39;anneau. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00057">engine.h:57</a></div></div>
+<div class="ttc" id="engine_8h_html_ac5ece9b6993cd3565502866b56317e84"><div class="ttname"><a href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a></div><div class="ttdeci">unitEffect</div><div class="ttdoc">engine.h </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00048">engine.h:48</a></div></div>
+<div class="ttc" id="structunit_html_a88d6da278053824260f4f4987773b34f"><div class="ttname"><a href="structunit.html#a88d6da278053824260f4f4987773b34f">unit::stat</a></div><div class="ttdeci">unitStat stat</div><div class="ttdoc">Statistiques de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00090">engine.h:90</a></div></div>
+<div class="ttc" id="structunitStat_html_a9f29568c1079efe25de0dc1b4246af94"><div class="ttname"><a href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">unitStat::RECOVERY</a></div><div class="ttdeci">int RECOVERY</div><div class="ttdoc">Repos. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00069">engine.h:69</a></div></div>
+<div class="ttc" id="engine_8h_html_a5987e3369c71f1edb157786e4c75875b"><div class="ttname"><a href="engine_8h.html#a5987e3369c71f1edb157786e4c75875b">grid</a></div><div class="ttdeci">unit grid[N][N]</div><div class="ttdoc">Représentation d&#39;une grille d&#39;unité globale. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00023">engine.c:23</a></div></div>
+<div class="ttc" id="engine_8h_html_a309311c2d6a59c5998007d0e5f215d4d"><div class="ttname"><a href="engine_8h.html#a309311c2d6a59c5998007d0e5f215d4d">tileWalkable</a></div><div class="ttdeci">void tileWalkable(vector coordUnit, int colorDisp)</div><div class="ttdoc">Fait la liste des cases atteignables par l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00188">engine.c:188</a></div></div>
+<div class="ttc" id="structunit_html_a249f61ef45de3f8ca00b181374f2f051"><div class="ttname"><a href="structunit.html#a249f61ef45de3f8ca00b181374f2f051">unit::direct</a></div><div class="ttdeci">cardinal direct</div><div class="ttdoc">Direction de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00092">engine.h:92</a></div></div>
+<div class="ttc" id="engine_8h_html_a468af3d7606639780e81c5e1e403b356"><div class="ttname"><a href="engine_8h.html#a468af3d7606639780e81c5e1e403b356">cardinal</a></div><div class="ttdeci">cardinal</div><div class="ttdoc">engine.h </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00036">engine.h:36</a></div></div>
+<div class="ttc" id="structunit_html_a885e1b4b75d53199f4b03bdbd442cd37"><div class="ttname"><a href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">unit::noPlayer</a></div><div class="ttdeci">int noPlayer</div><div class="ttdoc">Propriétaire de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00093">engine.h:93</a></div></div>
+<div class="ttc" id="structunit_html_aad8b083b6438d26e8aade384522e867c"><div class="ttname"><a href="structunit.html#aad8b083b6438d26e8aade384522e867c">unit::name</a></div><div class="ttdeci">unitName name</div><div class="ttdoc">Nom de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00089">engine.h:89</a></div></div>
+<div class="ttc" id="structunit_html_abc126ccf502f7c7e7ec72e38b75c3e0e"><div class="ttname"><a href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unit::unitColor</a></div><div class="ttdeci">int unitColor</div><div class="ttdoc">Couleur de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00094">engine.h:94</a></div></div>
+<div class="ttc" id="structvector_html_aad6de640298eae97ca0a094db5aff477"><div class="ttname"><a href="structvector.html#aad6de640298eae97ca0a094db5aff477">vector::y</a></div><div class="ttdeci">int y</div><div class="ttdoc">Position y. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00081">engine.h:81</a></div></div>
+<div class="ttc" id="structvector_html_a0403eb3aea23a3009e276fba1d317046"><div class="ttname"><a href="structvector.html#a0403eb3aea23a3009e276fba1d317046">vector::x</a></div><div class="ttdeci">int x</div><div class="ttdoc">Position x. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00080">engine.h:80</a></div></div>
+<div class="ttc" id="engine_8h_html_ac98554d7cf4b7b0000029fac97218be4"><div class="ttname"><a href="engine_8h.html#ac98554d7cf4b7b0000029fac97218be4">lineOfSight</a></div><div class="ttdeci">void lineOfSight(vector, vector)</div><div class="ttdoc">Ligne de vue de l&#39;archer. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00117">engine.c:117</a></div></div>
+<div class="ttc" id="structtargetStat_html_a2a4322825a13f8815c889056b123c09b"><div class="ttname"><a href="structtargetStat.html#a2a4322825a13f8815c889056b123c09b">targetStat::horizRange</a></div><div class="ttdeci">short horizRange</div><div class="ttdoc">Portée horizontale. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00056">engine.h:56</a></div></div>
+<div class="ttc" id="structtargetStat_html_a70d37dfedfb05d72d8c8cfcd575f812c"><div class="ttname"><a href="structtargetStat.html#a70d37dfedfb05d72d8c8cfcd575f812c">targetStat::vertRange</a></div><div class="ttdeci">short vertRange</div><div class="ttdoc">Portée verticale. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00055">engine.h:55</a></div></div>
+<div class="ttc" id="structunitStat_html_a1e1bf1de283cf18aec14dd026ae9dc63"><div class="ttname"><a href="structunitStat.html#a1e1bf1de283cf18aec14dd026ae9dc63">unitStat::POWER</a></div><div class="ttdeci">int POWER</div><div class="ttdoc">Puissance. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00067">engine.h:67</a></div></div>
+<div class="ttc" id="engine_8h_html_a42359e6294ac21935ecc2d77140da492"><div class="ttname"><a href="engine_8h.html#a42359e6294ac21935ecc2d77140da492">launchAttack</a></div><div class="ttdeci">void launchAttack(vector coordSource, vector coordTarget)</div><div class="ttdoc">Lance une attaque. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00336">engine.c:336</a></div></div>
+<div class="ttc" id="engine_8h_html_acd459b9ed1aaf8c05cdd3887e86b8668"><div class="ttname"><a href="engine_8h.html#acd459b9ed1aaf8c05cdd3887e86b8668">selectUnit</a></div><div class="ttdeci">bool selectUnit(vector *coordUnit)</div><div class="ttdoc">Sélectionne une unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00416">engine.c:416</a></div></div>
+<div class="ttc" id="engine_8h_html_ae40e16d551936cea056a982196273bde"><div class="ttname"><a href="engine_8h.html#ae40e16d551936cea056a982196273bde">attackable</a></div><div class="ttdeci">void attackable(int colorDisp)</div><div class="ttdoc">Fait la liste des unités pouvant attaquer. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00164">engine.c:164</a></div></div>
+<div class="ttc" id="structunitStat_html_a4fb8a90b096d073d947c861a5536c2b9"><div class="ttname"><a href="structunitStat.html#a4fb8a90b096d073d947c861a5536c2b9">unitStat::MOVE_RANGE</a></div><div class="ttdeci">int MOVE_RANGE</div><div class="ttdoc">Portée mouvement. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00072">engine.h:72</a></div></div>
+<div class="ttc" id="engine_8h_html_a0240ac851181b84ac374872dc5434ee4"><div class="ttname"><a href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a></div><div class="ttdeci">#define N</div><div class="ttdoc">Taille de la grille. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00014">engine.h:14</a></div></div>
+<div class="ttc" id="engine_8h_html_a8aca0579aac39cc7e3c41342d89fe1b7"><div class="ttname"><a href="engine_8h.html#a8aca0579aac39cc7e3c41342d89fe1b7">movable</a></div><div class="ttdeci">void movable(int colorDisp)</div><div class="ttdoc">Fait la liste des unités déplaçables. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00141">engine.c:141</a></div></div>
+<div class="ttc" id="engine_8h_html_a3ee2a4066924757ade5530e7041a2ad1"><div class="ttname"><a href="engine_8h.html#a3ee2a4066924757ade5530e7041a2ad1">isSurrounded</a></div><div class="ttdeci">bool isSurrounded(vector currentUnit)</div><div class="ttdoc">Vérifie si une unité est entourée. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00215">engine.c:215</a></div></div>
+<div class="ttc" id="engine_8h_html_a21db47461d910a7cad180b5532f1a7f8"><div class="ttname"><a href="engine_8h.html#a21db47461d910a7cad180b5532f1a7f8">NB_MAX_EFFECT</a></div><div class="ttdeci">#define NB_MAX_EFFECT</div><div class="ttdoc">Nombre total de status différent. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00019">engine.h:19</a></div></div>
+<div class="ttc" id="engine_8h_html_af7667555c2dcfbdd55ec3e9dd6a907ba"><div class="ttname"><a href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a></div><div class="ttdeci">unitName</div><div class="ttdoc">engine.h </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00041">engine.h:41</a></div></div>
+<div class="ttc" id="engine_8h_html_ad0311428b7054a1ab271d3a433316704"><div class="ttname"><a href="engine_8h.html#ad0311428b7054a1ab271d3a433316704">pathFind</a></div><div class="ttdeci">bool pathFind(vector, vector)</div><div class="ttdoc">Trouve une chemin vers la destination. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00060">engine.c:60</a></div></div>
+<div class="ttc" id="engine_8h_html_afaa2c64a9fd09c382394b57006c470ce"><div class="ttname"><a href="engine_8h.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a></div><div class="ttdeci">int noPlayer</div><div class="ttdoc">Représentation du joueur. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00024">engine.c:24</a></div></div>
+<div class="ttc" id="structtargetStat_html_a178aadea19548628774763db12cdeb24"><div class="ttname"><a href="structtargetStat.html#a178aadea19548628774763db12cdeb24">targetStat::line</a></div><div class="ttdeci">short line</div><div class="ttdoc">Ciblage en ligne. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00058">engine.h:58</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

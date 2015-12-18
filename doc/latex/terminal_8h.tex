@@ -1,0 +1,127 @@
+\hypertarget{terminal_8h}{}\section{Référence du fichier include/controller/terminal.h}
+\label{terminal_8h}\index{include/controller/terminal.\+h@{include/controller/terminal.\+h}}
+
+
+En-\/tête gestion du terminal.  
+
+
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{terminal_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{terminal_8h_ac8946d2a0583792b5f43ba0f6616ff84}{}enum \hyperlink{terminal_8h_ac8946d2a0583792b5f43ba0f6616ff84}{terminal} \{ \\*
+{\bfseries black}, 
+{\bfseries red}, 
+{\bfseries green}, 
+{\bfseries yellow}, 
+\\*
+{\bfseries blue}, 
+{\bfseries magenta}, 
+{\bfseries cyan}, 
+{\bfseries white}
+ \}\label{terminal_8h_ac8946d2a0583792b5f43ba0f6616ff84}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{terminal_8h}{terminal.\+h} \end{DoxyCompactList}\item 
+\hypertarget{terminal_8h_a72bba37476e63c27f023823f17619987}{}enum \hyperlink{terminal_8h_a72bba37476e63c27f023823f17619987}{screen} \{ {\bfseries reinit} = 0, 
+{\bfseries blink} = 5, 
+{\bfseries invert\+Color} = 7
+ \}\label{terminal_8h_a72bba37476e63c27f023823f17619987}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{terminal_8h}{terminal.\+h} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{terminal_8h_aa1b198e2a86cf333bd2b8d74e21409f1}{color} (int color, char type\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Met en couleurs le texte ou l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \hyperlink{terminal_8h_a728c5deabcb9e271c6962577c60ef566}{font\+Color} (int \hyperlink{terminal_8h_aa1b198e2a86cf333bd2b8d74e21409f1}{color})
+\begin{DoxyCompactList}\small\item\em Met en couleurs la police. \end{DoxyCompactList}\item 
+\hypertarget{terminal_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}{}void \hyperlink{terminal_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}{clear\+Screen} ()\label{terminal_8h_a9d7e8af417b6d543da691e9c0e2f6f9f}
+
+\begin{DoxyCompactList}\small\item\em Efface l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \hyperlink{terminal_8h_aafe20dae78dfbeea7c9102fadcfba1e0}{reinit\+Color} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise les couleurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+En-\/tête gestion du terminal. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{terminal_8h_aa1b198e2a86cf333bd2b8d74e21409f1}{}\index{terminal.\+h@{terminal.\+h}!color@{color}}
+\index{color@{color}!terminal.\+h@{terminal.\+h}}
+\subsubsection[{color}]{\setlength{\rightskip}{0pt plus 5cm}void color (
+\begin{DoxyParamCaption}
+\item[{int}]{color, }
+\item[{char}]{type\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{terminal_8h_aa1b198e2a86cf333bd2b8d74e21409f1}
+
+
+Met en couleurs le texte ou l\textquotesingle{}écran. 
+
+Met en couleurs le texte ou l\textquotesingle{}écran.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em color} & Couleur à utiliser \\
+\hline
+{\em type} & Texte à changer de couleur ou arrière plan \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 51 du fichier terminal.\+c.
+
+\hypertarget{terminal_8h_a728c5deabcb9e271c6962577c60ef566}{}\index{terminal.\+h@{terminal.\+h}!font\+Color@{font\+Color}}
+\index{font\+Color@{font\+Color}!terminal.\+h@{terminal.\+h}}
+\subsubsection[{font\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void font\+Color (
+\begin{DoxyParamCaption}
+\item[{int}]{color}
+\end{DoxyParamCaption}
+)}\label{terminal_8h_a728c5deabcb9e271c6962577c60ef566}
+
+
+Met en couleurs la police. 
+
+Met en couleurs la police.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em color} & Couleur à utiliser \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 76 du fichier terminal.\+c.
+
+\hypertarget{terminal_8h_aafe20dae78dfbeea7c9102fadcfba1e0}{}\index{terminal.\+h@{terminal.\+h}!reinit\+Color@{reinit\+Color}}
+\index{reinit\+Color@{reinit\+Color}!terminal.\+h@{terminal.\+h}}
+\subsubsection[{reinit\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void reinit\+Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{terminal_8h_aafe20dae78dfbeea7c9102fadcfba1e0}
+
+
+Réinitialise les couleurs. 
+
+Réinitialise les couleurs. 
+
+Définition à la ligne 67 du fichier terminal.\+c.
+

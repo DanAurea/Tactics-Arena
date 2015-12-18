@@ -1,0 +1,205 @@
+\hypertarget{saveNLoad_8c}{}\section{Référence du fichier src/controller/save\+N\+Load.c}
+\label{saveNLoad_8c}\index{src/controller/save\+N\+Load.\+c@{src/controller/save\+N\+Load.\+c}}
+
+
+Gestion de la sauvegarde et du chargement.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../../include/game/engine.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/pawns.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/listes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/path\+List.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/turn.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/display/grid.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/terminal.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/manage\+String.\+h\char`\"{}}\\*
+Graphe des dépendances par inclusion de save\+N\+Load.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{saveNLoad_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{saveNLoad_8c_a6a1368e194a9e07bdd18d953515bb3f2}{get\+Char\+Key} (char $\ast$dynamic\+Key, int $\ast$pos)
+\begin{DoxyCompactList}\small\item\em Récupère un caractère de la clé \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{saveNLoad_8c_a7ec2efd1e49dcbbda52c7b31438f61ec}{get\+Key} (\hyperlink{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{unit\+Name} name)
+\begin{DoxyCompactList}\small\item\em Récupère une clé de décryptage. \end{DoxyCompactList}\item 
+void \hyperlink{saveNLoad_8c_a1c3b7026831b763b387a0de575af10b4}{crypt} (\hyperlink{structunit}{unit} $\ast$unit\+Saved)
+\begin{DoxyCompactList}\small\item\em Crypte les statistiques de l\textquotesingle{}unité pour la sauvegarde. \end{DoxyCompactList}\item 
+void \hyperlink{saveNLoad_8c_a5d5052b4a62dde604172e0d8709026a2}{decrypt} (\hyperlink{structunit}{unit} $\ast$unit\+Loaded)
+\begin{DoxyCompactList}\small\item\em Décrypte les statistiques de l\textquotesingle{}unité pour le chargement. \end{DoxyCompactList}\item 
+bool \hyperlink{saveNLoad_8c_aca91b85990102e4dd58d8728b11cc035}{check\+Decrypt} (\hyperlink{structunit}{unit} $\ast$unit\+Loaded)
+\begin{DoxyCompactList}\small\item\em Vérifie que le décryptage s\textquotesingle{}est bien passé \end{DoxyCompactList}\item 
+void \hyperlink{saveNLoad_8c_aae2c382151ef7c9aa913361172b30db6}{save} ()
+\begin{DoxyCompactList}\small\item\em Sauvegarde la partie avec l\textquotesingle{}état actuel de la grille et les données liées au joueur en cours. \end{DoxyCompactList}\item 
+void \hyperlink{saveNLoad_8c_a78f61ac2dd03bcba8e09ca20cd7d68e3}{load} ()
+\begin{DoxyCompactList}\small\item\em Charge la partie précédemment enregistré \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{saveNLoad_8c_a11a7310ee9d77476871dbe977e71a7f4}{}char \hyperlink{saveNLoad_8c_a11a7310ee9d77476871dbe977e71a7f4}{key} \mbox{[}$\,$\mbox{]} = \char`\"{}S\+P\+I\+B\+C\+T\+B\+E\+C\char`\"{}\label{saveNLoad_8c_a11a7310ee9d77476871dbe977e71a7f4}
+
+\begin{DoxyCompactList}\small\item\em Clé statique à utiliser pour le cryptage. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gestion de la sauvegarde et du chargement. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{saveNLoad_8c_aca91b85990102e4dd58d8728b11cc035}{}\index{save\+N\+Load.\+c@{save\+N\+Load.\+c}!check\+Decrypt@{check\+Decrypt}}
+\index{check\+Decrypt@{check\+Decrypt}!save\+N\+Load.\+c@{save\+N\+Load.\+c}}
+\subsubsection[{check\+Decrypt}]{\setlength{\rightskip}{0pt plus 5cm}bool check\+Decrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{unit\+Loaded}
+\end{DoxyParamCaption}
+)}\label{saveNLoad_8c_aca91b85990102e4dd58d8728b11cc035}
+
+
+Vérifie que le décryptage s\textquotesingle{}est bien passé 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em unit\+Loaded} & Unité chargée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si données correctes sinon faux 
+\end{DoxyReturn}
+
+
+Définition à la ligne 133 du fichier save\+N\+Load.\+c.
+
+\hypertarget{saveNLoad_8c_a1c3b7026831b763b387a0de575af10b4}{}\index{save\+N\+Load.\+c@{save\+N\+Load.\+c}!crypt@{crypt}}
+\index{crypt@{crypt}!save\+N\+Load.\+c@{save\+N\+Load.\+c}}
+\subsubsection[{crypt}]{\setlength{\rightskip}{0pt plus 5cm}void crypt (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{unit\+Saved}
+\end{DoxyParamCaption}
+)}\label{saveNLoad_8c_a1c3b7026831b763b387a0de575af10b4}
+
+
+Crypte les statistiques de l\textquotesingle{}unité pour la sauvegarde. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em unit\+Saved} & Unité sauvegardée \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 70 du fichier save\+N\+Load.\+c.
+
+\hypertarget{saveNLoad_8c_a5d5052b4a62dde604172e0d8709026a2}{}\index{save\+N\+Load.\+c@{save\+N\+Load.\+c}!decrypt@{decrypt}}
+\index{decrypt@{decrypt}!save\+N\+Load.\+c@{save\+N\+Load.\+c}}
+\subsubsection[{decrypt}]{\setlength{\rightskip}{0pt plus 5cm}void decrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{unit\+Loaded}
+\end{DoxyParamCaption}
+)}\label{saveNLoad_8c_a5d5052b4a62dde604172e0d8709026a2}
+
+
+Décrypte les statistiques de l\textquotesingle{}unité pour le chargement. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em unit\+Loaded} & Unité chargée \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 101 du fichier save\+N\+Load.\+c.
+
+\hypertarget{saveNLoad_8c_a6a1368e194a9e07bdd18d953515bb3f2}{}\index{save\+N\+Load.\+c@{save\+N\+Load.\+c}!get\+Char\+Key@{get\+Char\+Key}}
+\index{get\+Char\+Key@{get\+Char\+Key}!save\+N\+Load.\+c@{save\+N\+Load.\+c}}
+\subsubsection[{get\+Char\+Key}]{\setlength{\rightskip}{0pt plus 5cm}char get\+Char\+Key (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{dynamic\+Key, }
+\item[{int $\ast$}]{pos}
+\end{DoxyParamCaption}
+)}\label{saveNLoad_8c_a6a1368e194a9e07bdd18d953515bb3f2}
+
+
+Récupère un caractère de la clé 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em dynamic\+Key} & Clé dynamique \\
+\hline
+{\em pos} & Position dans la clé \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne un caractère de la clé 
+\end{DoxyReturn}
+
+
+Définition à la ligne 27 du fichier save\+N\+Load.\+c.
+
+\hypertarget{saveNLoad_8c_a7ec2efd1e49dcbbda52c7b31438f61ec}{}\index{save\+N\+Load.\+c@{save\+N\+Load.\+c}!get\+Key@{get\+Key}}
+\index{get\+Key@{get\+Key}!save\+N\+Load.\+c@{save\+N\+Load.\+c}}
+\subsubsection[{get\+Key}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+Key (
+\begin{DoxyParamCaption}
+\item[{{\bf unit\+Name}}]{name}
+\end{DoxyParamCaption}
+)}\label{saveNLoad_8c_a7ec2efd1e49dcbbda52c7b31438f61ec}
+
+
+Récupère une clé de décryptage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em name} & Nom de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne une clé 
+\end{DoxyReturn}
+
+
+Définition à la ligne 39 du fichier save\+N\+Load.\+c.
+
+\hypertarget{saveNLoad_8c_a78f61ac2dd03bcba8e09ca20cd7d68e3}{}\index{save\+N\+Load.\+c@{save\+N\+Load.\+c}!load@{load}}
+\index{load@{load}!save\+N\+Load.\+c@{save\+N\+Load.\+c}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}void load (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{saveNLoad_8c_a78f61ac2dd03bcba8e09ca20cd7d68e3}
+
+
+Charge la partie précédemment enregistré 
+
+Charge une partie. 
+
+Définition à la ligne 201 du fichier save\+N\+Load.\+c.
+
+\hypertarget{saveNLoad_8c_aae2c382151ef7c9aa913361172b30db6}{}\index{save\+N\+Load.\+c@{save\+N\+Load.\+c}!save@{save}}
+\index{save@{save}!save\+N\+Load.\+c@{save\+N\+Load.\+c}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}void save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{saveNLoad_8c_aae2c382151ef7c9aa913361172b30db6}
+
+
+Sauvegarde la partie avec l\textquotesingle{}état actuel de la grille et les données liées au joueur en cours. 
+
+Sauvegarde la partie. 
+
+Définition à la ligne 158 du fichier save\+N\+Load.\+c.
+

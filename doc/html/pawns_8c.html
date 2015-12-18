@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena: Référence du fichier src/game/pawns.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier pawns.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion des pions.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdarg.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="engine_8h_source.html">../../include/game/engine.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="listes_8h_source.html">../../include/game/listes.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="terminal_8h_source.html">../../include/controller/terminal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="manageString_8h_source.html">../../include/controller/manageString.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de pawns.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="pawns_8c__incl.png" border="0" usemap="#src_2game_2pawns_8c" alt=""/></div>
+<map name="src_2game_2pawns_8c" id="src_2game_2pawns_8c">
+<area shape="rect" id="node4" href="engine_8h.html" title="En&#45;tête moteur de jeu. " alt="" coords="184,80,307,121"/><area shape="rect" id="node8" href="listes_8h.html" title="En&#45;tête listes de vecteurs. " alt="" coords="331,80,453,121"/><area shape="rect" id="node9" href="terminal_8h.html" title="En&#45;tête gestion du terminal. " alt="" coords="477,80,621,121"/><area shape="rect" id="node10" href="manageString_8h.html" title="En&#45;tête gestion des chaînes de caractères. " alt="" coords="645,80,789,121"/></map>
+</div>
+</div>
+<p><a href="pawns_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aeea3cc5ad26ccda694a140445ad067c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pawns_8c.html#aeea3cc5ad26ccda694a140445ad067c4">initPawn</a> (<a class="el" href="structunit.html">unit</a> *pawn)</td></tr>
+<tr class="memdesc:aeea3cc5ad26ccda694a140445ad067c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise un pion.  <a href="#aeea3cc5ad26ccda694a140445ad067c4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aeea3cc5ad26ccda694a140445ad067c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae83822f14210ca3bff153d900ea2dc58"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pawns_8c.html#ae83822f14210ca3bff153d900ea2dc58">checkPawn</a> (<a class="el" href="structunit.html">unit</a> *pawn)</td></tr>
+<tr class="memdesc:ae83822f14210ca3bff153d900ea2dc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie que le pion est correct.  <a href="#ae83822f14210ca3bff153d900ea2dc58">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae83822f14210ca3bff153d900ea2dc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab64bdacff221584d1ffbae4dd7f19ce8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a> (int nbParams, <a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name,...)</td></tr>
+<tr class="memdesc:ab64bdacff221584d1ffbae4dd7f19ce8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un pion pour le jeu.  <a href="#ab64bdacff221584d1ffbae4dd7f19ce8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab64bdacff221584d1ffbae4dd7f19ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3226144d32d485e7e1362861b69ca11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pawns_8c.html#af3226144d32d485e7e1362861b69ca11">makePawns</a> ()</td></tr>
+<tr class="memdesc:af3226144d32d485e7e1362861b69ca11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée tout les pions utiles au jeu.  <a href="#af3226144d32d485e7e1362861b69ca11">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af3226144d32d485e7e1362861b69ca11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a0ec7c043ade24d330b48f393097f140f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structunit.html">unit</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pawns_8c.html#a0ec7c043ade24d330b48f393097f140f">pawns</a> = NULL</td></tr>
+<tr class="memdesc:a0ec7c043ade24d330b48f393097f140f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pions initialisés avec leur valeurs.  <a href="#a0ec7c043ade24d330b48f393097f140f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0ec7c043ade24d330b48f393097f140f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a202e0786b273cb3b8e8cbe51ea8e3d1a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a202e0786b273cb3b8e8cbe51ea8e3d1a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> = 0</td></tr>
+<tr class="memdesc:a202e0786b273cb3b8e8cbe51ea8e3d1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de pions. <br /></td></tr>
+<tr class="separator:a202e0786b273cb3b8e8cbe51ea8e3d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des pions. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Cousin Brandon Chaudemanche Ewen Biardeau Tristan </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>v1.00 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18/12/2015 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="pawns_8c_source.html">pawns.c</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ae83822f14210ca3bff153d900ea2dc58"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool checkPawn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>pawn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie que le pion est correct. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pawn</td><td>Pion à vérifier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si le pion est correct </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="pawns_8c_source.html#l00037">37</a> du fichier <a class="el" href="pawns_8c_source.html">pawns.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab64bdacff221584d1ffbae4dd7f19ce8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void createPawn </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbParams</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a>&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée un pion pour le jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nbParams</td><td>Nombre de stats pour le pion </td></tr>
+    <tr><td class="paramname">name</td><td>Nom du pion </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pawns_8c_source.html#l00051">51</a> du fichier <a class="el" href="pawns_8c_source.html">pawns.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeea3cc5ad26ccda694a140445ad067c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initPawn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>pawn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise un pion. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pawn</td><td>Pion à initialiser </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pawns_8c_source.html#l00023">23</a> du fichier <a class="el" href="pawns_8c_source.html">pawns.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af3226144d32d485e7e1362861b69ca11"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void makePawns </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée tout les pions utiles au jeu. </p>
+<p>Crée les pions. </p>
+
+<p>Définition à la ligne <a class="el" href="pawns_8c_source.html#l00109">109</a> du fichier <a class="el" href="pawns_8c_source.html">pawns.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="a0ec7c043ade24d330b48f393097f140f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structunit.html">unit</a>* pawns = NULL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pions initialisés avec leur valeurs. </p>
+<p>Tableaux des pions. </p>
+
+<p>Définition à la ligne <a class="el" href="pawns_8c_source.html#l00016">16</a> du fichier <a class="el" href="pawns_8c_source.html">pawns.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

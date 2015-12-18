@@ -1,0 +1,811 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena: Référence du fichier include/units/unit.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_242d6f0b5870701bacf0ac79ba386276.html">units</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier unit.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>En-tête gestion des unités.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="unit_8h__dep__incl.png" border="0" usemap="#include_2units_2unit_8hdep" alt=""/></div>
+<map name="include_2units_2unit_8hdep" id="include_2units_2unit_8hdep">
+<area shape="rect" id="node2" href="engine_8c.html" title="Moteur de jeu. " alt="" coords="5,80,135,107"/><area shape="rect" id="node3" href="turn_8c.html" title="Gestion des tours. " alt="" coords="159,80,272,107"/><area shape="rect" id="node4" href="unit_8c.html" title="Gestion des unités. " alt="" coords="296,80,404,107"/></map>
+</div>
+</div>
+<p><a href="unit_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a85f8dfae2c8d83d9bc1b164adac6513d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a85f8dfae2c8d83d9bc1b164adac6513d">canGetPassed</a> (<a class="el" href="structunit.html">unit</a> *target)</td></tr>
+<tr class="memdesc:a85f8dfae2c8d83d9bc1b164adac6513d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si le passage est autorisé  <a href="#a85f8dfae2c8d83d9bc1b164adac6513d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a85f8dfae2c8d83d9bc1b164adac6513d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac194fc19a706dbd87e9a93c02b244f11"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#ac194fc19a706dbd87e9a93c02b244f11">canBlock</a> (<a class="el" href="structunit.html">unit</a> *target)</td></tr>
+<tr class="memdesc:ac194fc19a706dbd87e9a93c02b244f11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si l'unité peut bloquer.  <a href="#ac194fc19a706dbd87e9a93c02b244f11">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac194fc19a706dbd87e9a93c02b244f11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa012dba081af99c4a666767c26ac1ac5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#aa012dba081af99c4a666767c26ac1ac5">canAttack</a> (<a class="el" href="structunit.html">unit</a> *target)</td></tr>
+<tr class="memdesc:aa012dba081af99c4a666767c26ac1ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si l'unité peut attaquer.  <a href="#aa012dba081af99c4a666767c26ac1ac5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa012dba081af99c4a666767c26ac1ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c0738de90650e2f4640cae3bad4b3a2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a9c0738de90650e2f4640cae3bad4b3a2">canMove</a> (<a class="el" href="structunit.html">unit</a> *target)</td></tr>
+<tr class="memdesc:a9c0738de90650e2f4640cae3bad4b3a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si l'unité peut bouger.  <a href="#a9c0738de90650e2f4640cae3bad4b3a2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9c0738de90650e2f4640cae3bad4b3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52de919c7103012ce231d80e3bbe3e8d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a52de919c7103012ce231d80e3bbe3e8d">canTeleport</a> (<a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name)</td></tr>
+<tr class="memdesc:a52de919c7103012ce231d80e3bbe3e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si l'unité peut se téléporter.  <a href="#a52de919c7103012ce231d80e3bbe3e8d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a52de919c7103012ce231d80e3bbe3e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c8761ef40c541d75de80d6f6eeeb482"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a5c8761ef40c541d75de80d6f6eeeb482">getSideAttacked</a> (<a class="el" href="structvector.html">vector</a> source, <a class="el" href="structvector.html">vector</a> target)</td></tr>
+<tr class="memdesc:a5c8761ef40c541d75de80d6f6eeeb482"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le côté attaqué  <a href="#a5c8761ef40c541d75de80d6f6eeeb482">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5c8761ef40c541d75de80d6f6eeeb482"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59537e7d55fc495b394087bf8a952d16"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a59537e7d55fc495b394087bf8a952d16">heal</a> (<a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name)</td></tr>
+<tr class="memdesc:a59537e7d55fc495b394087bf8a952d16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Soigne les unités.  <a href="#a59537e7d55fc495b394087bf8a952d16">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a59537e7d55fc495b394087bf8a952d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b948a17bbc3106f230c32a53121e6db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a6b948a17bbc3106f230c32a53121e6db">attack</a> (<a class="el" href="structvector.html">vector</a> source, <a class="el" href="structvector.html">vector</a> target)</td></tr>
+<tr class="memdesc:a6b948a17bbc3106f230c32a53121e6db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attaque une unité  <a href="#a6b948a17bbc3106f230c32a53121e6db">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6b948a17bbc3106f230c32a53121e6db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4004486abf500173fd3f51d2d3283275"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a4004486abf500173fd3f51d2d3283275">copy</a> (<a class="el" href="structunit.html">unit</a> *destination, <a class="el" href="structunit.html">unit</a> *source)</td></tr>
+<tr class="memdesc:a4004486abf500173fd3f51d2d3283275"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copie la structure source vers destination.  <a href="#a4004486abf500173fd3f51d2d3283275">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4004486abf500173fd3f51d2d3283275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87c06ff9e86d3317e10387a5d5626f1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a87c06ff9e86d3317e10387a5d5626f1a">move</a> (<a class="el" href="structvector.html">vector</a> destination, <a class="el" href="structvector.html">vector</a> source)</td></tr>
+<tr class="memdesc:a87c06ff9e86d3317e10387a5d5626f1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bouge une unité  <a href="#a87c06ff9e86d3317e10387a5d5626f1a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a87c06ff9e86d3317e10387a5d5626f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae52638eb8e2a94d1dd3df42c816681a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#ae52638eb8e2a94d1dd3df42c816681a3">addEffect</a> (<a class="el" href="structvector.html">vector</a> target, <a class="el" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a> effect)</td></tr>
+<tr class="memdesc:ae52638eb8e2a94d1dd3df42c816681a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un effet à une unité  <a href="#ae52638eb8e2a94d1dd3df42c816681a3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae52638eb8e2a94d1dd3df42c816681a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e8d3997960e64de032d8c6592bb4dd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a0e8d3997960e64de032d8c6592bb4dd4">unitInit</a> (short <a class="el" href="engine_8h.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>, <a class="el" href="structvector.html">vector</a> coordUnit)</td></tr>
+<tr class="memdesc:a0e8d3997960e64de032d8c6592bb4dd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise une unité  <a href="#a0e8d3997960e64de032d8c6592bb4dd4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0e8d3997960e64de032d8c6592bb4dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10bfc9c0ad0c3d41388abf6e6b1c5135"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a10bfc9c0ad0c3d41388abf6e6b1c5135">setDirection</a> (<a class="el" href="structvector.html">vector</a> coordUnit, int dir)</td></tr>
+<tr class="memdesc:a10bfc9c0ad0c3d41388abf6e6b1c5135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définis la direction d'une unité  <a href="#a10bfc9c0ad0c3d41388abf6e6b1c5135">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a10bfc9c0ad0c3d41388abf6e6b1c5135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a956caa43f2ae1c1eecd5adb22062aed1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a956caa43f2ae1c1eecd5adb22062aed1">erase</a> (<a class="el" href="structunit.html">unit</a> *)</td></tr>
+<tr class="memdesc:a956caa43f2ae1c1eecd5adb22062aed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface une unité de la grille.  <a href="#a956caa43f2ae1c1eecd5adb22062aed1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a956caa43f2ae1c1eecd5adb22062aed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a36c4219ebbdb7f8566d00b5c7dbb2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a8a36c4219ebbdb7f8566d00b5c7dbb2a">isSleeping</a> (<a class="el" href="structvector.html">vector</a>)</td></tr>
+<tr class="memdesc:a8a36c4219ebbdb7f8566d00b5c7dbb2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si une unité est endormie.  <a href="#a8a36c4219ebbdb7f8566d00b5c7dbb2a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8a36c4219ebbdb7f8566d00b5c7dbb2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a505f360905b4ad0fa6e18f19405539ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a505f360905b4ad0fa6e18f19405539ea">recover</a> ()</td></tr>
+<tr class="memdesc:a505f360905b4ad0fa6e18f19405539ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se réveille tour par tour.  <a href="#a505f360905b4ad0fa6e18f19405539ea">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a505f360905b4ad0fa6e18f19405539ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04cb7c9ee636e575bfd9531780b829d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a04cb7c9ee636e575bfd9531780b829d7">allStatic</a> (int numPlayer)</td></tr>
+<tr class="memdesc:a04cb7c9ee636e575bfd9531780b829d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si toutes les unités sont immobilisées.  <a href="#a04cb7c9ee636e575bfd9531780b829d7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a04cb7c9ee636e575bfd9531780b829d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cbe53dd582c7ac03bafb0051a38a98b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a1cbe53dd582c7ac03bafb0051a38a98b">minusEffect</a> ()</td></tr>
+<tr class="memdesc:a1cbe53dd582c7ac03bafb0051a38a98b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diminue le temps de l'effet.  <a href="#a1cbe53dd582c7ac03bafb0051a38a98b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1cbe53dd582c7ac03bafb0051a38a98b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afec10f9e98c70ab1915023cd0c8f76ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#afec10f9e98c70ab1915023cd0c8f76ca">poison</a> ()</td></tr>
+<tr class="memdesc:afec10f9e98c70ab1915023cd0c8f76ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empoisonne une unité  <a href="#afec10f9e98c70ab1915023cd0c8f76ca">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afec10f9e98c70ab1915023cd0c8f76ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ea1b739c4b88857675c47d9960a69a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a4ea1b739c4b88857675c47d9960a69a4">powerBonus</a> ()</td></tr>
+<tr class="memdesc:a4ea1b739c4b88857675c47d9960a69a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Octroie un bonus de puissance selon certaines conditions.  <a href="#a4ea1b739c4b88857675c47d9960a69a4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4ea1b739c4b88857675c47d9960a69a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ff80bc9cbc0a6e1e6e7a3936b8b48cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unit_8h.html#a4ff80bc9cbc0a6e1e6e7a3936b8b48cb">sleep</a> (<a class="el" href="structvector.html">vector</a>)</td></tr>
+<tr class="memdesc:a4ff80bc9cbc0a6e1e6e7a3936b8b48cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Endors une unité  <a href="#a4ff80bc9cbc0a6e1e6e7a3936b8b48cb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4ff80bc9cbc0a6e1e6e7a3936b8b48cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>En-tête gestion des unités. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Cousin Brandon Chaudemanche Ewen Biardeau Tristan </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>v1.00 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18/12/2015 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="unit_8h_source.html">unit.h</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ae52638eb8e2a94d1dd3df42c816681a3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addEffect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a>&#160;</td>
+          <td class="paramname"><em>effect</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute un effet à une unité </p>
+<p>Ajoute un effet à une unité</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target</td><td>Position unité cible </td></tr>
+    <tr><td class="paramname">effect</td><td>Effet à appliquer sur la cible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00437">437</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a04cb7c9ee636e575bfd9531780b829d7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool allStatic </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numPlayer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si toutes les unités sont immobilisées. </p>
+<p>Vérifie si toutes les unités sont immobilisées.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numPlayer</td><td>Numéro du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si toutes les unités sont immobilisés </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00529">529</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6b948a17bbc3106f230c32a53121e6db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void attack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>target</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Attaque une unité </p>
+<p>Attaque une unité</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Unité attaquante </td></tr>
+    <tr><td class="paramname">target</td><td>Unité cible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00184">184</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa012dba081af99c4a666767c26ac1ac5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool canAttack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>target</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si l'unité peut attaquer. </p>
+<p>Vérifie si l'unité peut attaquer.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target</td><td>Unité à analyser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si l'unité peut attaquer </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00086">86</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac194fc19a706dbd87e9a93c02b244f11"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool canBlock </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>target</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si l'unité peut bloquer. </p>
+<p>Vérifie si l'unité peut bloquer.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target</td><td>Unité à analyser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si l'unité peut bloquer </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00066">66</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a85f8dfae2c8d83d9bc1b164adac6513d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool canGetPassed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>target</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si le passage est autorisé </p>
+<p>Vérifie si le passage est autorisé</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target</td><td>Unité à analyser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si passage autorisé </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00046">46</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9c0738de90650e2f4640cae3bad4b3a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool canMove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>target</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si l'unité peut bouger. </p>
+<p>Vérifie si l'unité peut bouger.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target</td><td>Unité à analyser </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vraie si l'unité peut se mouvoir </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00106">106</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a52de919c7103012ce231d80e3bbe3e8d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool canTeleport </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a>&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si l'unité peut se téléporter. </p>
+<p>Vérifie si l'unité peut se téléporter.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Nom de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vraie si l'unité peut se déplacer </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00125">125</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4004486abf500173fd3f51d2d3283275"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool copy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>destination</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>source</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copie la structure source vers destination. </p>
+<p>Copie la structure source vers destination.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">destination</td><td>Structure destination </td></tr>
+    <tr><td class="paramname">source</td><td>Structure source </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si copie bien déroulée </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00236">236</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a956caa43f2ae1c1eecd5adb22062aed1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void erase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>source</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Efface une unité de la grille. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Source à effacer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00271">271</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5c8761ef40c541d75de80d6f6eeeb482"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getSideAttacked </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>target</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère le côté attaqué </p>
+<p>Récupère le côté attaqué</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Position unité source </td></tr>
+    <tr><td class="paramname">target</td><td>Position unité cible </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le côté attaqué </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00168">168</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a59537e7d55fc495b394087bf8a952d16"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void heal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a>&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Soigne les unités. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Nom de l'unité soignant </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00137">137</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8a36c4219ebbdb7f8566d00b5c7dbb2a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isSleeping </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si une unité est endormie. </p>
+<p>Vérifie si une unité est endormie.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>Position de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si endormi </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00490">490</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1cbe53dd582c7ac03bafb0051a38a98b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void minusEffect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Diminue le temps de l'effet. </p>
+<p>Diminue le temps de l'effet. </p>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00455">455</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a87c06ff9e86d3317e10387a5d5626f1a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>destination</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>source</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bouge une unité </p>
+<p>Bouge une unité</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">destination</td><td>Destination souhaitée </td></tr>
+    <tr><td class="paramname">source</td><td>Position de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00351">351</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afec10f9e98c70ab1915023cd0c8f76ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void poison </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empoisonne une unité </p>
+<p>Empoisonne une unité </p>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00386">386</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4ea1b739c4b88857675c47d9960a69a4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void powerBonus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Octroie un bonus de puissance selon certaines conditions. </p>
+<p>Octroie un bonus de puissance selon certaines conditions. </p>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00286">286</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a505f360905b4ad0fa6e18f19405539ea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recover </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se réveille tour par tour. </p>
+<p>Se réveille tour par tour. </p>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00503">503</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a10bfc9c0ad0c3d41388abf6e6b1c5135"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setDirection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dir</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définis la direction d'une unité </p>
+<p>Définis la direction d'une unité</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Unité à tourner </td></tr>
+    <tr><td class="paramname">dir</td><td>Direction dans laquelle tourner </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00377">377</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4ff80bc9cbc0a6e1e6e7a3936b8b48cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sleep </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Endors une unité </p>
+<p>Endors une unité</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>Position de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00480">480</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0e8d3997960e64de032d8c6592bb4dd4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void unitInit </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>noP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordUnit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise une unité </p>
+<p>Initialise une unité</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">noP</td><td>Numéro du joueur </td></tr>
+    <tr><td class="paramname">coordUnit</td><td>Coordonnées de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="unit_8c_source.html#l00024">24</a> du fichier <a class="el" href="unit_8c_source.html">unit.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

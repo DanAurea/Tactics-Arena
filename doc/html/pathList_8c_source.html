@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena:  Fichier source de src/game/pathList.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">pathList.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="pathList_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../include/game/engine.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="structelem.html">   16</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structelem.html">elem</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structelem.html#a5460522be783257def1ac511288d74cb">   17</a></span>&#160;    <a class="code" href="structvector.html">vector</a> <a class="code" href="structelem.html#a5460522be783257def1ac511288d74cb">coordParent</a>; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">   18</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">   19</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structelem.html">elem</a>* <a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a>; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">   20</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structelem.html">elem</a>* <a class="code" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">next</a>; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="pathList_8c.html#a0ccaaf001e365f4e3ba830861612119a">t_tile</a>; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="pathList_8c.html#a21a7dd83d4282d5ba2d0be01a8b75964">   24</a></span>&#160;<a class="code" href="structelem.html">t_tile</a>* <a class="code" href="pathList_8c.html#a21a7dd83d4282d5ba2d0be01a8b75964">flag</a>[2]; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="pathList_8c.html#a791e2fe0ae92b02b3acda4f63c4b6056">   25</a></span>&#160;<a class="code" href="structelem.html">t_tile</a>* <a class="code" href="pathList_8c.html#a791e2fe0ae92b02b3acda4f63c4b6056">elemC</a>[2]; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="pathList_8h.html#a6a2e00dafeb02729bb43a51b048f2b11">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#ac694d579d04ee78ad2aa18f255272ed0">initPath</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{   <span class="keywordflow">if</span>(n &gt;= 0 &amp;&amp; n &lt; 2)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        flag[n] = malloc(<span class="keyword">sizeof</span>(<a class="code" href="structelem.html">t_tile</a>));</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        flag[n]-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a> = flag[n];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        flag[n]-&gt;<a class="code" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">next</a> = flag[n];</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        elemC[n] = flag[n];</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="pathList_8h.html#aca469a8527a0bc92e66306a1c8ada185">   44</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#aca469a8527a0bc92e66306a1c8ada185">initPaths</a>(){</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt;= 2; i++)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="pathList_8c.html#ac694d579d04ee78ad2aa18f255272ed0">initPath</a>(i);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="pathList_8h.html#a2aab13e3009ebe3949a32c10c03adcd8">   54</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="pathList_8c.html#a2aab13e3009ebe3949a32c10c03adcd8">emptyPath</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{   <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt; 2 )</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> flag[n]-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a>==flag[n];</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="pathList_8h.html#a4bcf1b8579c9a03c9070e33c77993426">   65</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{   <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt;2)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> elemC[n]==flag[n];</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="pathList_8h.html#af5f66b0e2d9ff7dd44fdd821bb9377cf">   75</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#af5f66b0e2d9ff7dd44fdd821bb9377cf">pathHead</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{   <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt; 2)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="pathList_8c.html#a2aab13e3009ebe3949a32c10c03adcd8">emptyPath</a>(n))</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            elemC[n] = flag[n]-&gt;<a class="code" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">next</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="pathList_8h.html#a58814bcfb1182201bbecf88f839cd0f7">   85</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#a58814bcfb1182201bbecf88f839cd0f7">pathTail</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{   <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt;2)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="pathList_8c.html#a2aab13e3009ebe3949a32c10c03adcd8">emptyPath</a>(n))</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            elemC[n] = flag[n]-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="pathList_8h.html#a2e1e62efbdb494f85de87088a068c916">   95</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#a2e1e62efbdb494f85de87088a068c916">previous</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{   <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt;2)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(n))</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            elemC[n] = elemC[n]-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="pathList_8h.html#ae29c8124809dc534b7ff12214d16183c">  105</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#ae29c8124809dc534b7ff12214d16183c">next</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{   <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt;2)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(n))</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            elemC[n] = elemC[n]-&gt;<a class="code" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">next</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="pathList_8h.html#affe2967c536ca680e1389c746dc2d944">  117</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#affe2967c536ca680e1389c746dc2d944">getTile</a>(<span class="keywordtype">int</span> n, <a class="code" href="structvector.html">vector</a> * v, <span class="keywordtype">int</span> * <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;{   <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt;2)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(n)){</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            v-&gt;<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> = elemC[n]-&gt;<a class="code" href="structelem.html#a5460522be783257def1ac511288d74cb">coordParent</a>.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            v-&gt;<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a> = elemC[n]-&gt;<a class="code" href="structelem.html#a5460522be783257def1ac511288d74cb">coordParent</a>.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            * F = elemC[n]-&gt;<a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="pathList_8h.html#ae36257ead315faab602c58a4a2ae19fc">  130</a></span>&#160;<a class="code" href="structvector.html">vector</a> <a class="code" href="pathList_8c.html#ae36257ead315faab602c58a4a2ae19fc">getCurrentNode</a>(<span class="keywordtype">int</span> n){</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a> = 9999999, F2;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="structvector.html">vector</a> tmp, tmp2 = {-1, -1};</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="pathList_8c.html#af5f66b0e2d9ff7dd44fdd821bb9377cf">pathHead</a>(n);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">while</span>(!<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(n)){</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        F2 = <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="code" href="pathList_8c.html#affe2967c536ca680e1389c746dc2d944">getTile</a>(n, &amp;tmp, &amp;F);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">if</span>(F &lt; F2){</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            tmp2.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> = tmp.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            tmp2.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a> = tmp.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <a class="code" href="pathList_8c.html#ae29c8124809dc534b7ff12214d16183c">next</a>(n);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">return</span> tmp2;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="pathList_8h.html#afac156c3a2eedf22deaae38595f95a65">  157</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#afac156c3a2eedf22deaae38595f95a65">setTile</a>(<span class="keywordtype">int</span> n, <a class="code" href="structvector.html">vector</a> v, <span class="keywordtype">int</span> <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;{   <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt;2)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(n)){</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            elemC[n]-&gt;<a class="code" href="structelem.html#a5460522be783257def1ac511288d74cb">coordParent</a>.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> = v.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            elemC[n]-&gt;<a class="code" href="structelem.html#a5460522be783257def1ac511288d74cb">coordParent</a>.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a> = v.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            elemC[n]-&gt;<a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a> = <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="pathList_8h.html#acb403a99e156dd37be05e5d1245ca591">  170</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#acb403a99e156dd37be05e5d1245ca591">eraseTile</a>(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="structelem.html">t_tile</a> * temp;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt;2)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(n))</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            (elemC[n]-&gt;<a class="code" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">next</a>)-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a> = elemC[n]-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            (elemC[n]-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a>)-&gt;<a class="code" href="pathList_8c.html#ae29c8124809dc534b7ff12214d16183c">next</a> = elemC[n]-&gt;<a class="code" href="pathList_8c.html#ae29c8124809dc534b7ff12214d16183c">next</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            temp = elemC[n];</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            elemC[n] = elemC[n]-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            free(temp);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="pathList_8h.html#add77d77457e5c3b5e5e3ba1574e1e706">  191</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#add77d77457e5c3b5e5e3ba1574e1e706">toRightPath</a>(<span class="keywordtype">int</span> n, <a class="code" href="structvector.html">vector</a> v, <span class="keywordtype">int</span> <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="structelem.html">t_tile</a>* nouv;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">if</span>(n&gt;=0&amp;&amp;n&lt;2)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="pathList_8c.html#a2aab13e3009ebe3949a32c10c03adcd8">emptyPath</a>(n) || !<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(n))</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            nouv = malloc(<span class="keyword">sizeof</span>(<a class="code" href="structelem.html">t_tile</a>));</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            nouv-&gt;<a class="code" href="structelem.html#a5460522be783257def1ac511288d74cb">coordParent</a>.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> = v.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            nouv-&gt;<a class="code" href="structelem.html#a5460522be783257def1ac511288d74cb">coordParent</a>.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a> = v.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            nouv-&gt;<a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a> = <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            nouv-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a> = elemC[n];</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            nouv-&gt;<a class="code" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">next</a> = elemC[n]-&gt;<a class="code" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">next</a>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            (elemC[n]-&gt;<a class="code" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">next</a>)-&gt;<a class="code" href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">prev</a> = nouv;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            elemC[n]-&gt;<a class="code" href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">next</a> = nouv;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            elemC[n] = nouv;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;}</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="pathList_8h.html#afd17fd81ff6e16ee988340ae898ba362">  214</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#afd17fd81ff6e16ee988340ae898ba362">dumpPath</a>(<span class="keywordtype">short</span> nbList){</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">if</span>(flag != NULL &amp;&amp; !<a class="code" href="pathList_8c.html#a2aab13e3009ebe3949a32c10c03adcd8">emptyPath</a>(nbList)){</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <a class="code" href="pathList_8c.html#a58814bcfb1182201bbecf88f839cd0f7">pathTail</a>(nbList);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">while</span>(!<a class="code" href="pathList_8c.html#a2aab13e3009ebe3949a32c10c03adcd8">emptyPath</a>(nbList)){</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <a class="code" href="pathList_8c.html#acb403a99e156dd37be05e5d1245ca591">eraseTile</a>(nbList);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="pathList_8h.html#a18154e93d817c730195d7fa04bd6c1d3">  226</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#a18154e93d817c730195d7fa04bd6c1d3">dumpAllPaths</a>(){</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> list = 0; list &lt; 2; list++){</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        <a class="code" href="pathList_8c.html#afd17fd81ff6e16ee988340ae898ba362">dumpPath</a>(list); <span class="comment">// Libère la liste</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        free(flag[list]); <span class="comment">// Libère le flag</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;}</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="pathList_8h.html#a3415787bd9e4aa84fb3f770c44de5275">  239</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="pathList_8c.html#addf59bdd9af78dee4e241604e414ee57">searchTile</a>(<span class="keywordtype">int</span> n, <a class="code" href="structvector.html">vector</a> coordTile){</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <a class="code" href="structvector.html">vector</a> tmp;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="pathList_8c.html#a2aab13e3009ebe3949a32c10c03adcd8">emptyPath</a>(n)){</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <a class="code" href="pathList_8c.html#af5f66b0e2d9ff7dd44fdd821bb9377cf">pathHead</a>(n);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keywordflow">while</span>(!<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(n)){</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <a class="code" href="pathList_8c.html#affe2967c536ca680e1389c746dc2d944">getTile</a>(n, &amp;tmp, &amp;F);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">if</span>(tmp.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> == coordTile.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> &amp;&amp; tmp.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a> == coordTile.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>)</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <a class="code" href="pathList_8c.html#ae29c8124809dc534b7ff12214d16183c">next</a>(n);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="pathList_8h.html#a2d3c6547f1a7f48cada640491d9f8903">  262</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#a8c9ba5598845850e0fbaf8e3703b07e7">addCloseList</a>(<a class="code" href="structvector.html">vector</a> current, <span class="keywordtype">int</span> <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>){</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <a class="code" href="structvector.html">vector</a> tmp = {0, 0};</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordtype">int</span> F2 = 0;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <a class="code" href="pathList_8c.html#af5f66b0e2d9ff7dd44fdd821bb9377cf">pathHead</a>(0); <span class="comment">// Tête liste ouverte</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <a class="code" href="pathList_8c.html#a58814bcfb1182201bbecf88f839cd0f7">pathTail</a>(1); <span class="comment">// Queue liste fermée</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keywordflow">while</span>(!<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(0) &amp;&amp; (tmp.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> != current.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> || tmp.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a> != current.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>)){</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <a class="code" href="pathList_8c.html#affe2967c536ca680e1389c746dc2d944">getTile</a>(0, &amp;tmp, &amp;F2);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">if</span>(tmp.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> == current.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> &amp;&amp; tmp.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a> == current.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>){</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <a class="code" href="pathList_8c.html#acb403a99e156dd37be05e5d1245ca591">eraseTile</a>(0); <span class="comment">// Supprime de la liste ouverte</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <a class="code" href="pathList_8c.html#ae29c8124809dc534b7ff12214d16183c">next</a>(0);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    }</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <a class="code" href="pathList_8c.html#add77d77457e5c3b5e5e3ba1574e1e706">toRightPath</a>(1, current, F);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
+<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="pathList_8h.html#acf21882e0305b7855f4558e5f7803a49">  285</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pathList_8c.html#a263a98f63b0badbcbb9dcb968cb04c00">addOpenList</a>(<a class="code" href="structvector.html">vector</a> current, <span class="keywordtype">int</span> <a class="code" href="structelem.html#a000b7b27f503652106d30642ce3f40c2">F</a>){</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <a class="code" href="structvector.html">vector</a> tmp = {0, 0};</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordtype">int</span> F2 = 0;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <a class="code" href="pathList_8c.html#af5f66b0e2d9ff7dd44fdd821bb9377cf">pathHead</a>(1); <span class="comment">// Tête liste ouverte</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <a class="code" href="pathList_8c.html#a58814bcfb1182201bbecf88f839cd0f7">pathTail</a>(0); <span class="comment">// Queue liste fermée</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">while</span>(!<a class="code" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a>(1) &amp;&amp; (tmp.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> != current.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> || tmp.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a> != current.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>)){</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <a class="code" href="pathList_8c.html#affe2967c536ca680e1389c746dc2d944">getTile</a>(1, &amp;tmp, &amp;F2);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keywordflow">if</span>(tmp.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> == current.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a> &amp;&amp; tmp.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a> == current.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>){</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <a class="code" href="pathList_8c.html#acb403a99e156dd37be05e5d1245ca591">eraseTile</a>(1); <span class="comment">// Supprime de la liste ouverte</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <a class="code" href="pathList_8c.html#ae29c8124809dc534b7ff12214d16183c">next</a>(1);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <a class="code" href="pathList_8c.html#add77d77457e5c3b5e5e3ba1574e1e706">toRightPath</a>(0, current, F);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
+<div class="ttc" id="pathList_8c_html_a263a98f63b0badbcbb9dcb968cb04c00"><div class="ttname"><a href="pathList_8c.html#a263a98f63b0badbcbb9dcb968cb04c00">addOpenList</a></div><div class="ttdeci">void addOpenList(vector current, int F)</div><div class="ttdoc">Ajoute à la liste ouverte. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00285">pathList.c:285</a></div></div>
+<div class="ttc" id="pathList_8c_html_a21a7dd83d4282d5ba2d0be01a8b75964"><div class="ttname"><a href="pathList_8c.html#a21a7dd83d4282d5ba2d0be01a8b75964">flag</a></div><div class="ttdeci">t_tile * flag[2]</div><div class="ttdoc">Tableau de drapeaux. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00024">pathList.c:24</a></div></div>
+<div class="ttc" id="pathList_8c_html_ae29c8124809dc534b7ff12214d16183c"><div class="ttname"><a href="pathList_8c.html#ae29c8124809dc534b7ff12214d16183c">next</a></div><div class="ttdeci">void next(int n)</div><div class="ttdoc">Se positionne sur l&#39;élémént suivant. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00105">pathList.c:105</a></div></div>
+<div class="ttc" id="structvector_html"><div class="ttname"><a href="structvector.html">vector</a></div><div class="ttdoc">Représente les coordonnées d&#39;un vecteur. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00079">engine.h:79</a></div></div>
+<div class="ttc" id="structelem_html_ab9cf5c2e1c9a0ec2938275b90d39d5ca"><div class="ttname"><a href="structelem.html#ab9cf5c2e1c9a0ec2938275b90d39d5ca">elem::next</a></div><div class="ttdeci">struct elem * next</div><div class="ttdoc">Elément suivant. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00020">pathList.c:20</a></div></div>
+<div class="ttc" id="pathList_8c_html_ae36257ead315faab602c58a4a2ae19fc"><div class="ttname"><a href="pathList_8c.html#ae36257ead315faab602c58a4a2ae19fc">getCurrentNode</a></div><div class="ttdeci">vector getCurrentNode(int n)</div><div class="ttdoc">Récupère le noeud ayant le plus petit F. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00130">pathList.c:130</a></div></div>
+<div class="ttc" id="pathList_8c_html_aca469a8527a0bc92e66306a1c8ada185"><div class="ttname"><a href="pathList_8c.html#aca469a8527a0bc92e66306a1c8ada185">initPaths</a></div><div class="ttdeci">void initPaths()</div><div class="ttdoc">Initialise les chemins. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00044">pathList.c:44</a></div></div>
+<div class="ttc" id="pathList_8c_html_a0ccaaf001e365f4e3ba830861612119a"><div class="ttname"><a href="pathList_8c.html#a0ccaaf001e365f4e3ba830861612119a">t_tile</a></div><div class="ttdeci">struct elem t_tile</div><div class="ttdoc">Définis la case. </div></div>
+<div class="ttc" id="structelem_html_a5460522be783257def1ac511288d74cb"><div class="ttname"><a href="structelem.html#a5460522be783257def1ac511288d74cb">elem::coordParent</a></div><div class="ttdeci">vector coordParent</div><div class="ttdoc">Coordonnées de la case. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00017">pathList.c:17</a></div></div>
+<div class="ttc" id="pathList_8c_html_afac156c3a2eedf22deaae38595f95a65"><div class="ttname"><a href="pathList_8c.html#afac156c3a2eedf22deaae38595f95a65">setTile</a></div><div class="ttdeci">void setTile(int n, vector v, int F)</div><div class="ttdoc">Modifie les infos d&#39;une case dans la liste. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00157">pathList.c:157</a></div></div>
+<div class="ttc" id="pathList_8c_html_afd17fd81ff6e16ee988340ae898ba362"><div class="ttname"><a href="pathList_8c.html#afd17fd81ff6e16ee988340ae898ba362">dumpPath</a></div><div class="ttdeci">void dumpPath(short nbList)</div><div class="ttdoc">Vide une liste. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00214">pathList.c:214</a></div></div>
+<div class="ttc" id="pathList_8c_html_a18154e93d817c730195d7fa04bd6c1d3"><div class="ttname"><a href="pathList_8c.html#a18154e93d817c730195d7fa04bd6c1d3">dumpAllPaths</a></div><div class="ttdeci">void dumpAllPaths()</div><div class="ttdoc">Vide toutes les listes. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00226">pathList.c:226</a></div></div>
+<div class="ttc" id="pathList_8c_html_a2e1e62efbdb494f85de87088a068c916"><div class="ttname"><a href="pathList_8c.html#a2e1e62efbdb494f85de87088a068c916">previous</a></div><div class="ttdeci">void previous(int n)</div><div class="ttdoc">Se positionne sur l&#39;élément précédent. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00095">pathList.c:95</a></div></div>
+<div class="ttc" id="pathList_8c_html_a791e2fe0ae92b02b3acda4f63c4b6056"><div class="ttname"><a href="pathList_8c.html#a791e2fe0ae92b02b3acda4f63c4b6056">elemC</a></div><div class="ttdeci">t_tile * elemC[2]</div><div class="ttdoc">Tableau d&#39;éléments courants. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00025">pathList.c:25</a></div></div>
+<div class="ttc" id="structvector_html_aad6de640298eae97ca0a094db5aff477"><div class="ttname"><a href="structvector.html#aad6de640298eae97ca0a094db5aff477">vector::y</a></div><div class="ttdeci">int y</div><div class="ttdoc">Position y. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00081">engine.h:81</a></div></div>
+<div class="ttc" id="pathList_8c_html_add77d77457e5c3b5e5e3ba1574e1e706"><div class="ttname"><a href="pathList_8c.html#add77d77457e5c3b5e5e3ba1574e1e706">toRightPath</a></div><div class="ttdeci">void toRightPath(int n, vector v, int F)</div><div class="ttdoc">Ajoute une case à droite. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00191">pathList.c:191</a></div></div>
+<div class="ttc" id="structvector_html_a0403eb3aea23a3009e276fba1d317046"><div class="ttname"><a href="structvector.html#a0403eb3aea23a3009e276fba1d317046">vector::x</a></div><div class="ttdeci">int x</div><div class="ttdoc">Position x. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00080">engine.h:80</a></div></div>
+<div class="ttc" id="pathList_8c_html_a58814bcfb1182201bbecf88f839cd0f7"><div class="ttname"><a href="pathList_8c.html#a58814bcfb1182201bbecf88f839cd0f7">pathTail</a></div><div class="ttdeci">void pathTail(int n)</div><div class="ttdoc">Se met en queue du chemin. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00085">pathList.c:85</a></div></div>
+<div class="ttc" id="pathList_8c_html_a2aab13e3009ebe3949a32c10c03adcd8"><div class="ttname"><a href="pathList_8c.html#a2aab13e3009ebe3949a32c10c03adcd8">emptyPath</a></div><div class="ttdeci">int emptyPath(int n)</div><div class="ttdoc">Vérifie si un chemin est vide. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00054">pathList.c:54</a></div></div>
+<div class="ttc" id="pathList_8c_html_affe2967c536ca680e1389c746dc2d944"><div class="ttname"><a href="pathList_8c.html#affe2967c536ca680e1389c746dc2d944">getTile</a></div><div class="ttdeci">void getTile(int n, vector *v, int *F)</div><div class="ttdoc">Récupère une case du chemin. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00117">pathList.c:117</a></div></div>
+<div class="ttc" id="pathList_8c_html_acb403a99e156dd37be05e5d1245ca591"><div class="ttname"><a href="pathList_8c.html#acb403a99e156dd37be05e5d1245ca591">eraseTile</a></div><div class="ttdeci">void eraseTile(int n)</div><div class="ttdoc">Efface une case de la grille. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00170">pathList.c:170</a></div></div>
+<div class="ttc" id="pathList_8c_html_a4bcf1b8579c9a03c9070e33c77993426"><div class="ttname"><a href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a></div><div class="ttdeci">int outPath(int n)</div><div class="ttdoc">Vérifie si l&#39;élément courant est hors liste. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00065">pathList.c:65</a></div></div>
+<div class="ttc" id="pathList_8c_html_a8c9ba5598845850e0fbaf8e3703b07e7"><div class="ttname"><a href="pathList_8c.html#a8c9ba5598845850e0fbaf8e3703b07e7">addCloseList</a></div><div class="ttdeci">void addCloseList(vector current, int F)</div><div class="ttdoc">Ajoute à la liste fermée. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00262">pathList.c:262</a></div></div>
+<div class="ttc" id="structelem_html_a000b7b27f503652106d30642ce3f40c2"><div class="ttname"><a href="structelem.html#a000b7b27f503652106d30642ce3f40c2">elem::F</a></div><div class="ttdeci">int F</div><div class="ttdoc">Poids de la case. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00018">pathList.c:18</a></div></div>
+<div class="ttc" id="pathList_8c_html_af5f66b0e2d9ff7dd44fdd821bb9377cf"><div class="ttname"><a href="pathList_8c.html#af5f66b0e2d9ff7dd44fdd821bb9377cf">pathHead</a></div><div class="ttdeci">void pathHead(int n)</div><div class="ttdoc">Se met en tête du chemin. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00075">pathList.c:75</a></div></div>
+<div class="ttc" id="structelem_html"><div class="ttname"><a href="structelem.html">elem</a></div><div class="ttdoc">Représente une case de la grille. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00016">pathList.c:16</a></div></div>
+<div class="ttc" id="pathList_8c_html_addf59bdd9af78dee4e241604e414ee57"><div class="ttname"><a href="pathList_8c.html#addf59bdd9af78dee4e241604e414ee57">searchTile</a></div><div class="ttdeci">bool searchTile(int n, vector coordTile)</div><div class="ttdoc">Cherche si un vecteur est présent dans la liste fermée ou ouverte. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00239">pathList.c:239</a></div></div>
+<div class="ttc" id="structelem_html_aed06f2c7ef2050b131c8b72e099a0090"><div class="ttname"><a href="structelem.html#aed06f2c7ef2050b131c8b72e099a0090">elem::prev</a></div><div class="ttdeci">struct elem * prev</div><div class="ttdoc">Elément précédent. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00019">pathList.c:19</a></div></div>
+<div class="ttc" id="pathList_8c_html_ac694d579d04ee78ad2aa18f255272ed0"><div class="ttname"><a href="pathList_8c.html#ac694d579d04ee78ad2aa18f255272ed0">initPath</a></div><div class="ttdeci">void initPath(int n)</div><div class="ttdoc">Initialise le chemin. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00031">pathList.c:31</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

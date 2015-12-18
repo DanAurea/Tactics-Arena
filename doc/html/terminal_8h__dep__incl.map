@@ -1,0 +1,11 @@
+<map id="include/controller/terminal.h" name="include/controller/terminal.h">
+<area shape="rect" id="node2" href="$manageSignal_8c.html" title="Gestion des signaux. " alt="" coords="5,95,200,121"/>
+<area shape="rect" id="node3" href="$saveNLoad_8c.html" title="Gestion de la sauvegarde et du chargement. " alt="" coords="224,95,403,121"/>
+<area shape="rect" id="node4" href="$terminal_8c.html" title="Gestion du terminal. " alt="" coords="427,95,586,121"/>
+<area shape="rect" id="node5" href="$grid_8c.html" title="Gestion de la grille. " alt="" coords="610,95,731,121"/>
+<area shape="rect" id="node6" href="$menu_8c.html" title="Gestion des menus. " alt="" coords="755,95,887,121"/>
+<area shape="rect" id="node7" href="$engine_8c.html" title="Moteur de jeu. " alt="" coords="911,95,1041,121"/>
+<area shape="rect" id="node8" href="$pawns_8c.html" title="Gestion des pions. " alt="" coords="1065,95,1194,121"/>
+<area shape="rect" id="node9" href="$turn_8c.html" title="Gestion des tours. " alt="" coords="1218,95,1331,121"/>
+<area shape="rect" id="node10" href="$unit_8c.html" title="Gestion des unités. " alt="" coords="1355,95,1463,121"/>
+</map>

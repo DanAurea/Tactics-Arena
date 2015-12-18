@@ -1,0 +1,171 @@
+\hypertarget{turn_8h}{}\section{Référence du fichier include/game/turn.h}
+\label{turn_8h}\index{include/game/turn.\+h@{include/game/turn.\+h}}
+
+
+En-\/tête gestion des tours.  
+
+
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{turn_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{turn_8h_aaa58797f81bdb080460fcf48916ef5ac}{}\#define \hyperlink{turn_8h_aaa58797f81bdb080460fcf48916ef5ac}{T\+I\+M\+E\+\_\+\+B\+Y\+\_\+\+U\+N\+I\+T}~12\label{turn_8h_aaa58797f81bdb080460fcf48916ef5ac}
+
+\begin{DoxyCompactList}\small\item\em Temps par unité possédée par le joueur. \end{DoxyCompactList}\item 
+\hypertarget{turn_8h_a2cb9809f30ffec513e731194339f2ca4}{}\#define \hyperlink{turn_8h_a2cb9809f30ffec513e731194339f2ca4}{M\+I\+N\+\_\+\+T\+I\+M\+E}~60\label{turn_8h_a2cb9809f30ffec513e731194339f2ca4}
+
+\begin{DoxyCompactList}\small\item\em Temps minimum par tour. \end{DoxyCompactList}\item 
+\hypertarget{turn_8h_a5320d4457a472d8888ec1905bc0e0a1c}{}\#define \hyperlink{turn_8h_a5320d4457a472d8888ec1905bc0e0a1c}{M\+A\+X\+\_\+\+T\+I\+M\+E}~120\label{turn_8h_a5320d4457a472d8888ec1905bc0e0a1c}
+
+\begin{DoxyCompactList}\small\item\em Temps maximum par tour. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{turn_8h_af77ebb54a900a2ef4a15ea354ff60f85}{play\+Turn} ()
+\begin{DoxyCompactList}\small\item\em Joue un tour. \end{DoxyCompactList}\item 
+void \hyperlink{turn_8h_a0d63b19dd2910e04bc114a4572276601}{play\+Attack} ()
+\begin{DoxyCompactList}\small\item\em Joue une attaque. \end{DoxyCompactList}\item 
+void \hyperlink{turn_8h_af6050b30e522cb4218786756c972d804}{play\+Move} ()
+\begin{DoxyCompactList}\small\item\em Joue une mouvement. \end{DoxyCompactList}\item 
+void \hyperlink{turn_8h_ab4e21eee8105ce3f15cb490ce17225e8}{pass\+Turn} ()
+\begin{DoxyCompactList}\small\item\em Passe le tour. \end{DoxyCompactList}\item 
+void \hyperlink{turn_8h_a9d6b655a52683afe2f4cb87e3f64bc2e}{change\+Direction} ()
+\begin{DoxyCompactList}\small\item\em Change la direction. \end{DoxyCompactList}\item 
+bool \hyperlink{turn_8h_a2c1ed39b34b58552a4cba52a3f832d14}{has\+Play} ()
+\begin{DoxyCompactList}\small\item\em Vérifie si une action a été effectuée. \end{DoxyCompactList}\item 
+\hypertarget{turn_8h_a5032490db7416ec2004861d51acda9e2}{}void \hyperlink{turn_8h_a5032490db7416ec2004861d51acda9e2}{surrender} ()\label{turn_8h_a5032490db7416ec2004861d51acda9e2}
+
+\begin{DoxyCompactList}\small\item\em Abandonne la partie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{turn_8h_a5849a680495b395c75c2269657d5d4a5}{}int \hyperlink{turn_8h_a5849a680495b395c75c2269657d5d4a5}{has\+Moved}\label{turn_8h_a5849a680495b395c75c2269657d5d4a5}
+
+\begin{DoxyCompactList}\small\item\em Joueur a joué \end{DoxyCompactList}\item 
+\hypertarget{turn_8h_a1fa6b4cfe1a42f3d14c8701782a8ae6f}{}int \hyperlink{turn_8h_a1fa6b4cfe1a42f3d14c8701782a8ae6f}{has\+Attacked}\label{turn_8h_a1fa6b4cfe1a42f3d14c8701782a8ae6f}
+
+\begin{DoxyCompactList}\small\item\em Joueur a attaqué \end{DoxyCompactList}\item 
+\hypertarget{turn_8h_a776a08ce69ed60e7178f5fab585b5936}{}int \hyperlink{turn_8h_a776a08ce69ed60e7178f5fab585b5936}{has\+Passed}\label{turn_8h_a776a08ce69ed60e7178f5fab585b5936}
+
+\begin{DoxyCompactList}\small\item\em Joueur a passé son tour. \end{DoxyCompactList}\item 
+\hypertarget{turn_8h_ab28ae3d21446f3eb01eeeab3002ad942}{}int \hyperlink{turn_8h_ab28ae3d21446f3eb01eeeab3002ad942}{has\+Surrender}\label{turn_8h_ab28ae3d21446f3eb01eeeab3002ad942}
+
+\begin{DoxyCompactList}\small\item\em Joueur a abandonné la partie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+En-\/tête gestion des tours. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{turn_8h_a9d6b655a52683afe2f4cb87e3f64bc2e}{}\index{turn.\+h@{turn.\+h}!change\+Direction@{change\+Direction}}
+\index{change\+Direction@{change\+Direction}!turn.\+h@{turn.\+h}}
+\subsubsection[{change\+Direction}]{\setlength{\rightskip}{0pt plus 5cm}void change\+Direction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{turn_8h_a9d6b655a52683afe2f4cb87e3f64bc2e}
+
+
+Change la direction. 
+
+Change la direction. 
+
+Définition à la ligne 57 du fichier turn.\+c.
+
+\hypertarget{turn_8h_a2c1ed39b34b58552a4cba52a3f832d14}{}\index{turn.\+h@{turn.\+h}!has\+Play@{has\+Play}}
+\index{has\+Play@{has\+Play}!turn.\+h@{turn.\+h}}
+\subsubsection[{has\+Play}]{\setlength{\rightskip}{0pt plus 5cm}bool has\+Play (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{turn_8h_a2c1ed39b34b58552a4cba52a3f832d14}
+
+
+Vérifie si une action a été effectuée. 
+
+Vérifie si une action a été effectuée.
+
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si le joueur a joué sinon faux 
+\end{DoxyReturn}
+
+
+Définition à la ligne 245 du fichier turn.\+c.
+
+\hypertarget{turn_8h_ab4e21eee8105ce3f15cb490ce17225e8}{}\index{turn.\+h@{turn.\+h}!pass\+Turn@{pass\+Turn}}
+\index{pass\+Turn@{pass\+Turn}!turn.\+h@{turn.\+h}}
+\subsubsection[{pass\+Turn}]{\setlength{\rightskip}{0pt plus 5cm}void pass\+Turn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{turn_8h_ab4e21eee8105ce3f15cb490ce17225e8}
+
+
+Passe le tour. 
+
+Passe le tour. 
+
+Définition à la ligne 235 du fichier turn.\+c.
+
+\hypertarget{turn_8h_a0d63b19dd2910e04bc114a4572276601}{}\index{turn.\+h@{turn.\+h}!play\+Attack@{play\+Attack}}
+\index{play\+Attack@{play\+Attack}!turn.\+h@{turn.\+h}}
+\subsubsection[{play\+Attack}]{\setlength{\rightskip}{0pt plus 5cm}void play\+Attack (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{turn_8h_a0d63b19dd2910e04bc114a4572276601}
+
+
+Joue une attaque. 
+
+Joue une attaque. 
+
+Définition à la ligne 104 du fichier turn.\+c.
+
+\hypertarget{turn_8h_af6050b30e522cb4218786756c972d804}{}\index{turn.\+h@{turn.\+h}!play\+Move@{play\+Move}}
+\index{play\+Move@{play\+Move}!turn.\+h@{turn.\+h}}
+\subsubsection[{play\+Move}]{\setlength{\rightskip}{0pt plus 5cm}void play\+Move (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{turn_8h_af6050b30e522cb4218786756c972d804}
+
+
+Joue une mouvement. 
+
+Joue une mouvement. 
+
+Définition à la ligne 177 du fichier turn.\+c.
+
+\hypertarget{turn_8h_af77ebb54a900a2ef4a15ea354ff60f85}{}\index{turn.\+h@{turn.\+h}!play\+Turn@{play\+Turn}}
+\index{play\+Turn@{play\+Turn}!turn.\+h@{turn.\+h}}
+\subsubsection[{play\+Turn}]{\setlength{\rightskip}{0pt plus 5cm}void play\+Turn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{turn_8h_af77ebb54a900a2ef4a15ea354ff60f85}
+
+
+Joue un tour. 
+
+Joue un tour. 
+
+Définition à la ligne 272 du fichier turn.\+c.
+

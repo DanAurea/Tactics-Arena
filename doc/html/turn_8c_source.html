@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena:  Fichier source de src/game/turn.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">turn.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="turn_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;signal.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../../include/game/engine.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;../../include/game/pawns.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../../include/game/turn.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;../../include/game/listes.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../../include/display/grid.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;../../include/display/menu.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;../../include/controller/terminal.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;../../include/controller/manageSignal.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;../../include/controller/manageString.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;../../include/units/unit.h&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="turn_8h.html#a5849a680495b395c75c2269657d5d4a5">   22</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="turn_8c.html#a5849a680495b395c75c2269657d5d4a5">hasMoved</a>     = 0;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="turn_8h.html#a1fa6b4cfe1a42f3d14c8701782a8ae6f">   23</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="turn_8c.html#a1fa6b4cfe1a42f3d14c8701782a8ae6f">hasAttacked</a>  = 0;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="turn_8h.html#a776a08ce69ed60e7178f5fab585b5936">   24</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="turn_8c.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a>    = 0;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="turn_8h.html#ab28ae3d21446f3eb01eeeab3002ad942">   25</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="turn_8c.html#ab28ae3d21446f3eb01eeeab3002ad942">hasSurrender</a> = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="turn_8c.html#af833187c9cee5a9fc025b1d37e4ea473">   30</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="turn_8c.html#af833187c9cee5a9fc025b1d37e4ea473">startTurn</a>(){</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="turn_8c.html#af833187c9cee5a9fc025b1d37e4ea473">startTurn</a> = <a class="code" href="listes_8c.html#a0171ca43abde0218c78caa6687eadf53">countUnits</a>(<a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>) * <a class="code" href="turn_8h.html#aaa58797f81bdb080460fcf48916ef5ac">TIME_BY_UNIT</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span>(startTurn &lt; <a class="code" href="turn_8h.html#a2cb9809f30ffec513e731194339f2ca4">MIN_TIME</a>) startTurn = <a class="code" href="turn_8h.html#a2cb9809f30ffec513e731194339f2ca4">MIN_TIME</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(startTurn &gt; <a class="code" href="turn_8h.html#a5320d4457a472d8888ec1905bc0e0a1c">MAX_TIME</a>) startTurn = <a class="code" href="turn_8h.html#a5320d4457a472d8888ec1905bc0e0a1c">MAX_TIME</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="turn_8c.html#af833187c9cee5a9fc025b1d37e4ea473">startTurn</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="turn_8c.html#a9b3f364f20175067c0349246c843953b">   44</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="turn_8c.html#a9b3f364f20175067c0349246c843953b">endTurn</a>(time_t start, <span class="keywordtype">int</span> totalTime){</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    time_t countDown;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">int</span> timeLeft;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    time(&amp;countDown);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    timeLeft = start + totalTime - countDown;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> timeLeft;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="turn_8h.html#a9d6b655a52683afe2f4cb87e3f64bc2e">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="turn_8c.html#a9d6b655a52683afe2f4cb87e3f64bc2e">changeDirection</a>(){</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">int</span> direct;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">bool</span> selected = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">bool</span> sleeping = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="structvector.html">vector</a> coordUnit;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="structunit.html">unit</a> * target;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        selected = <a class="code" href="engine_8c.html#acd459b9ed1aaf8c05cdd3887e86b8668">selectUnit</a>(&amp;coordUnit); <span class="comment">// Sélection de l&#39;unité</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        sleeping = <a class="code" href="unit_8c.html#aa2bac651e557f022a73099db0185eb44">isSleeping</a>(coordUnit);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        target   = &amp;<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>];</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span>(!selected)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;Vous ne pouvez sélectionner cette unité !\n&quot;</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">noPlayer</a> != <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;L&#39;unité ne vous appartient pas !\n&quot;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(sleeping &amp;&amp; <a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">noPlayer</a> == <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>){</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a>(red);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            printf(<span class="stringliteral">&quot;Votre unité est endormie attendez : %i tours\n&quot;</span>, <a class="code" href="pawns_8c.html#a0ec7c043ade24d330b48f393097f140f">pawns</a>[target-&gt;<a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a>].<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">RECOVERY</a> - target-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">RECOVERY</a>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }<span class="keywordflow">while</span>(<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">noPlayer</a> != <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a> || !selected || sleeping);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unitColor</a> = white; <span class="comment">// Couleur unité sélectionnée</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="menu_8c.html#aac6cc2265bfc1481caf987f92bece27b">dispDirection</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        printf(<span class="stringliteral">&quot;Choisissez une direction: &quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        direct = <a class="code" href="manageString_8c.html#ab431b0689298bfb6b1e74cbe92c18e00">readLong</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">if</span>(direct &lt; 1 &amp;&amp; direct &gt; 4) printf(<span class="stringliteral">&quot;Direction incorrecte !\n&quot;</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }<span class="keywordflow">while</span>(direct &lt; 1 &amp;&amp; direct &gt; 4);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="unit_8c.html#a2fdda888eb5b942249418b75a4998581">setDirection</a>(coordUnit, direct) ;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="unit_8c.html#ae887bebca3eb165cbbd7f71975cf8f3a">sleep</a>(coordUnit);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="turn_8c.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a> = 1; <span class="comment">// Passe le tour</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="turn_8h.html#a0d63b19dd2910e04bc114a4572276601">  104</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="turn_8c.html#a0d63b19dd2910e04bc114a4572276601">playAttack</a>(){</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">bool</span> selected = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">bool</span> found    = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">bool</span> sleeping = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="structvector.html">vector</a> coordUnit, coordTarget;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="structunit.html">unit</a> * target;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        selected = <a class="code" href="engine_8c.html#acd459b9ed1aaf8c05cdd3887e86b8668">selectUnit</a>(&amp;coordUnit); <span class="comment">// Sélection de l&#39;unité attaquante</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        sleeping = <a class="code" href="unit_8c.html#aa2bac651e557f022a73099db0185eb44">isSleeping</a>(coordUnit);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        target   = &amp;<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>];</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">if</span>(!selected){</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;Vous ne pouvez sélectionner cette unité !\n&quot;</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(!<a class="code" href="unit_8c.html#aa012dba081af99c4a666767c26ac1ac5">canAttack</a>(target)){</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <a class="code" href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a>(red);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 1; i &lt; <a class="code" href="engine_8h.html#a21db47461d910a7cad180b5532f1a7f8">NB_MAX_EFFECT</a>; i++){ <span class="comment">// Affiche les effets sous lesquels est soumis l&#39;unité</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keywordflow">if</span>(target-&gt;<a class="code" href="structunit.html#ab65f3e50337d201c634aa46587ea32ff">effect</a>[i-1] &gt; 0){</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    printf(<span class="stringliteral">&quot;Cette unité ne peut pas attaquer, elle est soumise à l&#39;effet: %s\n&quot;</span>, <a class="code" href="manageString_8c.html#acb5c8162f1db822caca54e0e04d2a143">getNameEffect</a>(i));</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(target-&gt;<a class="code" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">noPlayer</a> != <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>){</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;Cette unité ne vous appartient pas !\n&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(sleeping &amp;&amp; target-&gt;<a class="code" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">noPlayer</a> == <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>){</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a>(red);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            printf(<span class="stringliteral">&quot;Votre unité est endormie attendez : %i tours\n&quot;</span>, <a class="code" href="pawns_8c.html#a0ec7c043ade24d330b48f393097f140f">pawns</a>[target-&gt;<a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a>].<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">RECOVERY</a> - target-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">RECOVERY</a>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }<span class="keywordflow">while</span>(target-&gt;<a class="code" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">noPlayer</a> != <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a> || !selected || !<a class="code" href="unit_8c.html#aa012dba081af99c4a666767c26ac1ac5">canAttack</a>(target) || sleeping);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="engine_8c.html#ae40e16d551936cea056a982196273bde">attackable</a>(black); <span class="comment">// Attaquants en noir</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <a class="code" href="engine_8c.html#a7de2811c781a1136844609cc95e26464">setTarget</a>(<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a>, coordUnit, yellow); <span class="comment">// Récupère les cibles potentielles -&gt; Jaune</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unitColor</a> = white; <span class="comment">// Couleur unité sélectionnée</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <a class="code" href="terminal_8c.html#a9d7e8af417b6d543da691e9c0e2f6f9f">clearScreen</a>(); <span class="comment">// Met à jour une fois les cibles récupérées</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <a class="code" href="grid_8c.html#aad3077ff809cfe68afdb06ef3aa5497f">gridDisp</a>();</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="engine_8c.html#a7de2811c781a1136844609cc95e26464">setTarget</a>(<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a>, coordUnit, black); <span class="comment">// Récupère les cibles potentielles -&gt; Noir</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        selected = <a class="code" href="engine_8c.html#acd459b9ed1aaf8c05cdd3887e86b8668">selectUnit</a>(&amp;coordTarget); <span class="comment">// Sélectionne une cible à attaquer</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        found = <a class="code" href="listes_8c.html#a7a89e1a5008f1b3bb21980f812fd7c28">searchTarget</a>(<a class="code" href="listes_8c.html#a4523d7d0657b5558fe454f142b9411d8">targetList</a>, coordTarget);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">if</span>(!found){ <span class="comment">// Cible impossible</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            printf(<span class="stringliteral">&quot;Attaque impossible ! Portée insuffisante ou coordonnées incorrecte.\n&quot;</span>);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }<span class="keywordflow">while</span>(!found || !selected);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unitColor</a> = black;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="terminal_8c.html#a9d7e8af417b6d543da691e9c0e2f6f9f">clearScreen</a>(); <span class="comment">// Met à jour une fois l&#39;attaque vérifiée</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="grid_8c.html#aad3077ff809cfe68afdb06ef3aa5497f">gridDisp</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="engine_8c.html#a42359e6294ac21935ecc2d77140da492">launchAttack</a>(coordUnit, coordTarget); <span class="comment">// Lance une attaque</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="unit_8c.html#ae887bebca3eb165cbbd7f71975cf8f3a">sleep</a>(coordUnit);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <a class="code" href="turn_8c.html#a1fa6b4cfe1a42f3d14c8701782a8ae6f">hasAttacked</a> = 1;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="turn_8h.html#af6050b30e522cb4218786756c972d804">  177</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="turn_8c.html#af6050b30e522cb4218786756c972d804">playMove</a>(){</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordtype">bool</span> selected = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordtype">bool</span> possible = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordtype">bool</span> found    = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordtype">bool</span> sleeping = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="structvector.html">vector</a> coordUnit, coordTarget;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="structunit.html">unit</a> * target;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        selected = <a class="code" href="engine_8c.html#acd459b9ed1aaf8c05cdd3887e86b8668">selectUnit</a>(&amp;coordUnit); <span class="comment">// Sélection de l&#39;unité à déplacer</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        possible = <a class="code" href="engine_8c.html#a548c013433afab60c17fd9950fb7248f">possiblePath</a>(coordUnit);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        sleeping = <a class="code" href="unit_8c.html#aa2bac651e557f022a73099db0185eb44">isSleeping</a>(coordUnit);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        target   = &amp;<a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>];</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">if</span>(!selected)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;Vous ne pouvez sélectionner cette unité !\n&quot;</span>);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!<a class="code" href="unit_8c.html#a9c0738de90650e2f4640cae3bad4b3a2">canMove</a>(target) || !possible){</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;L&#39;unité ne peut pas se déplacer !\n&quot;</span>);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(target-&gt;<a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a> == empty){</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;Vous ne pouvez pas sélectionner une case vide\n&quot;</span>);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        }<span class="keywordflow">else</span> <span class="keywordflow">if</span>(target-&gt;<a class="code" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">noPlayer</a> != <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>){</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;Cette unité ne vous appartient pas !\n&quot;</span>);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <a class="code" href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a>(red);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            printf(<span class="stringliteral">&quot;Votre unité est endormie attendez : %i tours\n&quot;</span>, <a class="code" href="pawns_8c.html#a0ec7c043ade24d330b48f393097f140f">pawns</a>[target-&gt;<a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a>].<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">RECOVERY</a> - target-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">RECOVERY</a>);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }<span class="keywordflow">while</span>(target-&gt;<a class="code" href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">noPlayer</a> != <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a> || !selected || !possible || target-&gt;<a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a> == empty || sleeping);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="engine_8c.html#a8aca0579aac39cc7e3c41342d89fe1b7">movable</a>(black); <span class="comment">// Réinitialise en noir les unités déplaçables</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unitColor</a> = white; <span class="comment">// Couleur unité sélectionnée</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <a class="code" href="engine_8c.html#a309311c2d6a59c5998007d0e5f215d4d">tileWalkable</a>(coordUnit, green); <span class="comment">// Affiche la liste des cases atteignables en vert</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="terminal_8c.html#a9d7e8af417b6d543da691e9c0e2f6f9f">clearScreen</a>();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <a class="code" href="grid_8c.html#aad3077ff809cfe68afdb06ef3aa5497f">gridDisp</a>();</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="engine_8c.html#a309311c2d6a59c5998007d0e5f215d4d">tileWalkable</a>(coordUnit, black); <span class="comment">// Réinitialise la couleur en noir</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;\nVous pouvez maintenant déplacer votre unité :\n\n&quot;</span>);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">do</span>{</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        selected = <a class="code" href="engine_8c.html#acd459b9ed1aaf8c05cdd3887e86b8668">selectUnit</a>(&amp;coordTarget); <span class="comment">// Sélection de l&#39;endroit où déplacer l&#39;unité</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        found = <a class="code" href="engine_8c.html#a2790b2bcc6484aa19c0319ed791c9993">pathFind</a>(coordUnit, coordTarget);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    }<span class="keywordflow">while</span>(!selected || !found);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <a class="code" href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a>[coordUnit.<a class="code" href="structvector.html#a0403eb3aea23a3009e276fba1d317046">x</a>][coordUnit.<a class="code" href="structvector.html#aad6de640298eae97ca0a094db5aff477">y</a>].<a class="code" href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unitColor</a> = black; <span class="comment">// Réinitialise la couleur de l&#39;unité sélectionnée</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="unit_8c.html#ae887bebca3eb165cbbd7f71975cf8f3a">sleep</a>(coordUnit);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <a class="code" href="unit_8c.html#a87c06ff9e86d3317e10387a5d5626f1a">move</a>(coordTarget, coordUnit);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <a class="code" href="turn_8c.html#a5849a680495b395c75c2269657d5d4a5">hasMoved</a> = 1;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;}</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="turn_8h.html#ab4e21eee8105ce3f15cb490ce17225e8">  235</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="turn_8c.html#ab4e21eee8105ce3f15cb490ce17225e8">passTurn</a>(){</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <a class="code" href="turn_8c.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a> = 1;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <a class="code" href="terminal_8c.html#a9d7e8af417b6d543da691e9c0e2f6f9f">clearScreen</a>();</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <a class="code" href="grid_8c.html#aad3077ff809cfe68afdb06ef3aa5497f">gridDisp</a>();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="turn_8h.html#a2c1ed39b34b58552a4cba52a3f832d14">  245</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="turn_8c.html#a2c1ed39b34b58552a4cba52a3f832d14">hasPlay</a>(){</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="turn_8c.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a> == 0 &amp;&amp; <a class="code" href="turn_8c.html#a1fa6b4cfe1a42f3d14c8701782a8ae6f">hasAttacked</a> == 0 &amp;&amp; <a class="code" href="turn_8c.html#a5849a680495b395c75c2269657d5d4a5">hasMoved</a> == 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
+<div class="line"><a name="l00253"></a><span class="lineno"><a class="line" href="turn_8h.html#a5032490db7416ec2004861d51acda9e2">  253</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="turn_8c.html#a5032490db7416ec2004861d51acda9e2">surrender</a>(){</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="turn_8c.html#ab28ae3d21446f3eb01eeeab3002ad942">hasSurrender</a> = 1;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="turn_8c.html#aa39775041a9e8da2a156b4f75d646cdc">  261</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="turn_8c.html#aa39775041a9e8da2a156b4f75d646cdc">setAction</a>(<span class="keywordtype">int</span> timeLeft){ <span class="comment">// A revoir -&gt; Problème de logique</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordflow">if</span>(timeLeft &lt; 0){</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="turn_8c.html#a5849a680495b395c75c2269657d5d4a5">hasMoved</a>) <a class="code" href="turn_8c.html#a5849a680495b395c75c2269657d5d4a5">hasMoved</a> = 0;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="turn_8c.html#a1fa6b4cfe1a42f3d14c8701782a8ae6f">hasAttacked</a>) <a class="code" href="turn_8c.html#a1fa6b4cfe1a42f3d14c8701782a8ae6f">hasAttacked</a> = 0;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="turn_8c.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a>) <a class="code" href="turn_8c.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a> = 0;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="turn_8h.html#af77ebb54a900a2ef4a15ea354ff60f85">  272</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="turn_8c.html#af77ebb54a900a2ef4a15ea354ff60f85">playTurn</a>(){</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    time_t start;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    time(&amp;start);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordtype">int</span>  totalTime = <a class="code" href="turn_8c.html#af833187c9cee5a9fc025b1d37e4ea473">startTurn</a>(<a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>); <span class="comment">// Temps total du tour</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordtype">int</span> timeLeft   = totalTime; <span class="comment">// Temps restant</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordtype">int</span> loop       = 0;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <a class="code" href="turn_8c.html#ab28ae3d21446f3eb01eeeab3002ad942">hasSurrender</a> = 0; <span class="comment">// Au début pour afficher message d&#39;erreur correct lors de l&#39;abandon</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <a class="code" href="turn_8c.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a>    = 0; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <a class="code" href="unit_8c.html#afec10f9e98c70ab1915023cd0c8f76ca">poison</a>(); <span class="comment">// Met à jours les unités empoisonnées</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <a class="code" href="unit_8c.html#a1cbe53dd582c7ac03bafb0051a38a98b">minusEffect</a>(); <span class="comment">// Met à jours le temps restant pour les effets</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <a class="code" href="unit_8c.html#a505f360905b4ad0fa6e18f19405539ea">recover</a>(); <span class="comment">// Met à jours le temps restant pour réutiliser une unité </span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    signal(SIGUSR1, <a class="code" href="manageSignal_8c.html#a04a93a7ee658050301abb6c4678c8923">timeDown</a>); <span class="comment">// En fin de tour renvoie vers timeDown</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">while</span>(timeLeft &gt; 0 &amp;&amp; <a class="code" href="turn_8c.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a> == 0 &amp;&amp; <a class="code" href="turn_8c.html#ab28ae3d21446f3eb01eeeab3002ad942">hasSurrender</a> == 0){</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <a class="code" href="menu_8c.html#ac722505df6f214afc5d28c922da5e0c7">gameMenu</a>(); <span class="comment">// Menu du joueur</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        timeLeft = <a class="code" href="turn_8c.html#a9b3f364f20175067c0349246c843953b">endTurn</a>(start, totalTime);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keywordflow">if</span>(loop == 0 &amp;&amp; timeLeft &lt; 0){ <span class="comment">// Détermine si aucune action n&#39;a été faites pendant le temps impartis</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <a class="code" href="turn_8c.html#aa39775041a9e8da2a156b4f75d646cdc">setAction</a>(timeLeft); <span class="comment">// Remets à zéro les actions</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        loop++;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="turn_8c.html#a2c1ed39b34b58552a4cba52a3f832d14">hasPlay</a>() &amp;&amp; !<a class="code" href="turn_8c.html#ab28ae3d21446f3eb01eeeab3002ad942">hasSurrender</a>){ <span class="comment">// Pas d&#39;action donc temps écoulé</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keyword">raise</span>(SIGUSR1); <span class="comment">// Finis le tour et la partie car aucune action par un signal</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a> == <a class="code" href="engine_8h.html#a89f0201fca94cbc3ca0f5fbce851e7c9">FIRST_PLAYER</a> &amp;&amp; <a class="code" href="turn_8c.html#a2c1ed39b34b58552a4cba52a3f832d14">hasPlay</a>()) <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>++;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a> == <a class="code" href="engine_8h.html#a89f0201fca94cbc3ca0f5fbce851e7c9">FIRST_PLAYER</a> +1 &amp;&amp; <a class="code" href="turn_8c.html#a2c1ed39b34b58552a4cba52a3f832d14">hasPlay</a>()) <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>--;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <a class="code" href="turn_8c.html#a5849a680495b395c75c2269657d5d4a5">hasMoved</a>     = 0; <span class="comment">// Actions utilisateur lors du tour</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <a class="code" href="turn_8c.html#a1fa6b4cfe1a42f3d14c8701782a8ae6f">hasAttacked</a>  = 0; <span class="comment">// A faire à la fin pour éviter la triche lors du chargement</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
+<div class="ttc" id="engine_8c_html_a2790b2bcc6484aa19c0319ed791c9993"><div class="ttname"><a href="engine_8c.html#a2790b2bcc6484aa19c0319ed791c9993">pathFind</a></div><div class="ttdeci">bool pathFind(vector coordUnit, vector coordTarget)</div><div class="ttdoc">Trouve un chemin vers la position désirée. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00060">engine.c:60</a></div></div>
+<div class="ttc" id="structunit_html"><div class="ttname"><a href="structunit.html">unit</a></div><div class="ttdoc">Représente une unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00088">engine.h:88</a></div></div>
+<div class="ttc" id="structvector_html"><div class="ttname"><a href="structvector.html">vector</a></div><div class="ttdoc">Représente les coordonnées d&#39;un vecteur. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00079">engine.h:79</a></div></div>
+<div class="ttc" id="structunit_html_ab65f3e50337d201c634aa46587ea32ff"><div class="ttname"><a href="structunit.html#ab65f3e50337d201c634aa46587ea32ff">unit::effect</a></div><div class="ttdeci">unitEffect effect[NB_MAX_EFFECT]</div><div class="ttdoc">Effets sur l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00091">engine.h:91</a></div></div>
+<div class="ttc" id="listes_8c_html_a0171ca43abde0218c78caa6687eadf53"><div class="ttname"><a href="listes_8c.html#a0171ca43abde0218c78caa6687eadf53">countUnits</a></div><div class="ttdeci">int countUnits()</div><div class="ttdoc">Compte le nombre d&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="listes_8c_source.html#l00280">listes.c:280</a></div></div>
+<div class="ttc" id="turn_8c_html_af6050b30e522cb4218786756c972d804"><div class="ttname"><a href="turn_8c.html#af6050b30e522cb4218786756c972d804">playMove</a></div><div class="ttdeci">void playMove()</div><div class="ttdoc">Jouer un mouvement. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00177">turn.c:177</a></div></div>
+<div class="ttc" id="unit_8c_html_a505f360905b4ad0fa6e18f19405539ea"><div class="ttname"><a href="unit_8c.html#a505f360905b4ad0fa6e18f19405539ea">recover</a></div><div class="ttdeci">void recover()</div><div class="ttdoc">Réveille l&#39;unité tour par tour. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00503">unit.c:503</a></div></div>
+<div class="ttc" id="turn_8c_html_a9b3f364f20175067c0349246c843953b"><div class="ttname"><a href="turn_8c.html#a9b3f364f20175067c0349246c843953b">endTurn</a></div><div class="ttdeci">int endTurn(time_t start, int totalTime)</div><div class="ttdoc">Renvoie le temps restant avant la fin du tour. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00044">turn.c:44</a></div></div>
+<div class="ttc" id="turn_8c_html_a5032490db7416ec2004861d51acda9e2"><div class="ttname"><a href="turn_8c.html#a5032490db7416ec2004861d51acda9e2">surrender</a></div><div class="ttdeci">void surrender()</div><div class="ttdoc">Abandonne la partie. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00253">turn.c:253</a></div></div>
+<div class="ttc" id="turn_8c_html_a776a08ce69ed60e7178f5fab585b5936"><div class="ttname"><a href="turn_8c.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a></div><div class="ttdeci">int hasPassed</div><div class="ttdoc">Joueur a passé son tour. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00024">turn.c:24</a></div></div>
+<div class="ttc" id="turn_8c_html_a1fa6b4cfe1a42f3d14c8701782a8ae6f"><div class="ttname"><a href="turn_8c.html#a1fa6b4cfe1a42f3d14c8701782a8ae6f">hasAttacked</a></div><div class="ttdeci">int hasAttacked</div><div class="ttdoc">Joueur a attaqué </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00023">turn.c:23</a></div></div>
+<div class="ttc" id="menu_8c_html_aac6cc2265bfc1481caf987f92bece27b"><div class="ttname"><a href="menu_8c.html#aac6cc2265bfc1481caf987f92bece27b">dispDirection</a></div><div class="ttdeci">void dispDirection()</div><div class="ttdoc">Afficher les directions. </div><div class="ttdef"><b>Definition:</b> <a href="menu_8c_source.html#l00458">menu.c:458</a></div></div>
+<div class="ttc" id="turn_8c_html_af77ebb54a900a2ef4a15ea354ff60f85"><div class="ttname"><a href="turn_8c.html#af77ebb54a900a2ef4a15ea354ff60f85">playTurn</a></div><div class="ttdeci">void playTurn()</div><div class="ttdoc">Jouer un tour. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00272">turn.c:272</a></div></div>
+<div class="ttc" id="listes_8c_html_a4523d7d0657b5558fe454f142b9411d8"><div class="ttname"><a href="listes_8c.html#a4523d7d0657b5558fe454f142b9411d8">targetList</a></div><div class="ttdeci">int targetList</div><div class="ttdoc">Numéro de la liste des cibles. </div><div class="ttdef"><b>Definition:</b> <a href="listes_8c_source.html#l00028">listes.c:28</a></div></div>
+<div class="ttc" id="unit_8c_html_a2fdda888eb5b942249418b75a4998581"><div class="ttname"><a href="unit_8c.html#a2fdda888eb5b942249418b75a4998581">setDirection</a></div><div class="ttdeci">void setDirection(vector source, int dir)</div><div class="ttdoc">Définis la direction de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00377">unit.c:377</a></div></div>
+<div class="ttc" id="structunit_html_a88d6da278053824260f4f4987773b34f"><div class="ttname"><a href="structunit.html#a88d6da278053824260f4f4987773b34f">unit::stat</a></div><div class="ttdeci">unitStat stat</div><div class="ttdoc">Statistiques de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00090">engine.h:90</a></div></div>
+<div class="ttc" id="structunitStat_html_a9f29568c1079efe25de0dc1b4246af94"><div class="ttname"><a href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">unitStat::RECOVERY</a></div><div class="ttdeci">int RECOVERY</div><div class="ttdoc">Repos. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00069">engine.h:69</a></div></div>
+<div class="ttc" id="engine_8c_html_acd459b9ed1aaf8c05cdd3887e86b8668"><div class="ttname"><a href="engine_8c.html#acd459b9ed1aaf8c05cdd3887e86b8668">selectUnit</a></div><div class="ttdeci">bool selectUnit(vector *coordUnit)</div><div class="ttdoc">Sélectionne une unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00416">engine.c:416</a></div></div>
+<div class="ttc" id="unit_8c_html_a87c06ff9e86d3317e10387a5d5626f1a"><div class="ttname"><a href="unit_8c.html#a87c06ff9e86d3317e10387a5d5626f1a">move</a></div><div class="ttdeci">void move(vector destination, vector source)</div><div class="ttdoc">Déplace une unité vers la destination. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00351">unit.c:351</a></div></div>
+<div class="ttc" id="engine_8c_html_ae40e16d551936cea056a982196273bde"><div class="ttname"><a href="engine_8c.html#ae40e16d551936cea056a982196273bde">attackable</a></div><div class="ttdeci">void attackable(int colorDisp)</div><div class="ttdoc">Fait la liste des unités pouvant attaquer. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00164">engine.c:164</a></div></div>
+<div class="ttc" id="terminal_8c_html_aafe20dae78dfbeea7c9102fadcfba1e0"><div class="ttname"><a href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a></div><div class="ttdeci">void reinitColor()</div><div class="ttdoc">Réinitialise la couleur de l&#39;écran. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00067">terminal.c:67</a></div></div>
+<div class="ttc" id="turn_8c_html_a5849a680495b395c75c2269657d5d4a5"><div class="ttname"><a href="turn_8c.html#a5849a680495b395c75c2269657d5d4a5">hasMoved</a></div><div class="ttdeci">int hasMoved</div><div class="ttdoc">Joueur a joué </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00022">turn.c:22</a></div></div>
+<div class="ttc" id="listes_8c_html_a7a89e1a5008f1b3bb21980f812fd7c28"><div class="ttname"><a href="listes_8c.html#a7a89e1a5008f1b3bb21980f812fd7c28">searchTarget</a></div><div class="ttdeci">bool searchTarget(int numList, vector coordTarget)</div><div class="ttdoc">Cherche une cible dans la liste. </div><div class="ttdef"><b>Definition:</b> <a href="listes_8c_source.html#l00301">listes.c:301</a></div></div>
+<div class="ttc" id="engine_8c_html_afaa2c64a9fd09c382394b57006c470ce"><div class="ttname"><a href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a></div><div class="ttdeci">int noPlayer</div><div class="ttdoc">Joueur en cours. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00024">engine.c:24</a></div></div>
+<div class="ttc" id="turn_8h_html_a2cb9809f30ffec513e731194339f2ca4"><div class="ttname"><a href="turn_8h.html#a2cb9809f30ffec513e731194339f2ca4">MIN_TIME</a></div><div class="ttdeci">#define MIN_TIME</div><div class="ttdoc">Temps minimum par tour. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8h_source.html#l00010">turn.h:10</a></div></div>
+<div class="ttc" id="turn_8c_html_aa39775041a9e8da2a156b4f75d646cdc"><div class="ttname"><a href="turn_8c.html#aa39775041a9e8da2a156b4f75d646cdc">setAction</a></div><div class="ttdeci">void setAction(int timeLeft)</div><div class="ttdoc">Définis si l&#39;action est à prendre en compte. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00261">turn.c:261</a></div></div>
+<div class="ttc" id="manageString_8c_html_acb5c8162f1db822caca54e0e04d2a143"><div class="ttname"><a href="manageString_8c.html#acb5c8162f1db822caca54e0e04d2a143">getNameEffect</a></div><div class="ttdeci">char * getNameEffect(unitEffect effect)</div><div class="ttdoc">Récupère le nom de l&#39;effet à partir de la liste énumérée. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00220">manageString.c:220</a></div></div>
+<div class="ttc" id="structunit_html_a885e1b4b75d53199f4b03bdbd442cd37"><div class="ttname"><a href="structunit.html#a885e1b4b75d53199f4b03bdbd442cd37">unit::noPlayer</a></div><div class="ttdeci">int noPlayer</div><div class="ttdoc">Propriétaire de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00093">engine.h:93</a></div></div>
+<div class="ttc" id="structunit_html_aad8b083b6438d26e8aade384522e867c"><div class="ttname"><a href="structunit.html#aad8b083b6438d26e8aade384522e867c">unit::name</a></div><div class="ttdeci">unitName name</div><div class="ttdoc">Nom de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00089">engine.h:89</a></div></div>
+<div class="ttc" id="structunit_html_abc126ccf502f7c7e7ec72e38b75c3e0e"><div class="ttname"><a href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unit::unitColor</a></div><div class="ttdeci">int unitColor</div><div class="ttdoc">Couleur de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00094">engine.h:94</a></div></div>
+<div class="ttc" id="unit_8c_html_a9c0738de90650e2f4640cae3bad4b3a2"><div class="ttname"><a href="unit_8c.html#a9c0738de90650e2f4640cae3bad4b3a2">canMove</a></div><div class="ttdeci">bool canMove(unit *target)</div><div class="ttdoc">Définis si une unité peut bouger. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00106">unit.c:106</a></div></div>
+<div class="ttc" id="structvector_html_aad6de640298eae97ca0a094db5aff477"><div class="ttname"><a href="structvector.html#aad6de640298eae97ca0a094db5aff477">vector::y</a></div><div class="ttdeci">int y</div><div class="ttdoc">Position y. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00081">engine.h:81</a></div></div>
+<div class="ttc" id="structvector_html_a0403eb3aea23a3009e276fba1d317046"><div class="ttname"><a href="structvector.html#a0403eb3aea23a3009e276fba1d317046">vector::x</a></div><div class="ttdeci">int x</div><div class="ttdoc">Position x. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00080">engine.h:80</a></div></div>
+<div class="ttc" id="turn_8c_html_ab4e21eee8105ce3f15cb490ce17225e8"><div class="ttname"><a href="turn_8c.html#ab4e21eee8105ce3f15cb490ce17225e8">passTurn</a></div><div class="ttdeci">void passTurn()</div><div class="ttdoc">Passer tour. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00235">turn.c:235</a></div></div>
+<div class="ttc" id="terminal_8c_html_a9d7e8af417b6d543da691e9c0e2f6f9f"><div class="ttname"><a href="terminal_8c.html#a9d7e8af417b6d543da691e9c0e2f6f9f">clearScreen</a></div><div class="ttdeci">void clearScreen()</div><div class="ttdoc">Efface l&#39;écran. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00083">terminal.c:83</a></div></div>
+<div class="ttc" id="turn_8c_html_ab28ae3d21446f3eb01eeeab3002ad942"><div class="ttname"><a href="turn_8c.html#ab28ae3d21446f3eb01eeeab3002ad942">hasSurrender</a></div><div class="ttdeci">int hasSurrender</div><div class="ttdoc">Joueur a abandonné la partie. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00025">turn.c:25</a></div></div>
+<div class="ttc" id="engine_8c_html_a8aca0579aac39cc7e3c41342d89fe1b7"><div class="ttname"><a href="engine_8c.html#a8aca0579aac39cc7e3c41342d89fe1b7">movable</a></div><div class="ttdeci">void movable(int colorDisp)</div><div class="ttdoc">Fait la liste des unités déplaçables. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00141">engine.c:141</a></div></div>
+<div class="ttc" id="turn_8c_html_af833187c9cee5a9fc025b1d37e4ea473"><div class="ttname"><a href="turn_8c.html#af833187c9cee5a9fc025b1d37e4ea473">startTurn</a></div><div class="ttdeci">int startTurn()</div><div class="ttdoc">Débute le tour du joueur. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00030">turn.c:30</a></div></div>
+<div class="ttc" id="turn_8c_html_a0d63b19dd2910e04bc114a4572276601"><div class="ttname"><a href="turn_8c.html#a0d63b19dd2910e04bc114a4572276601">playAttack</a></div><div class="ttdeci">void playAttack()</div><div class="ttdoc">Jouer une attaque. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00104">turn.c:104</a></div></div>
+<div class="ttc" id="engine_8c_html_a309311c2d6a59c5998007d0e5f215d4d"><div class="ttname"><a href="engine_8c.html#a309311c2d6a59c5998007d0e5f215d4d">tileWalkable</a></div><div class="ttdeci">void tileWalkable(vector coordUnit, int colorDisp)</div><div class="ttdoc">Fait la liste des cases pouvant être atteintes par l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00188">engine.c:188</a></div></div>
+<div class="ttc" id="unit_8c_html_a1cbe53dd582c7ac03bafb0051a38a98b"><div class="ttname"><a href="unit_8c.html#a1cbe53dd582c7ac03bafb0051a38a98b">minusEffect</a></div><div class="ttdeci">void minusEffect()</div><div class="ttdoc">Décrémente les effets. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00455">unit.c:455</a></div></div>
+<div class="ttc" id="turn_8h_html_aaa58797f81bdb080460fcf48916ef5ac"><div class="ttname"><a href="turn_8h.html#aaa58797f81bdb080460fcf48916ef5ac">TIME_BY_UNIT</a></div><div class="ttdeci">#define TIME_BY_UNIT</div><div class="ttdoc">Temps par unité possédée par le joueur. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8h_source.html#l00009">turn.h:9</a></div></div>
+<div class="ttc" id="grid_8c_html_aad3077ff809cfe68afdb06ef3aa5497f"><div class="ttname"><a href="grid_8c.html#aad3077ff809cfe68afdb06ef3aa5497f">gridDisp</a></div><div class="ttdeci">void gridDisp()</div><div class="ttdoc">Affiche la grille avec les coordonnées. </div><div class="ttdef"><b>Definition:</b> <a href="grid_8c_source.html#l00078">grid.c:78</a></div></div>
+<div class="ttc" id="manageSignal_8c_html_a04a93a7ee658050301abb6c4678c8923"><div class="ttname"><a href="manageSignal_8c.html#a04a93a7ee658050301abb6c4678c8923">timeDown</a></div><div class="ttdeci">void timeDown(int signal)</div><div class="ttdoc">Petit message sympa lors du temps écoulé </div><div class="ttdef"><b>Definition:</b> <a href="manageSignal_8c_source.html#l00058">manageSignal.c:58</a></div></div>
+<div class="ttc" id="terminal_8c_html_aa1b198e2a86cf333bd2b8d74e21409f1"><div class="ttname"><a href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a></div><div class="ttdeci">void color(int color, char type[])</div><div class="ttdoc">Change la couleur de l&#39;écran ou de la police. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00051">terminal.c:51</a></div></div>
+<div class="ttc" id="unit_8c_html_ae887bebca3eb165cbbd7f71975cf8f3a"><div class="ttname"><a href="unit_8c.html#ae887bebca3eb165cbbd7f71975cf8f3a">sleep</a></div><div class="ttdeci">void sleep(vector pos)</div><div class="ttdoc">Endors l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00480">unit.c:480</a></div></div>
+<div class="ttc" id="engine_8c_html_a7de2811c781a1136844609cc95e26464"><div class="ttname"><a href="engine_8c.html#a7de2811c781a1136844609cc95e26464">setTarget</a></div><div class="ttdeci">void setTarget(unitName name, vector coordUnit, int colorDisp)</div><div class="ttdoc">Initialise les cibles du pion. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00252">engine.c:252</a></div></div>
+<div class="ttc" id="manageString_8c_html_ab431b0689298bfb6b1e74cbe92c18e00"><div class="ttname"><a href="manageString_8c.html#ab431b0689298bfb6b1e74cbe92c18e00">readLong</a></div><div class="ttdeci">long readLong()</div><div class="ttdoc">Lit un long de manière sécurisée. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00291">manageString.c:291</a></div></div>
+<div class="ttc" id="turn_8c_html_a2c1ed39b34b58552a4cba52a3f832d14"><div class="ttname"><a href="turn_8c.html#a2c1ed39b34b58552a4cba52a3f832d14">hasPlay</a></div><div class="ttdeci">bool hasPlay()</div><div class="ttdoc">Définis si le joueur a joué </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00245">turn.c:245</a></div></div>
+<div class="ttc" id="engine_8c_html_a548c013433afab60c17fd9950fb7248f"><div class="ttname"><a href="engine_8c.html#a548c013433afab60c17fd9950fb7248f">possiblePath</a></div><div class="ttdeci">bool possiblePath(vector coordUnit)</div><div class="ttdoc">Trouve un chemin vers une quelconque position pour l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00031">engine.c:31</a></div></div>
+<div class="ttc" id="unit_8c_html_aa2bac651e557f022a73099db0185eb44"><div class="ttname"><a href="unit_8c.html#aa2bac651e557f022a73099db0185eb44">isSleeping</a></div><div class="ttdeci">bool isSleeping(vector pos)</div><div class="ttdoc">Vérifie si l&#39;unité est endormie. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00490">unit.c:490</a></div></div>
+<div class="ttc" id="engine_8c_html_a5987e3369c71f1edb157786e4c75875b"><div class="ttname"><a href="engine_8c.html#a5987e3369c71f1edb157786e4c75875b">grid</a></div><div class="ttdeci">unit grid[N][N]</div><div class="ttdoc">Grille d&#39;unités. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00023">engine.c:23</a></div></div>
+<div class="ttc" id="engine_8h_html_a89f0201fca94cbc3ca0f5fbce851e7c9"><div class="ttname"><a href="engine_8h.html#a89f0201fca94cbc3ca0f5fbce851e7c9">FIRST_PLAYER</a></div><div class="ttdeci">#define FIRST_PLAYER</div><div class="ttdoc">Définis la valeur du premier joueur. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00023">engine.h:23</a></div></div>
+<div class="ttc" id="turn_8h_html_a5320d4457a472d8888ec1905bc0e0a1c"><div class="ttname"><a href="turn_8h.html#a5320d4457a472d8888ec1905bc0e0a1c">MAX_TIME</a></div><div class="ttdeci">#define MAX_TIME</div><div class="ttdoc">Temps maximum par tour. </div><div class="ttdef"><b>Definition:</b> <a href="turn_8h_source.html#l00011">turn.h:11</a></div></div>
+<div class="ttc" id="terminal_8c_html_a728c5deabcb9e271c6962577c60ef566"><div class="ttname"><a href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a></div><div class="ttdeci">void fontColor(int color)</div><div class="ttdoc">Change la couleur de la police. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00076">terminal.c:76</a></div></div>
+<div class="ttc" id="engine_8h_html_a21db47461d910a7cad180b5532f1a7f8"><div class="ttname"><a href="engine_8h.html#a21db47461d910a7cad180b5532f1a7f8">NB_MAX_EFFECT</a></div><div class="ttdeci">#define NB_MAX_EFFECT</div><div class="ttdoc">Nombre total de status différent. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00019">engine.h:19</a></div></div>
+<div class="ttc" id="menu_8c_html_ac722505df6f214afc5d28c922da5e0c7"><div class="ttname"><a href="menu_8c.html#ac722505df6f214afc5d28c922da5e0c7">gameMenu</a></div><div class="ttdeci">void gameMenu()</div><div class="ttdoc">Menu du joueur lors de la partie. </div><div class="ttdef"><b>Definition:</b> <a href="menu_8c_source.html#l00470">menu.c:470</a></div></div>
+<div class="ttc" id="turn_8c_html_a9d6b655a52683afe2f4cb87e3f64bc2e"><div class="ttname"><a href="turn_8c.html#a9d6b655a52683afe2f4cb87e3f64bc2e">changeDirection</a></div><div class="ttdeci">void changeDirection()</div><div class="ttdoc">Change la direction de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="turn_8c_source.html#l00057">turn.c:57</a></div></div>
+<div class="ttc" id="engine_8c_html_a42359e6294ac21935ecc2d77140da492"><div class="ttname"><a href="engine_8c.html#a42359e6294ac21935ecc2d77140da492">launchAttack</a></div><div class="ttdeci">void launchAttack(vector coordSource, vector coordTarget)</div><div class="ttdoc">Lance une attaque selon l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00336">engine.c:336</a></div></div>
+<div class="ttc" id="pawns_8c_html_a0ec7c043ade24d330b48f393097f140f"><div class="ttname"><a href="pawns_8c.html#a0ec7c043ade24d330b48f393097f140f">pawns</a></div><div class="ttdeci">unit * pawns</div><div class="ttdoc">Pions initialisés avec leur valeurs. </div><div class="ttdef"><b>Definition:</b> <a href="pawns_8c_source.html#l00016">pawns.c:16</a></div></div>
+<div class="ttc" id="unit_8c_html_aa012dba081af99c4a666767c26ac1ac5"><div class="ttname"><a href="unit_8c.html#aa012dba081af99c4a666767c26ac1ac5">canAttack</a></div><div class="ttdeci">bool canAttack(unit *target)</div><div class="ttdoc">Définis si une unité peut attaquer. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00086">unit.c:86</a></div></div>
+<div class="ttc" id="unit_8c_html_afec10f9e98c70ab1915023cd0c8f76ca"><div class="ttname"><a href="unit_8c.html#afec10f9e98c70ab1915023cd0c8f76ca">poison</a></div><div class="ttdeci">void poison()</div><div class="ttdoc">Gère le statut empoisonnement. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00386">unit.c:386</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

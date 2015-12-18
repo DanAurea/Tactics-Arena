@@ -1,0 +1,9 @@
+<map id="include/display/grid.h" name="include/display/grid.h">
+<area shape="rect" id="node2" href="$saveNLoad_8c.html" title="Gestion de la sauvegarde et du chargement. " alt="" coords="5,80,184,107"/>
+<area shape="rect" id="node3" href="$grid_8c.html" title="Gestion de la grille. " alt="" coords="209,80,330,107"/>
+<area shape="rect" id="node4" href="$menu_8c.html" title="Gestion des menus. " alt="" coords="354,80,486,107"/>
+<area shape="rect" id="node5" href="$engine_8c.html" title="Moteur de jeu. " alt="" coords="510,80,639,107"/>
+<area shape="rect" id="node6" href="$turn_8c.html" title="Gestion des tours. " alt="" coords="663,80,777,107"/>
+<area shape="rect" id="node7" href="$main_8c.html" title="Programme principal. " alt="" coords="801,80,884,107"/>
+<area shape="rect" id="node8" href="$unit_8c.html" title="Gestion des unités. " alt="" coords="909,80,1017,107"/>
+</map>

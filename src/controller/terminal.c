@@ -1,3 +1,11 @@
+/**
+ @file terminal.c
+ @brief Gestion du terminal
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -6,8 +14,9 @@
 
 /**
  * Récupère le code correspondant à la couleur
- * @param  color Couleur demandée
- * @return       Code correspondant, écran blanc si code incorrect
+ * @param  color 	Couleur demandée
+ * @param type		Type d'objet à modifier
+ * @return       	Code correspondant, écran blanc si code incorrect
  */
 char * getColor(int color, char type[]){
 

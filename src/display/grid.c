@@ -1,3 +1,11 @@
+/**
+ @file grid.c
+ @brief Gestion de la grille
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <stdio.h>
 #include "../../include/game/engine.h"
 #include "../../include/display/grid.h"
@@ -38,8 +46,6 @@ void borderHoriz(){
 
 /**
  * Affiche les coordonnées verticales
- * @param x Point de départ coordonnÃ©e X
- * @param row Ligne de la grille actuellement en cours d'affichage
  */
 void dispX(){
 	for(short x = 1; x <= N; x++){

@@ -1,0 +1,8 @@
+<map id="src/controller/manageSignal.c" name="src/controller/manageSignal.c">
+<area shape="rect" id="node2" href="$engine_8h.html" title="En&#45;tête moteur de jeu. " alt="" coords="76,80,199,121"/>
+<area shape="rect" id="node6" href="$pawns_8h.html" title="En&#45;tête gestions des pions. " alt="" coords="223,80,345,121"/>
+<area shape="rect" id="node7" href="$saveNLoad_8h.html" title="En&#45;tête gestion de la sauvegarde et chargement. " alt="" coords="369,80,513,121"/>
+<area shape="rect" id="node8" href="$terminal_8h.html" title="En&#45;tête gestion du terminal. " alt="" coords="537,80,681,121"/>
+<area shape="rect" id="node9" href="$listes_8h.html" title="En&#45;tête listes de vecteurs. " alt="" coords="705,80,828,121"/>
+<area shape="rect" id="node10" href="$pathList_8h.html" title="En&#45;tête listes des chemins. " alt="" coords="852,80,975,121"/>
+</map>

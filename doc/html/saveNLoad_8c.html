@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena: Référence du fichier src/controller/saveNLoad.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_41ef5d8a90b9cc03a02949a5c062e6f0.html">controller</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier saveNLoad.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion de la sauvegarde et du chargement.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="engine_8h_source.html">../../include/game/engine.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pawns_8h_source.html">../../include/game/pawns.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="listes_8h_source.html">../../include/game/listes.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pathList_8h_source.html">../../include/game/pathList.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="turn_8h_source.html">../../include/game/turn.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid_8h_source.html">../../include/display/grid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="terminal_8h_source.html">../../include/controller/terminal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="manageString_8h_source.html">../../include/controller/manageString.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de saveNLoad.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="saveNLoad_8c__incl.png" border="0" usemap="#src_2controller_2saveNLoad_8c" alt=""/></div>
+<map name="src_2controller_2saveNLoad_8c" id="src_2controller_2saveNLoad_8c">
+<area shape="rect" id="node3" href="engine_8h.html" title="En&#45;tête moteur de jeu. " alt="" coords="91,80,213,121"/><area shape="rect" id="node7" href="pawns_8h.html" title="En&#45;tête gestions des pions. " alt="" coords="237,80,360,121"/><area shape="rect" id="node8" href="listes_8h.html" title="En&#45;tête listes de vecteurs. " alt="" coords="384,80,507,121"/><area shape="rect" id="node9" href="pathList_8h.html" title="En&#45;tête listes des chemins. " alt="" coords="531,80,653,121"/><area shape="rect" id="node10" href="turn_8h.html" title="En&#45;tête gestion des tours. " alt="" coords="677,80,800,121"/><area shape="rect" id="node11" href="grid_8h.html" title="En&#45;tête gestion de la grille. " alt="" coords="825,80,957,121"/><area shape="rect" id="node12" href="terminal_8h.html" title="En&#45;tête gestion du terminal. " alt="" coords="981,80,1125,121"/><area shape="rect" id="node13" href="manageString_8h.html" title="En&#45;tête gestion des chaînes de caractères. " alt="" coords="1149,80,1293,121"/></map>
+</div>
+</div>
+<p><a href="saveNLoad_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a6a1368e194a9e07bdd18d953515bb3f2"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saveNLoad_8c.html#a6a1368e194a9e07bdd18d953515bb3f2">getCharKey</a> (char *dynamicKey, int *pos)</td></tr>
+<tr class="memdesc:a6a1368e194a9e07bdd18d953515bb3f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère un caractère de la clé  <a href="#a6a1368e194a9e07bdd18d953515bb3f2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6a1368e194a9e07bdd18d953515bb3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec2efd1e49dcbbda52c7b31438f61ec"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saveNLoad_8c.html#a7ec2efd1e49dcbbda52c7b31438f61ec">getKey</a> (<a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name)</td></tr>
+<tr class="memdesc:a7ec2efd1e49dcbbda52c7b31438f61ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère une clé de décryptage.  <a href="#a7ec2efd1e49dcbbda52c7b31438f61ec">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7ec2efd1e49dcbbda52c7b31438f61ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c3b7026831b763b387a0de575af10b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saveNLoad_8c.html#a1c3b7026831b763b387a0de575af10b4">crypt</a> (<a class="el" href="structunit.html">unit</a> *unitSaved)</td></tr>
+<tr class="memdesc:a1c3b7026831b763b387a0de575af10b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crypte les statistiques de l'unité pour la sauvegarde.  <a href="#a1c3b7026831b763b387a0de575af10b4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1c3b7026831b763b387a0de575af10b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5052b4a62dde604172e0d8709026a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saveNLoad_8c.html#a5d5052b4a62dde604172e0d8709026a2">decrypt</a> (<a class="el" href="structunit.html">unit</a> *unitLoaded)</td></tr>
+<tr class="memdesc:a5d5052b4a62dde604172e0d8709026a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Décrypte les statistiques de l'unité pour le chargement.  <a href="#a5d5052b4a62dde604172e0d8709026a2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5d5052b4a62dde604172e0d8709026a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca91b85990102e4dd58d8728b11cc035"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saveNLoad_8c.html#aca91b85990102e4dd58d8728b11cc035">checkDecrypt</a> (<a class="el" href="structunit.html">unit</a> *unitLoaded)</td></tr>
+<tr class="memdesc:aca91b85990102e4dd58d8728b11cc035"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie que le décryptage s'est bien passé  <a href="#aca91b85990102e4dd58d8728b11cc035">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aca91b85990102e4dd58d8728b11cc035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae2c382151ef7c9aa913361172b30db6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saveNLoad_8c.html#aae2c382151ef7c9aa913361172b30db6">save</a> ()</td></tr>
+<tr class="memdesc:aae2c382151ef7c9aa913361172b30db6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde la partie avec l'état actuel de la grille et les données liées au joueur en cours.  <a href="#aae2c382151ef7c9aa913361172b30db6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aae2c382151ef7c9aa913361172b30db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78f61ac2dd03bcba8e09ca20cd7d68e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saveNLoad_8c.html#a78f61ac2dd03bcba8e09ca20cd7d68e3">load</a> ()</td></tr>
+<tr class="memdesc:a78f61ac2dd03bcba8e09ca20cd7d68e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge la partie précédemment enregistré  <a href="#a78f61ac2dd03bcba8e09ca20cd7d68e3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a78f61ac2dd03bcba8e09ca20cd7d68e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a11a7310ee9d77476871dbe977e71a7f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11a7310ee9d77476871dbe977e71a7f4"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="saveNLoad_8c.html#a11a7310ee9d77476871dbe977e71a7f4">key</a> [] = &quot;SPIBCTBEC&quot;</td></tr>
+<tr class="memdesc:a11a7310ee9d77476871dbe977e71a7f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clé statique à utiliser pour le cryptage. <br /></td></tr>
+<tr class="separator:a11a7310ee9d77476871dbe977e71a7f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion de la sauvegarde et du chargement. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Cousin Brandon Chaudemanche Ewen Biardeau Tristan </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>v1.00 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18/12/2015 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="saveNLoad_8c_source.html">saveNLoad.c</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="aca91b85990102e4dd58d8728b11cc035"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool checkDecrypt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>unitLoaded</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie que le décryptage s'est bien passé </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unitLoaded</td><td>Unité chargée </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si données correctes sinon faux </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="saveNLoad_8c_source.html#l00133">133</a> du fichier <a class="el" href="saveNLoad_8c_source.html">saveNLoad.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1c3b7026831b763b387a0de575af10b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void crypt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>unitSaved</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crypte les statistiques de l'unité pour la sauvegarde. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unitSaved</td><td>Unité sauvegardée </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="saveNLoad_8c_source.html#l00070">70</a> du fichier <a class="el" href="saveNLoad_8c_source.html">saveNLoad.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5d5052b4a62dde604172e0d8709026a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void decrypt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structunit.html">unit</a> *&#160;</td>
+          <td class="paramname"><em>unitLoaded</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Décrypte les statistiques de l'unité pour le chargement. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unitLoaded</td><td>Unité chargée </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="saveNLoad_8c_source.html#l00101">101</a> du fichier <a class="el" href="saveNLoad_8c_source.html">saveNLoad.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6a1368e194a9e07bdd18d953515bb3f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char getCharKey </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>dynamicKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère un caractère de la clé </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dynamicKey</td><td>Clé dynamique </td></tr>
+    <tr><td class="paramname">pos</td><td>Position dans la clé </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne un caractère de la clé </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="saveNLoad_8c_source.html#l00027">27</a> du fichier <a class="el" href="saveNLoad_8c_source.html">saveNLoad.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ec2efd1e49dcbbda52c7b31438f61ec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* getKey </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a>&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère une clé de décryptage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Nom de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne une clé </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="saveNLoad_8c_source.html#l00039">39</a> du fichier <a class="el" href="saveNLoad_8c_source.html">saveNLoad.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a78f61ac2dd03bcba8e09ca20cd7d68e3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge la partie précédemment enregistré </p>
+<p>Charge une partie. </p>
+
+<p>Définition à la ligne <a class="el" href="saveNLoad_8c_source.html#l00201">201</a> du fichier <a class="el" href="saveNLoad_8c_source.html">saveNLoad.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae2c382151ef7c9aa913361172b30db6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void save </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sauvegarde la partie avec l'état actuel de la grille et les données liées au joueur en cours. </p>
+<p>Sauvegarde la partie. </p>
+
+<p>Définition à la ligne <a class="el" href="saveNLoad_8c_source.html#l00158">158</a> du fichier <a class="el" href="saveNLoad_8c_source.html">saveNLoad.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

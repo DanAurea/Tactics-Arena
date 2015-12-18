@@ -1,5 +1,14 @@
+/**
+ @file engine.c
+ @brief Moteur de jeu
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
 #include "../../include/game/pathList.h"
@@ -43,33 +52,31 @@ bool possiblePath(vector coordUnit){
 	return false;
 }
 
-
-
 /**
  * Trouve un chemin vers la position désirée
  * @param coordUnit Coordonnées de l'unité
  * @param coordTarget Coordonnées de la cible
+ * @return Retourne vrai si chemin trouvé
  */
 bool pathFind(vector coordUnit, vector coordTarget){
 	int range = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
-	vector current, neighbour, tmp; // Coordonnées de la case
-	int F = -1; // Poids de la case
+	vector current, neighbour; // Coordonnées de la case
+	int F = 9999; // Poids de la case
 
 	if(!emptyPath(1)) dumpPath(1); // Vide liste fermée
 	if(!emptyPath(0)) dumpPath(0); // Vide liste ouverte
-	else{
-		pathHead(0); // En tête liste ouverte
-		toRightPath(0, coordUnit, F); // Ajoute le point de départ à la liste ouverte
-	}
+	
+	pathHead(0); // En tête liste ouverte
+	toRightPath(0, coordUnit, F); // Ajoute le point de départ à la liste ouverte
 
-	while(!emptyPath(0) && range > 0){ // Parcours de la zone dans la portée de l'unité
+	while(!emptyPath(0) && range >= 0){ // Parcours de la zone dans la portée de l'unité
 			
 			current = getCurrentNode(0); // On récupère le noeud ayant le plus petit F dans la liste ouverte
 			range--;
+			addCloseList(current, F); // Ajoute le noeud courant à la liste fermée
 
 			if(current.x == coordTarget.x && current.y == coordTarget.y) return true; // Chemin trouvé
 
-			addCloseList(current, F); // Ajoute le noeud courant à la liste fermée
 			for(int i = current.x -1; i <= current.x + 1; i++){ // Regarde les voisins sans prendre en compte la diagonale
 				for(int j = current.y -1; j <= current.y + 1; j++){
 
@@ -77,11 +84,13 @@ bool pathFind(vector coordUnit, vector coordTarget){
 
 						neighbour.x = i;
 						neighbour.y = j;
+
 						if (i >= 0 && i < N && j >= 0 && j < N){
 
-							if(!searchTile(1, neighbour) 
-								&& (grid[i][j].name != decors 
-									|| (grid[i][j].noPlayer == noPlayer && canGetPassed(&grid[i][j])) ) ){
+							// Cherche le voisin dans la liste fermée + vérifie que la case permet le passage
+							if(!searchTile(1, neighbour) && (grid[i][j].name != decors 
+								|| canTeleport(grid[coordUnit.x][coordUnit.y].name) 
+								|| (grid[i][j].noPlayer == noPlayer && canGetPassed(&grid[i][j]))) ){ 
 								
 								F = abs(coordTarget.x - i) + abs(coordTarget.y -j); // Distance jusqu'à la destination
 
@@ -97,16 +106,6 @@ bool pathFind(vector coordUnit, vector coordTarget){
 				}
 			}
 	}
-	/*pathHead(0);
-	while(!outPath(0)){
-		getTile(0, &tmp, &F);
-			printf("%c - %i - %i\n", tmp.x + 'A', tmp.y +1, F);
-
-		next(0);
-	}
-
-	current = getCurrentNode(0);
-	printf("%c - %i", current.x + 'A', current.y +1);*/
 
 	return false;
 }
@@ -164,12 +163,15 @@ void attackable(int colorDisp){
  */
 void tileWalkable(vector coordUnit, int colorDisp){
 	unit * source;
+	vector coordTarget;
 	int moveRange = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
 
 	for(int x = coordUnit.x - moveRange; x <= moveRange + coordUnit.x; x++){
 		for(int y = coordUnit.y -moveRange; y <= moveRange + coordUnit.y; y++){
 
-			if(abs(coordUnit.x - x) + abs(coordUnit.y - y) <= moveRange && x >= 0 && x < N && y >= 0 && y < N){
+			coordTarget.x = x;
+			coordTarget.y = y;
+			if(pathFind(coordUnit,coordTarget)){
 
 				source = &grid[x][y];
 
@@ -213,57 +215,55 @@ bool isSurrounded(vector currentUnit){
 			}
 		}
 	}
-
 	return surrounded;
 }
 
 /**
- * Récupère les cibles possible de l'unité
- * aux coordonnées du vecteur passé en
- * paramètre.
+ * Initialise les cibles du pion
+ * @param name     Nom du pion
  * @param coordUnit Coordonnées de l'unité
+ * @param colorDisp Couleur d'affichage
  */
-void getTargets(vector coordUnit, int colorDisp){
-	unitName name = grid[coordUnit.x][coordUnit.y].name;
+void setTarget(unitName name, vector coordUnit,int colorDisp)
+{	short min, max;
 	vector target;
-	vector newTarget;
+	int vertRange = pawns[name].stat.target.vertRange;
+	int horizRange = pawns[name].stat.target.vertRange;
+	int ringSize = pawns[name].stat.target.ringSize;
+	int line = pawns[name].stat.target.line;
 
-	en_tete(targetList);
-	if(!liste_vide(targetList)){
-		dumpList(targetList); // Vide la liste des cibles
+	if(!liste_vide(targetList)) dumpList(targetList);
+
+	if(vertRange > horizRange){ // Détermine quelle est la portée min et max
+		max = abs(vertRange);
+		min = abs(horizRange);
+	}else if(vertRange < horizRange){
+		max = abs(horizRange);
+		min = abs(vertRange);
+	}else{
+		max = abs(vertRange);
+		min = abs(vertRange);
 	}
 
-	if(!liste_vide(name) && name != cleric){
-		en_tete(name);
+	for(int i = -vertRange; i <= vertRange; i++){
+		for(int j = -horizRange; j <= horizRange; j++){
 
-		while(!hors_liste(name)){
-			valeur_elt(name, &target);
-			newTarget.x = coordUnit.x + target.x;
-			newTarget.y = coordUnit.y + target.y;
+			if(coordUnit.x + i >=0 && coordUnit.x + i < N && coordUnit.y + j >= 0 && coordUnit.y < N){
+				
+				if( ((abs(i) + abs(j) <= min && line == 0)
+					|| (i == 0 && j <= max)
+					|| ( j == 0 && i <= max))
+					&& abs(i) + abs(j) >= ringSize){ // Sélection des cibles de manière flexible et personnalisée
 
-			if(newTarget.x >= 0 && newTarget.x < N && newTarget.y >= 0 && newTarget.y < N){
-				if(grid[newTarget.x][newTarget.y].name != decors)
-				{
-				    addTarget(targetList, newTarget); // Marque les coordonnées comme cible potentielle
-				    grid[newTarget.x][newTarget.y].unitColor = colorDisp;
+						target.x = i + coordUnit.x;
+						target.y = j + coordUnit.y;
+						grid[target.x][target.y].unitColor = colorDisp;
+						addTarget(targetList,target); // Ajoute une cible pour le pion
 				}
-
 			}
-			suivant(name);
 		}
-	}else if(name == cleric){
-		en_tete(noPlayer); // On cherche les unités du joueur pour les heal
-		
-		while(!hors_liste(noPlayer)){
-			valeur_elt(noPlayer, &newTarget);
-
-			addTarget(targetList, newTarget); // Marque les coordonnées comme cible potentielle
-			grid[newTarget.x][newTarget.y].unitColor = colorDisp;
-
-			suivant(noPlayer);
-		}
-
 	}
+
 }
 
 /**
@@ -301,8 +301,6 @@ void specialBoons(vector coordSource, vector coordTarget){
 		addEffect(coordTarget, POISON);
 	}
 
-
-	
 }
 
 /**
@@ -437,6 +435,7 @@ void gridInit(){
  * Vérifie que l'unité sélectionnée n'est pas en trop
  * grand nombre sur le plateau
  * @param unitSelected 	Unité sélectionnée
+ * @param limitUnits 	Tableau des limites pour chaque unité
  * @return          	Retourne vrai si unité en surnombre
  */
 bool tooMuchUnit(int unitSelected, int limitUnits[]){
@@ -723,7 +722,7 @@ void startGame(){
  */
 void gameInit(){
 	initLists();
-	//initPaths();
+	initPaths();
 
 	noPlayer = FIRST_PLAYER; // Réinitialise pour nouvelle partie
 	makePawns(); // Crée les pions

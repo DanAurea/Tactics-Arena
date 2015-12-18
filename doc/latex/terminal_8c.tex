@@ -1,0 +1,138 @@
+\hypertarget{terminal_8c}{}\section{Référence du fichier src/controller/terminal.c}
+\label{terminal_8c}\index{src/controller/terminal.\+c@{src/controller/terminal.\+c}}
+
+
+Gestion du terminal.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/terminal.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/engine.\+h\char`\"{}}\\*
+Graphe des dépendances par inclusion de terminal.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{terminal_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{terminal_8c_a27b5a8154971e29605c7c361c328263c}{get\+Color} (int \hyperlink{terminal_8h_aa1b198e2a86cf333bd2b8d74e21409f1}{color}, char type\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Récupère le code correspondant à la couleur. \end{DoxyCompactList}\item 
+void \hyperlink{terminal_8c_aa1b198e2a86cf333bd2b8d74e21409f1}{color} (int color, char type\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Change la couleur de l\textquotesingle{}écran ou de la police. \end{DoxyCompactList}\item 
+void \hyperlink{terminal_8c_aafe20dae78dfbeea7c9102fadcfba1e0}{reinit\+Color} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise la couleur de l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \hyperlink{terminal_8c_a728c5deabcb9e271c6962577c60ef566}{font\+Color} (int \hyperlink{terminal_8h_aa1b198e2a86cf333bd2b8d74e21409f1}{color})
+\begin{DoxyCompactList}\small\item\em Change la couleur de la police. \end{DoxyCompactList}\item 
+\hypertarget{terminal_8c_a9d7e8af417b6d543da691e9c0e2f6f9f}{}void \hyperlink{terminal_8c_a9d7e8af417b6d543da691e9c0e2f6f9f}{clear\+Screen} ()\label{terminal_8c_a9d7e8af417b6d543da691e9c0e2f6f9f}
+
+\begin{DoxyCompactList}\small\item\em Efface l\textquotesingle{}écran. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gestion du terminal. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{terminal_8c_aa1b198e2a86cf333bd2b8d74e21409f1}{}\index{terminal.\+c@{terminal.\+c}!color@{color}}
+\index{color@{color}!terminal.\+c@{terminal.\+c}}
+\subsubsection[{color}]{\setlength{\rightskip}{0pt plus 5cm}void color (
+\begin{DoxyParamCaption}
+\item[{int}]{color, }
+\item[{char}]{type\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{terminal_8c_aa1b198e2a86cf333bd2b8d74e21409f1}
+
+
+Change la couleur de l\textquotesingle{}écran ou de la police. 
+
+Met en couleurs le texte ou l\textquotesingle{}écran.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em color} & Couleur à utiliser \\
+\hline
+{\em type} & Texte à changer de couleur ou arrière plan \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 51 du fichier terminal.\+c.
+
+\hypertarget{terminal_8c_a728c5deabcb9e271c6962577c60ef566}{}\index{terminal.\+c@{terminal.\+c}!font\+Color@{font\+Color}}
+\index{font\+Color@{font\+Color}!terminal.\+c@{terminal.\+c}}
+\subsubsection[{font\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void font\+Color (
+\begin{DoxyParamCaption}
+\item[{int}]{color}
+\end{DoxyParamCaption}
+)}\label{terminal_8c_a728c5deabcb9e271c6962577c60ef566}
+
+
+Change la couleur de la police. 
+
+Met en couleurs la police.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em color} & Couleur à utiliser \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 76 du fichier terminal.\+c.
+
+\hypertarget{terminal_8c_a27b5a8154971e29605c7c361c328263c}{}\index{terminal.\+c@{terminal.\+c}!get\+Color@{get\+Color}}
+\index{get\+Color@{get\+Color}!terminal.\+c@{terminal.\+c}}
+\subsubsection[{get\+Color}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+Color (
+\begin{DoxyParamCaption}
+\item[{int}]{color, }
+\item[{char}]{type\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{terminal_8c_a27b5a8154971e29605c7c361c328263c}
+
+
+Récupère le code correspondant à la couleur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em color} & Couleur demandée \\
+\hline
+{\em type} & Type d\textquotesingle{}objet à modifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Code correspondant, écran blanc si code incorrect 
+\end{DoxyReturn}
+
+
+Définition à la ligne 21 du fichier terminal.\+c.
+
+\hypertarget{terminal_8c_aafe20dae78dfbeea7c9102fadcfba1e0}{}\index{terminal.\+c@{terminal.\+c}!reinit\+Color@{reinit\+Color}}
+\index{reinit\+Color@{reinit\+Color}!terminal.\+c@{terminal.\+c}}
+\subsubsection[{reinit\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void reinit\+Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{terminal_8c_aafe20dae78dfbeea7c9102fadcfba1e0}
+
+
+Réinitialise la couleur de l\textquotesingle{}écran. 
+
+Réinitialise les couleurs. 
+
+Définition à la ligne 67 du fichier terminal.\+c.
+

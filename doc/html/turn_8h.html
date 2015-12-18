@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena: Référence du fichier include/game/turn.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_f307a46daed1218fee22380d1eacedba.html">game</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier turn.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>En-tête gestion des tours.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="turn_8h__dep__incl.png" border="0" usemap="#include_2game_2turn_8hdep" alt=""/></div>
+<map name="include_2game_2turn_8hdep" id="include_2game_2turn_8hdep">
+<area shape="rect" id="node2" href="saveNLoad_8c.html" title="Gestion de la sauvegarde et du chargement. " alt="" coords="5,80,184,107"/><area shape="rect" id="node3" href="menu_8c.html" title="Gestion des menus. " alt="" coords="209,80,341,107"/><area shape="rect" id="node4" href="engine_8c.html" title="Moteur de jeu. " alt="" coords="365,80,494,107"/><area shape="rect" id="node5" href="turn_8c.html" title="Gestion des tours. " alt="" coords="518,80,631,107"/></map>
+</div>
+</div>
+<p><a href="turn_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aaa58797f81bdb080460fcf48916ef5ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa58797f81bdb080460fcf48916ef5ac"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#aaa58797f81bdb080460fcf48916ef5ac">TIME_BY_UNIT</a>&#160;&#160;&#160;12</td></tr>
+<tr class="memdesc:aaa58797f81bdb080460fcf48916ef5ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temps par unité possédée par le joueur. <br /></td></tr>
+<tr class="separator:aaa58797f81bdb080460fcf48916ef5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cb9809f30ffec513e731194339f2ca4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2cb9809f30ffec513e731194339f2ca4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#a2cb9809f30ffec513e731194339f2ca4">MIN_TIME</a>&#160;&#160;&#160;60</td></tr>
+<tr class="memdesc:a2cb9809f30ffec513e731194339f2ca4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temps minimum par tour. <br /></td></tr>
+<tr class="separator:a2cb9809f30ffec513e731194339f2ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5320d4457a472d8888ec1905bc0e0a1c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5320d4457a472d8888ec1905bc0e0a1c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#a5320d4457a472d8888ec1905bc0e0a1c">MAX_TIME</a>&#160;&#160;&#160;120</td></tr>
+<tr class="memdesc:a5320d4457a472d8888ec1905bc0e0a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Temps maximum par tour. <br /></td></tr>
+<tr class="separator:a5320d4457a472d8888ec1905bc0e0a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:af77ebb54a900a2ef4a15ea354ff60f85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#af77ebb54a900a2ef4a15ea354ff60f85">playTurn</a> ()</td></tr>
+<tr class="memdesc:af77ebb54a900a2ef4a15ea354ff60f85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue un tour.  <a href="#af77ebb54a900a2ef4a15ea354ff60f85">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af77ebb54a900a2ef4a15ea354ff60f85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d63b19dd2910e04bc114a4572276601"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#a0d63b19dd2910e04bc114a4572276601">playAttack</a> ()</td></tr>
+<tr class="memdesc:a0d63b19dd2910e04bc114a4572276601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue une attaque.  <a href="#a0d63b19dd2910e04bc114a4572276601">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0d63b19dd2910e04bc114a4572276601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6050b30e522cb4218786756c972d804"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#af6050b30e522cb4218786756c972d804">playMove</a> ()</td></tr>
+<tr class="memdesc:af6050b30e522cb4218786756c972d804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue une mouvement.  <a href="#af6050b30e522cb4218786756c972d804">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af6050b30e522cb4218786756c972d804"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4e21eee8105ce3f15cb490ce17225e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#ab4e21eee8105ce3f15cb490ce17225e8">passTurn</a> ()</td></tr>
+<tr class="memdesc:ab4e21eee8105ce3f15cb490ce17225e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Passe le tour.  <a href="#ab4e21eee8105ce3f15cb490ce17225e8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab4e21eee8105ce3f15cb490ce17225e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d6b655a52683afe2f4cb87e3f64bc2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#a9d6b655a52683afe2f4cb87e3f64bc2e">changeDirection</a> ()</td></tr>
+<tr class="memdesc:a9d6b655a52683afe2f4cb87e3f64bc2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change la direction.  <a href="#a9d6b655a52683afe2f4cb87e3f64bc2e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9d6b655a52683afe2f4cb87e3f64bc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1ed39b34b58552a4cba52a3f832d14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#a2c1ed39b34b58552a4cba52a3f832d14">hasPlay</a> ()</td></tr>
+<tr class="memdesc:a2c1ed39b34b58552a4cba52a3f832d14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si une action a été effectuée.  <a href="#a2c1ed39b34b58552a4cba52a3f832d14">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2c1ed39b34b58552a4cba52a3f832d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5032490db7416ec2004861d51acda9e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5032490db7416ec2004861d51acda9e2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#a5032490db7416ec2004861d51acda9e2">surrender</a> ()</td></tr>
+<tr class="memdesc:a5032490db7416ec2004861d51acda9e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abandonne la partie. <br /></td></tr>
+<tr class="separator:a5032490db7416ec2004861d51acda9e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5849a680495b395c75c2269657d5d4a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5849a680495b395c75c2269657d5d4a5"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#a5849a680495b395c75c2269657d5d4a5">hasMoved</a></td></tr>
+<tr class="memdesc:a5849a680495b395c75c2269657d5d4a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joueur a joué <br /></td></tr>
+<tr class="separator:a5849a680495b395c75c2269657d5d4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa6b4cfe1a42f3d14c8701782a8ae6f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1fa6b4cfe1a42f3d14c8701782a8ae6f"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#a1fa6b4cfe1a42f3d14c8701782a8ae6f">hasAttacked</a></td></tr>
+<tr class="memdesc:a1fa6b4cfe1a42f3d14c8701782a8ae6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joueur a attaqué <br /></td></tr>
+<tr class="separator:a1fa6b4cfe1a42f3d14c8701782a8ae6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a776a08ce69ed60e7178f5fab585b5936"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a776a08ce69ed60e7178f5fab585b5936"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#a776a08ce69ed60e7178f5fab585b5936">hasPassed</a></td></tr>
+<tr class="memdesc:a776a08ce69ed60e7178f5fab585b5936"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joueur a passé son tour. <br /></td></tr>
+<tr class="separator:a776a08ce69ed60e7178f5fab585b5936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab28ae3d21446f3eb01eeeab3002ad942"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab28ae3d21446f3eb01eeeab3002ad942"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="turn_8h.html#ab28ae3d21446f3eb01eeeab3002ad942">hasSurrender</a></td></tr>
+<tr class="memdesc:ab28ae3d21446f3eb01eeeab3002ad942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joueur a abandonné la partie. <br /></td></tr>
+<tr class="separator:ab28ae3d21446f3eb01eeeab3002ad942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>En-tête gestion des tours. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Cousin Brandon Chaudemanche Ewen Biardeau Tristan </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>v1.00 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18/12/2015 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="turn_8h_source.html">turn.h</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a9d6b655a52683afe2f4cb87e3f64bc2e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changeDirection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Change la direction. </p>
+<p>Change la direction. </p>
+
+<p>Définition à la ligne <a class="el" href="turn_8c_source.html#l00057">57</a> du fichier <a class="el" href="turn_8c_source.html">turn.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2c1ed39b34b58552a4cba52a3f832d14"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hasPlay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si une action a été effectuée. </p>
+<p>Vérifie si une action a été effectuée.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si le joueur a joué sinon faux </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="turn_8c_source.html#l00245">245</a> du fichier <a class="el" href="turn_8c_source.html">turn.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab4e21eee8105ce3f15cb490ce17225e8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void passTurn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Passe le tour. </p>
+<p>Passe le tour. </p>
+
+<p>Définition à la ligne <a class="el" href="turn_8c_source.html#l00235">235</a> du fichier <a class="el" href="turn_8c_source.html">turn.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0d63b19dd2910e04bc114a4572276601"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void playAttack </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Joue une attaque. </p>
+<p>Joue une attaque. </p>
+
+<p>Définition à la ligne <a class="el" href="turn_8c_source.html#l00104">104</a> du fichier <a class="el" href="turn_8c_source.html">turn.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af6050b30e522cb4218786756c972d804"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void playMove </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Joue une mouvement. </p>
+<p>Joue une mouvement. </p>
+
+<p>Définition à la ligne <a class="el" href="turn_8c_source.html#l00177">177</a> du fichier <a class="el" href="turn_8c_source.html">turn.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af77ebb54a900a2ef4a15ea354ff60f85"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void playTurn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Joue un tour. </p>
+<p>Joue un tour. </p>
+
+<p>Définition à la ligne <a class="el" href="turn_8c_source.html#l00272">272</a> du fichier <a class="el" href="turn_8c_source.html">turn.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

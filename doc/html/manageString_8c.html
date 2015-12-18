@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena: Référence du fichier src/controller/manageString.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_41ef5d8a90b9cc03a02949a5c062e6f0.html">controller</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier manageString.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestions des chaînes de caractères.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;ctype.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="engine_8h_source.html">../../include/game/engine.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de manageString.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="manageString_8c__incl.png" border="0" usemap="#src_2controller_2manageString_8c" alt=""/></div>
+<map name="src_2controller_2manageString_8c" id="src_2controller_2manageString_8c">
+<area shape="rect" id="node4" href="engine_8h.html" title="En&#45;tête moteur de jeu. " alt="" coords="181,80,303,121"/></map>
+</div>
+</div>
+<p><a href="manageString_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a4660decf36a299266867a3fdffd4891f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a4660decf36a299266867a3fdffd4891f">getCoordS</a> (char coordString[], <a class="el" href="structvector.html">vector</a> *coordUnit)</td></tr>
+<tr class="memdesc:a4660decf36a299266867a3fdffd4891f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les coordonnées d'une chaîne de caractère sous forme de vecteur x et y.  <a href="#a4660decf36a299266867a3fdffd4891f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4660decf36a299266867a3fdffd4891f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef4f9d954282d13b5ea3132465378b79"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#aef4f9d954282d13b5ea3132465378b79">get2Char</a> (char name[])</td></tr>
+<tr class="memdesc:aef4f9d954282d13b5ea3132465378b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère 2 caractères du nom de l'unité  <a href="#aef4f9d954282d13b5ea3132465378b79">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aef4f9d954282d13b5ea3132465378b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ed5e5cca1d9f5a66a56e36fc61dfcf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a65ed5e5cca1d9f5a66a56e36fc61dfcf">isOutGrid</a> (char coordString[])</td></tr>
+<tr class="memdesc:a65ed5e5cca1d9f5a66a56e36fc61dfcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie que les coordonnées sont dans la grille.  <a href="#a65ed5e5cca1d9f5a66a56e36fc61dfcf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a65ed5e5cca1d9f5a66a56e36fc61dfcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89a9fa2c469e9a139bff745dc48aeab7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a89a9fa2c469e9a139bff745dc48aeab7">correctCoord</a> (char coordString[])</td></tr>
+<tr class="memdesc:a89a9fa2c469e9a139bff745dc48aeab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sélectionne une coordonnée et vérifie son format.  <a href="#a89a9fa2c469e9a139bff745dc48aeab7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a89a9fa2c469e9a139bff745dc48aeab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a4267e397f3c206d9655b52241024e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a56a4267e397f3c206d9655b52241024e">rightSide</a> (char *coordString)</td></tr>
+<tr class="memdesc:a56a4267e397f3c206d9655b52241024e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie que l'unité est du bon côté  <a href="#a56a4267e397f3c206d9655b52241024e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a56a4267e397f3c206d9655b52241024e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22a30b59c6429cb81fcd18b4db5a1b7f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a22a30b59c6429cb81fcd18b4db5a1b7f">getNameUnit</a> (<a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name)</td></tr>
+<tr class="memdesc:a22a30b59c6429cb81fcd18b4db5a1b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le nom de l'unité à partir de la liste énumérée.  <a href="#a22a30b59c6429cb81fcd18b4db5a1b7f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a22a30b59c6429cb81fcd18b4db5a1b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb5c8162f1db822caca54e0e04d2a143"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#acb5c8162f1db822caca54e0e04d2a143">getNameEffect</a> (<a class="el" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a> effect)</td></tr>
+<tr class="memdesc:acb5c8162f1db822caca54e0e04d2a143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le nom de l'effet à partir de la liste énumérée.  <a href="#acb5c8162f1db822caca54e0e04d2a143">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acb5c8162f1db822caca54e0e04d2a143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71644b2a2c56b83debb3c804040d3c88"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a71644b2a2c56b83debb3c804040d3c88">getDirectionUnit</a> (<a class="el" href="engine_8h.html#a468af3d7606639780e81c5e1e403b356">cardinal</a> direct)</td></tr>
+<tr class="memdesc:a71644b2a2c56b83debb3c804040d3c88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la direction.  <a href="#a71644b2a2c56b83debb3c804040d3c88">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a71644b2a2c56b83debb3c804040d3c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32a341ce2c2a9240c500f694c9227b96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a32a341ce2c2a9240c500f694c9227b96">printNameUnit</a> (<a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> <a class="el" href="structunit.html">unit</a>)</td></tr>
+<tr class="memdesc:a32a341ce2c2a9240c500f694c9227b96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le nom de l'unité  <a href="#a32a341ce2c2a9240c500f694c9227b96">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a32a341ce2c2a9240c500f694c9227b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20bbd4d45e3f01305dd709f5a9cc9952"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a20bbd4d45e3f01305dd709f5a9cc9952">clearBuffer</a> ()</td></tr>
+<tr class="memdesc:a20bbd4d45e3f01305dd709f5a9cc9952"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide le tampon mémoire.  <a href="#a20bbd4d45e3f01305dd709f5a9cc9952">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a20bbd4d45e3f01305dd709f5a9cc9952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57860307a2f1d8a80d71147a7ed1b793"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a57860307a2f1d8a80d71147a7ed1b793">readS</a> (char *string)</td></tr>
+<tr class="memdesc:a57860307a2f1d8a80d71147a7ed1b793"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit la chaîne de caractère passée en paramètre et vérifie qu'elle ne soit pas trop longue.  <a href="#a57860307a2f1d8a80d71147a7ed1b793">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a57860307a2f1d8a80d71147a7ed1b793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab431b0689298bfb6b1e74cbe92c18e00"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#ab431b0689298bfb6b1e74cbe92c18e00">readLong</a> ()</td></tr>
+<tr class="memdesc:ab431b0689298bfb6b1e74cbe92c18e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit un long de manière sécurisée.  <a href="#ab431b0689298bfb6b1e74cbe92c18e00">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab431b0689298bfb6b1e74cbe92c18e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a840ea5c01770156bd51bdb9f65f44e30"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="manageString_8c.html#a840ea5c01770156bd51bdb9f65f44e30">readDouble</a> ()</td></tr>
+<tr class="memdesc:a840ea5c01770156bd51bdb9f65f44e30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lit un double de manière sécurisée.  <a href="#a840ea5c01770156bd51bdb9f65f44e30">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a840ea5c01770156bd51bdb9f65f44e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestions des chaînes de caractères. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Cousin Brandon Chaudemanche Ewen Biardeau Tristan </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>v1.00 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18/12/2015 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a20bbd4d45e3f01305dd709f5a9cc9952"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clearBuffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vide le tampon mémoire. </p>
+<p>Vide la mémoire tampon. </p>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00253">253</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a89a9fa2c469e9a139bff745dc48aeab7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool correctCoord </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>coordString</em>[]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sélectionne une coordonnée et vérifie son format. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordString</td><td>Chaîne de caractère à vérifier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Vraie si les coordonnées saisies sont correctes </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00138">138</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aef4f9d954282d13b5ea3132465378b79"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* get2Char </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>name</em>[]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère 2 caractères du nom de l'unité </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Nom de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne 2 caractères liés au nom de l'unité </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00047">47</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4660decf36a299266867a3fdffd4891f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getCoordS </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>coordString</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a> *&#160;</td>
+          <td class="paramname"><em>coordUnit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les coordonnées d'une chaîne de caractère sous forme de vecteur x et y. </p>
+<p>Récupère les coordonnées d'une chaîne de caractères.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordString</td><td>Coordonnées saisie par l'utilisateur </td></tr>
+    <tr><td class="paramname">coordUnit</td><td>Coordonnées de l'unité récupérées de la saisie utilisateur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00019">19</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a71644b2a2c56b83debb3c804040d3c88"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* getDirectionUnit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#a468af3d7606639780e81c5e1e403b356">cardinal</a>&#160;</td>
+          <td class="paramname"><em>direct</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la direction. </p>
+<p>Récupère le nom de la direction.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direct</td><td>Direction de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne La direction sous forme de chaîne </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00235">235</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acb5c8162f1db822caca54e0e04d2a143"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* getNameEffect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a>&#160;</td>
+          <td class="paramname"><em>effect</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère le nom de l'effet à partir de la liste énumérée. </p>
+<p>Récupère le nom de l'effet.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">effect</td><td>Effet provenant de la liste énumérée </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nom de l'effet sous forme de chaîne de caractère </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00220">220</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a22a30b59c6429cb81fcd18b4db5a1b7f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* getNameUnit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a>&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère le nom de l'unité à partir de la liste énumérée. </p>
+<p>Récupère le nom de l'unité</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Nom de l'unité provenant de la liste énumérée </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Nom de l'unité sous forme de chaîne </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00189">189</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a65ed5e5cca1d9f5a66a56e36fc61dfcf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isOutGrid </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>coordString</em>[]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie que les coordonnées sont dans la grille. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordString</td><td>Coordonnées sous forme de chaîne </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne false si pas en dehors </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00114">114</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a32a341ce2c2a9240c500f694c9227b96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printNameUnit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a>&#160;</td>
+          <td class="paramname"><em>unit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le nom de l'unité </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unit</td><td>Nom de l'unité provenant de la liste énumérée </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00246">246</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a840ea5c01770156bd51bdb9f65f44e30"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double readDouble </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit un double de manière sécurisée. </p>
+<p>Lecture sécurisée d'un double.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne le double saisie ou 0.0 en cas d'erreur </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00305">305</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab431b0689298bfb6b1e74cbe92c18e00"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long readLong </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit un long de manière sécurisée. </p>
+<p>Lecture sécurisée d'un long.</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne le long saisie ou 0 en cas d'erreur </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00291">291</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a57860307a2f1d8a80d71147a7ed1b793"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int readS </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lit la chaîne de caractère passée en paramètre et vérifie qu'elle ne soit pas trop longue. </p>
+<p>Lecture sécurisée d'une chaîne.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>Chaîne de caractère à vérifier </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne 1 si chaîne correcte </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00265">265</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a56a4267e397f3c206d9655b52241024e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool rightSide </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>coordString</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie que l'unité est du bon côté </p>
+<p>Vérifie que l'unité est dans le bon camp.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordString</td><td>Coordonnées sous forme de chaîne </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si du bon côté </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="manageString_8c_source.html#l00165">165</a> du fichier <a class="el" href="manageString_8c_source.html">manageString.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

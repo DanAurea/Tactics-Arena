@@ -1,0 +1,6 @@
+<map id="include/game/turn.h" name="include/game/turn.h">
+<area shape="rect" id="node2" href="$saveNLoad_8c.html" title="Gestion de la sauvegarde et du chargement. " alt="" coords="5,80,184,107"/>
+<area shape="rect" id="node3" href="$menu_8c.html" title="Gestion des menus. " alt="" coords="209,80,341,107"/>
+<area shape="rect" id="node4" href="$engine_8c.html" title="Moteur de jeu. " alt="" coords="365,80,494,107"/>
+<area shape="rect" id="node5" href="$turn_8c.html" title="Gestion des tours. " alt="" coords="518,80,631,107"/>
+</map>

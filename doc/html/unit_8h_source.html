@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena:  Fichier source de include/units/unit.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_242d6f0b5870701bacf0ac79ba386276.html">units</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">unit.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="unit_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="unit_8h.html#a85f8dfae2c8d83d9bc1b164adac6513d">canGetPassed</a>(<a class="code" href="structunit.html">unit</a> * target); </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="unit_8h.html#ac194fc19a706dbd87e9a93c02b244f11">canBlock</a>(<a class="code" href="structunit.html">unit</a> * target); </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="unit_8h.html#aa012dba081af99c4a666767c26ac1ac5">canAttack</a>(<a class="code" href="structunit.html">unit</a> * target); </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="unit_8h.html#a9c0738de90650e2f4640cae3bad4b3a2">canMove</a>(<a class="code" href="structunit.html">unit</a> * target); </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="unit_8h.html#a52de919c7103012ce231d80e3bbe3e8d">canTeleport</a>(<a class="code" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name); </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <a class="code" href="unit_8h.html#a5c8761ef40c541d75de80d6f6eeeb482">getSideAttacked</a>(<a class="code" href="structvector.html">vector</a> source, <a class="code" href="structvector.html">vector</a> target ); </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a59537e7d55fc495b394087bf8a952d16">heal</a>(<a class="code" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name); </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a6b948a17bbc3106f230c32a53121e6db">attack</a>(<a class="code" href="structvector.html">vector</a> source, <a class="code" href="structvector.html">vector</a> target); </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="unit_8h.html#a4004486abf500173fd3f51d2d3283275">copy</a>(<a class="code" href="structunit.html">unit</a> * destination, <a class="code" href="structunit.html">unit</a> * source); </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a87c06ff9e86d3317e10387a5d5626f1a">move</a>(<a class="code" href="structvector.html">vector</a> destination, <a class="code" href="structvector.html">vector</a> source); </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#ae52638eb8e2a94d1dd3df42c816681a3">addEffect</a>(<a class="code" href="structvector.html">vector</a> target, <a class="code" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a> effect); </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a0e8d3997960e64de032d8c6592bb4dd4">unitInit</a>(<span class="keywordtype">short</span> <a class="code" href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a>, <a class="code" href="structvector.html">vector</a> coordUnit); </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a10bfc9c0ad0c3d41388abf6e6b1c5135">setDirection</a>(<a class="code" href="structvector.html">vector</a> coordUnit, <span class="keywordtype">int</span> dir); </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a956caa43f2ae1c1eecd5adb22062aed1">erase</a>(<a class="code" href="structunit.html">unit</a> * ); </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="unit_8h.html#a8a36c4219ebbdb7f8566d00b5c7dbb2a">isSleeping</a>(<a class="code" href="structvector.html">vector</a>); </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a505f360905b4ad0fa6e18f19405539ea">recover</a>(); </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="unit_8h.html#a04cb7c9ee636e575bfd9531780b829d7">allStatic</a>(<span class="keywordtype">int</span> numPlayer); </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a1cbe53dd582c7ac03bafb0051a38a98b">minusEffect</a>(); </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#afec10f9e98c70ab1915023cd0c8f76ca">poison</a>(); </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a4ea1b739c4b88857675c47d9960a69a4">powerBonus</a>(); </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">void</span> <a class="code" href="unit_8h.html#a4ff80bc9cbc0a6e1e6e7a3936b8b48cb">sleep</a>(<a class="code" href="structvector.html">vector</a>); </div>
+<div class="ttc" id="structunit_html"><div class="ttname"><a href="structunit.html">unit</a></div><div class="ttdoc">Représente une unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00088">engine.h:88</a></div></div>
+<div class="ttc" id="unit_8h_html_a6b948a17bbc3106f230c32a53121e6db"><div class="ttname"><a href="unit_8h.html#a6b948a17bbc3106f230c32a53121e6db">attack</a></div><div class="ttdeci">void attack(vector source, vector target)</div><div class="ttdoc">Attaque une unité </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00184">unit.c:184</a></div></div>
+<div class="ttc" id="structvector_html"><div class="ttname"><a href="structvector.html">vector</a></div><div class="ttdoc">Représente les coordonnées d&#39;un vecteur. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00079">engine.h:79</a></div></div>
+<div class="ttc" id="unit_8h_html_a04cb7c9ee636e575bfd9531780b829d7"><div class="ttname"><a href="unit_8h.html#a04cb7c9ee636e575bfd9531780b829d7">allStatic</a></div><div class="ttdeci">bool allStatic(int numPlayer)</div><div class="ttdoc">Vérifie si toutes les unités sont immobilisées. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00529">unit.c:529</a></div></div>
+<div class="ttc" id="unit_8h_html_afec10f9e98c70ab1915023cd0c8f76ca"><div class="ttname"><a href="unit_8h.html#afec10f9e98c70ab1915023cd0c8f76ca">poison</a></div><div class="ttdeci">void poison()</div><div class="ttdoc">Empoisonne une unité </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00386">unit.c:386</a></div></div>
+<div class="ttc" id="unit_8h_html_a87c06ff9e86d3317e10387a5d5626f1a"><div class="ttname"><a href="unit_8h.html#a87c06ff9e86d3317e10387a5d5626f1a">move</a></div><div class="ttdeci">void move(vector destination, vector source)</div><div class="ttdoc">Bouge une unité </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00351">unit.c:351</a></div></div>
+<div class="ttc" id="unit_8h_html_ae52638eb8e2a94d1dd3df42c816681a3"><div class="ttname"><a href="unit_8h.html#ae52638eb8e2a94d1dd3df42c816681a3">addEffect</a></div><div class="ttdeci">void addEffect(vector target, unitEffect effect)</div><div class="ttdoc">Ajoute un effet à une unité </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00437">unit.c:437</a></div></div>
+<div class="ttc" id="unit_8h_html_a5c8761ef40c541d75de80d6f6eeeb482"><div class="ttname"><a href="unit_8h.html#a5c8761ef40c541d75de80d6f6eeeb482">getSideAttacked</a></div><div class="ttdeci">int getSideAttacked(vector source, vector target)</div><div class="ttdoc">Récupère le côté attaqué </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00168">unit.c:168</a></div></div>
+<div class="ttc" id="unit_8h_html_a9c0738de90650e2f4640cae3bad4b3a2"><div class="ttname"><a href="unit_8h.html#a9c0738de90650e2f4640cae3bad4b3a2">canMove</a></div><div class="ttdeci">bool canMove(unit *target)</div><div class="ttdoc">Vérifie si l&#39;unité peut bouger. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00106">unit.c:106</a></div></div>
+<div class="ttc" id="unit_8h_html_a0e8d3997960e64de032d8c6592bb4dd4"><div class="ttname"><a href="unit_8h.html#a0e8d3997960e64de032d8c6592bb4dd4">unitInit</a></div><div class="ttdeci">void unitInit(short noPlayer, vector coordUnit)</div><div class="ttdoc">Initialise une unité </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00024">unit.c:24</a></div></div>
+<div class="ttc" id="engine_8h_html_ac5ece9b6993cd3565502866b56317e84"><div class="ttname"><a href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a></div><div class="ttdeci">unitEffect</div><div class="ttdoc">engine.h </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00048">engine.h:48</a></div></div>
+<div class="ttc" id="unit_8h_html_a85f8dfae2c8d83d9bc1b164adac6513d"><div class="ttname"><a href="unit_8h.html#a85f8dfae2c8d83d9bc1b164adac6513d">canGetPassed</a></div><div class="ttdeci">bool canGetPassed(unit *target)</div><div class="ttdoc">Vérifie si le passage est autorisé </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00046">unit.c:46</a></div></div>
+<div class="ttc" id="unit_8h_html_a956caa43f2ae1c1eecd5adb22062aed1"><div class="ttname"><a href="unit_8h.html#a956caa43f2ae1c1eecd5adb22062aed1">erase</a></div><div class="ttdeci">void erase(unit *)</div><div class="ttdoc">Efface une unité de la grille. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00271">unit.c:271</a></div></div>
+<div class="ttc" id="unit_8h_html_a10bfc9c0ad0c3d41388abf6e6b1c5135"><div class="ttname"><a href="unit_8h.html#a10bfc9c0ad0c3d41388abf6e6b1c5135">setDirection</a></div><div class="ttdeci">void setDirection(vector coordUnit, int dir)</div><div class="ttdoc">Définis la direction d&#39;une unité </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00377">unit.c:377</a></div></div>
+<div class="ttc" id="engine_8c_html_afaa2c64a9fd09c382394b57006c470ce"><div class="ttname"><a href="engine_8c.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a></div><div class="ttdeci">int noPlayer</div><div class="ttdoc">Joueur en cours. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8c_source.html#l00024">engine.c:24</a></div></div>
+<div class="ttc" id="unit_8h_html_aa012dba081af99c4a666767c26ac1ac5"><div class="ttname"><a href="unit_8h.html#aa012dba081af99c4a666767c26ac1ac5">canAttack</a></div><div class="ttdeci">bool canAttack(unit *target)</div><div class="ttdoc">Vérifie si l&#39;unité peut attaquer. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00086">unit.c:86</a></div></div>
+<div class="ttc" id="unit_8h_html_ac194fc19a706dbd87e9a93c02b244f11"><div class="ttname"><a href="unit_8h.html#ac194fc19a706dbd87e9a93c02b244f11">canBlock</a></div><div class="ttdeci">bool canBlock(unit *target)</div><div class="ttdoc">Vérifie si l&#39;unité peut bloquer. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00066">unit.c:66</a></div></div>
+<div class="ttc" id="unit_8h_html_a1cbe53dd582c7ac03bafb0051a38a98b"><div class="ttname"><a href="unit_8h.html#a1cbe53dd582c7ac03bafb0051a38a98b">minusEffect</a></div><div class="ttdeci">void minusEffect()</div><div class="ttdoc">Diminue le temps de l&#39;effet. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00455">unit.c:455</a></div></div>
+<div class="ttc" id="unit_8h_html_a52de919c7103012ce231d80e3bbe3e8d"><div class="ttname"><a href="unit_8h.html#a52de919c7103012ce231d80e3bbe3e8d">canTeleport</a></div><div class="ttdeci">bool canTeleport(unitName name)</div><div class="ttdoc">Vérifie si l&#39;unité peut se téléporter. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00125">unit.c:125</a></div></div>
+<div class="ttc" id="unit_8h_html_a8a36c4219ebbdb7f8566d00b5c7dbb2a"><div class="ttname"><a href="unit_8h.html#a8a36c4219ebbdb7f8566d00b5c7dbb2a">isSleeping</a></div><div class="ttdeci">bool isSleeping(vector)</div><div class="ttdoc">Vérifie si une unité est endormie. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00490">unit.c:490</a></div></div>
+<div class="ttc" id="unit_8h_html_a4ea1b739c4b88857675c47d9960a69a4"><div class="ttname"><a href="unit_8h.html#a4ea1b739c4b88857675c47d9960a69a4">powerBonus</a></div><div class="ttdeci">void powerBonus()</div><div class="ttdoc">Octroie un bonus de puissance selon certaines conditions. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00286">unit.c:286</a></div></div>
+<div class="ttc" id="unit_8h_html_a505f360905b4ad0fa6e18f19405539ea"><div class="ttname"><a href="unit_8h.html#a505f360905b4ad0fa6e18f19405539ea">recover</a></div><div class="ttdeci">void recover()</div><div class="ttdoc">Se réveille tour par tour. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00503">unit.c:503</a></div></div>
+<div class="ttc" id="engine_8h_html_af7667555c2dcfbdd55ec3e9dd6a907ba"><div class="ttname"><a href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a></div><div class="ttdeci">unitName</div><div class="ttdoc">engine.h </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00041">engine.h:41</a></div></div>
+<div class="ttc" id="unit_8h_html_a59537e7d55fc495b394087bf8a952d16"><div class="ttname"><a href="unit_8h.html#a59537e7d55fc495b394087bf8a952d16">heal</a></div><div class="ttdeci">void heal(unitName name)</div><div class="ttdoc">Soigne les unités. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00137">unit.c:137</a></div></div>
+<div class="ttc" id="unit_8h_html_a4004486abf500173fd3f51d2d3283275"><div class="ttname"><a href="unit_8h.html#a4004486abf500173fd3f51d2d3283275">copy</a></div><div class="ttdeci">bool copy(unit *destination, unit *source)</div><div class="ttdoc">Copie la structure source vers destination. </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00236">unit.c:236</a></div></div>
+<div class="ttc" id="unit_8h_html_a4ff80bc9cbc0a6e1e6e7a3936b8b48cb"><div class="ttname"><a href="unit_8h.html#a4ff80bc9cbc0a6e1e6e7a3936b8b48cb">sleep</a></div><div class="ttdeci">void sleep(vector)</div><div class="ttdoc">Endors une unité </div><div class="ttdef"><b>Definition:</b> <a href="unit_8c_source.html#l00480">unit.c:480</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

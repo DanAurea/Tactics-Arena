@@ -1,0 +1,647 @@
+\begin{theindex}
+
+  \item {add\+Close\+List}
+    \subitem {path\+List.\+c}, \hyperpage{72}
+    \subitem {path\+List.\+h}, \hyperpage{32}
+  \item {add\+Effect}
+    \subitem {unit.\+c}, \hyperpage{82}
+    \subitem {unit.\+h}, \hyperpage{40}
+  \item {add\+Open\+List}
+    \subitem {path\+List.\+c}, \hyperpage{72}
+    \subitem {path\+List.\+h}, \hyperpage{33}
+  \item {add\+Target}
+    \subitem {listes.\+c}, \hyperpage{68}
+    \subitem {listes.\+h}, \hyperpage{29}
+  \item {add\+Unit}
+    \subitem {listes.\+c}, \hyperpage{68}
+    \subitem {listes.\+h}, \hyperpage{30}
+  \item {all\+Static}
+    \subitem {unit.\+c}, \hyperpage{82}
+    \subitem {unit.\+h}, \hyperpage{41}
+  \item {ask\+Coord}
+    \subitem {engine.\+c}, \hyperpage{62}
+  \item {ask\+Unit}
+    \subitem {engine.\+c}, \hyperpage{63}
+  \item {attack}
+    \subitem {unit.\+c}, \hyperpage{82}
+    \subitem {unit.\+h}, \hyperpage{41}
+  \item {attackable}
+    \subitem {engine.\+c}, \hyperpage{63}
+    \subitem {engine.\+h}, \hyperpage{25}
+
+  \indexspace
+
+  \item {border\+Right}
+    \subitem {grid.\+c}, \hyperpage{59}
+
+  \indexspace
+
+  \item {can\+Attack}
+    \subitem {unit.\+c}, \hyperpage{82}
+    \subitem {unit.\+h}, \hyperpage{41}
+  \item {can\+Block}
+    \subitem {unit.\+c}, \hyperpage{84}
+    \subitem {unit.\+h}, \hyperpage{41}
+  \item {can\+Get\+Passed}
+    \subitem {unit.\+c}, \hyperpage{84}
+    \subitem {unit.\+h}, \hyperpage{42}
+  \item {can\+Move}
+    \subitem {unit.\+c}, \hyperpage{84}
+    \subitem {unit.\+h}, \hyperpage{42}
+  \item {can\+Teleport}
+    \subitem {unit.\+c}, \hyperpage{84}
+    \subitem {unit.\+h}, \hyperpage{42}
+  \item {change\+Direction}
+    \subitem {turn.\+c}, \hyperpage{78}
+    \subitem {turn.\+h}, \hyperpage{38}
+  \item {check\+Decrypt}
+    \subitem {save\+N\+Load.\+c}, \hyperpage{54}
+  \item {check\+Pawn}
+    \subitem {pawns.\+c}, \hyperpage{76}
+  \item {check\+Signal}
+    \subitem {manage\+Signal.\+c}, \hyperpage{47}
+    \subitem {manage\+Signal.\+h}, \hyperpage{14}
+  \item {clear\+Buffer}
+    \subitem {manage\+String.\+c}, \hyperpage{49}
+    \subitem {manage\+String.\+h}, \hyperpage{15}
+  \item {color}
+    \subitem {terminal.\+c}, \hyperpage{57}
+    \subitem {terminal.\+h}, \hyperpage{20}
+  \item {copy}
+    \subitem {unit.\+c}, \hyperpage{85}
+    \subitem {unit.\+h}, \hyperpage{42}
+  \item {correct\+Coord}
+    \subitem {manage\+String.\+c}, \hyperpage{49}
+  \item {count\+Units}
+    \subitem {listes.\+c}, \hyperpage{69}
+    \subitem {listes.\+h}, \hyperpage{30}
+  \item {create\+Pawn}
+    \subitem {pawns.\+c}, \hyperpage{76}
+  \item {crypt}
+    \subitem {save\+N\+Load.\+c}, \hyperpage{54}
+
+  \indexspace
+
+  \item {decrypt}
+    \subitem {save\+N\+Load.\+c}, \hyperpage{54}
+  \item {destroy\+Unit}
+    \subitem {listes.\+c}, \hyperpage{69}
+    \subitem {listes.\+h}, \hyperpage{30}
+  \item {disp\+Direction}
+    \subitem {menu.\+c}, \hyperpage{60}
+    \subitem {menu.\+h}, \hyperpage{22}
+  \item {dump\+All\+Lists}
+    \subitem {listes.\+c}, \hyperpage{69}
+    \subitem {listes.\+h}, \hyperpage{30}
+  \item {dump\+All\+Paths}
+    \subitem {path\+List.\+c}, \hyperpage{72}
+    \subitem {path\+List.\+h}, \hyperpage{33}
+  \item {dump\+List}
+    \subitem {listes.\+c}, \hyperpage{69}
+    \subitem {listes.\+h}, \hyperpage{30}
+  \item {dump\+Path}
+    \subitem {path\+List.\+c}, \hyperpage{72}
+    \subitem {path\+List.\+h}, \hyperpage{33}
+
+  \indexspace
+
+  \item {elem}, \hyperpage{7}
+  \item {element}, \hyperpage{8}
+  \item {empty\+Path}
+    \subitem {path\+List.\+c}, \hyperpage{72}
+    \subitem {path\+List.\+h}, \hyperpage{33}
+  \item {end\+Turn}
+    \subitem {turn.\+c}, \hyperpage{78}
+  \item {engine.\+c}
+    \subitem {ask\+Coord}, \hyperpage{62}
+    \subitem {ask\+Unit}, \hyperpage{63}
+    \subitem {attackable}, \hyperpage{63}
+    \subitem {game\+Init}, \hyperpage{63}
+    \subitem {grid}, \hyperpage{66}
+    \subitem {is\+Surrounded}, \hyperpage{63}
+    \subitem {launch\+Attack}, \hyperpage{63}
+    \subitem {line\+Of\+Sight}, \hyperpage{64}
+    \subitem {movable}, \hyperpage{64}
+    \subitem {no\+Player}, \hyperpage{66}
+    \subitem {path\+Find}, \hyperpage{64}
+    \subitem {player\+Add\+Unit}, \hyperpage{64}
+    \subitem {possible\+Path}, \hyperpage{64}
+    \subitem {select\+Unit}, \hyperpage{65}
+    \subitem {set\+Target}, \hyperpage{65}
+    \subitem {special\+Boons}, \hyperpage{65}
+    \subitem {tile\+Walkable}, \hyperpage{65}
+    \subitem {too\+Much\+Unit}, \hyperpage{66}
+    \subitem {update\+Limits}, \hyperpage{66}
+  \item {engine.\+h}
+    \subitem {attackable}, \hyperpage{25}
+    \subitem {game\+Init}, \hyperpage{25}
+    \subitem {grid}, \hyperpage{28}
+    \subitem {is\+Surrounded}, \hyperpage{25}
+    \subitem {launch\+Attack}, \hyperpage{26}
+    \subitem {line\+Of\+Sight}, \hyperpage{26}
+    \subitem {movable}, \hyperpage{26}
+    \subitem {no\+Player}, \hyperpage{28}
+    \subitem {path\+Find}, \hyperpage{26}
+    \subitem {possible\+Path}, \hyperpage{27}
+    \subitem {select\+Unit}, \hyperpage{27}
+    \subitem {set\+Target}, \hyperpage{27}
+    \subitem {tile\+Walkable}, \hyperpage{27}
+  \item {erase}
+    \subitem {unit.\+c}, \hyperpage{85}
+    \subitem {unit.\+h}, \hyperpage{43}
+  \item {erase\+Tile}
+    \subitem {path\+List.\+c}, \hyperpage{73}
+    \subitem {path\+List.\+h}, \hyperpage{33}
+
+  \indexspace
+
+  \item {font\+Color}
+    \subitem {terminal.\+c}, \hyperpage{57}
+    \subitem {terminal.\+h}, \hyperpage{20}
+  \item {free\+All}
+    \subitem {manage\+Signal.\+c}, \hyperpage{47}
+    \subitem {manage\+Signal.\+h}, \hyperpage{14}
+
+  \indexspace
+
+  \item {game\+Init}
+    \subitem {engine.\+c}, \hyperpage{63}
+    \subitem {engine.\+h}, \hyperpage{25}
+  \item {game\+Menu}
+    \subitem {menu.\+c}, \hyperpage{60}
+    \subitem {menu.\+h}, \hyperpage{22}
+  \item {get2\+Char}
+    \subitem {manage\+String.\+c}, \hyperpage{49}
+    \subitem {manage\+String.\+h}, \hyperpage{15}
+  \item {get\+Char\+Key}
+    \subitem {save\+N\+Load.\+c}, \hyperpage{54}
+  \item {get\+Color}
+    \subitem {terminal.\+c}, \hyperpage{57}
+  \item {get\+Coord\+S}
+    \subitem {manage\+String.\+c}, \hyperpage{49}
+    \subitem {manage\+String.\+h}, \hyperpage{15}
+  \item {get\+Current\+Node}
+    \subitem {path\+List.\+c}, \hyperpage{73}
+    \subitem {path\+List.\+h}, \hyperpage{34}
+  \item {get\+Direction\+Unit}
+    \subitem {manage\+String.\+c}, \hyperpage{50}
+    \subitem {manage\+String.\+h}, \hyperpage{15}
+  \item {get\+Key}
+    \subitem {save\+N\+Load.\+c}, \hyperpage{54}
+  \item {get\+Name\+Effect}
+    \subitem {manage\+String.\+c}, \hyperpage{50}
+    \subitem {manage\+String.\+h}, \hyperpage{16}
+  \item {get\+Name\+Unit}
+    \subitem {manage\+String.\+c}, \hyperpage{50}
+    \subitem {manage\+String.\+h}, \hyperpage{16}
+  \item {get\+Side\+Attacked}
+    \subitem {unit.\+c}, \hyperpage{85}
+    \subitem {unit.\+h}, \hyperpage{43}
+  \item {get\+Tile}
+    \subitem {path\+List.\+c}, \hyperpage{73}
+    \subitem {path\+List.\+h}, \hyperpage{34}
+  \item {grid}
+    \subitem {engine.\+c}, \hyperpage{66}
+    \subitem {engine.\+h}, \hyperpage{28}
+  \item {grid.\+c}
+    \subitem {border\+Right}, \hyperpage{59}
+    \subitem {grid\+Disp}, \hyperpage{59}
+  \item {grid.\+h}
+    \subitem {grid\+Disp}, \hyperpage{21}
+  \item {grid\+Disp}
+    \subitem {grid.\+c}, \hyperpage{59}
+    \subitem {grid.\+h}, \hyperpage{21}
+
+  \indexspace
+
+  \item {has\+Play}
+    \subitem {turn.\+c}, \hyperpage{79}
+    \subitem {turn.\+h}, \hyperpage{38}
+  \item {heal}
+    \subitem {unit.\+c}, \hyperpage{85}
+    \subitem {unit.\+h}, \hyperpage{43}
+  \item {help\+Unit}
+    \subitem {menu.\+c}, \hyperpage{60}
+    \subitem {menu.\+h}, \hyperpage{22}
+
+  \indexspace
+
+  \item {include/controller/manage\+Signal.\+h}, \hyperpage{13}
+  \item {include/controller/manage\+String.\+h}, \hyperpage{14}
+  \item {include/controller/save\+N\+Load.\+h}, \hyperpage{18}
+  \item {include/controller/terminal.\+h}, \hyperpage{19}
+  \item {include/display/grid.\+h}, \hyperpage{20}
+  \item {include/display/menu.\+h}, \hyperpage{21}
+  \item {include/game/engine.\+h}, \hyperpage{23}
+  \item {include/game/listes.\+h}, \hyperpage{28}
+  \item {include/game/path\+List.\+h}, \hyperpage{31}
+  \item {include/game/pawns.\+h}, \hyperpage{36}
+  \item {include/game/turn.\+h}, \hyperpage{37}
+  \item {include/units/unit.\+h}, \hyperpage{39}
+  \item {init\+Path}
+    \subitem {path\+List.\+c}, \hyperpage{73}
+    \subitem {path\+List.\+h}, \hyperpage{34}
+  \item {init\+Pawn}
+    \subitem {pawns.\+c}, \hyperpage{77}
+  \item {interrupt}
+    \subitem {manage\+Signal.\+c}, \hyperpage{47}
+  \item {is\+Out\+Grid}
+    \subitem {manage\+String.\+c}, \hyperpage{50}
+  \item {is\+Sleeping}
+    \subitem {unit.\+c}, \hyperpage{86}
+    \subitem {unit.\+h}, \hyperpage{43}
+  \item {is\+Surrounded}
+    \subitem {engine.\+c}, \hyperpage{63}
+    \subitem {engine.\+h}, \hyperpage{25}
+
+  \indexspace
+
+  \item {launch\+Attack}
+    \subitem {engine.\+c}, \hyperpage{63}
+    \subitem {engine.\+h}, \hyperpage{26}
+  \item {line\+Of\+Sight}
+    \subitem {engine.\+c}, \hyperpage{64}
+    \subitem {engine.\+h}, \hyperpage{26}
+  \item {listes.\+c}
+    \subitem {add\+Target}, \hyperpage{68}
+    \subitem {add\+Unit}, \hyperpage{68}
+    \subitem {count\+Units}, \hyperpage{69}
+    \subitem {destroy\+Unit}, \hyperpage{69}
+    \subitem {dump\+All\+Lists}, \hyperpage{69}
+    \subitem {dump\+List}, \hyperpage{69}
+    \subitem {print\+List}, \hyperpage{69}
+    \subitem {search\+Target}, \hyperpage{69}
+    \subitem {target\+List}, \hyperpage{70}
+  \item {listes.\+h}
+    \subitem {add\+Target}, \hyperpage{29}
+    \subitem {add\+Unit}, \hyperpage{30}
+    \subitem {count\+Units}, \hyperpage{30}
+    \subitem {destroy\+Unit}, \hyperpage{30}
+    \subitem {dump\+All\+Lists}, \hyperpage{30}
+    \subitem {dump\+List}, \hyperpage{30}
+    \subitem {print\+List}, \hyperpage{30}
+    \subitem {search\+Target}, \hyperpage{31}
+    \subitem {target\+List}, \hyperpage{31}
+  \item {load}
+    \subitem {save\+N\+Load.\+c}, \hyperpage{56}
+    \subitem {save\+N\+Load.\+h}, \hyperpage{18}
+
+  \indexspace
+
+  \item {main\+Menu}
+    \subitem {menu.\+c}, \hyperpage{60}
+    \subitem {menu.\+h}, \hyperpage{22}
+  \item {make\+Pawns}
+    \subitem {pawns.\+c}, \hyperpage{77}
+    \subitem {pawns.\+h}, \hyperpage{37}
+  \item {manage\+Signal.\+c}
+    \subitem {check\+Signal}, \hyperpage{47}
+    \subitem {free\+All}, \hyperpage{47}
+    \subitem {interrupt}, \hyperpage{47}
+    \subitem {terminator}, \hyperpage{47}
+    \subitem {time\+Down}, \hyperpage{47}
+  \item {manage\+Signal.\+h}
+    \subitem {check\+Signal}, \hyperpage{14}
+    \subitem {free\+All}, \hyperpage{14}
+  \item {manage\+String.\+c}
+    \subitem {clear\+Buffer}, \hyperpage{49}
+    \subitem {correct\+Coord}, \hyperpage{49}
+    \subitem {get2\+Char}, \hyperpage{49}
+    \subitem {get\+Coord\+S}, \hyperpage{49}
+    \subitem {get\+Direction\+Unit}, \hyperpage{50}
+    \subitem {get\+Name\+Effect}, \hyperpage{50}
+    \subitem {get\+Name\+Unit}, \hyperpage{50}
+    \subitem {is\+Out\+Grid}, \hyperpage{50}
+    \subitem {print\+Name\+Unit}, \hyperpage{51}
+    \subitem {read\+Double}, \hyperpage{51}
+    \subitem {read\+Long}, \hyperpage{51}
+    \subitem {read\+S}, \hyperpage{51}
+    \subitem {right\+Side}, \hyperpage{51}
+  \item {manage\+String.\+h}
+    \subitem {clear\+Buffer}, \hyperpage{15}
+    \subitem {get2\+Char}, \hyperpage{15}
+    \subitem {get\+Coord\+S}, \hyperpage{15}
+    \subitem {get\+Direction\+Unit}, \hyperpage{15}
+    \subitem {get\+Name\+Effect}, \hyperpage{16}
+    \subitem {get\+Name\+Unit}, \hyperpage{16}
+    \subitem {print\+Name\+Unit}, \hyperpage{16}
+    \subitem {read\+Double}, \hyperpage{16}
+    \subitem {read\+Long}, \hyperpage{16}
+    \subitem {read\+S}, \hyperpage{17}
+    \subitem {right\+Side}, \hyperpage{17}
+  \item {menu.\+c}
+    \subitem {disp\+Direction}, \hyperpage{60}
+    \subitem {game\+Menu}, \hyperpage{60}
+    \subitem {help\+Unit}, \hyperpage{60}
+    \subitem {main\+Menu}, \hyperpage{60}
+    \subitem {unit\+List}, \hyperpage{60}
+    \subitem {unit\+Menu}, \hyperpage{61}
+  \item {menu.\+h}
+    \subitem {disp\+Direction}, \hyperpage{22}
+    \subitem {game\+Menu}, \hyperpage{22}
+    \subitem {help\+Unit}, \hyperpage{22}
+    \subitem {main\+Menu}, \hyperpage{22}
+    \subitem {unit\+List}, \hyperpage{22}
+    \subitem {unit\+Menu}, \hyperpage{23}
+  \item {minus\+Effect}
+    \subitem {unit.\+c}, \hyperpage{86}
+    \subitem {unit.\+h}, \hyperpage{43}
+  \item {movable}
+    \subitem {engine.\+c}, \hyperpage{64}
+    \subitem {engine.\+h}, \hyperpage{26}
+  \item {move}
+    \subitem {unit.\+c}, \hyperpage{86}
+    \subitem {unit.\+h}, \hyperpage{44}
+
+  \indexspace
+
+  \item {next}
+    \subitem {path\+List.\+c}, \hyperpage{73}
+    \subitem {path\+List.\+h}, \hyperpage{34}
+  \item {no\+Player}
+    \subitem {engine.\+c}, \hyperpage{66}
+    \subitem {engine.\+h}, \hyperpage{28}
+
+  \indexspace
+
+  \item {out\+Path}
+    \subitem {path\+List.\+c}, \hyperpage{74}
+    \subitem {path\+List.\+h}, \hyperpage{34}
+
+  \indexspace
+
+  \item {pass\+Turn}
+    \subitem {turn.\+c}, \hyperpage{79}
+    \subitem {turn.\+h}, \hyperpage{38}
+  \item {path\+Find}
+    \subitem {engine.\+c}, \hyperpage{64}
+    \subitem {engine.\+h}, \hyperpage{26}
+  \item {path\+Head}
+    \subitem {path\+List.\+c}, \hyperpage{74}
+    \subitem {path\+List.\+h}, \hyperpage{35}
+  \item {path\+List.\+c}
+    \subitem {add\+Close\+List}, \hyperpage{72}
+    \subitem {add\+Open\+List}, \hyperpage{72}
+    \subitem {dump\+All\+Paths}, \hyperpage{72}
+    \subitem {dump\+Path}, \hyperpage{72}
+    \subitem {empty\+Path}, \hyperpage{72}
+    \subitem {erase\+Tile}, \hyperpage{73}
+    \subitem {get\+Current\+Node}, \hyperpage{73}
+    \subitem {get\+Tile}, \hyperpage{73}
+    \subitem {init\+Path}, \hyperpage{73}
+    \subitem {next}, \hyperpage{73}
+    \subitem {out\+Path}, \hyperpage{74}
+    \subitem {path\+Head}, \hyperpage{74}
+    \subitem {path\+Tail}, \hyperpage{74}
+    \subitem {previous}, \hyperpage{74}
+    \subitem {search\+Tile}, \hyperpage{74}
+    \subitem {set\+Tile}, \hyperpage{75}
+    \subitem {to\+Right\+Path}, \hyperpage{75}
+  \item {path\+List.\+h}
+    \subitem {add\+Close\+List}, \hyperpage{32}
+    \subitem {add\+Open\+List}, \hyperpage{33}
+    \subitem {dump\+All\+Paths}, \hyperpage{33}
+    \subitem {dump\+Path}, \hyperpage{33}
+    \subitem {empty\+Path}, \hyperpage{33}
+    \subitem {erase\+Tile}, \hyperpage{33}
+    \subitem {get\+Current\+Node}, \hyperpage{34}
+    \subitem {get\+Tile}, \hyperpage{34}
+    \subitem {init\+Path}, \hyperpage{34}
+    \subitem {next}, \hyperpage{34}
+    \subitem {out\+Path}, \hyperpage{34}
+    \subitem {path\+Head}, \hyperpage{35}
+    \subitem {path\+Tail}, \hyperpage{35}
+    \subitem {previous}, \hyperpage{35}
+    \subitem {search\+Tile}, \hyperpage{35}
+    \subitem {set\+Tile}, \hyperpage{35}
+    \subitem {to\+Right\+Path}, \hyperpage{36}
+  \item {path\+Tail}
+    \subitem {path\+List.\+c}, \hyperpage{74}
+    \subitem {path\+List.\+h}, \hyperpage{35}
+  \item {pawns}
+    \subitem {pawns.\+c}, \hyperpage{77}
+    \subitem {pawns.\+h}, \hyperpage{37}
+  \item {pawns.\+c}
+    \subitem {check\+Pawn}, \hyperpage{76}
+    \subitem {create\+Pawn}, \hyperpage{76}
+    \subitem {init\+Pawn}, \hyperpage{77}
+    \subitem {make\+Pawns}, \hyperpage{77}
+    \subitem {pawns}, \hyperpage{77}
+  \item {pawns.\+h}
+    \subitem {make\+Pawns}, \hyperpage{37}
+    \subitem {pawns}, \hyperpage{37}
+  \item {play\+Attack}
+    \subitem {turn.\+c}, \hyperpage{79}
+    \subitem {turn.\+h}, \hyperpage{39}
+  \item {play\+Move}
+    \subitem {turn.\+c}, \hyperpage{79}
+    \subitem {turn.\+h}, \hyperpage{39}
+  \item {play\+Turn}
+    \subitem {turn.\+c}, \hyperpage{79}
+    \subitem {turn.\+h}, \hyperpage{39}
+  \item {player\+Add\+Unit}
+    \subitem {engine.\+c}, \hyperpage{64}
+  \item {poison}
+    \subitem {unit.\+c}, \hyperpage{86}
+    \subitem {unit.\+h}, \hyperpage{44}
+  \item {possible\+Path}
+    \subitem {engine.\+c}, \hyperpage{64}
+    \subitem {engine.\+h}, \hyperpage{27}
+  \item {power\+Bonus}
+    \subitem {unit.\+c}, \hyperpage{86}
+    \subitem {unit.\+h}, \hyperpage{44}
+  \item {previous}
+    \subitem {path\+List.\+c}, \hyperpage{74}
+    \subitem {path\+List.\+h}, \hyperpage{35}
+  \item {print\+List}
+    \subitem {listes.\+c}, \hyperpage{69}
+    \subitem {listes.\+h}, \hyperpage{30}
+  \item {print\+Name\+Unit}
+    \subitem {manage\+String.\+c}, \hyperpage{51}
+    \subitem {manage\+String.\+h}, \hyperpage{16}
+
+  \indexspace
+
+  \item {read\+Double}
+    \subitem {manage\+String.\+c}, \hyperpage{51}
+    \subitem {manage\+String.\+h}, \hyperpage{16}
+  \item {read\+Long}
+    \subitem {manage\+String.\+c}, \hyperpage{51}
+    \subitem {manage\+String.\+h}, \hyperpage{16}
+  \item {read\+S}
+    \subitem {manage\+String.\+c}, \hyperpage{51}
+    \subitem {manage\+String.\+h}, \hyperpage{17}
+  \item {recover}
+    \subitem {unit.\+c}, \hyperpage{86}
+    \subitem {unit.\+h}, \hyperpage{44}
+  \item {reinit\+Color}
+    \subitem {terminal.\+c}, \hyperpage{58}
+    \subitem {terminal.\+h}, \hyperpage{20}
+  \item {right\+Side}
+    \subitem {manage\+String.\+c}, \hyperpage{51}
+    \subitem {manage\+String.\+h}, \hyperpage{17}
+
+  \indexspace
+
+  \item {save}
+    \subitem {save\+N\+Load.\+c}, \hyperpage{56}
+    \subitem {save\+N\+Load.\+h}, \hyperpage{18}
+  \item {save\+N\+Load.\+c}
+    \subitem {check\+Decrypt}, \hyperpage{54}
+    \subitem {crypt}, \hyperpage{54}
+    \subitem {decrypt}, \hyperpage{54}
+    \subitem {get\+Char\+Key}, \hyperpage{54}
+    \subitem {get\+Key}, \hyperpage{54}
+    \subitem {load}, \hyperpage{56}
+    \subitem {save}, \hyperpage{56}
+  \item {save\+N\+Load.\+h}
+    \subitem {load}, \hyperpage{18}
+    \subitem {save}, \hyperpage{18}
+  \item {search\+Target}
+    \subitem {listes.\+c}, \hyperpage{69}
+    \subitem {listes.\+h}, \hyperpage{31}
+  \item {search\+Tile}
+    \subitem {path\+List.\+c}, \hyperpage{74}
+    \subitem {path\+List.\+h}, \hyperpage{35}
+  \item {select\+Unit}
+    \subitem {engine.\+c}, \hyperpage{65}
+    \subitem {engine.\+h}, \hyperpage{27}
+  \item {set\+Action}
+    \subitem {turn.\+c}, \hyperpage{79}
+  \item {set\+Direction}
+    \subitem {unit.\+c}, \hyperpage{87}
+    \subitem {unit.\+h}, \hyperpage{44}
+  \item {set\+Target}
+    \subitem {engine.\+c}, \hyperpage{65}
+    \subitem {engine.\+h}, \hyperpage{27}
+  \item {set\+Tile}
+    \subitem {path\+List.\+c}, \hyperpage{75}
+    \subitem {path\+List.\+h}, \hyperpage{35}
+  \item {sleep}
+    \subitem {unit.\+c}, \hyperpage{87}
+    \subitem {unit.\+h}, \hyperpage{44}
+  \item {special\+Boons}
+    \subitem {engine.\+c}, \hyperpage{65}
+  \item {src/controller/manage\+Signal.\+c}, \hyperpage{46}
+  \item {src/controller/manage\+String.\+c}, \hyperpage{48}
+  \item {src/controller/save\+N\+Load.\+c}, \hyperpage{53}
+  \item {src/controller/terminal.\+c}, \hyperpage{56}
+  \item {src/display/grid.\+c}, \hyperpage{58}
+  \item {src/display/menu.\+c}, \hyperpage{59}
+  \item {src/game/engine.\+c}, \hyperpage{61}
+  \item {src/game/listes.\+c}, \hyperpage{66}
+  \item {src/game/path\+List.\+c}, \hyperpage{70}
+  \item {src/game/pawns.\+c}, \hyperpage{75}
+  \item {src/game/turn.\+c}, \hyperpage{77}
+  \item {src/main.\+c}, \hyperpage{80}
+  \item {src/units/unit.\+c}, \hyperpage{80}
+
+  \indexspace
+
+  \item {target\+List}
+    \subitem {listes.\+c}, \hyperpage{70}
+    \subitem {listes.\+h}, \hyperpage{31}
+  \item {target\+Stat}, \hyperpage{8}
+  \item {terminal.\+c}
+    \subitem {color}, \hyperpage{57}
+    \subitem {font\+Color}, \hyperpage{57}
+    \subitem {get\+Color}, \hyperpage{57}
+    \subitem {reinit\+Color}, \hyperpage{58}
+  \item {terminal.\+h}
+    \subitem {color}, \hyperpage{20}
+    \subitem {font\+Color}, \hyperpage{20}
+    \subitem {reinit\+Color}, \hyperpage{20}
+  \item {terminator}
+    \subitem {manage\+Signal.\+c}, \hyperpage{47}
+  \item {tile\+Walkable}
+    \subitem {engine.\+c}, \hyperpage{65}
+    \subitem {engine.\+h}, \hyperpage{27}
+  \item {time\+Down}
+    \subitem {manage\+Signal.\+c}, \hyperpage{47}
+  \item {to\+Right\+Path}
+    \subitem {path\+List.\+c}, \hyperpage{75}
+    \subitem {path\+List.\+h}, \hyperpage{36}
+  \item {too\+Much\+Unit}
+    \subitem {engine.\+c}, \hyperpage{66}
+  \item {turn.\+c}
+    \subitem {change\+Direction}, \hyperpage{78}
+    \subitem {end\+Turn}, \hyperpage{78}
+    \subitem {has\+Play}, \hyperpage{79}
+    \subitem {pass\+Turn}, \hyperpage{79}
+    \subitem {play\+Attack}, \hyperpage{79}
+    \subitem {play\+Move}, \hyperpage{79}
+    \subitem {play\+Turn}, \hyperpage{79}
+    \subitem {set\+Action}, \hyperpage{79}
+  \item {turn.\+h}
+    \subitem {change\+Direction}, \hyperpage{38}
+    \subitem {has\+Play}, \hyperpage{38}
+    \subitem {pass\+Turn}, \hyperpage{38}
+    \subitem {play\+Attack}, \hyperpage{39}
+    \subitem {play\+Move}, \hyperpage{39}
+    \subitem {play\+Turn}, \hyperpage{39}
+
+  \indexspace
+
+  \item {unit}, \hyperpage{9}
+  \item {unit.\+c}
+    \subitem {add\+Effect}, \hyperpage{82}
+    \subitem {all\+Static}, \hyperpage{82}
+    \subitem {attack}, \hyperpage{82}
+    \subitem {can\+Attack}, \hyperpage{82}
+    \subitem {can\+Block}, \hyperpage{84}
+    \subitem {can\+Get\+Passed}, \hyperpage{84}
+    \subitem {can\+Move}, \hyperpage{84}
+    \subitem {can\+Teleport}, \hyperpage{84}
+    \subitem {copy}, \hyperpage{85}
+    \subitem {erase}, \hyperpage{85}
+    \subitem {get\+Side\+Attacked}, \hyperpage{85}
+    \subitem {heal}, \hyperpage{85}
+    \subitem {is\+Sleeping}, \hyperpage{86}
+    \subitem {minus\+Effect}, \hyperpage{86}
+    \subitem {move}, \hyperpage{86}
+    \subitem {poison}, \hyperpage{86}
+    \subitem {power\+Bonus}, \hyperpage{86}
+    \subitem {recover}, \hyperpage{86}
+    \subitem {set\+Direction}, \hyperpage{87}
+    \subitem {sleep}, \hyperpage{87}
+    \subitem {unit\+Init}, \hyperpage{87}
+  \item {unit.\+h}
+    \subitem {add\+Effect}, \hyperpage{40}
+    \subitem {all\+Static}, \hyperpage{41}
+    \subitem {attack}, \hyperpage{41}
+    \subitem {can\+Attack}, \hyperpage{41}
+    \subitem {can\+Block}, \hyperpage{41}
+    \subitem {can\+Get\+Passed}, \hyperpage{42}
+    \subitem {can\+Move}, \hyperpage{42}
+    \subitem {can\+Teleport}, \hyperpage{42}
+    \subitem {copy}, \hyperpage{42}
+    \subitem {erase}, \hyperpage{43}
+    \subitem {get\+Side\+Attacked}, \hyperpage{43}
+    \subitem {heal}, \hyperpage{43}
+    \subitem {is\+Sleeping}, \hyperpage{43}
+    \subitem {minus\+Effect}, \hyperpage{43}
+    \subitem {move}, \hyperpage{44}
+    \subitem {poison}, \hyperpage{44}
+    \subitem {power\+Bonus}, \hyperpage{44}
+    \subitem {recover}, \hyperpage{44}
+    \subitem {set\+Direction}, \hyperpage{44}
+    \subitem {sleep}, \hyperpage{44}
+    \subitem {unit\+Init}, \hyperpage{46}
+  \item {unit\+Init}
+    \subitem {unit.\+c}, \hyperpage{87}
+    \subitem {unit.\+h}, \hyperpage{46}
+  \item {unit\+List}
+    \subitem {menu.\+c}, \hyperpage{60}
+    \subitem {menu.\+h}, \hyperpage{22}
+  \item {unit\+Menu}
+    \subitem {menu.\+c}, \hyperpage{61}
+    \subitem {menu.\+h}, \hyperpage{23}
+  \item {unit\+Stat}, \hyperpage{10}
+  \item {update\+Limits}
+    \subitem {engine.\+c}, \hyperpage{66}
+
+  \indexspace
+
+  \item {vector}, \hyperpage{10}
+
+\end{theindex}

@@ -1,0 +1,465 @@
+\hypertarget{pathList_8h}{}\section{Référence du fichier include/game/path\+List.h}
+\label{pathList_8h}\index{include/game/path\+List.\+h@{include/game/path\+List.\+h}}
+
+
+En-\/tête listes des chemins.  
+
+
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{pathList_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{pathList_8h_a6a2e00dafeb02729bb43a51b048f2b11}{init\+Path} (int)
+\begin{DoxyCompactList}\small\item\em Initialise le chemin. \end{DoxyCompactList}\item 
+\hypertarget{pathList_8h_aca469a8527a0bc92e66306a1c8ada185}{}void \hyperlink{pathList_8h_aca469a8527a0bc92e66306a1c8ada185}{init\+Paths} ()\label{pathList_8h_aca469a8527a0bc92e66306a1c8ada185}
+
+\begin{DoxyCompactList}\small\item\em Initialise les chemins. \end{DoxyCompactList}\item 
+int \hyperlink{pathList_8h_a2aab13e3009ebe3949a32c10c03adcd8}{empty\+Path} (int n)
+\begin{DoxyCompactList}\small\item\em Vérifie si chemin vide. \end{DoxyCompactList}\item 
+int \hyperlink{pathList_8h_a4bcf1b8579c9a03c9070e33c77993426}{out\+Path} (int n)
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}élément courant est en dehors de la liste. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_af5f66b0e2d9ff7dd44fdd821bb9377cf}{path\+Head} (int n)
+\begin{DoxyCompactList}\small\item\em Se met en tête de la liste. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_a58814bcfb1182201bbecf88f839cd0f7}{path\+Tail} (int n)
+\begin{DoxyCompactList}\small\item\em Se met en queue de la liste. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_a2e1e62efbdb494f85de87088a068c916}{previous} (int n)
+\begin{DoxyCompactList}\small\item\em Se positionne sur l\textquotesingle{}élément précédent. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_ae29c8124809dc534b7ff12214d16183c}{next} (int n)
+\begin{DoxyCompactList}\small\item\em Se positionne sur l\textquotesingle{}élément suivant. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_affe2967c536ca680e1389c746dc2d944}{get\+Tile} (int n, \hyperlink{structvector}{vector} $\ast$v, int $\ast$F)
+\begin{DoxyCompactList}\small\item\em Récupère la valeur d\textquotesingle{}une case. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_afac156c3a2eedf22deaae38595f95a65}{set\+Tile} (int n, \hyperlink{structvector}{vector} v, int F)
+\begin{DoxyCompactList}\small\item\em Modifie la valeur d\textquotesingle{}une case. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_acb403a99e156dd37be05e5d1245ca591}{erase\+Tile} (int n)
+\begin{DoxyCompactList}\small\item\em Efface une case. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_add77d77457e5c3b5e5e3ba1574e1e706}{to\+Right\+Path} (int n, \hyperlink{structvector}{vector} v, int F)
+\begin{DoxyCompactList}\small\item\em Ajoute une case à droite. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_afd17fd81ff6e16ee988340ae898ba362}{dump\+Path} (short nb\+List)
+\begin{DoxyCompactList}\small\item\em Vide le chemin. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_a18154e93d817c730195d7fa04bd6c1d3}{dump\+All\+Paths} ()
+\begin{DoxyCompactList}\small\item\em Vide les chemins. \end{DoxyCompactList}\item 
+bool \hyperlink{pathList_8h_a3415787bd9e4aa84fb3f770c44de5275}{search\+Tile} (int n, \hyperlink{structvector}{vector})
+\begin{DoxyCompactList}\small\item\em Cherche une case. \end{DoxyCompactList}\item 
+\hyperlink{structvector}{vector} \hyperlink{pathList_8h_ae36257ead315faab602c58a4a2ae19fc}{get\+Current\+Node} (int n)
+\begin{DoxyCompactList}\small\item\em Récupère la case ayant le plus petit poids. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_a2d3c6547f1a7f48cada640491d9f8903}{add\+Close\+List} (\hyperlink{structvector}{vector}, int)
+\begin{DoxyCompactList}\small\item\em Ajoute la case à la liste fermée. \end{DoxyCompactList}\item 
+void \hyperlink{pathList_8h_acf21882e0305b7855f4558e5f7803a49}{add\+Open\+List} (\hyperlink{structvector}{vector}, int)
+\begin{DoxyCompactList}\small\item\em Ajoute la case à la liste ouverte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+En-\/tête listes des chemins. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{pathList_8h_a2d3c6547f1a7f48cada640491d9f8903}{}\index{path\+List.\+h@{path\+List.\+h}!add\+Close\+List@{add\+Close\+List}}
+\index{add\+Close\+List@{add\+Close\+List}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{add\+Close\+List}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Close\+List (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{current, }
+\item[{int}]{F}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_a2d3c6547f1a7f48cada640491d9f8903}
+
+
+Ajoute la case à la liste fermée. 
+
+Ajoute la case à la liste fermée.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em current} & Destination \\
+\hline
+{\em F} & Poids de la case \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 262 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_acf21882e0305b7855f4558e5f7803a49}{}\index{path\+List.\+h@{path\+List.\+h}!add\+Open\+List@{add\+Open\+List}}
+\index{add\+Open\+List@{add\+Open\+List}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{add\+Open\+List}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Open\+List (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{current, }
+\item[{int}]{F}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_acf21882e0305b7855f4558e5f7803a49}
+
+
+Ajoute la case à la liste ouverte. 
+
+Ajoute la case à la liste ouverte.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em current} & Destination \\
+\hline
+{\em F} & Poids de la case \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 285 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_a18154e93d817c730195d7fa04bd6c1d3}{}\index{path\+List.\+h@{path\+List.\+h}!dump\+All\+Paths@{dump\+All\+Paths}}
+\index{dump\+All\+Paths@{dump\+All\+Paths}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{dump\+All\+Paths}]{\setlength{\rightskip}{0pt plus 5cm}void dump\+All\+Paths (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_a18154e93d817c730195d7fa04bd6c1d3}
+
+
+Vide les chemins. 
+
+Vide les chemins. 
+
+Définition à la ligne 226 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_afd17fd81ff6e16ee988340ae898ba362}{}\index{path\+List.\+h@{path\+List.\+h}!dump\+Path@{dump\+Path}}
+\index{dump\+Path@{dump\+Path}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{dump\+Path}]{\setlength{\rightskip}{0pt plus 5cm}void dump\+Path (
+\begin{DoxyParamCaption}
+\item[{short}]{nb\+List}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_afd17fd81ff6e16ee988340ae898ba362}
+
+
+Vide le chemin. 
+
+Vide le chemin.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nb\+List} & Numéro de la liste à vider \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 214 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_a2aab13e3009ebe3949a32c10c03adcd8}{}\index{path\+List.\+h@{path\+List.\+h}!empty\+Path@{empty\+Path}}
+\index{empty\+Path@{empty\+Path}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{empty\+Path}]{\setlength{\rightskip}{0pt plus 5cm}int empty\+Path (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_a2aab13e3009ebe3949a32c10c03adcd8}
+
+
+Vérifie si chemin vide. 
+
+Vérifie si chemin vide.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Chemin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne le drapeau si pas vide 
+\end{DoxyReturn}
+
+
+Définition à la ligne 54 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_acb403a99e156dd37be05e5d1245ca591}{}\index{path\+List.\+h@{path\+List.\+h}!erase\+Tile@{erase\+Tile}}
+\index{erase\+Tile@{erase\+Tile}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{erase\+Tile}]{\setlength{\rightskip}{0pt plus 5cm}void erase\+Tile (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_acb403a99e156dd37be05e5d1245ca591}
+
+
+Efface une case. 
+
+Efface une case.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Liste \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 170 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_ae36257ead315faab602c58a4a2ae19fc}{}\index{path\+List.\+h@{path\+List.\+h}!get\+Current\+Node@{get\+Current\+Node}}
+\index{get\+Current\+Node@{get\+Current\+Node}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{get\+Current\+Node}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vector} get\+Current\+Node (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_ae36257ead315faab602c58a4a2ae19fc}
+
+
+Récupère la case ayant le plus petit poids. 
+
+Récupère la case ayant le plus petit poids.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Liste dans laquelle chercher \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 130 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_affe2967c536ca680e1389c746dc2d944}{}\index{path\+List.\+h@{path\+List.\+h}!get\+Tile@{get\+Tile}}
+\index{get\+Tile@{get\+Tile}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{get\+Tile}]{\setlength{\rightskip}{0pt plus 5cm}void get\+Tile (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{{\bf vector} $\ast$}]{v, }
+\item[{int $\ast$}]{F}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_affe2967c536ca680e1389c746dc2d944}
+
+
+Récupère la valeur d\textquotesingle{}une case. 
+
+Récupère la valeur d\textquotesingle{}une case.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Chemin \\
+\hline
+{\em v} & Position de la case \\
+\hline
+{\em F} & Poids de la case \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 117 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_a6a2e00dafeb02729bb43a51b048f2b11}{}\index{path\+List.\+h@{path\+List.\+h}!init\+Path@{init\+Path}}
+\index{init\+Path@{init\+Path}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{init\+Path}]{\setlength{\rightskip}{0pt plus 5cm}void init\+Path (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_a6a2e00dafeb02729bb43a51b048f2b11}
+
+
+Initialise le chemin. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Chemin \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 31 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_ae29c8124809dc534b7ff12214d16183c}{}\index{path\+List.\+h@{path\+List.\+h}!next@{next}}
+\index{next@{next}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{next}]{\setlength{\rightskip}{0pt plus 5cm}void next (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_ae29c8124809dc534b7ff12214d16183c}
+
+
+Se positionne sur l\textquotesingle{}élément suivant. 
+
+Se positionne sur l\textquotesingle{}élément suivant.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Chemin \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 105 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_a4bcf1b8579c9a03c9070e33c77993426}{}\index{path\+List.\+h@{path\+List.\+h}!out\+Path@{out\+Path}}
+\index{out\+Path@{out\+Path}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{out\+Path}]{\setlength{\rightskip}{0pt plus 5cm}int out\+Path (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_a4bcf1b8579c9a03c9070e33c77993426}
+
+
+Vérifie si l\textquotesingle{}élément courant est en dehors de la liste. 
+
+Vérifie si l\textquotesingle{}élément courant est en dehors de la liste.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Liste \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne l\textquotesingle{}élément courant si pas hors liste 
+\end{DoxyReturn}
+
+
+Définition à la ligne 65 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_af5f66b0e2d9ff7dd44fdd821bb9377cf}{}\index{path\+List.\+h@{path\+List.\+h}!path\+Head@{path\+Head}}
+\index{path\+Head@{path\+Head}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{path\+Head}]{\setlength{\rightskip}{0pt plus 5cm}void path\+Head (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_af5f66b0e2d9ff7dd44fdd821bb9377cf}
+
+
+Se met en tête de la liste. 
+
+Se met en tête de la liste.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Chemin \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 75 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_a58814bcfb1182201bbecf88f839cd0f7}{}\index{path\+List.\+h@{path\+List.\+h}!path\+Tail@{path\+Tail}}
+\index{path\+Tail@{path\+Tail}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{path\+Tail}]{\setlength{\rightskip}{0pt plus 5cm}void path\+Tail (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_a58814bcfb1182201bbecf88f839cd0f7}
+
+
+Se met en queue de la liste. 
+
+Se met en queue de la liste.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Chemin \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 85 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_a2e1e62efbdb494f85de87088a068c916}{}\index{path\+List.\+h@{path\+List.\+h}!previous@{previous}}
+\index{previous@{previous}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{previous}]{\setlength{\rightskip}{0pt plus 5cm}void previous (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_a2e1e62efbdb494f85de87088a068c916}
+
+
+Se positionne sur l\textquotesingle{}élément précédent. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Chemin \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 95 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_a3415787bd9e4aa84fb3f770c44de5275}{}\index{path\+List.\+h@{path\+List.\+h}!search\+Tile@{search\+Tile}}
+\index{search\+Tile@{search\+Tile}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{search\+Tile}]{\setlength{\rightskip}{0pt plus 5cm}bool search\+Tile (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{{\bf vector}}]{coord\+Tile}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_a3415787bd9e4aa84fb3f770c44de5275}
+
+
+Cherche une case. 
+
+Cherche une case.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Liste \\
+\hline
+{\em coord\+Tile} & Position de la case \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 239 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_afac156c3a2eedf22deaae38595f95a65}{}\index{path\+List.\+h@{path\+List.\+h}!set\+Tile@{set\+Tile}}
+\index{set\+Tile@{set\+Tile}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{set\+Tile}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Tile (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{{\bf vector}}]{v, }
+\item[{int}]{F}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_afac156c3a2eedf22deaae38595f95a65}
+
+
+Modifie la valeur d\textquotesingle{}une case. 
+
+Modifie la valeur d\textquotesingle{}une case.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Liste \\
+\hline
+{\em v} & Nouvelle position \\
+\hline
+{\em F} & Nouveau poids \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 157 du fichier path\+List.\+c.
+
+\hypertarget{pathList_8h_add77d77457e5c3b5e5e3ba1574e1e706}{}\index{path\+List.\+h@{path\+List.\+h}!to\+Right\+Path@{to\+Right\+Path}}
+\index{to\+Right\+Path@{to\+Right\+Path}!path\+List.\+h@{path\+List.\+h}}
+\subsubsection[{to\+Right\+Path}]{\setlength{\rightskip}{0pt plus 5cm}void to\+Right\+Path (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{{\bf vector}}]{v, }
+\item[{int}]{F}
+\end{DoxyParamCaption}
+)}\label{pathList_8h_add77d77457e5c3b5e5e3ba1574e1e706}
+
+
+Ajoute une case à droite. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Liste \\
+\hline
+{\em v} & Position à ajouter \\
+\hline
+{\em F} & Poids à ajouter \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 191 du fichier path\+List.\+c.
+

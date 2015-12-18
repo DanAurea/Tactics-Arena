@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena:  Fichier source de include/controller/manageString.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_39b9d54b040febeebc00140e5c10ba61.html">controller</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">manageString.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="manageString_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// Traitement nom unité</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="manageString_8h.html#aef4f9d954282d13b5ea3132465378b79">get2Char</a>(<span class="keywordtype">char</span> name[]); </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="manageString_8h.html#a1f1e45f2d8b8cf09e271c2459a46b0d3">getNameUnit</a>(<a class="code" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> <a class="code" href="structunit.html">unit</a>); </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="manageString_8h.html#a32a341ce2c2a9240c500f694c9227b96">printNameUnit</a>(<a class="code" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> <a class="code" href="structunit.html">unit</a>); </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// Vérification coordonnées</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">void</span> <a class="code" href="manageString_8h.html#a4660decf36a299266867a3fdffd4891f">getCoordS</a>(<span class="keywordtype">char</span> coordString[], <a class="code" href="structvector.html">vector</a> * coordUnit); </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="manageString_8h.html#ab4002ec4f250e5f6b7f2b56936950b5e">correctCoord</a>(<span class="keywordtype">char</span> * coordString); </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="manageString_8h.html#a56a4267e397f3c206d9655b52241024e">rightSide</a>(<span class="keywordtype">char</span> * coordString); </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// Saisie sécurisée</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> <a class="code" href="manageString_8h.html#a57860307a2f1d8a80d71147a7ed1b793">readS</a>(<span class="keywordtype">char</span> * <span class="keywordtype">string</span>); </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">long</span> <a class="code" href="manageString_8h.html#ab431b0689298bfb6b1e74cbe92c18e00">readLong</a>(); </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">double</span> <a class="code" href="manageString_8h.html#a840ea5c01770156bd51bdb9f65f44e30">readDouble</a>(); </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">void</span> <a class="code" href="manageString_8h.html#a20bbd4d45e3f01305dd709f5a9cc9952">clearBuffer</a>(); </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// Direction</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="manageString_8h.html#a71644b2a2c56b83debb3c804040d3c88">getDirectionUnit</a>(<a class="code" href="engine_8h.html#a468af3d7606639780e81c5e1e403b356">cardinal</a> direct); </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// Traitement nom effet</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="manageString_8h.html#acb5c8162f1db822caca54e0e04d2a143">getNameEffect</a>(<a class="code" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a> effect); </div>
+<div class="ttc" id="manageString_8h_html_acb5c8162f1db822caca54e0e04d2a143"><div class="ttname"><a href="manageString_8h.html#acb5c8162f1db822caca54e0e04d2a143">getNameEffect</a></div><div class="ttdeci">char * getNameEffect(unitEffect effect)</div><div class="ttdoc">Récupère le nom de l&#39;effet. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00220">manageString.c:220</a></div></div>
+<div class="ttc" id="structunit_html"><div class="ttname"><a href="structunit.html">unit</a></div><div class="ttdoc">Représente une unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00088">engine.h:88</a></div></div>
+<div class="ttc" id="structvector_html"><div class="ttname"><a href="structvector.html">vector</a></div><div class="ttdoc">Représente les coordonnées d&#39;un vecteur. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00079">engine.h:79</a></div></div>
+<div class="ttc" id="manageString_8h_html_a57860307a2f1d8a80d71147a7ed1b793"><div class="ttname"><a href="manageString_8h.html#a57860307a2f1d8a80d71147a7ed1b793">readS</a></div><div class="ttdeci">int readS(char *string)</div><div class="ttdoc">Lecture sécurisée d&#39;une chaîne. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00265">manageString.c:265</a></div></div>
+<div class="ttc" id="manageString_8h_html_a1f1e45f2d8b8cf09e271c2459a46b0d3"><div class="ttname"><a href="manageString_8h.html#a1f1e45f2d8b8cf09e271c2459a46b0d3">getNameUnit</a></div><div class="ttdeci">char * getNameUnit(unitName unit)</div><div class="ttdoc">Récupère le nom de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00189">manageString.c:189</a></div></div>
+<div class="ttc" id="manageString_8h_html_a56a4267e397f3c206d9655b52241024e"><div class="ttname"><a href="manageString_8h.html#a56a4267e397f3c206d9655b52241024e">rightSide</a></div><div class="ttdeci">bool rightSide(char *coordString)</div><div class="ttdoc">Vérifie que l&#39;unité est dans le bon camp. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00165">manageString.c:165</a></div></div>
+<div class="ttc" id="manageString_8h_html_ab4002ec4f250e5f6b7f2b56936950b5e"><div class="ttname"><a href="manageString_8h.html#ab4002ec4f250e5f6b7f2b56936950b5e">correctCoord</a></div><div class="ttdeci">bool correctCoord(char *coordString)</div><div class="ttdoc">Vérifie l&#39;authenticité des coordonnées d&#39;une chaîne de caractères. </div></div>
+<div class="ttc" id="engine_8h_html_ac5ece9b6993cd3565502866b56317e84"><div class="ttname"><a href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a></div><div class="ttdeci">unitEffect</div><div class="ttdoc">engine.h </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00048">engine.h:48</a></div></div>
+<div class="ttc" id="manageString_8h_html_a4660decf36a299266867a3fdffd4891f"><div class="ttname"><a href="manageString_8h.html#a4660decf36a299266867a3fdffd4891f">getCoordS</a></div><div class="ttdeci">void getCoordS(char coordString[], vector *coordUnit)</div><div class="ttdoc">Récupère les coordonnées d&#39;une chaîne de caractères. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00019">manageString.c:19</a></div></div>
+<div class="ttc" id="engine_8h_html_a468af3d7606639780e81c5e1e403b356"><div class="ttname"><a href="engine_8h.html#a468af3d7606639780e81c5e1e403b356">cardinal</a></div><div class="ttdeci">cardinal</div><div class="ttdoc">engine.h </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00036">engine.h:36</a></div></div>
+<div class="ttc" id="manageString_8h_html_a840ea5c01770156bd51bdb9f65f44e30"><div class="ttname"><a href="manageString_8h.html#a840ea5c01770156bd51bdb9f65f44e30">readDouble</a></div><div class="ttdeci">double readDouble()</div><div class="ttdoc">Lecture sécurisée d&#39;un double. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00305">manageString.c:305</a></div></div>
+<div class="ttc" id="manageString_8h_html_a20bbd4d45e3f01305dd709f5a9cc9952"><div class="ttname"><a href="manageString_8h.html#a20bbd4d45e3f01305dd709f5a9cc9952">clearBuffer</a></div><div class="ttdeci">void clearBuffer()</div><div class="ttdoc">Vide la mémoire tampon. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00253">manageString.c:253</a></div></div>
+<div class="ttc" id="manageString_8h_html_a32a341ce2c2a9240c500f694c9227b96"><div class="ttname"><a href="manageString_8h.html#a32a341ce2c2a9240c500f694c9227b96">printNameUnit</a></div><div class="ttdeci">void printNameUnit(unitName unit)</div><div class="ttdoc">Affiche le nom de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00246">manageString.c:246</a></div></div>
+<div class="ttc" id="manageString_8h_html_a71644b2a2c56b83debb3c804040d3c88"><div class="ttname"><a href="manageString_8h.html#a71644b2a2c56b83debb3c804040d3c88">getDirectionUnit</a></div><div class="ttdeci">char * getDirectionUnit(cardinal direct)</div><div class="ttdoc">Récupère le nom de la direction. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00235">manageString.c:235</a></div></div>
+<div class="ttc" id="manageString_8h_html_aef4f9d954282d13b5ea3132465378b79"><div class="ttname"><a href="manageString_8h.html#aef4f9d954282d13b5ea3132465378b79">get2Char</a></div><div class="ttdeci">char * get2Char(char name[])</div><div class="ttdoc">Récupère 2 caractères du nom de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00047">manageString.c:47</a></div></div>
+<div class="ttc" id="engine_8h_html_af7667555c2dcfbdd55ec3e9dd6a907ba"><div class="ttname"><a href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a></div><div class="ttdeci">unitName</div><div class="ttdoc">engine.h </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00041">engine.h:41</a></div></div>
+<div class="ttc" id="manageString_8h_html_ab431b0689298bfb6b1e74cbe92c18e00"><div class="ttname"><a href="manageString_8h.html#ab431b0689298bfb6b1e74cbe92c18e00">readLong</a></div><div class="ttdeci">long readLong()</div><div class="ttdoc">Lecture sécurisée d&#39;un long. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00291">manageString.c:291</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<map id="include/game/engine.h" name="include/game/engine.h">
+<area shape="rect" id="node2" href="$manageSignal_8c.html" title="Gestion des signaux. " alt="" coords="5,80,200,107"/>
+<area shape="rect" id="node3" href="$manageString_8c.html" title="Gestions des chaînes de caractères. " alt="" coords="224,80,416,107"/>
+<area shape="rect" id="node4" href="$saveNLoad_8c.html" title="Gestion de la sauvegarde et du chargement. " alt="" coords="440,80,619,107"/>
+<area shape="rect" id="node5" href="$terminal_8c.html" title="Gestion du terminal. " alt="" coords="643,80,802,107"/>
+<area shape="rect" id="node6" href="$grid_8c.html" title="Gestion de la grille. " alt="" coords="826,80,947,107"/>
+<area shape="rect" id="node7" href="$menu_8c.html" title="Gestion des menus. " alt="" coords="971,80,1103,107"/>
+<area shape="rect" id="node8" href="$engine_8c.html" title="Moteur de jeu. " alt="" coords="1127,80,1257,107"/>
+<area shape="rect" id="node9" href="$listes_8c.html" title="Listes de vecteurs. " alt="" coords="1281,80,1404,107"/>
+<area shape="rect" id="node10" href="$pathList_8c.html" title="Listes de cases sur un chemin définis. " alt="" coords="1429,80,1566,107"/>
+<area shape="rect" id="node11" href="$pawns_8c.html" title="Gestion des pions. " alt="" coords="1590,80,1719,107"/>
+<area shape="rect" id="node12" href="$turn_8c.html" title="Gestion des tours. " alt="" coords="1743,80,1857,107"/>
+<area shape="rect" id="node13" href="$main_8c.html" title="Programme principal. " alt="" coords="1881,80,1964,107"/>
+<area shape="rect" id="node14" href="$unit_8c.html" title="Gestion des unités. " alt="" coords="1989,80,2097,107"/>
+</map>

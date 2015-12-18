@@ -1,3 +1,11 @@
+/**
+ @file saveNLoad.c
+ @brief Gestion de la sauvegarde et du chargement
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <stdio.h>
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
@@ -8,10 +16,11 @@
 #include "../../include/controller/terminal.h"
 #include "../../include/controller/manageString.h"
 
-char key[] = "SPIBCTBEC";
+char key[] = "SPIBCTBEC"; /**< Clé statique à utiliser pour le cryptage */
 
 /**
  * Récupère un caractère de la clé
+ * @param dynamicKey Clé dynamique
  * @param pos Position dans la clé
  * @return     Retourne un caractère de la clé
  */
@@ -201,7 +210,6 @@ void load() {
 	fic1 = fopen("assets/save/fileSave", "r");
 	if(fic1 != NULL){
 		initLists();
-		initPaths();
 
 		success = fscanf(fic1, "%i - %i - %i\n", &noPlayer, &hasMoved, &hasAttacked); // Informations état joueur
 		if(success == 3){
@@ -241,7 +249,6 @@ void load() {
 				}else{
 					fclose(fic1);
 					dumpAllLists(); // Libère les listes de la mémoire
-					//dumpAllPaths();
 
 					color(red, "\nDonnées invalides, le chargement n'a pu être effectué\n");
 					exit(1);
@@ -250,7 +257,6 @@ void load() {
 		}else{
 			fclose(fic1);
 			dumpAllLists(); // Libère les listes de la mémoire
-			//dumpAllPaths();
 
 			color(red, "\nDonnées invalides, le chargement n'a pu être effectué\n");
 			exit(1);
@@ -258,6 +264,7 @@ void load() {
 		fclose(fic1);
 		
 		makePawns(); // Recrée les pions pour le chargement
+		initPaths();
 		startGame(); // Débute la partie
 
 	}else{

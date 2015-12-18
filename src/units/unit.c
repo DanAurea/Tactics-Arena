@@ -1,3 +1,11 @@
+/**
+ @file unit.c
+ @brief Gestion des unités
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <stdio.h>
 #include <math.h>
 #include "../../include/game/engine.h"
@@ -10,7 +18,7 @@
 
 /**
  * Initialise l'unité courante
- * @param noPlayer  Joueur propriétaire
+ * @param noP Numéro du joueur
  * @param coordUnit Coordonnées de l'unité
  */
 void unitInit(short noP, vector coordUnit)
@@ -30,9 +38,11 @@ void unitInit(short noP, vector coordUnit)
     }
 }
 
-/*
-	renvoie faux si l'unité est soumis à un effet negatif, vrai sinon.
-*/
+/**
+ * Définis si le passage est permis
+ * @param  target Unité à analyser
+ * @return        Retourne vrai si passage autorisé
+ */
 bool canGetPassed(unit * target)
 {
     bool out = true;
@@ -48,9 +58,11 @@ bool canGetPassed(unit * target)
 }
 
 
-/*
-	renvoie faux si l'unité est soumis au effet PARALIZE ou FOCUS, vrai sinon.
-*/
+/**
+ * Définis si une unité peut bloquer
+ * @param  target Unité à analyser
+ * @return        Retourne vrai si l'unité peut bloquer
+ */
 bool canBlock(unit * target)
 {
     bool out = true;
@@ -66,9 +78,11 @@ bool canBlock(unit * target)
 }
 
 
-/*
-	renvoie faux si l'unité est soumis au effet BARRIER, POISON ou PARALYSE, vrai sinon
-*/
+/**
+ * Définis si une unité peut attaquer
+ * @param  target Unité à analyser
+ * @return        Retourne vrai si l'unité peut attaquer
+ */
 bool canAttack(unit * target)
 {
     bool out = true;
@@ -84,9 +98,11 @@ bool canAttack(unit * target)
 }
 
 
-/*
-	renvoie faux si l'unité est paralisée, vrai sinon
-*/
+/**
+ * Définis si une unité peut bouger
+ * @param  target Unité à analyser
+ * @return        Retourne vraie si l'unité peut se mouvoir
+ */
 bool canMove(unit * target)
 {
     bool out = true;
@@ -102,7 +118,7 @@ bool canMove(unit * target)
 }
 
 /**
- * Déterminé si une unité peut se téléporter
+ * Détermine si une unité peut se téléporter
  * @param  name Nom de l'unité
  * @return      Retourne vraie si l'unité peut se déplacer
  */
@@ -114,9 +130,10 @@ bool canTeleport(unitName name){
 }
 
 
-/*
-	soigne l'unité target du montant du soin de l'unité cible
-*/
+/**
+ * Soigne les unités
+ * @param name Nom de l'unité soignant
+ */
 void heal(unitName name)
 {
     vector pos;
@@ -142,9 +159,12 @@ void heal(unitName name)
 }
 
 
-/*
-	Renvoie le coté de l'unité attaqué
-*/
+/**
+ * Retourne le côté attaqué
+ * @param  source Position unité source
+ * @param  target Position unité cible
+ * @return        Le côté attaqué
+ */
 int getSideAttacked(vector source, vector target )
 {
 	unit * uTarget = &grid[target.x][target.y];
@@ -156,9 +176,11 @@ int getSideAttacked(vector source, vector target )
 }
 
 
-/*
-	attaque depuis l'unité source vers les coordonées pos en prenant en compte le BLOCKAGE de l'unité ennemie
-*/
+/**
+ * Attaque une unité en prenant en compte son taux de blocage
+ * @param source Unité attaquante
+ * @param target Unité cible
+ */
 void attack(vector source, vector target)
 {
     int tmp  = 0;
@@ -205,9 +227,12 @@ void attack(vector source, vector target)
 }
 
 
-/*
-	copie la structure unité source vers la structure unité destination
-*/
+/**
+ * Copie la structure source vers la structure destination
+ * @param  destination Structure destination
+ * @param  source      Structure source
+ * @return             Retourne vrai si copie bien déroulée
+ */
 bool copy(unit * destination, unit * source)
 {
     if(destination != NULL && source != NULL)
@@ -239,6 +264,10 @@ bool copy(unit * destination, unit * source)
     return true;
 }
 
+/**
+ * Efface une unité de la grille
+ * @param source Source à effacer
+ */
 void erase(unit * source)
 {
     memset(source, -1, sizeof(unit));
@@ -314,9 +343,11 @@ void powerBonus(){
     }
 }
 
-/*
-	déplace l'unité se trouvant en pos[0] en pos[1].
-*/
+/**
+ * Déplace une unité vers la destination
+ * @param destination Destination souhaitée
+ * @param source      Position de l'unité
+ */
 void move(vector destination, vector source)
 {   
     unitName name = grid[source.x][source.y].name;
@@ -333,11 +364,16 @@ void move(vector destination, vector source)
         gridDisp();
 
         fontColor(red);
-        printf("L'unité %s a été déplacée en %c - %i\n", getNameUnit(name), 'A' + destination.x, destination.y + 1);
+        printf("L'unité %s en %c - %i a été déplacée en %c - %i\n", getNameUnit(name), 'A' + source.x, source.y + 1, 'A' + destination.x, destination.y + 1);
         reinitColor();
 	}
 }
 
+/**
+ * Définis la direction de l'unité
+ * @param source Unité à tourner
+ * @param dir    Direction dans laquelle tourner
+ */
 void setDirection(vector source, int dir)
 {
 	unit * uSource = &grid[source.x][source.y];
@@ -393,9 +429,11 @@ void poison(){
     }
 }
 
-/*
-	Ajoute sur l'unité target l'effet effect.
-*/
+/**
+ * Ajoute un effect sur l'unité cible
+ * @param target Position unité cible
+ * @param effect Effet à appliquer sur la cible
+ */
 void addEffect(vector target, unitEffect effect)
 {
 	unit * uTarget = &grid[target.x][target.y];
@@ -435,14 +473,20 @@ void minusEffect()
     }
 }
 
-/*
-    Met à 0 le recovery de l'unité passée en paramètre
-*/
+/**
+ * Endors l'unité
+ * @param pos Position de l'unité
+ */
 void sleep(vector pos)
 {
     grid[pos.x][pos.y].stat.RECOVERY = 0;
 }
 
+/**
+ * Vérifie si l'unité est endormie
+ * @param  pos Position de l'unité
+ * @return     Retourne vrai si endormi
+ */
 bool isSleeping(vector pos)
 {
     unit uTarget = grid[pos.x][pos.y];
@@ -477,7 +521,11 @@ void recover()
     }
 }
 
-//true > toutes unité du joueur immobile sinon false
+/**
+ * Vérifie si toutes les unités sont immobilisés
+ * @param  numPlayer Numéro du joueur
+ * @return           Retourne vrai si toutes les unités sont immobilisés
+ */
 bool allStatic(int numPlayer)
 {
     vector pos;

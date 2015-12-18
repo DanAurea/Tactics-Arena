@@ -1,0 +1,10 @@
+<map id="include/game/pawns.h" name="include/game/pawns.h">
+<area shape="rect" id="node2" href="$manageSignal_8c.html" title="Gestion des signaux. " alt="" coords="5,80,200,107"/>
+<area shape="rect" id="node3" href="$saveNLoad_8c.html" title="Gestion de la sauvegarde et du chargement. " alt="" coords="224,80,403,107"/>
+<area shape="rect" id="node4" href="$menu_8c.html" title="Gestion des menus. " alt="" coords="427,80,559,107"/>
+<area shape="rect" id="node5" href="$engine_8c.html" title="Moteur de jeu. " alt="" coords="583,80,713,107"/>
+<area shape="rect" id="node6" href="$listes_8c.html" title="Listes de vecteurs. " alt="" coords="737,80,860,107"/>
+<area shape="rect" id="node7" href="$turn_8c.html" title="Gestion des tours. " alt="" coords="885,80,998,107"/>
+<area shape="rect" id="node8" href="$main_8c.html" title="Programme principal. " alt="" coords="1023,80,1105,107"/>
+<area shape="rect" id="node9" href="$unit_8c.html" title="Gestion des unités. " alt="" coords="1130,80,1238,107"/>
+</map>

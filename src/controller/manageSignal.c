@@ -1,8 +1,17 @@
+/**
+ @file manageSignal.c
+ @brief Gestion des signaux
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
 #include "../../include/controller/saveNLoad.h"
 #include "../../include/controller/terminal.h"
 #include "../../include/game/listes.h"
+#include "../../include/game/pathList.h"
 #include <signal.h>
 #include <stdio.h>
 
@@ -14,6 +23,7 @@ void freeAll(){
 		free(pawns); // Libère les pions
 		sizePawns = 0;
 		dumpAllLists(); // Libère les listes de la mémoire
+		dumpAllPaths(); // Libère les chemins de la mémoire
 	}
 }
 
@@ -43,6 +53,7 @@ void interrupt(int signal){
 
 /**
  * Petit message sympa lors du temps écoulé
+ * @param signal Signal d'interruption
  */
 void timeDown(int signal){
 	fontColor(red);
@@ -52,6 +63,7 @@ void timeDown(int signal){
 
 /**
  * Libération de la mémoire lors de la fin du programme
+ * @param signal Signal d'interruption  
  */
 void terminator(int signal){
 	freeAll();

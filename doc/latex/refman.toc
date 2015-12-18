@@ -1,0 +1,310 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Page principale}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}Index des classes}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Liste des classes}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}Index des fichiers}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Liste des fichiers}{5}{section.3.1}
+\contentsline {chapter}{\numberline {4}Documentation des classes}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}R\IeC {\'e}f\IeC {\'e}rence de la structure elem}{7}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Description d\IeC {\'e}taill\IeC {\'e}e}{7}{subsection.4.1.1}
+\contentsline {section}{\numberline {4.2}R\IeC {\'e}f\IeC {\'e}rence de la structure element}{8}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Description d\IeC {\'e}taill\IeC {\'e}e}{8}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}R\IeC {\'e}f\IeC {\'e}rence de la structure target\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Stat}{8}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Description d\IeC {\'e}taill\IeC {\'e}e}{9}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}R\IeC {\'e}f\IeC {\'e}rence de la structure unit}{9}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Description d\IeC {\'e}taill\IeC {\'e}e}{9}{subsection.4.4.1}
+\contentsline {section}{\numberline {4.5}R\IeC {\'e}f\IeC {\'e}rence de la structure unit\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Stat}{10}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Description d\IeC {\'e}taill\IeC {\'e}e}{10}{subsection.4.5.1}
+\contentsline {section}{\numberline {4.6}R\IeC {\'e}f\IeC {\'e}rence de la structure vector}{10}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Description d\IeC {\'e}taill\IeC {\'e}e}{11}{subsection.4.6.1}
+\contentsline {chapter}{\numberline {5}Documentation des fichiers}{13}{chapter.5}
+\contentsline {section}{\numberline {5.1}R\IeC {\'e}f\IeC {\'e}rence du fichier include/controller/manage\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Signal.h}{13}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Description d\IeC {\'e}taill\IeC {\'e}e}{13}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Documentation des fonctions}{14}{subsection.5.1.2}
+\contentsline {subsubsection}{\numberline {5.1.2.1}check\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Signal}{14}{subsubsection.5.1.2.1}
+\contentsline {subsubsection}{\numberline {5.1.2.2}free\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}All}{14}{subsubsection.5.1.2.2}
+\contentsline {section}{\numberline {5.2}R\IeC {\'e}f\IeC {\'e}rence du fichier include/controller/manage\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}String.h}{14}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Description d\IeC {\'e}taill\IeC {\'e}e}{15}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Documentation des fonctions}{15}{subsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.2.1}clear\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Buffer}{15}{subsubsection.5.2.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2.2}get2\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Char}{15}{subsubsection.5.2.2.2}
+\contentsline {subsubsection}{\numberline {5.2.2.3}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Coord\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}S}{15}{subsubsection.5.2.2.3}
+\contentsline {subsubsection}{\numberline {5.2.2.4}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Direction\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{15}{subsubsection.5.2.2.4}
+\contentsline {subsubsection}{\numberline {5.2.2.5}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Name\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Effect}{16}{subsubsection.5.2.2.5}
+\contentsline {subsubsection}{\numberline {5.2.2.6}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Name\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{16}{subsubsection.5.2.2.6}
+\contentsline {subsubsection}{\numberline {5.2.2.7}print\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Name\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{16}{subsubsection.5.2.2.7}
+\contentsline {subsubsection}{\numberline {5.2.2.8}read\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Double}{16}{subsubsection.5.2.2.8}
+\contentsline {subsubsection}{\numberline {5.2.2.9}read\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Long}{17}{subsubsection.5.2.2.9}
+\contentsline {subsubsection}{\numberline {5.2.2.10}read\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}S}{17}{subsubsection.5.2.2.10}
+\contentsline {subsubsection}{\numberline {5.2.2.11}right\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Side}{17}{subsubsection.5.2.2.11}
+\contentsline {section}{\numberline {5.3}R\IeC {\'e}f\IeC {\'e}rence du fichier include/controller/save\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}N\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Load.h}{18}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Description d\IeC {\'e}taill\IeC {\'e}e}{18}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Documentation des fonctions}{18}{subsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.2.1}load}{18}{subsubsection.5.3.2.1}
+\contentsline {subsubsection}{\numberline {5.3.2.2}save}{19}{subsubsection.5.3.2.2}
+\contentsline {section}{\numberline {5.4}R\IeC {\'e}f\IeC {\'e}rence du fichier include/controller/terminal.h}{19}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Description d\IeC {\'e}taill\IeC {\'e}e}{19}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Documentation des fonctions}{20}{subsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.2.1}color}{20}{subsubsection.5.4.2.1}
+\contentsline {subsubsection}{\numberline {5.4.2.2}font\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Color}{20}{subsubsection.5.4.2.2}
+\contentsline {subsubsection}{\numberline {5.4.2.3}reinit\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Color}{20}{subsubsection.5.4.2.3}
+\contentsline {section}{\numberline {5.5}R\IeC {\'e}f\IeC {\'e}rence du fichier include/display/grid.h}{20}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Description d\IeC {\'e}taill\IeC {\'e}e}{21}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}Documentation des fonctions}{21}{subsection.5.5.2}
+\contentsline {subsubsection}{\numberline {5.5.2.1}grid\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Disp}{21}{subsubsection.5.5.2.1}
+\contentsline {section}{\numberline {5.6}R\IeC {\'e}f\IeC {\'e}rence du fichier include/display/menu.h}{21}{section.5.6}
+\contentsline {subsection}{\numberline {5.6.1}Description d\IeC {\'e}taill\IeC {\'e}e}{22}{subsection.5.6.1}
+\contentsline {subsection}{\numberline {5.6.2}Documentation des fonctions}{22}{subsection.5.6.2}
+\contentsline {subsubsection}{\numberline {5.6.2.1}disp\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Direction}{22}{subsubsection.5.6.2.1}
+\contentsline {subsubsection}{\numberline {5.6.2.2}game\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Menu}{22}{subsubsection.5.6.2.2}
+\contentsline {subsubsection}{\numberline {5.6.2.3}help\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{22}{subsubsection.5.6.2.3}
+\contentsline {subsubsection}{\numberline {5.6.2.4}main\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Menu}{22}{subsubsection.5.6.2.4}
+\contentsline {subsubsection}{\numberline {5.6.2.5}unit\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{23}{subsubsection.5.6.2.5}
+\contentsline {subsubsection}{\numberline {5.6.2.6}unit\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Menu}{23}{subsubsection.5.6.2.6}
+\contentsline {section}{\numberline {5.7}R\IeC {\'e}f\IeC {\'e}rence du fichier include/game/engine.h}{23}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Description d\IeC {\'e}taill\IeC {\'e}e}{25}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}Documentation des fonctions}{25}{subsection.5.7.2}
+\contentsline {subsubsection}{\numberline {5.7.2.1}attackable}{25}{subsubsection.5.7.2.1}
+\contentsline {subsubsection}{\numberline {5.7.2.2}game\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Init}{25}{subsubsection.5.7.2.2}
+\contentsline {subsubsection}{\numberline {5.7.2.3}is\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Surrounded}{26}{subsubsection.5.7.2.3}
+\contentsline {subsubsection}{\numberline {5.7.2.4}launch\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Attack}{26}{subsubsection.5.7.2.4}
+\contentsline {subsubsection}{\numberline {5.7.2.5}line\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Of\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Sight}{26}{subsubsection.5.7.2.5}
+\contentsline {subsubsection}{\numberline {5.7.2.6}movable}{26}{subsubsection.5.7.2.6}
+\contentsline {subsubsection}{\numberline {5.7.2.7}path\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Find}{26}{subsubsection.5.7.2.7}
+\contentsline {subsubsection}{\numberline {5.7.2.8}possible\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{27}{subsubsection.5.7.2.8}
+\contentsline {subsubsection}{\numberline {5.7.2.9}select\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{27}{subsubsection.5.7.2.9}
+\contentsline {subsubsection}{\numberline {5.7.2.10}set\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Target}{27}{subsubsection.5.7.2.10}
+\contentsline {subsubsection}{\numberline {5.7.2.11}tile\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Walkable}{27}{subsubsection.5.7.2.11}
+\contentsline {subsection}{\numberline {5.7.3}Documentation des variables}{28}{subsection.5.7.3}
+\contentsline {subsubsection}{\numberline {5.7.3.1}grid}{28}{subsubsection.5.7.3.1}
+\contentsline {subsubsection}{\numberline {5.7.3.2}no\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Player}{28}{subsubsection.5.7.3.2}
+\contentsline {section}{\numberline {5.8}R\IeC {\'e}f\IeC {\'e}rence du fichier include/game/listes.h}{28}{section.5.8}
+\contentsline {subsection}{\numberline {5.8.1}Description d\IeC {\'e}taill\IeC {\'e}e}{29}{subsection.5.8.1}
+\contentsline {subsection}{\numberline {5.8.2}Documentation des fonctions}{29}{subsection.5.8.2}
+\contentsline {subsubsection}{\numberline {5.8.2.1}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Target}{29}{subsubsection.5.8.2.1}
+\contentsline {subsubsection}{\numberline {5.8.2.2}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{30}{subsubsection.5.8.2.2}
+\contentsline {subsubsection}{\numberline {5.8.2.3}count\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Units}{30}{subsubsection.5.8.2.3}
+\contentsline {subsubsection}{\numberline {5.8.2.4}destroy\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{30}{subsubsection.5.8.2.4}
+\contentsline {subsubsection}{\numberline {5.8.2.5}dump\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}All\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Lists}{30}{subsubsection.5.8.2.5}
+\contentsline {subsubsection}{\numberline {5.8.2.6}dump\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{30}{subsubsection.5.8.2.6}
+\contentsline {subsubsection}{\numberline {5.8.2.7}print\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{31}{subsubsection.5.8.2.7}
+\contentsline {subsubsection}{\numberline {5.8.2.8}search\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Target}{31}{subsubsection.5.8.2.8}
+\contentsline {subsection}{\numberline {5.8.3}Documentation des variables}{31}{subsection.5.8.3}
+\contentsline {subsubsection}{\numberline {5.8.3.1}target\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{31}{subsubsection.5.8.3.1}
+\contentsline {section}{\numberline {5.9}R\IeC {\'e}f\IeC {\'e}rence du fichier include/game/path\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List.h}{31}{section.5.9}
+\contentsline {subsection}{\numberline {5.9.1}Description d\IeC {\'e}taill\IeC {\'e}e}{32}{subsection.5.9.1}
+\contentsline {subsection}{\numberline {5.9.2}Documentation des fonctions}{32}{subsection.5.9.2}
+\contentsline {subsubsection}{\numberline {5.9.2.1}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Close\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{32}{subsubsection.5.9.2.1}
+\contentsline {subsubsection}{\numberline {5.9.2.2}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Open\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{33}{subsubsection.5.9.2.2}
+\contentsline {subsubsection}{\numberline {5.9.2.3}dump\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}All\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Paths}{33}{subsubsection.5.9.2.3}
+\contentsline {subsubsection}{\numberline {5.9.2.4}dump\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{33}{subsubsection.5.9.2.4}
+\contentsline {subsubsection}{\numberline {5.9.2.5}empty\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{33}{subsubsection.5.9.2.5}
+\contentsline {subsubsection}{\numberline {5.9.2.6}erase\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tile}{33}{subsubsection.5.9.2.6}
+\contentsline {subsubsection}{\numberline {5.9.2.7}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Current\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Node}{34}{subsubsection.5.9.2.7}
+\contentsline {subsubsection}{\numberline {5.9.2.8}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tile}{34}{subsubsection.5.9.2.8}
+\contentsline {subsubsection}{\numberline {5.9.2.9}init\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{34}{subsubsection.5.9.2.9}
+\contentsline {subsubsection}{\numberline {5.9.2.10}next}{34}{subsubsection.5.9.2.10}
+\contentsline {subsubsection}{\numberline {5.9.2.11}out\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{34}{subsubsection.5.9.2.11}
+\contentsline {subsubsection}{\numberline {5.9.2.12}path\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Head}{35}{subsubsection.5.9.2.12}
+\contentsline {subsubsection}{\numberline {5.9.2.13}path\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tail}{35}{subsubsection.5.9.2.13}
+\contentsline {subsubsection}{\numberline {5.9.2.14}previous}{35}{subsubsection.5.9.2.14}
+\contentsline {subsubsection}{\numberline {5.9.2.15}search\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tile}{35}{subsubsection.5.9.2.15}
+\contentsline {subsubsection}{\numberline {5.9.2.16}set\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tile}{35}{subsubsection.5.9.2.16}
+\contentsline {subsubsection}{\numberline {5.9.2.17}to\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Right\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{36}{subsubsection.5.9.2.17}
+\contentsline {section}{\numberline {5.10}R\IeC {\'e}f\IeC {\'e}rence du fichier include/game/pawns.h}{36}{section.5.10}
+\contentsline {subsection}{\numberline {5.10.1}Description d\IeC {\'e}taill\IeC {\'e}e}{36}{subsection.5.10.1}
+\contentsline {subsection}{\numberline {5.10.2}Documentation des fonctions}{37}{subsection.5.10.2}
+\contentsline {subsubsection}{\numberline {5.10.2.1}make\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Pawns}{37}{subsubsection.5.10.2.1}
+\contentsline {subsection}{\numberline {5.10.3}Documentation des variables}{37}{subsection.5.10.3}
+\contentsline {subsubsection}{\numberline {5.10.3.1}pawns}{37}{subsubsection.5.10.3.1}
+\contentsline {section}{\numberline {5.11}R\IeC {\'e}f\IeC {\'e}rence du fichier include/game/turn.h}{37}{section.5.11}
+\contentsline {subsection}{\numberline {5.11.1}Description d\IeC {\'e}taill\IeC {\'e}e}{38}{subsection.5.11.1}
+\contentsline {subsection}{\numberline {5.11.2}Documentation des fonctions}{38}{subsection.5.11.2}
+\contentsline {subsubsection}{\numberline {5.11.2.1}change\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Direction}{38}{subsubsection.5.11.2.1}
+\contentsline {subsubsection}{\numberline {5.11.2.2}has\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Play}{38}{subsubsection.5.11.2.2}
+\contentsline {subsubsection}{\numberline {5.11.2.3}pass\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Turn}{39}{subsubsection.5.11.2.3}
+\contentsline {subsubsection}{\numberline {5.11.2.4}play\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Attack}{39}{subsubsection.5.11.2.4}
+\contentsline {subsubsection}{\numberline {5.11.2.5}play\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Move}{39}{subsubsection.5.11.2.5}
+\contentsline {subsubsection}{\numberline {5.11.2.6}play\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Turn}{39}{subsubsection.5.11.2.6}
+\contentsline {section}{\numberline {5.12}R\IeC {\'e}f\IeC {\'e}rence du fichier include/units/unit.h}{39}{section.5.12}
+\contentsline {subsection}{\numberline {5.12.1}Description d\IeC {\'e}taill\IeC {\'e}e}{40}{subsection.5.12.1}
+\contentsline {subsection}{\numberline {5.12.2}Documentation des fonctions}{40}{subsection.5.12.2}
+\contentsline {subsubsection}{\numberline {5.12.2.1}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Effect}{40}{subsubsection.5.12.2.1}
+\contentsline {subsubsection}{\numberline {5.12.2.2}all\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Static}{41}{subsubsection.5.12.2.2}
+\contentsline {subsubsection}{\numberline {5.12.2.3}attack}{41}{subsubsection.5.12.2.3}
+\contentsline {subsubsection}{\numberline {5.12.2.4}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Attack}{41}{subsubsection.5.12.2.4}
+\contentsline {subsubsection}{\numberline {5.12.2.5}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Block}{41}{subsubsection.5.12.2.5}
+\contentsline {subsubsection}{\numberline {5.12.2.6}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Passed}{42}{subsubsection.5.12.2.6}
+\contentsline {subsubsection}{\numberline {5.12.2.7}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Move}{42}{subsubsection.5.12.2.7}
+\contentsline {subsubsection}{\numberline {5.12.2.8}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Teleport}{42}{subsubsection.5.12.2.8}
+\contentsline {subsubsection}{\numberline {5.12.2.9}copy}{42}{subsubsection.5.12.2.9}
+\contentsline {subsubsection}{\numberline {5.12.2.10}erase}{43}{subsubsection.5.12.2.10}
+\contentsline {subsubsection}{\numberline {5.12.2.11}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Side\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Attacked}{43}{subsubsection.5.12.2.11}
+\contentsline {subsubsection}{\numberline {5.12.2.12}heal}{43}{subsubsection.5.12.2.12}
+\contentsline {subsubsection}{\numberline {5.12.2.13}is\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Sleeping}{43}{subsubsection.5.12.2.13}
+\contentsline {subsubsection}{\numberline {5.12.2.14}minus\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Effect}{44}{subsubsection.5.12.2.14}
+\contentsline {subsubsection}{\numberline {5.12.2.15}move}{44}{subsubsection.5.12.2.15}
+\contentsline {subsubsection}{\numberline {5.12.2.16}poison}{44}{subsubsection.5.12.2.16}
+\contentsline {subsubsection}{\numberline {5.12.2.17}power\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Bonus}{44}{subsubsection.5.12.2.17}
+\contentsline {subsubsection}{\numberline {5.12.2.18}recover}{44}{subsubsection.5.12.2.18}
+\contentsline {subsubsection}{\numberline {5.12.2.19}set\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Direction}{44}{subsubsection.5.12.2.19}
+\contentsline {subsubsection}{\numberline {5.12.2.20}sleep}{44}{subsubsection.5.12.2.20}
+\contentsline {subsubsection}{\numberline {5.12.2.21}unit\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Init}{46}{subsubsection.5.12.2.21}
+\contentsline {section}{\numberline {5.13}R\IeC {\'e}f\IeC {\'e}rence du fichier src/controller/manage\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Signal.c}{46}{section.5.13}
+\contentsline {subsection}{\numberline {5.13.1}Description d\IeC {\'e}taill\IeC {\'e}e}{46}{subsection.5.13.1}
+\contentsline {subsection}{\numberline {5.13.2}Documentation des fonctions}{47}{subsection.5.13.2}
+\contentsline {subsubsection}{\numberline {5.13.2.1}check\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Signal}{47}{subsubsection.5.13.2.1}
+\contentsline {subsubsection}{\numberline {5.13.2.2}free\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}All}{47}{subsubsection.5.13.2.2}
+\contentsline {subsubsection}{\numberline {5.13.2.3}interrupt}{47}{subsubsection.5.13.2.3}
+\contentsline {subsubsection}{\numberline {5.13.2.4}terminator}{47}{subsubsection.5.13.2.4}
+\contentsline {subsubsection}{\numberline {5.13.2.5}time\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Down}{47}{subsubsection.5.13.2.5}
+\contentsline {section}{\numberline {5.14}R\IeC {\'e}f\IeC {\'e}rence du fichier src/controller/manage\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}String.c}{48}{section.5.14}
+\contentsline {subsection}{\numberline {5.14.1}Description d\IeC {\'e}taill\IeC {\'e}e}{48}{subsection.5.14.1}
+\contentsline {subsection}{\numberline {5.14.2}Documentation des fonctions}{49}{subsection.5.14.2}
+\contentsline {subsubsection}{\numberline {5.14.2.1}clear\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Buffer}{49}{subsubsection.5.14.2.1}
+\contentsline {subsubsection}{\numberline {5.14.2.2}correct\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Coord}{49}{subsubsection.5.14.2.2}
+\contentsline {subsubsection}{\numberline {5.14.2.3}get2\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Char}{49}{subsubsection.5.14.2.3}
+\contentsline {subsubsection}{\numberline {5.14.2.4}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Coord\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}S}{49}{subsubsection.5.14.2.4}
+\contentsline {subsubsection}{\numberline {5.14.2.5}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Direction\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{50}{subsubsection.5.14.2.5}
+\contentsline {subsubsection}{\numberline {5.14.2.6}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Name\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Effect}{50}{subsubsection.5.14.2.6}
+\contentsline {subsubsection}{\numberline {5.14.2.7}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Name\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{50}{subsubsection.5.14.2.7}
+\contentsline {subsubsection}{\numberline {5.14.2.8}is\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Out\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Grid}{50}{subsubsection.5.14.2.8}
+\contentsline {subsubsection}{\numberline {5.14.2.9}print\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Name\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{51}{subsubsection.5.14.2.9}
+\contentsline {subsubsection}{\numberline {5.14.2.10}read\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Double}{51}{subsubsection.5.14.2.10}
+\contentsline {subsubsection}{\numberline {5.14.2.11}read\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Long}{51}{subsubsection.5.14.2.11}
+\contentsline {subsubsection}{\numberline {5.14.2.12}read\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}S}{51}{subsubsection.5.14.2.12}
+\contentsline {subsubsection}{\numberline {5.14.2.13}right\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Side}{52}{subsubsection.5.14.2.13}
+\contentsline {section}{\numberline {5.15}R\IeC {\'e}f\IeC {\'e}rence du fichier src/controller/save\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}N\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Load.c}{53}{section.5.15}
+\contentsline {subsection}{\numberline {5.15.1}Description d\IeC {\'e}taill\IeC {\'e}e}{53}{subsection.5.15.1}
+\contentsline {subsection}{\numberline {5.15.2}Documentation des fonctions}{54}{subsection.5.15.2}
+\contentsline {subsubsection}{\numberline {5.15.2.1}check\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Decrypt}{54}{subsubsection.5.15.2.1}
+\contentsline {subsubsection}{\numberline {5.15.2.2}crypt}{54}{subsubsection.5.15.2.2}
+\contentsline {subsubsection}{\numberline {5.15.2.3}decrypt}{54}{subsubsection.5.15.2.3}
+\contentsline {subsubsection}{\numberline {5.15.2.4}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Char\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Key}{54}{subsubsection.5.15.2.4}
+\contentsline {subsubsection}{\numberline {5.15.2.5}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Key}{55}{subsubsection.5.15.2.5}
+\contentsline {subsubsection}{\numberline {5.15.2.6}load}{56}{subsubsection.5.15.2.6}
+\contentsline {subsubsection}{\numberline {5.15.2.7}save}{56}{subsubsection.5.15.2.7}
+\contentsline {section}{\numberline {5.16}R\IeC {\'e}f\IeC {\'e}rence du fichier src/controller/terminal.c}{56}{section.5.16}
+\contentsline {subsection}{\numberline {5.16.1}Description d\IeC {\'e}taill\IeC {\'e}e}{57}{subsection.5.16.1}
+\contentsline {subsection}{\numberline {5.16.2}Documentation des fonctions}{57}{subsection.5.16.2}
+\contentsline {subsubsection}{\numberline {5.16.2.1}color}{57}{subsubsection.5.16.2.1}
+\contentsline {subsubsection}{\numberline {5.16.2.2}font\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Color}{57}{subsubsection.5.16.2.2}
+\contentsline {subsubsection}{\numberline {5.16.2.3}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Color}{57}{subsubsection.5.16.2.3}
+\contentsline {subsubsection}{\numberline {5.16.2.4}reinit\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Color}{58}{subsubsection.5.16.2.4}
+\contentsline {section}{\numberline {5.17}R\IeC {\'e}f\IeC {\'e}rence du fichier src/display/grid.c}{58}{section.5.17}
+\contentsline {subsection}{\numberline {5.17.1}Description d\IeC {\'e}taill\IeC {\'e}e}{58}{subsection.5.17.1}
+\contentsline {subsection}{\numberline {5.17.2}Documentation des fonctions}{59}{subsection.5.17.2}
+\contentsline {subsubsection}{\numberline {5.17.2.1}border\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Right}{59}{subsubsection.5.17.2.1}
+\contentsline {subsubsection}{\numberline {5.17.2.2}grid\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Disp}{59}{subsubsection.5.17.2.2}
+\contentsline {section}{\numberline {5.18}R\IeC {\'e}f\IeC {\'e}rence du fichier src/display/menu.c}{59}{section.5.18}
+\contentsline {subsection}{\numberline {5.18.1}Description d\IeC {\'e}taill\IeC {\'e}e}{60}{subsection.5.18.1}
+\contentsline {subsection}{\numberline {5.18.2}Documentation des fonctions}{60}{subsection.5.18.2}
+\contentsline {subsubsection}{\numberline {5.18.2.1}disp\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Direction}{60}{subsubsection.5.18.2.1}
+\contentsline {subsubsection}{\numberline {5.18.2.2}game\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Menu}{60}{subsubsection.5.18.2.2}
+\contentsline {subsubsection}{\numberline {5.18.2.3}help\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{60}{subsubsection.5.18.2.3}
+\contentsline {subsubsection}{\numberline {5.18.2.4}main\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Menu}{60}{subsubsection.5.18.2.4}
+\contentsline {subsubsection}{\numberline {5.18.2.5}unit\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{61}{subsubsection.5.18.2.5}
+\contentsline {subsubsection}{\numberline {5.18.2.6}unit\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Menu}{61}{subsubsection.5.18.2.6}
+\contentsline {section}{\numberline {5.19}R\IeC {\'e}f\IeC {\'e}rence du fichier src/game/engine.c}{61}{section.5.19}
+\contentsline {subsection}{\numberline {5.19.1}Description d\IeC {\'e}taill\IeC {\'e}e}{62}{subsection.5.19.1}
+\contentsline {subsection}{\numberline {5.19.2}Documentation des fonctions}{62}{subsection.5.19.2}
+\contentsline {subsubsection}{\numberline {5.19.2.1}ask\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Coord}{62}{subsubsection.5.19.2.1}
+\contentsline {subsubsection}{\numberline {5.19.2.2}ask\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{63}{subsubsection.5.19.2.2}
+\contentsline {subsubsection}{\numberline {5.19.2.3}attackable}{63}{subsubsection.5.19.2.3}
+\contentsline {subsubsection}{\numberline {5.19.2.4}game\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Init}{63}{subsubsection.5.19.2.4}
+\contentsline {subsubsection}{\numberline {5.19.2.5}is\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Surrounded}{63}{subsubsection.5.19.2.5}
+\contentsline {subsubsection}{\numberline {5.19.2.6}launch\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Attack}{63}{subsubsection.5.19.2.6}
+\contentsline {subsubsection}{\numberline {5.19.2.7}line\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Of\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Sight}{64}{subsubsection.5.19.2.7}
+\contentsline {subsubsection}{\numberline {5.19.2.8}movable}{64}{subsubsection.5.19.2.8}
+\contentsline {subsubsection}{\numberline {5.19.2.9}path\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Find}{64}{subsubsection.5.19.2.9}
+\contentsline {subsubsection}{\numberline {5.19.2.10}player\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{64}{subsubsection.5.19.2.10}
+\contentsline {subsubsection}{\numberline {5.19.2.11}possible\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{64}{subsubsection.5.19.2.11}
+\contentsline {subsubsection}{\numberline {5.19.2.12}select\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{65}{subsubsection.5.19.2.12}
+\contentsline {subsubsection}{\numberline {5.19.2.13}set\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Target}{65}{subsubsection.5.19.2.13}
+\contentsline {subsubsection}{\numberline {5.19.2.14}special\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Boons}{65}{subsubsection.5.19.2.14}
+\contentsline {subsubsection}{\numberline {5.19.2.15}tile\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Walkable}{65}{subsubsection.5.19.2.15}
+\contentsline {subsubsection}{\numberline {5.19.2.16}too\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Much\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{66}{subsubsection.5.19.2.16}
+\contentsline {subsubsection}{\numberline {5.19.2.17}update\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Limits}{66}{subsubsection.5.19.2.17}
+\contentsline {subsection}{\numberline {5.19.3}Documentation des variables}{66}{subsection.5.19.3}
+\contentsline {subsubsection}{\numberline {5.19.3.1}grid}{66}{subsubsection.5.19.3.1}
+\contentsline {subsubsection}{\numberline {5.19.3.2}no\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Player}{66}{subsubsection.5.19.3.2}
+\contentsline {section}{\numberline {5.20}R\IeC {\'e}f\IeC {\'e}rence du fichier src/game/listes.c}{66}{section.5.20}
+\contentsline {subsection}{\numberline {5.20.1}Description d\IeC {\'e}taill\IeC {\'e}e}{68}{subsection.5.20.1}
+\contentsline {subsection}{\numberline {5.20.2}Documentation des fonctions}{68}{subsection.5.20.2}
+\contentsline {subsubsection}{\numberline {5.20.2.1}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Target}{68}{subsubsection.5.20.2.1}
+\contentsline {subsubsection}{\numberline {5.20.2.2}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{68}{subsubsection.5.20.2.2}
+\contentsline {subsubsection}{\numberline {5.20.2.3}count\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Units}{69}{subsubsection.5.20.2.3}
+\contentsline {subsubsection}{\numberline {5.20.2.4}destroy\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Unit}{69}{subsubsection.5.20.2.4}
+\contentsline {subsubsection}{\numberline {5.20.2.5}dump\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}All\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Lists}{69}{subsubsection.5.20.2.5}
+\contentsline {subsubsection}{\numberline {5.20.2.6}dump\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{69}{subsubsection.5.20.2.6}
+\contentsline {subsubsection}{\numberline {5.20.2.7}print\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{69}{subsubsection.5.20.2.7}
+\contentsline {subsubsection}{\numberline {5.20.2.8}search\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Target}{70}{subsubsection.5.20.2.8}
+\contentsline {subsection}{\numberline {5.20.3}Documentation des variables}{70}{subsection.5.20.3}
+\contentsline {subsubsection}{\numberline {5.20.3.1}target\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{70}{subsubsection.5.20.3.1}
+\contentsline {section}{\numberline {5.21}R\IeC {\'e}f\IeC {\'e}rence du fichier src/game/path\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List.c}{70}{section.5.21}
+\contentsline {subsection}{\numberline {5.21.1}Description d\IeC {\'e}taill\IeC {\'e}e}{71}{subsection.5.21.1}
+\contentsline {subsection}{\numberline {5.21.2}Documentation des fonctions}{72}{subsection.5.21.2}
+\contentsline {subsubsection}{\numberline {5.21.2.1}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Close\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{72}{subsubsection.5.21.2.1}
+\contentsline {subsubsection}{\numberline {5.21.2.2}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Open\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}List}{72}{subsubsection.5.21.2.2}
+\contentsline {subsubsection}{\numberline {5.21.2.3}dump\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}All\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Paths}{72}{subsubsection.5.21.2.3}
+\contentsline {subsubsection}{\numberline {5.21.2.4}dump\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{72}{subsubsection.5.21.2.4}
+\contentsline {subsubsection}{\numberline {5.21.2.5}empty\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{72}{subsubsection.5.21.2.5}
+\contentsline {subsubsection}{\numberline {5.21.2.6}erase\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tile}{73}{subsubsection.5.21.2.6}
+\contentsline {subsubsection}{\numberline {5.21.2.7}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Current\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Node}{73}{subsubsection.5.21.2.7}
+\contentsline {subsubsection}{\numberline {5.21.2.8}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tile}{73}{subsubsection.5.21.2.8}
+\contentsline {subsubsection}{\numberline {5.21.2.9}init\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{73}{subsubsection.5.21.2.9}
+\contentsline {subsubsection}{\numberline {5.21.2.10}next}{73}{subsubsection.5.21.2.10}
+\contentsline {subsubsection}{\numberline {5.21.2.11}out\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{74}{subsubsection.5.21.2.11}
+\contentsline {subsubsection}{\numberline {5.21.2.12}path\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Head}{74}{subsubsection.5.21.2.12}
+\contentsline {subsubsection}{\numberline {5.21.2.13}path\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tail}{74}{subsubsection.5.21.2.13}
+\contentsline {subsubsection}{\numberline {5.21.2.14}previous}{74}{subsubsection.5.21.2.14}
+\contentsline {subsubsection}{\numberline {5.21.2.15}search\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tile}{74}{subsubsection.5.21.2.15}
+\contentsline {subsubsection}{\numberline {5.21.2.16}set\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Tile}{75}{subsubsection.5.21.2.16}
+\contentsline {subsubsection}{\numberline {5.21.2.17}to\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Right\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Path}{75}{subsubsection.5.21.2.17}
+\contentsline {section}{\numberline {5.22}R\IeC {\'e}f\IeC {\'e}rence du fichier src/game/pawns.c}{75}{section.5.22}
+\contentsline {subsection}{\numberline {5.22.1}Description d\IeC {\'e}taill\IeC {\'e}e}{76}{subsection.5.22.1}
+\contentsline {subsection}{\numberline {5.22.2}Documentation des fonctions}{76}{subsection.5.22.2}
+\contentsline {subsubsection}{\numberline {5.22.2.1}check\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Pawn}{76}{subsubsection.5.22.2.1}
+\contentsline {subsubsection}{\numberline {5.22.2.2}create\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Pawn}{76}{subsubsection.5.22.2.2}
+\contentsline {subsubsection}{\numberline {5.22.2.3}init\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Pawn}{77}{subsubsection.5.22.2.3}
+\contentsline {subsubsection}{\numberline {5.22.2.4}make\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Pawns}{77}{subsubsection.5.22.2.4}
+\contentsline {subsection}{\numberline {5.22.3}Documentation des variables}{77}{subsection.5.22.3}
+\contentsline {subsubsection}{\numberline {5.22.3.1}pawns}{77}{subsubsection.5.22.3.1}
+\contentsline {section}{\numberline {5.23}R\IeC {\'e}f\IeC {\'e}rence du fichier src/game/turn.c}{77}{section.5.23}
+\contentsline {subsection}{\numberline {5.23.1}Description d\IeC {\'e}taill\IeC {\'e}e}{78}{subsection.5.23.1}
+\contentsline {subsection}{\numberline {5.23.2}Documentation des fonctions}{78}{subsection.5.23.2}
+\contentsline {subsubsection}{\numberline {5.23.2.1}change\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Direction}{78}{subsubsection.5.23.2.1}
+\contentsline {subsubsection}{\numberline {5.23.2.2}end\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Turn}{78}{subsubsection.5.23.2.2}
+\contentsline {subsubsection}{\numberline {5.23.2.3}has\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Play}{79}{subsubsection.5.23.2.3}
+\contentsline {subsubsection}{\numberline {5.23.2.4}pass\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Turn}{79}{subsubsection.5.23.2.4}
+\contentsline {subsubsection}{\numberline {5.23.2.5}play\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Attack}{79}{subsubsection.5.23.2.5}
+\contentsline {subsubsection}{\numberline {5.23.2.6}play\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Move}{79}{subsubsection.5.23.2.6}
+\contentsline {subsubsection}{\numberline {5.23.2.7}play\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Turn}{79}{subsubsection.5.23.2.7}
+\contentsline {subsubsection}{\numberline {5.23.2.8}set\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Action}{79}{subsubsection.5.23.2.8}
+\contentsline {section}{\numberline {5.24}R\IeC {\'e}f\IeC {\'e}rence du fichier src/main.c}{80}{section.5.24}
+\contentsline {subsection}{\numberline {5.24.1}Description d\IeC {\'e}taill\IeC {\'e}e}{80}{subsection.5.24.1}
+\contentsline {section}{\numberline {5.25}R\IeC {\'e}f\IeC {\'e}rence du fichier src/units/unit.c}{80}{section.5.25}
+\contentsline {subsection}{\numberline {5.25.1}Description d\IeC {\'e}taill\IeC {\'e}e}{82}{subsection.5.25.1}
+\contentsline {subsection}{\numberline {5.25.2}Documentation des fonctions}{82}{subsection.5.25.2}
+\contentsline {subsubsection}{\numberline {5.25.2.1}add\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Effect}{82}{subsubsection.5.25.2.1}
+\contentsline {subsubsection}{\numberline {5.25.2.2}all\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Static}{82}{subsubsection.5.25.2.2}
+\contentsline {subsubsection}{\numberline {5.25.2.3}attack}{82}{subsubsection.5.25.2.3}
+\contentsline {subsubsection}{\numberline {5.25.2.4}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Attack}{83}{subsubsection.5.25.2.4}
+\contentsline {subsubsection}{\numberline {5.25.2.5}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Block}{84}{subsubsection.5.25.2.5}
+\contentsline {subsubsection}{\numberline {5.25.2.6}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Passed}{84}{subsubsection.5.25.2.6}
+\contentsline {subsubsection}{\numberline {5.25.2.7}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Move}{84}{subsubsection.5.25.2.7}
+\contentsline {subsubsection}{\numberline {5.25.2.8}can\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Teleport}{84}{subsubsection.5.25.2.8}
+\contentsline {subsubsection}{\numberline {5.25.2.9}copy}{85}{subsubsection.5.25.2.9}
+\contentsline {subsubsection}{\numberline {5.25.2.10}erase}{85}{subsubsection.5.25.2.10}
+\contentsline {subsubsection}{\numberline {5.25.2.11}get\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Side\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Attacked}{85}{subsubsection.5.25.2.11}
+\contentsline {subsubsection}{\numberline {5.25.2.12}heal}{85}{subsubsection.5.25.2.12}
+\contentsline {subsubsection}{\numberline {5.25.2.13}is\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Sleeping}{86}{subsubsection.5.25.2.13}
+\contentsline {subsubsection}{\numberline {5.25.2.14}minus\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Effect}{86}{subsubsection.5.25.2.14}
+\contentsline {subsubsection}{\numberline {5.25.2.15}move}{86}{subsubsection.5.25.2.15}
+\contentsline {subsubsection}{\numberline {5.25.2.16}poison}{86}{subsubsection.5.25.2.16}
+\contentsline {subsubsection}{\numberline {5.25.2.17}power\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Bonus}{86}{subsubsection.5.25.2.17}
+\contentsline {subsubsection}{\numberline {5.25.2.18}recover}{87}{subsubsection.5.25.2.18}
+\contentsline {subsubsection}{\numberline {5.25.2.19}set\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Direction}{87}{subsubsection.5.25.2.19}
+\contentsline {subsubsection}{\numberline {5.25.2.20}sleep}{87}{subsubsection.5.25.2.20}
+\contentsline {subsubsection}{\numberline {5.25.2.21}unit\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Init}{87}{subsubsection.5.25.2.21}
+\contentsline {chapter}{Index}{89}{section*.63}

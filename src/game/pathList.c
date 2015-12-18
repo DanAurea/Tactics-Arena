@@ -1,68 +1,119 @@
-/* Mise en oeuvre contigue d'un tableau de listes de vecteurs */
+/**
+ @file pathList.c
+ @brief Listes de cases sur un chemin définis
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <stdio.h>
 #include "../../include/game/engine.h"
 
-/* Definition du type d'un elem de liste */
-typedef struct elem {vector coordParent; int F; struct elem* pred; struct elem* succ;} tile;
+/**
+ * @struct elem pathList.c
+ * Représente une case de la grille
+ */
+typedef struct elem {
+	vector coordParent; /**< Coordonnées de la case */
+	int F; /**< Poids de la case */
+	struct elem* prev; /**< Elément précédent */
+	struct elem* next; /**< Elément suivant */
+} t_tile; /**< Définis la case */
 
-/* Declaration des listes (flag et elem courant) */
-tile* flag[2]; // Open and closed lists for path finding ( A *)
-tile* elemC[2];
 
+t_tile* flag[2]; /**< Tableau de drapeaux */
+t_tile* elemC[2]; /**< Tableau d'éléments courants */
 
-/* Primitives de manipulation des listes */
-
+/**
+ * Initialise le chemin
+ * @param n Chemin
+ */
 void initPath(int n)
 {	if(n >= 0 && n < 2)
 	{
-		flag[n] = malloc(sizeof(tile));
-		flag[n]->pred = flag[n];
-		flag[n]->succ = flag[n];
+		flag[n] = malloc(sizeof(t_tile));
+		flag[n]->prev = flag[n];
+		flag[n]->next = flag[n];
 		elemC[n] = flag[n];
 	}
 }
 
+/**
+ * Initialise les chemins
+ */
 void initPaths(){
-	for(int i = 0; i < 2; i++)
+	for(int i = 0; i <= 2; i++)
 		initPath(i);
 }
 
+/**
+ * Vérifie si un chemin est vide
+ * @param  n Chemin
+ * @return   Retourne le drapeau si pas vide
+ */
 int emptyPath(int n)
 {	if(n>=0&&n< 2 )
-		return flag[n]->pred==flag[n];
+		return flag[n]->prev==flag[n];
     return -1;
 }
 
+/**
+ * Vérifie si l'élément courant est hors liste
+ * @param  n Liste
+ * @return   Retourne l'élément courant si pas hors liste
+ */
 int outPath(int n)
 {	if(n>=0&&n<2)
 		return elemC[n]==flag[n];
     return -1;
 }
 
+/**
+ * Se met en tête du chemin
+ * @param n Chemin
+ */
 void pathHead(int n)
 {	if(n>=0&&n< 2)
 		if (!emptyPath(n))
-			elemC[n] = flag[n]->succ;
+			elemC[n] = flag[n]->next;
 }
 
+/**
+ * Se met en queue du chemin
+ * @param n Chemin
+ */
 void pathTail(int n)
 {	if(n>=0&&n<2)
 		if (!emptyPath(n))
-			elemC[n] = flag[n]->pred;
+			elemC[n] = flag[n]->prev;
 }
 
+/**
+ * Se positionne sur l'élément précédent
+ * @param n Chemin
+ */
 void previous(int n)
 {	if(n>=0&&n<2)
 		if (!outPath(n))
-			elemC[n] = elemC[n]->pred;
+			elemC[n] = elemC[n]->prev;
 }
 
+/**
+ * Se positionne sur l'élémént suivant
+ * @param n Chemin
+ */
 void next(int n)
 {	if(n>=0&&n<2)
 		if (!outPath(n))
-			elemC[n] = elemC[n]->succ;
+			elemC[n] = elemC[n]->next;
 }
 
+/**
+ * Récupère une case du chemin
+ * @param n Chemin
+ * @param v Position de la case
+ * @param F Poids de la case
+ */
 void getTile(int n, vector * v, int * F)
 {	if(n>=0&&n<2)
 		if (!outPath(n)){
@@ -74,9 +125,10 @@ void getTile(int n, vector * v, int * F)
 
 /**
  * Récupère le noeud ayant le plus petit F
+ * @param n Liste dans laquelle chercher
  */
 vector getCurrentNode(int n){
-	int F = 99999, F2;
+	int F = 9999999, F2;
 	vector tmp, tmp2 = {-1, -1};
 
 	pathHead(n);
@@ -96,6 +148,12 @@ vector getCurrentNode(int n){
 
 }
 
+/**
+ * Modifie les infos d'une case dans la liste
+ * @param n Liste
+ * @param v Nouvelle position
+ * @param F Nouveau poids
+ */
 void setTile(int n, vector v, int F)
 {	if(n>=0&&n<2)
 		if (!outPath(n)){
@@ -105,36 +163,46 @@ void setTile(int n, vector v, int F)
 		}
 }
 
+/**
+ * Efface une case de la grille
+ * @param n Liste
+ */
 void eraseTile(int n)
 {
-	tile * temp;
+	t_tile * temp;
 
     	if(n>=0&&n<2)
 		if (!outPath(n))
 		{
-			(elemC[n]->succ)->pred = elemC[n]->pred;
-			(elemC[n]->pred)->succ = elemC[n]->succ;
+			(elemC[n]->next)->prev = elemC[n]->prev;
+			(elemC[n]->prev)->next = elemC[n]->next;
 			temp = elemC[n];
-			elemC[n] = elemC[n]->pred;
+			elemC[n] = elemC[n]->prev;
 			free(temp);
 		}
 }
 
+/**
+ * Ajoute une case à droite
+ * @param n Liste
+ * @param v Position à ajouter
+ * @param F Poids à ajouter
+ */
 void toRightPath(int n, vector v, int F)
 {
-	tile* nouv;
+	t_tile* nouv;
 
 	if(n>=0&&n<2)
 		if (emptyPath(n) || !outPath(n))
 		{
-			nouv = malloc(sizeof(tile));
+			nouv = malloc(sizeof(t_tile));
 			nouv->coordParent.x = v.x;
             nouv->coordParent.y = v.y;
             nouv->F = F;
-			nouv->pred = elemC[n];
-			nouv->succ = elemC[n]->succ;
-			(elemC[n]->succ)->pred = nouv;
-			elemC[n]->succ = nouv;
+			nouv->prev = elemC[n];
+			nouv->next = elemC[n]->next;
+			(elemC[n]->next)->prev = nouv;
+			elemC[n]->next = nouv;
 			elemC[n] = nouv;
 		}
 }
@@ -157,7 +225,7 @@ void dumpPath(short nbList){
  */
 void dumpAllPaths(){
 
-	for(int list = 0; list <2; list++){
+	for(int list = 0; list < 2; list++){
 		dumpPath(list); // Libère la liste
 		free(flag[list]); // Libère le flag
 	}
@@ -165,6 +233,8 @@ void dumpAllPaths(){
 
 /**
  * Cherche si un vecteur est présent dans la liste fermée ou ouverte
+ * @param n Liste
+ * @param coordTile Position de la case
  */
 bool searchTile(int n, vector coordTile){
 	vector tmp;
@@ -186,7 +256,8 @@ bool searchTile(int n, vector coordTile){
 
 /**
  * Ajoute à la liste fermée
- * @param coordTarget Destination
+ * @param current Destination
+ * @param F Poids de la case
  */
 void addCloseList(vector current, int F){
 	vector tmp = {0, 0};
@@ -208,7 +279,8 @@ void addCloseList(vector current, int F){
 
 /**
  * Ajoute à la liste ouverte
- * @param coordTarget Destination
+ * @param current Destination
+ * @param F Poids de la case
  */
 void addOpenList(vector current, int F){
 	vector tmp = {0, 0};

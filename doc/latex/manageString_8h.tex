@@ -1,0 +1,307 @@
+\hypertarget{manageString_8h}{}\section{Référence du fichier include/controller/manage\+String.h}
+\label{manageString_8h}\index{include/controller/manage\+String.\+h@{include/controller/manage\+String.\+h}}
+
+
+En-\/tête gestion des chaînes de caractères.  
+
+
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{manageString_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{manageString_8h_aef4f9d954282d13b5ea3132465378b79}{get2\+Char} (char name\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Récupère 2 caractères du nom de l\textquotesingle{}unité \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{manageString_8h_a1f1e45f2d8b8cf09e271c2459a46b0d3}{get\+Name\+Unit} (\hyperlink{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{unit\+Name} \hyperlink{structunit}{unit})
+\begin{DoxyCompactList}\small\item\em Récupère le nom de l\textquotesingle{}unité \end{DoxyCompactList}\item 
+void \hyperlink{manageString_8h_a32a341ce2c2a9240c500f694c9227b96}{print\+Name\+Unit} (\hyperlink{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{unit\+Name} \hyperlink{structunit}{unit})
+\begin{DoxyCompactList}\small\item\em Affiche le nom de l\textquotesingle{}unité \end{DoxyCompactList}\item 
+void \hyperlink{manageString_8h_a4660decf36a299266867a3fdffd4891f}{get\+Coord\+S} (char coord\+String\mbox{[}$\,$\mbox{]}, \hyperlink{structvector}{vector} $\ast$coord\+Unit)
+\begin{DoxyCompactList}\small\item\em Récupère les coordonnées d\textquotesingle{}une chaîne de caractères. \end{DoxyCompactList}\item 
+\hypertarget{manageString_8h_ab4002ec4f250e5f6b7f2b56936950b5e}{}bool \hyperlink{manageString_8h_ab4002ec4f250e5f6b7f2b56936950b5e}{correct\+Coord} (char $\ast$coord\+String)\label{manageString_8h_ab4002ec4f250e5f6b7f2b56936950b5e}
+
+\begin{DoxyCompactList}\small\item\em Vérifie l\textquotesingle{}authenticité des coordonnées d\textquotesingle{}une chaîne de caractères. \end{DoxyCompactList}\item 
+bool \hyperlink{manageString_8h_a56a4267e397f3c206d9655b52241024e}{right\+Side} (char $\ast$coord\+String)
+\begin{DoxyCompactList}\small\item\em Vérifie que l\textquotesingle{}unité est dans le bon camp. \end{DoxyCompactList}\item 
+int \hyperlink{manageString_8h_a57860307a2f1d8a80d71147a7ed1b793}{read\+S} (char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Lecture sécurisée d\textquotesingle{}une chaîne. \end{DoxyCompactList}\item 
+long \hyperlink{manageString_8h_ab431b0689298bfb6b1e74cbe92c18e00}{read\+Long} ()
+\begin{DoxyCompactList}\small\item\em Lecture sécurisée d\textquotesingle{}un long. \end{DoxyCompactList}\item 
+double \hyperlink{manageString_8h_a840ea5c01770156bd51bdb9f65f44e30}{read\+Double} ()
+\begin{DoxyCompactList}\small\item\em Lecture sécurisée d\textquotesingle{}un double. \end{DoxyCompactList}\item 
+void \hyperlink{manageString_8h_a20bbd4d45e3f01305dd709f5a9cc9952}{clear\+Buffer} ()
+\begin{DoxyCompactList}\small\item\em Vide la mémoire tampon. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{manageString_8h_a71644b2a2c56b83debb3c804040d3c88}{get\+Direction\+Unit} (\hyperlink{engine_8h_a468af3d7606639780e81c5e1e403b356}{cardinal} direct)
+\begin{DoxyCompactList}\small\item\em Récupère le nom de la direction. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{manageString_8h_acb5c8162f1db822caca54e0e04d2a143}{get\+Name\+Effect} (\hyperlink{engine_8h_ac5ece9b6993cd3565502866b56317e84}{unit\+Effect} effect)
+\begin{DoxyCompactList}\small\item\em Récupère le nom de l\textquotesingle{}effet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+En-\/tête gestion des chaînes de caractères. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{manageString_8h_a20bbd4d45e3f01305dd709f5a9cc9952}{}\index{manage\+String.\+h@{manage\+String.\+h}!clear\+Buffer@{clear\+Buffer}}
+\index{clear\+Buffer@{clear\+Buffer}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{clear\+Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void clear\+Buffer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_a20bbd4d45e3f01305dd709f5a9cc9952}
+
+
+Vide la mémoire tampon. 
+
+Vide la mémoire tampon. 
+
+Définition à la ligne 253 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_aef4f9d954282d13b5ea3132465378b79}{}\index{manage\+String.\+h@{manage\+String.\+h}!get2\+Char@{get2\+Char}}
+\index{get2\+Char@{get2\+Char}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{get2\+Char}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get2\+Char (
+\begin{DoxyParamCaption}
+\item[{char}]{name\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_aef4f9d954282d13b5ea3132465378b79}
+
+
+Récupère 2 caractères du nom de l\textquotesingle{}unité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em name} & Nom de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne 2 caractères liés au nom de l\textquotesingle{}unité 
+\end{DoxyReturn}
+
+
+Définition à la ligne 47 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_a4660decf36a299266867a3fdffd4891f}{}\index{manage\+String.\+h@{manage\+String.\+h}!get\+Coord\+S@{get\+Coord\+S}}
+\index{get\+Coord\+S@{get\+Coord\+S}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{get\+Coord\+S}]{\setlength{\rightskip}{0pt plus 5cm}void get\+Coord\+S (
+\begin{DoxyParamCaption}
+\item[{char}]{coord\+String\mbox{[}$\,$\mbox{]}, }
+\item[{{\bf vector} $\ast$}]{coord\+Unit}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_a4660decf36a299266867a3fdffd4891f}
+
+
+Récupère les coordonnées d\textquotesingle{}une chaîne de caractères. 
+
+Récupère les coordonnées d\textquotesingle{}une chaîne de caractères.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+String} & Coordonnées saisie par l\textquotesingle{}utilisateur \\
+\hline
+{\em coord\+Unit} & Coordonnées de l\textquotesingle{}unité récupérées de la saisie utilisateur \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 19 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_a71644b2a2c56b83debb3c804040d3c88}{}\index{manage\+String.\+h@{manage\+String.\+h}!get\+Direction\+Unit@{get\+Direction\+Unit}}
+\index{get\+Direction\+Unit@{get\+Direction\+Unit}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{get\+Direction\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+Direction\+Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf cardinal}}]{direct}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_a71644b2a2c56b83debb3c804040d3c88}
+
+
+Récupère le nom de la direction. 
+
+Récupère le nom de la direction.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em direct} & Direction de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne La direction sous forme de chaîne 
+\end{DoxyReturn}
+
+
+Définition à la ligne 235 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_acb5c8162f1db822caca54e0e04d2a143}{}\index{manage\+String.\+h@{manage\+String.\+h}!get\+Name\+Effect@{get\+Name\+Effect}}
+\index{get\+Name\+Effect@{get\+Name\+Effect}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{get\+Name\+Effect}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+Name\+Effect (
+\begin{DoxyParamCaption}
+\item[{{\bf unit\+Effect}}]{effect}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_acb5c8162f1db822caca54e0e04d2a143}
+
+
+Récupère le nom de l\textquotesingle{}effet. 
+
+Récupère le nom de l\textquotesingle{}effet.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em effect} & Effet provenant de la liste énumérée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Nom de l\textquotesingle{}effet sous forme de chaîne de caractère 
+\end{DoxyReturn}
+
+
+Définition à la ligne 220 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_a1f1e45f2d8b8cf09e271c2459a46b0d3}{}\index{manage\+String.\+h@{manage\+String.\+h}!get\+Name\+Unit@{get\+Name\+Unit}}
+\index{get\+Name\+Unit@{get\+Name\+Unit}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{get\+Name\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+Name\+Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf unit\+Name}}]{name}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_a1f1e45f2d8b8cf09e271c2459a46b0d3}
+
+
+Récupère le nom de l\textquotesingle{}unité 
+
+Récupère le nom de l\textquotesingle{}unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em name} & Nom de l\textquotesingle{}unité provenant de la liste énumérée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Nom de l\textquotesingle{}unité sous forme de chaîne 
+\end{DoxyReturn}
+
+
+Définition à la ligne 189 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_a32a341ce2c2a9240c500f694c9227b96}{}\index{manage\+String.\+h@{manage\+String.\+h}!print\+Name\+Unit@{print\+Name\+Unit}}
+\index{print\+Name\+Unit@{print\+Name\+Unit}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{print\+Name\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Name\+Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf unit\+Name}}]{unit}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_a32a341ce2c2a9240c500f694c9227b96}
+
+
+Affiche le nom de l\textquotesingle{}unité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em unit} & Nom de l\textquotesingle{}unité provenant de la liste énumérée \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 246 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_a840ea5c01770156bd51bdb9f65f44e30}{}\index{manage\+String.\+h@{manage\+String.\+h}!read\+Double@{read\+Double}}
+\index{read\+Double@{read\+Double}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{read\+Double}]{\setlength{\rightskip}{0pt plus 5cm}double read\+Double (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_a840ea5c01770156bd51bdb9f65f44e30}
+
+
+Lecture sécurisée d\textquotesingle{}un double. 
+
+Lecture sécurisée d\textquotesingle{}un double.
+
+\begin{DoxyReturn}{Renvoie}
+Retourne le double saisie ou 0.\+0 en cas d\textquotesingle{}erreur 
+\end{DoxyReturn}
+
+
+Définition à la ligne 305 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_ab431b0689298bfb6b1e74cbe92c18e00}{}\index{manage\+String.\+h@{manage\+String.\+h}!read\+Long@{read\+Long}}
+\index{read\+Long@{read\+Long}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{read\+Long}]{\setlength{\rightskip}{0pt plus 5cm}long read\+Long (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_ab431b0689298bfb6b1e74cbe92c18e00}
+
+
+Lecture sécurisée d\textquotesingle{}un long. 
+
+Lecture sécurisée d\textquotesingle{}un long.
+
+\begin{DoxyReturn}{Renvoie}
+Retourne le long saisie ou 0 en cas d\textquotesingle{}erreur 
+\end{DoxyReturn}
+
+
+Définition à la ligne 291 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_a57860307a2f1d8a80d71147a7ed1b793}{}\index{manage\+String.\+h@{manage\+String.\+h}!read\+S@{read\+S}}
+\index{read\+S@{read\+S}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{read\+S}]{\setlength{\rightskip}{0pt plus 5cm}int read\+S (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_a57860307a2f1d8a80d71147a7ed1b793}
+
+
+Lecture sécurisée d\textquotesingle{}une chaîne. 
+
+Lecture sécurisée d\textquotesingle{}une chaîne.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em string} & Chaîne de caractère à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne 1 si chaîne correcte 
+\end{DoxyReturn}
+
+
+Définition à la ligne 265 du fichier manage\+String.\+c.
+
+\hypertarget{manageString_8h_a56a4267e397f3c206d9655b52241024e}{}\index{manage\+String.\+h@{manage\+String.\+h}!right\+Side@{right\+Side}}
+\index{right\+Side@{right\+Side}!manage\+String.\+h@{manage\+String.\+h}}
+\subsubsection[{right\+Side}]{\setlength{\rightskip}{0pt plus 5cm}bool right\+Side (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{coord\+String}
+\end{DoxyParamCaption}
+)}\label{manageString_8h_a56a4267e397f3c206d9655b52241024e}
+
+
+Vérifie que l\textquotesingle{}unité est dans le bon camp. 
+
+Vérifie que l\textquotesingle{}unité est dans le bon camp.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+String} & Coordonnées sous forme de chaîne \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si du bon côté 
+\end{DoxyReturn}
+
+
+Définition à la ligne 165 du fichier manage\+String.\+c.
+

@@ -1,0 +1,747 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena: Référence du fichier src/game/pathList.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier pathList.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Listes de cases sur un chemin définis.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="engine_8h_source.html">../../include/game/engine.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de pathList.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="pathList_8c__incl.png" border="0" usemap="#src_2game_2pathList_8c" alt=""/></div>
+<map name="src_2game_2pathList_8c" id="src_2game_2pathList_8c">
+<area shape="rect" id="node3" href="engine_8h.html" title="En&#45;tête moteur de jeu. " alt="" coords="91,80,213,121"/></map>
+</div>
+</div>
+<p><a href="pathList_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structelem.html">elem</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représente une case de la grille.  <a href="structelem.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:a0ccaaf001e365f4e3ba830861612119a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ccaaf001e365f4e3ba830861612119a"></a>
+typedef struct <a class="el" href="structelem.html">elem</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a0ccaaf001e365f4e3ba830861612119a">t_tile</a></td></tr>
+<tr class="memdesc:a0ccaaf001e365f4e3ba830861612119a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définis la case. <br /></td></tr>
+<tr class="separator:a0ccaaf001e365f4e3ba830861612119a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ac694d579d04ee78ad2aa18f255272ed0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#ac694d579d04ee78ad2aa18f255272ed0">initPath</a> (int n)</td></tr>
+<tr class="memdesc:ac694d579d04ee78ad2aa18f255272ed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le chemin.  <a href="#ac694d579d04ee78ad2aa18f255272ed0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac694d579d04ee78ad2aa18f255272ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca469a8527a0bc92e66306a1c8ada185"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca469a8527a0bc92e66306a1c8ada185"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#aca469a8527a0bc92e66306a1c8ada185">initPaths</a> ()</td></tr>
+<tr class="memdesc:aca469a8527a0bc92e66306a1c8ada185"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les chemins. <br /></td></tr>
+<tr class="separator:aca469a8527a0bc92e66306a1c8ada185"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aab13e3009ebe3949a32c10c03adcd8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a2aab13e3009ebe3949a32c10c03adcd8">emptyPath</a> (int n)</td></tr>
+<tr class="memdesc:a2aab13e3009ebe3949a32c10c03adcd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si un chemin est vide.  <a href="#a2aab13e3009ebe3949a32c10c03adcd8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2aab13e3009ebe3949a32c10c03adcd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bcf1b8579c9a03c9070e33c77993426"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a4bcf1b8579c9a03c9070e33c77993426">outPath</a> (int n)</td></tr>
+<tr class="memdesc:a4bcf1b8579c9a03c9070e33c77993426"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si l'élément courant est hors liste.  <a href="#a4bcf1b8579c9a03c9070e33c77993426">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4bcf1b8579c9a03c9070e33c77993426"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5f66b0e2d9ff7dd44fdd821bb9377cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#af5f66b0e2d9ff7dd44fdd821bb9377cf">pathHead</a> (int n)</td></tr>
+<tr class="memdesc:af5f66b0e2d9ff7dd44fdd821bb9377cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se met en tête du chemin.  <a href="#af5f66b0e2d9ff7dd44fdd821bb9377cf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af5f66b0e2d9ff7dd44fdd821bb9377cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58814bcfb1182201bbecf88f839cd0f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a58814bcfb1182201bbecf88f839cd0f7">pathTail</a> (int n)</td></tr>
+<tr class="memdesc:a58814bcfb1182201bbecf88f839cd0f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se met en queue du chemin.  <a href="#a58814bcfb1182201bbecf88f839cd0f7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a58814bcfb1182201bbecf88f839cd0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e1e62efbdb494f85de87088a068c916"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a2e1e62efbdb494f85de87088a068c916">previous</a> (int n)</td></tr>
+<tr class="memdesc:a2e1e62efbdb494f85de87088a068c916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se positionne sur l'élément précédent.  <a href="#a2e1e62efbdb494f85de87088a068c916">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2e1e62efbdb494f85de87088a068c916"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae29c8124809dc534b7ff12214d16183c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#ae29c8124809dc534b7ff12214d16183c">next</a> (int n)</td></tr>
+<tr class="memdesc:ae29c8124809dc534b7ff12214d16183c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se positionne sur l'élémént suivant.  <a href="#ae29c8124809dc534b7ff12214d16183c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae29c8124809dc534b7ff12214d16183c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affe2967c536ca680e1389c746dc2d944"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#affe2967c536ca680e1389c746dc2d944">getTile</a> (int n, <a class="el" href="structvector.html">vector</a> *v, int *F)</td></tr>
+<tr class="memdesc:affe2967c536ca680e1389c746dc2d944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère une case du chemin.  <a href="#affe2967c536ca680e1389c746dc2d944">Plus de détails...</a><br /></td></tr>
+<tr class="separator:affe2967c536ca680e1389c746dc2d944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae36257ead315faab602c58a4a2ae19fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structvector.html">vector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#ae36257ead315faab602c58a4a2ae19fc">getCurrentNode</a> (int n)</td></tr>
+<tr class="memdesc:ae36257ead315faab602c58a4a2ae19fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le noeud ayant le plus petit F.  <a href="#ae36257ead315faab602c58a4a2ae19fc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae36257ead315faab602c58a4a2ae19fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afac156c3a2eedf22deaae38595f95a65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#afac156c3a2eedf22deaae38595f95a65">setTile</a> (int n, <a class="el" href="structvector.html">vector</a> v, int F)</td></tr>
+<tr class="memdesc:afac156c3a2eedf22deaae38595f95a65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modifie les infos d'une case dans la liste.  <a href="#afac156c3a2eedf22deaae38595f95a65">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afac156c3a2eedf22deaae38595f95a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb403a99e156dd37be05e5d1245ca591"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#acb403a99e156dd37be05e5d1245ca591">eraseTile</a> (int n)</td></tr>
+<tr class="memdesc:acb403a99e156dd37be05e5d1245ca591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efface une case de la grille.  <a href="#acb403a99e156dd37be05e5d1245ca591">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acb403a99e156dd37be05e5d1245ca591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add77d77457e5c3b5e5e3ba1574e1e706"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#add77d77457e5c3b5e5e3ba1574e1e706">toRightPath</a> (int n, <a class="el" href="structvector.html">vector</a> v, int F)</td></tr>
+<tr class="memdesc:add77d77457e5c3b5e5e3ba1574e1e706"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute une case à droite.  <a href="#add77d77457e5c3b5e5e3ba1574e1e706">Plus de détails...</a><br /></td></tr>
+<tr class="separator:add77d77457e5c3b5e5e3ba1574e1e706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd17fd81ff6e16ee988340ae898ba362"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#afd17fd81ff6e16ee988340ae898ba362">dumpPath</a> (short nbList)</td></tr>
+<tr class="memdesc:afd17fd81ff6e16ee988340ae898ba362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide une liste.  <a href="#afd17fd81ff6e16ee988340ae898ba362">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afd17fd81ff6e16ee988340ae898ba362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18154e93d817c730195d7fa04bd6c1d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a18154e93d817c730195d7fa04bd6c1d3">dumpAllPaths</a> ()</td></tr>
+<tr class="memdesc:a18154e93d817c730195d7fa04bd6c1d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vide toutes les listes.  <a href="#a18154e93d817c730195d7fa04bd6c1d3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a18154e93d817c730195d7fa04bd6c1d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addf59bdd9af78dee4e241604e414ee57"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#addf59bdd9af78dee4e241604e414ee57">searchTile</a> (int n, <a class="el" href="structvector.html">vector</a> coordTile)</td></tr>
+<tr class="memdesc:addf59bdd9af78dee4e241604e414ee57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cherche si un vecteur est présent dans la liste fermée ou ouverte.  <a href="#addf59bdd9af78dee4e241604e414ee57">Plus de détails...</a><br /></td></tr>
+<tr class="separator:addf59bdd9af78dee4e241604e414ee57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c9ba5598845850e0fbaf8e3703b07e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a8c9ba5598845850e0fbaf8e3703b07e7">addCloseList</a> (<a class="el" href="structvector.html">vector</a> current, int F)</td></tr>
+<tr class="memdesc:a8c9ba5598845850e0fbaf8e3703b07e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute à la liste fermée.  <a href="#a8c9ba5598845850e0fbaf8e3703b07e7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8c9ba5598845850e0fbaf8e3703b07e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a263a98f63b0badbcbb9dcb968cb04c00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a263a98f63b0badbcbb9dcb968cb04c00">addOpenList</a> (<a class="el" href="structvector.html">vector</a> current, int F)</td></tr>
+<tr class="memdesc:a263a98f63b0badbcbb9dcb968cb04c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute à la liste ouverte.  <a href="#a263a98f63b0badbcbb9dcb968cb04c00">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a263a98f63b0badbcbb9dcb968cb04c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a21a7dd83d4282d5ba2d0be01a8b75964"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21a7dd83d4282d5ba2d0be01a8b75964"></a>
+<a class="el" href="pathList_8c.html#a0ccaaf001e365f4e3ba830861612119a">t_tile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a21a7dd83d4282d5ba2d0be01a8b75964">flag</a> [2]</td></tr>
+<tr class="memdesc:a21a7dd83d4282d5ba2d0be01a8b75964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau de drapeaux. <br /></td></tr>
+<tr class="separator:a21a7dd83d4282d5ba2d0be01a8b75964"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a791e2fe0ae92b02b3acda4f63c4b6056"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a791e2fe0ae92b02b3acda4f63c4b6056"></a>
+<a class="el" href="pathList_8c.html#a0ccaaf001e365f4e3ba830861612119a">t_tile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pathList_8c.html#a791e2fe0ae92b02b3acda4f63c4b6056">elemC</a> [2]</td></tr>
+<tr class="memdesc:a791e2fe0ae92b02b3acda4f63c4b6056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau d'éléments courants. <br /></td></tr>
+<tr class="separator:a791e2fe0ae92b02b3acda4f63c4b6056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Listes de cases sur un chemin définis. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Cousin Brandon Chaudemanche Ewen Biardeau Tristan </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>v1.00 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18/12/2015 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a8c9ba5598845850e0fbaf8e3703b07e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addCloseList </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>current</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>F</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute à la liste fermée. </p>
+<p>Ajoute la case à la liste fermée.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current</td><td>Destination </td></tr>
+    <tr><td class="paramname">F</td><td>Poids de la case </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00262">262</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a263a98f63b0badbcbb9dcb968cb04c00"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addOpenList </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>current</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>F</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute à la liste ouverte. </p>
+<p>Ajoute la case à la liste ouverte.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current</td><td>Destination </td></tr>
+    <tr><td class="paramname">F</td><td>Poids de la case </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00285">285</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a18154e93d817c730195d7fa04bd6c1d3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dumpAllPaths </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vide toutes les listes. </p>
+<p>Vide les chemins. </p>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00226">226</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afd17fd81ff6e16ee988340ae898ba362"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dumpPath </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>nbList</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vide une liste. </p>
+<p>Vide le chemin.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nbList</td><td>Numéro de la liste à vider </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00214">214</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2aab13e3009ebe3949a32c10c03adcd8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int emptyPath </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si un chemin est vide. </p>
+<p>Vérifie si chemin vide.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Chemin </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne le drapeau si pas vide </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00054">54</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acb403a99e156dd37be05e5d1245ca591"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void eraseTile </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Efface une case de la grille. </p>
+<p>Efface une case.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Liste </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00170">170</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae36257ead315faab602c58a4a2ae19fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structvector.html">vector</a> getCurrentNode </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère le noeud ayant le plus petit F. </p>
+<p>Récupère la case ayant le plus petit poids.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Liste dans laquelle chercher </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00130">130</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="affe2967c536ca680e1389c746dc2d944"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getTile </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a> *&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>F</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère une case du chemin. </p>
+<p>Récupère la valeur d'une case.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Chemin </td></tr>
+    <tr><td class="paramname">v</td><td>Position de la case </td></tr>
+    <tr><td class="paramname">F</td><td>Poids de la case </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00117">117</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac694d579d04ee78ad2aa18f255272ed0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initPath </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le chemin. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Chemin </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00031">31</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae29c8124809dc534b7ff12214d16183c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void next </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se positionne sur l'élémént suivant. </p>
+<p>Se positionne sur l'élément suivant.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Chemin </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00105">105</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4bcf1b8579c9a03c9070e33c77993426"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int outPath </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si l'élément courant est hors liste. </p>
+<p>Vérifie si l'élément courant est en dehors de la liste.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Liste </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne l'élément courant si pas hors liste </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00065">65</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af5f66b0e2d9ff7dd44fdd821bb9377cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pathHead </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se met en tête du chemin. </p>
+<p>Se met en tête de la liste.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Chemin </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00075">75</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a58814bcfb1182201bbecf88f839cd0f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pathTail </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se met en queue du chemin. </p>
+<p>Se met en queue de la liste.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Chemin </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00085">85</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2e1e62efbdb494f85de87088a068c916"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void previous </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se positionne sur l'élément précédent. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Chemin </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00095">95</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="addf59bdd9af78dee4e241604e414ee57"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool searchTile </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordTile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cherche si un vecteur est présent dans la liste fermée ou ouverte. </p>
+<p>Cherche une case.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Liste </td></tr>
+    <tr><td class="paramname">coordTile</td><td>Position de la case </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00239">239</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afac156c3a2eedf22deaae38595f95a65"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setTile </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>F</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Modifie les infos d'une case dans la liste. </p>
+<p>Modifie la valeur d'une case.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Liste </td></tr>
+    <tr><td class="paramname">v</td><td>Nouvelle position </td></tr>
+    <tr><td class="paramname">F</td><td>Nouveau poids </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00157">157</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="add77d77457e5c3b5e5e3ba1574e1e706"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void toRightPath </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>F</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute une case à droite. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Liste </td></tr>
+    <tr><td class="paramname">v</td><td>Position à ajouter </td></tr>
+    <tr><td class="paramname">F</td><td>Poids à ajouter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="pathList_8c_source.html#l00191">191</a> du fichier <a class="el" href="pathList_8c_source.html">pathList.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,563 @@
+\hypertarget{unit_8c}{}\section{Référence du fichier src/units/unit.c}
+\label{unit_8c}\index{src/units/unit.\+c@{src/units/unit.\+c}}
+
+
+Gestion des unités.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$math.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../../include/game/engine.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/pawns.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/listes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/display/grid.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/terminal.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/manage\+String.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/units/unit.\+h\char`\"{}}\\*
+Graphe des dépendances par inclusion de unit.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{unit_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{unit_8c_a303ffa342493b2383462975ee73371ff}{unit\+Init} (short no\+P, \hyperlink{structvector}{vector} coord\+Unit)
+\begin{DoxyCompactList}\small\item\em Initialise l\textquotesingle{}unité courante. \end{DoxyCompactList}\item 
+bool \hyperlink{unit_8c_a85f8dfae2c8d83d9bc1b164adac6513d}{can\+Get\+Passed} (\hyperlink{structunit}{unit} $\ast$target)
+\begin{DoxyCompactList}\small\item\em Définis si le passage est permis. \end{DoxyCompactList}\item 
+bool \hyperlink{unit_8c_ac194fc19a706dbd87e9a93c02b244f11}{can\+Block} (\hyperlink{structunit}{unit} $\ast$target)
+\begin{DoxyCompactList}\small\item\em Définis si une unité peut bloquer. \end{DoxyCompactList}\item 
+bool \hyperlink{unit_8c_aa012dba081af99c4a666767c26ac1ac5}{can\+Attack} (\hyperlink{structunit}{unit} $\ast$target)
+\begin{DoxyCompactList}\small\item\em Définis si une unité peut attaquer. \end{DoxyCompactList}\item 
+bool \hyperlink{unit_8c_a9c0738de90650e2f4640cae3bad4b3a2}{can\+Move} (\hyperlink{structunit}{unit} $\ast$target)
+\begin{DoxyCompactList}\small\item\em Définis si une unité peut bouger. \end{DoxyCompactList}\item 
+bool \hyperlink{unit_8c_a52de919c7103012ce231d80e3bbe3e8d}{can\+Teleport} (\hyperlink{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{unit\+Name} name)
+\begin{DoxyCompactList}\small\item\em Détermine si une unité peut se téléporter. \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_a59537e7d55fc495b394087bf8a952d16}{heal} (\hyperlink{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{unit\+Name} name)
+\begin{DoxyCompactList}\small\item\em Soigne les unités. \end{DoxyCompactList}\item 
+int \hyperlink{unit_8c_a5c8761ef40c541d75de80d6f6eeeb482}{get\+Side\+Attacked} (\hyperlink{structvector}{vector} source, \hyperlink{structvector}{vector} target)
+\begin{DoxyCompactList}\small\item\em Retourne le côté attaqué \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_a6b948a17bbc3106f230c32a53121e6db}{attack} (\hyperlink{structvector}{vector} source, \hyperlink{structvector}{vector} target)
+\begin{DoxyCompactList}\small\item\em Attaque une unité en prenant en compte son taux de blocage. \end{DoxyCompactList}\item 
+bool \hyperlink{unit_8c_a4004486abf500173fd3f51d2d3283275}{copy} (\hyperlink{structunit}{unit} $\ast$destination, \hyperlink{structunit}{unit} $\ast$source)
+\begin{DoxyCompactList}\small\item\em Copie la structure source vers la structure destination. \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_a27d0834cb55fab6867ffb3888c506d39}{erase} (\hyperlink{structunit}{unit} $\ast$source)
+\begin{DoxyCompactList}\small\item\em Efface une unité de la grille. \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_a4ea1b739c4b88857675c47d9960a69a4}{power\+Bonus} ()
+\begin{DoxyCompactList}\small\item\em Octroie un bonus de puissance. \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_a87c06ff9e86d3317e10387a5d5626f1a}{move} (\hyperlink{structvector}{vector} destination, \hyperlink{structvector}{vector} source)
+\begin{DoxyCompactList}\small\item\em Déplace une unité vers la destination. \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_a2fdda888eb5b942249418b75a4998581}{set\+Direction} (\hyperlink{structvector}{vector} source, int dir)
+\begin{DoxyCompactList}\small\item\em Définis la direction de l\textquotesingle{}unité \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_afec10f9e98c70ab1915023cd0c8f76ca}{poison} ()
+\begin{DoxyCompactList}\small\item\em Gère le statut empoisonnement. \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_ae52638eb8e2a94d1dd3df42c816681a3}{add\+Effect} (\hyperlink{structvector}{vector} target, \hyperlink{engine_8h_ac5ece9b6993cd3565502866b56317e84}{unit\+Effect} effect)
+\begin{DoxyCompactList}\small\item\em Ajoute un effect sur l\textquotesingle{}unité cible. \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_a1cbe53dd582c7ac03bafb0051a38a98b}{minus\+Effect} ()
+\begin{DoxyCompactList}\small\item\em Décrémente les effets. \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_ae887bebca3eb165cbbd7f71975cf8f3a}{sleep} (\hyperlink{structvector}{vector} pos)
+\begin{DoxyCompactList}\small\item\em Endors l\textquotesingle{}unité \end{DoxyCompactList}\item 
+bool \hyperlink{unit_8c_aa2bac651e557f022a73099db0185eb44}{is\+Sleeping} (\hyperlink{structvector}{vector} pos)
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}unité est endormie. \end{DoxyCompactList}\item 
+void \hyperlink{unit_8c_a505f360905b4ad0fa6e18f19405539ea}{recover} ()
+\begin{DoxyCompactList}\small\item\em Réveille l\textquotesingle{}unité tour par tour. \end{DoxyCompactList}\item 
+bool \hyperlink{unit_8c_a04cb7c9ee636e575bfd9531780b829d7}{all\+Static} (int num\+Player)
+\begin{DoxyCompactList}\small\item\em Vérifie si toutes les unités sont immobilisés. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gestion des unités. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{unit_8c_ae52638eb8e2a94d1dd3df42c816681a3}{}\index{unit.\+c@{unit.\+c}!add\+Effect@{add\+Effect}}
+\index{add\+Effect@{add\+Effect}!unit.\+c@{unit.\+c}}
+\subsubsection[{add\+Effect}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Effect (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{target, }
+\item[{{\bf unit\+Effect}}]{effect}
+\end{DoxyParamCaption}
+)}\label{unit_8c_ae52638eb8e2a94d1dd3df42c816681a3}
+
+
+Ajoute un effect sur l\textquotesingle{}unité cible. 
+
+Ajoute un effet à une unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em target} & Position unité cible \\
+\hline
+{\em effect} & Effet à appliquer sur la cible \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 437 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a04cb7c9ee636e575bfd9531780b829d7}{}\index{unit.\+c@{unit.\+c}!all\+Static@{all\+Static}}
+\index{all\+Static@{all\+Static}!unit.\+c@{unit.\+c}}
+\subsubsection[{all\+Static}]{\setlength{\rightskip}{0pt plus 5cm}bool all\+Static (
+\begin{DoxyParamCaption}
+\item[{int}]{num\+Player}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a04cb7c9ee636e575bfd9531780b829d7}
+
+
+Vérifie si toutes les unités sont immobilisés. 
+
+Vérifie si toutes les unités sont immobilisées.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em num\+Player} & Numéro du joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si toutes les unités sont immobilisés 
+\end{DoxyReturn}
+
+
+Définition à la ligne 529 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a6b948a17bbc3106f230c32a53121e6db}{}\index{unit.\+c@{unit.\+c}!attack@{attack}}
+\index{attack@{attack}!unit.\+c@{unit.\+c}}
+\subsubsection[{attack}]{\setlength{\rightskip}{0pt plus 5cm}void attack (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{source, }
+\item[{{\bf vector}}]{target}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a6b948a17bbc3106f230c32a53121e6db}
+
+
+Attaque une unité en prenant en compte son taux de blocage. 
+
+Attaque une unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & Unité attaquante \\
+\hline
+{\em target} & Unité cible \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 184 du fichier unit.\+c.
+
+\hypertarget{unit_8c_aa012dba081af99c4a666767c26ac1ac5}{}\index{unit.\+c@{unit.\+c}!can\+Attack@{can\+Attack}}
+\index{can\+Attack@{can\+Attack}!unit.\+c@{unit.\+c}}
+\subsubsection[{can\+Attack}]{\setlength{\rightskip}{0pt plus 5cm}bool can\+Attack (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{target}
+\end{DoxyParamCaption}
+)}\label{unit_8c_aa012dba081af99c4a666767c26ac1ac5}
+
+
+Définis si une unité peut attaquer. 
+
+Vérifie si l\textquotesingle{}unité peut attaquer.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em target} & Unité à analyser \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si l\textquotesingle{}unité peut attaquer 
+\end{DoxyReturn}
+
+
+Définition à la ligne 86 du fichier unit.\+c.
+
+\hypertarget{unit_8c_ac194fc19a706dbd87e9a93c02b244f11}{}\index{unit.\+c@{unit.\+c}!can\+Block@{can\+Block}}
+\index{can\+Block@{can\+Block}!unit.\+c@{unit.\+c}}
+\subsubsection[{can\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool can\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{target}
+\end{DoxyParamCaption}
+)}\label{unit_8c_ac194fc19a706dbd87e9a93c02b244f11}
+
+
+Définis si une unité peut bloquer. 
+
+Vérifie si l\textquotesingle{}unité peut bloquer.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em target} & Unité à analyser \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si l\textquotesingle{}unité peut bloquer 
+\end{DoxyReturn}
+
+
+Définition à la ligne 66 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a85f8dfae2c8d83d9bc1b164adac6513d}{}\index{unit.\+c@{unit.\+c}!can\+Get\+Passed@{can\+Get\+Passed}}
+\index{can\+Get\+Passed@{can\+Get\+Passed}!unit.\+c@{unit.\+c}}
+\subsubsection[{can\+Get\+Passed}]{\setlength{\rightskip}{0pt plus 5cm}bool can\+Get\+Passed (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{target}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a85f8dfae2c8d83d9bc1b164adac6513d}
+
+
+Définis si le passage est permis. 
+
+Vérifie si le passage est autorisé
+
+
+\begin{DoxyParams}{Paramètres}
+{\em target} & Unité à analyser \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si passage autorisé 
+\end{DoxyReturn}
+
+
+Définition à la ligne 46 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a9c0738de90650e2f4640cae3bad4b3a2}{}\index{unit.\+c@{unit.\+c}!can\+Move@{can\+Move}}
+\index{can\+Move@{can\+Move}!unit.\+c@{unit.\+c}}
+\subsubsection[{can\+Move}]{\setlength{\rightskip}{0pt plus 5cm}bool can\+Move (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{target}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a9c0738de90650e2f4640cae3bad4b3a2}
+
+
+Définis si une unité peut bouger. 
+
+Vérifie si l\textquotesingle{}unité peut bouger.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em target} & Unité à analyser \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vraie si l\textquotesingle{}unité peut se mouvoir 
+\end{DoxyReturn}
+
+
+Définition à la ligne 106 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a52de919c7103012ce231d80e3bbe3e8d}{}\index{unit.\+c@{unit.\+c}!can\+Teleport@{can\+Teleport}}
+\index{can\+Teleport@{can\+Teleport}!unit.\+c@{unit.\+c}}
+\subsubsection[{can\+Teleport}]{\setlength{\rightskip}{0pt plus 5cm}bool can\+Teleport (
+\begin{DoxyParamCaption}
+\item[{{\bf unit\+Name}}]{name}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a52de919c7103012ce231d80e3bbe3e8d}
+
+
+Détermine si une unité peut se téléporter. 
+
+Vérifie si l\textquotesingle{}unité peut se téléporter.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em name} & Nom de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vraie si l\textquotesingle{}unité peut se déplacer 
+\end{DoxyReturn}
+
+
+Définition à la ligne 125 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a4004486abf500173fd3f51d2d3283275}{}\index{unit.\+c@{unit.\+c}!copy@{copy}}
+\index{copy@{copy}!unit.\+c@{unit.\+c}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}bool copy (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{destination, }
+\item[{{\bf unit} $\ast$}]{source}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a4004486abf500173fd3f51d2d3283275}
+
+
+Copie la structure source vers la structure destination. 
+
+Copie la structure source vers destination.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em destination} & Structure destination \\
+\hline
+{\em source} & Structure source \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si copie bien déroulée 
+\end{DoxyReturn}
+
+
+Définition à la ligne 236 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a27d0834cb55fab6867ffb3888c506d39}{}\index{unit.\+c@{unit.\+c}!erase@{erase}}
+\index{erase@{erase}!unit.\+c@{unit.\+c}}
+\subsubsection[{erase}]{\setlength{\rightskip}{0pt plus 5cm}void erase (
+\begin{DoxyParamCaption}
+\item[{{\bf unit} $\ast$}]{source}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a27d0834cb55fab6867ffb3888c506d39}
+
+
+Efface une unité de la grille. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & Source à effacer \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 271 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a5c8761ef40c541d75de80d6f6eeeb482}{}\index{unit.\+c@{unit.\+c}!get\+Side\+Attacked@{get\+Side\+Attacked}}
+\index{get\+Side\+Attacked@{get\+Side\+Attacked}!unit.\+c@{unit.\+c}}
+\subsubsection[{get\+Side\+Attacked}]{\setlength{\rightskip}{0pt plus 5cm}int get\+Side\+Attacked (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{source, }
+\item[{{\bf vector}}]{target}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a5c8761ef40c541d75de80d6f6eeeb482}
+
+
+Retourne le côté attaqué 
+
+Récupère le côté attaqué
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & Position unité source \\
+\hline
+{\em target} & Position unité cible \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le côté attaqué 
+\end{DoxyReturn}
+
+
+Définition à la ligne 168 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a59537e7d55fc495b394087bf8a952d16}{}\index{unit.\+c@{unit.\+c}!heal@{heal}}
+\index{heal@{heal}!unit.\+c@{unit.\+c}}
+\subsubsection[{heal}]{\setlength{\rightskip}{0pt plus 5cm}void heal (
+\begin{DoxyParamCaption}
+\item[{{\bf unit\+Name}}]{name}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a59537e7d55fc495b394087bf8a952d16}
+
+
+Soigne les unités. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em name} & Nom de l\textquotesingle{}unité soignant \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 137 du fichier unit.\+c.
+
+\hypertarget{unit_8c_aa2bac651e557f022a73099db0185eb44}{}\index{unit.\+c@{unit.\+c}!is\+Sleeping@{is\+Sleeping}}
+\index{is\+Sleeping@{is\+Sleeping}!unit.\+c@{unit.\+c}}
+\subsubsection[{is\+Sleeping}]{\setlength{\rightskip}{0pt plus 5cm}bool is\+Sleeping (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{pos}
+\end{DoxyParamCaption}
+)}\label{unit_8c_aa2bac651e557f022a73099db0185eb44}
+
+
+Vérifie si l\textquotesingle{}unité est endormie. 
+
+Vérifie si une unité est endormie.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pos} & Position de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si endormi 
+\end{DoxyReturn}
+
+
+Définition à la ligne 490 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a1cbe53dd582c7ac03bafb0051a38a98b}{}\index{unit.\+c@{unit.\+c}!minus\+Effect@{minus\+Effect}}
+\index{minus\+Effect@{minus\+Effect}!unit.\+c@{unit.\+c}}
+\subsubsection[{minus\+Effect}]{\setlength{\rightskip}{0pt plus 5cm}void minus\+Effect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a1cbe53dd582c7ac03bafb0051a38a98b}
+
+
+Décrémente les effets. 
+
+Diminue le temps de l\textquotesingle{}effet. 
+
+Définition à la ligne 455 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a87c06ff9e86d3317e10387a5d5626f1a}{}\index{unit.\+c@{unit.\+c}!move@{move}}
+\index{move@{move}!unit.\+c@{unit.\+c}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void move (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{destination, }
+\item[{{\bf vector}}]{source}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a87c06ff9e86d3317e10387a5d5626f1a}
+
+
+Déplace une unité vers la destination. 
+
+Bouge une unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em destination} & Destination souhaitée \\
+\hline
+{\em source} & Position de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 351 du fichier unit.\+c.
+
+\hypertarget{unit_8c_afec10f9e98c70ab1915023cd0c8f76ca}{}\index{unit.\+c@{unit.\+c}!poison@{poison}}
+\index{poison@{poison}!unit.\+c@{unit.\+c}}
+\subsubsection[{poison}]{\setlength{\rightskip}{0pt plus 5cm}void poison (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{unit_8c_afec10f9e98c70ab1915023cd0c8f76ca}
+
+
+Gère le statut empoisonnement. 
+
+Empoisonne une unité 
+
+Définition à la ligne 386 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a4ea1b739c4b88857675c47d9960a69a4}{}\index{unit.\+c@{unit.\+c}!power\+Bonus@{power\+Bonus}}
+\index{power\+Bonus@{power\+Bonus}!unit.\+c@{unit.\+c}}
+\subsubsection[{power\+Bonus}]{\setlength{\rightskip}{0pt plus 5cm}void power\+Bonus (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a4ea1b739c4b88857675c47d9960a69a4}
+
+
+Octroie un bonus de puissance. 
+
+Octroie un bonus de puissance selon certaines conditions. 
+
+Définition à la ligne 286 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a505f360905b4ad0fa6e18f19405539ea}{}\index{unit.\+c@{unit.\+c}!recover@{recover}}
+\index{recover@{recover}!unit.\+c@{unit.\+c}}
+\subsubsection[{recover}]{\setlength{\rightskip}{0pt plus 5cm}void recover (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a505f360905b4ad0fa6e18f19405539ea}
+
+
+Réveille l\textquotesingle{}unité tour par tour. 
+
+Se réveille tour par tour. 
+
+Définition à la ligne 503 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a2fdda888eb5b942249418b75a4998581}{}\index{unit.\+c@{unit.\+c}!set\+Direction@{set\+Direction}}
+\index{set\+Direction@{set\+Direction}!unit.\+c@{unit.\+c}}
+\subsubsection[{set\+Direction}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Direction (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{source, }
+\item[{int}]{dir}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a2fdda888eb5b942249418b75a4998581}
+
+
+Définis la direction de l\textquotesingle{}unité 
+
+Définis la direction d\textquotesingle{}une unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & Unité à tourner \\
+\hline
+{\em dir} & Direction dans laquelle tourner \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 377 du fichier unit.\+c.
+
+\hypertarget{unit_8c_ae887bebca3eb165cbbd7f71975cf8f3a}{}\index{unit.\+c@{unit.\+c}!sleep@{sleep}}
+\index{sleep@{sleep}!unit.\+c@{unit.\+c}}
+\subsubsection[{sleep}]{\setlength{\rightskip}{0pt plus 5cm}void sleep (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{pos}
+\end{DoxyParamCaption}
+)}\label{unit_8c_ae887bebca3eb165cbbd7f71975cf8f3a}
+
+
+Endors l\textquotesingle{}unité 
+
+Endors une unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pos} & Position de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 480 du fichier unit.\+c.
+
+\hypertarget{unit_8c_a303ffa342493b2383462975ee73371ff}{}\index{unit.\+c@{unit.\+c}!unit\+Init@{unit\+Init}}
+\index{unit\+Init@{unit\+Init}!unit.\+c@{unit.\+c}}
+\subsubsection[{unit\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void unit\+Init (
+\begin{DoxyParamCaption}
+\item[{short}]{no\+P, }
+\item[{{\bf vector}}]{coord\+Unit}
+\end{DoxyParamCaption}
+)}\label{unit_8c_a303ffa342493b2383462975ee73371ff}
+
+
+Initialise l\textquotesingle{}unité courante. 
+
+Initialise une unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em no\+P} & Numéro du joueur \\
+\hline
+{\em coord\+Unit} & Coordonnées de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 24 du fichier unit.\+c.
+

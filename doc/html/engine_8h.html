@@ -1,0 +1,706 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena: Référence du fichier include/game/engine.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_f307a46daed1218fee22380d1eacedba.html">game</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier engine.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>En-tête moteur de jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de engine.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="engine_8h__incl.png" border="0" usemap="#include_2game_2engine_8h" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="engine_8h__dep__incl.png" border="0" usemap="#include_2game_2engine_8hdep" alt=""/></div>
+<map name="include_2game_2engine_8hdep" id="include_2game_2engine_8hdep">
+<area shape="rect" id="node2" href="manageSignal_8c.html" title="Gestion des signaux. " alt="" coords="5,80,200,107"/><area shape="rect" id="node3" href="manageString_8c.html" title="Gestions des chaînes de caractères. " alt="" coords="224,80,416,107"/><area shape="rect" id="node4" href="saveNLoad_8c.html" title="Gestion de la sauvegarde et du chargement. " alt="" coords="440,80,619,107"/><area shape="rect" id="node5" href="terminal_8c.html" title="Gestion du terminal. " alt="" coords="643,80,802,107"/><area shape="rect" id="node6" href="grid_8c.html" title="Gestion de la grille. " alt="" coords="826,80,947,107"/><area shape="rect" id="node7" href="menu_8c.html" title="Gestion des menus. " alt="" coords="971,80,1103,107"/><area shape="rect" id="node8" href="engine_8c.html" title="Moteur de jeu. " alt="" coords="1127,80,1257,107"/><area shape="rect" id="node9" href="listes_8c.html" title="Listes de vecteurs. " alt="" coords="1281,80,1404,107"/><area shape="rect" id="node10" href="pathList_8c.html" title="Listes de cases sur un chemin définis. " alt="" coords="1429,80,1566,107"/><area shape="rect" id="node11" href="pawns_8c.html" title="Gestion des pions. " alt="" coords="1590,80,1719,107"/><area shape="rect" id="node12" href="turn_8c.html" title="Gestion des tours. " alt="" coords="1743,80,1857,107"/><area shape="rect" id="node13" href="main_8c.html" title="Programme principal. " alt="" coords="1881,80,1964,107"/><area shape="rect" id="node14" href="unit_8c.html" title="Gestion des unités. " alt="" coords="1989,80,2097,107"/></map>
+</div>
+</div>
+<p><a href="engine_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtargetStat.html">targetStat</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représente les informations liées aux cibles.  <a href="structtargetStat.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structunitStat.html">unitStat</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représente les statistiques d'une unité  <a href="structunitStat.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvector.html">vector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représente les coordonnées d'un vecteur.  <a href="structvector.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structunit.html">unit</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représente une unité  <a href="structunit.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a0240ac851181b84ac374872dc5434ee4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0240ac851181b84ac374872dc5434ee4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>&#160;&#160;&#160;11</td></tr>
+<tr class="memdesc:a0240ac851181b84ac374872dc5434ee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille de la grille. <br /></td></tr>
+<tr class="separator:a0240ac851181b84ac374872dc5434ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb66c371fb21dd91933e5f45ff4ce817"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb66c371fb21dd91933e5f45ff4ce817"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#afb66c371fb21dd91933e5f45ff4ce817">NB_LISTS_ENGINE</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:afb66c371fb21dd91933e5f45ff4ce817"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de liste additionnelles nécessaires pour le jeu. <br /></td></tr>
+<tr class="separator:afb66c371fb21dd91933e5f45ff4ce817"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063165e36f1905a19e98c412ee181878"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a063165e36f1905a19e98c412ee181878"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a063165e36f1905a19e98c412ee181878">NB_PLAYERS</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a063165e36f1905a19e98c412ee181878"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de joueurs. <br /></td></tr>
+<tr class="separator:a063165e36f1905a19e98c412ee181878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4bf44d5b138de69050557acc46b4700"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4bf44d5b138de69050557acc46b4700"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ac4bf44d5b138de69050557acc46b4700">NB_LINES</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:ac4bf44d5b138de69050557acc46b4700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limite du camp du joueur. <br /></td></tr>
+<tr class="separator:ac4bf44d5b138de69050557acc46b4700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5165d4965ab32e87f1dd3181a41f0a7a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5165d4965ab32e87f1dd3181a41f0a7a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a5165d4965ab32e87f1dd3181a41f0a7a">NB_UNITS</a>&#160;&#160;&#160;21</td></tr>
+<tr class="memdesc:a5165d4965ab32e87f1dd3181a41f0a7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre d'unités dans le jeu. <br /></td></tr>
+<tr class="separator:a5165d4965ab32e87f1dd3181a41f0a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21db47461d910a7cad180b5532f1a7f8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21db47461d910a7cad180b5532f1a7f8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a21db47461d910a7cad180b5532f1a7f8">NB_MAX_EFFECT</a>&#160;&#160;&#160;6</td></tr>
+<tr class="memdesc:a21db47461d910a7cad180b5532f1a7f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre total de status différent. <br /></td></tr>
+<tr class="separator:a21db47461d910a7cad180b5532f1a7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26f6ab8604048e4b80c8bc535ff4bad9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26f6ab8604048e4b80c8bc535ff4bad9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a26f6ab8604048e4b80c8bc535ff4bad9">MANDATORY_STATS</a>&#160;&#160;&#160;12</td></tr>
+<tr class="memdesc:a26f6ab8604048e4b80c8bc535ff4bad9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre de stats obligatoire. <br /></td></tr>
+<tr class="separator:a26f6ab8604048e4b80c8bc535ff4bad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89f0201fca94cbc3ca0f5fbce851e7c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89f0201fca94cbc3ca0f5fbce851e7c9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a89f0201fca94cbc3ca0f5fbce851e7c9">FIRST_PLAYER</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a89f0201fca94cbc3ca0f5fbce851e7c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définis la valeur du premier joueur. <br /></td></tr>
+<tr class="separator:a89f0201fca94cbc3ca0f5fbce851e7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aaa949daff5a729be2acff95b7d0fed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2aaa949daff5a729be2acff95b7d0fed"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a2aaa949daff5a729be2acff95b7d0fed">NB_MAX_KN</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memdesc:a2aaa949daff5a729be2acff95b7d0fed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre max de Guerrier par joueur. <br /></td></tr>
+<tr class="separator:a2aaa949daff5a729be2acff95b7d0fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add7fd7b19c17c1ac0918a95089e2c7f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add7fd7b19c17c1ac0918a95089e2c7f9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#add7fd7b19c17c1ac0918a95089e2c7f9">NB_MAX_SC</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:add7fd7b19c17c1ac0918a95089e2c7f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre max de Recrue par joueur. <br /></td></tr>
+<tr class="separator:add7fd7b19c17c1ac0918a95089e2c7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e866793438e4da9a36962a808d664d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e866793438e4da9a36962a808d664d7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a3e866793438e4da9a36962a808d664d7">NB_MAX_SG</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a3e866793438e4da9a36962a808d664d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre max de Golem de pierre par joueur. <br /></td></tr>
+<tr class="separator:a3e866793438e4da9a36962a808d664d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0838a4817c4beea8be5cab65cad54122"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0838a4817c4beea8be5cab65cad54122"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a0838a4817c4beea8be5cab65cad54122">NB_MAX_LT</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:a0838a4817c4beea8be5cab65cad54122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre max de Lightning totem par joueur. <br /></td></tr>
+<tr class="separator:a0838a4817c4beea8be5cab65cad54122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacfee0d79acf9b6378182a8aa2ee0226"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aacfee0d79acf9b6378182a8aa2ee0226"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#aacfee0d79acf9b6378182a8aa2ee0226">NB_MAX_DR</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:aacfee0d79acf9b6378182a8aa2ee0226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre max de Dragon par joueur. <br /></td></tr>
+<tr class="separator:aacfee0d79acf9b6378182a8aa2ee0226"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d20c3d53297ab3184e441f7a85df250"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d20c3d53297ab3184e441f7a85df250"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a4d20c3d53297ab3184e441f7a85df250">NB_MAX_FU</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a4d20c3d53297ab3184e441f7a85df250"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre max de Furgon par joueur. <br /></td></tr>
+<tr class="separator:a4d20c3d53297ab3184e441f7a85df250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5bbc6c16b0afbb41c6f723b099e599"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef5bbc6c16b0afbb41c6f723b099e599"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#aef5bbc6c16b0afbb41c6f723b099e599">NB_MAX_UNIT</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memdesc:aef5bbc6c16b0afbb41c6f723b099e599"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre max d'unité par joueur. <br /></td></tr>
+<tr class="separator:aef5bbc6c16b0afbb41c6f723b099e599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a207089a6eadde7204cda31d055e4d3a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a207089a6eadde7204cda31d055e4d3a1"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a207089a6eadde7204cda31d055e4d3a1">NB_MAX_DECOR</a>&#160;&#160;&#160;7</td></tr>
+<tr class="memdesc:a207089a6eadde7204cda31d055e4d3a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre max de décor. <br /></td></tr>
+<tr class="separator:a207089a6eadde7204cda31d055e4d3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a468af3d7606639780e81c5e1e403b356"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a468af3d7606639780e81c5e1e403b356"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a468af3d7606639780e81c5e1e403b356">cardinal</a> { <b>north</b>, 
+<b>east</b>, 
+<b>south</b>, 
+<b>west</b>
+ }</td></tr>
+<tr class="memdesc:a468af3d7606639780e81c5e1e403b356"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="engine_8h.html" title="En-tête moteur de jeu. ">engine.h</a> <br /></td></tr>
+<tr class="separator:a468af3d7606639780e81c5e1e403b356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7667555c2dcfbdd55ec3e9dd6a907ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7667555c2dcfbdd55ec3e9dd6a907ba"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> { <br />
+&#160;&#160;<b>empty</b>, 
+<b>decors</b>, 
+<b>knight</b>, 
+<b>scout</b>, 
+<br />
+&#160;&#160;<b>assassin</b>, 
+<b>cleric</b>, 
+<b>pyromancer</b>, 
+<b>enchantress</b>, 
+<br />
+&#160;&#160;<b>dragonborn</b>, 
+<b>darkWitch</b>, 
+<b>lightningTotem</b>, 
+<b>barrierTotem</b>, 
+<br />
+&#160;&#160;<b>mudGolem</b>, 
+<b>golemAmbusher</b>, 
+<b>frostGolem</b>, 
+<b>stoneGolem</b>, 
+<br />
+&#160;&#160;<b>dragonTyrant</b>, 
+<b>berserker</b>, 
+<b>beastRider</b>, 
+<b>poisonWisp</b>, 
+<br />
+&#160;&#160;<b>furgon</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:af7667555c2dcfbdd55ec3e9dd6a907ba"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="engine_8h.html" title="En-tête moteur de jeu. ">engine.h</a> <br /></td></tr>
+<tr class="separator:af7667555c2dcfbdd55ec3e9dd6a907ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5ece9b6993cd3565502866b56317e84"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5ece9b6993cd3565502866b56317e84"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ac5ece9b6993cd3565502866b56317e84">unitEffect</a> { <br />
+&#160;&#160;<b>none</b>, 
+<b>POWER_BONUS</b>, 
+<b>ARMOR_BONUS</b>, 
+<b>BARRIER</b>, 
+<br />
+&#160;&#160;<b>POISON</b>, 
+<b>PARALYSE</b>, 
+<b>FOCUS</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:ac5ece9b6993cd3565502866b56317e84"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="engine_8h.html" title="En-tête moteur de jeu. ">engine.h</a> <br /></td></tr>
+<tr class="separator:ac5ece9b6993cd3565502866b56317e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a3ee2a4066924757ade5530e7041a2ad1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a3ee2a4066924757ade5530e7041a2ad1">isSurrounded</a> (<a class="el" href="structvector.html">vector</a> currentUnit)</td></tr>
+<tr class="memdesc:a3ee2a4066924757ade5530e7041a2ad1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si une unité est entourée.  <a href="#a3ee2a4066924757ade5530e7041a2ad1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3ee2a4066924757ade5530e7041a2ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43ae9a7f0ac55585ed6375c580abcaf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a43ae9a7f0ac55585ed6375c580abcaf0">gameInit</a> ()</td></tr>
+<tr class="memdesc:a43ae9a7f0ac55585ed6375c580abcaf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le jeu.  <a href="#a43ae9a7f0ac55585ed6375c580abcaf0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a43ae9a7f0ac55585ed6375c580abcaf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd459b9ed1aaf8c05cdd3887e86b8668"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#acd459b9ed1aaf8c05cdd3887e86b8668">selectUnit</a> (<a class="el" href="structvector.html">vector</a> *coordUnit)</td></tr>
+<tr class="memdesc:acd459b9ed1aaf8c05cdd3887e86b8668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sélectionne une unité  <a href="#acd459b9ed1aaf8c05cdd3887e86b8668">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acd459b9ed1aaf8c05cdd3887e86b8668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7de2811c781a1136844609cc95e26464"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a7de2811c781a1136844609cc95e26464">setTarget</a> (<a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name, <a class="el" href="structvector.html">vector</a> coordUnit, int colorDisp)</td></tr>
+<tr class="memdesc:a7de2811c781a1136844609cc95e26464"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définis les cibles.  <a href="#a7de2811c781a1136844609cc95e26464">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7de2811c781a1136844609cc95e26464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42359e6294ac21935ecc2d77140da492"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a42359e6294ac21935ecc2d77140da492">launchAttack</a> (<a class="el" href="structvector.html">vector</a> coordSource, <a class="el" href="structvector.html">vector</a> coordTarget)</td></tr>
+<tr class="memdesc:a42359e6294ac21935ecc2d77140da492"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance une attaque.  <a href="#a42359e6294ac21935ecc2d77140da492">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a42359e6294ac21935ecc2d77140da492"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aca0579aac39cc7e3c41342d89fe1b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a8aca0579aac39cc7e3c41342d89fe1b7">movable</a> (int colorDisp)</td></tr>
+<tr class="memdesc:a8aca0579aac39cc7e3c41342d89fe1b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fait la liste des unités déplaçables.  <a href="#a8aca0579aac39cc7e3c41342d89fe1b7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8aca0579aac39cc7e3c41342d89fe1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae40e16d551936cea056a982196273bde"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ae40e16d551936cea056a982196273bde">attackable</a> (int colorDisp)</td></tr>
+<tr class="memdesc:ae40e16d551936cea056a982196273bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fait la liste des unités pouvant attaquer.  <a href="#ae40e16d551936cea056a982196273bde">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae40e16d551936cea056a982196273bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a309311c2d6a59c5998007d0e5f215d4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a309311c2d6a59c5998007d0e5f215d4d">tileWalkable</a> (<a class="el" href="structvector.html">vector</a> coordUnit, int colorDisp)</td></tr>
+<tr class="memdesc:a309311c2d6a59c5998007d0e5f215d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fait la liste des cases atteignables par l'unité  <a href="#a309311c2d6a59c5998007d0e5f215d4d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a309311c2d6a59c5998007d0e5f215d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a548c013433afab60c17fd9950fb7248f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a548c013433afab60c17fd9950fb7248f">possiblePath</a> (<a class="el" href="structvector.html">vector</a> coordUnit)</td></tr>
+<tr class="memdesc:a548c013433afab60c17fd9950fb7248f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie qu'un chemin est possible.  <a href="#a548c013433afab60c17fd9950fb7248f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a548c013433afab60c17fd9950fb7248f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0311428b7054a1ab271d3a433316704"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ad0311428b7054a1ab271d3a433316704">pathFind</a> (<a class="el" href="structvector.html">vector</a>, <a class="el" href="structvector.html">vector</a>)</td></tr>
+<tr class="memdesc:ad0311428b7054a1ab271d3a433316704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trouve une chemin vers la destination.  <a href="#ad0311428b7054a1ab271d3a433316704">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad0311428b7054a1ab271d3a433316704"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1f321a2f17fa8ba0f5ab4e2621fd6d6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1f321a2f17fa8ba0f5ab4e2621fd6d6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ab1f321a2f17fa8ba0f5ab4e2621fd6d6">startGame</a> ()</td></tr>
+<tr class="memdesc:ab1f321a2f17fa8ba0f5ab4e2621fd6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Débute la partie. <br /></td></tr>
+<tr class="separator:ab1f321a2f17fa8ba0f5ab4e2621fd6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac98554d7cf4b7b0000029fac97218be4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ac98554d7cf4b7b0000029fac97218be4">lineOfSight</a> (<a class="el" href="structvector.html">vector</a>, <a class="el" href="structvector.html">vector</a>)</td></tr>
+<tr class="memdesc:ac98554d7cf4b7b0000029fac97218be4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ligne de vue de l'archer.  <a href="#ac98554d7cf4b7b0000029fac97218be4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac98554d7cf4b7b0000029fac97218be4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5987e3369c71f1edb157786e4c75875b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structunit.html">unit</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a5987e3369c71f1edb157786e4c75875b">grid</a> [<a class="el" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>]</td></tr>
+<tr class="memdesc:a5987e3369c71f1edb157786e4c75875b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représentation d'une grille d'unité globale.  <a href="#a5987e3369c71f1edb157786e4c75875b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5987e3369c71f1edb157786e4c75875b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaa2c64a9fd09c382394b57006c470ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#afaa2c64a9fd09c382394b57006c470ce">noPlayer</a></td></tr>
+<tr class="memdesc:afaa2c64a9fd09c382394b57006c470ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Représentation du joueur.  <a href="#afaa2c64a9fd09c382394b57006c470ce">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afaa2c64a9fd09c382394b57006c470ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>En-tête moteur de jeu. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Cousin Brandon Chaudemanche Ewen Biardeau Tristan </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>v1.00 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18/12/2015 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="engine_8h_source.html">engine.h</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ae40e16d551936cea056a982196273bde"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void attackable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>colorDisp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fait la liste des unités pouvant attaquer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">colorDisp</td><td>Couleur d'affichage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00164">164</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a43ae9a7f0ac55585ed6375c580abcaf0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gameInit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise le jeu. </p>
+<p>Initialise le jeu. </p>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00750">750</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3ee2a4066924757ade5530e7041a2ad1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool isSurrounded </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>currentUnit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si une unité est entourée. </p>
+<p>Vérifie si une unité est entourée.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">currentUnit</td><td>Unité courante </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si unité entourée </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00215">215</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a42359e6294ac21935ecc2d77140da492"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void launchAttack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordSource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordTarget</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lance une attaque. </p>
+<p>Lance une attaque.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordSource</td><td>Nom de l'unité source </td></tr>
+    <tr><td class="paramname">coordTarget</td><td>Coordonnées de la cible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00336">336</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac98554d7cf4b7b0000029fac97218be4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lineOfSight </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordSource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordTarget</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ligne de vue de l'archer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordSource</td><td>Coordonnées de l'unité attaquante </td></tr>
+    <tr><td class="paramname">coordTarget</td><td>Coordonnées de la cible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00117">117</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8aca0579aac39cc7e3c41342d89fe1b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void movable </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>colorDisp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fait la liste des unités déplaçables. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">colorDisp</td><td>Couleur d'affichage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00141">141</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad0311428b7054a1ab271d3a433316704"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pathFind </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordUnit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordTarget</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Trouve une chemin vers la destination. </p>
+<p>Trouve une chemin vers la destination.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordUnit</td><td>Coordonnées de l'unité </td></tr>
+    <tr><td class="paramname">coordTarget</td><td>Coordonnées de la cible </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si chemin trouvé </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00060">60</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a548c013433afab60c17fd9950fb7248f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool possiblePath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordUnit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie qu'un chemin est possible. </p>
+<p>Vérifie qu'un chemin est possible.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordUnit</td><td>Coordonnées de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne Vrai si chemin possible vers une quelconque position </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00031">31</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acd459b9ed1aaf8c05cdd3887e86b8668"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool selectUnit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a> *&#160;</td>
+          <td class="paramname"><em>coordUnit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sélectionne une unité </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordUnit</td><td>Coordoonnées de l'unité </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Retourne vrai si unité bien sélectionnée </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00416">416</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7de2811c781a1136844609cc95e26464"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setTarget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a>&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordUnit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>colorDisp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définis les cibles. </p>
+<p>Définis les cibles.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Nom du pion </td></tr>
+    <tr><td class="paramname">coordUnit</td><td>Coordonnées de l'unité </td></tr>
+    <tr><td class="paramname">colorDisp</td><td>Couleur d'affichage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00252">252</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a309311c2d6a59c5998007d0e5f215d4d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tileWalkable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structvector.html">vector</a>&#160;</td>
+          <td class="paramname"><em>coordUnit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>colorDisp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fait la liste des cases atteignables par l'unité </p>
+<p>Fait la liste des cases atteignables par l'unité</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordUnit</td><td>Coordonnées de l'unité </td></tr>
+    <tr><td class="paramname">colorDisp</td><td>Couleur d'affichage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00188">188</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="a5987e3369c71f1edb157786e4c75875b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structunit.html">unit</a> grid[<a class="el" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="engine_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Représentation d'une grille d'unité globale. </p>
+<p>Représentation d'une grille d'unité globale. </p>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00023">23</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afaa2c64a9fd09c382394b57006c470ce"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int noPlayer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Représentation du joueur. </p>
+<p>Représentation du joueur. </p>
+
+<p>Définition à la ligne <a class="el" href="engine_8c_source.html#l00024">24</a> du fichier <a class="el" href="engine_8c_source.html">engine.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

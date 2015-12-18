@@ -1,0 +1,472 @@
+\hypertarget{engine_8h}{}\section{Référence du fichier include/game/engine.h}
+\label{engine_8h}\index{include/game/engine.\+h@{include/game/engine.\+h}}
+
+
+En-\/tête moteur de jeu.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+Graphe des dépendances par inclusion de engine.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{engine_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{engine_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtargetStat}{target\+Stat}
+\begin{DoxyCompactList}\small\item\em Représente les informations liées aux cibles. \end{DoxyCompactList}\item 
+struct \hyperlink{structunitStat}{unit\+Stat}
+\begin{DoxyCompactList}\small\item\em Représente les statistiques d\textquotesingle{}une unité \end{DoxyCompactList}\item 
+struct \hyperlink{structvector}{vector}
+\begin{DoxyCompactList}\small\item\em Représente les coordonnées d\textquotesingle{}un vecteur. \end{DoxyCompactList}\item 
+struct \hyperlink{structunit}{unit}
+\begin{DoxyCompactList}\small\item\em Représente une unité \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{engine_8h_a0240ac851181b84ac374872dc5434ee4}{}\#define \hyperlink{engine_8h_a0240ac851181b84ac374872dc5434ee4}{N}~11\label{engine_8h_a0240ac851181b84ac374872dc5434ee4}
+
+\begin{DoxyCompactList}\small\item\em Taille de la grille. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_afb66c371fb21dd91933e5f45ff4ce817}{}\#define \hyperlink{engine_8h_afb66c371fb21dd91933e5f45ff4ce817}{N\+B\+\_\+\+L\+I\+S\+T\+S\+\_\+\+E\+N\+G\+I\+N\+E}~2\label{engine_8h_afb66c371fb21dd91933e5f45ff4ce817}
+
+\begin{DoxyCompactList}\small\item\em Nombre de liste additionnelles nécessaires pour le jeu. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a063165e36f1905a19e98c412ee181878}{}\#define \hyperlink{engine_8h_a063165e36f1905a19e98c412ee181878}{N\+B\+\_\+\+P\+L\+A\+Y\+E\+R\+S}~2\label{engine_8h_a063165e36f1905a19e98c412ee181878}
+
+\begin{DoxyCompactList}\small\item\em Nombre de joueurs. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_ac4bf44d5b138de69050557acc46b4700}{}\#define \hyperlink{engine_8h_ac4bf44d5b138de69050557acc46b4700}{N\+B\+\_\+\+L\+I\+N\+E\+S}~3\label{engine_8h_ac4bf44d5b138de69050557acc46b4700}
+
+\begin{DoxyCompactList}\small\item\em Limite du camp du joueur. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a5165d4965ab32e87f1dd3181a41f0a7a}{}\#define \hyperlink{engine_8h_a5165d4965ab32e87f1dd3181a41f0a7a}{N\+B\+\_\+\+U\+N\+I\+T\+S}~21\label{engine_8h_a5165d4965ab32e87f1dd3181a41f0a7a}
+
+\begin{DoxyCompactList}\small\item\em Nombre d\textquotesingle{}unités dans le jeu. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a21db47461d910a7cad180b5532f1a7f8}{}\#define \hyperlink{engine_8h_a21db47461d910a7cad180b5532f1a7f8}{N\+B\+\_\+\+M\+A\+X\+\_\+\+E\+F\+F\+E\+C\+T}~6\label{engine_8h_a21db47461d910a7cad180b5532f1a7f8}
+
+\begin{DoxyCompactList}\small\item\em Nombre total de status différent. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a26f6ab8604048e4b80c8bc535ff4bad9}{}\#define \hyperlink{engine_8h_a26f6ab8604048e4b80c8bc535ff4bad9}{M\+A\+N\+D\+A\+T\+O\+R\+Y\+\_\+\+S\+T\+A\+T\+S}~12\label{engine_8h_a26f6ab8604048e4b80c8bc535ff4bad9}
+
+\begin{DoxyCompactList}\small\item\em Nombre de stats obligatoire. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a89f0201fca94cbc3ca0f5fbce851e7c9}{}\#define \hyperlink{engine_8h_a89f0201fca94cbc3ca0f5fbce851e7c9}{F\+I\+R\+S\+T\+\_\+\+P\+L\+A\+Y\+E\+R}~0\label{engine_8h_a89f0201fca94cbc3ca0f5fbce851e7c9}
+
+\begin{DoxyCompactList}\small\item\em Définis la valeur du premier joueur. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a2aaa949daff5a729be2acff95b7d0fed}{}\#define \hyperlink{engine_8h_a2aaa949daff5a729be2acff95b7d0fed}{N\+B\+\_\+\+M\+A\+X\+\_\+\+K\+N}~3\label{engine_8h_a2aaa949daff5a729be2acff95b7d0fed}
+
+\begin{DoxyCompactList}\small\item\em Nombre max de Guerrier par joueur. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_add7fd7b19c17c1ac0918a95089e2c7f9}{}\#define \hyperlink{engine_8h_add7fd7b19c17c1ac0918a95089e2c7f9}{N\+B\+\_\+\+M\+A\+X\+\_\+\+S\+C}~2\label{engine_8h_add7fd7b19c17c1ac0918a95089e2c7f9}
+
+\begin{DoxyCompactList}\small\item\em Nombre max de Recrue par joueur. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a3e866793438e4da9a36962a808d664d7}{}\#define \hyperlink{engine_8h_a3e866793438e4da9a36962a808d664d7}{N\+B\+\_\+\+M\+A\+X\+\_\+\+S\+G}~2\label{engine_8h_a3e866793438e4da9a36962a808d664d7}
+
+\begin{DoxyCompactList}\small\item\em Nombre max de Golem de pierre par joueur. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a0838a4817c4beea8be5cab65cad54122}{}\#define \hyperlink{engine_8h_a0838a4817c4beea8be5cab65cad54122}{N\+B\+\_\+\+M\+A\+X\+\_\+\+L\+T}~1\label{engine_8h_a0838a4817c4beea8be5cab65cad54122}
+
+\begin{DoxyCompactList}\small\item\em Nombre max de Lightning totem par joueur. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_aacfee0d79acf9b6378182a8aa2ee0226}{}\#define \hyperlink{engine_8h_aacfee0d79acf9b6378182a8aa2ee0226}{N\+B\+\_\+\+M\+A\+X\+\_\+\+D\+R}~2\label{engine_8h_aacfee0d79acf9b6378182a8aa2ee0226}
+
+\begin{DoxyCompactList}\small\item\em Nombre max de Dragon par joueur. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a4d20c3d53297ab3184e441f7a85df250}{}\#define \hyperlink{engine_8h_a4d20c3d53297ab3184e441f7a85df250}{N\+B\+\_\+\+M\+A\+X\+\_\+\+F\+U}~2\label{engine_8h_a4d20c3d53297ab3184e441f7a85df250}
+
+\begin{DoxyCompactList}\small\item\em Nombre max de Furgon par joueur. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_aef5bbc6c16b0afbb41c6f723b099e599}{}\#define \hyperlink{engine_8h_aef5bbc6c16b0afbb41c6f723b099e599}{N\+B\+\_\+\+M\+A\+X\+\_\+\+U\+N\+I\+T}~5\label{engine_8h_aef5bbc6c16b0afbb41c6f723b099e599}
+
+\begin{DoxyCompactList}\small\item\em Nombre max d\textquotesingle{}unité par joueur. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_a207089a6eadde7204cda31d055e4d3a1}{}\#define \hyperlink{engine_8h_a207089a6eadde7204cda31d055e4d3a1}{N\+B\+\_\+\+M\+A\+X\+\_\+\+D\+E\+C\+O\+R}~7\label{engine_8h_a207089a6eadde7204cda31d055e4d3a1}
+
+\begin{DoxyCompactList}\small\item\em Nombre max de décor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{engine_8h_a468af3d7606639780e81c5e1e403b356}{}enum \hyperlink{engine_8h_a468af3d7606639780e81c5e1e403b356}{cardinal} \{ {\bfseries north}, 
+{\bfseries east}, 
+{\bfseries south}, 
+{\bfseries west}
+ \}\label{engine_8h_a468af3d7606639780e81c5e1e403b356}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{engine_8h}{engine.\+h} \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{}enum \hyperlink{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{unit\+Name} \{ \\*
+{\bfseries empty}, 
+{\bfseries decors}, 
+{\bfseries knight}, 
+{\bfseries scout}, 
+\\*
+{\bfseries assassin}, 
+{\bfseries cleric}, 
+{\bfseries pyromancer}, 
+{\bfseries enchantress}, 
+\\*
+{\bfseries dragonborn}, 
+{\bfseries dark\+Witch}, 
+{\bfseries lightning\+Totem}, 
+{\bfseries barrier\+Totem}, 
+\\*
+{\bfseries mud\+Golem}, 
+{\bfseries golem\+Ambusher}, 
+{\bfseries frost\+Golem}, 
+{\bfseries stone\+Golem}, 
+\\*
+{\bfseries dragon\+Tyrant}, 
+{\bfseries berserker}, 
+{\bfseries beast\+Rider}, 
+{\bfseries poison\+Wisp}, 
+\\*
+{\bfseries furgon}
+ \}\label{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{engine_8h}{engine.\+h} \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_ac5ece9b6993cd3565502866b56317e84}{}enum \hyperlink{engine_8h_ac5ece9b6993cd3565502866b56317e84}{unit\+Effect} \{ \\*
+{\bfseries none}, 
+{\bfseries P\+O\+W\+E\+R\+\_\+\+B\+O\+N\+U\+S}, 
+{\bfseries A\+R\+M\+O\+R\+\_\+\+B\+O\+N\+U\+S}, 
+{\bfseries B\+A\+R\+R\+I\+E\+R}, 
+\\*
+{\bfseries P\+O\+I\+S\+O\+N}, 
+{\bfseries P\+A\+R\+A\+L\+Y\+S\+E}, 
+{\bfseries F\+O\+C\+U\+S}
+ \}\label{engine_8h_ac5ece9b6993cd3565502866b56317e84}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{engine_8h}{engine.\+h} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{engine_8h_a3ee2a4066924757ade5530e7041a2ad1}{is\+Surrounded} (\hyperlink{structvector}{vector} current\+Unit)
+\begin{DoxyCompactList}\small\item\em Vérifie si une unité est entourée. \end{DoxyCompactList}\item 
+void \hyperlink{engine_8h_a43ae9a7f0ac55585ed6375c580abcaf0}{game\+Init} ()
+\begin{DoxyCompactList}\small\item\em Initialise le jeu. \end{DoxyCompactList}\item 
+bool \hyperlink{engine_8h_acd459b9ed1aaf8c05cdd3887e86b8668}{select\+Unit} (\hyperlink{structvector}{vector} $\ast$coord\+Unit)
+\begin{DoxyCompactList}\small\item\em Sélectionne une unité \end{DoxyCompactList}\item 
+void \hyperlink{engine_8h_a7de2811c781a1136844609cc95e26464}{set\+Target} (\hyperlink{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{unit\+Name} name, \hyperlink{structvector}{vector} coord\+Unit, int color\+Disp)
+\begin{DoxyCompactList}\small\item\em Définis les cibles. \end{DoxyCompactList}\item 
+void \hyperlink{engine_8h_a42359e6294ac21935ecc2d77140da492}{launch\+Attack} (\hyperlink{structvector}{vector} coord\+Source, \hyperlink{structvector}{vector} coord\+Target)
+\begin{DoxyCompactList}\small\item\em Lance une attaque. \end{DoxyCompactList}\item 
+void \hyperlink{engine_8h_a8aca0579aac39cc7e3c41342d89fe1b7}{movable} (int color\+Disp)
+\begin{DoxyCompactList}\small\item\em Fait la liste des unités déplaçables. \end{DoxyCompactList}\item 
+void \hyperlink{engine_8h_ae40e16d551936cea056a982196273bde}{attackable} (int color\+Disp)
+\begin{DoxyCompactList}\small\item\em Fait la liste des unités pouvant attaquer. \end{DoxyCompactList}\item 
+void \hyperlink{engine_8h_a309311c2d6a59c5998007d0e5f215d4d}{tile\+Walkable} (\hyperlink{structvector}{vector} coord\+Unit, int color\+Disp)
+\begin{DoxyCompactList}\small\item\em Fait la liste des cases atteignables par l\textquotesingle{}unité \end{DoxyCompactList}\item 
+bool \hyperlink{engine_8h_a548c013433afab60c17fd9950fb7248f}{possible\+Path} (\hyperlink{structvector}{vector} coord\+Unit)
+\begin{DoxyCompactList}\small\item\em Vérifie qu\textquotesingle{}un chemin est possible. \end{DoxyCompactList}\item 
+bool \hyperlink{engine_8h_ad0311428b7054a1ab271d3a433316704}{path\+Find} (\hyperlink{structvector}{vector}, \hyperlink{structvector}{vector})
+\begin{DoxyCompactList}\small\item\em Trouve une chemin vers la destination. \end{DoxyCompactList}\item 
+\hypertarget{engine_8h_ab1f321a2f17fa8ba0f5ab4e2621fd6d6}{}void \hyperlink{engine_8h_ab1f321a2f17fa8ba0f5ab4e2621fd6d6}{start\+Game} ()\label{engine_8h_ab1f321a2f17fa8ba0f5ab4e2621fd6d6}
+
+\begin{DoxyCompactList}\small\item\em Débute la partie. \end{DoxyCompactList}\item 
+void \hyperlink{engine_8h_ac98554d7cf4b7b0000029fac97218be4}{line\+Of\+Sight} (\hyperlink{structvector}{vector}, \hyperlink{structvector}{vector})
+\begin{DoxyCompactList}\small\item\em Ligne de vue de l\textquotesingle{}archer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structunit}{unit} \hyperlink{engine_8h_a5987e3369c71f1edb157786e4c75875b}{grid} \mbox{[}\hyperlink{engine_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{engine_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Représentation d\textquotesingle{}une grille d\textquotesingle{}unité globale. \end{DoxyCompactList}\item 
+int \hyperlink{engine_8h_afaa2c64a9fd09c382394b57006c470ce}{no\+Player}
+\begin{DoxyCompactList}\small\item\em Représentation du joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+En-\/tête moteur de jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{engine_8h_ae40e16d551936cea056a982196273bde}{}\index{engine.\+h@{engine.\+h}!attackable@{attackable}}
+\index{attackable@{attackable}!engine.\+h@{engine.\+h}}
+\subsubsection[{attackable}]{\setlength{\rightskip}{0pt plus 5cm}void attackable (
+\begin{DoxyParamCaption}
+\item[{int}]{color\+Disp}
+\end{DoxyParamCaption}
+)}\label{engine_8h_ae40e16d551936cea056a982196273bde}
+
+
+Fait la liste des unités pouvant attaquer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em color\+Disp} & Couleur d\textquotesingle{}affichage \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 164 du fichier engine.\+c.
+
+\hypertarget{engine_8h_a43ae9a7f0ac55585ed6375c580abcaf0}{}\index{engine.\+h@{engine.\+h}!game\+Init@{game\+Init}}
+\index{game\+Init@{game\+Init}!engine.\+h@{engine.\+h}}
+\subsubsection[{game\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void game\+Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{engine_8h_a43ae9a7f0ac55585ed6375c580abcaf0}
+
+
+Initialise le jeu. 
+
+Initialise le jeu. 
+
+Définition à la ligne 750 du fichier engine.\+c.
+
+\hypertarget{engine_8h_a3ee2a4066924757ade5530e7041a2ad1}{}\index{engine.\+h@{engine.\+h}!is\+Surrounded@{is\+Surrounded}}
+\index{is\+Surrounded@{is\+Surrounded}!engine.\+h@{engine.\+h}}
+\subsubsection[{is\+Surrounded}]{\setlength{\rightskip}{0pt plus 5cm}bool is\+Surrounded (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{current\+Unit}
+\end{DoxyParamCaption}
+)}\label{engine_8h_a3ee2a4066924757ade5530e7041a2ad1}
+
+
+Vérifie si une unité est entourée. 
+
+Vérifie si une unité est entourée.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em current\+Unit} & Unité courante \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si unité entourée 
+\end{DoxyReturn}
+
+
+Définition à la ligne 215 du fichier engine.\+c.
+
+\hypertarget{engine_8h_a42359e6294ac21935ecc2d77140da492}{}\index{engine.\+h@{engine.\+h}!launch\+Attack@{launch\+Attack}}
+\index{launch\+Attack@{launch\+Attack}!engine.\+h@{engine.\+h}}
+\subsubsection[{launch\+Attack}]{\setlength{\rightskip}{0pt plus 5cm}void launch\+Attack (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{coord\+Source, }
+\item[{{\bf vector}}]{coord\+Target}
+\end{DoxyParamCaption}
+)}\label{engine_8h_a42359e6294ac21935ecc2d77140da492}
+
+
+Lance une attaque. 
+
+Lance une attaque.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+Source} & Nom de l\textquotesingle{}unité source \\
+\hline
+{\em coord\+Target} & Coordonnées de la cible \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 336 du fichier engine.\+c.
+
+\hypertarget{engine_8h_ac98554d7cf4b7b0000029fac97218be4}{}\index{engine.\+h@{engine.\+h}!line\+Of\+Sight@{line\+Of\+Sight}}
+\index{line\+Of\+Sight@{line\+Of\+Sight}!engine.\+h@{engine.\+h}}
+\subsubsection[{line\+Of\+Sight}]{\setlength{\rightskip}{0pt plus 5cm}void line\+Of\+Sight (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{coord\+Source, }
+\item[{{\bf vector}}]{coord\+Target}
+\end{DoxyParamCaption}
+)}\label{engine_8h_ac98554d7cf4b7b0000029fac97218be4}
+
+
+Ligne de vue de l\textquotesingle{}archer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+Source} & Coordonnées de l\textquotesingle{}unité attaquante \\
+\hline
+{\em coord\+Target} & Coordonnées de la cible \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 117 du fichier engine.\+c.
+
+\hypertarget{engine_8h_a8aca0579aac39cc7e3c41342d89fe1b7}{}\index{engine.\+h@{engine.\+h}!movable@{movable}}
+\index{movable@{movable}!engine.\+h@{engine.\+h}}
+\subsubsection[{movable}]{\setlength{\rightskip}{0pt plus 5cm}void movable (
+\begin{DoxyParamCaption}
+\item[{int}]{color\+Disp}
+\end{DoxyParamCaption}
+)}\label{engine_8h_a8aca0579aac39cc7e3c41342d89fe1b7}
+
+
+Fait la liste des unités déplaçables. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em color\+Disp} & Couleur d\textquotesingle{}affichage \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 141 du fichier engine.\+c.
+
+\hypertarget{engine_8h_ad0311428b7054a1ab271d3a433316704}{}\index{engine.\+h@{engine.\+h}!path\+Find@{path\+Find}}
+\index{path\+Find@{path\+Find}!engine.\+h@{engine.\+h}}
+\subsubsection[{path\+Find}]{\setlength{\rightskip}{0pt plus 5cm}bool path\+Find (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{coord\+Unit, }
+\item[{{\bf vector}}]{coord\+Target}
+\end{DoxyParamCaption}
+)}\label{engine_8h_ad0311428b7054a1ab271d3a433316704}
+
+
+Trouve une chemin vers la destination. 
+
+Trouve une chemin vers la destination.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+Unit} & Coordonnées de l\textquotesingle{}unité \\
+\hline
+{\em coord\+Target} & Coordonnées de la cible \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si chemin trouvé 
+\end{DoxyReturn}
+
+
+Définition à la ligne 60 du fichier engine.\+c.
+
+\hypertarget{engine_8h_a548c013433afab60c17fd9950fb7248f}{}\index{engine.\+h@{engine.\+h}!possible\+Path@{possible\+Path}}
+\index{possible\+Path@{possible\+Path}!engine.\+h@{engine.\+h}}
+\subsubsection[{possible\+Path}]{\setlength{\rightskip}{0pt plus 5cm}bool possible\+Path (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{coord\+Unit}
+\end{DoxyParamCaption}
+)}\label{engine_8h_a548c013433afab60c17fd9950fb7248f}
+
+
+Vérifie qu\textquotesingle{}un chemin est possible. 
+
+Vérifie qu\textquotesingle{}un chemin est possible.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+Unit} & Coordonnées de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne Vrai si chemin possible vers une quelconque position 
+\end{DoxyReturn}
+
+
+Définition à la ligne 31 du fichier engine.\+c.
+
+\hypertarget{engine_8h_acd459b9ed1aaf8c05cdd3887e86b8668}{}\index{engine.\+h@{engine.\+h}!select\+Unit@{select\+Unit}}
+\index{select\+Unit@{select\+Unit}!engine.\+h@{engine.\+h}}
+\subsubsection[{select\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}bool select\+Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf vector} $\ast$}]{coord\+Unit}
+\end{DoxyParamCaption}
+)}\label{engine_8h_acd459b9ed1aaf8c05cdd3887e86b8668}
+
+
+Sélectionne une unité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+Unit} & Coordoonnées de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si unité bien sélectionnée 
+\end{DoxyReturn}
+
+
+Définition à la ligne 416 du fichier engine.\+c.
+
+\hypertarget{engine_8h_a7de2811c781a1136844609cc95e26464}{}\index{engine.\+h@{engine.\+h}!set\+Target@{set\+Target}}
+\index{set\+Target@{set\+Target}!engine.\+h@{engine.\+h}}
+\subsubsection[{set\+Target}]{\setlength{\rightskip}{0pt plus 5cm}void set\+Target (
+\begin{DoxyParamCaption}
+\item[{{\bf unit\+Name}}]{name, }
+\item[{{\bf vector}}]{coord\+Unit, }
+\item[{int}]{color\+Disp}
+\end{DoxyParamCaption}
+)}\label{engine_8h_a7de2811c781a1136844609cc95e26464}
+
+
+Définis les cibles. 
+
+Définis les cibles.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em name} & Nom du pion \\
+\hline
+{\em coord\+Unit} & Coordonnées de l\textquotesingle{}unité \\
+\hline
+{\em color\+Disp} & Couleur d\textquotesingle{}affichage \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 252 du fichier engine.\+c.
+
+\hypertarget{engine_8h_a309311c2d6a59c5998007d0e5f215d4d}{}\index{engine.\+h@{engine.\+h}!tile\+Walkable@{tile\+Walkable}}
+\index{tile\+Walkable@{tile\+Walkable}!engine.\+h@{engine.\+h}}
+\subsubsection[{tile\+Walkable}]{\setlength{\rightskip}{0pt plus 5cm}void tile\+Walkable (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{coord\+Unit, }
+\item[{int}]{color\+Disp}
+\end{DoxyParamCaption}
+)}\label{engine_8h_a309311c2d6a59c5998007d0e5f215d4d}
+
+
+Fait la liste des cases atteignables par l\textquotesingle{}unité 
+
+Fait la liste des cases atteignables par l\textquotesingle{}unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+Unit} & Coordonnées de l\textquotesingle{}unité \\
+\hline
+{\em color\+Disp} & Couleur d\textquotesingle{}affichage \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 188 du fichier engine.\+c.
+
+
+
+\subsection{Documentation des variables}
+\hypertarget{engine_8h_a5987e3369c71f1edb157786e4c75875b}{}\index{engine.\+h@{engine.\+h}!grid@{grid}}
+\index{grid@{grid}!engine.\+h@{engine.\+h}}
+\subsubsection[{grid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf unit} grid\mbox{[}{\bf N}\mbox{]}\mbox{[}{\bf N}\mbox{]}}\label{engine_8h_a5987e3369c71f1edb157786e4c75875b}
+
+
+Représentation d\textquotesingle{}une grille d\textquotesingle{}unité globale. 
+
+Représentation d\textquotesingle{}une grille d\textquotesingle{}unité globale. 
+
+Définition à la ligne 23 du fichier engine.\+c.
+
+\hypertarget{engine_8h_afaa2c64a9fd09c382394b57006c470ce}{}\index{engine.\+h@{engine.\+h}!no\+Player@{no\+Player}}
+\index{no\+Player@{no\+Player}!engine.\+h@{engine.\+h}}
+\subsubsection[{no\+Player}]{\setlength{\rightskip}{0pt plus 5cm}int no\+Player}\label{engine_8h_afaa2c64a9fd09c382394b57006c470ce}
+
+
+Représentation du joueur. 
+
+Représentation du joueur. 
+
+Définition à la ligne 24 du fichier engine.\+c.
+

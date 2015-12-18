@@ -1,0 +1,142 @@
+\hypertarget{manageSignal_8c}{}\section{Référence du fichier src/controller/manage\+Signal.c}
+\label{manageSignal_8c}\index{src/controller/manage\+Signal.\+c@{src/controller/manage\+Signal.\+c}}
+
+
+Gestion des signaux.  
+
+
+{\ttfamily \#include \char`\"{}../../include/game/engine.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/pawns.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/save\+N\+Load.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/terminal.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/listes.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/path\+List.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+Graphe des dépendances par inclusion de manage\+Signal.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{manageSignal_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{manageSignal_8c_a91d6dcb4b4e4637a63aacf87b53132d0}{free\+All} ()
+\begin{DoxyCompactList}\small\item\em Libère tout ce qui reste encore en mémoire. \end{DoxyCompactList}\item 
+void \hyperlink{manageSignal_8c_a3e5752446c050a50659851e5f43fbc28}{interrupt} (int signal)
+\begin{DoxyCompactList}\small\item\em A l\textquotesingle{}interruption du programme libère la mémoire et sauvegarde du jeu. \end{DoxyCompactList}\item 
+void \hyperlink{manageSignal_8c_a04a93a7ee658050301abb6c4678c8923}{time\+Down} (int signal)
+\begin{DoxyCompactList}\small\item\em Petit message sympa lors du temps écoulé \end{DoxyCompactList}\item 
+void \hyperlink{manageSignal_8c_ab3fc6b27b6df879a96d8534e924139c4}{terminator} (int signal)
+\begin{DoxyCompactList}\small\item\em Libération de la mémoire lors de la fin du programme. \end{DoxyCompactList}\item 
+void \hyperlink{manageSignal_8c_a977fba31c29f9467d31b3efb9e0f8706}{check\+Signal} ()
+\begin{DoxyCompactList}\small\item\em Vérifie le type de signal envoyé au terminal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gestion des signaux. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{manageSignal_8c_a977fba31c29f9467d31b3efb9e0f8706}{}\index{manage\+Signal.\+c@{manage\+Signal.\+c}!check\+Signal@{check\+Signal}}
+\index{check\+Signal@{check\+Signal}!manage\+Signal.\+c@{manage\+Signal.\+c}}
+\subsubsection[{check\+Signal}]{\setlength{\rightskip}{0pt plus 5cm}void check\+Signal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{manageSignal_8c_a977fba31c29f9467d31b3efb9e0f8706}
+
+
+Vérifie le type de signal envoyé au terminal. 
+
+Vérifie les signaux du programme. 
+
+Définition à la ligne 77 du fichier manage\+Signal.\+c.
+
+\hypertarget{manageSignal_8c_a91d6dcb4b4e4637a63aacf87b53132d0}{}\index{manage\+Signal.\+c@{manage\+Signal.\+c}!free\+All@{free\+All}}
+\index{free\+All@{free\+All}!manage\+Signal.\+c@{manage\+Signal.\+c}}
+\subsubsection[{free\+All}]{\setlength{\rightskip}{0pt plus 5cm}void free\+All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{manageSignal_8c_a91d6dcb4b4e4637a63aacf87b53132d0}
+
+
+Libère tout ce qui reste encore en mémoire. 
+
+Libère toute la mémoire. 
+
+Définition à la ligne 21 du fichier manage\+Signal.\+c.
+
+\hypertarget{manageSignal_8c_a3e5752446c050a50659851e5f43fbc28}{}\index{manage\+Signal.\+c@{manage\+Signal.\+c}!interrupt@{interrupt}}
+\index{interrupt@{interrupt}!manage\+Signal.\+c@{manage\+Signal.\+c}}
+\subsubsection[{interrupt}]{\setlength{\rightskip}{0pt plus 5cm}void interrupt (
+\begin{DoxyParamCaption}
+\item[{int}]{signal}
+\end{DoxyParamCaption}
+)}\label{manageSignal_8c_a3e5752446c050a50659851e5f43fbc28}
+
+
+A l\textquotesingle{}interruption du programme libère la mémoire et sauvegarde du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em signal} & Signal d\textquotesingle{}interruption \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 35 du fichier manage\+Signal.\+c.
+
+\hypertarget{manageSignal_8c_ab3fc6b27b6df879a96d8534e924139c4}{}\index{manage\+Signal.\+c@{manage\+Signal.\+c}!terminator@{terminator}}
+\index{terminator@{terminator}!manage\+Signal.\+c@{manage\+Signal.\+c}}
+\subsubsection[{terminator}]{\setlength{\rightskip}{0pt plus 5cm}void terminator (
+\begin{DoxyParamCaption}
+\item[{int}]{signal}
+\end{DoxyParamCaption}
+)}\label{manageSignal_8c_ab3fc6b27b6df879a96d8534e924139c4}
+
+
+Libération de la mémoire lors de la fin du programme. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em signal} & Signal d\textquotesingle{}interruption \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 68 du fichier manage\+Signal.\+c.
+
+\hypertarget{manageSignal_8c_a04a93a7ee658050301abb6c4678c8923}{}\index{manage\+Signal.\+c@{manage\+Signal.\+c}!time\+Down@{time\+Down}}
+\index{time\+Down@{time\+Down}!manage\+Signal.\+c@{manage\+Signal.\+c}}
+\subsubsection[{time\+Down}]{\setlength{\rightskip}{0pt plus 5cm}void time\+Down (
+\begin{DoxyParamCaption}
+\item[{int}]{signal}
+\end{DoxyParamCaption}
+)}\label{manageSignal_8c_a04a93a7ee658050301abb6c4678c8923}
+
+
+Petit message sympa lors du temps écoulé 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em signal} & Signal d\textquotesingle{}interruption \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 58 du fichier manage\+Signal.\+c.
+

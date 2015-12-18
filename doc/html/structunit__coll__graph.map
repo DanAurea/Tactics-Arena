@@ -1,0 +1,4 @@
+<map id="unit" name="unit">
+<area shape="rect" id="node2" href="$structunitStat.html" title="Représente les statistiques d&#39;une unité " alt="" coords="11,95,78,121"/>
+<area shape="rect" id="node3" href="$structtargetStat.html" title="Représente les informations liées aux cibles. " alt="" coords="5,5,84,32"/>
+</map>

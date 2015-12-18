@@ -1,0 +1,304 @@
+\hypertarget{listes_8c}{}\section{Référence du fichier src/game/listes.c}
+\label{listes_8c}\index{src/game/listes.\+c@{src/game/listes.\+c}}
+
+
+Listes de vecteurs.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../../include/game/engine.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/pawns.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/manage\+String.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/game/listes.\+h\char`\"{}}\\*
+Graphe des dépendances par inclusion de listes.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{listes_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structelement}{element}
+\begin{DoxyCompactList}\small\item\em Représente un élément de la liste. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{listes_8c_a8968705d25c62eaf27310fae6cc2603f}{}typedef struct \hyperlink{structelement}{element} \hyperlink{listes_8c_a8968705d25c62eaf27310fae6cc2603f}{t\+\_\+element}\label{listes_8c_a8968705d25c62eaf27310fae6cc2603f}
+
+\begin{DoxyCompactList}\small\item\em Définis un élément. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{listes_8c_ab86fbb8d95f548c608a53b5dcf2d5f34}{}void \hyperlink{listes_8c_ab86fbb8d95f548c608a53b5dcf2d5f34}{init\+\_\+liste} (int n)\label{listes_8c_ab86fbb8d95f548c608a53b5dcf2d5f34}
+
+\begin{DoxyCompactList}\small\item\em Initialise une liste. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_aa5bc0ce3a17b5ee43e07b2d0c76c7263}{}void \hyperlink{listes_8c_aa5bc0ce3a17b5ee43e07b2d0c76c7263}{init\+Lists} ()\label{listes_8c_aa5bc0ce3a17b5ee43e07b2d0c76c7263}
+
+\begin{DoxyCompactList}\small\item\em Initialise les listes. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_a48fa583be6abd7d80af435e9f45709b6}{}int \hyperlink{listes_8c_a48fa583be6abd7d80af435e9f45709b6}{liste\+\_\+vide} (int n)\label{listes_8c_a48fa583be6abd7d80af435e9f45709b6}
+
+\begin{DoxyCompactList}\small\item\em Vérifie si une liste est vide. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_a9456d225cbb86a904beec3323699b261}{}int \hyperlink{listes_8c_a9456d225cbb86a904beec3323699b261}{hors\+\_\+liste} (int n)\label{listes_8c_a9456d225cbb86a904beec3323699b261}
+
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}élément courant est hors de la liste. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_a067168bd2c337c19e9c7614eb5a4798c}{}void \hyperlink{listes_8c_a067168bd2c337c19e9c7614eb5a4798c}{en\+\_\+tete} (int n)\label{listes_8c_a067168bd2c337c19e9c7614eb5a4798c}
+
+\begin{DoxyCompactList}\small\item\em Se met en tête de la liste. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_abf7d307c8e1f07a17bdbf85778fa9128}{}void \hyperlink{listes_8c_abf7d307c8e1f07a17bdbf85778fa9128}{en\+\_\+queue} (int n)\label{listes_8c_abf7d307c8e1f07a17bdbf85778fa9128}
+
+\begin{DoxyCompactList}\small\item\em Se met en queue de la liste. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_af5a64e19208b83f2f6cbc4324b8df29d}{}void \hyperlink{listes_8c_af5a64e19208b83f2f6cbc4324b8df29d}{precedent} (int n)\label{listes_8c_af5a64e19208b83f2f6cbc4324b8df29d}
+
+\begin{DoxyCompactList}\small\item\em Se positionne sur l\textquotesingle{}élément précédent. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_a05f2373c10eb9819f06d5f2027368e27}{}void \hyperlink{listes_8c_a05f2373c10eb9819f06d5f2027368e27}{suivant} (int n)\label{listes_8c_a05f2373c10eb9819f06d5f2027368e27}
+
+\begin{DoxyCompactList}\small\item\em Se positionne sur l\textquotesingle{}élément suivant. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_adfac0a27a623462008e67e94f079ed93}{}void \hyperlink{listes_8c_adfac0a27a623462008e67e94f079ed93}{valeur\+\_\+elt} (int n, \hyperlink{structvector}{vector} $\ast$v)\label{listes_8c_adfac0a27a623462008e67e94f079ed93}
+
+\begin{DoxyCompactList}\small\item\em Récupère la valeur de l\textquotesingle{}élément. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_aa1158905393b047349333d8b50162c8e}{}void \hyperlink{listes_8c_aa1158905393b047349333d8b50162c8e}{modif\+\_\+elt} (int n, \hyperlink{structvector}{vector} v)\label{listes_8c_aa1158905393b047349333d8b50162c8e}
+
+\begin{DoxyCompactList}\small\item\em Modifie la valeur de l\textquotesingle{}élément. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_a812d546904d03be503994c2c46d6a45c}{}void \hyperlink{listes_8c_a812d546904d03be503994c2c46d6a45c}{oter\+\_\+elt} (int n)\label{listes_8c_a812d546904d03be503994c2c46d6a45c}
+
+\begin{DoxyCompactList}\small\item\em Supprime l\textquotesingle{}élément. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_ad4f68a5a7fb8d55eeb840ac14ca38bdc}{}void \hyperlink{listes_8c_ad4f68a5a7fb8d55eeb840ac14ca38bdc}{ajout\+\_\+droit} (int n, \hyperlink{structvector}{vector} v)\label{listes_8c_ad4f68a5a7fb8d55eeb840ac14ca38bdc}
+
+\begin{DoxyCompactList}\small\item\em Ajoute à droite l\textquotesingle{}élément. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_a77c0bdc99edeb5937a3c85701afc5676}{}void \hyperlink{listes_8c_a77c0bdc99edeb5937a3c85701afc5676}{ajout\+\_\+gauche} (int n, \hyperlink{structvector}{vector} v)\label{listes_8c_a77c0bdc99edeb5937a3c85701afc5676}
+
+\begin{DoxyCompactList}\small\item\em Ajoute à gauche l\textquotesingle{}élément. \end{DoxyCompactList}\item 
+void \hyperlink{listes_8c_aa690a04ce7dc898d9b5b812905c8eedd}{dump\+List} (short nb\+List)
+\begin{DoxyCompactList}\small\item\em Vide une liste. \end{DoxyCompactList}\item 
+void \hyperlink{listes_8c_af168e9ee606d470e92ae65ac69628808}{dump\+All\+Lists} ()
+\begin{DoxyCompactList}\small\item\em Vide toutes les listes. \end{DoxyCompactList}\item 
+void \hyperlink{listes_8c_a2c34e2f98b6cefbb83c1f2879f9a4e55}{add\+Unit} (\hyperlink{structvector}{vector} coord\+Unit)
+\begin{DoxyCompactList}\small\item\em Ajoute une unité dans la liste des unités du joueur. \end{DoxyCompactList}\item 
+void \hyperlink{listes_8c_ae0388407b6344914c4167f5ae477413e}{add\+Target} (\hyperlink{engine_8h_af7667555c2dcfbdd55ec3e9dd6a907ba}{unit\+Name} name, \hyperlink{structvector}{vector} coord\+Unit)
+\begin{DoxyCompactList}\small\item\em Ajoute une cible pour une unité \end{DoxyCompactList}\item 
+void \hyperlink{listes_8c_a0f4c61706f0b5b091b3a4ee201f5e69a}{print\+List} (short num\+List)
+\begin{DoxyCompactList}\small\item\em Affiche la liste désirée. \end{DoxyCompactList}\item 
+void \hyperlink{listes_8c_af2ebc85ca89d3d03e90a50c0e2b77339}{destroy\+Unit} (\hyperlink{structvector}{vector} coord\+Unit)
+\begin{DoxyCompactList}\small\item\em Détruit une unité dans la liste. \end{DoxyCompactList}\item 
+int \hyperlink{listes_8c_a0171ca43abde0218c78caa6687eadf53}{count\+Units} ()
+\begin{DoxyCompactList}\small\item\em Compte le nombre d\textquotesingle{}unité \end{DoxyCompactList}\item 
+bool \hyperlink{listes_8c_a7a89e1a5008f1b3bb21980f812fd7c28}{search\+Target} (int num\+List, \hyperlink{structvector}{vector} coord\+Target)
+\begin{DoxyCompactList}\small\item\em Cherche une cible dans la liste. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{listes_8c_afe8255dd796caaeb5078b9798a61067a}{}\hyperlink{listes_8c_a8968705d25c62eaf27310fae6cc2603f}{t\+\_\+element} $\ast$ \hyperlink{listes_8c_afe8255dd796caaeb5078b9798a61067a}{drapeau} \mbox{[}\hyperlink{engine_8h_a5165d4965ab32e87f1dd3181a41f0a7a}{N\+B\+\_\+\+U\+N\+I\+T\+S}\mbox{]}\label{listes_8c_afe8255dd796caaeb5078b9798a61067a}
+
+\begin{DoxyCompactList}\small\item\em Tableaux de drapeau. \end{DoxyCompactList}\item 
+\hypertarget{listes_8c_ab508ecb5e0e6a7aa787a8e49754167fb}{}\hyperlink{listes_8c_a8968705d25c62eaf27310fae6cc2603f}{t\+\_\+element} $\ast$ \hyperlink{listes_8c_ab508ecb5e0e6a7aa787a8e49754167fb}{ec} \mbox{[}\hyperlink{engine_8h_a5165d4965ab32e87f1dd3181a41f0a7a}{N\+B\+\_\+\+U\+N\+I\+T\+S}\mbox{]}\label{listes_8c_ab508ecb5e0e6a7aa787a8e49754167fb}
+
+\begin{DoxyCompactList}\small\item\em Tableau d\textquotesingle{}élément courant. \end{DoxyCompactList}\item 
+int \hyperlink{listes_8c_a4523d7d0657b5558fe454f142b9411d8}{target\+List} = \hyperlink{engine_8h_a063165e36f1905a19e98c412ee181878}{N\+B\+\_\+\+P\+L\+A\+Y\+E\+R\+S} + 1
+\begin{DoxyCompactList}\small\item\em Numéro de la liste des cibles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Listes de vecteurs. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{listes_8c_ae0388407b6344914c4167f5ae477413e}{}\index{listes.\+c@{listes.\+c}!add\+Target@{add\+Target}}
+\index{add\+Target@{add\+Target}!listes.\+c@{listes.\+c}}
+\subsubsection[{add\+Target}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Target (
+\begin{DoxyParamCaption}
+\item[{{\bf unit\+Name}}]{name, }
+\item[{{\bf vector}}]{coord\+Unit}
+\end{DoxyParamCaption}
+)}\label{listes_8c_ae0388407b6344914c4167f5ae477413e}
+
+
+Ajoute une cible pour une unité 
+
+Ajoute une cible.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em name} & Nom de l\textquotesingle{}unité \\
+\hline
+{\em coord\+Unit} & Coordonnées de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 211 du fichier listes.\+c.
+
+\hypertarget{listes_8c_a2c34e2f98b6cefbb83c1f2879f9a4e55}{}\index{listes.\+c@{listes.\+c}!add\+Unit@{add\+Unit}}
+\index{add\+Unit@{add\+Unit}!listes.\+c@{listes.\+c}}
+\subsubsection[{add\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}void add\+Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{coord\+Unit}
+\end{DoxyParamCaption}
+)}\label{listes_8c_a2c34e2f98b6cefbb83c1f2879f9a4e55}
+
+
+Ajoute une unité dans la liste des unités du joueur. 
+
+Ajoute une unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+Unit} & Coordonnées de l\textquotesingle{}unité \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 179 du fichier listes.\+c.
+
+\hypertarget{listes_8c_a0171ca43abde0218c78caa6687eadf53}{}\index{listes.\+c@{listes.\+c}!count\+Units@{count\+Units}}
+\index{count\+Units@{count\+Units}!listes.\+c@{listes.\+c}}
+\subsubsection[{count\+Units}]{\setlength{\rightskip}{0pt plus 5cm}int count\+Units (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{listes_8c_a0171ca43abde0218c78caa6687eadf53}
+
+
+Compte le nombre d\textquotesingle{}unité 
+
+Compte le nombre d\textquotesingle{}unités.
+
+\begin{DoxyReturn}{Renvoie}
+Retourne le nombre d\textquotesingle{}unité 
+\end{DoxyReturn}
+
+
+Définition à la ligne 280 du fichier listes.\+c.
+
+\hypertarget{listes_8c_af2ebc85ca89d3d03e90a50c0e2b77339}{}\index{listes.\+c@{listes.\+c}!destroy\+Unit@{destroy\+Unit}}
+\index{destroy\+Unit@{destroy\+Unit}!listes.\+c@{listes.\+c}}
+\subsubsection[{destroy\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}void destroy\+Unit (
+\begin{DoxyParamCaption}
+\item[{{\bf vector}}]{coord\+Unit}
+\end{DoxyParamCaption}
+)}\label{listes_8c_af2ebc85ca89d3d03e90a50c0e2b77339}
+
+
+Détruit une unité dans la liste. 
+
+Détruit une unité
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coord\+Unit} & Coordonnées de l\textquotesingle{}unité à détruire \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 260 du fichier listes.\+c.
+
+\hypertarget{listes_8c_af168e9ee606d470e92ae65ac69628808}{}\index{listes.\+c@{listes.\+c}!dump\+All\+Lists@{dump\+All\+Lists}}
+\index{dump\+All\+Lists@{dump\+All\+Lists}!listes.\+c@{listes.\+c}}
+\subsubsection[{dump\+All\+Lists}]{\setlength{\rightskip}{0pt plus 5cm}void dump\+All\+Lists (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{listes_8c_af168e9ee606d470e92ae65ac69628808}
+
+
+Vide toutes les listes. 
+
+Vide les listes. 
+
+Définition à la ligne 167 du fichier listes.\+c.
+
+\hypertarget{listes_8c_aa690a04ce7dc898d9b5b812905c8eedd}{}\index{listes.\+c@{listes.\+c}!dump\+List@{dump\+List}}
+\index{dump\+List@{dump\+List}!listes.\+c@{listes.\+c}}
+\subsubsection[{dump\+List}]{\setlength{\rightskip}{0pt plus 5cm}void dump\+List (
+\begin{DoxyParamCaption}
+\item[{short}]{nb\+List}
+\end{DoxyParamCaption}
+)}\label{listes_8c_aa690a04ce7dc898d9b5b812905c8eedd}
+
+
+Vide une liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nb\+List} & Numéro de la liste à vider \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 155 du fichier listes.\+c.
+
+\hypertarget{listes_8c_a0f4c61706f0b5b091b3a4ee201f5e69a}{}\index{listes.\+c@{listes.\+c}!print\+List@{print\+List}}
+\index{print\+List@{print\+List}!listes.\+c@{listes.\+c}}
+\subsubsection[{print\+List}]{\setlength{\rightskip}{0pt plus 5cm}void print\+List (
+\begin{DoxyParamCaption}
+\item[{short}]{num\+List}
+\end{DoxyParamCaption}
+)}\label{listes_8c_a0f4c61706f0b5b091b3a4ee201f5e69a}
+
+
+Affiche la liste désirée. 
+
+Affiche la liste.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em num\+List} & Numéro de liste \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 222 du fichier listes.\+c.
+
+\hypertarget{listes_8c_a7a89e1a5008f1b3bb21980f812fd7c28}{}\index{listes.\+c@{listes.\+c}!search\+Target@{search\+Target}}
+\index{search\+Target@{search\+Target}!listes.\+c@{listes.\+c}}
+\subsubsection[{search\+Target}]{\setlength{\rightskip}{0pt plus 5cm}bool search\+Target (
+\begin{DoxyParamCaption}
+\item[{int}]{num\+List, }
+\item[{{\bf vector}}]{coord\+Target}
+\end{DoxyParamCaption}
+)}\label{listes_8c_a7a89e1a5008f1b3bb21980f812fd7c28}
+
+
+Cherche une cible dans la liste. 
+
+Cherche une cible.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em num\+List} & Numéro de la liste \\
+\hline
+{\em coord\+Target} & Coordonnées de la cible \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Retourne vrai si cible trouvée 
+\end{DoxyReturn}
+
+
+Définition à la ligne 301 du fichier listes.\+c.
+
+
+
+\subsection{Documentation des variables}
+\hypertarget{listes_8c_a4523d7d0657b5558fe454f142b9411d8}{}\index{listes.\+c@{listes.\+c}!target\+List@{target\+List}}
+\index{target\+List@{target\+List}!listes.\+c@{listes.\+c}}
+\subsubsection[{target\+List}]{\setlength{\rightskip}{0pt plus 5cm}int target\+List = {\bf N\+B\+\_\+\+P\+L\+A\+Y\+E\+R\+S} + 1}\label{listes_8c_a4523d7d0657b5558fe454f142b9411d8}
+
+
+Numéro de la liste des cibles. 
+
+Cibles potentielles. 
+
+Définition à la ligne 28 du fichier listes.\+c.
+

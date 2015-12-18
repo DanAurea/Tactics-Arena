@@ -1,0 +1,84 @@
+\hypertarget{grid_8c}{}\section{Référence du fichier src/display/grid.c}
+\label{grid_8c}\index{src/display/grid.\+c@{src/display/grid.\+c}}
+
+
+Gestion de la grille.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}../../include/game/engine.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/display/grid.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/terminal.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../include/controller/manage\+String.\+h\char`\"{}}\\*
+Graphe des dépendances par inclusion de grid.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{grid_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{grid_8c_a1095651c2e5f692fd90166792ad43e7c}{border\+Right} (short row)
+\begin{DoxyCompactList}\small\item\em Affiche une bordure sur le côté droit sur les lignes vides et utiles. \end{DoxyCompactList}\item 
+\hypertarget{grid_8c_ace8aa29526b144ad331180783a7499cc}{}void \hyperlink{grid_8c_ace8aa29526b144ad331180783a7499cc}{border\+Horiz} ()\label{grid_8c_ace8aa29526b144ad331180783a7499cc}
+
+\begin{DoxyCompactList}\small\item\em Affiche une bordure horizontale. \end{DoxyCompactList}\item 
+\hypertarget{grid_8c_a5885768a9129c1301da1a5691ec5a830}{}void \hyperlink{grid_8c_a5885768a9129c1301da1a5691ec5a830}{disp\+X} ()\label{grid_8c_a5885768a9129c1301da1a5691ec5a830}
+
+\begin{DoxyCompactList}\small\item\em Affiche les coordonnées verticales. \end{DoxyCompactList}\item 
+void \hyperlink{grid_8c_aad3077ff809cfe68afdb06ef3aa5497f}{grid\+Disp} ()
+\begin{DoxyCompactList}\small\item\em Affiche la grille avec les coordonnées. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Gestion de la grille. 
+
+\begin{DoxyAuthor}{Auteur}
+Cousin Brandon Chaudemanche Ewen Biardeau Tristan 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+v1.\+00 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/12/2015 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{grid_8c_a1095651c2e5f692fd90166792ad43e7c}{}\index{grid.\+c@{grid.\+c}!border\+Right@{border\+Right}}
+\index{border\+Right@{border\+Right}!grid.\+c@{grid.\+c}}
+\subsubsection[{border\+Right}]{\setlength{\rightskip}{0pt plus 5cm}void border\+Right (
+\begin{DoxyParamCaption}
+\item[{short}]{row}
+\end{DoxyParamCaption}
+)}\label{grid_8c_a1095651c2e5f692fd90166792ad43e7c}
+
+
+Affiche une bordure sur le côté droit sur les lignes vides et utiles. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em row} & Ligne actuelle \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 19 du fichier grid.\+c.
+
+\hypertarget{grid_8c_aad3077ff809cfe68afdb06ef3aa5497f}{}\index{grid.\+c@{grid.\+c}!grid\+Disp@{grid\+Disp}}
+\index{grid\+Disp@{grid\+Disp}!grid.\+c@{grid.\+c}}
+\subsubsection[{grid\+Disp}]{\setlength{\rightskip}{0pt plus 5cm}void grid\+Disp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{grid_8c_aad3077ff809cfe68afdb06ef3aa5497f}
+
+
+Affiche la grille avec les coordonnées. 
+
+Affiche la grille. 
+
+Définition à la ligne 78 du fichier grid.\+c.
+

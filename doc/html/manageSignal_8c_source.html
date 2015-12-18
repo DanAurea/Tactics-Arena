@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena:  Fichier source de src/controller/manageSignal.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_41ef5d8a90b9cc03a02949a5c062e6f0.html">controller</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">manageSignal.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="manageSignal_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;../../include/game/engine.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../include/game/pawns.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../../include/controller/saveNLoad.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../../include/controller/terminal.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;../../include/game/listes.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../../include/game/pathList.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;signal.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="manageSignal_8h.html#a91d6dcb4b4e4637a63aacf87b53132d0">   21</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="manageSignal_8c.html#a91d6dcb4b4e4637a63aacf87b53132d0">freeAll</a>(){</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> &gt; 0){</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        free(<a class="code" href="pawns_8c.html#a0ec7c043ade24d330b48f393097f140f">pawns</a>); <span class="comment">// Libère les pions</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> = 0;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="listes_8c.html#af168e9ee606d470e92ae65ac69628808">dumpAllLists</a>(); <span class="comment">// Libère les listes de la mémoire</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="pathList_8c.html#a18154e93d817c730195d7fa04bd6c1d3">dumpAllPaths</a>(); <span class="comment">// Libère les chemins de la mémoire</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="manageSignal_8c.html#a3e5752446c050a50659851e5f43fbc28">   35</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="manageSignal_8c.html#a3e5752446c050a50659851e5f43fbc28">interrupt</a>(<span class="keywordtype">int</span> signal){</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="manageSignal_8c.html#a91d6dcb4b4e4637a63aacf87b53132d0">freeAll</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span>(signal == SIGINT){</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red,<span class="stringliteral">&quot;\n\nMais où allez vous ?!&quot;</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;\n\nC&#39;est bête le jeu a cessé de fonctionner !&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    fflush(stdout);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> &gt; 0){</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="saveNLoad_8c.html#aae2c382151ef7c9aa913361172b30db6">save</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>(); <span class="comment">// Réinitialise les couleurs du terminal</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">raise</span>(SIGINT); <span class="comment">// Envoie un signal d&#39;interruption</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="manageSignal_8c.html#a04a93a7ee658050301abb6c4678c8923">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="manageSignal_8c.html#a04a93a7ee658050301abb6c4678c8923">timeDown</a>(<span class="keywordtype">int</span> signal){</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a>(red);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    printf(<span class="stringliteral">&quot;\nTemps écoulé, même Jabba le Hutt fait mieux !\n&quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="manageSignal_8c.html#ab3fc6b27b6df879a96d8534e924139c4">   68</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="manageSignal_8c.html#ab3fc6b27b6df879a96d8534e924139c4">terminator</a>(<span class="keywordtype">int</span> signal){</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="manageSignal_8c.html#a91d6dcb4b4e4637a63aacf87b53132d0">freeAll</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="saveNLoad_8c.html#aae2c382151ef7c9aa913361172b30db6">save</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="manageSignal_8h.html#a977fba31c29f9467d31b3efb9e0f8706">   77</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="manageSignal_8c.html#a977fba31c29f9467d31b3efb9e0f8706">checkSignal</a>(){</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    signal(SIGINT, <a class="code" href="manageSignal_8c.html#a3e5752446c050a50659851e5f43fbc28">interrupt</a>); <span class="comment">// Interruption</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    signal(SIGSEGV, <a class="code" href="manageSignal_8c.html#a3e5752446c050a50659851e5f43fbc28">interrupt</a>); <span class="comment">// Segmentation Fault</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    signal(SIGTERM, <a class="code" href="manageSignal_8c.html#ab3fc6b27b6df879a96d8534e924139c4">terminator</a>); <span class="comment">// Fin du programme</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="ttc" id="manageSignal_8c_html_a3e5752446c050a50659851e5f43fbc28"><div class="ttname"><a href="manageSignal_8c.html#a3e5752446c050a50659851e5f43fbc28">interrupt</a></div><div class="ttdeci">void interrupt(int signal)</div><div class="ttdoc">A l&#39;interruption du programme libère la mémoire et sauvegarde du jeu. </div><div class="ttdef"><b>Definition:</b> <a href="manageSignal_8c_source.html#l00035">manageSignal.c:35</a></div></div>
+<div class="ttc" id="manageSignal_8c_html_ab3fc6b27b6df879a96d8534e924139c4"><div class="ttname"><a href="manageSignal_8c.html#ab3fc6b27b6df879a96d8534e924139c4">terminator</a></div><div class="ttdeci">void terminator(int signal)</div><div class="ttdoc">Libération de la mémoire lors de la fin du programme. </div><div class="ttdef"><b>Definition:</b> <a href="manageSignal_8c_source.html#l00068">manageSignal.c:68</a></div></div>
+<div class="ttc" id="manageSignal_8c_html_a91d6dcb4b4e4637a63aacf87b53132d0"><div class="ttname"><a href="manageSignal_8c.html#a91d6dcb4b4e4637a63aacf87b53132d0">freeAll</a></div><div class="ttdeci">void freeAll()</div><div class="ttdoc">Libère tout ce qui reste encore en mémoire. </div><div class="ttdef"><b>Definition:</b> <a href="manageSignal_8c_source.html#l00021">manageSignal.c:21</a></div></div>
+<div class="ttc" id="terminal_8c_html_aafe20dae78dfbeea7c9102fadcfba1e0"><div class="ttname"><a href="terminal_8c.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a></div><div class="ttdeci">void reinitColor()</div><div class="ttdoc">Réinitialise la couleur de l&#39;écran. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00067">terminal.c:67</a></div></div>
+<div class="ttc" id="pathList_8c_html_a18154e93d817c730195d7fa04bd6c1d3"><div class="ttname"><a href="pathList_8c.html#a18154e93d817c730195d7fa04bd6c1d3">dumpAllPaths</a></div><div class="ttdeci">void dumpAllPaths()</div><div class="ttdoc">Vide toutes les listes. </div><div class="ttdef"><b>Definition:</b> <a href="pathList_8c_source.html#l00226">pathList.c:226</a></div></div>
+<div class="ttc" id="listes_8c_html_af168e9ee606d470e92ae65ac69628808"><div class="ttname"><a href="listes_8c.html#af168e9ee606d470e92ae65ac69628808">dumpAllLists</a></div><div class="ttdeci">void dumpAllLists()</div><div class="ttdoc">Vide toutes les listes. </div><div class="ttdef"><b>Definition:</b> <a href="listes_8c_source.html#l00167">listes.c:167</a></div></div>
+<div class="ttc" id="pawns_8c_html_a202e0786b273cb3b8e8cbe51ea8e3d1a"><div class="ttname"><a href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a></div><div class="ttdeci">int sizePawns</div><div class="ttdoc">Nombre de pions. </div><div class="ttdef"><b>Definition:</b> <a href="pawns_8c_source.html#l00017">pawns.c:17</a></div></div>
+<div class="ttc" id="manageSignal_8c_html_a04a93a7ee658050301abb6c4678c8923"><div class="ttname"><a href="manageSignal_8c.html#a04a93a7ee658050301abb6c4678c8923">timeDown</a></div><div class="ttdeci">void timeDown(int signal)</div><div class="ttdoc">Petit message sympa lors du temps écoulé </div><div class="ttdef"><b>Definition:</b> <a href="manageSignal_8c_source.html#l00058">manageSignal.c:58</a></div></div>
+<div class="ttc" id="terminal_8c_html_aa1b198e2a86cf333bd2b8d74e21409f1"><div class="ttname"><a href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a></div><div class="ttdeci">void color(int color, char type[])</div><div class="ttdoc">Change la couleur de l&#39;écran ou de la police. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00051">terminal.c:51</a></div></div>
+<div class="ttc" id="terminal_8c_html_a728c5deabcb9e271c6962577c60ef566"><div class="ttname"><a href="terminal_8c.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a></div><div class="ttdeci">void fontColor(int color)</div><div class="ttdoc">Change la couleur de la police. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00076">terminal.c:76</a></div></div>
+<div class="ttc" id="manageSignal_8c_html_a977fba31c29f9467d31b3efb9e0f8706"><div class="ttname"><a href="manageSignal_8c.html#a977fba31c29f9467d31b3efb9e0f8706">checkSignal</a></div><div class="ttdeci">void checkSignal()</div><div class="ttdoc">Vérifie le type de signal envoyé au terminal. </div><div class="ttdef"><b>Definition:</b> <a href="manageSignal_8c_source.html#l00077">manageSignal.c:77</a></div></div>
+<div class="ttc" id="saveNLoad_8c_html_aae2c382151ef7c9aa913361172b30db6"><div class="ttname"><a href="saveNLoad_8c.html#aae2c382151ef7c9aa913361172b30db6">save</a></div><div class="ttdeci">void save()</div><div class="ttdoc">Sauvegarde la partie avec l&#39;état actuel de la grille et les données liées au joueur en cours...</div><div class="ttdef"><b>Definition:</b> <a href="saveNLoad_8c_source.html#l00158">saveNLoad.c:158</a></div></div>
+<div class="ttc" id="pawns_8c_html_a0ec7c043ade24d330b48f393097f140f"><div class="ttname"><a href="pawns_8c.html#a0ec7c043ade24d330b48f393097f140f">pawns</a></div><div class="ttdeci">unit * pawns</div><div class="ttdoc">Pions initialisés avec leur valeurs. </div><div class="ttdef"><b>Definition:</b> <a href="pawns_8c_source.html#l00016">pawns.c:16</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

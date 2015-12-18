@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena:  Fichier source de include/controller/terminal.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_39b9d54b040febeebc00140e5c10ba61.html">controller</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">terminal.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="terminal_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="terminal_8h.html#ac8946d2a0583792b5f43ba0f6616ff84">   12</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span>{black, red, green, yellow, blue, magenta, cyan, white}<a class="code" href="terminal_8h.html#ac8946d2a0583792b5f43ba0f6616ff84">terminal</a>; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="terminal_8h.html#a72bba37476e63c27f023823f17619987">   17</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span>{reinit = 0, blink = 5, invertColor= 7}<a class="code" href="terminal_8h.html#a72bba37476e63c27f023823f17619987">screen</a>; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="terminal_8h.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(<span class="keywordtype">int</span> <a class="code" href="terminal_8h.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>, <span class="keywordtype">char</span> type[]); </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span> <a class="code" href="terminal_8h.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a>(<span class="keywordtype">int</span> <a class="code" href="terminal_8h.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>); </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">void</span> <a class="code" href="terminal_8h.html#a9d7e8af417b6d543da691e9c0e2f6f9f">clearScreen</a>(); </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> <a class="code" href="terminal_8h.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a>(); </div>
+<div class="ttc" id="terminal_8h_html_ac8946d2a0583792b5f43ba0f6616ff84"><div class="ttname"><a href="terminal_8h.html#ac8946d2a0583792b5f43ba0f6616ff84">terminal</a></div><div class="ttdeci">terminal</div><div class="ttdoc">terminal.h </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8h_source.html#l00012">terminal.h:12</a></div></div>
+<div class="ttc" id="terminal_8h_html_aafe20dae78dfbeea7c9102fadcfba1e0"><div class="ttname"><a href="terminal_8h.html#aafe20dae78dfbeea7c9102fadcfba1e0">reinitColor</a></div><div class="ttdeci">void reinitColor()</div><div class="ttdoc">Réinitialise les couleurs. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00067">terminal.c:67</a></div></div>
+<div class="ttc" id="terminal_8h_html_a72bba37476e63c27f023823f17619987"><div class="ttname"><a href="terminal_8h.html#a72bba37476e63c27f023823f17619987">screen</a></div><div class="ttdeci">screen</div><div class="ttdoc">terminal.h </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8h_source.html#l00017">terminal.h:17</a></div></div>
+<div class="ttc" id="terminal_8h_html_aa1b198e2a86cf333bd2b8d74e21409f1"><div class="ttname"><a href="terminal_8h.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a></div><div class="ttdeci">void color(int color, char type[])</div><div class="ttdoc">Met en couleurs le texte ou l&#39;écran. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00051">terminal.c:51</a></div></div>
+<div class="ttc" id="terminal_8h_html_a9d7e8af417b6d543da691e9c0e2f6f9f"><div class="ttname"><a href="terminal_8h.html#a9d7e8af417b6d543da691e9c0e2f6f9f">clearScreen</a></div><div class="ttdeci">void clearScreen()</div><div class="ttdoc">Efface l&#39;écran. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00083">terminal.c:83</a></div></div>
+<div class="ttc" id="terminal_8h_html_a728c5deabcb9e271c6962577c60ef566"><div class="ttname"><a href="terminal_8h.html#a728c5deabcb9e271c6962577c60ef566">fontColor</a></div><div class="ttdeci">void fontColor(int color)</div><div class="ttdoc">Met en couleurs la police. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00076">terminal.c:76</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>

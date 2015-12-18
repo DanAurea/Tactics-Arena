@@ -1,3 +1,11 @@
+/**
+ @file turn.c
+ @brief Gestion des tours
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <time.h>
 #include <stdio.h>
 #include <signal.h>
@@ -84,6 +92,8 @@ void changeDirection(){
 
 	}while(direct < 1 && direct > 4);
 
+	grid[coordUnit.x][coordUnit.y].unitColor = black; // Couleur unité sélectionnée
+
 	setDirection(coordUnit, direct) ;
 	sleep(coordUnit);
 
@@ -132,14 +142,14 @@ void playAttack(){
 
 	attackable(black); // Attaquants en noir
 
-	getTargets(coordUnit, yellow); // Récupère les cibles potentielles -> Jaune
+	setTarget(grid[coordUnit.x][coordUnit.y].name, coordUnit, yellow); // Récupère les cibles potentielles -> Jaune
 
 	grid[coordUnit.x][coordUnit.y].unitColor = white; // Couleur unité sélectionnée
 
     clearScreen(); // Met à jour une fois les cibles récupérées
     gridDisp();
 
-    getTargets(coordUnit, black); // Récupère les cibles potentielles -> Noir
+    setTarget(grid[coordUnit.x][coordUnit.y].name, coordUnit, black); // Récupère les cibles potentielles -> Noir
 
 	do{
 		selected = selectUnit(&coordTarget); // Sélectionne une cible à attaquer
@@ -215,8 +225,8 @@ void playMove(){
 	}while(!selected || !found);
     
     grid[coordUnit.x][coordUnit.y].unitColor = black; // Réinitialise la couleur de l'unité sélectionnée
-	move(coordTarget, coordUnit);
 	sleep(coordUnit);
+	move(coordTarget, coordUnit);
 
 	hasMoved = 1;
 }

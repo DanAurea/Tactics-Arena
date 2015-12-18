@@ -1,3 +1,11 @@
+/**
+ @file menu.c
+ @brief Gestion des menus
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <stdio.h>
 #include <ctype.h>
 #include "../../include/game/engine.h"
@@ -570,8 +578,14 @@ void unitMenu(int choice){
             	clearScreen();
 				gridDisp();
             	
+            	printList(noPlayer);
+
             	changeDirection();
             	movable(black);
+
+            	clearScreen();
+				gridDisp();
+				
         		break;
         }
 }

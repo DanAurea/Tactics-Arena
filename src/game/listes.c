@@ -1,23 +1,37 @@
-/* Mise en oeuvre contigue d'un tableau de listes de vecteurs */
+/**
+ @file listes.c
+ @brief Listes de vecteurs
+ @author Cousin Brandon Chaudemanche Ewen Biardeau Tristan
+ @version v1.00
+ @date 18/12/2015
+ */
+
 #include <stdio.h>
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
 #include "../../include/controller/manageString.h"
 #include "../../include/game/listes.h"
 
-/* Definition du type d'un element de liste */
-typedef struct element {vector coordUnit; struct element* pred; struct element* succ;} t_element;
+/**
+ * @struct element
+ * Représente un élément de la liste
+ */
+typedef struct element {
+	vector coordUnit; /**< Coordonnées de l'unité */
+	struct element* pred; /**< Élément précédent */
+	struct element* succ; /**< Élément suivant */
+} t_element; /**< Définis un élément */
 
-/* Declaration des listes (drapeau et element courant) */
-t_element* drapeau[NB_UNITS];
-t_element* ec[NB_UNITS];
-int targetList = (NB_UNITS - 2) + NB_PLAYERS + 1;
+
+t_element* drapeau[NB_UNITS]; /**< Tableaux de drapeau */
+t_element* ec[NB_UNITS]; /**< Tableau d'élément courant */
+int targetList = NB_PLAYERS + 1; /**< Numéro de la liste des cibles */
 
 
 /* Primitives de manipulation des listes */
 
 void init_liste(int n)
-{	if(n>=0&&n<= (NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+{	if(n>=0&&n<= NB_PLAYERS + NB_LISTS_ENGINE)
 	{
 		drapeau[n] = malloc(sizeof(t_element));
 		drapeau[n]->pred = drapeau[n];
@@ -27,48 +41,48 @@ void init_liste(int n)
 }
 
 void initLists(){
-	for(int i = 0; i <= (NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE; i++)
+	for(int i = 0; i <= NB_PLAYERS + NB_LISTS_ENGINE; i++)
 		init_liste(i);
 }
 
 int liste_vide(int n)
-{	if(n>=0&&n<= (NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+{	if(n>=0&&n<= NB_PLAYERS + NB_LISTS_ENGINE)
 		return drapeau[n]->pred==drapeau[n];
     return -1;
 }
 
 int hors_liste(int n)
-{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+{	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		return ec[n]==drapeau[n];
     return -1;
 }
 
 void en_tete(int n)
-{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+{	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!liste_vide(n))
 			ec[n] = drapeau[n]->succ;
 }
 
 void en_queue(int n)
-{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+{	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!liste_vide(n))
 			ec[n] = drapeau[n]->pred;
 }
 
 void precedent(int n)
-{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+{	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n))
 			ec[n] = ec[n]->pred;
 }
 
 void suivant(int n)
-{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+{	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n))
 			ec[n] = ec[n]->succ;
 }
 
 void valeur_elt(int n, vector * v)
-{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+{	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n)){
 			v->x = ec[n]->coordUnit.x;
             v->y = ec[n]->coordUnit.y;
@@ -76,7 +90,7 @@ void valeur_elt(int n, vector * v)
 }
 
 void modif_elt(int n, vector v)
-{	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+{	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n)){
 			ec[n]->coordUnit.x = v.x;
             ec[n]->coordUnit.y = v.y;
@@ -87,7 +101,7 @@ void oter_elt(int n)
 {
 	t_element * temp;
 
-    	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+    	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		if (!hors_liste(n))
 		{
 			(ec[n]->succ)->pred = ec[n]->pred;
@@ -102,7 +116,7 @@ void ajout_droit(int n, vector v)
 {
 	t_element* nouv;
 
-	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		if (liste_vide(n) || !hors_liste(n))
 		{
 			nouv = malloc(sizeof(t_element));
@@ -120,7 +134,7 @@ void ajout_gauche(int n, vector v)
 {
 	t_element* nouv;
 
-	if(n>=0&&n<=(NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE)
+	if(n>=0&&n<=NB_PLAYERS + NB_LISTS_ENGINE)
 		if (liste_vide(n) || !hors_liste(n))
 		{
 			nouv = malloc(sizeof(t_element));
@@ -152,7 +166,7 @@ void dumpList(short nbList){
  */
 void dumpAllLists(){
 
-	for(int list = 0; list <= (NB_UNITS - 2) + NB_PLAYERS + NB_LISTS_ENGINE; list++){
+	for(int list = 0; list <= NB_PLAYERS + NB_LISTS_ENGINE; list++){
 		dumpList(list); // Libère la liste
 		free(drapeau[list]); // Libère le drapeau
 	}
@@ -212,6 +226,8 @@ void printList(short numList){
 
 	if(!liste_vide(numList)){
 		en_tete(numList);
+		printf("No - Nom - X-Y - HP - Direction -  Puissance -  Recovery\n\n");
+
 		while(!hors_liste(numList)){
 			valeur_elt(numList, &tmp);
 			source = grid[tmp.x][tmp.y];
@@ -290,7 +306,7 @@ bool searchTarget(int numList, vector coordTarget){
 
 		while(!hors_liste(numList) && (tmp.x != coordTarget.x || tmp.y != coordTarget.y)){ // Cherche la cible
 			valeur_elt(numList, &tmp);
-
+			
 			if(tmp.x == coordTarget.x && tmp.y == coordTarget.y){ // Cible trouvée
 				return true;
 			}

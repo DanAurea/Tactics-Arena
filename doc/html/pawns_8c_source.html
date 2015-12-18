@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>Tactics Arena:  Fichier source de src/game/pawns.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tactics Arena
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_1699be727a800b1d059c6f7f2b91d2ee.html">game</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">pawns.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="pawns_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../../include/game/engine.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../../include/game/listes.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;../../include/controller/terminal.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../../include/controller/manageString.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="pawns_8h.html#a0ec7c043ade24d330b48f393097f140f">   16</a></span>&#160;<a class="code" href="structunit.html">unit</a> * <a class="code" href="pawns_8c.html#a0ec7c043ade24d330b48f393097f140f">pawns</a> = NULL; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="pawns_8h.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">   17</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> = 0;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="pawns_8c.html#aeea3cc5ad26ccda694a140445ad067c4">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pawns_8c.html#aeea3cc5ad26ccda694a140445ad067c4">initPawn</a>(<a class="code" href="structunit.html">unit</a> * pawn){</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    memset(pawn, -1, <span class="keyword">sizeof</span>(<a class="code" href="structunit.html">unit</a>));</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="engine_8h.html#a21db47461d910a7cad180b5532f1a7f8">NB_MAX_EFFECT</a>; i++){</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        pawn-&gt;<a class="code" href="structunit.html#ab65f3e50337d201c634aa46587ea32ff">effect</a>[i] = 0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    pawn-&gt;<a class="code" href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unitColor</a> = white;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="pawns_8c.html#ae83822f14210ca3bff153d900ea2dc58">   37</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="pawns_8c.html#ae83822f14210ca3bff153d900ea2dc58">checkPawn</a>(<a class="code" href="structunit.html">unit</a> * pawn){</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span>(pawn-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#aa11e3fe576364497283adf1140411079">HP</a> == -1 || pawn-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a1e1bf1de283cf18aec14dd026ae9dc63">POWER</a> == -1 || pawn-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9677dc9f6f59b4a873591a9e3d22125e">ARMOR</a> == -1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span>(pawn-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9626453a4b1afd79a37b7c493280cbbd">BLOCK</a>[0] == -1 || pawn-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9626453a4b1afd79a37b7c493280cbbd">BLOCK</a>[1] == -1 || pawn-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9626453a4b1afd79a37b7c493280cbbd">BLOCK</a>[2] == -1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span>(pawn-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">RECOVERY</a> == -1 || pawn-&gt;<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a4fb8a90b096d073d947c861a5536c2b9">MOVE_RANGE</a> == -1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(<span class="keywordtype">int</span> nbParams, <a class="code" href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a> name, ...){</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="structunit.html">unit</a> pawn;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    va_list stats;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> == 0){ <span class="comment">// Alloue de la mémoire pour les pions</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        pawns = malloc( (<a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> + 1) * <span class="keyword">sizeof</span>(<a class="code" href="structunit.html">unit</a>));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        pawns = realloc(pawns, (<a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> + 1) * <span class="keyword">sizeof</span>(<a class="code" href="structunit.html">unit</a>));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span>(pawns == NULL){ <span class="comment">// Libère la mémoire en cas d&#39;erreur</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> &gt; 0) <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;\nError reallocating memory !\n&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">else</span> <a class="code" href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a>(red, <span class="stringliteral">&quot;\nError allocating memory !\n&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        free(pawns);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        exit(1);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="pawns_8c.html#aeea3cc5ad26ccda694a140445ad067c4">initPawn</a>(&amp;pawn); <span class="comment">// Initialise le pion</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    pawn.<a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a> = name;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    va_start(stats, name);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span>(nbParams &gt;= <a class="code" href="engine_8h.html#a26f6ab8604048e4b80c8bc535ff4bad9">MANDATORY_STATS</a>){</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="engine_8h.html#a26f6ab8604048e4b80c8bc535ff4bad9">MANDATORY_STATS</a>; i++){ <span class="comment">// Initialise le pion avec les paramètres désirés</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span>(i == 0) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#aa11e3fe576364497283adf1140411079">HP</a> = va_arg(stats, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span>(i == 1) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a1e1bf1de283cf18aec14dd026ae9dc63">POWER</a> = va_arg(stats, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span>(i == 2) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9677dc9f6f59b4a873591a9e3d22125e">ARMOR</a> = va_arg(stats, <span class="keywordtype">double</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">if</span>(i == 3) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9626453a4b1afd79a37b7c493280cbbd">BLOCK</a>[0] = va_arg(stats, <span class="keywordtype">double</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">if</span>(i == 4) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9626453a4b1afd79a37b7c493280cbbd">BLOCK</a>[1] = va_arg(stats, <span class="keywordtype">double</span>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span>(i == 5) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9626453a4b1afd79a37b7c493280cbbd">BLOCK</a>[2] = va_arg(stats, <span class="keywordtype">double</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">if</span>(i == 6) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">RECOVERY</a> = va_arg(stats, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span>(i == 7) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a4fb8a90b096d073d947c861a5536c2b9">MOVE_RANGE</a> = va_arg(stats, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">if</span>(i == 8) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a344b6bf4fa47f6bd98073a0351dfb6bd">target</a>.<a class="code" href="structtargetStat.html#a70d37dfedfb05d72d8c8cfcd575f812c">vertRange</a> = va_arg(stats, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">if</span>(i == 9) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a344b6bf4fa47f6bd98073a0351dfb6bd">target</a>.<a class="code" href="structtargetStat.html#a2a4322825a13f8815c889056b123c09b">horizRange</a> = va_arg(stats, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span>(i == 10) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a344b6bf4fa47f6bd98073a0351dfb6bd">target</a>.<a class="code" href="structtargetStat.html#add6382059773722d55c40daff5b3efdc">ringSize</a> = va_arg(stats, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">if</span>(i == 11) pawn.<a class="code" href="structunit.html#a88d6da278053824260f4f4987773b34f">stat</a>.<a class="code" href="structunitStat.html#a344b6bf4fa47f6bd98073a0351dfb6bd">target</a>.<a class="code" href="structtargetStat.html#a178aadea19548628774763db12cdeb24">line</a> = va_arg(stats, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        printf(<span class="stringliteral">&quot;\nError not enough parameters for pawn creation !\n&quot;</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    va_end(stats);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span>(!<a class="code" href="pawns_8c.html#ae83822f14210ca3bff153d900ea2dc58">checkPawn</a>(&amp;pawn)){ <span class="comment">// Vérifie les valeurs passées en paramètres</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        printf(<span class="stringliteral">&quot;\n Error during pawn creation, %s couldn&#39;t be initialized correctly !\n&quot;</span>,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <a class="code" href="manageString_8c.html#a22a30b59c6429cb81fcd18b4db5a1b7f">getNameUnit</a>(pawn.<a class="code" href="structunit.html#aad8b083b6438d26e8aade384522e867c">name</a>));</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        exit(1);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }<span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        pawns[<a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a>] = pawn;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a>++; <span class="comment">// Agrandis le tableau pour le prochain ajout</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="pawns_8h.html#af3226144d32d485e7e1362861b69ca11">  109</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="pawns_8c.html#af3226144d32d485e7e1362861b69ca11">makePawns</a>(){</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a> == 0){ <span class="comment">// On ne crée les pions qu&#39;en cas de nécessité -&gt; 1 er lancement du jeu</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, empty, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, decors, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">            Ordre params: Nombre paramètres obligatoires, nom unité,</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">                        HP, Power, Armor,</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">                        Block[0], Block[1], Block[2],</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">                        Recovery, Move_range,</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">                        horizRange, vertRange, sizeRing, line</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">        */</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, knight, 50, 22, 0.25,           0.8, 0.4, 0.0,       1, 3,          1, 1, 1, 1);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, scout, 40, 18, 0.08,            0.6, 0.3, 0.0,       2, 4,          6, 6, 1, 0);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, assassin, 35, 18, 0.12,         0.7, 0.35, 0.0,      1, 4,          1, 1, 1, 1);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, cleric, 24, 12, 0.0,            0.0, 0.0, 0.0,       5, 3,          0, 0, 0, 0); <span class="comment">// Unité n&#39;ayant pas besoin de cible</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, pyromancer, 30, 15, 0.0,        0.33, 0.16, 0.0,     3, 3,          3, 3, 0, 0);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, enchantress, 35, 0, 0.0,        0.0, 0.0, 0.0,       3, 3,          2, 2, 1, 0);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, dragonborn, 30, 22, 0.0,        0.33, 0.16, 0.0,     3, 3,          3, 3, 0, 0);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, darkWitch, 28, 24, 0.0,         0.2, 0.1, 0.0,       3, 3,          4, 4, 1, 1);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, lightningTotem, 56, 30, 0.18,   1.0, 1.0, 1.0,       4, 0,          3, 3, 0, 0);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, barrierTotem, 32, 0, 0.0,       1.0, 1.0, 1.0,       2, 0,          6, 3, 0, 0);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, mudGolem, 60, 20, 0.0,          0.0, 0.0, 0.0,       2, 5,          1, 1, 1, 1);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, golemAmbusher, 60, 20, 0.0,     0.0, 0.0, 0.0,       3, 2,          6, 6, 5, 0);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, frostGolem, 60, 0, 0.0,         0.0, 0.0, 0.0,       2, 2,          4, 4, 1, 0);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, stoneGolem, 60, 0, 0.3,         0.0, 0.0, 0.0,       4, 2,          1, 1, 0, 1);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, dragonTyrant, 28, 24, 0.16,      0.2, 0.1, 0.0,       3, 4,          3, 3, 1, 1);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, berserker, 42, 22, 0.0,         0.25, 0.12, 0.0,     1, 3,          1, 1, 1, 1);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, beastRider, 38, 19, 0.15,       0.45, 0.22, 0.0,     1, 4,          2, 2, 1, 1);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, poisonWisp, 34, 0, 0.0,         0.0, 0.0, 0.0,       2, 6,          2, 2, 1, 1);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <a class="code" href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a>(12, furgon, 48, 0, 0.0,             0.5, 0.25, 0.0,      1, 3,          2, 2, 0, 0);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="ttc" id="structunit_html"><div class="ttname"><a href="structunit.html">unit</a></div><div class="ttdoc">Représente une unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00088">engine.h:88</a></div></div>
+<div class="ttc" id="structunit_html_ab65f3e50337d201c634aa46587ea32ff"><div class="ttname"><a href="structunit.html#ab65f3e50337d201c634aa46587ea32ff">unit::effect</a></div><div class="ttdeci">unitEffect effect[NB_MAX_EFFECT]</div><div class="ttdoc">Effets sur l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00091">engine.h:91</a></div></div>
+<div class="ttc" id="structunitStat_html_a9626453a4b1afd79a37b7c493280cbbd"><div class="ttname"><a href="structunitStat.html#a9626453a4b1afd79a37b7c493280cbbd">unitStat::BLOCK</a></div><div class="ttdeci">float BLOCK[3]</div><div class="ttdoc">Blocage. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00070">engine.h:70</a></div></div>
+<div class="ttc" id="structunitStat_html_a9677dc9f6f59b4a873591a9e3d22125e"><div class="ttname"><a href="structunitStat.html#a9677dc9f6f59b4a873591a9e3d22125e">unitStat::ARMOR</a></div><div class="ttdeci">float ARMOR</div><div class="ttdoc">Armure. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00068">engine.h:68</a></div></div>
+<div class="ttc" id="pawns_8c_html_aeea3cc5ad26ccda694a140445ad067c4"><div class="ttname"><a href="pawns_8c.html#aeea3cc5ad26ccda694a140445ad067c4">initPawn</a></div><div class="ttdeci">void initPawn(unit *pawn)</div><div class="ttdoc">Initialise un pion. </div><div class="ttdef"><b>Definition:</b> <a href="pawns_8c_source.html#l00023">pawns.c:23</a></div></div>
+<div class="ttc" id="manageString_8c_html_a22a30b59c6429cb81fcd18b4db5a1b7f"><div class="ttname"><a href="manageString_8c.html#a22a30b59c6429cb81fcd18b4db5a1b7f">getNameUnit</a></div><div class="ttdeci">char * getNameUnit(unitName name)</div><div class="ttdoc">Récupère le nom de l&#39;unité à partir de la liste énumérée. </div><div class="ttdef"><b>Definition:</b> <a href="manageString_8c_source.html#l00189">manageString.c:189</a></div></div>
+<div class="ttc" id="engine_8h_html_a26f6ab8604048e4b80c8bc535ff4bad9"><div class="ttname"><a href="engine_8h.html#a26f6ab8604048e4b80c8bc535ff4bad9">MANDATORY_STATS</a></div><div class="ttdeci">#define MANDATORY_STATS</div><div class="ttdoc">Nombre de stats obligatoire. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00020">engine.h:20</a></div></div>
+<div class="ttc" id="structunitStat_html_a344b6bf4fa47f6bd98073a0351dfb6bd"><div class="ttname"><a href="structunitStat.html#a344b6bf4fa47f6bd98073a0351dfb6bd">unitStat::target</a></div><div class="ttdeci">targetStat target</div><div class="ttdoc">Ciblage. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00071">engine.h:71</a></div></div>
+<div class="ttc" id="structunitStat_html_aa11e3fe576364497283adf1140411079"><div class="ttname"><a href="structunitStat.html#aa11e3fe576364497283adf1140411079">unitStat::HP</a></div><div class="ttdeci">int HP</div><div class="ttdoc">Points de vie. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00066">engine.h:66</a></div></div>
+<div class="ttc" id="structtargetStat_html_add6382059773722d55c40daff5b3efdc"><div class="ttname"><a href="structtargetStat.html#add6382059773722d55c40daff5b3efdc">targetStat::ringSize</a></div><div class="ttdeci">short ringSize</div><div class="ttdoc">Taille de l&#39;anneau. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00057">engine.h:57</a></div></div>
+<div class="ttc" id="structunit_html_a88d6da278053824260f4f4987773b34f"><div class="ttname"><a href="structunit.html#a88d6da278053824260f4f4987773b34f">unit::stat</a></div><div class="ttdeci">unitStat stat</div><div class="ttdoc">Statistiques de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00090">engine.h:90</a></div></div>
+<div class="ttc" id="structunitStat_html_a9f29568c1079efe25de0dc1b4246af94"><div class="ttname"><a href="structunitStat.html#a9f29568c1079efe25de0dc1b4246af94">unitStat::RECOVERY</a></div><div class="ttdeci">int RECOVERY</div><div class="ttdoc">Repos. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00069">engine.h:69</a></div></div>
+<div class="ttc" id="pawns_8c_html_ae83822f14210ca3bff153d900ea2dc58"><div class="ttname"><a href="pawns_8c.html#ae83822f14210ca3bff153d900ea2dc58">checkPawn</a></div><div class="ttdeci">bool checkPawn(unit *pawn)</div><div class="ttdoc">Vérifie que le pion est correct. </div><div class="ttdef"><b>Definition:</b> <a href="pawns_8c_source.html#l00037">pawns.c:37</a></div></div>
+<div class="ttc" id="pawns_8c_html_af3226144d32d485e7e1362861b69ca11"><div class="ttname"><a href="pawns_8c.html#af3226144d32d485e7e1362861b69ca11">makePawns</a></div><div class="ttdeci">void makePawns()</div><div class="ttdoc">Crée tout les pions utiles au jeu. </div><div class="ttdef"><b>Definition:</b> <a href="pawns_8c_source.html#l00109">pawns.c:109</a></div></div>
+<div class="ttc" id="structunit_html_aad8b083b6438d26e8aade384522e867c"><div class="ttname"><a href="structunit.html#aad8b083b6438d26e8aade384522e867c">unit::name</a></div><div class="ttdeci">unitName name</div><div class="ttdoc">Nom de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00089">engine.h:89</a></div></div>
+<div class="ttc" id="structunit_html_abc126ccf502f7c7e7ec72e38b75c3e0e"><div class="ttname"><a href="structunit.html#abc126ccf502f7c7e7ec72e38b75c3e0e">unit::unitColor</a></div><div class="ttdeci">int unitColor</div><div class="ttdoc">Couleur de l&#39;unité </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00094">engine.h:94</a></div></div>
+<div class="ttc" id="pawns_8c_html_ab64bdacff221584d1ffbae4dd7f19ce8"><div class="ttname"><a href="pawns_8c.html#ab64bdacff221584d1ffbae4dd7f19ce8">createPawn</a></div><div class="ttdeci">void createPawn(int nbParams, unitName name,...)</div><div class="ttdoc">Crée un pion pour le jeu. </div><div class="ttdef"><b>Definition:</b> <a href="pawns_8c_source.html#l00051">pawns.c:51</a></div></div>
+<div class="ttc" id="structtargetStat_html_a2a4322825a13f8815c889056b123c09b"><div class="ttname"><a href="structtargetStat.html#a2a4322825a13f8815c889056b123c09b">targetStat::horizRange</a></div><div class="ttdeci">short horizRange</div><div class="ttdoc">Portée horizontale. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00056">engine.h:56</a></div></div>
+<div class="ttc" id="structtargetStat_html_a70d37dfedfb05d72d8c8cfcd575f812c"><div class="ttname"><a href="structtargetStat.html#a70d37dfedfb05d72d8c8cfcd575f812c">targetStat::vertRange</a></div><div class="ttdeci">short vertRange</div><div class="ttdoc">Portée verticale. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00055">engine.h:55</a></div></div>
+<div class="ttc" id="pawns_8c_html_a202e0786b273cb3b8e8cbe51ea8e3d1a"><div class="ttname"><a href="pawns_8c.html#a202e0786b273cb3b8e8cbe51ea8e3d1a">sizePawns</a></div><div class="ttdeci">int sizePawns</div><div class="ttdoc">Nombre de pions. </div><div class="ttdef"><b>Definition:</b> <a href="pawns_8c_source.html#l00017">pawns.c:17</a></div></div>
+<div class="ttc" id="structunitStat_html_a1e1bf1de283cf18aec14dd026ae9dc63"><div class="ttname"><a href="structunitStat.html#a1e1bf1de283cf18aec14dd026ae9dc63">unitStat::POWER</a></div><div class="ttdeci">int POWER</div><div class="ttdoc">Puissance. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00067">engine.h:67</a></div></div>
+<div class="ttc" id="terminal_8c_html_aa1b198e2a86cf333bd2b8d74e21409f1"><div class="ttname"><a href="terminal_8c.html#aa1b198e2a86cf333bd2b8d74e21409f1">color</a></div><div class="ttdeci">void color(int color, char type[])</div><div class="ttdoc">Change la couleur de l&#39;écran ou de la police. </div><div class="ttdef"><b>Definition:</b> <a href="terminal_8c_source.html#l00051">terminal.c:51</a></div></div>
+<div class="ttc" id="structunitStat_html_a4fb8a90b096d073d947c861a5536c2b9"><div class="ttname"><a href="structunitStat.html#a4fb8a90b096d073d947c861a5536c2b9">unitStat::MOVE_RANGE</a></div><div class="ttdeci">int MOVE_RANGE</div><div class="ttdoc">Portée mouvement. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00072">engine.h:72</a></div></div>
+<div class="ttc" id="engine_8h_html_a21db47461d910a7cad180b5532f1a7f8"><div class="ttname"><a href="engine_8h.html#a21db47461d910a7cad180b5532f1a7f8">NB_MAX_EFFECT</a></div><div class="ttdeci">#define NB_MAX_EFFECT</div><div class="ttdoc">Nombre total de status différent. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00019">engine.h:19</a></div></div>
+<div class="ttc" id="engine_8h_html_af7667555c2dcfbdd55ec3e9dd6a907ba"><div class="ttname"><a href="engine_8h.html#af7667555c2dcfbdd55ec3e9dd6a907ba">unitName</a></div><div class="ttdeci">unitName</div><div class="ttdoc">engine.h </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00041">engine.h:41</a></div></div>
+<div class="ttc" id="pawns_8c_html_a0ec7c043ade24d330b48f393097f140f"><div class="ttname"><a href="pawns_8c.html#a0ec7c043ade24d330b48f393097f140f">pawns</a></div><div class="ttdeci">unit * pawns</div><div class="ttdoc">Pions initialisés avec leur valeurs. </div><div class="ttdef"><b>Definition:</b> <a href="pawns_8c_source.html#l00016">pawns.c:16</a></div></div>
+<div class="ttc" id="structtargetStat_html_a178aadea19548628774763db12cdeb24"><div class="ttname"><a href="structtargetStat.html#a178aadea19548628774763db12cdeb24">targetStat::line</a></div><div class="ttdeci">short line</div><div class="ttdoc">Ciblage en ligne. </div><div class="ttdef"><b>Definition:</b> <a href="engine_8h_source.html#l00058">engine.h:58</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Vendredi 18 Décembre 2015 10:22:01 pour Tactics Arena par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>
