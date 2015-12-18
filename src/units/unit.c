@@ -195,7 +195,6 @@ void attack(vector source, vector target)
     	if(canBlock(uTarget))
     	{
     		block = 1-uTarget->stat.BLOCK[getSideAttacked(source,target)];
-            printf("%s\n",getDirectionUnit(getSideAttacked(source,target)));
 
             miss  = (rand() % 101); // Raté -> Tire un chiffre entre 0 et 100
     	}
@@ -333,6 +332,9 @@ void powerBonus(){
             }
         }
     }else if(s > 0 && d == 0){ // Plus de drain disponible
+
+        color(red, "Vos mages ne subissent plus les effets du drain!\n");
+
         for(int j = 0; j < s; j++){ // Amplifie la puissance des unités
             if(setBonus[j]->stat.POWER != pawns[setBonus[j]->name].stat.POWER){
 
