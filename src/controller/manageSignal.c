@@ -48,7 +48,7 @@ void interrupt(int signal){
 	
 	reinitColor(); // Réinitialise les couleurs du terminal
 	
-	raise(SIGINT); // Envoie un signal d'interruption
+	exit(signal); // Envoie un signal d'interruption
 }
 
 /**

@@ -47,23 +47,23 @@ Une fois ce temps expiré:
 
 ## A faire
  
- - **[x] Analyse préliminaire**
- - **[x] Analyse conceptuelle**
- - **[x] Implémentation**
-    - **[x] Grille**
-    - **[x] Menu**
-    - **[x] Unités**
-    - **[x] Statistiques**
-    - **[x] Mouvements**
-    - **[x] Gestion des tours**
-    - **[x] Gestion du temps**
-    - **[x] Capacités spéciales**
-    - **[x] Etat unités**
- - **[ ] Test unitaires**
- - **[x] Test d'intégration**
- - **[ ] Ajout de fonctionnalités**
-    - **[ ] Intégration IA**
-    - **[ ] GUI**
+ - [x] **Analyse préliminaire**
+ - [x] **Analyse conceptuelle**
+ - [x] **Implémentation**
+  - [x] **Grille**
+  - [x] **Menu**
+  - [x] **Unités**
+  - [x] **Statistiques**
+  - [x] **Mouvements**
+  - [x] **Gestion des tours**
+  - [x] **Gestion du temps**
+  - [x] **Capacités spéciales**
+  - [x] **Etat unités**
+ - [ ] **Test unitaires**
+ - [x] **Test d'intégration**
+ - [ ] **Ajout de fonctionnalités**
+  - [ ] **Intégration IA**
+  - [ ] **GUI**
 
 
 ## Changelog
