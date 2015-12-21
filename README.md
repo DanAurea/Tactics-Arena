@@ -1,4 +1,5 @@
-# Tactics Arena
+# Tactics Arena [![Build Status](https://travis-ci.org/DanAurea/Tactics-Arena.svg?branch=master)](https://travis-ci.org/DanAurea/Tactics-Arena)
+
 
 Tactics Arena est un jeu de stratégie au tour par tour se jouant sur un plateau.
 Chaque joueur déplace ses unités respectant des règles de déplacement propre à chaque unité, le but du jeu est d'éliminer ou paralyser toutes les unités ennemies.
