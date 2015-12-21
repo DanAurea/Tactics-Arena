@@ -1,0 +1,11 @@
+language: C
+
+env:
+  - TOOL="gcc"                 
+
+script:
+  - make
+  
+branches:
+  only:
+    - master
