@@ -106,6 +106,10 @@ bool canAttack(unit * target)
 bool canMove(unit * target)
 {
     bool out = true;
+
+    if(pawns[target->name].stat.MOVE_RANGE == 0)
+        out = false;
+
     for(int i = 0;i<NB_MAX_EFFECT && out;i++)
     {
     	if(target->effect[PARALYSE-1] > 0)
