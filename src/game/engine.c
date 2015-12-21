@@ -32,11 +32,11 @@ int noPlayer = FIRST_PLAYER; /**< Joueur en cours */
 bool possiblePath(vector coordUnit){
 	int range = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
 
-	if(!isSurrounded(coordUnit)){
+	if(!isSurrounded(coordUnit) && range > 0){
 
 		return true;
 
-	}else if(canTeleport(grid[coordUnit.x][coordUnit.y].name)){
+	}else if(canTeleport(grid[coordUnit.x][coordUnit.y].name) && range > 0){
 
 		for(int x = coordUnit.x-range; x <= coordUnit.x + range; x++){
 			for(int y = coordUnit.x - range; y <= coordUnit.x + range; y++){
