@@ -16,9 +16,9 @@
 #include "../../include/game/turn.h"
 #include "../../include/display/grid.h"
 #include "../../include/display/menu.h"
-#include "../../include/controller/terminal.h"
 #include "../../include/controller/manageString.h"
 #include "../../include/controller/manageSignal.h"
+ #include "../../include/controller/terminal.h"
 #include "../../include/units/unit.h"
 
 unit grid[N][N]; /**< Grille d'unités */
@@ -419,7 +419,7 @@ void gridInit(){
 			grid[x][y].name = empty; // Initialise à vide
 
 			if(x >= 0 + NB_LINES && x < N - NB_LINES && nbDecors < 7){
-				if(rand() % 100 > 93){ // Ajoute un décor aléatoirement
+				if(rand() % 100 > 92){ // Ajoute un décor aléatoirement
 					grid[x][y] = pawns[decors];
 					nbDecors++;
 				}
@@ -579,27 +579,27 @@ void askCoord(char coordString[]){
  * @param nbUnit   Nombre d'unités restantes à placer
  */
 void playerAddUnit(int limitUnits[], int * nbUnit){
-	int unitSelected;
+	int drop = -1;
 	char coordString[5];
 	vector coordUnit;
 
-	unitList(); // Affiche la liste des unités du jeu
-	askUnit(&unitSelected, limitUnits);
+	while(drop < 0){
+		drop = dragNdrop(ingame, tMap);
+	}
 
-	askCoord(coordString);
-	getCoordS(coordString, &coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
+	drop += 2; // id sprite commençant à 0 alors que liste des unités à 2
 
-	updateLimits(unitSelected + 1, limitUnits, coordUnit); // Met à jour le nombre d'unités limitées
+	/*updateLimits(drop, limitUnits, coordUnit); // Met à jour le nombre d'unités limitées
 
 	if(grid[coordUnit.x][coordUnit.y].name != 0){
 		destroyUnit(coordUnit); // Détruit l'unité en place
 		* nbUnit = * nbUnit - 1; // Remet à jour le nombre d'unités
 	}
 
-	if((strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant") && * nbUnit <= NB_MAX_UNIT - 2)
-		|| !strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant") 
+	if((strstr(getNameUnit(drop), "Dragon Tyrant") && * nbUnit <= NB_MAX_UNIT - 2)
+		|| !strstr(getNameUnit(drop), "Dragon Tyrant") 
 		){ // Dragon Tyrant compte comme 2 unités
-		grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
+		grid[coordUnit.x][coordUnit.y].name = drop; // Place l'unité correspondante dans la grille
 
 		unitInit(noPlayer, coordUnit); // Initialise l'unité ajoutée
 		addUnit(coordUnit);
@@ -607,7 +607,7 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
 		clearScreen();
 		gridDisp(); // Affiche la grille actualisée
 
-		if(strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant")){ // Dragon Tyrant compte comme 2 unités
+		if(strstr(getNameUnit(drop), "Dragon Tyrant")){ // Dragon Tyrant compte comme 2 unités
 			* nbUnit = * nbUnit + 1;
 		}
 	}else{
@@ -615,7 +615,7 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
 
 		color(red, "Pas assez d'unités disponible pour placer le Dragon tyrant !\n");
 		* nbUnit = * nbUnit - 1;
-	}
+	}*/
 
 }
 
@@ -627,16 +627,13 @@ void playerInit(){
 					 	NB_MAX_SG, NB_MAX_LT,
 					 	NB_MAX_DR, NB_MAX_FU}; // Limite en nombre pour certaines unités
 
-	printf("\nJoueur %i: \n\n", noPlayer + 1); // Initialisation du joueur 1
 	for(int i = 0; i < NB_MAX_UNIT; i++){
-		fontColor(red);
 
-		if(i < NB_MAX_UNIT -1)
+		/*if(i < NB_MAX_UNIT -1)
 			printf("Il reste %i unités à placer.\n", NB_MAX_UNIT - i);
 		else
-			printf("Il reste 1 unité à placer.\n");
+			printf("Il reste 1 unité à placer.\n");*/
 
-		reinitColor();
 		playerAddUnit(limitUnits, &i); // Ajout unité joueur 1
 	}
 }
@@ -702,6 +699,7 @@ void startGame(){
 				printf("\033[A\033[K"); // Efface la ligne
 
 			printf("Vous allez être redirigé vers le menu principal dans %i ", tLeft);
+			
 			if(tLeft > 1){
 				printf("secondes\n");
 			}else{
@@ -728,8 +726,8 @@ void gameInit(){
 	makePawns(); // Crée les pions
 
 	gridInit(); // Crée la grille
-    gridDisp(); // Affiche la grille
-
+    initDisplay();
+	
 	playerInit(); // Initialisation du joueur 1
 	noPlayer++;
 	playerInit();// Initialisation du joueur 2

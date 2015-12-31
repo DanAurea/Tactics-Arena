@@ -106,7 +106,6 @@ bool canAttack(unit * target)
 bool canMove(unit * target)
 {
     bool out = true;
-
     if(pawns[target->name].stat.MOVE_RANGE == 0)
         out = false;
 

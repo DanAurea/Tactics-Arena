@@ -8,10 +8,11 @@
 
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
-#include "../../include/controller/saveNLoad.h"
-#include "../../include/controller/terminal.h"
 #include "../../include/game/listes.h"
 #include "../../include/game/pathList.h"
+#include "../../include/controller/saveNLoad.h"
+#include "../../include/controller/terminal.h"
+#include "../../include/display/map.h"
 #include <signal.h>
 #include <stdio.h>
 
@@ -24,6 +25,7 @@ void freeAll(){
 		sizePawns = 0;
 		dumpAllLists(); // Libère les listes de la mémoire
 		dumpAllPaths(); // Libère les chemins de la mémoire
+		SDL_freeContext(ingame);
 	}
 }
 
