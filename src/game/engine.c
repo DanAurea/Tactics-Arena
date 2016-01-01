@@ -591,7 +591,7 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
 
 	updateLimits(unitSelected + 1, limitUnits, coordUnit); // Met à jour le nombre d'unités limitées
 
-	if(grid[coordUnit.x][coordUnit.y].name != 0){
+	if(grid[coordUnit.x][coordUnit.y].name != empty){
 		destroyUnit(coordUnit); // Détruit l'unité en place
 		* nbUnit = * nbUnit - 1; // Remet à jour le nombre d'unités
 	}
