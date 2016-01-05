@@ -88,9 +88,9 @@ bool pathFind(vector coordUnit, vector coordTarget){
 						if (i >= 0 && i < N && j >= 0 && j < N){
 
 							// Cherche le voisin dans la liste fermée + vérifie que la case permet le passage
-							if(!searchTile(1, neighbour) && (grid[i][j].name != decors 
-								|| canTeleport(grid[coordUnit.x][coordUnit.y].name) 
-								|| (grid[i][j].noPlayer == noPlayer && canGetPassed(&grid[i][j]))) ){ 
+							if(!searchTile(1, neighbour) && ( grid[i][j].name == empty
+								|| (canTeleport(grid[coordUnit.x][coordUnit.y].name)
+								&& (grid[i][j].noPlayer == noPlayer && canGetPassed(&grid[i][j]))) ) ){ 
 								
 								F = abs(coordTarget.x - i) + abs(coordTarget.y -j); // Distance jusqu'à la destination
 
@@ -248,7 +248,7 @@ void setTarget(unitName name, vector coordUnit,int colorDisp)
 	for(int i = -vertRange; i <= vertRange; i++){
 		for(int j = -horizRange; j <= horizRange; j++){
 
-			if(coordUnit.x + i >=0 && coordUnit.x + i < N && coordUnit.y + j >= 0 && coordUnit.y < N){
+			if(coordUnit.x + i >=0 && coordUnit.x + i < N && coordUnit.y + j >= 0 && coordUnit.y + j < N){
 				
 				if( ((abs(i) + abs(j) <= min && line == 0)
 					|| (i == 0 && j <= max)
@@ -348,6 +348,7 @@ void launchAttack(vector coordSource, vector coordTarget){
 				if(abs(coordTarget.x - x) + abs(coordTarget.y - y) <= 1 && x >=0 && x < N && y >= 0 && y < N){ // Croix centrée sur la cible désirée
 					targetAttack.x = x;
 					targetAttack.y = y;
+
 					attack(coordSource, targetAttack);
 				}
 
@@ -361,13 +362,16 @@ void launchAttack(vector coordSource, vector coordTarget){
 			while(!hors_liste(targetList)){
 				valeur_elt(targetList, &targetAttack);
 
-				if((coordTarget.x > coordSource.x && targetAttack.x > coordSource.x) || (coordTarget.x < coordSource.x && targetAttack.x < coordSource.x)){ // N'attaque sur une moitié de ligne
-					if(targetAttack.x == coordTarget.x || targetAttack.y == coordTarget.y  ){ // Même ligne / colonne
-						attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
-					}
-				}else if((coordTarget.y > coordSource.y && targetAttack.y > coordSource.y) || (coordTarget.y < coordSource.y && targetAttack.y < coordSource.y)){
-					if(targetAttack.x == coordTarget.x || targetAttack.y == coordTarget.y  ){ // Même ligne / colonne
-						attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
+				if(targetAttack.x == coordTarget.x || targetAttack.y == coordTarget.y  ){ // Même ligne / colonne
+
+					if((coordTarget.x > coordSource.x && targetAttack.x > coordSource.x) || (coordTarget.x < coordSource.x && targetAttack.x < coordSource.x)){ // N'attaque sur une moitié de ligne
+							
+							attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
+
+					}else if((coordTarget.y > coordSource.y && targetAttack.y > coordSource.y) || (coordTarget.y < coordSource.y && targetAttack.y < coordSource.y)){
+							
+							attack(coordSource, targetAttack); // Attaque l'unité présente dans la liste
+					
 					}
 				}
 
@@ -377,7 +381,7 @@ void launchAttack(vector coordSource, vector coordTarget){
 	}else if(name == cleric){
 		heal(name);
 	}else{
-		attack(coordSource, coordTarget);
+		attack(coordSource, coordTarget); // Attaque que la case ciblée
 	}
 }
 
@@ -652,7 +656,7 @@ bool endGame(){
 		fontColor(red);
 
 		if(hasSurrender){
-			printf("\nLe joueur %i a perdu par abandon (bouuuhhh) !\n", noPlayer + 1);
+			printf("\nLe joueur %i a perdu par abandon ! Retentez une partie si la honte ne vous a pas anéanti...\n", noPlayer + 1);
 		}else if(liste_vide(noPlayer)){
 			printf("Le joueur %i a perdu car toutes les unités ont été détruites !\n", noPlayer + 1);
 		}else if(!hasPlay() && !hasSurrender){

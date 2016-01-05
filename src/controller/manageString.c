@@ -222,7 +222,7 @@ char* getNameEffect(unitEffect effect){
     else if(effect == ARMOR_BONUS) return "Bonus d'armure";
     else if(effect == BARRIER) return "Barrière";
     else if(effect == POISON) return "Poison";
-    else if(effect == PARALYSE) return "Paralysé";
+    else if(effect == PARALYSE) return "la Paralysie";
     else if(effect == FOCUS) return "Focus";
     return "None";
 }

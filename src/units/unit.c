@@ -451,7 +451,7 @@ void addEffect(vector target, unitEffect effect)
 	    uTarget->effect[effect-1]=3;
 	}
 
-    printf("L'unité est sous l'effet de %s\n", getNameEffect(effect));
+    printf("L'unité %s en %c - %i est sous l'effet de %s\n", getNameUnit(uTarget->name), target.x + 'A', target.y + 1, getNameEffect(effect));
 }
 
 /**

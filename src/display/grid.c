@@ -26,6 +26,7 @@ void borderRight(short row){
 		if(j < N ){
 			color(grid[row + 1][j].unitColor,"Screen"); // Prend la couleur du pion en dessous pour toute une case
 			printf("    ");
+			reinitColor();
 		}
 
 		else if (row != N-1) // Affichage sur les lignes utiles

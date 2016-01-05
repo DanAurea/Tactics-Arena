@@ -535,7 +535,7 @@ void unitMenu(int choice){
 
 	                    if(strcmp(yn,"y") == 0 || strcmp(yn,"Y") == 0) {
 	                    	playMove();
-	                    }else if(strcmp(yn,"n") != 0 || strcmp(yn,"N") != 0){
+	                    }else if(strcmp(yn,"n") != 0 && strcmp(yn,"N") != 0){
                         	printf("Saisie invalide\n");
                     	}
 
@@ -563,7 +563,7 @@ void unitMenu(int choice){
 
 	                    if(strcmp(yn,"y") == 0 || strcmp(yn,"Y") == 0) {
 	                        playAttack();
-	                    }else if(strcmp(yn,"n") != 0 || strcmp(yn,"N") != 0){
+	                    }else if(strcmp(yn,"n") != 0 && strcmp(yn,"N") != 0){
 	                        printf("Saisie invalide\n");
 	                    }
 
@@ -573,6 +573,7 @@ void unitMenu(int choice){
                 	}
                 break;
             case 3:
+            	
             	movable(white);
 
             	clearScreen();
@@ -580,11 +581,21 @@ void unitMenu(int choice){
             	
             	printList(noPlayer);
 
-            	changeDirection();
-            	movable(black);
+            	printf("\nChanger de direction ? y/n\n");
+    		    readS(yn);
+    		    printf("\n");
+
+                if(strcmp(yn,"y") == 0 || strcmp(yn,"Y") == 0) {
+                    changeDirection();
+                }else if(strcmp(yn,"n") != 0 && strcmp(yn,"N") != 0){
+                    printf("Saisie invalide\n");
+                }
+                
+                movable(black);
 
             	clearScreen();
 				gridDisp();
+
 				
         		break;
         }

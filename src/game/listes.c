@@ -233,7 +233,7 @@ void printList(short numList){
 			source = grid[tmp.x][tmp.y];
 
 			if(source.name != empty && source.name != decors){
-				printf("%i - %s - %c%i - %i HP - %s - %i - %i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1,
+				printf("%i -  %s  -  %c%i  -  %i HP  -  %s  -  %i  -  %i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1,
 					 source.stat.HP, getDirectionUnit(source.direct), source.stat.POWER, source.stat.RECOVERY); // Affiche le nom de l'unité
 			}else{
 				printf("%i - %s - %c%i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1); // Affiche case vide ou décor
@@ -245,7 +245,7 @@ void printList(short numList){
 					printf(" - %i", source.effect[j]);
 				}
 			}
-			printf("\n");
+			printf("\n\n");
 
 			suivant(numList);
 			i++;

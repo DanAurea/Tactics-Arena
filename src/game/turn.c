@@ -72,7 +72,7 @@ void changeDirection(){
 		else if(grid[coordUnit.x][coordUnit.y].noPlayer != noPlayer)
 			color(red, "L'unité ne vous appartient pas !\n");
 
-		else if(sleeping && grid[coordUnit.x][coordUnit.y].noPlayer == noPlayer){
+		else if(sleeping){
 			fontColor(red);
 			printf("Votre unité est endormie attendez : %i tours\n", pawns[target->name].stat.RECOVERY - target->stat.RECOVERY);
 			reinitColor();
@@ -123,16 +123,14 @@ void playAttack(){
 
 			for(int i = 1; i < NB_MAX_EFFECT; i++){ // Affiche les effets sous lesquels est soumis l'unité
 				
-				if(target->effect[i-1] > 0){
-					printf("Cette unité ne peut pas attaquer, elle est soumise à l'effet: %s\n", getNameEffect(i));
-				}
+				if(target->effect[i-1] > 0) printf("Cette unité ne peut pas attaquer, elle est soumise à l'effet: %s\n", getNameEffect(i));
 
 			}
 			reinitColor();
 
-		}else if(target->noPlayer != noPlayer){
+		}else if(target->noPlayer != noPlayer)
 			color(red, "Cette unité ne vous appartient pas !\n");
-		}else if(sleeping && target->noPlayer == noPlayer){
+		else if(sleeping){
 			fontColor(red);
 			printf("Votre unité est endormie attendez : %i tours\n", pawns[target->name].stat.RECOVERY - target->stat.RECOVERY);
 			reinitColor();
@@ -156,9 +154,9 @@ void playAttack(){
 
 		found = searchTarget(targetList, coordTarget);
 
-		if(!found){ // Cible impossible
-			printf("Attaque impossible ! Portée insuffisante ou coordonnées incorrecte.\n");
-		}
+		if(!found) color(red, "Attaque impossible ! Portée insuffisante ou coordonnées incorrecte.\n");
+		else if(!selected) color(red, "Vous ne pouvez sélectionner cette case !\n");
+
 	}while(!found || !selected);
 
 	grid[coordUnit.x][coordUnit.y].unitColor = black;
@@ -198,7 +196,8 @@ void playMove(){
 			color(red, "Vous ne pouvez pas sélectionner une case vide\n");
 		}else if(target->noPlayer != noPlayer){
 			color(red, "Cette unité ne vous appartient pas !\n");
-		}else{
+		}else if(sleeping){
+
 			fontColor(red);
 			printf("Votre unité est endormie attendez : %i tours\n", pawns[target->name].stat.RECOVERY - target->stat.RECOVERY);
 			reinitColor();
@@ -222,6 +221,10 @@ void playMove(){
 		selected = selectUnit(&coordTarget); // Sélection de l'endroit où déplacer l'unité
 		
 		found = pathFind(coordUnit, coordTarget);
+
+		if(!found) color(red, "Déplacement impossible !\n");
+		else if(!selected) color(red, "Vous ne pouvez sélectionner cette unité !\n");
+
 	}while(!selected || !found);
     
     grid[coordUnit.x][coordUnit.y].unitColor = black; // Réinitialise la couleur de l'unité sélectionnée
@@ -245,7 +248,7 @@ void passTurn(){
  * @return Retourne vrai si le joueur a joué sinon faux
  */
 bool hasPlay(){
-	if(hasPassed == 0 && hasAttacked == 0 && hasMoved == 0) return false;
+	if(!hasPassed && !hasAttacked && !hasMoved) return false;
 	return true;
 }
 
@@ -279,8 +282,9 @@ void playTurn(){
 	int timeLeft   = totalTime; // Temps restant
 	int loop	   = 0;
 	
-	hasSurrender = 0; // Au début pour afficher message d'erreur correct lors de l'abandon
-	hasPassed    = 0; 
+	hasPassed    = 0;
+	hasMoved     = 0; // Actions utilisateur lors du tour
+	hasAttacked  = 0; // A faire à la fin pour éviter la triche lors du chargement
 	
 	poison(); // Met à jours les unités empoisonnées
 	minusEffect(); // Met à jours le temps restant pour les effets
@@ -288,7 +292,7 @@ void playTurn(){
 
 	signal(SIGUSR1, timeDown); // En fin de tour renvoie vers timeDown
 
-	while(timeLeft > 0 && hasPassed == 0 && hasSurrender == 0){
+	while(timeLeft > 0 && !hasPassed && !hasSurrender){
 		
 		gameMenu(); // Menu du joueur
 
@@ -305,9 +309,7 @@ void playTurn(){
 		raise(SIGUSR1); // Finis le tour et la partie car aucune action par un signal
 	}
 
-	if(noPlayer == FIRST_PLAYER && hasPlay()) noPlayer++;
-	else if(noPlayer == FIRST_PLAYER +1 && hasPlay()) noPlayer--;
+	if(noPlayer == FIRST_PLAYER && hasPlay() && !hasSurrender) noPlayer++;
+	else if(noPlayer == FIRST_PLAYER +1 && hasPlay() && !hasSurrender) noPlayer--;
 
-	hasMoved     = 0; // Actions utilisateur lors du tour
-	hasAttacked  = 0; // A faire à la fin pour éviter la triche lors du chargement
 }
