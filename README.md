@@ -9,10 +9,10 @@ Chaque joueur déplace ses unités respectant des règles de déplacement propre
 
    1. **[Règles](#règles)**
    2. **[Changelog](#changelog)**
-     - **[Version 0.1](#version-01)**
-     - **[Version 0.53](#version-053)**
-     - **[Version 0.85](#version-085)**
-     - **[Version 1.00](#version-100)**
+      - **[Version 0.1](#version-01)**
+      - **[Version 0.53](#version-053)**
+      - **[Version 0.85](#version-085)**
+      - **[Version 1.00](#version-100)**
    3. **[A faire](#a-faire)**
    4. **[Instructions de compilation](#instructions-de-compilation)**
    5. **[Utilisation](#utilisation)**
@@ -48,23 +48,23 @@ Une fois ce temps expiré:
 
 ## A faire
  
- - **[x] Analyse préliminaire**
- - **[x] Analyse conceptuelle**
- - **[x] Implémentation**
-    - **[x] Grille**
-    - **[x] Menu**
-    - **[x] Unités**
-    - **[x] Statistiques**
-    - **[x] Mouvements**
-    - **[x] Gestion des tours**
-    - **[x] Gestion du temps**
-    - **[x] Capacités spéciales**
-    - **[x] Etat unités**
- - **[ ] Test unitaires**
- - **[x] Test d'intégration**
- - **[ ] Ajout de fonctionnalités**
-    - **[ ] Intégration IA**
-    - **[ ] GUI**
+ - [x] **Analyse préliminaire**
+ - [x] **Analyse conceptuelle**
+ - [x] **Implémentation**
+    - [x] **Grille**
+    - [x] **Menu**
+    - [x] **Unités**
+    - [x] **Statistiques**
+    - [x] **Mouvements**
+    - [x] **Gestion des tours**
+    - [x] **Gestion du temps**
+    - [x] **Capacités spéciales**
+    - [x] **Etat unités**
+ - [ ] **Test unitaires**
+ - [x] **Test d'intégration**
+ - [ ] **Ajout de fonctionnalités**
+    - [ ] **Intégration IA**
+    - [ ] **GUI**
 
 
 ## Changelog
