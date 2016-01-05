@@ -203,7 +203,7 @@ void attack(vector source, vector target)
     	}
 
         if(miss >= 100 - 100 * (1 - block)){
-            printf("L'attaque sur %s en %c - %i a raté !\n", getNameUnit(uTarget->name),'A' + target.x, target.y +1);
+            printf("\nL'attaque sur %s en %c - %i a raté !\n", getNameUnit(uTarget->name),'A' + target.x, target.y +1);
         }else{
             uTarget->stat.HP -= uSource->stat.POWER * block * armor;
 
@@ -357,11 +357,13 @@ void move(vector destination, vector source)
 {   
     unitName name = grid[source.x][source.y].name;
 	unit * uSource = &grid[source.x][source.y];
-	if(canMove(uSource))
+	if(canMove(uSource) && (destination.x != source.x || destination.y != source.y) )
 	{
 		copy(&grid[destination.x][destination.y],uSource);
-		erase(uSource);
-		destroyUnit(source);
+		
+        erase(uSource);
+        destroyUnit(source);
+
 		addUnit(destination);
         grid[source.x][source.y].unitColor = black;
         

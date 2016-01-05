@@ -87,19 +87,23 @@ bool pathFind(vector coordUnit, vector coordTarget){
 
 						if (i >= 0 && i < N && j >= 0 && j < N){
 
-							// Cherche le voisin dans la liste fermée + vérifie que la case permet le passage
-							if(!searchTile(1, neighbour) && ( grid[i][j].name == empty
-								|| (canTeleport(grid[coordUnit.x][coordUnit.y].name)
-								&& (grid[i][j].noPlayer == noPlayer && canGetPassed(&grid[i][j]))) ) ){ 
-								
-								F = abs(coordTarget.x - i) + abs(coordTarget.y -j); // Distance jusqu'à la destination
+							if( (grid[i][j].name != decors &&  !canTeleport(grid[coordUnit.x][coordUnit.y].name) 
+								&& (grid[i][j].noPlayer == noPlayer || grid[i][j].name == empty) && canGetPassed(&grid[i][j]))
+								|| canTeleport(grid[coordUnit.x][coordUnit.y].name) ){
 
-								if(!searchTile(0, neighbour)){ // Cherche dans la liste ouverte
+								// Cherche le voisin dans la liste fermée + vérifie que la case permet le passage
+								if(!searchTile(1, neighbour)){ 
+									
+									F = abs(coordTarget.x - i) + abs(coordTarget.y -j); // Distance jusqu'à la destination
 
-									addOpenList(neighbour, F);
+									if(!searchTile(0, neighbour)){ // Cherche dans la liste ouverte
+
+										addOpenList(neighbour, F);
+									}
+
 								}
-
 							}
+
 						}
 
 					}

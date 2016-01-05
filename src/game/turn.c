@@ -220,7 +220,9 @@ void playMove(){
 	do{
 		selected = selectUnit(&coordTarget); // Sélection de l'endroit où déplacer l'unité
 		
-		found = pathFind(coordUnit, coordTarget);
+		if(grid[coordTarget.x][coordTarget.y].name == empty){
+			found = pathFind(coordUnit, coordTarget);
+		}
 
 		if(!found) color(red, "Déplacement impossible !\n");
 		else if(!selected) color(red, "Vous ne pouvez sélectionner cette unité !\n");
