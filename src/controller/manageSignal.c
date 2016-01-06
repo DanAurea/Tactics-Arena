@@ -25,7 +25,7 @@ void freeAll(){
 		sizePawns = 0;
 		dumpAllLists(); // Libère les listes de la mémoire
 		dumpAllPaths(); // Libère les chemins de la mémoire
-		SDL_freeContext(ingame);
+		//SDL_freeContext(ingame);
 	}
 }
 

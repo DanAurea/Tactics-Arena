@@ -254,6 +254,27 @@ void printList(short numList){
 }
 
 /**
+ * Edite une unité dans la liste
+ * @param coordUnit Coordonnées de l'unité à éditer
+ */
+void editUnit(vector coordUnit, vector newCoord){
+	vector tmp;
+
+	en_tete(noPlayer);
+	valeur_elt(noPlayer, &tmp);
+
+	while(!hors_liste(noPlayer) && (tmp.x != coordUnit.x || tmp.y != coordUnit.y) ){ // Cherche l'unité dans la liste
+		suivant(noPlayer);
+		valeur_elt(noPlayer, &tmp);
+	}
+
+	if(tmp.x == coordUnit.x && tmp.y == coordUnit.y){ // Unité trouvée
+		modif_elt(noPlayer, newCoord	);
+	}
+	
+}
+
+/**
  * Détruit une unité dans la liste
  * @param coordUnit Coordonnées de l'unité à détruire
  */

@@ -103,16 +103,26 @@
 	extern unit grid[N][N]; /**< Représentation d'une grille d'unité globale */
 	extern int noPlayer; /**< Représentation du joueur */
 
-	bool isSurrounded(vector currentUnit); /**< Vérifie si une unité est entourée */
+	// Initialisation du jeu
 	void gameInit(); /**< Initialise le jeu */
+	void startGame(); /**< Débute la partie */
+	bool tooMuchUnit(int unitSelected, int limitUnits[]); /**< Vérifie que le type d'unité n'est pas en surnombre */
+	void updateLimits(int unitSelected, int limitUnits[], vector coordUnit); /**< Met à jours les limites d'unités */
+
+	// Gestion du jeu
+	bool rightSide(int x, int y); /**< Vérifie que l'unité est dans le bon camp */
 	bool selectUnit(vector * coordUnit); /**< Sélectionne une unité */
+	
+	// Attaque
 	void setTarget(unitName name,vector coordUnit, int colorDisp); /**< Définis les cibles */
 	void launchAttack(vector coordSource, vector coordTarget); /**< Lance une attaque */
-	void movable(int colorDisp); /**< Fait la liste des unités déplaçables */
 	void attackable(int colorDisp); /**< Fait la liste des unités pouvant attaquer */
+	
+	// Déplacement
+	void movable(int colorDisp); /**< Fait la liste des unités déplaçables */
+	bool isSurrounded(vector currentUnit); /**< Vérifie si une unité est entourée */
 	void tileWalkable(vector coordUnit, int colorDisp); /**< Fait la liste des cases atteignables par l'unité */
 	bool possiblePath(vector coordUnit); /**< Vérifie qu'un chemin est possible */
 	bool pathFind(vector, vector); /**< Trouve une chemin vers la destination */
-	void startGame(); /**< Débute la partie */
 
 #endif

@@ -105,80 +105,36 @@ char* get2Char(char name[]){
     }
 }
 
-
 /**
- * Vérifie que les coordonnées sont dans la grille
- * @param  coordString Coordonnées sous forme de chaîne
- * @return             Retourne false si pas en dehors
+ * Récupère l'entier de l'unité par rapport à son nom
+ * @param  name Nom de l'unité
+ * @return      Retourne l'entier correspondant sinon -1
  */
-bool isOutGrid(char coordString[]){
-    int sizeS = strlen(coordString);
-    char iString[3] = "\0";
-    int countNumbers = 0;
+int getNumber(char name[]){
 
-    for(int i = 0; i < sizeS; i++){
-        if((coordString[i] > 'A' + N -1 && coordString[i] < 'a') || coordString[i] > 'a' + N -1) return true; // Débordement lignes
+    if(strcmp(name, "Empty" )                == 0) return empty;
+    else if(strcmp(name, "Decors" )          == 0) return decors; 
+    else if(strcmp(name, "Knight")           == 0) return knight;
+    else if(strcmp(name, "Scout")            == 0) return scout;
+    else if(strcmp(name, "Assassin" )        == 0) return assassin;
+    else if(strcmp(name, "Cleric" )          == 0) return cleric;
+    else if(strcmp(name, "Pyromancer" )      == 0) return pyromancer;
+    else if(strcmp(name, "Enchantress" )     == 0) return enchantress;
+    else if(strcmp(name, "Dragonborn" )      == 0) return dragonborn;
+    else if(strcmp(name, "Dark Witch" )      == 0) return darkWitch;
+    else if(strcmp(name, "Lightning Totem" ) == 0) return lightningTotem;
+    else if(strcmp(name, "Barrier Totem" )   == 0) return barrierTotem;
+    else if(strcmp(name, "Mud Golem")        == 0) return mudGolem;
+    else if(strcmp(name, "Golem Ambusher" )  == 0) return golemAmbusher;
+    else if(strcmp(name, "Frost Golem" )     == 0) return frostGolem;
+    else if(strcmp(name, "Stone Golem" )     == 0) return stoneGolem;
+    else if(strcmp(name, "Dragon Tyrant" )   == 0) return dragonTyrant;
+    else if(strcmp(name, "Berserker" )       == 0) return berserker;
+    else if(strcmp(name, "Beast Rider" )     == 0) return beastRider;
+    else if(strcmp(name, "Poison Wisp" )     == 0) return poisonWisp;
+    else if(strcmp(name, "Furgon" )          == 0) return furgon;
 
-        if(isdigit(coordString[i])){
-            iString[countNumbers] = coordString[i]; // Forme l'entier
-            countNumbers++;
-            iString[countNumbers] = '\0';
-        }
-    }
-    if(atoi(iString) < 1 || atoi(iString) > N) return true; // Débordements colonnes
-
-    return false;
-}
-
-/**
- * Sélectionne une coordonnée et vérifie son format
- * @param coordString Chaîne de caractère à vérifier
- * @return Vraie si les coordonnées saisies sont correctes
- */
-bool correctCoord(char coordString[]){
-
-    if( (coordString[0] >= 'a' && coordString[0] <= 'z') || (coordString[0] >= 'A' && coordString[0] <= 'Z')){
-        
-        if(coordString[1] != ' '){
-            return false;
-        }
-
-        if( ((coordString[2] >= '9' && coordString[2] <= '0') || (coordString[3] >= '9' && coordString[3] <= '0')) && coordString[4] != '\n'){
-            return false;    
-        }
-
-        if( ((coordString[1] >= '9' && coordString[1] <= '0') || (coordString[2] >= '9' && coordString[2] <= '0')) && coordString[3] != '\n'){
-            return false;
-        }
-    }else{
-        return false;
-    }
-
-    return !isOutGrid(coordString); // Retourne vrai si pas en dehors de la grille
-}
-
-/**
- * Vérifie que l'unité est du bon côté
- * @param  coordString Coordonnées sous forme de chaîne
- * @return             Retourne vrai si du bon côté 
- */
-bool rightSide(char * coordString){
-    int sizeS = strlen(coordString);
-
-    for(int i = 0; i < sizeS; i++){
-        if(isalpha(coordString[i])){ // Test sur la ligne de l'unité
-            
-            if(noPlayer == FIRST_PLAYER){ // Délimite le camp du joueur 1
-                if((coordString[i] >= 'a' && coordString[i] < 'a' + N - NB_LINES) || coordString[i] < ('A' + N - NB_LINES)) return false;
-            }
-            
-            if(noPlayer == FIRST_PLAYER + 1){ // Délimite le camp du joueur 2
-                if((coordString[i] < 'a' && coordString[i] >= 'A' + NB_LINES) || coordString[i] >= 'a' + NB_LINES) return false;
-            }
-        }
-    }
-
-    return true;
+    return -1;
 }
 
 /**

@@ -390,10 +390,6 @@ bool selectUnit(vector * coordUnit){
 	char coordString[5];
 	unitName name;
 
-	do{
-		printf("Sélectionnez une unité ou une case par ses coordonnées au format a/A 01/11: ");
-		readS(coordString);
-	}while(!correctCoord(coordString));
 
 	getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
 
@@ -442,34 +438,34 @@ bool tooMuchUnit(int unitSelected, int limitUnits[]){
 
 	if(strstr(getNameUnit(unitSelected), "Dragon")){
 
-		if(limitUnits[4] == 0) return true; // Limite de dragon
+		if(limitUnits[4] <= 0) return true; // Limite de dragon
 		return false;
 
 	}else{
 
 		if(unitSelected == knight){ // Limite de knight
 
-			if(limitUnits[0] == 0) return true;
+			if(limitUnits[0] <= 0) return true;
 			return false;
 
 		}else if(unitSelected == scout){ // Limite de scout
 
-			if(limitUnits[1] == 0) return true;
+			if(limitUnits[1] <= 0) return true;
 			return false;
 
 		}else if(unitSelected == stoneGolem){ // Limite de stone Golem
 
-			if(limitUnits[2] == 0) return true;
+			if(limitUnits[2] <= 0) return true;
 			return false;
 
 		}else if(unitSelected == lightningTotem){ // Limite de lightning Totem
 
-			if(limitUnits[3] == 0) return true;
+			if(limitUnits[3] <= 0) return true;
 			return false;
 
 		}else if(unitSelected == furgon){ // Limite de furgon
 
-			if(limitUnits[5] == 0) return true;
+			if(limitUnits[5] <= 0) return true;
 			return false;
 
 		}
@@ -486,7 +482,21 @@ bool tooMuchUnit(int unitSelected, int limitUnits[]){
  * @param coordUnit  	Coordonnées de l'unité
  */
 void updateLimits(int unitSelected, int limitUnits[], vector coordUnit){
-	unitName name = grid[coordUnit.x][coordUnit.y].name;
+	unitName name = empty;
+
+	if(!isOutGrid(coordUnit.x, coordUnit.y)) name = grid[coordUnit.x][coordUnit.y].name;
+	else{
+
+		if(unitSelected == knight) limitUnits[0]++; // Met à jours les unités lors d'une suppression
+
+		else if(unitSelected == scout) limitUnits[1]++;
+
+		else if(unitSelected == stoneGolem) limitUnits[2]++;
+
+		else if(unitSelected == lightningTotem) limitUnits[3]++;
+
+		else if(unitSelected == furgon) limitUnits[5]++;
+	}
 
 	if(strstr(getNameUnit(name), "Dragon")){
 		if(!strstr(getNameUnit(unitSelected), "Dragon")) limitUnits[4]++;  // Mise à jour limite dragons
@@ -496,12 +506,13 @@ void updateLimits(int unitSelected, int limitUnits[], vector coordUnit){
 
 	if(name != unitSelected){
 
-		if(unitSelected == knight) limitUnits[0]--; // Met à jours les unités lors d'un ajout
-		if(unitSelected == scout) limitUnits[1]--;
-		if(unitSelected == stoneGolem) limitUnits[2]--;
-		if(unitSelected == lightningTotem) limitUnits[3]--;
-		if(unitSelected == furgon) limitUnits[5]--;
+		if(unitSelected == knight && limitUnits[0] > 0) limitUnits[0]--; // Met à jours les unités lors d'un ajout
+		if(unitSelected == scout && limitUnits[1] > 0) limitUnits[1]--;
+		if(unitSelected == stoneGolem && limitUnits[2] > 0) limitUnits[2]--;
+		if(unitSelected == lightningTotem && limitUnits[3] > 0) limitUnits[3]--;
+		if(unitSelected == furgon && limitUnits[4] > 0) limitUnits[5]--;
 
+		return;
 	}
 
 	if(name == knight && unitSelected != knight) limitUnits[0]++; // Met à jours les unités lors d'un remplacement
@@ -517,60 +528,22 @@ void updateLimits(int unitSelected, int limitUnits[], vector coordUnit){
 }
 
 /**
- * Demande de choisir une unité
- * @param unitSelected Unité sélectionnée
- * @param limitUnits Nombre limite pour chaque unité
+ * Vérifie que l'unité est du bon côté
+ * @param  x Coordonnées x de l'unité
+ * @param  y Coordonnées y de l'unité
+ * @return             Retourne vrai si du bon côté 
  */
-void askUnit(int * unitSelected, int limitUnits[]){
-	do{
-		printf("Choisissez le type d'unité: ");
-		* unitSelected = readLong();
+bool rightSide(int x, int y){
+        
+    if(noPlayer == FIRST_PLAYER){ // Délimite le camp du joueur 1
+        if(x < N - NB_LINES) return false;
+    }
+    
+    if(noPlayer == FIRST_PLAYER + 1){ // Délimite le camp du joueur 2
+        if(x > NB_LINES) return false;
+    }
 
-		if(* unitSelected < knight -1 || * unitSelected > NB_UNITS - 1)
-			color(red, "Aucune unité de ce type !\n\n");
-
-		if(tooMuchUnit(* unitSelected + 1, limitUnits)){ // En cas de surnombre pour l'unité choisie
-			fontColor(red);
-
-			if(!strstr(getNameUnit(* unitSelected + 1), "Dragon")){ // Message d'erreur en cas de surnombre
-				printf("Trop de %s dans vos unités !\n", getNameUnit(* unitSelected + 1));
-			}else{
-				printf("Trop de dragons dans vos unités !\n");
-			}
-
-			reinitColor();
-		}
-
-	}while(* unitSelected < knight -1 ||  * unitSelected > NB_UNITS - 1 || tooMuchUnit(* unitSelected + 1, limitUnits));
-
-}
-
-/**
- * Demande les coordonnées de l'unité à placer
- * @param coordString Coordonnées sous forme de chaîne
- */
-void askCoord(char coordString[]){
-	do{
-		fontColor(cyan);
-		if(noPlayer == FIRST_PLAYER){
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i (Exemple : K 2 ) \n", 'A' + N - NB_LINES, 'A' + N - 1, N);
-		}else{
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i (Exemple : B 5 ) \n", 'A', 'A' + NB_LINES - 1, N);
-		}
-		reinitColor();
-
-		printf("Quelles sont les coordonnées de l'unité à placer ?\n");
-
-		readS(coordString); // Saisie sécurisée
-
-		if(!correctCoord(coordString)){ // Coordonnées incorrectes
-			printf("Coordonnées incorrectes !\n");
-		}
-		if(!rightSide(coordString)){ // Mauvais placement
-			printf("Unité non placée dans le bon camp !\n");
-		}
-	}
-	while(!correctCoord(coordString) || !rightSide(coordString));
+    return true;
 }
 
 /**
@@ -579,44 +552,51 @@ void askCoord(char coordString[]){
  * @param nbUnit   Nombre d'unités restantes à placer
  */
 void playerAddUnit(int limitUnits[], int * nbUnit){
-	int drop = -1;
-	char coordString[5];
+	int unitAdded = -1, dropped = -1;
+	int posX = 0, posY = 0, height = 0, width = 0;
 	vector coordUnit;
 
-	while(drop < 0){
-		drop = dragNdrop(ingame, tMap);
+	while(dropped < 0 && !tooMuchUnit(dropped, limitUnits)){
+		dropped = dragNdrop(ingame, tMap, nbUnit, limitUnits);
 	}
 
-	drop += 2; // id sprite commençant à 0 alors que liste des unités à 2
+	unitAdded = getUnit(dropped);
 
-	/*updateLimits(drop, limitUnits, coordUnit); // Met à jour le nombre d'unités limitées
+	posX   = ingame->contextSprite[dropped].x;
+	posY   = ingame->contextSprite[dropped].y;
+	height = ingame->contextSprite[dropped].sp_height;
+	width  = ingame->contextSprite[dropped].sp_width;
 
-	if(grid[coordUnit.x][coordUnit.y].name != 0){
+	getIndexMap(tMap, posX + width / 2, posY + height / 2, &coordUnit.x, &coordUnit.y); // Récupère la position du sprite dans la grille
+
+	updateLimits(unitAdded, limitUnits, coordUnit); // Met à jour le nombre d'unités limitées
+
+	if(grid[coordUnit.x][coordUnit.y].name != empty){
+
 		destroyUnit(coordUnit); // Détruit l'unité en place
 		* nbUnit = * nbUnit - 1; // Remet à jour le nombre d'unités
+
 	}
 
-	if((strstr(getNameUnit(drop), "Dragon Tyrant") && * nbUnit <= NB_MAX_UNIT - 2)
-		|| !strstr(getNameUnit(drop), "Dragon Tyrant") 
+	if((strstr(getNameUnit(unitAdded), "Dragon Tyrant") && * nbUnit <= NB_MAX_UNIT - 2)
+		|| !strstr(getNameUnit(unitAdded), "Dragon Tyrant") 
 		){ // Dragon Tyrant compte comme 2 unités
-		grid[coordUnit.x][coordUnit.y].name = drop; // Place l'unité correspondante dans la grille
+		grid[coordUnit.x][coordUnit.y].name = unitAdded; // Place l'unité correspondante dans la grille
 
 		unitInit(noPlayer, coordUnit); // Initialise l'unité ajoutée
 		addUnit(coordUnit);
 
-		clearScreen();
-		gridDisp(); // Affiche la grille actualisée
-
-		if(strstr(getNameUnit(drop), "Dragon Tyrant")){ // Dragon Tyrant compte comme 2 unités
+		if(strstr(getNameUnit(unitAdded), "Dragon Tyrant")){ // Dragon Tyrant compte comme 2 unités
 			* nbUnit = * nbUnit + 1;
 		}
 	}else{
-		gridDisp(); // Affiche la grille actualisée
 
 		color(red, "Pas assez d'unités disponible pour placer le Dragon tyrant !\n");
 		* nbUnit = * nbUnit - 1;
-	}*/
 
+	}
+
+	printList(FIRST_PLAYER);
 }
 
 /**
@@ -629,10 +609,10 @@ void playerInit(){
 
 	for(int i = 0; i < NB_MAX_UNIT; i++){
 
-		/*if(i < NB_MAX_UNIT -1)
+		if(i < NB_MAX_UNIT -1)
 			printf("Il reste %i unités à placer.\n", NB_MAX_UNIT - i);
 		else
-			printf("Il reste 1 unité à placer.\n");*/
+			printf("Il reste 1 unité à placer.\n");
 
 		playerAddUnit(limitUnits, &i); // Ajout unité joueur 1
 	}
