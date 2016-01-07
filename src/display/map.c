@@ -2,6 +2,7 @@
 #include <signal.h>
 #include <math.h>
 #include "../../include/game/engine.h"
+#include "../../include/game/pawns.h"
 #include "../../include/controller/manageString.h"
 #include "../../include/controller/manageSignal.h"
 #include "../../include/display/map.h"
@@ -126,30 +127,96 @@ bool drawTile(t_context * context , type_Map tMap, int posX, int posY){
 	}
 
 	if(tMap == diamond){
+
 		if(x == N-1){
 			return SDL_newImage(context, NULL, "base_Cube.png", posX, posY);
 		}else{
 			return SDL_newImage(context, NULL, "base_Tile.png", posX, posY);
 		}
+
 	}else if(tMap == slide){
+
 		if(x != 0){
 			return SDL_newImage(context, NULL, "base_Tile.png", posX, posY);
 		}
+
 	}else if(tMap == staggered){
+
 		if((x == N - 1 && y % 2 != 0)){
 			return SDL_newImage(context, NULL, "base_Cube.png", posX, posY);
 		}else{
 			return SDL_newImage(context, NULL, "base_Tile.png", posX, posY);
 		}
+
 	}
 
 	return true;
 }
 
 /**
+ * Dessine les limites de placements d'unités
+ * @param context Contexte dans lequel dessiner
+ * @param tMap    Type de la carte
+ */
+void drawLimitPlayer(t_context * context, type_Map tMap){
+	int posX = 0, posY = 0;
+
+	if(noPlayer == FIRST_PLAYER){
+		
+		for(int x = N - 1; x >= N - NB_LINES; x--){
+			for(int y = 0; y < N; y++){
+
+				posX = x * TILE_W;
+				posY = y * TILE_H;
+
+				toIso(tMap, &posX, &posY); // Convertis les coordonnées en coordonnées isométriques
+
+				posX += offsetX(tMap);
+				posY += offsetY();
+
+				SDL_newImage(context, NULL, "red_Tile.png", posX, posY);
+
+			}
+		}
+
+	}else if(noPlayer == FIRST_PLAYER + 1){
+
+		for(int x = 0; x < NB_LINES; x++){
+			for(int y = 0; y < N; y++){
+
+				posX = x * TILE_W;
+				posY = y * TILE_H;
+
+				toIso(tMap, &posX, &posY); // Convertis les coordonnées en coordonnées isométriques
+
+				posX += offsetX(tMap);
+				posY += offsetY();
+
+				SDL_newImage(context, NULL, "red_Tile.png", posX, posY);
+
+			}
+		}
+
+	}
+
+}
+
+/**
+ * Supprimme les limites de placements d'unités
+ * @param context Contexte dans lequel dessiner
+ * @param tMap    Type de la carte
+ */
+void deleteLimitPlayer(t_context * context, type_Map tMap){
+	
+	for (int i = 0; i < N  * NB_LINES; i++){
+		SDL_delImage(context, context->nbImg - 1); // Supprime la dernière image ajoutée au jeu
+	}
+}
+
+/**
  * Dessine un décor
  * @param context Contexte dans lequel dessiner
- * @param tMap    Type de la map
+ * @param tMap    Type de la carte
  * @param posX Coordonnées X de la tile à dessiner
  * @param posY Coordonnées Y de la tile à dessiner
  */
@@ -166,7 +233,7 @@ bool drawDecor(t_context * context , type_Map tMap, int posX, int posY){
 /**
  * Dessine une carte
  * @param context Contexte dans lequel dessiner
- * @param tMap    Type de la map
+ * @param tMap    Type de la carte
  */
 bool drawMap(t_context * context, type_Map tMap){
 	int x, y;
@@ -203,7 +270,7 @@ bool fileExist(const char* file) {
 /**
  * Dessine les pions du jeu
  * @param context Contexte dans lequel dessiner
- * @param tMap    Type de la map
+ * @param tMap    Type de la carte
  * @return		  Retourne true en cas de succès sinon false
  */
 bool drawPawns(t_context * context, type_Map tMap){

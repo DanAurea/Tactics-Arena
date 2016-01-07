@@ -33,7 +33,7 @@
 	#define NB_MAX_LT 1 /**< Nombre max de Lightning totem par joueur */
 	#define NB_MAX_DR 2 /**< Nombre max de Dragon par joueur */
 	#define NB_MAX_FU 2 /**< Nombre max de Furgon par joueur */
-	#define NB_MAX_UNIT 10 /**< Nombre max d'unité par joueur */
+	#define NB_MAX_UNIT 2 /**< Nombre max d'unité par joueur */
 	#define NB_MAX_DECOR 7 /**< Nombre max de décor */
 
 	/**
@@ -97,6 +97,7 @@
 		unitEffect effect[NB_MAX_EFFECT]; /**< Effets sur l'unité*/
 		cardinal direct; /**< Direction de l'unité */
 		int noPlayer; /**< Propriétaire de l'unité */
+		int idSprite; /**< Identifiant du sprite */
 		int unitColor; /**< Couleur de l'unité */
 	}unit;
 

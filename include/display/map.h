@@ -23,6 +23,8 @@
 	int offsetY();
 	void initDisplay();
 	int getUnit(int idSprite);
+	void drawLimitPlayer(t_context * context, type_Map tMap);
+	void deleteLimitPlayer(t_context * context, type_Map tMap);
 
 #endif
 

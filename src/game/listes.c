@@ -233,8 +233,8 @@ void printList(short numList){
 			source = grid[tmp.x][tmp.y];
 
 			if(source.name != empty && source.name != decors){
-				printf("%i - %s - %c%i - %i HP - %s - %i - %i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1,
-					 source.stat.HP, getDirectionUnit(source.direct), source.stat.POWER, source.stat.RECOVERY); // Affiche le nom de l'unité
+				printf("%i - %s - %c%i - %i HP - %s - %i - %i - Sprite : %i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1,
+					 source.stat.HP, getDirectionUnit(source.direct), source.stat.POWER, source.stat.RECOVERY, source.idSprite); // Affiche le nom de l'unité
 			}else{
 				printf("%i - %s - %c%i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1); // Affiche case vide ou décor
 			}
@@ -254,22 +254,29 @@ void printList(short numList){
 }
 
 /**
- * Edite une unité dans la liste
- * @param coordUnit Coordonnées de l'unité à éditer
+ * Met à jour l'identifiant du sprite de chaque unité dans la liste du joueur courant
+ * @param idUpdated Identifiant de référence pour la mise à jour
+ * @param offset Valeur à décaler
  */
-void editUnit(vector coordUnit, vector newCoord){
+void updateIdSprite(int idUpdated, int offset){
 	vector tmp;
 
-	en_tete(noPlayer);
-	valeur_elt(noPlayer, &tmp);
+	if(!liste_vide(noPlayer)){
 
-	while(!hors_liste(noPlayer) && (tmp.x != coordUnit.x || tmp.y != coordUnit.y) ){ // Cherche l'unité dans la liste
-		suivant(noPlayer);
+		en_tete(noPlayer);
 		valeur_elt(noPlayer, &tmp);
-	}
 
-	if(tmp.x == coordUnit.x && tmp.y == coordUnit.y){ // Unité trouvée
-		modif_elt(noPlayer, newCoord	);
+	}else return ;
+
+	while(!hors_liste(noPlayer)){ // Cherche l'unité dans la liste
+		
+		if(grid[tmp.x][tmp.y].idSprite > idUpdated ){
+
+			grid[tmp.x][tmp.y].idSprite += offset;
+
+		}
+
+		suivant(noPlayer);
 	}
 	
 }

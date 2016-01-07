@@ -496,6 +496,8 @@ void updateLimits(int unitSelected, int limitUnits[], vector coordUnit){
 		else if(unitSelected == lightningTotem) limitUnits[3]++;
 
 		else if(unitSelected == furgon) limitUnits[5]++;
+
+		return; 
 	}
 
 	if(strstr(getNameUnit(name), "Dragon")){
@@ -596,6 +598,7 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
 
 	}
 
+	grid[coordUnit.x][coordUnit.y].idSprite = dropped;
 	printList(FIRST_PLAYER);
 }
 
@@ -607,6 +610,9 @@ void playerInit(){
 					 	NB_MAX_SG, NB_MAX_LT,
 					 	NB_MAX_DR, NB_MAX_FU}; // Limite en nombre pour certaines unités
 
+	drawLimitPlayer(ingame, tMap);
+	SDL_generate(ingame);
+
 	for(int i = 0; i < NB_MAX_UNIT; i++){
 
 		if(i < NB_MAX_UNIT -1)
@@ -616,6 +622,9 @@ void playerInit(){
 
 		playerAddUnit(limitUnits, &i); // Ajout unité joueur 1
 	}
+
+	deleteLimitPlayer(ingame, tMap);
+	SDL_generate(ingame);
 }
 
 /**
