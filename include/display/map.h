@@ -12,6 +12,11 @@
 	#define TILE_W 96 /**< Largeur d'une tile */
 	#define N 11 /**< Taille de la map */
 
+	#define DOWN_RIGHT 1
+	#define DOWN_LEFT 2
+	#define UP_LEFT 3
+	#define UP_RIGHT 4
+
 	typedef enum{diamond, staggered, slide}type_Map;
 
 
@@ -25,6 +30,8 @@
 	int getUnit(int idSprite);
 	void drawLimitPlayer(t_context * context, type_Map tMap);
 	void deleteLimitPlayer(t_context * context, type_Map tMap);
+	void delPawnsSprite(t_context * context, type_Map tMap);
+	void moveSpriteTo(t_context * context, type_Map tMap, int to, int idSprite );
 
 #endif
 

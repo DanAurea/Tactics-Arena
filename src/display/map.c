@@ -6,6 +6,8 @@
 #include "../../include/controller/manageString.h"
 #include "../../include/controller/manageSignal.h"
 #include "../../include/display/map.h"
+#include "../../include/display/menu.h"
+
 
 t_context * ingame = NULL; /**< Contexte dans lequel dessiner */
 type_Map tMap = diamond; /**< Type de carte */
@@ -154,6 +156,55 @@ bool drawTile(t_context * context , type_Map tMap, int posX, int posY){
 }
 
 /**
+ * Bouge un sprite à la position voulue
+ * @param context  Contexte concerné
+ * @param tMap     Type de la carte
+ * @param to       Direction
+ * @param idSprite Identifiant du sprite
+ */
+void moveSpriteTo(t_context * context, type_Map tMap, int to, int idSprite ){
+
+	int nbAnimMax = 5; // TWEAK HERE : nombre d'animation pour parcourir 1 case
+	int pixelByAnim = 10; // TWEAK HERE : nombre de pixel par animation
+
+	int currentAnim = context->contextSprite[idSprite].animation; // animation actuelle
+	int maxAnimSet = (context->contextSprite[idSprite].buffer->w / context->contextSprite[idSprite].sp_width); // calcul ne nombre d'animation pour faire le boucle
+	int nbAnim = 0;
+
+	while (nbAnim != nbAnimMax) {
+
+		if(to == UP_LEFT){
+    		
+    		SDL_editSprite(context, idSprite, (context->contextSprite[idSprite].x - pixelByAnim ) , (context->contextSprite[idSprite].y - pixelByAnim / 2), 4, ++currentAnim, 0); //haut gauche
+		
+		}else if(to == UP_RIGHT){
+	  		
+	  		SDL_editSprite(context, idSprite, (context->contextSprite[idSprite].x + pixelByAnim ) , (context->contextSprite[idSprite].y - pixelByAnim / 2), 4, ++currentAnim, 0); //haut droite
+		
+		}else if(to == DOWN_LEFT){
+			
+			SDL_editSprite(context, idSprite, (context->contextSprite[idSprite].x - pixelByAnim ) , (context->contextSprite[idSprite].y + pixelByAnim / 2), 2, ++currentAnim, 0); //bas gauche
+		
+		}else if(to == DOWN_RIGHT){
+	  		
+	  		SDL_editSprite(context, idSprite, (context->contextSprite[idSprite].x + pixelByAnim ) , (context->contextSprite[idSprite].y + pixelByAnim / 2), 3, ++currentAnim, 0); //bas droite
+		
+		}else{
+			nbAnim = nbAnimMax;
+		}
+
+		nbAnim++;
+		if (currentAnim+1 >= maxAnimSet) {
+			currentAnim = 0;
+		}
+
+		SDL_generate(context);
+		SDL_Delay(180);
+	}
+
+}
+
+/**
  * Dessine les limites de placements d'unités
  * @param context Contexte dans lequel dessiner
  * @param tMap    Type de la carte
@@ -248,8 +299,13 @@ bool drawMap(t_context * context, type_Map tMap){
 				if(!drawTile(context, tMap, posX, posY)) return false;
 
 				if(grid[x][y].name == decors){
+					
 					if(!drawDecor(context, tMap, posX, posY)) return false;
-				}
+					grid[x][y].idSprite = context->nbImg - 1;
+
+					SDL_setOnLayer(context, IMG, context->nbImg - 1, 5);
+				}else
+					SDL_setOnLayer(context, IMG, context->nbImg - 1, 1);
 
 			}
 	}
@@ -276,11 +332,10 @@ bool fileExist(const char* file) {
 bool drawPawns(t_context * context, type_Map tMap){
 	int x = 0, y = 0, nbTiles = 0;
 	int posX = 0, posY = 20;
-	SDL_Surface * tmp = NULL;
 	char fileDir[250];
 	char filename[150]; // It's should be enough
 
-	for(int i = 0; i < 4; i++){
+	for(int i = 0; i < 5; i++){
 
 		if(i != empty && i != decors){
 
@@ -302,43 +357,32 @@ bool drawPawns(t_context * context, type_Map tMap){
 
 			}
 			
-			tmp = IMG_Load(fileDir);
-
-			if(!tmp){
-
-				fprintf(stderr, "Le fichier %s n'a pu être chargé.", filename);
-				return false;
-
-			}
 
 			posX = nbTiles * TILE_W;
 
-			getIndexMap(tMap, posX + tmp->w, posY + tmp->h, &x, &y);
+			getIndexMap(tMap, posX + 96, posY + 96, &x, &y);
 
-			while( (x >= 0 && x <= N && y >= 0 && y <= N) || nbTiles * TILE_W + tmp->w > SCREEN_WIDTH - 10){ // Tant qu'une unité est dessinée sur la carte
+			while( (x >= 0 && x <= N && y >= 0 && y <= N) || nbTiles * TILE_W + 96 > SCREEN_WIDTH - 10){ // Tant qu'une unité est dessinée sur la carte
 				
 
-				if(nbTiles * TILE_W + tmp->w > SCREEN_WIDTH - 10){ // Remet en début de ligne si hors de l'écran et passe à la ligne suivante
+				if(nbTiles * TILE_W + 96 > SCREEN_WIDTH - 10){ // Remet en début de ligne si hors de l'écran et passe à la ligne suivante
 					
 					nbTiles = 0;
 					posX = nbTiles * TILE_W;
-					posY += tmp->h * 1.2;
+					posY += 96 * 1.2;
 				
 				}else	nbTiles++;
 
-				if(x < N )	getIndexMap(tMap, nbTiles * TILE_W + tmp->w, posY + tmp->h, &x, &y); // Vérifie le coin inférieur droit
-				else	getIndexMap(tMap, nbTiles * TILE_W, posY + tmp->h, &x, &y); // Vérifie le coin inférieur gauche
+				if(x < N )	getIndexMap(tMap, nbTiles * TILE_W + 96, posY + 96, &x, &y); // Vérifie le coin inférieur droit
+				else	getIndexMap(tMap, nbTiles * TILE_W, posY + 96, &x, &y); // Vérifie le coin inférieur gauche
 
 			}
 
 			posX = nbTiles * TILE_W; // Remet à jour la position au cas où la position a changé entre temps
 
-			if(!SDL_newSprite(context, filename, colorGreenLight, tmp->h, tmp->w, posX, posY, 1, 1, 0))	return false;
+			if(!SDL_newSprite(context, filename, colorGreenLight, 96, 96, posX, posY, 1, 1, 0))	return false;
 
-			SDL_newText(context, NULL, getNameUnit(i), colorWhite, posX + abs(tmp->w - strlen(getNameUnit(i)) * 7) / 2 , posY + tmp->h);
-
-			SDL_FreeSurface(tmp);
-			tmp = NULL;
+			SDL_newText(context, NULL, getNameUnit(i), colorWhite, posX + abs(96 - strlen(getNameUnit(i)) * 7) / 2 , posY + 96);
 
 			nbTiles++;
 		}
@@ -352,11 +396,13 @@ bool drawPawns(t_context * context, type_Map tMap){
  * Efface les sprites des pions du jeu
  */
 void delPawnsSprite(t_context * context, type_Map tMap){
-	
-	for(int i = 0; i < 1; i++){
-		SDL_delSprite(context, i);
-	}
 
+	for(int i = 0; i < 3; i++){
+
+		SDL_delSprite(context, 0);
+		SDL_delText(context, 0);	
+	}
+	
 }
 
 /**
@@ -368,8 +414,10 @@ void initDisplay(){
 
 	ingame = SDL_newContext("Tactics Arena", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
+	drawPlayMenu();
 	if(!drawMap(ingame, tMap) || !drawPawns(ingame, diamond)) raise(SIGINT);
 
 	SDL_generate(ingame);
+	SDL_Flip(screen); // Rafraichis l'écran pour la nouvelle partie
 
 }

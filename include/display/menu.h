@@ -13,3 +13,5 @@ void unitList(); /**< Listes des unités du jeu */
 void mainHelp(); /**< Menu d'aide principal */
 void helpUnit(); /**< Menu d'aide des unités */
 void dispDirection(); /**< Affiche la liste des directions */
+int playMenu(); /**< Affiche le menu de jeu */
+void drawPlayMenu();

@@ -11,6 +11,7 @@
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
 #include "../../include/game/listes.h"
+ #include "../../include/game/pathList.h"
 #include "../../include/display/grid.h"
 #include "../../include/controller/terminal.h"
 #include "../../include/controller/manageString.h"
@@ -357,14 +358,41 @@ void move(vector destination, vector source)
 {   
     unitName name = grid[source.x][source.y].name;
 	unit * uSource = &grid[source.x][source.y];
+    int idSprite = grid[source.x][source.y].idSprite;
+    int F = 0, x = 0, y = 0;
+
+    printf("idSprite: %i\n", idSprite);
 	if(canMove(uSource))
 	{
 		copy(&grid[destination.x][destination.y],uSource);
 		erase(uSource);
 		destroyUnit(source);
 		addUnit(destination);
-        grid[source.x][source.y].unitColor = black;
-        
+
+        if(!emptyPath(0)){
+                        
+            x = source.x;
+            y = source.y;
+
+            pathHead(0);
+            while(!outPath(0)){
+                getTile(0, &destination, &F);
+                next(0);
+
+                printf("x: %i y%i\n", x, y);
+
+                if( x > destination.x) moveSpriteTo(ingame, tMap, UP_LEFT, idSprite );
+                else if(y > destination.y) moveSpriteTo(ingame, tMap, UP_RIGHT, idSprite);
+                else if(y < destination.y) moveSpriteTo(ingame, tMap, DOWN_LEFT, idSprite);
+                else if( x < destination.x) moveSpriteTo(ingame, tMap, DOWN_RIGHT, idSprite );
+
+                x = destination.x;
+                y = destination.y;
+            
+            }
+        }
+
+
         clearScreen(); // Met à jour la grille actualisée
         gridDisp();
 

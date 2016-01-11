@@ -511,6 +511,83 @@ void gameMenu(){
 }
 
 /**
+ * Libère le menu de jeu de la mémoire
+ */
+void freePlayMenu(){
+
+	SDL_delImage(ingame, 0);
+	SDL_delImage(ingame, 0);
+	SDL_delImage(ingame, 0);
+	SDL_delImage(ingame, 0);
+	SDL_delImage(ingame, 0);
+	SDL_delImage(ingame, 0);
+}
+
+/**
+ * Dessine le menu de jeu
+ */
+void drawPlayMenu(){
+
+	SDL_newImage(ingame, NULL, "move.png", SCREEN_WIDTH - 480, 20);
+	SDL_newImage(ingame, NULL, "attack.png", SCREEN_WIDTH - 400, 20);
+	SDL_newImage(ingame, NULL, "direction.png", SCREEN_WIDTH - 320, 20);
+	SDL_newImage(ingame, NULL, "save.png", SCREEN_WIDTH - 240, 20);
+	SDL_newImage(ingame, NULL, "passed.png", SCREEN_WIDTH - 160, 20);
+	SDL_newImage(ingame, NULL, "surrender.png", SCREEN_WIDTH - 80, 20);
+}
+
+/**
+ * Gestion du menu de jeu
+ */
+int playMenu(){
+	int overObj 	= SDL_ismouseover(ingame, IMG);
+	int mousePressed = 0;
+
+	if(overObj >= 0){ // Au dessus d'un sprite
+
+		mousePressed = SDL_isMousePressed(SDL_BUTTON_LEFT);
+		if(mousePressed) overObj = SDL_ismouseover(ingame, IMG);
+
+		if(mousePressed){
+
+			if (overObj == 0){	// Déplacement
+
+				return 1;		
+
+			}else if (overObj == 1){ // Attaque
+
+				return 2;
+
+			}else if (overObj == 2){ // Direction
+
+				return 3;
+
+			}else if (overObj == 3){ // Sauvegarde
+
+				save();
+				return 4;
+			
+			}else if(overObj == 4){ // Abandon
+
+				passTurn();
+				return 5;
+
+			}else if(overObj == 5){ // Abandon
+
+				surrender();
+				return 6;
+
+			}
+
+		}
+
+	}else
+		SDL_Delay(20);
+
+	return 0;
+}
+
+/**
  * Menu de sélection de l'unité
  * @param choice    Choix de l'action pour l'unité
  */

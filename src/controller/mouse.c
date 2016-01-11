@@ -5,8 +5,6 @@
 #include "../../include/controller/manageString.h"
 
 int idCursor = -1; /**< Identifiant du curseur */
-int mX = -1; /**< Position X à t-1 de la souris*/
-int mY = -1; /**< Position Y à t-1 de la souris*/
 
 /**
  * Glisser et déposer
@@ -43,11 +41,17 @@ int dragNdrop(t_context * context, type_Map tMap, int * nbUnit, int limitUnits[]
 					SDL_newSprite(context, filename , colorGreenLight, context->contextSprite[overObj].sp_height, context->contextSprite[overObj].sp_width, posX, posY, context->contextSprite[overObj].position, 1, 0);
 					overObj = context->nbSprite - 1; // Force le déplacement de la copie
 
+					SDL_setOnLayer(context, SPRITE, context->nbSprite - 1, 3);
+
 				}else if(grid[x][y].noPlayer != noPlayer) return -1;
 
 				while(mousePressed){
 
-					SDL_drag(context, SPRITE, overObj); // Glisse l'objet crée -> pose problème si tooMuchUnit
+					SDL_drag(context, SPRITE, overObj); // Glisse l'objet crée
+					
+					if(showMouseCursor(ingame, tMap))
+						SDL_generate(ingame);
+					
 					SDL_Delay(20); // 50 FPS
 					mousePressed = SDL_isMousePressed(SDL_BUTTON_LEFT);
 
@@ -70,7 +74,7 @@ int dragNdrop(t_context * context, type_Map tMap, int * nbUnit, int limitUnits[]
 				destroyUnit(coordUnit); // Efface de la liste du joueur courant
 				* nbUnit = * nbUnit - 1;
 
-				getIndexMap(tMap, SDL_getmousex(), SDL_getmousey() + context->contextSprite[overObj].buffer->h / 3, &x, &y); // Récupère la nouvelle position
+				getIndexMap(tMap, SDL_getmousex(), SDL_getmousey(), &x, &y); // Récupère la nouvelle position
 
 				if(!isOutGrid(x,y) && grid[x][y].name != empty){ // Si la nouvelle case n'est pas vide on remet le sprite à sa place initiale
 					x = coordUnit.x;
@@ -106,7 +110,7 @@ int dragNdrop(t_context * context, type_Map tMap, int * nbUnit, int limitUnits[]
 				}
 
 			}else{
-				getIndexMap(tMap, SDL_getmousex(), SDL_getmousey() + context->contextSprite[overObj].buffer->h / 3, &x, &y);
+				getIndexMap(tMap, SDL_getmousex(), SDL_getmousey(), &x, &y);
 			}
 
 
@@ -126,7 +130,7 @@ int dragNdrop(t_context * context, type_Map tMap, int * nbUnit, int limitUnits[]
 				toIso(tMap, &posX, &posY); // Convertis les coordonnées en coordonnées isométriques
 
 				posX += offsetX(tMap);
-				posY += offsetY() - context->contextSprite[overObj].buffer->h / 2;
+				posY += offsetY() - context->contextSprite[overObj].sp_height / 2;
 
 				if(grid[x][y].name != empty){ // Lors d'un remplacement d'unité déjà présente sur le terrain
 					
@@ -183,13 +187,12 @@ void showCursor(t_context * context, type_Map tMap, int x, int y){
 	posY += offsetY();
 
 	if(idCursor == - 1){
+		idCursor = context->nbImg;
 		SDL_newImage(context, NULL, "cursor.png", posX, posY); // Initialise le curseur si pas encore dessiné
-		idCursor = context->nbImg - 1;
 	}else{
 		SDL_editImage(context, idCursor, posX, posY); // Met à jour la position du curseur
 	}
-
-	SDL_generate(context);
+	SDL_setOnLayer(context, IMG, idCursor, 2);
 }
 
 /**
@@ -197,21 +200,25 @@ void showCursor(t_context * context, type_Map tMap, int x, int y){
  * @param context Contexte dans lequel dessiner
  * @param tMap    Type de la map
  */
-void showMouseCursor(t_context * context, type_Map tMap){
-	int mouseX, mouseY;
-	int x = - 1, y = -1;
+int showMouseCursor(t_context * context, type_Map tMap){
+	int x = 0, y = 0, mX = 0, mY = 0;
 
-	mouseX = SDL_getmousex(); // Récupère la position actuelle X de la souris 
-	mouseY = SDL_getmousey(); // Récupère la position actuelle Y de la souris 
-
-	getIndexMap(tMap, mouseX, mouseY, &x, &y);
-
-	if(x >= 0 && x < N && y >= 0 && y < N && (mX != x || mY != y)){
-			showCursor(context, tMap, x, y); // Affiche en surbillance la zone pointée
-			
-			mX = x; // Stocke la position actuelle X de la souris
-			mY = y; // Stocke la position actuelle Y de la souris
-	}else{
-		SDL_Delay(50);
+	if(idCursor == -1){
+		showCursor(context, tMap, x, y); // Affiche en surbillance la zone pointée
+		return 1;
 	}
+
+	if(idCursor < 0) return 0;
+
+	getIndexMap(tMap, context->contextImg[idCursor].x + context->contextImg[idCursor].buffer->w / 2, context->contextImg[idCursor].y + context->contextImg[idCursor].buffer->h / 2, &x, &y);
+	getIndexMap(tMap,  SDL_getmousex(),  SDL_getmousey(), &mX, &mY);
+
+	if(mX != x || mY != y){
+
+		if(mX >= 0 && mX < N && mY >= 0 && mY < N){
+				showCursor(context, tMap, mX, mY); // Affiche en surbillance la zone pointée
+				return 1;
+		}
+	}
+	return 0;
 }

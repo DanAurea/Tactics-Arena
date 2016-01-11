@@ -269,7 +269,8 @@ void updateIdSprite(int idUpdated, int offset){
 	}else return ;
 
 	while(!hors_liste(noPlayer)){ // Cherche l'unité dans la liste
-		
+		valeur_elt(noPlayer, &tmp);
+
 		if(grid[tmp.x][tmp.y].idSprite > idUpdated ){
 
 			grid[tmp.x][tmp.y].idSprite += offset;
@@ -339,6 +340,30 @@ bool searchTarget(int numList, vector coordTarget){
 				return true;
 			}
 			suivant(numList);
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Cherche un sprite dans la liste
+ * @param  idSprite Identifiant du sprite
+ * @return          Retourne vrai si trouvé sinon false
+ */
+bool searchSprite(int idSprite){
+	vector tmp = {-1, -1};
+
+	if(!liste_vide(noPlayer)){
+		en_tete(noPlayer);
+
+		while(!hors_liste(noPlayer)){ // Cherche la cible
+			valeur_elt(noPlayer, &tmp);
+			
+			if(grid[tmp.x][tmp.y].idSprite == idSprite){ // Cible trouvée
+				return true;
+			}
+			suivant(noPlayer);
 		}
 	}
 

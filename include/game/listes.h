@@ -39,3 +39,6 @@ bool searchTarget(int numList, vector coordTarget); /**< Cherche une cible */
 
 // Mise à jour listes
 void updateIdSprite(int idUpdated, int offset); /**< Met à jours les identifiants des sprites */
+
+// Recherche listes
+bool searchSprite(int idSprite);

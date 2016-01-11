@@ -14,11 +14,12 @@
 #include "../../include/game/pathList.h"
 #include "../../include/game/listes.h"
 #include "../../include/game/turn.h"
+#include "../../include/display/map.h"
 #include "../../include/display/grid.h"
 #include "../../include/display/menu.h"
 #include "../../include/controller/manageString.h"
 #include "../../include/controller/manageSignal.h"
- #include "../../include/controller/terminal.h"
+#include "../../include/controller/terminal.h"
 #include "../../include/units/unit.h"
 
 unit grid[N][N]; /**< Grille d'unités */
@@ -87,19 +88,23 @@ bool pathFind(vector coordUnit, vector coordTarget){
 
 						if (i >= 0 && i < N && j >= 0 && j < N){
 
-							// Cherche le voisin dans la liste fermée + vérifie que la case permet le passage
-							if(!searchTile(1, neighbour) && (grid[i][j].name != decors 
-								|| canTeleport(grid[coordUnit.x][coordUnit.y].name) 
-								|| (grid[i][j].noPlayer == noPlayer && canGetPassed(&grid[i][j]))) ){ 
-								
-								F = abs(coordTarget.x - i) + abs(coordTarget.y -j); // Distance jusqu'à la destination
+							if( (grid[i][j].name != decors &&  !canTeleport(grid[coordUnit.x][coordUnit.y].name) 
+								&& (grid[i][j].noPlayer == noPlayer || grid[i][j].name == empty) && canGetPassed(&grid[i][j]))
+								|| canTeleport(grid[coordUnit.x][coordUnit.y].name) ){
 
-								if(!searchTile(0, neighbour)){ // Cherche dans la liste ouverte
+								// Cherche le voisin dans la liste fermée + vérifie que la case permet le passage
+								if(!searchTile(1, neighbour)){ 
+									
+									F = abs(coordTarget.x - i) + abs(coordTarget.y -j); // Distance jusqu'à la destination
 
-									addOpenList(neighbour, F);
+									if(!searchTile(0, neighbour)){ // Cherche dans la liste ouverte
+
+										addOpenList(neighbour, F);
+									}
+
 								}
-
 							}
+
 						}
 
 					}
@@ -117,6 +122,7 @@ bool pathFind(vector coordUnit, vector coordTarget){
 void movable(int colorDisp){
 	vector coordUnit;
 	unit * source;
+	int posX = 0, posY = 0;
 
 	if(!liste_vide(noPlayer)){
 		en_tete(noPlayer);
@@ -127,10 +133,30 @@ void movable(int colorDisp){
 
 			source = &grid[coordUnit.x][coordUnit.y];
 			if(canMove(source) && possiblePath(coordUnit) && !isSleeping(coordUnit)){ // Unité non entourée par ennemi + non paralysée et ayant un chemin possible
-				source->unitColor= colorDisp;
+				
+				if(colorDisp == white){
+
+					posX = coordUnit.x * TILE_W;
+					posY = coordUnit.y * TILE_H;
+
+					toIso(tMap, &posX, &posY); // Convertis les coordonnées en coordonnées isométriques
+
+					posX += offsetX(tMap);
+					posY += offsetY();
+
+					SDL_newImage(ingame, NULL, "cursor.png", posX, posY);
+				
+				}else{
+
+					SDL_delImage(ingame, ingame->nbImg - 1);
+
+				}
+			
 			}
 		}
 	}
+
+	SDL_generate(ingame);
 }
 
 /**
@@ -164,6 +190,7 @@ void attackable(int colorDisp){
 void tileWalkable(vector coordUnit, int colorDisp){
 	unit * source;
 	vector coordTarget;
+	int posX = 0, posY = 0;
 	int moveRange = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
 
 	for(int x = coordUnit.x - moveRange; x <= moveRange + coordUnit.x; x++){
@@ -176,11 +203,27 @@ void tileWalkable(vector coordUnit, int colorDisp){
 				source = &grid[x][y];
 
 				if(source->name == empty){ // Case vide
-					source->unitColor = colorDisp;
+					
+					if(colorDisp == blue){
+
+						posX = x * TILE_W;
+						posY = y * TILE_H;
+
+						toIso(tMap, &posX, &posY); // Convertis les coordonnées en coordonnées isométriques
+
+						posX += offsetX(tMap);
+						posY += offsetY();
+
+						SDL_newImage(ingame, NULL, "blue_Tile.png", posX, posY);
+				
+					}else
+						SDL_delImage(ingame, ingame->nbImg - 1);
+
 				}
 			}
 		}
 	}
+
 }
 
 /**
@@ -379,6 +422,7 @@ void launchAttack(vector coordSource, vector coordTarget){
 	}else{
 		attack(coordSource, coordTarget);
 	}
+
 }
 
 /**
@@ -387,11 +431,11 @@ void launchAttack(vector coordSource, vector coordTarget){
  * @return           Retourne vrai si unité bien sélectionnée
  */
 bool selectUnit(vector * coordUnit){
-	char coordString[5];
 	unitName name;
 
+	getIndexMap(tMap, SDL_getmousex(), SDL_getmousey(), &coordUnit->x, &coordUnit->y);
 
-	getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
+	if(isOutGrid(coordUnit->x, coordUnit->y)) return false;
 
 	name = grid[coordUnit->x][coordUnit->y].name;
 
@@ -560,6 +604,10 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
 
 	while(dropped < 0 && !tooMuchUnit(dropped, limitUnits)){
 		dropped = dragNdrop(ingame, tMap, nbUnit, limitUnits);
+
+		if(showMouseCursor(ingame, tMap))
+			SDL_generate(ingame);
+
 	}
 
 	unitAdded = getUnit(dropped);
@@ -593,13 +641,12 @@ void playerAddUnit(int limitUnits[], int * nbUnit){
 		}
 	}else{
 
-		color(red, "Pas assez d'unités disponible pour placer le Dragon tyrant !\n");
+		//color(red, "Pas assez d'unités disponible pour placer le Dragon tyrant !\n");
 		* nbUnit = * nbUnit - 1;
 
 	}
 
 	grid[coordUnit.x][coordUnit.y].idSprite = dropped;
-	printList(FIRST_PLAYER);
 }
 
 /**
@@ -668,14 +715,11 @@ void startGame(){
 	int tLeft   = totalTime; // Temps restant
 	int tmp 	   = -1;
 
-	clearScreen();
-	gridDisp();
-
 	do{
 		playTurn();
 	}
 	while(!endGame());
-
+	
 	time(&start);
 	while(tLeft > 0){ // Décompte avant de réafficher le menu principal si partie finie
 		time(&countDown);
@@ -683,9 +727,7 @@ void startGame(){
 
 		if(tmp != tLeft){ // N'affiche le message qu'une fois toutes les secondes
 			tmp = tLeft;
-			
-			if(tLeft < totalTime)
-				printf("\033[A\033[K"); // Efface la ligne
+
 
 			printf("Vous allez être redirigé vers le menu principal dans %i ", tLeft);
 			
@@ -694,13 +736,10 @@ void startGame(){
 			}else{
 				printf("seconde\n");
 			}
-			
-			printf("\x0d"); // Replace début ligne
 		}
 	}
 
 	freeAll();
-	clearScreen();
 	mainMenu();
 }
 
@@ -716,10 +755,17 @@ void gameInit(){
 
 	gridInit(); // Crée la grille
     initDisplay();
-	
+
+	if(showMouseCursor(ingame, tMap)) // init cursor
+		SDL_generate(ingame);
+
 	playerInit(); // Initialisation du joueur 1
 	noPlayer++;
 	playerInit();// Initialisation du joueur 2
+
+	delPawnsSprite(ingame, tMap);
+	updateIdSprite(0, -3); // Met à jour les identifiants des sprites -> nbSizePawns
+	SDL_generate(ingame);
 
 	noPlayer = (rand() % (FIRST_PLAYER + 2)); // Tire le joueur débutant la partie aléatoirement
 
