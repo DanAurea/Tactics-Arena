@@ -74,7 +74,7 @@ bool pathFind(vector coordUnit, vector coordTarget){
 			current = getCurrentNode(0); // On récupère le noeud ayant le plus petit F dans la liste ouverte
 			range--;
 			addCloseList(current, F); // Ajoute le noeud courant à la liste fermée
-
+			printf("%i - %i\n", current.x, current.y);
 			if(current.x == coordTarget.x && current.y == coordTarget.y) return true; // Chemin trouvé
 
 			for(int i = current.x -1; i <= current.x + 1; i++){ // Regarde les voisins sans prendre en compte la diagonale
