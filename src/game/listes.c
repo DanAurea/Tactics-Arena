@@ -233,8 +233,10 @@ void printList(short numList){
 			source = grid[tmp.x][tmp.y];
 
 			if(source.name != empty && source.name != decors){
-				printf("%i -  %s  -  %c%i  -  %i HP  -  %s  -  %i  -  %i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1,
-					 source.stat.HP, getDirectionUnit(source.direct), source.stat.POWER, source.stat.RECOVERY); // Affiche le nom de l'unité
+
+				printf("%i - %s - %c%i - %i HP - %s - %i - %i - Sprite : %i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1,
+					 source.stat.HP, getDirectionUnit(source.direct), source.stat.POWER, source.stat.RECOVERY, source.idSprite); // Affiche le nom de l'unité
+
 			}else{
 				printf("%i - %s - %c%i", i,getNameUnit(source.name), 'A' + tmp.x, tmp.y + 1); // Affiche case vide ou décor
 			}
@@ -251,6 +253,54 @@ void printList(short numList){
 			i++;
 		}
 	}
+}
+
+/**
+ * Met à jour l'identifiant du sprite de chaque unité dans la liste du joueur courant
+ * @param idUpdated Identifiant de référence pour la mise à jour
+ * @param offset Valeur à décaler
+ */
+void updateIdSprite(int idUpdated, int offset){
+	vector tmp;
+
+	if(!liste_vide(FIRST_PLAYER)){
+
+		en_tete(FIRST_PLAYER);
+		valeur_elt(FIRST_PLAYER, &tmp);
+
+	}else return ;
+
+	while(!hors_liste(FIRST_PLAYER)){ // Cherche l'unité dans la liste
+		valeur_elt(FIRST_PLAYER, &tmp);
+
+		if(grid[tmp.x][tmp.y].idSprite > idUpdated ){
+
+			grid[tmp.x][tmp.y].idSprite += offset;
+
+		}
+
+		suivant(FIRST_PLAYER);
+	}
+
+	if(!liste_vide(FIRST_PLAYER + 1)){
+
+		en_tete(FIRST_PLAYER + 1);
+		valeur_elt(FIRST_PLAYER + 1, &tmp);
+
+	}else return ;
+
+	while(!hors_liste(FIRST_PLAYER + 1)){ // Cherche l'unité dans la liste
+		valeur_elt(FIRST_PLAYER + 1, &tmp);
+
+		if(grid[tmp.x][tmp.y].idSprite > idUpdated ){
+
+			grid[tmp.x][tmp.y].idSprite += offset;
+
+		}
+
+		suivant(FIRST_PLAYER + 1);
+	}
+	
 }
 
 /**
@@ -311,6 +361,30 @@ bool searchTarget(int numList, vector coordTarget){
 				return true;
 			}
 			suivant(numList);
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Cherche un sprite dans la liste
+ * @param  idSprite Identifiant du sprite
+ * @return          Retourne vrai si trouvé sinon false
+ */
+bool searchSprite(int idSprite){
+	vector tmp = {-1, -1};
+
+	if(!liste_vide(noPlayer)){
+		en_tete(noPlayer);
+
+		while(!hors_liste(noPlayer)){ // Cherche la cible
+			valeur_elt(noPlayer, &tmp);
+			
+			if(grid[tmp.x][tmp.y].idSprite == idSprite){ // Cible trouvée
+				return true;
+			}
+			suivant(noPlayer);
 		}
 	}
 

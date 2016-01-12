@@ -36,3 +36,9 @@ int countUnits(); /**< Compte le nombre d'unités */
 // Manipulation des listes de cible
 void addTarget(unitName name, vector coordUnit); /**< Ajoute une cible */
 bool searchTarget(int numList, vector coordTarget); /**< Cherche une cible */
+
+// Mise à jour listes
+void updateIdSprite(int idUpdated, int offset); /**< Met à jours les identifiants des sprites */
+
+// Recherche listes
+bool searchSprite(int idSprite);

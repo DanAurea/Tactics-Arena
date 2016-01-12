@@ -14,11 +14,12 @@
 #include "../../include/game/pathList.h"
 #include "../../include/game/listes.h"
 #include "../../include/game/turn.h"
+#include "../../include/display/map.h"
 #include "../../include/display/grid.h"
 #include "../../include/display/menu.h"
-#include "../../include/controller/terminal.h"
 #include "../../include/controller/manageString.h"
 #include "../../include/controller/manageSignal.h"
+#include "../../include/controller/terminal.h"
 #include "../../include/units/unit.h"
 
 unit grid[N][N]; /**< Grille d'unités */
@@ -74,9 +75,9 @@ bool pathFind(vector coordUnit, vector coordTarget){
 			current = getCurrentNode(0); // On récupère le noeud ayant le plus petit F dans la liste ouverte
 			range--;
 			addCloseList(current, F); // Ajoute le noeud courant à la liste fermée
-			printf("%i - %i\n", current.x, current.y);
-			if(current.x == coordTarget.x && current.y == coordTarget.y) return true; // Chemin trouvé
 
+			if(current.x == coordTarget.x && current.y == coordTarget.y) return true; // Chemin trouvé
+			
 			for(int i = current.x -1; i <= current.x + 1; i++){ // Regarde les voisins sans prendre en compte la diagonale
 				for(int j = current.y -1; j <= current.y + 1; j++){
 
@@ -97,8 +98,9 @@ bool pathFind(vector coordUnit, vector coordTarget){
 									F = abs(coordTarget.x - i) + abs(coordTarget.y -j); // Distance jusqu'à la destination
 
 									if(!searchTile(0, neighbour)){ // Cherche dans la liste ouverte
-
+										
 										addOpenList(neighbour, F);
+									
 									}
 
 								}
@@ -121,6 +123,7 @@ bool pathFind(vector coordUnit, vector coordTarget){
 void movable(int colorDisp){
 	vector coordUnit;
 	unit * source;
+	int posX = 0, posY = 0;
 
 	if(!liste_vide(noPlayer)){
 		en_tete(noPlayer);
@@ -131,10 +134,30 @@ void movable(int colorDisp){
 
 			source = &grid[coordUnit.x][coordUnit.y];
 			if(canMove(source) && possiblePath(coordUnit) && !isSleeping(coordUnit)){ // Unité non entourée par ennemi + non paralysée et ayant un chemin possible
-				source->unitColor= colorDisp;
+				
+				if(colorDisp == white){
+
+					posX = coordUnit.x * TILE_W;
+					posY = coordUnit.y * TILE_H;
+
+					toIso(tMap, &posX, &posY); // Convertis les coordonnées en coordonnées isométriques
+
+					posX += offsetX(tMap);
+					posY += offsetY();
+
+					SDL_newImage(ingame, NULL, "cursor.png", posX, posY);
+				
+				}else{
+
+					SDL_delImage(ingame, ingame->nbImg - 1);
+
+				}
+			
 			}
 		}
 	}
+
+	SDL_generate(ingame);
 }
 
 /**
@@ -168,6 +191,7 @@ void attackable(int colorDisp){
 void tileWalkable(vector coordUnit, int colorDisp){
 	unit * source;
 	vector coordTarget;
+	int posX = 0, posY = 0;
 	int moveRange = grid[coordUnit.x][coordUnit.y].stat.MOVE_RANGE;
 
 	for(int x = coordUnit.x - moveRange; x <= moveRange + coordUnit.x; x++){
@@ -180,11 +204,27 @@ void tileWalkable(vector coordUnit, int colorDisp){
 				source = &grid[x][y];
 
 				if(source->name == empty){ // Case vide
-					source->unitColor = colorDisp;
+					
+					if(colorDisp == blue){
+
+						posX = x * TILE_W;
+						posY = y * TILE_H;
+
+						toIso(tMap, &posX, &posY); // Convertis les coordonnées en coordonnées isométriques
+
+						posX += offsetX(tMap);
+						posY += offsetY();
+
+						SDL_newImage(ingame, NULL, "blue_Tile.png", posX, posY);
+				
+					}else
+						SDL_delImage(ingame, ingame->nbImg - 1);
+
 				}
 			}
 		}
 	}
+
 }
 
 /**
@@ -387,6 +427,7 @@ void launchAttack(vector coordSource, vector coordTarget){
 	}else{
 		attack(coordSource, coordTarget); // Attaque que la case ciblée
 	}
+
 }
 
 /**
@@ -395,15 +436,11 @@ void launchAttack(vector coordSource, vector coordTarget){
  * @return           Retourne vrai si unité bien sélectionnée
  */
 bool selectUnit(vector * coordUnit){
-	char coordString[5];
 	unitName name;
 
-	do{
-		printf("Sélectionnez une unité ou une case par ses coordonnées au format a/A 01/11: ");
-		readS(coordString);
-	}while(!correctCoord(coordString));
+	getIndexMap(tMap, SDL_getmousex(), SDL_getmousey(), &coordUnit->x, &coordUnit->y);
 
-	getCoordS(coordString, coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
+	if(isOutGrid(coordUnit->x, coordUnit->y)) return false;
 
 	name = grid[coordUnit->x][coordUnit->y].name;
 
@@ -427,7 +464,7 @@ void gridInit(){
 			grid[x][y].name = empty; // Initialise à vide
 
 			if(x >= 0 + NB_LINES && x < N - NB_LINES && nbDecors < 7){
-				if(rand() % 100 > 93){ // Ajoute un décor aléatoirement
+				if(rand() % 100 > 92){ // Ajoute un décor aléatoirement
 					grid[x][y] = pawns[decors];
 					nbDecors++;
 				}
@@ -450,34 +487,34 @@ bool tooMuchUnit(int unitSelected, int limitUnits[]){
 
 	if(strstr(getNameUnit(unitSelected), "Dragon")){
 
-		if(limitUnits[4] == 0) return true; // Limite de dragon
+		if(limitUnits[4] <= 0) return true; // Limite de dragon
 		return false;
 
 	}else{
 
 		if(unitSelected == knight){ // Limite de knight
 
-			if(limitUnits[0] == 0) return true;
+			if(limitUnits[0] <= 0) return true;
 			return false;
 
 		}else if(unitSelected == scout){ // Limite de scout
 
-			if(limitUnits[1] == 0) return true;
+			if(limitUnits[1] <= 0) return true;
 			return false;
 
 		}else if(unitSelected == stoneGolem){ // Limite de stone Golem
 
-			if(limitUnits[2] == 0) return true;
+			if(limitUnits[2] <= 0) return true;
 			return false;
 
 		}else if(unitSelected == lightningTotem){ // Limite de lightning Totem
 
-			if(limitUnits[3] == 0) return true;
+			if(limitUnits[3] <= 0) return true;
 			return false;
 
 		}else if(unitSelected == furgon){ // Limite de furgon
 
-			if(limitUnits[5] == 0) return true;
+			if(limitUnits[5] <= 0) return true;
 			return false;
 
 		}
@@ -494,7 +531,23 @@ bool tooMuchUnit(int unitSelected, int limitUnits[]){
  * @param coordUnit  	Coordonnées de l'unité
  */
 void updateLimits(int unitSelected, int limitUnits[], vector coordUnit){
-	unitName name = grid[coordUnit.x][coordUnit.y].name;
+	unitName name = empty;
+
+	if(!isOutGrid(coordUnit.x, coordUnit.y)) name = grid[coordUnit.x][coordUnit.y].name;
+	else{
+
+		if(unitSelected == knight) limitUnits[0]++; // Met à jours les unités lors d'une suppression
+
+		else if(unitSelected == scout) limitUnits[1]++;
+
+		else if(unitSelected == stoneGolem) limitUnits[2]++;
+
+		else if(unitSelected == lightningTotem) limitUnits[3]++;
+
+		else if(unitSelected == furgon) limitUnits[5]++;
+
+		return; 
+	}
 
 	if(strstr(getNameUnit(name), "Dragon")){
 		if(!strstr(getNameUnit(unitSelected), "Dragon")) limitUnits[4]++;  // Mise à jour limite dragons
@@ -504,12 +557,13 @@ void updateLimits(int unitSelected, int limitUnits[], vector coordUnit){
 
 	if(name != unitSelected){
 
-		if(unitSelected == knight) limitUnits[0]--; // Met à jours les unités lors d'un ajout
-		if(unitSelected == scout) limitUnits[1]--;
-		if(unitSelected == stoneGolem) limitUnits[2]--;
-		if(unitSelected == lightningTotem) limitUnits[3]--;
-		if(unitSelected == furgon) limitUnits[5]--;
+		if(unitSelected == knight && limitUnits[0] > 0) limitUnits[0]--; // Met à jours les unités lors d'un ajout
+		if(unitSelected == scout && limitUnits[1] > 0) limitUnits[1]--;
+		if(unitSelected == stoneGolem && limitUnits[2] > 0) limitUnits[2]--;
+		if(unitSelected == lightningTotem && limitUnits[3] > 0) limitUnits[3]--;
+		if(unitSelected == furgon && limitUnits[4] > 0) limitUnits[5]--;
 
+		return;
 	}
 
 	if(name == knight && unitSelected != knight) limitUnits[0]++; // Met à jours les unités lors d'un remplacement
@@ -525,60 +579,22 @@ void updateLimits(int unitSelected, int limitUnits[], vector coordUnit){
 }
 
 /**
- * Demande de choisir une unité
- * @param unitSelected Unité sélectionnée
- * @param limitUnits Nombre limite pour chaque unité
+ * Vérifie que l'unité est du bon côté
+ * @param  x Coordonnées x de l'unité
+ * @param  y Coordonnées y de l'unité
+ * @return             Retourne vrai si du bon côté 
  */
-void askUnit(int * unitSelected, int limitUnits[]){
-	do{
-		printf("Choisissez le type d'unité: ");
-		* unitSelected = readLong();
+bool rightSide(int x, int y){
+        
+    if(noPlayer == FIRST_PLAYER){ // Délimite le camp du joueur 1
+        if(x < N - NB_LINES) return false;
+    }
+    
+    if(noPlayer == FIRST_PLAYER + 1){ // Délimite le camp du joueur 2
+        if(x > NB_LINES) return false;
+    }
 
-		if(* unitSelected < knight -1 || * unitSelected > NB_UNITS - 1)
-			color(red, "Aucune unité de ce type !\n\n");
-
-		if(tooMuchUnit(* unitSelected + 1, limitUnits)){ // En cas de surnombre pour l'unité choisie
-			fontColor(red);
-
-			if(!strstr(getNameUnit(* unitSelected + 1), "Dragon")){ // Message d'erreur en cas de surnombre
-				printf("Trop de %s dans vos unités !\n", getNameUnit(* unitSelected + 1));
-			}else{
-				printf("Trop de dragons dans vos unités !\n");
-			}
-
-			reinitColor();
-		}
-
-	}while(* unitSelected < knight -1 ||  * unitSelected > NB_UNITS - 1 || tooMuchUnit(* unitSelected + 1, limitUnits));
-
-}
-
-/**
- * Demande les coordonnées de l'unité à placer
- * @param coordString Coordonnées sous forme de chaîne
- */
-void askCoord(char coordString[]){
-	do{
-		fontColor(cyan);
-		if(noPlayer == FIRST_PLAYER){
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i (Exemple : K 2 ) \n", 'A' + N - NB_LINES, 'A' + N - 1, N);
-		}else{
-			printf("\nVous pouvez placer vos unités de %c à %c et de 1 à %i (Exemple : B 5 ) \n", 'A', 'A' + NB_LINES - 1, N);
-		}
-		reinitColor();
-
-		printf("Quelles sont les coordonnées de l'unité à placer ?\n");
-
-		readS(coordString); // Saisie sécurisée
-
-		if(!correctCoord(coordString)){ // Coordonnées incorrectes
-			printf("Coordonnées incorrectes !\n");
-		}
-		if(!rightSide(coordString)){ // Mauvais placement
-			printf("Unité non placée dans le bon camp !\n");
-		}
-	}
-	while(!correctCoord(coordString) || !rightSide(coordString));
+    return true;
 }
 
 /**
@@ -587,44 +603,55 @@ void askCoord(char coordString[]){
  * @param nbUnit   Nombre d'unités restantes à placer
  */
 void playerAddUnit(int limitUnits[], int * nbUnit){
-	int unitSelected;
-	char coordString[5];
+	int unitAdded = -1, dropped = -1;
+	int posX = 0, posY = 0, height = 0, width = 0;
 	vector coordUnit;
 
-	unitList(); // Affiche la liste des unités du jeu
-	askUnit(&unitSelected, limitUnits);
+	while(dropped < 0 && !tooMuchUnit(dropped, limitUnits)){
+		dropped = dragNdrop(ingame, tMap, nbUnit, limitUnits);
 
-	askCoord(coordString);
-	getCoordS(coordString, &coordUnit); // Récupère les coordonnées saisies sous forme de vecteur
+		if(showMouseCursor(ingame, tMap))
+			SDL_generate(ingame);
 
-	updateLimits(unitSelected + 1, limitUnits, coordUnit); // Met à jour le nombre d'unités limitées
-
-	if(grid[coordUnit.x][coordUnit.y].name != empty){
-		destroyUnit(coordUnit); // Détruit l'unité en place
-		* nbUnit = * nbUnit - 1; // Remet à jour le nombre d'unités
 	}
 
-	if((strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant") && * nbUnit <= NB_MAX_UNIT - 2)
-		|| !strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant") 
+	unitAdded = getUnit(dropped);
+
+	posX   = ingame->contextSprite[dropped].x;
+	posY   = ingame->contextSprite[dropped].y;
+	height = ingame->contextSprite[dropped].sp_height;
+	width  = ingame->contextSprite[dropped].sp_width;
+
+	getIndexMap(tMap, posX + width / 2, posY + height / 2, &coordUnit.x, &coordUnit.y); // Récupère la position du sprite dans la grille
+
+	updateLimits(unitAdded, limitUnits, coordUnit); // Met à jour le nombre d'unités limitées
+
+	if(grid[coordUnit.x][coordUnit.y].name != empty){
+
+		destroyUnit(coordUnit); // Détruit l'unité en place
+		* nbUnit = * nbUnit - 1; // Remet à jour le nombre d'unités
+
+	}
+
+	if((strstr(getNameUnit(unitAdded), "Dragon Tyrant") && * nbUnit <= NB_MAX_UNIT - 2)
+		|| !strstr(getNameUnit(unitAdded), "Dragon Tyrant") 
 		){ // Dragon Tyrant compte comme 2 unités
-		grid[coordUnit.x][coordUnit.y].name = unitSelected + 1; // Place l'unité correspondante dans la grille
+		grid[coordUnit.x][coordUnit.y].name = unitAdded; // Place l'unité correspondante dans la grille
 
 		unitInit(noPlayer, coordUnit); // Initialise l'unité ajoutée
 		addUnit(coordUnit);
 
-		clearScreen();
-		gridDisp(); // Affiche la grille actualisée
-
-		if(strstr(getNameUnit(unitSelected + 1), "Dragon Tyrant")){ // Dragon Tyrant compte comme 2 unités
+		if(strstr(getNameUnit(unitAdded), "Dragon Tyrant")){ // Dragon Tyrant compte comme 2 unités
 			* nbUnit = * nbUnit + 1;
 		}
 	}else{
-		gridDisp(); // Affiche la grille actualisée
 
-		color(red, "Pas assez d'unités disponible pour placer le Dragon tyrant !\n");
+		//color(red, "Pas assez d'unités disponible pour placer le Dragon tyrant !\n");
 		* nbUnit = * nbUnit - 1;
+
 	}
 
+	grid[coordUnit.x][coordUnit.y].idSprite = dropped;
 }
 
 /**
@@ -635,18 +662,21 @@ void playerInit(){
 					 	NB_MAX_SG, NB_MAX_LT,
 					 	NB_MAX_DR, NB_MAX_FU}; // Limite en nombre pour certaines unités
 
-	printf("\nJoueur %i: \n\n", noPlayer + 1); // Initialisation du joueur 1
+	drawLimitPlayer(ingame, tMap);
+	SDL_generate(ingame);
+
 	for(int i = 0; i < NB_MAX_UNIT; i++){
-		fontColor(red);
 
 		if(i < NB_MAX_UNIT -1)
 			printf("Il reste %i unités à placer.\n", NB_MAX_UNIT - i);
 		else
 			printf("Il reste 1 unité à placer.\n");
 
-		reinitColor();
 		playerAddUnit(limitUnits, &i); // Ajout unité joueur 1
 	}
+
+	deleteLimitPlayer(ingame, tMap);
+	SDL_generate(ingame);
 }
 
 /**
@@ -690,14 +720,11 @@ void startGame(){
 	int tLeft   = totalTime; // Temps restant
 	int tmp 	   = -1;
 
-	clearScreen();
-	gridDisp();
-
 	do{
 		playTurn();
 	}
 	while(!endGame());
-
+	
 	time(&start);
 	while(tLeft > 0){ // Décompte avant de réafficher le menu principal si partie finie
 		time(&countDown);
@@ -705,23 +732,19 @@ void startGame(){
 
 		if(tmp != tLeft){ // N'affiche le message qu'une fois toutes les secondes
 			tmp = tLeft;
-			
-			if(tLeft < totalTime)
-				printf("\033[A\033[K"); // Efface la ligne
+
 
 			printf("Vous allez être redirigé vers le menu principal dans %i ", tLeft);
+			
 			if(tLeft > 1){
 				printf("secondes\n");
 			}else{
 				printf("seconde\n");
 			}
-			
-			printf("\x0d"); // Replace début ligne
 		}
 	}
 
 	freeAll();
-	clearScreen();
 	mainMenu();
 }
 
@@ -736,11 +759,18 @@ void gameInit(){
 	makePawns(); // Crée les pions
 
 	gridInit(); // Crée la grille
-    gridDisp(); // Affiche la grille
+    initDisplay();
+
+	if(showMouseCursor(ingame, tMap)) // init cursor
+		SDL_generate(ingame);
 
 	playerInit(); // Initialisation du joueur 1
 	noPlayer++;
 	playerInit();// Initialisation du joueur 2
+
+	delPawnsSprite(ingame, tMap);
+	updateIdSprite(0, -3); // Met à jour les identifiants des sprites -> nbSizePawns
+	SDL_generate(ingame);
 
 	noPlayer = (rand() % (FIRST_PLAYER + 2)); // Tire le joueur débutant la partie aléatoirement
 

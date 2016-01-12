@@ -179,57 +179,71 @@ void playMove(){
 	bool possible = false;
 	bool found    = false;
 	bool sleeping = false;
+	int mousePressed = 0;
 	vector coordUnit, coordTarget;
-	unit * target;
+
+	movable(white);
+
+	SDL_generate(ingame);
+	
+	SDL_Delay(20);
 
 	do{
-		selected = selectUnit(&coordUnit); // Sélection de l'unité à déplacer
-		possible = possiblePath(coordUnit);
-		sleeping = isSleeping(coordUnit);
-		target   = &grid[coordUnit.x][coordUnit.y];
 
-		if(!selected)
-			color(red, "Vous ne pouvez sélectionner cette unité !\n");
-		else if(!canMove(target) || !possible){
-			color(red, "L'unité ne peut pas se déplacer !\n");
-		}else if(target->name == empty){
-			color(red, "Vous ne pouvez pas sélectionner une case vide\n");
-		}else if(target->noPlayer != noPlayer){
-			color(red, "Cette unité ne vous appartient pas !\n");
-		}else if(sleeping){
+		if(showMouseCursor(ingame, tMap)) // init cursor
+			SDL_generate(ingame);
 
-			fontColor(red);
-			printf("Votre unité est endormie attendez : %i tours\n", pawns[target->name].stat.RECOVERY - target->stat.RECOVERY);
-			reinitColor();
-		}
-
-	}while(target->noPlayer != noPlayer || !selected || !possible || target->name == empty || sleeping);
-
-	movable(black); // Réinitialise en noir les unités déplaçables
-
-    grid[coordUnit.x][coordUnit.y].unitColor = white; // Couleur unité sélectionnée
-
-	tileWalkable(coordUnit, green); // Affiche la liste des cases atteignables en vert
-
-    clearScreen();
-    gridDisp();
-
-    tileWalkable(coordUnit, black); // Réinitialise la couleur en noir
-
-	color(red, "\nVous pouvez maintenant déplacer votre unité :\n\n");
-	do{
-		selected = selectUnit(&coordTarget); // Sélection de l'endroit où déplacer l'unité
+		mousePressed = SDL_isMousePressed(SDL_BUTTON_LEFT);
 		
-		if(grid[coordTarget.x][coordTarget.y].name == empty){
-			found = pathFind(coordUnit, coordTarget);
+		if (SDL_requestExit()) break;
+
+		if(mousePressed){
+
+			selected = selectUnit(&coordUnit); // Sélection de l'unité à déplacer
+			
+			if(grid[coordUnit.x][coordUnit.y].noPlayer != noPlayer || grid[coordUnit.x][coordUnit.y].name == empty) selected = false;
+			
+			if(selected){
+				possible = possiblePath(coordUnit);
+				sleeping = isSleeping(coordUnit);
+			}
+
 		}
 
-		if(!found) color(red, "Déplacement impossible !\n");
-		else if(!selected) color(red, "Vous ne pouvez sélectionner cette unité !\n");
+		SDL_Delay(20);
+
+	}while(!possible || sleeping);
+
+	movable(black);
+	
+	tileWalkable(coordUnit, blue); // Affiche la liste des cases atteignables en vert
+
+	SDL_generate(ingame);
+
+	SDL_Delay(20);
+
+	do{
+
+		if(showMouseCursor(ingame, tMap)) // init cursor
+			SDL_generate(ingame);
+
+		mousePressed = SDL_isMousePressed(SDL_BUTTON_LEFT);
+		
+		if (SDL_requestExit()) break;
+
+		if(mousePressed){
+
+			selected = selectUnit(&coordTarget); // Sélection de l'endroit où déplacer l'unité
+			
+			if(grid[coordTarget.x][coordTarget.y].name == empty) found = pathFind(coordUnit, coordTarget);
+
+		}
+
+		SDL_Delay(20);
 
 	}while(!selected || !found);
     
-    grid[coordUnit.x][coordUnit.y].unitColor = black; // Réinitialise la couleur de l'unité sélectionnée
+    tileWalkable(coordUnit, black); // Affiche la liste des cases atteignables en vert
 	sleep(coordUnit);
 	move(coordTarget, coordUnit);
 
@@ -241,8 +255,6 @@ void playMove(){
  */
 void passTurn(){
 	hasPassed = 1;
-	clearScreen();
-	gridDisp();
 }
 
 /**
@@ -283,7 +295,10 @@ void playTurn(){
 	int  totalTime = startTurn(noPlayer); // Temps total du tour
 	int timeLeft   = totalTime; // Temps restant
 	int loop	   = 0;
-	
+
+	int action = 0;
+
+	hasSurrender = 0; // Au début pour afficher message d'erreur correct lors de l'abandon
 	hasPassed    = 0;
 	hasMoved     = 0; // Actions utilisateur lors du tour
 	hasAttacked  = 0; // A faire à la fin pour éviter la triche lors du chargement
@@ -294,9 +309,19 @@ void playTurn(){
 
 	signal(SIGUSR1, timeDown); // En fin de tour renvoie vers timeDown
 
-	while(timeLeft > 0 && !hasPassed && !hasSurrender){
-		
-		gameMenu(); // Menu du joueur
+
+	while(timeLeft > 0 && hasPassed == 0 && hasSurrender == 0){
+
+		if(showMouseCursor(ingame, tMap)) // init cursor
+			SDL_generate(ingame);
+
+		action = playMenu(); // Menu de jeu
+
+		if(action == 1 && !hasMoved && !hasAttacked) playMove();
+		else if(action == 2 && !hasAttacked) playAttack();
+		else if(action == 3) changeDirection();
+
+		SDL_Delay(20);
 
 		timeLeft = endTurn(start, totalTime);
 
@@ -304,7 +329,10 @@ void playTurn(){
 			setAction(timeLeft); // Remets à zéro les actions
 		}
 
-		loop++;
+		if(hasMoved || hasAttacked)
+			loop++;
+
+		if (SDL_requestExit()) break;
 	}
 
 	if(!hasPlay() && !hasSurrender){ // Pas d'action donc temps écoulé

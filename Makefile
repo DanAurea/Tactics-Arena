@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-g -Wall -std=c99
-LDFLAGS=-lm
+LDFLAGS= -lSDL_image `sdl-config --libs --cflags` -lESDL -lm
 EXEC=bin/tacticsArena
 
 SRC= $(wildcard src/*/*.c && src/*.c)
@@ -21,7 +21,7 @@ units    = $(INC)units/unit.h
 
 
 $(EXEC): $(OBJ)
-	@$(CC) -o $@ $^
+	@$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 src/game/main.o: $(engine) $(pawns) $(listes) $(grid) $(menu) $(terminal) $(string) $(signal) $(units)
 
@@ -45,7 +45,7 @@ src/display/menu.o: $(engine) $(pawns) $(menu) $(grid) $(terminal) $(string)
 
 src/controller/terminal.o: $(terminal)
 
-src/%.o: %.c
+src/%.o: src/%.c
 	$(CC) -o $@ -c $< $(CFLAGS) $(LDFLAGS)
 
 .PHONY: doc

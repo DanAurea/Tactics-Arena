@@ -9,12 +9,11 @@
 // Traitement nom unité
 char* get2Char(char name[]); /**< Récupère 2 caractères du nom de l'unité */
 char* getNameUnit(unitName unit); /**< Récupère le nom de l'unité */
+int   getNumber(char name[]); /**< Récupère l'entier de l'unité d'après le nom de l'unité */
 void printNameUnit(unitName unit); /**< Affiche le nom de l'unité */
 
 // Vérification coordonnées
 void getCoordS(char coordString[], vector * coordUnit); /**< Récupère les coordonnées d'une chaîne de caractères */
-bool correctCoord(char * coordString); /**< Vérifie l'authenticité des coordonnées d'une chaîne de caractères */
-bool rightSide(char * coordString); /**< Vérifie que l'unité est dans le bon camp */
 
 // Saisie sécurisée
 int readS(char * string); /**< Lecture sécurisée d'une chaîne */

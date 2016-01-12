@@ -11,6 +11,7 @@
 #include "../../include/game/engine.h"
 #include "../../include/game/pawns.h"
 #include "../../include/game/listes.h"
+ #include "../../include/game/pathList.h"
 #include "../../include/display/grid.h"
 #include "../../include/controller/terminal.h"
 #include "../../include/controller/manageString.h"
@@ -357,22 +358,43 @@ void move(vector destination, vector source)
 {   
     unitName name = grid[source.x][source.y].name;
 	unit * uSource = &grid[source.x][source.y];
-	if(canMove(uSource) && (destination.x != source.x || destination.y != source.y) )
+
+    int idSprite = grid[source.x][source.y].idSprite;
+    int F = 0, x = 0, y = 0;
+
+	if(canMove(uSource) && (destination.x != source.x || destination.y != source.y))
 	{
-		copy(&grid[destination.x][destination.y],uSource);
+		
+        if(!emptyPath(1)){
+                        
+            x = source.x;
+            y = source.y;
+
+            pathHead(1);
+            while(!outPath(1)){
+                getTile(1, &destination, &F);
+                next(1);
+
+                if( x > destination.x) moveSpriteTo(ingame, tMap, UP_LEFT, idSprite );
+                else if(y > destination.y) moveSpriteTo(ingame, tMap, UP_RIGHT, idSprite);
+                else if(y < destination.y) moveSpriteTo(ingame, tMap, DOWN_LEFT, idSprite);
+                else if( x < destination.x) moveSpriteTo(ingame, tMap, DOWN_RIGHT, idSprite );
+
+                x = destination.x;
+                y = destination.y;
+            
+            }
+        }
+
+
+        copy(&grid[destination.x][destination.y],uSource);
 		
         erase(uSource);
         destroyUnit(source);
 
 		addUnit(destination);
-        grid[source.x][source.y].unitColor = black;
-        
-        clearScreen(); // Met à jour la grille actualisée
-        gridDisp();
 
-        fontColor(red);
-        printf("L'unité %s en %c - %i a été déplacée en %c - %i\n", getNameUnit(name), 'A' + source.x, source.y + 1, 'A' + destination.x, destination.y + 1);
-        reinitColor();
+
 	}
 }
 

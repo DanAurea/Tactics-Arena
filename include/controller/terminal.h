@@ -14,7 +14,7 @@ typedef enum{black, red, green, yellow, blue, magenta, cyan, white}terminal; /**
  /**
  * @enum screen terminal.h
  */
-typedef enum{reinit = 0, blink = 5, invertColor= 7}screen; /**< Set screen action */
+typedef enum{reinit = 0, blink = 5, invertColor= 7}screenAction; /**< Set screen action */
 
 void color(int color, char type[]); /**< Met en couleurs le texte ou l'écran */
 void fontColor(int color); /**< Met en couleurs la police */
